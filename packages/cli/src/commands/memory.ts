@@ -75,6 +75,17 @@ Examples:
         }
       } catch {}
 
+      // Fallback to Go sidecar
+      if (results.length === 0) {
+        try {
+          const gRes = await fetch(`http://127.0.0.1:4300/api/agent-memory/search?query=${encodeURIComponent(query)}&limit=${parseInt(opts.topK) || 10}`, { signal: AbortSignal.timeout(5000) });
+          if (gRes.ok) {
+            const gJson = await gRes.json();
+            results = gJson.data ?? [];
+          }
+        } catch {}
+      }
+
       if (isJson) {
         console.log(JSON.stringify({ query, results }, null, 2));
         return;
@@ -112,6 +123,17 @@ Examples:
           memories = json?.result?.data ?? [];
         }
       } catch {}
+
+      // Fallback to Go sidecar
+      if (memories.length === 0) {
+        try {
+          const gRes = await fetch(`http://127.0.0.1:4300/api/agent-memory/recent?limit=${parseInt(opts.limit) || 20}`, { signal: AbortSignal.timeout(5000) });
+          if (gRes.ok) {
+            const gJson = await gRes.json();
+            memories = gJson.data ?? [];
+          }
+        } catch {}
+      }
 
       if (isJson) {
         console.log(JSON.stringify({ memories }, null, 2));
@@ -202,6 +224,17 @@ Examples:
         }
       } catch {}
 
+      // Fallback to Go sidecar if TS server has no data
+      if (!stats.totalEntries && !stats.total) {
+        try {
+          const gRes = await fetch('http://127.0.0.1:4300/api/agent-memory/stats', { signal: AbortSignal.timeout(3000) });
+          if (gRes.ok) {
+            const gJson = await gRes.json();
+            if (gJson.data) stats = { ...stats, ...gJson.data };
+          }
+        } catch {}
+      }
+
       if (isJson) {
         console.log(JSON.stringify(stats, null, 2));
         return;
@@ -210,6 +243,9 @@ Examples:
       const chalk = (await import('chalk')).default;
       console.log(chalk.bold.cyan('\n  Memory Statistics\n'));
       console.log(chalk.dim('  Total entries:   ') + String(stats.totalEntries ?? stats.total ?? 0));
+      if (stats.longTerm !== undefined) console.log(chalk.dim('  Long-term:       ') + String(stats.longTerm));
+      if (stats.working !== undefined) console.log(chalk.dim('  Working:         ') + String(stats.working));
+      if (stats.session !== undefined) console.log(chalk.dim('  Session:         ') + String(stats.session));
       console.log(chalk.dim('  Active backends: ') + String(stats.backendCount ?? 1));
       console.log(chalk.dim('  Storage used:    ') + String(stats.storageUsed ?? '0 KB'));
       console.log(chalk.dim('  Last harvest:    ') + String(stats.lastHarvest ?? 'never'));

@@ -131,10 +131,28 @@ Examples:
         const mcpStatus = real.mcp.connected > 0 ? chalk.green(`● Connected`) : real.mcp.servers > 0 ? chalk.yellow(`◐ ${real.mcp.servers} cached`) : chalk.dim('○ Empty');
         const mcpDetails = `Servers: ${real.mcp.servers} | Tools: ${real.mcp.tools} | Connected: ${real.mcp.connected}`;
 
+        // Count fleet from PID files
+        let fleetRunning = 0, fleetTotal = 0;
+        try {
+          const fs = await import('fs');
+          const path = await import('path');
+          const pidDir = path.join(process.env.HOME ?? '', '.borg', 'mcp-pids');
+          const pidFiles = fs.readdirSync(pidDir).filter(f => f.endsWith('.pid'));
+          fleetTotal = pidFiles.length;
+          for (const pf of pidFiles) {
+            try {
+              const pid = parseInt(fs.readFileSync(path.join(pidDir, pf), 'utf8').trim());
+              process.kill(pid, 0);
+              fleetRunning++;
+            } catch {}
+          }
+        } catch {}
+
         table.push(
           [chalk.bold('Component'), chalk.bold('Status'), chalk.bold('Details')],
           ['Server', serverStatus, `Uptime: ${up} | MCP: ${real.server.mcpReady ? '✓' : 'pending'}`],
           ['MCP Router', mcpStatus, mcpDetails],
+          ['MCP Fleet', fleetRunning > 0 ? chalk.green(`● ${fleetRunning} spawned`) : chalk.dim('○ None'), `${fleetRunning}/${fleetTotal} alive`],
           ['Memory', real.memory.entries > 0 ? chalk.green(`● ${real.memory.entries} entries`) : chalk.dim('○ Empty'), `Backends: ${real.memory.backends}`],
           ['Agents', chalk.dim('○ Idle'), 'Running: 0 | Available: 20+'],
           ['Sessions', real.sessions.total > 0 ? chalk.yellow(`◐ ${real.sessions.total} discovered`) : chalk.dim('○ None'), `Active: ${real.sessions.active} | Discovered: ${real.sessions.total}`],

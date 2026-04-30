@@ -20,13 +20,27 @@ export function registerBillingCommand(program: Command): void {
       try {
         const res = await fetch(`${TS_URL}/billing.getStatus`, { signal: AbortSignal.timeout(5000) });
         if (res.ok) status = (await res.json())?.result?.data ?? {};
+
+        if (!status.activeProviders) {
+          const goRes = await fetch(`http://127.0.0.1:4300/api/billing/status`, { signal: AbortSignal.timeout(3000) });
+          if (goRes.ok) status = (await goRes.json()).data ?? {};
+        }
       } catch {}
+
+      const activeCount = status.activeProviders ?? (status.keys ? Object.values(status.keys).filter(Boolean).length : 'see provider list');
+      const totalModels = status.totalModels ?? 'see provider list';
+      const depletedCount = status.depletedModels ?? (status.depleted?.length ?? 0);
 
       console.log(chalk.bold.cyan('\n  Billing System\n'));
       console.log(chalk.dim('  Status:          ') + (status.status ?? 'active'));
-      console.log(chalk.dim('  Active providers:') + ` ${status.activeProviders ?? 'see provider list'}`);
-      console.log(chalk.dim('  Total models:    ') + `${status.totalModels ?? 'see provider list'}`);
-      console.log(chalk.dim('  Depleted models: ') + `${status.depletedModels ?? 0}`);
+      console.log(chalk.dim('  Active providers:') + ` ${activeCount}`);
+      console.log(chalk.dim('  Total models:    ') + `${totalModels}`);
+      console.log(chalk.dim('  Depleted models: ') + `${depletedCount}`);
+      
+      if (status.usage) {
+        console.log(chalk.dim('\n  Monthly Usage:'));
+        console.log(`    $${status.usage.currentMonth ?? 0} / $${status.usage.limit ?? 0}`);
+      }
       console.log('');
     });
 
@@ -42,6 +56,11 @@ export function registerBillingCommand(program: Command): void {
       try {
         const res = await fetch(`${TS_URL}/billing.getProviderQuotas`, { signal: AbortSignal.timeout(5000) });
         if (res.ok) quotas = (await res.json())?.result?.data ?? [];
+
+        if (quotas.length === 0) {
+          const goRes = await fetch(`http://127.0.0.1:4300/api/billing/provider-quotas`, { signal: AbortSignal.timeout(3000) });
+          if (goRes.ok) quotas = (await goRes.json()).data ?? [];
+        }
       } catch {}
 
       if (opts.json) {
@@ -102,8 +121,15 @@ export function registerBillingCommand(program: Command): void {
 
       let chain: any = {};
       try {
+        // Try tRPC first
         const res = await fetch(`${TS_URL}/billing.getFallbackChain`, { signal: AbortSignal.timeout(5000) });
         if (res.ok) chain = (await res.json())?.result?.data ?? {};
+        
+        // Fallback to Go sidecar
+        if (!chain.chain && !chain.providers) {
+          const goRes = await fetch(`http://127.0.0.1:4300/api/billing/fallback-chain`, { signal: AbortSignal.timeout(3000) });
+          if (goRes.ok) chain = (await goRes.json()).data ?? {};
+        }
       } catch {}
 
       if (opts.json) {
@@ -112,12 +138,14 @@ export function registerBillingCommand(program: Command): void {
       }
 
       console.log(chalk.bold.cyan('\n  Fallback Chain\n'));
-      const providers = chain.chain ?? chain.providers ?? chain ?? [];
+      const providers = chain.chain ?? chain.providers ?? (Array.isArray(chain) ? chain : []);
       if (Array.isArray(providers) && providers.length > 0) {
         for (let i = 0; i < providers.length; i++) {
-          const p = typeof providers[i] === 'string' ? providers[i] : providers[i].provider ?? providers[i].name;
+          const entry = providers[i];
+          const p = typeof entry === 'string' ? entry : entry.provider ?? entry.name ?? entry.model ?? 'unknown';
+          const reason = entry.reason ? chalk.dim(` (${entry.reason})`) : '';
           const prefix = i < providers.length - 1 ? '├─' : '└─';
-          console.log(`  ${prefix} ${chalk.bold(p)}`);
+          console.log(`  ${prefix} ${chalk.bold(p)}${reason}`);
         }
       } else {
         console.log(chalk.dim('  No fallback chain configured.'));

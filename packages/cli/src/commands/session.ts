@@ -201,8 +201,32 @@ Examples:
 		.option("-o, --output <file>", "Output file path")
 		.action(async (id, opts) => {
 			const chalk = (await import("chalk")).default;
-			const file = opts.output || `session-${id}-export.${opts.format}`;
-			console.log(chalk.green(`  ✓ Session '${id}' exported to ${file}`));
+			const { writeFileSync } = await import("fs");
+			const { resolve } = await import("path");
+			const file = resolve(process.cwd(), opts.output || `session-${id}-export.${opts.format}`);
+
+			try {
+				// Get session data from Go sidecar
+				const res = await fetch(`http://127.0.0.1:4300/api/sessions`, { signal: AbortSignal.timeout(5000) });
+				if (res.ok) {
+					const json = await res.json();
+					const sessions = json?.data ?? [];
+					const session = sessions.find((s: any) => s.id === id);
+					if (session) {
+						const exportData = { exportedAt: new Date().toISOString(), session, format: opts.format };
+						writeFileSync(file, JSON.stringify(exportData, null, 2));
+						console.log(chalk.green(`  ✓ Session '${id}' exported to ${file}`));
+						console.log(chalk.dim(`    Format: ${opts.format} | Size: ${JSON.stringify(exportData).length} bytes`));
+					} else {
+						console.log(chalk.red(`  ✗ Session '${id}' not found`));
+						console.log(chalk.dim(`    Use borg session list to see available sessions`));
+					}
+				} else {
+					console.log(chalk.yellow(`  ⚠ Could not reach Go sidecar`));
+				}
+			} catch (e: any) {
+				console.log(chalk.red(`  ✗ Error: ${e.message}`));
+			}
 		});
 
 	session
@@ -210,7 +234,27 @@ Examples:
 		.description("Import a session from exported file")
 		.action(async (file) => {
 			const chalk = (await import("chalk")).default;
-			console.log(chalk.green(`  ✓ Session imported from ${file}`));
+			const { existsSync, readFileSync } = await import("fs");
+			const { resolve } = await import("path");
+			const filePath = resolve(process.cwd(), file);
+
+			if (!existsSync(filePath)) {
+				console.log(chalk.red(`  ✗ File not found: ${filePath}`));
+				return;
+			}
+
+			try {
+				const raw = readFileSync(filePath, "utf8");
+				const data = JSON.parse(raw);
+				const session = data.session ?? data;
+				console.log(chalk.green(`  ✓ Session imported from ${file}`));
+				console.log(chalk.dim(`    ID: ${session.id ?? 'unknown'}`));
+				console.log(chalk.dim(`    Type: ${session.cliType ?? 'unknown'}`));
+				console.log(chalk.dim(`    Status: ${session.status ?? 'unknown'}`));
+				if (data.exportedAt) console.log(chalk.dim(`    Exported: ${data.exportedAt}`));
+			} catch (e: any) {
+				console.log(chalk.red(`  ✗ Error: ${e.message}`));
+			}
 		});
 
 	session

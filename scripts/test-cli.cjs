@@ -65,6 +65,15 @@ function test(name, cmd, expectFn, timeout = 10000) {
 
   test('provider test', 'provider test openai', o => o.includes('openai') || o.includes('authenticated'), 15000);
 
+  test('doctor', 'doctor', o => o.includes('Doctor') || o.includes('checks'), 15000);
+  test('info', 'info', o => o.includes('Borg') || o.includes('System'));
+  test('cloud providers', 'cloud providers', o => o.includes('Cloud') || o.includes('Provider'));
+  test('cloud stats', 'cloud stats', o => o.includes('Cloud') || o.includes('Providers'));
+  test('billing status', 'billing status', o => o.includes('Billing') || o.includes('active'));
+  test('billing depleted', 'billing depleted', o => o.includes('Depleted') || o.includes('depleted'));
+  test('tools harnesses', 'tools harnesses', o => o.includes('Harness') || o.includes('Aider'));
+  test('memory stats count', 'memory stats', o => o.includes('14708') || o.includes('entries'));
+
   console.log(`\n  ${passed} passed, ${failed} failed\n`);
   process.exit(failed > 0 ? 1 : 0);
 })();

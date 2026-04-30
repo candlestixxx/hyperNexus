@@ -36,10 +36,10 @@ Examples:
       // Try to persist via API
       let persisted = false;
       try {
-        const res = await fetch('http://127.0.0.1:4000/trpc/memory.addObservation', {
+        const res = await fetch('http://127.0.0.1:4000/trpc/memory.saveContext', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ content, type: opts.type, tags: opts.tags, source: opts.source }),
+          body: JSON.stringify({ json: { content, source: opts.source ?? 'borg-cli', url: `memory://${Date.now()}`, type: opts.type, tags: opts.tags } }),
           signal: AbortSignal.timeout(3000),
         });
         if (res.ok) persisted = true;

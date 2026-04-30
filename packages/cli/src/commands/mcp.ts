@@ -82,6 +82,9 @@ export function registerMcpCommand(program: Command): void {
     .action(async (name) => {
       const chalk = (await import('chalk')).default;
       console.log(chalk.yellow(`  Starting MCP server: ${name}...`));
+      let started = false;
+
+      // Try tRPC first
       try {
         const res = await fetch('http://127.0.0.1:4000/trpc/mcp.connectServer', {
           method: 'POST',
@@ -90,15 +93,51 @@ export function registerMcpCommand(program: Command): void {
           signal: AbortSignal.timeout(15000),
         });
         if (res.ok) {
-          const json = await res.json();
+          started = true;
           console.log(chalk.green(`  ✓ Server '${name}' started`));
-        } else {
-          const json = await res.json().catch(() => ({}));
-          console.log(chalk.red(`  ✗ Failed: ${json.error?.message ?? res.statusText}`));
         }
-      } catch (e: any) {
-        console.log(chalk.red(`  ✗ Error: ${e.message}`));
-        console.log(chalk.dim(`    Is the server running? Use borg start`));
+      } catch {}
+
+      // Fallback: spawn directly from config
+      if (!started) {
+        try {
+          const listRes = await fetch('http://127.0.0.1:4000/trpc/mcp.listServers', { signal: AbortSignal.timeout(5000) });
+          if (listRes.ok) {
+            const servers = (await listRes.json())?.result?.data ?? [];
+            const server = servers.find((s: any) => s.name === name);
+            if (server?.config?.command) {
+              const { spawn } = await import('child_process');
+              const cmd = server.config.command;
+              const args = server.config.args ?? [];
+              const env = { ...process.env, ...(server.config.env ?? {}) };
+
+              console.log(chalk.dim(`    Spawning: ${cmd} ${args.join(' ')}`));
+              const proc = spawn(cmd, args, {
+                stdio: 'ignore',
+                detached: true,
+                env,
+                shell: true,
+              });
+              proc.unref();
+
+              // Give it a moment to start
+              await new Promise(r => setTimeout(r, 1000));
+              try { process.kill(proc.pid!, 0); started = true; } catch { started = false; }
+
+              if (started) {
+                console.log(chalk.green(`  ✓ Server '${name}' spawned (PID ${proc.pid})`));
+                console.log(chalk.dim(`    ${cmd} ${args.join(' ')}`));
+              } else {
+                console.log(chalk.red(`  ✗ Server '${name}' exited immediately`));
+              }
+            } else {
+              console.log(chalk.red(`  ✗ Server '${name}' not found or has no command`));
+              console.log(chalk.dim(`    Use borg mcp list to see available servers`));
+            }
+          }
+        } catch (e: any) {
+          console.log(chalk.red(`  ✗ Error: ${e.message}`));
+        }
       }
     });
 

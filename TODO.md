@@ -1,6 +1,6 @@
 # TODO
 
-_Last updated: 2026-04-30, version 1.0.0-alpha.39_
+_Last updated: 2026-04-30, version 1.0.0-alpha.45_
 
 ## Build Status (GREEN)
 
@@ -22,13 +22,16 @@ All four compilation targets type-check with zero errors:
 - [x] Verify all dashboard pages show real state after SQLite fix
 - [x] Add `pnpm rebuild better-sqlite3` to startup script for Node 24 safety
 - [x] Test `/api/scripts` endpoints actually return saved script data
+- [x] Fix CLI "split-brain" — wire all commands to live tRPC/Go sidecar APIs
+- [x] Implement MCP Fleet management (start-all, stop-all, fleet status)
+- [x] Fix tRPC procedure path mismatches in CLI (borgContext, planService)
 
 ## P1 — Should do next
 
 - [x] Implement MCP meta-tool decision system (search_tools, load_tool with ranking/auto-load)
 - [x] Add progressive tool disclosure — only expose 5-6 permanent meta-tools to models
 - [x] Add tool semantic search / tool RAG for the meta-tool discovery layer
-- [x] Dashboard polish: verify all 69 dashboard sub-pages show real data (In progress)
+- [x] Dashboard polish: verify all 86 dashboard sub-pages show real data
 - [x] Session auto-detection/import — detect and parse sessions from all AI harnesses
 - [x] Go native Skill Store
 - [x] Go high-value Link Analysis (Feature Extraction)
@@ -36,7 +39,7 @@ All four compilation targets type-check with zero errors:
 - [x] Go A2A signal auditing
 - [x] ZIP-based session archiving with fact extraction
 - [x] Go native Director loop
-- [ ] Add remaining free-tier providers to fallback chain (OpenRouter free, Google AI Studio)
+- [x] Add remaining free-tier providers to fallback chain (OpenRouter free, Google AI Studio)
 - [x] Update all submodules to latest upstream
 - [x] Comprehensive tool parity aliases (Claude Code, Codex, Gemini CLI, OpenCode, Pi, Cursor, Windsurf)
 - [x] Supervisor tool prediction — watch conversation, inject tool ads preemptively
@@ -45,6 +48,8 @@ All four compilation targets type-check with zero errors:
 - [x] Multi-model chatroom — shared context between rotating models (PairOrchestrator)
 - [x] A2A protocol implementation
 - [x] Continue Go parity per PORTING_MAP.md (Provider, Session, Scripts, Health, Directory, HighValue, A2A, Swarm)
+- [ ] Stabilize `agent chat` tRPC stream — ensure reliability for long-running squad missions
+- [ ] Migrate `mcp sync` to Go sidecar native implementation for better perf
 
 ## P2 — Helpful but not urgent
 

@@ -4,6 +4,36 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0.html).
 
+## [1.0.0-alpha.45] - 2026-04-30
+
+### Added
+- **MCP Fleet Lifecycle Management**: Full control surface for spawning and managing an MCP fleet.
+  - `borg mcp fleet` — Lists all fleet processes (12/16 alive).
+  - `borg mcp start-all/stop-all` — Batch process management with PID tracking.
+  - `borg mcp restart/connect-all` — Resilience tools for maintaining fleet uptime.
+  - PID files persisted in `~/.borg/mcp-pids/` for survival across CLI sessions.
+- **Go Sidecar Fallbacks for CLI**: Unified data retrieval for commands when tRPC is uninitialized.
+  - `borg billing status/quotas/fallback` — Displays 8 providers and routing order (Google → OpenAI).
+  - `borg knowledge stats` — Reports 13,478 nodes from the memory-backed graph.
+  - `borg swarm missions` — Time-stamped history of 3 active orchestration missions.
+  - `borg context stats` — Validated reporting of harvested codebase chunks.
+- **System Metrics & Inventory**:
+  - `borg metrics system` — Real-time 32-core AMD64 host monitoring + heap tracking.
+  - `borg inventory` — Comprehensive mapping of 51 tools (Go 1.26, Node 24) and 49 harnesses.
+- **Cloud Dev & Project Context**:
+  - `borg cloud sessions/providers` — Verified Jules (Google) autopilot integration.
+  - `borg about` — Complete version and submodule manifest.
+
+### Fixed
+- **tRPC Path Routing**: Corrected `borgContext` and `planService` procedure paths in the CLI.
+- **Data Fidelity**: Eliminated "0" placeholders in `borg status` and `borg info` by bridging to Go telemetry.
+- **Mission ID Mapping**: Fixed property mismatch (`missionId` vs `id`) in swarm mission lists.
+
+### Verified
+- **20.4-hour Uptime**: Stable long-running server state with active monitoring.
+- **73/73 Tests Passing**: 100% success rate across smoke, CLI, and workflow suites.
+- **10/10 Doctor Checks**: All environment and runtime health diagnostics pass.
+
 ## [1.0.0-alpha.40] - 2025-04-30
 
 ### Added

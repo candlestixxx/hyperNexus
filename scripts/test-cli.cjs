@@ -89,6 +89,8 @@ function test(name, cmd, expectFn, timeout = 10000) {
   test('plan diffs', 'plan diffs', o => o.includes('Diff') || o.includes('Pending'));
   test('plan checkpoints', 'plan checkpoints', o => o.includes('Checkpoint') || o.includes('checkpoint'));
   test('browser status', 'browser status', o => o.includes('Browser') || o.includes('browser'));
+  test('git status', 'git status', o => o.includes('Branch') || o.includes('Git'));
+  test('git log', 'git log -n 3', o => o.includes('Commit') || o.includes('2026'));
 
   console.log(`\n  ${passed} passed, ${failed} failed\n`);
   process.exit(failed > 0 ? 1 : 0);

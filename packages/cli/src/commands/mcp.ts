@@ -154,6 +154,9 @@ export function registerMcpCommand(program: Command): void {
     .action(async (name) => {
       const chalk = (await import('chalk')).default;
       console.log(chalk.yellow(`  Stopping MCP server: ${name}...`));
+      let stopped = false;
+
+      // Try tRPC first
       try {
         const res = await fetch('http://127.0.0.1:4000/trpc/mcp.disconnectServer', {
           method: 'POST',
@@ -161,14 +164,27 @@ export function registerMcpCommand(program: Command): void {
           body: JSON.stringify({ json: { name } }),
           signal: AbortSignal.timeout(10000),
         });
-        if (res.ok) {
-          console.log(chalk.green(`  ✓ Server '${name}' stopped`));
-        } else {
-          const json = await res.json().catch(() => ({}));
-          console.log(chalk.red(`  ✗ Failed: ${json.error?.message ?? res.statusText}`));
-        }
-      } catch (e: any) {
-        console.log(chalk.red(`  ✗ Error: ${e.message}`));
+        if (res.ok) { stopped = true; }
+      } catch {}
+
+      // Fallback: kill via PID file
+      if (!stopped) {
+        try {
+          const fs = await import('fs');
+          const path = await import('path');
+          const pidFile = path.join(process.env.HOME ?? '', '.borg', 'mcp-pids', `${name}.pid`);
+          const pid = parseInt(fs.readFileSync(pidFile, 'utf8').trim());
+          process.kill(pid, 'SIGTERM');
+          stopped = true;
+          // Clean up PID file
+          try { fs.unlinkSync(pidFile); } catch {}
+        } catch {}
+      }
+
+      if (stopped) {
+        console.log(chalk.green(`  ✓ Server '${name}' stopped`));
+      } else {
+        console.log(chalk.red(`  ✗ Could not stop '${name}' (not found or not running)`));
       }
     });
 

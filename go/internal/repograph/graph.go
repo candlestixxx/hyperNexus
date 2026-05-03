@@ -80,8 +80,8 @@ type GraphStats struct {
 
 // RepoGraphService builds and queries repository graphs.
 type RepoGraphService struct {
-	root string
-	mu   sync.RWMutex
+	root  string
+	mu    sync.RWMutex
 	graph *Graph
 }
 
@@ -100,13 +100,12 @@ func (rgs *RepoGraphService) Build(ctx context.Context) (*Graph, error) {
 		BuiltAt:  time.Now().UTC(),
 	}
 
-	// Walk the repo and index files
+	// 1. First pass: index all files to build the node map
 	err := filepath.WalkDir(rgs.root, func(path string, d os.DirEntry, err error) error {
 		if err != nil {
 			return nil
 		}
 
-		// Skip common non-source directories
 		if d.IsDir() {
 			name := strings.ToLower(d.Name())
 			switch name {
@@ -117,13 +116,62 @@ func (rgs *RepoGraphService) Build(ctx context.Context) (*Graph, error) {
 			return nil
 		}
 
-		// Only process source files
 		ext := strings.ToLower(filepath.Ext(path))
 		switch ext {
 		case ".go", ".ts", ".tsx", ".js", ".jsx", ".py", ".rs":
-			rgs.indexFile(graph, path)
-		default:
+			relPath, _ := filepath.Rel(rgs.root, path)
+			relPath = filepath.ToSlash(relPath)
+			fileID := "file:" + relPath
+			graph.Nodes[fileID] = &Node{
+				ID:       fileID,
+				Type:     NodeFile,
+				Name:     filepath.Base(path),
+				Path:     relPath,
+				Language: languageFromExt(ext),
+			}
+		}
+		return nil
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	rgs.mu.Lock()
+	rgs.graph = graph
+	rgs.mu.Unlock()
+
+	// 2. Second pass: parse content and resolve imports
+	err = filepath.WalkDir(rgs.root, func(path string, d os.DirEntry, err error) error {
+		if err != nil {
 			return nil
+		}
+		if d.IsDir() {
+			return nil
+		}
+
+		ext := strings.ToLower(filepath.Ext(path))
+		switch ext {
+		case ".go", ".ts", ".tsx", ".js", ".jsx", ".py", ".rs":
+			relPath, _ := filepath.Rel(rgs.root, path)
+			relPath = filepath.ToSlash(relPath)
+			data, err := os.ReadFile(path)
+			if err != nil {
+				return nil
+			}
+			if len(data) > 500*1024 {
+				return nil
+			}
+
+			switch ext {
+			case ".go":
+				rgs.indexGoFile(graph, relPath, string(data))
+			case ".ts", ".tsx", ".js", ".jsx":
+				rgs.indexTSFile(graph, relPath, string(data))
+			case ".py":
+				rgs.indexPythonFile(graph, relPath, string(data))
+			case ".rs":
+				rgs.indexRustFile(graph, relPath, string(data))
+			}
 		}
 
 		return nil
@@ -132,10 +180,6 @@ func (rgs *RepoGraphService) Build(ctx context.Context) (*Graph, error) {
 	if err != nil {
 		return nil, err
 	}
-
-	rgs.mu.Lock()
-	rgs.graph = graph
-	rgs.mu.Unlock()
 
 	// Calculate stats
 	graph.Stats = GraphStats{
@@ -234,74 +278,35 @@ func (rgs *RepoGraphService) SearchSymbols(query string, limit int) []*Node {
 	return results
 }
 
-// --- File Indexing ---
-
 var (
 	goFuncRe    = regexp.MustCompile(`^func\s+(?:\([^)]+\)\s+)?(\w+)`)
 	goTypeRe    = regexp.MustCompile(`^type\s+(\w+)\s+(struct|interface)`)
 	goImportRe  = regexp.MustCompile(`^\s*"([^"]+)"`)
 	goPackageRe = regexp.MustCompile(`^package\s+(\w+)`)
 
-	tsFuncRe    = regexp.MustCompile(`(?:export\s+)?(?:async\s+)?function\s+(\w+)`)
-	tsClassRe   = regexp.MustCompile(`(?:export\s+)?(?:abstract\s+)?class\s+(\w+)`)
+	tsFuncRe      = regexp.MustCompile(`(?:export\s+)?(?:async\s+)?function\s+(\w+)`)
+	tsClassRe     = regexp.MustCompile(`(?:export\s+)?(?:abstract\s+)?class\s+(\w+)`)
 	tsInterfaceRe = regexp.MustCompile(`(?:export\s+)?interface\s+(\w+)`)
-	tsImportRe  = regexp.MustCompile(`import.*from\s+['"]([^'"]+)['"]`)
+	tsImportRe    = regexp.MustCompile(`import.*from\s+['"]([^'"]+)['"]`)
 
-	pyFuncRe    = regexp.MustCompile(`^def\s+(\w+)`)
-	pyClassRe   = regexp.MustCompile(`^class\s+(\w+)`)
-	pyImportRe  = regexp.MustCompile(`^import\s+(\S+)|^from\s+(\S+)\s+import`)
+	pyFuncRe   = regexp.MustCompile(`^def\s+(\w+)`)
+	pyClassRe  = regexp.MustCompile(`^class\s+(\w+)`)
+	pyImportRe = regexp.MustCompile(`^import\s+([\w\.]+)|^from\s+([\w\.]+)\s+import\s+([\w\.]+)|^from\s+(\.)\s+import\s+([\w\.]+)`)
 
-	rsFuncRe    = regexp.MustCompile(`(?:pub\s+)?fn\s+(\w+)`)
-	rsStructRe  = regexp.MustCompile(`(?:pub\s+)?struct\s+(\w+)`)
+	rsFuncRe   = regexp.MustCompile(`(?:pub\s+)?fn\s+(\w+)`)
+	rsStructRe = regexp.MustCompile(`(?:pub\s+)?struct\s+(\w+)`)
 
 	tsAbsoluteImportRe = regexp.MustCompile(`^@/|^\w`)
 )
-
-func (rgs *RepoGraphService) indexFile(graph *Graph, filePath string) {
-	relPath, _ := filepath.Rel(rgs.root, filePath)
-	relPath = filepath.ToSlash(relPath)
-
-	// Create file node
-	fileID := "file:" + relPath
-	fileNode := &Node{
-		ID:       fileID,
-		Type:     NodeFile,
-		Name:     filepath.Base(filePath),
-		Path:     relPath,
-		Language: languageFromExt(filepath.Ext(filePath)),
-	}
-	graph.Nodes[fileID] = fileNode
-
-	// Read and parse
-	data, err := os.ReadFile(filePath)
-	if err != nil {
-		return
-	}
-	if len(data) > 500*1024 {
-		return // Skip very large files
-	}
-
-	ext := strings.ToLower(filepath.Ext(filePath))
-	switch ext {
-	case ".go":
-		rgs.indexGoFile(graph, relPath, string(data))
-	case ".ts", ".tsx", ".js", ".jsx":
-		rgs.indexTSFile(graph, relPath, string(data))
-	case ".py":
-		rgs.indexPythonFile(graph, relPath, string(data))
-	case ".rs":
-		rgs.indexRustFile(graph, relPath, string(data))
-	}
-}
 
 func (rgs *RepoGraphService) resolveTSImport(currentFile, importPath string) string {
 	if tsAbsoluteImportRe.MatchString(importPath) {
 		return "import:" + importPath
 	}
-	
+
 	dir := filepath.Dir(currentFile)
 	target := filepath.ToSlash(filepath.Clean(filepath.Join(dir, importPath)))
-	
+
 	// Try extensions
 	extensions := []string{".ts", ".tsx", ".js", ".jsx", "/index.ts", "/index.tsx"}
 	for _, ext := range extensions {
@@ -312,7 +317,51 @@ func (rgs *RepoGraphService) resolveTSImport(currentFile, importPath string) str
 			}
 		}
 	}
+
+	return "import:" + importPath
+}
+
+func (rgs *RepoGraphService) resolvePythonRelativeImport(currentFile, importPath string) string {
+	dir := filepath.Dir(currentFile)
+	if dir == "." {
+		dir = ""
+	}
+	if importPath == "" || importPath == "." {
+		// handle 'from . import x' where mod is 'x'
+		importPath = "."
+	}
 	
+	// Python dots: . = current, .. = parent
+	targetPath := strings.ReplaceAll(importPath, ".", "/")
+	fullTarget := targetPath
+	if dir != "" {
+		if targetPath == "/" {
+			fullTarget = dir
+		} else {
+			fullTarget = filepath.ToSlash(filepath.Clean(filepath.Join(dir, targetPath)))
+		}
+	}
+	
+	extensions := []string{".py", "/__init__.py"}
+	for _, ext := range extensions {
+		fullPath := fullTarget + ext
+		// Check for directory itself (if it has __init__.py)
+		if ext == "/__init__.py" {
+			if _, ok := rgs.graph.Nodes["file:"+fullTarget+".py"]; ok {
+				// already checked .py
+			}
+		}
+
+		if rgs.graph != nil {
+			if _, ok := rgs.graph.Nodes["file:"+fullPath]; ok {
+				return "file:" + fullPath
+			}
+			// Special case: if we are importing a module name that is a file in the same dir
+			if _, ok := rgs.graph.Nodes["file:"+filepath.ToSlash(filepath.Join(dir, importPath+".py"))]; ok {
+				return "file:" + filepath.ToSlash(filepath.Join(dir, importPath+".py"))
+			}
+		}
+	}
 	return "import:" + importPath
 }
 
@@ -379,7 +428,7 @@ func (rgs *RepoGraphService) indexGoFile(graph *Graph, relPath, content string) 
 		if matches := goTypeRe.FindStringSubmatch(line); len(matches) > 1 {
 			name := matches[1]
 			nodeType := NodeTypeName
- if matches[2] == "interface" {
+			if matches[2] == "interface" {
 				nodeType = NodeInterface
 			}
 			exported := name[0] >= 'A' && name[0] <= 'Z'
@@ -465,16 +514,36 @@ func (rgs *RepoGraphService) indexPythonFile(graph *Graph, relPath, content stri
 	lineNum := 0
 	for scanner.Scan() {
 		lineNum++
-		line := scanner.Text()
+		line := strings.TrimSpace(scanner.Text())
+		
+		// Skip empty lines or comments
+		if line == "" || strings.HasPrefix(line, "#") {
+			continue
+		}
 
-		if matches := pyImportRe.FindStringSubmatch(line); len(matches) > 1 {
-			mod := matches[1]
-			if matches[2] != "" {
+		// Simple regex for from . import X
+		relRe := regexp.MustCompile(`^from\s+\.\s+import\s+([\w\.]+)`)
+		if matches := relRe.FindStringSubmatch(line); len(matches) > 1 {
+			target := rgs.resolvePythonRelativeImport(relPath, matches[1])
+			graph.Edges = append(graph.Edges, Edge{
+				From: fileID, To: target, Type: "imports",
+			})
+			continue
+		}
+
+		if matches := pyImportRe.FindStringSubmatch(line); len(matches) > 0 {
+			mod := ""
+			if matches[1] != "" { // import x
+				mod = matches[1]
+			} else if matches[2] != "" { // from x import y
 				mod = matches[2]
 			}
-			graph.Edges = append(graph.Edges, Edge{
-				From: fileID, To: "import:" + mod, Type: "imports",
-			})
+			
+			if mod != "" {
+				graph.Edges = append(graph.Edges, Edge{
+					From: fileID, To: "import:" + mod, Type: "imports",
+				})
+			}
 		}
 
 		if matches := pyFuncRe.FindStringSubmatch(line); len(matches) > 1 {
@@ -529,13 +598,14 @@ func (rgs *RepoGraphService) indexRustFile(graph *Graph, relPath, content string
 
 		if matches := rsStructRe.FindStringSubmatch(line); len(matches) > 1 {
 			name := matches[1]
+			exported := strings.Contains(line, "pub")
 			graph.Nodes[relPath+"#"+name] = &Node{
 				ID:         relPath + "#" + name,
 				Type:       NodeTypeName,
 				Name:       name,
 				Path:       relPath,
 				LineStart:  lineNum,
-				IsExported: strings.Contains(line, "pub"),
+				IsExported: exported,
 				Language:   "rust",
 			}
 		}

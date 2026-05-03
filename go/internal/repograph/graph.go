@@ -306,8 +306,10 @@ func (rgs *RepoGraphService) resolveTSImport(currentFile, importPath string) str
 	extensions := []string{".ts", ".tsx", ".js", ".jsx", "/index.ts", "/index.tsx"}
 	for _, ext := range extensions {
 		fullPath := target + ext
-		if _, ok := rgs.graph.Nodes["file:"+fullPath]; ok {
-			return "file:" + fullPath
+		if rgs.graph != nil {
+			if _, ok := rgs.graph.Nodes["file:"+fullPath]; ok {
+				return "file:" + fullPath
+			}
 		}
 	}
 	

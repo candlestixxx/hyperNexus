@@ -107,6 +107,34 @@ export interface User {
 	}
 }
 
+func TestRepoGraphTSResolution(t *testing.T) {
+	tempDir := t.TempDir()
+
+	// Create structure:
+	// src/index.ts -> imports ./util
+	// src/util.ts
+	
+	srcDir := filepath.Join(tempDir, "src")
+	os.MkdirAll(srcDir, 0755)
+	
+	os.WriteFile(filepath.Join(srcDir, "util.ts"), []byte("export function util() {}"), 0644)
+	os.WriteFile(filepath.Join(srcDir, "index.ts"), []byte("import { util } from './util'"), 0644)
+
+	rgs := NewRepoGraphService(tempDir)
+	graph, _ := rgs.Build(context.Background())
+
+	foundResolved := false
+	for _, edge := range graph.Edges {
+		if edge.From == "file:src/index.ts" && edge.To == "file:src/util.ts" {
+			foundResolved = true
+		}
+	}
+
+	if !foundResolved {
+		t.Error("TS relative import was not resolved to file:src/util.ts")
+	}
+}
+
 func TestRepoGraphSearch(t *testing.T) {
 	tempDir := t.TempDir()
 	os.WriteFile(filepath.Join(tempDir, "a.go"), []byte("package a\nfunc SearchMe() {}"), 0644)

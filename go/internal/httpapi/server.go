@@ -573,8 +573,8 @@ func (s *Server) registerRoutes() {
 	s.mux.HandleFunc("/api/memory/add-history", s.handleMemoryAddHistory)
 	s.mux.HandleFunc("/api/code/exec", s.handleCodeExec)
 
-	s.mux.HandleFunc("/health", s.handleHealth)
-	s.mux.HandleFunc("/version", s.handleVersion)
+	s.mux.HandleFunc("/health", withCORS(s.handleHealth))
+	s.mux.HandleFunc("/version", withCORS(s.handleVersion))
 	s.mux.HandleFunc("/api/index", s.handleAPIIndex)
 	s.mux.HandleFunc("/api/health", s.handleHealth)
 	s.mux.HandleFunc("/api/health/server", s.handleHealth)
@@ -1215,6 +1215,21 @@ func (s *Server) registerRoutes() {
 
 	// --- New Go-native handlers (alpha.11+) ---
 	s.registerSavedScriptRoutes()
+}
+
+
+// withCORS wraps a handler to add CORS headers for dashboard-to-sidecar requests.
+func withCORS(next http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "http://127.0.0.1:3000")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+		if r.Method == "OPTIONS" {
+			w.WriteHeader(http.StatusNoContent)
+			return
+		}
+		next.ServeHTTP(w, r)
+	}
 }
 
 func (s *Server) handleHealth(w http.ResponseWriter, _ *http.Request) {

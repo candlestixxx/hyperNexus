@@ -128,6 +128,7 @@ type Server struct {
 	directorNotes     *orchestration.DirectorNotesManager
 	expertManager     *hsync.ExpertManager
 	memoryArchiver    *memorystore.MemoryArchiver
+	importCache     *importScanCache
 	fleetManager      *orchestration.FleetManagerPlus
 	consensusEngine   *orchestration.ConsensusEngine
 	quotaManager      *providers.QuotaManager
@@ -528,6 +529,7 @@ func New(cfg config.Config, detector controlplane.ToolProvider) *Server {
 	memoryVS, _ := memorystore.NewVectorStore(filepath.Join(cfg.ConfigDir, "memory.db"))
 	server.memoryReactor = memorystore.NewMemoryReactor(cfg.WorkspaceRoot, memoryVS)
 	server.memoryArchiver = memorystore.NewMemoryArchiver(cfg.WorkspaceRoot, memoryVS)
+	server.importCache = newImportScanCache()
 	server.consensusEngine = orchestration.NewConsensusEngine(server.debateHistory, memoryVS)
 	server.eventBus.OnGlobal(func(ev eventbus.SystemEvent) {
 		if data, err := json.Marshal(ev); err == nil {
@@ -10359,13 +10361,30 @@ func (s *Server) handleRuntimeStatus(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	discoveredSessions, err := s.discoveredSessions()
+	validatedCandidates, err := s.scanValidatedImportSources()
 	if err != nil {
 		writeJSON(w, http.StatusInternalServerError, map[string]any{
 			"success": false,
-			"error":   "failed to summarize discovered sessions: " + err.Error(),
+			"error": "failed to validate import sources: " + err.Error(),
 		})
 		return
+	}
+	importSummary := sessionimport.BuildSummary(validatedCandidates)
+
+	// Build discovered sessions from the same validated candidates
+	discoveredSessions := make([]Session, 0, len(validatedCandidates))
+	for index, candidate := range validatedCandidates {
+		discoveredSessions = append(discoveredSessions, Session{
+			ID:          "discovered_" + fmtInt(index+1),
+			CLIType:     candidate.SourceTool,
+			Status:      "discovered",
+			Task:        candidate.SourceType,
+			StartedAt:   candidate.LastModifiedAt,
+			SourcePath:  candidate.SourcePath,
+			SessionFormat: candidate.Format,
+			Valid:       candidate.Valid,
+			DetectedModels: candidate.DetectedModels,
+		})
 	}
 	validSessions := 0
 	for _, session := range discoveredSessions {
@@ -10373,8 +10392,8 @@ func (s *Server) handleRuntimeStatus(w http.ResponseWriter, r *http.Request) {
 			validSessions++
 		}
 	}
-
 	sessionSummary := summarizeSessions(discoveredSessions)
+
 	supervisorBridgeAvailable := false
 	supervisorBridgeBase := ""
 	bridgeCtx, cancelBridge := context.WithTimeout(ctx, 2*time.Second)
@@ -10384,16 +10403,6 @@ func (s *Server) handleRuntimeStatus(w http.ResponseWriter, r *http.Request) {
 		supervisorBridgeAvailable = true
 		supervisorBridgeBase = bridgeResult.BaseURL
 	}
-
-	validatedCandidates, err := s.scanValidatedImportSources()
-	if err != nil {
-		writeJSON(w, http.StatusInternalServerError, map[string]any{
-			"success": false,
-			"error":   "failed to validate import sources: " + err.Error(),
-		})
-		return
-	}
-	importSummary := sessionimport.BuildSummary(validatedCandidates)
 
 	lockStatuses := interop.DiscoverControlPlanes(s.cfg.MainLockPath(), s.cfg.LockPath())
 	runningLocks := 0
@@ -17553,13 +17562,21 @@ func (s *Server) scanImportSources() ([]sessionimport.Candidate, error) {
 }
 
 func (s *Server) scanValidatedImportSources() ([]sessionimport.ValidationResult, error) {
+	if s.importCache != nil {
+		if cached, ok := s.importCache.get(); ok {
+			return cached, nil
+		}
+	}
 	homeDir, err := os.UserHomeDir()
 	if err != nil {
 		homeDir = s.cfg.MainConfigDir
 	}
-
 	scanner := sessionimport.NewScanner(s.cfg.WorkspaceRoot, homeDir, 50)
-	return scanner.ScanValidated()
+	results, scanErr := scanner.ScanValidated()
+	if scanErr == nil && s.importCache != nil {
+		s.importCache.set(results)
+	}
+	return results, scanErr
 }
 
 func (s *Server) importedSessionsArchiveRoot() string {
@@ -18140,4 +18157,33 @@ func (s *Server) handleFleetStatus(w http.ResponseWriter, r *http.Request) {
 		"success": true,
 		"data":    s.fleetManager.GetFleetStatus(),
 	})
+}
+
+// importScanCache caches validated import scan results with a short TTL
+// to avoid redundant filesystem scanning within a request burst.
+type importScanCache struct {
+	mu          sync.Mutex
+	cached      []sessionimport.ValidationResult
+	cachedAt    time.Time
+	ttl         time.Duration
+}
+
+func newImportScanCache() *importScanCache {
+	return &importScanCache{ttl: 15 * time.Second}
+}
+
+func (c *importScanCache) get() ([]sessionimport.ValidationResult, bool) {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	if c.cached == nil || time.Since(c.cachedAt) > c.ttl {
+		return nil, false
+	}
+	return c.cached, true
+}
+
+func (c *importScanCache) set(results []sessionimport.ValidationResult) {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	c.cached = results
+	c.cachedAt = time.Now()
 }

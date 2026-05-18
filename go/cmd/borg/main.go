@@ -71,8 +71,15 @@ func runServe(args []string) int {
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer stop()
 
-	detector := controlplane.NewDetector(2*time.Second, 15*time.Second)
+	detector := controlplane.NewDetector(1500*time.Millisecond, 5*time.Minute)
 	server := httpapi.New(cfg, detector)
+
+	// Pre-warm the tool detector cache in the background
+	go func() {
+		ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+		defer cancel()
+		_, _ = detector.DetectAll(ctx)
+	}()
 
 	log.Printf(
 		"Experimental Go cli-orchestrator port listening on %s (index: %s/api/index, runtime: %s/api/runtime/status, cli: %s/api/cli/summary, import: %s/api/import/summary, providers: %s/api/providers/routing-summary)",

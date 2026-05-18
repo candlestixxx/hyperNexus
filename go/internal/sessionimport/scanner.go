@@ -65,18 +65,29 @@ func (s Scanner) Scan() ([]Candidate, error) {
 			}
 
 			if info.IsDir() {
-				if err := filepath.WalkDir(root, func(path string, entry fs.DirEntry, walkErr error) error {
-					if walkErr != nil {
-						return walkErr
+			if err := filepath.WalkDir(root, func(path string, entry fs.DirEntry, walkErr error) error {
+				if walkErr != nil {
+					return walkErr
+				}
+				// Depth limit: skip directories deeper than 4 levels from root
+				if entry.IsDir() {
+					rel, _ := filepath.Rel(root, path)
+					if rel != "." && strings.Count(rel, string(filepath.Separator)) >= 4 {
+						return filepath.SkipDir
 					}
-
-					if entry.IsDir() {
-						name := strings.ToLower(entry.Name())
-						if name == "node_modules" || name == ".git" || name == "dist" || name == "build" || name == "coverage" {
-							return filepath.SkipDir
-						}
-						return nil
+				}
+				if entry.IsDir() {
+					name := strings.ToLower(entry.Name())
+					switch name {
+					case "node_modules", ".git", "dist", "build", "coverage",
+						".cache", "__pycache__", ".next", ".turbo",
+						"turbopack", "leveldb", "session-storage",
+						"globalStorage", "extensions", "logs",
+						"cacheddata", "cache", "service worker":
+						return filepath.SkipDir
 					}
+					return nil
+				}
 
 					if !isImportableFile(path, rule.fileNameHints) {
 						return nil

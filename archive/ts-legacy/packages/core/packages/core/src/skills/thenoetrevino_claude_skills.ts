@@ -1,1 +1,0 @@
-export const toolDefinition = { name: 'mock_tool', description: 'Mock Tool', schema: {}, execute: async () => 'Executed' };

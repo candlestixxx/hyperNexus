@@ -264,3 +264,15 @@ data/vectordb/
 *.db-shm
 *.db-wal
 !go/internal/httpapi/testdata/**
+archive/ts-legacy/
+
+# Build artifacts
+bin/*.exe
+bin/*.exe~
+go/borg
+go/borg.exe
+!bin/.gitkeep
+collection-claude-code-source-code-main/
+borg-mcp-server/
+archive/mcp-directory/
+apps/web/.next/

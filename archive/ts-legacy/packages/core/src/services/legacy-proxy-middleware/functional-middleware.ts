@@ -1,1 +1,0 @@
-export * from "../metamcp-middleware/functional-middleware.js";

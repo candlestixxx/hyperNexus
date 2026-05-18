@@ -1,213 +1,87 @@
-# Dependencies
+# === Dependencies ===
 node_modules/
 .pnpm-store/
 
-# Build outputs
+# === Build outputs ===
 dist/
 build/
 *.tsbuildinfo
+bin/*.exe
+bin/*.exe~
+go/borg
+go/borg.exe
+!bin/.gitkeep
 
-# Environment and secrets
+# === Environment and secrets ===
 .env
 .env.local
 .secrets.json
 
-# Logs
+# === Logs ===
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-lerna-debug.log*
 
-# OS specific
+# === OS specific ===
 .DS_Store
 Thumbs.db
 
-# IDEs
+# === IDEs ===
 .idea/
 .vscode/
 *.swp
 *.swo
 
-# Local hidden tool state (keep tracked repo config like .github/, .gitignore, .dockerignore, .env.example)
+# === AI tool state ===
 .claude/
 **/.claude/
 .copilot/
 **/.copilot/
-.git-rewrite/
-**/.git-rewrite/
 .oc/
 **/.oc/
-.vibe-config.json
 .autopilot/
 **/.autopilot/
+.vibe-config.json
 .build-output.log
 **/.build-output.log
 
-# Coverage
+# === Coverage ===
 coverage/
 .nyc_output/
 
-# Temporary
+# === Temporary files ===
 tmp/
 temp/
 verification/
 reader_output.json
 reader_error.txt
-
-# Specific ignores
-packages/core/core.log
-packages/ui/ui.log
-.next/
-.next-dev*/
-**/.next-dev*/
-.hypercode/
-**/.hypercode/
-.turbo/
-**/.turbo/
-.antigravity/
-.hypercode-session.json
-.tmp-hypercode-dist-probe.mjs
-chat2.json
-resources.db
-**/resources.db
-**/context.db
-push_err.txt
-push_out.txt
-test_logs/
-logs/
-apps/web/.hypercode-dev-port.json
-apps/web/.tsc-current.txt
-packages/cli/audit-*.jsonl
-packages/core/.tsc-output.txt
-.chunkhound/
-**/.chunkhound/
-.chunkhound.json
-.hypercode_startup_marker
-**/.hypercode_startup_marker
-.cli_startup_marker
-**/.cli_startup_marker
-.hypercode_boot_check
-**/.hypercode_boot_check
-.hypercode/.hypercode/
-.hypercode/db/
-.hypercode/agent_memory/
-.hypercode/handoffs/
-.hypercode/memory/
-.hypercode/worktrees/
-.hypercode/workflows_test_*/
-.hypercode/shell_history.json
-.hypercode/policy.json
-.hypercode/imported_sessions/docs/
-**/dist-chromium/
-**/dist-firefox/
-**/__pycache__/
-**/playwright-report/
-**/test-results/
-
-# Copilot/AI session history and local dev chat logs (personal data, not for public repo)
 chat.json
 chat2.json
-docs/sessions/chat.json
-docs/sessions/*.json
-audit-*.jsonl
+push_err.txt
+push_out.txt
 screenshot*.png
-.hypercode/skills/
-go/hypercode
-# Dependencies
-node_modules/
-.pnpm-store/
+audit-*.jsonl
 
-# Build outputs
-dist/
-build/
-*.tsbuildinfo
-
-# Environment and secrets
-.env
-.env.local
-.secrets.json
-
-# Logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-# OS specific
-.DS_Store
-Thumbs.db
-
-# IDEs
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# Local hidden tool state (keep tracked repo config like .github/, .gitignore, .dockerignore, .env.example)
-.claude/
-**/.claude/
-.copilot/
-**/.copilot/
-.git-rewrite/
-**/.git-rewrite/
-.oc/
-**/.oc/
-.vibe-config.json
-.autopilot/
-**/.autopilot/
-.build-output.log
-**/.build-output.log
-
-# Coverage
-coverage/
-.nyc_output/
-
-# Temporary
-tmp/
-temp/
-verification/
-reader_output.json
-reader_error.txt
-
-# Specific ignores
-packages/core/core.log
-packages/ui/ui.log
+# === Next.js / Turbopack ===
 .next/
 .next-dev*/
 **/.next-dev*/
-.borg/
-**/.borg/
 .turbo/
 **/.turbo/
-.antigravity/
+
+# === Borg runtime state ===
+.borg/
+**/.borg/
 .borg-session.json
-.tmp-borg-dist-probe.mjs
-chat2.json
-resources.db
-**/resources.db
-**/context.db
-push_err.txt
-push_out.txt
-test_logs/
-logs/
-apps/web/.borg-dev-port.json
-apps/web/.tsc-current.txt
-packages/cli/audit-*.jsonl
-packages/core/.tsc-output.txt
-.chunkhound/
-**/.chunkhound/
-.chunkhound.json
 .borg_startup_marker
 **/.borg_startup_marker
 .cli_startup_marker
 **/.cli_startup_marker
 .borg_boot_check
 **/.borg_boot_check
-.borg/.borg/
+.borg/skills/
 .borg/db/
 .borg/agent_memory/
 .borg/handoffs/
@@ -216,31 +90,69 @@ packages/core/.tsc-output.txt
 .borg/workflows_test_*/
 .borg/shell_history.json
 .borg/policy.json
-.borg/imported_sessions/docs/
+.borg/imported_sessions/
+
+# === Hypercode legacy (deprecated) ===
+.hypercode/
+**/.hypercode/
+.antigravity/
+.hypercode-session.json
+.tmp-hypercode-dist-probe.mjs
+apps/web/.hypercode-dev-port.json
+apps/web/.borg-dev-port.json
+
+# === Database runtime ===
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+!go/internal/httpapi/testdata/**
+resources.db
+**/resources.db
+**/context.db
+
+# === LanceDB / Vector data ===
+data/
+data/lancedb/
+data/memory/
+data/vectordb/
+
+# === Session state ===
+.pi/
+.hypercode/
+.git-rewrite/
+**/.git-rewrite/
+
+# === Type check / Lint ===
+packages/core/core.log
+packages/ui/ui.log
+packages/core/.tsc-output.txt
+apps/web/.tsc-current.txt
+.chunkhound/
+**/.chunkhound/
+.chunkhound.json
+
+# === Browser extension ===
 **/dist-chromium/
 **/dist-firefox/
+
+# === Test artifacts ===
 **/__pycache__/
 **/playwright-report/
 **/test-results/
-
-# Copilot/AI session history and local dev chat logs (personal data, not for public repo)
-chat.json
-chat2.json
-docs/sessions/chat.json
+test_logs/
+logs/
+docs/sessions/
 docs/sessions/*.json
-audit-*.jsonl
-screenshot*.png
-.borg/skills/
 
-# Runtime data
-metamcp.db
-*.db-journal
-*.db-wal
-tmp_*.ts
-tmp_*.tsx
-tmp_*.js
+# === Archive (dead code, kept on disk only) ===
+archive/
 
-# Stale submodule checkout dirs
+# === Reference material (not part of project) ===
+collection-claude-code-source-code-main/
+borg-mcp-server/
+
+# === Stale submodule dirs ===
 borg/research/
 hyperingest/
 hypermcp/
@@ -248,34 +160,10 @@ hypermem/
 hyperharness/
 jules-autopilot/
 
-# CAPS/Jules session state
-.pi/
-.pi/
-
-data/
-
-# LanceDB vector database
-data/lancedb/
-data/memory/
-data/vectordb/
-
-# Database runtime files
-*.db
-*.db-shm
-*.db-wal
-!go/internal/httpapi/testdata/**
-archive/ts-legacy/
-
-# Build artifacts
-bin/*.exe
-bin/*.exe~
-go/borg
-go/borg.exe
-!bin/.gitkeep
-collection-claude-code-source-code-main/
-borg-mcp-server/
-archive/mcp-directory/
-apps/web/.next/
-.pi/
-archive/docs/
-archive/apps-mobile/
+# === Misc generated ===
+**/dist-chromium/
+**/dist-firefox/
+metamcp.db
+tmp_*.ts
+tmp_*.tsx
+tmp_*.js

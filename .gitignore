@@ -258,3 +258,9 @@ data/
 data/lancedb/
 data/memory/
 data/vectordb/
+
+# Database runtime files
+*.db
+*.db-shm
+*.db-wal
+!go/internal/httpapi/testdata/**

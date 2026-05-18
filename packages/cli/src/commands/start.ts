@@ -48,6 +48,9 @@ export interface BorgStartLockRecord {
 	port: number;
 	host: string;
 	createdAt: string;
+	/** Go-sidecar compatible fields */
+	version?: string;
+	startedAt?: string;
 }
 
 export interface BorgStartLockHandle {
@@ -201,6 +204,8 @@ export async function acquireSingleInstanceLock(
 				port: selectedPort,
 				host: options.host,
 				createdAt: now().toISOString(),
+		version: process.env.BORG_VERSION || "1.0.0-alpha.60",
+		startedAt: now().toISOString(),
 			});
 
 			const releaseSync = () => {

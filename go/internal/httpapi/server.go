@@ -72,6 +72,22 @@ var sessionExportKnownFormats = []map[string]any{
 	{"id": "copilot", "type": "copilot", "paths": []string{".github/copilot"}},
 }
 
+// corsMiddleware wraps an http.Handler to add CORS headers for all responses.
+// This allows the Next.js dashboard (port 3000) and browser extensions to
+// call Go sidecar endpoints without CORS blocks.
+func corsMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+		if r.Method == http.MethodOptions {
+			w.WriteHeader(http.StatusNoContent)
+			return
+		}
+		next.ServeHTTP(w, r)
+	})
+}
+
 type Server struct {
 	memoryManager     *memorystore.Manager
 	codeExecutor      *codeexec.Sandbox
@@ -552,7 +568,7 @@ func (s *Server) Handler() http.Handler {
 func (s *Server) ListenAndServe(ctx context.Context) error {
 	httpServer := &http.Server{
 		Addr:              s.cfg.Host + ":" + jsonNumber(s.cfg.Port),
-		Handler:           s.mux,
+		Handler:           corsMiddleware(s.mux),
 		ReadHeaderTimeout: 5 * time.Second,
 	}
 

@@ -329,29 +329,40 @@ func (s *Server) handleMCPSync(w http.ResponseWriter, r *http.Request) {
 
 // handleMCPServersList returns a combined view of runtime + configured servers.
 func (s *Server) handleMCPServersList(w http.ResponseWriter, r *http.Request) {
+	// Cache MCP server list for 10s to reduce upstream calls
+	val, err := cache.Cached(s.cacheService, "mcp:servers", func() (interface{}, error) {
+		return s.buildMCPServersList(r.Context())
+	}, 10000)
+	if err != nil {
+		writeJSON(w, http.StatusServiceUnavailable, map[string]any{"success": false, "error": err.Error()})
+		return
+	}
+	writeJSON(w, http.StatusOK, val)
+}
+
+func (s *Server) buildMCPServersList(ctx context.Context) (map[string]any, error) {
 	var result any
-	ctx, cancel := context.WithTimeout(r.Context(), 3*time.Second)
+	upstreamCtx, cancel := context.WithTimeout(ctx, 3*time.Second)
 	defer cancel()
-	upstreamBase, err := s.callUpstreamJSON(ctx, "mcp.listServers", nil, &result)
+	upstreamBase, err := s.callUpstreamJSON(upstreamCtx, "mcp.listServers", nil, &result)
 	if err == nil {
-		writeJSON(w, http.StatusOK, map[string]any{
+		return map[string]any{
 			"success": true,
-			"data":    result,
+			"data": result,
 			"bridge": map[string]any{
 				"upstreamBase": upstreamBase,
-				"procedure":    "mcp.listServers",
+				"procedure": "mcp.listServers",
 			},
-		})
-		return
+		}, nil
 	}
 
 	view, _ := s.localMCPInventoryView()
-	_, cliSummary, _ := s.localMCPSummary(r.Context())
+	_, cliSummary, _ := s.localMCPSummary(ctx)
 
 	type serverEntry struct {
-		Name      string `json:"name"`
-		Status    string `json:"status"`
-		ToolCount int    `json:"toolCount"`
+		Name string `json:"name"`
+		Status string `json:"status"`
+		ToolCount int `json:"toolCount"`
 	}
 
 	var servers []serverEntry
@@ -368,8 +379,8 @@ func (s *Server) handleMCPServersList(w http.ResponseWriter, r *http.Request) {
 				status = "connected"
 			}
 			servers = append(servers, serverEntry{
-				Name:      srv.Name,
-				Status:    status,
+				Name: srv.Name,
+				Status: status,
 				ToolCount: srv.ToolCount,
 			})
 		}
@@ -383,8 +394,8 @@ func (s *Server) handleMCPServersList(w http.ResponseWriter, r *http.Request) {
 				status = "connected"
 			}
 			servers = append(servers, serverEntry{
-				Name:      srv.Name,
-				Status:    status,
+				Name: srv.Name,
+				Status: status,
 				ToolCount: srv.ToolCount,
 			})
 		}
@@ -396,18 +407,18 @@ func (s *Server) handleMCPServersList(w http.ResponseWriter, r *http.Request) {
 		}
 		seen[h.ID] = true
 		servers = append(servers, serverEntry{
-			Name:   h.ID,
+			Name: h.ID,
 			Status: "available",
 		})
 	}
 
-	writeJSON(w, http.StatusOK, map[string]any{
+	return map[string]any{
 		"success": true,
-		"data":    servers,
+		"data": servers,
 		"bridge": map[string]any{
-			"fallback":  "go-local-mcp",
+			"fallback": "go-local-mcp",
 			"procedure": "mcp.listServers",
-			"reason":    "upstream unavailable; using local MCP inventory",
+			"reason": "upstream unavailable; using local MCP inventory",
 		},
-	})
+	}, nil
 }

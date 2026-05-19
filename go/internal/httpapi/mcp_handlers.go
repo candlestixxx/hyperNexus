@@ -9,48 +9,57 @@ import (
 	"time"
 
 	"github.com/borghq/borg-go/internal/mcp"
+	"github.com/borghq/borg-go/internal/cache"
 )
 
 func (s *Server) handleMCPStatus(w http.ResponseWriter, r *http.Request) {
+	// Cache MCP status for 10s to reduce upstream calls
+	val, err := cache.Cached(s.cacheService, "mcp:status", func() (interface{}, error) {
+		return s.buildMCPStatus(r.Context())
+	}, 10000)
+	if err != nil {
+		writeJSON(w, http.StatusServiceUnavailable, map[string]any{"success": false, "error": err.Error()})
+		return
+	}
+	writeJSON(w, http.StatusOK, val)
+}
+
+func (s *Server) buildMCPStatus(ctx context.Context) (map[string]any, error) {
 	var result any
-	upstreamBase, err := s.callUpstreamJSON(r.Context(), "mcp.getStatus", nil, &result)
+	upstreamBase, err := s.callUpstreamJSON(ctx, "mcp.getStatus", nil, &result)
 	if err == nil {
-		writeJSON(w, http.StatusOK, map[string]any{
+		return map[string]any{
 			"success": true,
-			"data":    result,
+			"data": result,
 			"bridge": map[string]any{
 				"upstreamBase": upstreamBase,
-				"procedure":    "mcp.getStatus",
+				"procedure": "mcp.getStatus",
 			},
-		})
-		return
+		}, nil
 	}
-
-	_, summary, localErr := s.localMCPSummary(r.Context())
+	_, summary, localErr := s.localMCPSummary(ctx)
 	if localErr != nil {
-		writeJSON(w, http.StatusServiceUnavailable, map[string]any{"success": false, "error": localErr.Error()})
-		return
+		return nil, localErr
 	}
-
-	writeJSON(w, http.StatusOK, map[string]any{
+	return map[string]any{
 		"success": true,
 		"data": map[string]any{
-			"initialized":              true,
-			"connected":                summary.SourceBackedHarnessCount > 0,
-			"toolCount":                summary.SourceBackedToolCount,
-			"serverCount":              summary.InstalledHarnessCount,
-			"connectedCount":           summary.SourceBackedHarnessCount,
+			"initialized": true,
+			"connected": summary.SourceBackedHarnessCount > 0,
+			"toolCount": summary.SourceBackedToolCount,
+			"serverCount": summary.InstalledHarnessCount,
+			"connectedCount": summary.SourceBackedHarnessCount,
 			"sourceBackedHarnessCount": summary.SourceBackedHarnessCount,
-			"source":                   "source-backed-local-summary",
-			"lazySessionMode":          false,
-			"singleActiveServerMode":   false,
+			"source": "source-backed-local-summary",
+			"lazySessionMode": false,
+			"singleActiveServerMode": false,
 		},
 		"bridge": map[string]any{
-			"fallback":  "go-local-mcp",
+			"fallback": "go-local-mcp",
 			"procedure": "mcp.getStatus",
-			"reason":    "upstream unavailable; using local MCP harness summary",
+			"reason": "upstream unavailable; using local MCP harness summary",
 		},
-	})
+	}, nil
 }
 
 func (s *Server) handleMCPTools(w http.ResponseWriter, r *http.Request) {

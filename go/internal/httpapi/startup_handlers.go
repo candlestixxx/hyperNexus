@@ -11,6 +11,7 @@ import (
 	"github.com/borghq/borg-go/internal/interop"
 	"github.com/borghq/borg-go/internal/memorystore"
 	"github.com/borghq/borg-go/internal/mesh"
+	"github.com/borghq/borg-go/internal/cache"
 )
 
 type StartupBlockingReason struct {
@@ -32,7 +33,10 @@ func (s *Server) handleStartupStatus(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	status, err := s.buildStartupStatus(r.Context())
+	// Cache startup status for 5s (dashboard polls every 5s)
+	val, err := cache.Cached(s.cacheService, "startup:status", func() (interface{}, error) {
+		return s.buildStartupStatus(r.Context())
+	}, 5000)
 	if err != nil {
 		writeJSON(w, http.StatusInternalServerError, map[string]any{"success": false, "error": err.Error()})
 		return
@@ -40,7 +44,7 @@ func (s *Server) handleStartupStatus(w http.ResponseWriter, r *http.Request) {
 
 	writeJSON(w, http.StatusOK, map[string]any{
 		"success": true,
-		"data":    status,
+		"data":   val,
 	})
 }
 

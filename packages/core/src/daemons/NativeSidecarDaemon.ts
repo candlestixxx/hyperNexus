@@ -54,7 +54,10 @@ export class NativeSidecarDaemon {
         if (event.type === 'a2a:signal') {
             const payload = event.payload;
             if (payload && payload.message) {
+                // Skip heartbeat logging to reduce noise (frequent and expected)
+                if (payload.message.type !== 'HEARTBEAT') {
                 console.log(`[NativeSidecarDaemon] Replaying A2A signal: ${payload.message.type}`);
+                }
                 a2aBroker.routeMessage(payload.message).catch(e =>
                     console.error('[NativeSidecarDaemon] Failed to route replayed message:', e)
                 );

@@ -17552,18 +17552,26 @@ func (s *Server) handleImportedInstructions(w http.ResponseWriter, _ *http.Reque
 }
 
 func (s *Server) scanImportSources() ([]sessionimport.Candidate, error) {
+	if s.importCache != nil {
+		if cached, ok := s.importCache.getCandidates(); ok {
+			return cached, nil
+		}
+	}
 	homeDir, err := os.UserHomeDir()
 	if err != nil {
 		homeDir = s.cfg.MainConfigDir
 	}
-
 	scanner := sessionimport.NewScanner(s.cfg.WorkspaceRoot, homeDir, 50)
-	return scanner.Scan()
+	candidates, scanErr := scanner.Scan()
+	if scanErr == nil && s.importCache != nil {
+		s.importCache.set(candidates, nil)
+	}
+	return candidates, scanErr
 }
 
 func (s *Server) scanValidatedImportSources() ([]sessionimport.ValidationResult, error) {
 	if s.importCache != nil {
-		if cached, ok := s.importCache.get(); ok {
+		if cached, ok := s.importCache.getValidated(); ok {
 			return cached, nil
 		}
 	}
@@ -17574,7 +17582,9 @@ func (s *Server) scanValidatedImportSources() ([]sessionimport.ValidationResult,
 	scanner := sessionimport.NewScanner(s.cfg.WorkspaceRoot, homeDir, 50)
 	results, scanErr := scanner.ScanValidated()
 	if scanErr == nil && s.importCache != nil {
-		s.importCache.set(results)
+		// Cache both candidates and validated results
+		candidates, _ := scanner.Scan()
+		s.importCache.set(candidates, results)
 	}
 	return results, scanErr
 }
@@ -18159,38 +18169,49 @@ func (s *Server) handleFleetStatus(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-// importScanCache caches validated import scan results with a short TTL
+// importScanCache caches both raw candidates and validated results
 // to avoid redundant filesystem scanning within a request burst.
 type importScanCache struct {
-	mu          sync.Mutex
-	cached      []sessionimport.ValidationResult
-	cachedAt    time.Time
-	ttl         time.Duration
+	mu               sync.Mutex
+	cachedCandidates []sessionimport.Candidate
+	cachedValidated  []sessionimport.ValidationResult
+	cachedAt         time.Time
+	ttl              time.Duration
 }
 
 func newImportScanCache() *importScanCache {
 	return &importScanCache{ttl: 5 * time.Minute}
 }
 
-func (c *importScanCache) get() ([]sessionimport.ValidationResult, bool) {
+func (c *importScanCache) getCandidates() ([]sessionimport.Candidate, bool) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
-	if c.cached == nil || time.Since(c.cachedAt) > c.ttl {
+	if c.cachedCandidates == nil || time.Since(c.cachedAt) > c.ttl {
 		return nil, false
 	}
-	return c.cached, true
+	return c.cachedCandidates, true
 }
 
-func (c *importScanCache) set(results []sessionimport.ValidationResult) {
+func (c *importScanCache) getValidated() ([]sessionimport.ValidationResult, bool) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
-	c.cached = results
+	if c.cachedValidated == nil || time.Since(c.cachedAt) > c.ttl {
+		return nil, false
+	}
+	return c.cachedValidated, true
+}
+
+func (c *importScanCache) set(candidates []sessionimport.Candidate, validated []sessionimport.ValidationResult) {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	c.cachedCandidates = candidates
+	c.cachedValidated = validated
 	c.cachedAt = time.Now()
 }
 
 // PreWarmImportCache seeds the import scan cache with pre-computed results.
 func (s *Server) PreWarmImportCache(results []sessionimport.ValidationResult) {
 	if s.importCache != nil {
-		s.importCache.set(results)
+		s.importCache.set(nil, results)
 	}
 }

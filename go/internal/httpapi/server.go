@@ -575,7 +575,7 @@ func (s *Server) PreWarmCaches() {
 		ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 		defer cancel()
 		if status, err := s.buildStartupStatus(ctx); err == nil {
-			s.cacheService.SetTTL("startup:status", status, 5000)
+			s.cacheService.SetTTL("startup:status", status, 30000)
 		}
 	}()
 	go func() {
@@ -583,7 +583,7 @@ func (s *Server) PreWarmCaches() {
 		ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 		defer cancel()
 		if status, err := s.buildMCPStatus(ctx); err == nil {
-			s.cacheService.SetTTL("mcp:status", status, 10000)
+			s.cacheService.SetTTL("mcp:status", status, 30000)
 		}
 	}()
 	go func() {
@@ -591,7 +591,7 @@ func (s *Server) PreWarmCaches() {
 		ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 		defer cancel()
 		if servers, err := s.buildMCPServersList(ctx); err == nil {
-			s.cacheService.SetTTL("mcp:servers", servers, 10000)
+			s.cacheService.SetTTL("mcp:servers", servers, 60000)
 		}
 	}()
 }

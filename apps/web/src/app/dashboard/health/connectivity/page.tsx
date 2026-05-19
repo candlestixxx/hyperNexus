@@ -146,7 +146,7 @@ export default function ServiceConnectivityPage() {
         // Use Next.js API proxy to reach the Go sidecar
         const endpoints = [
           '/api/go/service/connectivity',
-          'http://127.0.0.1:4300/api/service/connectivity',
+          '/api/go/api/service/connectivity',
         ];
 
         for (const endpoint of endpoints) {

@@ -67,7 +67,7 @@ export default function MemoryHydrationPage() {
     try {
       const endpoints = [
         '/api/go/memory/hydration/status',
-        'http://127.0.0.1:4300/api/memory/hydration/status',
+        '/api/go/api/memory/hydration/status',
       ];
       for (const endpoint of endpoints) {
         try {
@@ -94,7 +94,7 @@ export default function MemoryHydrationPage() {
     try {
       const endpoints = [
         '/api/go/memory/hydrate',
-        'http://127.0.0.1:4300/api/memory/hydrate',
+        '/api/go/api/memory/hydrate',
       ];
       for (const endpoint of endpoints) {
         try {
@@ -126,7 +126,7 @@ export default function MemoryHydrationPage() {
       if (selectedSection) params.set('section', selectedSection);
       const endpoints = [
         `/api/go/memory/hydration/query?${params}`,
-        `http://127.0.0.1:4300/api/memory/hydration/query?${params}`,
+        `/api/go/api/memory/hydration/query?${params}`,
       ];
       for (const endpoint of endpoints) {
         try {

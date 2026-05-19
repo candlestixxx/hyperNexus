@@ -1,5 +1,56 @@
 # Changelog
 
+## [1.0.0-alpha.61] - 2026-05-17
+
+### Added
+- **Autonomous Healer Loop (The Immune System)**:
+  - Upgraded `go/internal/healer/healer.go` to implement the full `diagnose -> fix -> verify -> retry` autonomous cycle.
+  - Integrated `CodeExecutor` to perform native verification via `npx tsc`, `npx vitest`, and `go test`.
+  - Added multi-turn feedback loop support, allowing the LLM to refine fixes based on compiler/test output.
+- **L2 Vault Integration**:
+  - Wired Healer service to the `controlplane.MemoryVault` for persistent intelligence harvesting.
+  - Every heal attempt is now committed to the SQLite-based L2 Vault, enabling fleet-wide shared learning.
+- **Phase 5 Scoping**:
+  - Authored updated `VISION.md` and `ROADMAP.md` focusing on the Nexus Kernel (Hypervisor) and HyperCode (Product) brand distinction.
+
+### Fixed
+- Go Healer: Resolved double-escaping of `fmt.Sprintf` tokens in generated code.
+- Go Kernel: Fixed undefined interface references for `MemoryVault` in the healer package.
+
+# Changelog
+
+## [1.0.0-alpha.60] - 2026-05-16
+
+### Added
+- **Phase 4: Deep Orchestration**:
+  - `ConsensusEngine`: Native Go implementation of weighted multi-model voting with L2 Vault logging.
+  - `PairOrchestrator`: Hardened state machine enforcing the `Planner -> Checker -> Implementer -> Critic` loop with recursive revisions.
+  - `QuotaManager`: Real-time token usage and credit tracking for all LLM providers.
+  - `ModelSelector`: Budget-aware waterfall routing that preemptively switches providers based on quota.
+  - `SessionSnapshots`: Support for cross-session snapshot/restore in `MemoryArchiver`.
+
+### Changed
+- `LLMService`: Integrated `GlobalQuotaTracker` to automatically update usage statistics after every generation.
+- `WaterfallRouter`: Refactored to utilize the `ModelSelector` for intelligent provider selection.
+- Documentation: Authored `docs/PHASE4_ORCHESTRATION.md` and updated `PROJECT_MEMORY.md`.
+
+
+## [1.0.0-alpha.59] - 2026-05-16
+
+### Added
+- **Phase 3: Fleet Orchestration**:
+  - `FleetManager`: New Go service to track PIDs, health, and resource usage of all active CLI/TIU sessions.
+  - `TrafficObserver`: Implemented passive background fact extraction from A2A traffic.
+  - Shared Organizational Memory: Learnings from one session are now automatically indexed in the L2 Vault and shared globally across the fleet.
+  - API: Added `/api/fleet/status` endpoint to the Go sidecar.
+
+### Changed
+- `A2ABroker`: Integrated `FleetSignalProcessor` hook to enable real-time traffic observation.
+- `MemoryReactor`: Added background biological decay and heat-based tiering loop.
+- `MCPServer`: Updated status and health endpoints to reflect fleet-wide state.
+- Documentation: Authored `docs/PHASE3_FLEET.md`.
+
+
 All notable changes to this project will be documented in this file.
 
 ## [1.0.0-alpha.54] - 2026-05-12

@@ -24,6 +24,10 @@ export async function initializeAllServices(): Promise<void> {
     const { memoryCaptureService } = await import('./memory-capture.service');
     memoryCaptureService.setEnabled(true);
 
+    // Initialize Nexus Kernel button on supported AI chat sites
+    const { initNexusKernelButton } = await import('./nexus-kernel-button');
+    await initNexusKernelButton();
+
     logger.debug('[Services] All services initialized successfully');
   } catch (error) {
     logger.error('[Services] Error initializing services:', error);

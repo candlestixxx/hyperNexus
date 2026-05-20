@@ -167,3 +167,6 @@ metamcp.db
 tmp_*.ts
 tmp_*.tsx
 tmp_*.js
+
+# Jules AI session logs (auto-generated, not needed in repo)
+.jules/sessions/

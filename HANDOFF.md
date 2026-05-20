@@ -1,22 +1,19 @@
-# Handoff - v1.0.0-alpha.61
+# Handoff - v1.0.0-alpha.62
 
 ## Summary
-Completed the upgrade of the Go-native Healer (Nexus Kernel) to full autonomous maturity and synchronized the project's core documentation and branding.
+Performed a project state audit and completed the protocol scaffolding implementation for the `hypercode://` handler in the Go kernel.
 
 ## Accomplishments
-- **Autonomous Healer Loop**: Upgraded `go/internal/healer/healer.go` with a multi-turn `diagnose -> fix -> verify -> retry` cycle.
-- **Verification Integration**: Integrated `CodeExecutor` to run native verification tests (`tsc`, `vitest`, `go test`).
-- **L2 Vault Integration**: Heal events are now persisted to the SQLite-based long-term memory vault.
-- **Documentation Sync**: Updated `VERSION.md`, `VISION.md`, `ROADMAP.md`, `TODO.md`, and `CHANGELOG.md` to align with the Nexus Kernel / HyperCode product model.
-- **Universal Instructions**: Centralized agent directives in `docs/UNIVERSAL_LLM_INSTRUCTIONS.md`.
+- **Documentation Audit**: Audited project state documentation, resolved Git merge conflict markers in `DEPLOY.md`, `CLAUDE.md`, and `GEMINI.md`. Validated project structures.
+- **Protocol Scaffolding**: Implemented the `hypercode://` handler in `go/internal/httpapi/protocol_handlers.go` and wired it up in `go/internal/httpapi/server.go`.
+- **Testing**: Added unit tests for the `hypercode://` protocol handler in `go/internal/httpapi/protocol_handlers_test.go` and verified they pass.
+- **Version Bump**: Bumped project version to `1.0.0-alpha.62` across relevant `package.json` manifests, `VERSION`, and `VERSION.md`.
 
 ## Blockers / Issues
-- A pre-existing panic exists in `go/internal/orchestration/fleet_manager_impl.go:23` during tRPC server initialization tests. This is unrelated to the Healer/Vault changes and should be addressed in the next session focusing on orchestration stabilization.
-- TypeScript `tsc` binary was not found in the environment path during final build verification, though logic changes were minor and focused on documentation.
+- No new blockers introduced.
+- Some missing TypeScript modules (`@borg/ai`, etc.) throw errors during `tsc --noEmit` locally, likely due to a previous architectural shift (e.g., TS to Go porting) that left unused/obsolete TypeScript files around. These should be audited and removed in a future cycle.
+- Building the `borg-extension` workspace fails, seemingly due to `vite` or `esbuild` plugins not resolving local packages like `@extension/env`.
 
 ## Next Steps
-- Implement `hypercode://` protocol scaffolding in the Go kernel.
-- Perform a "Dashboard Truth Pass" to ensure UI status cards reflect live Go service state.
-- Proceed to Phase 5: Native Integration.
-
-*Outstanding work. Magnificent! The collective grows.*
+- Perform the **Dashboard Truth Pass**: Verify that the "Immune System" status card in the dashboard shows real-time data from the Go `HealerService`.
+- Wire the `vaultRecords` query to the Next.js frontend to show persistent heal history (L2 Vault Visualization).

@@ -1,12 +1,12 @@
 # Borg Deployment Instructions
 
-_This document contains the latest deployment instructions for the Borg Universal AI Dashboard and Cognitive Control Plane._
+_This document contains the latest deployment instructions for the Borg Universal AI Dashboard and Cognitive Control Plane (HyperCode)._
 
 ## Prerequisites
 
 1.  **Node.js**: >= 24.x (For maximum runtime compatibility)
-2.  **pnpm**: Recommended package manager (`npm install -g pnpm@10`)
-3.  **Go**: >= 1.23 (For the experimental Go control plane sidecar)
+2.  **pnpm**: Recommended package manager (`npm install -g pnpm@10.28`)
+3.  **Go**: >= 1.23 (For the Go control plane sidecar)
 4.  **Git**: For submodule fetching and version control.
 
 ## Initial Setup
@@ -79,7 +79,7 @@ pnpm -C apps/maestro start
 
 ---
 
-## Experimental Go Sidecar
+## Go Sidecar Kernel
 
 To build and run the Go control plane sidecar alongside the main TS engine:
 ```bash
@@ -105,8 +105,8 @@ pnpm run build:extensions
 
 Build the production bundle inside a container:
 ```bash
-docker build -f Dockerfile.prod -t borg:latest .
-docker run -p 3000:3000 -p 4000:4000 -v borg-data:/root/.borg borg:latest
+docker build -f Dockerfile.prod -t hypercode:latest .
+docker run -p 3000:3000 -p 4000:4000 -v hypercode-data:/root/.borg hypercode:latest
 ```
 
 ---
@@ -143,3 +143,7 @@ pnpm run check:release-gate:ci:strict-visuals
 | Socket.io Swarm Server | 3001 | — | — |
 | tRPC Bridge Control | 4100 | — | — |
 | Orchestrator tRPC | 3847 | `BORG_ORCHESTRATOR_PORT` | `http://localhost:3847` |
+
+## Health Checks
+- `http://localhost:4000/api/config/status` - Main control plane health
+- `http://localhost:3000` - Dashboard

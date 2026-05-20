@@ -40,12 +40,20 @@ As Gemini, you act in a dual capacity depending on the scale and nature of the t
 3. Bump `VERSION` file and sync all `package.json` files.
 4. Update `CHANGELOG.md` with what changed.
 5. Commit with version number in message: `feat: description (v1.0.0-alpha.X)`.
-6. Push to both remotes: `origin` and `borg-upstream`.
+6. Push to both remotes: `origin` and `origin-backup`.
 7. Update `TODO.md` and `ROADMAP.md` if priorities changed.
 
 ---
 
-## 3. Binary-Topology Layout Context
+## 3. Implementation Standards (Speed & Scale)
+- Excel at recursive scripts to process large numbers of files efficiently.
+- Prefer bulk operations over line-by-line tweaks when restructuring.
+- Maintain high-level architectural constraints during bulk updates.
+- Keep comments concise and focused on high-level reasoning.
+
+---
+
+## 4. Binary-Topology Layout Context
 
 When analyzing future system architectures, adhere to this recommended target layout:
 
@@ -66,7 +74,7 @@ When analyzing future system architectures, adhere to this recommended target la
 
 ---
 
-## 4. Go Porting Guidelines
+## 5. Go Porting Guidelines
 
 - Follow `PORTING_MAP.md` for which handlers to port next.
 - Go handlers must act as truthful fallbacks reading real SQLite data. Never mock state.
@@ -77,3 +85,12 @@ When analyzing future system architectures, adhere to this recommended target la
 cd go && go build -buildvcs=false ./cmd/borg
 cd .. && pnpm -C packages/core exec tsc --noEmit
 ```
+
+---
+
+## 6. Synergy & Swarm Protocol
+- Read `HANDOFF.md` carefully to pick up where Claude or GPT left off.
+- Prepare large structural foundations for Claude to polish.
+- If GPT defined interfaces, implement them faithfully at scale.
+
+*Keep this file scoped strictly to Gemini-specific heuristics. Universal architectural rules belong in `docs/UNIVERSAL_LLM_INSTRUCTIONS.md`.*

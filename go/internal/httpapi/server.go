@@ -630,6 +630,8 @@ func (s *Server) registerRoutes() {
 	s.mux.HandleFunc("/api/memory/add-history", s.handleMemoryAddHistory)
 	s.mux.HandleFunc("/api/code/exec", s.handleCodeExec)
 
+	s.mux.HandleFunc("/api/protocol/hypercode", s.handleHypercodeProtocol)
+
 	s.mux.HandleFunc("/health", s.handleHealth)
 	s.mux.HandleFunc("/version", s.handleVersion)
 	s.mux.HandleFunc("/api/index", s.handleAPIIndex)

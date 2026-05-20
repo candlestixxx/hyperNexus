@@ -213,7 +213,7 @@ export default function ClaudeCloudPage() {
           </Card>
 
           {/* Interactive Shell Console */}
-          <Card className="bg-zinc-955 border-zinc-850 p-6 space-y-4">
+          <Card className="bg-zinc-900 border-zinc-800 p-6 space-y-4">
             <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
               <div className="flex items-center gap-2">
                 <Terminal className="h-5 w-5 text-cyan-400" />

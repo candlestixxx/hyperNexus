@@ -1,10 +1,10 @@
 # TODO
 
-_Last updated: 2026-05-17, version 1.0.0-alpha.61_
+_Last updated: 2026-05-17, version 1.0.0-alpha.62_
 
 ## P0 — Must do now (Stability & Truth)
 
-- [ ] **Protocol Scaffolding**: Implement the basic `hypercode://` handler in the Go kernel to support session attachment.
+- [x] **Protocol Scaffolding**: Implement the basic `hypercode://` handler in the Go kernel to support session attachment.
 - [ ] **Dashboard Truth Pass**: Verify that the "Immune System" status card in the dashboard shows real-time data from the Go `HealerService`.
 - [ ] **L2 Vault Visualization**: Wire the `vaultRecords` query to the Next.js frontend to show persistent heal history.
 - [ ] **Mobile Style Audit**: Fix overlapping elements in the Sidebar and KernelStats on small viewports.
@@ -22,7 +22,7 @@ _Last updated: 2026-05-17, version 1.0.0-alpha.61_
 - [ ] **Skill Marketplace**: Implement the REST API for downloading community-contributed skills.
 - [ ] **Decentralized Memory**: Scoping Phase for P2P memory sync using gossip protocols.
 
-## Completed (v1.0.0-alpha.61)
+## Completed (v1.0.0-alpha.62)
 - [x] Autonomous Healer Loop (diagnose -> fix -> verify -> retry) in Go.
 - [x] L2 Vault persistence for Healer events.
 - [x] Integrated CodeExecutor with Healer for native verification.

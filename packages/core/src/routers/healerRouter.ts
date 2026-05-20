@@ -1,4 +1,3 @@
-
 import { z } from 'zod';
 import { t, publicProcedure, getHealerService } from '../lib/trpc-core.js';
 import { observable } from '@trpc/server/observable';
@@ -17,18 +16,28 @@ export const healerRouter = t.router({
     getHistory: t.procedure.query(async () => {
         try { return getHealerService()?.getHistory() ?? []; } catch { return []; }
     }),
-    vaultRecords: publicProcedure.input(z.object({ limit: z.number().optional() })).query(async ({ input }) => {
+    vaultRecords: publicProcedure.input(z.object({ limit: z.number().optional() }).optional()).query(async ({ input }) => {
         const SIDECAR_URL = process.env.BORG_SIDECAR_URL || 'http://127.0.0.1:4300';
+        const limit = input?.limit || 50;
         try {
-            const limit = input?.limit || 50;
             const res = await fetch(`${SIDECAR_URL}/api/native/healer/vault?limit=${limit}`);
             if (res.ok) {
                 const json = await res.json();
-                return json.records || [];
+                if (json.records && json.records.length > 0) {
+                    return json.records;
+                }
             }
         } catch (e) {
-            console.warn('[healerRouter] Failed to fetch vault records from sidecar:', e);
+            console.warn('[healerRouter] Failed to fetch vault records from sidecar, trying fallback:', e);
         }
+
+        try {
+            // Fallback for getting records if go backend isn't mapped
+            const service = getHealerService() as any;
+            if (service && typeof service.getVaultRecords === 'function') {
+                return service.getVaultRecords();
+            }
+        } catch { }
         return [];
     }),
     subscribe: publicProcedure.subscription(() => {

@@ -81,7 +81,7 @@ export default function BlocksPage() {
     : "Not configured";
 
   return (
-    <div className="p-8 bg-zinc-950 min-h-screen text-zinc-100 font-mono space-y-8 max-w-7xl mx-auto">
+    <div className="p-8 bg-zinc-955 min-h-screen text-zinc-100 font-mono space-y-8 max-w-7xl mx-auto">
       <header className="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-800 pb-6">
         <div>
           <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-pink-400 to-indigo-400 bg-clip-text text-transparent flex items-center gap-3">
@@ -213,7 +213,7 @@ export default function BlocksPage() {
           </Card>
 
           {/* Interactive Shell Console */}
-          <Card className="bg-zinc-955 border-zinc-850 p-6 space-y-4">
+          <Card className="bg-zinc-900 border-zinc-800 p-6 space-y-4">
             <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
               <div className="flex items-center gap-2">
                 <Terminal className="h-5 w-5 text-cyan-400" />

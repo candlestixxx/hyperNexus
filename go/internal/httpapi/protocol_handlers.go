@@ -25,12 +25,15 @@ func (s *Server) handleHypercodeProtocol(w http.ResponseWriter, r *http.Request)
 		}
 	} else {
 		rawURL = r.URL.Query().Get("url")
+		if rawURL == "" {
+			rawURL = r.URL.Query().Get("uri")
+		}
 	}
 
 	if rawURL == "" {
 		writeJSON(w, http.StatusBadRequest, map[string]any{
 			"success": false,
-			"error":   "missing url parameter or JSON body",
+			"error":   "missing url or uri parameter or JSON body",
 		})
 		return
 	}

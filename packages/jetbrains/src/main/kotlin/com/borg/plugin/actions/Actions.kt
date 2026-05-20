@@ -1,4 +1,3 @@
-<<<<<<<< HEAD:archive/ts-legacy/packages/jetbrains/src/main/kotlin/com/borg/plugin/actions/Actions.kt
 package com.HyperCode.plugin.actions
 
 import com.HyperCode.plugin.HypercodeService
@@ -17,7 +16,6 @@ import com.intellij.openapi.ui.Messages
 class ConnectAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
         val project = e.project ?: return
-<<<<<<<< HEAD:archive/ts-legacy/packages/jetbrains/src/main/kotlin/com/borg/plugin/actions/Actions.kt
         val service = project.getService(HypercodeService::class.java)
         
         val url = Messages.showInputDialog(
@@ -25,7 +23,7 @@ class ConnectAction : AnAction() {
             "Enter HyperCode Hub URL:",
             "Connect to HyperCode Hub",
 =        val service = project.getService(BorgService::class.java)
-        
+
         val url = Messages.showInputDialog(
             project,
             "Enter borg Hub URL:",
@@ -37,7 +35,6 @@ class ConnectAction : AnAction() {
         
         service.setHubUrl(url)
         if (service.connect()) {
-<<<<<<<< HEAD:archive/ts-legacy/packages/jetbrains/src/main/kotlin/com/borg/plugin/actions/Actions.kt
             notify(project, "Connected to HyperCode Hub", NotificationType.INFORMATION)
         } else {
             notify(project, "Failed to connect to HyperCode Hub", NotificationType.ERROR)
@@ -51,7 +48,6 @@ class ConnectAction : AnAction() {
     
     private fun notify(project: com.intellij.openapi.project.Project, message: String, type: NotificationType) {
         NotificationGroupManager.getInstance()
-<<<<<<<< HEAD:archive/ts-legacy/packages/jetbrains/src/main/kotlin/com/borg/plugin/actions/Actions.kt
             .getNotificationGroup("HyperCode Notifications")
 ========
             .getNotificationGroup("borg Notifications")
@@ -64,7 +60,6 @@ class ConnectAction : AnAction() {
 class DisconnectAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
         val project = e.project ?: return
-<<<<<<<< HEAD:archive/ts-legacy/packages/jetbrains/src/main/kotlin/com/borg/plugin/actions/Actions.kt
         val service = project.getService(HypercodeService::class.java)
         service.disconnect()
         
@@ -74,7 +69,7 @@ class DisconnectAction : AnAction() {
 ========
         val service = project.getService(BorgService::class.java)
         service.disconnect()
-        
+
         NotificationGroupManager.getInstance()
             .getNotificationGroup("borg Notifications")
             .createNotification("Disconnected from borg Hub", NotificationType.INFORMATION)
@@ -88,14 +83,13 @@ class StartDebateAction : AnAction() {
         val project = e.project ?: return
         val editor = e.getData(CommonDataKeys.EDITOR) ?: return
         val file = e.getData(CommonDataKeys.VIRTUAL_FILE) ?: return
-<<<<<<<< HEAD:archive/ts-legacy/packages/jetbrains/src/main/kotlin/com/borg/plugin/actions/Actions.kt
         val service = project.getService(HypercodeService::class.java)
         
         if (!service.isConnected()) {
             Messages.showErrorDialog(project, "Not connected to HyperCode Hub", "HyperCode")
 ========
         val service = project.getService(BorgService::class.java)
-        
+
         if (!service.isConnected()) {
             Messages.showErrorDialog(project, "Not connected to borg Hub", "borg")
 >>>>>>>> origin/dependabot/cargo/packages/zed-extension/cargo-64b2a50fd2:packages/jetbrains/src/main/kotlin/com/borg/plugin/actions/Actions.kt
@@ -125,7 +119,6 @@ class StartDebateAction : AnAction() {
                 "Council Debate Result"
             )
         } else {
-<<<<<<<< HEAD:archive/ts-legacy/packages/jetbrains/src/main/kotlin/com/borg/plugin/actions/Actions.kt
             Messages.showErrorDialog(project, "Debate failed", "HyperCode")
 ========
             Messages.showErrorDialog(project, "Debate failed", "borg")
@@ -136,10 +129,9 @@ class StartDebateAction : AnAction() {
         val project = e.project ?: return
         val editor = e.getData(CommonDataKeys.EDITOR)
         val selectedText = editor?.selectionModel?.selectedText ?: ""
-        
+
         val topic = Messages.showInputDialog(project, "Enter debate topic:", "Council Debate", null)
         if (topic != null) {
-<<<<<<<< HEAD:archive/ts-legacy/packages/jetbrains/src/main/kotlin/com/borg/plugin/actions/Actions.kt
             val service = project.getService(HypercodeService::class.java)
 ========
             val service = project.getService(BorgService::class.java)
@@ -155,13 +147,12 @@ class StartDebateAction : AnAction() {
 class ArchitectModeAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
         val project = e.project ?: return
-<<<<<<<< HEAD:archive/ts-legacy/packages/jetbrains/src/main/kotlin/com/borg/plugin/actions/Actions.kt
         val service = project.getService(HypercodeService::class.java)
         
         if (!service.isConnected()) {
             Messages.showErrorDialog(project, "Not connected to HyperCode Hub", "HyperCode")
 =        val service = project.getService(BorgService::class.java)
-        
+
         if (!service.isConnected()) {
             Messages.showErrorDialog(project, "Not connected to borg Hub", "borg")
 >            return
@@ -187,7 +178,6 @@ class ArchitectModeAction : AnAction() {
             if (approve == Messages.YES) {
                 service.approveArchitectPlan(session.sessionId)
                 NotificationGroupManager.getInstance()
-<<<<<<<< HEAD:archive/ts-legacy/packages/jetbrains/src/main/kotlin/com/borg/plugin/actions/Actions.kt
                     .getNotificationGroup("HyperCode Notifications")
 ========
                     .getNotificationGroup("borg Notifications")
@@ -196,7 +186,6 @@ class ArchitectModeAction : AnAction() {
                     .notify(project)
             }
         } else {
-<<<<<<<< HEAD:archive/ts-legacy/packages/jetbrains/src/main/kotlin/com/borg/plugin/actions/Actions.kt
             Messages.showErrorDialog(project, "Failed to start architect session", "HyperCode")
 ========
             Messages.showErrorDialog(project, "Failed to start architect session", "borg")
@@ -208,14 +197,13 @@ class ArchitectModeAction : AnAction() {
 class ViewAnalyticsAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
         val project = e.project ?: return
-<<<<<<<< HEAD:archive/ts-legacy/packages/jetbrains/src/main/kotlin/com/borg/plugin/actions/Actions.kt
         val service = project.getService(HypercodeService::class.java)
         
         if (!service.isConnected()) {
             Messages.showErrorDialog(project, "Not connected to HyperCode Hub", "HyperCode")
 ========
         val service = project.getService(BorgService::class.java)
-        
+
         if (!service.isConnected()) {
             Messages.showErrorDialog(project, "Not connected to borg Hub", "borg")
 >>>>>>>> origin/dependabot/cargo/packages/zed-extension/cargo-64b2a50fd2:packages/jetbrains/src/main/kotlin/com/borg/plugin/actions/Actions.kt
@@ -238,7 +226,6 @@ class ViewAnalyticsAction : AnAction() {
                 "Supervisor Analytics"
             )
         } else {
-<<<<<<<< HEAD:archive/ts-legacy/packages/jetbrains/src/main/kotlin/com/borg/plugin/actions/Actions.kt
             Messages.showErrorDialog(project, "Failed to fetch analytics", "HyperCode")
 ========
             Messages.showErrorDialog(project, "Failed to fetch analytics", "borg")
@@ -250,7 +237,6 @@ class ViewAnalyticsAction : AnAction() {
 class RunAgentAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
         val project = e.project ?: return
-<<<<<<<< HEAD:archive/ts-legacy/packages/jetbrains/src/main/kotlin/com/borg/plugin/actions/Actions.kt
         Messages.showInfoMessage(project, "Run Agent feature coming soon", "HyperCode")
 ========
         Messages.showInfoMessage(project, "Run Agent feature coming soon", "borg")
@@ -261,7 +247,6 @@ class RunAgentAction : AnAction() {
 class SearchMemoryAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
         val project = e.project ?: return
-<<<<<<<< HEAD:archive/ts-legacy/packages/jetbrains/src/main/kotlin/com/borg/plugin/actions/Actions.kt
         Messages.showInfoMessage(project, "Search Memory feature coming soon", "HyperCode")
 ========
         Messages.showInfoMessage(project, "Search Memory feature coming soon", "borg")
@@ -271,7 +256,6 @@ class SearchMemoryAction : AnAction() {
 =======
         val task = Messages.showInputDialog(project, "Enter task for Architect:", "Architect Mode", null)
         if (task != null) {
-<<<<<<<< HEAD:archive/ts-legacy/packages/jetbrains/src/main/kotlin/com/borg/plugin/actions/Actions.kt
             val service = project.getService(HypercodeService::class.java)
 ========
             val service = project.getService(BorgService::class.java)

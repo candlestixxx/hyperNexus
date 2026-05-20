@@ -1,6 +1,6 @@
 # Roadmap: AI Hypervisor (Nexus & HyperCode)
 
-_Last updated: 2026-05-17, version 1.0.0-alpha.61_
+_Last updated: 2026-05-17, version 1.0.0-alpha.62_
 
 ## Status legend
 
@@ -9,7 +9,7 @@ _Last updated: 2026-05-17, version 1.0.0-alpha.61_
 - **Experimental** — Active R&D, not dependable
 - **Vision** — Directional only
 
-## Completed (v1.0.0-alpha.61)
+## Completed (v1.0.0-alpha.62)
 
 ### 1. Nexus Kernel: Active Memory Substrate (STABLE)
 - **Biological Tiered Memory**: L1 (Scratchpad), L2 (Vault), L3 (Archive) implementation in Go.
@@ -34,7 +34,7 @@ _Last updated: 2026-05-17, version 1.0.0-alpha.61_
 ## Active Sprint: Phase 5 - Native Integration
 
 ### A. Universal Protocol & Attachment (BETA)
-- [ ] Implement `hypercode://` protocol handlers for deep-linking.
+- [x] Implement `hypercode://` protocol handlers for deep-linking.
 - [ ] Browser Extension: Implement `hypercode-attach` to link web-based AI chats directly to the local Nexus Kernel.
 - [ ] Implement Global Command Hub (Cmd+K) for system-wide HyperCode access.
 

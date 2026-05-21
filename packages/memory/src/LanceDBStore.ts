@@ -18,6 +18,9 @@ function sanitizeMetadataForArrow(metadata: Record<string, unknown>): Record<str
     return result;
 }
 
+// Global lock for table creation across all instances sharing the same DB path
+const tableInitializationLocks = new Map<string, Promise<any>>();
+
 export class LanceDBStore implements IVectorStore {
     private dbPath: string;
     private db: any;
@@ -25,13 +28,41 @@ export class LanceDBStore implements IVectorStore {
     private readonly HEAT_DECAY_HALFLIFE_MS = 1000 * 60 * 60 * 24;
 
     constructor(rootPath: string) {
-        this.dbPath = path.join(rootPath, 'data', 'lancedb');
+        this.dbPath = path.resolve(rootPath, 'data', 'lancedb');
         if (!fs.existsSync(this.dbPath)) fs.mkdirSync(this.dbPath, { recursive: true });
     }
 
     async initialize() {
         this.db = await connect(this.dbPath);
         this.embedder = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2');
+    }
+
+    private async ensureTable(initialData?: any[]) {
+        const lockKey = this.dbPath;
+        let promise = tableInitializationLocks.get(lockKey);
+
+        if (!promise) {
+            promise = (async () => {
+                try {
+                    return await this.db.openTable('memories');
+                } catch (e) {
+                    if (initialData && initialData.length > 0) {
+                        try {
+                            return await this.db.createTable('memories', initialData);
+                        } catch (createErr: any) {
+                            if (createErr.message?.includes('already exists')) {
+                                return await this.db.openTable('memories');
+                            }
+                            throw createErr;
+                        }
+                    }
+                    throw e;
+                }
+            })();
+            tableInitializationLocks.set(lockKey, promise);
+        }
+
+        return promise;
     }
 
     async createEmbeddings(text: string): Promise<number[]> {
@@ -42,12 +73,8 @@ export class LanceDBStore implements IVectorStore {
     async addMemory(content: string, metadata: any) {
         const vector = await this.createEmbeddings(content);
         const data = [{ vector, text: content, ...metadata, heat_score: metadata.heat_score ?? 50, last_accessed_at: Date.now(), timestamp: Date.now() }];
-        try {
-            const table = await this.db.openTable('memories');
-            await table.add(data);
-        } catch (e) {
-            await this.db.createTable('memories', data);
-        }
+        const table = await this.ensureTable(data);
+        await table.add(data);
     }
 
     async addDocuments(docs: any[]) {
@@ -55,45 +82,44 @@ export class LanceDBStore implements IVectorStore {
             ...d, vector: d.vector || await this.createEmbeddings(d.text || d.content),
             heat_score: d.heat_score ?? 50, last_accessed_at: d.last_accessed_at ?? Date.now(), timestamp: d.timestamp || Date.now()
         })));
-        try {
-            const table = await this.db.openTable('memories');
-            await table.add(processed);
-        } catch (e) {
-            await this.db.createTable('memories', processed);
-        }
+        const table = await this.ensureTable(processed);
+        await table.add(processed);
     }
 
     async get(id: string) {
         try {
-            const table = await this.db.openTable('memories');
+            const table = await this.ensureTable();
             const res = await table.search(await this.createEmbeddings('')).where(`id = '${id}'`).limit(1).toArray();
             return res.length > 0 ? res[0] : null;
         } catch (e) { return null; }
     }
 
     async delete(ids: string[]) {
-        const table = await this.db.openTable('memories');
+        const table = await this.ensureTable();
         await table.delete(ids.map(id => `id = '${id}'`).join(' OR '));
     }
 
-    async reset() { await this.db.dropTable('memories'); }
+    async reset() { 
+        tableInitializationLocks.delete(this.dbPath);
+        await this.db.dropTable('memories'); 
+    }
 
     async listDocuments(where?: string, limit: number = 100) {
-        const table = await this.db.openTable('memories');
+        const table = await this.ensureTable();
         let q = table.search(await this.createEmbeddings('query')).limit(limit);
         if (where) q = q.where(where);
         return await q.toArray();
     }
 
     async search(query: string, limit: number = 5, where?: string) {
-        const table = await this.db.openTable('memories');
+        const table = await this.ensureTable();
         let q = table.search(await this.createEmbeddings(query)).limit(limit);
         if (where) q = q.where(where);
         return await q.toArray();
     }
 
     async maintenance() {
-        const table = await this.db.openTable('memories');
+        const table = await this.ensureTable();
         const all = await table.search(await this.createEmbeddings('')).limit(10000).toArray();
         const now = Date.now();
         const updates = all.map((item: any) => {
@@ -101,7 +127,13 @@ export class LanceDBStore implements IVectorStore {
             const decay = Math.pow(0.5, elapsed / this.HEAT_DECAY_HALFLIFE_MS);
             return { ...item, heat_score: (item.heat_score || 50) * decay };
         });
-        await this.db.dropTable('memories');
-        await this.db.createTable('memories', updates);
+
+        const maintenancePromise = (async () => {
+            await this.db.dropTable('memories');
+            return await this.db.createTable('memories', updates);
+        })();
+
+        tableInitializationLocks.set(this.dbPath, maintenancePromise);
+        await maintenancePromise;
     }
 }

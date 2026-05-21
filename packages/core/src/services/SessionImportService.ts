@@ -1016,12 +1016,14 @@ export class SessionImportService {
                 roots: [path.join(homeDir, '.claude'), path.join(appData, 'Claude')],
                 filePatterns: ['**/*.{md,txt,log,json,jsonl}'],
                 fileNameHints: ['session', 'chat', 'conversation', 'transcript', 'history'],
+                ignoredPathHints: ['analytics.json', 'marketplacemanifest.json', 'plugins', 'projects'],
             },
             {
                 sourceTool: 'aider',
                 roots: [path.join(homeDir, '.aider.chat.history.md'), path.join(homeDir, '.aider')],
                 filePatterns: ['**/*.{md,txt,log,json,jsonl}'],
                 fileNameHints: ['aider', 'history', 'chat'],
+                ignoredPathHints: ['analytics.json', 'model_prices.json', 'installs.json'],
             },
             {
                 sourceTool: 'cursor',
@@ -1667,6 +1669,18 @@ export class SessionImportService {
     }
 
     private async importCandidate(candidate: DiscoveryCandidate, force: boolean): Promise<ImportedSessionRecord | null> {
+        // Fast metadata-based check to skip unchanged files
+        if (!force && !candidate.sourcePath.includes('#')) {
+            try {
+                const stat = await fs.stat(candidate.sourcePath);
+                if (this.store.hasMatchingSource(candidate.sourcePath, stat.size, stat.mtimeMs)) {
+                    return null;
+                }
+            } catch (e) {
+                // Ignore stat errors here, let the read handle it
+            }
+        }
+
         let transcript: string;
         if (typeof candidate.transcript === 'string') {
             transcript = candidate.transcript.trim();
@@ -1691,6 +1705,18 @@ export class SessionImportService {
         }
 
         const normalizedSession = this.buildNormalizedSession(candidate, transcript, transcriptHash);
+        
+        // Get stat for the record
+        let sourceSize: number | null = null;
+        let sourceMtime: number | null = null;
+        if (!candidate.sourcePath.includes('#')) {
+            try {
+                const stat = await fs.stat(candidate.sourcePath);
+                sourceSize = stat.size;
+                sourceMtime = stat.mtimeMs;
+            } catch {}
+        }
+
         const analysis = await this.analyzeImportedSession(normalizedSession);
         const parsedMemories = analysis.memories.map((memory) => ({
             ...memory,
@@ -1704,6 +1730,8 @@ export class SessionImportService {
         const imported = this.store.upsertSession({
             sourceTool: normalizedSession.sourceTool,
             sourcePath: normalizedSession.sourcePath,
+            sourceSize,
+            sourceMtime,
             externalSessionId: normalizedSession.externalSessionId,
             title: normalizedSession.title,
             sessionFormat: normalizedSession.sessionFormat,

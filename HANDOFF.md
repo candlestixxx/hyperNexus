@@ -1,13 +1,13 @@
 # Handoff - v1.0.0-alpha.61
 
 ## Summary
-Completed the upgrade of the Go-native Healer (Nexus Kernel) to full autonomous maturity and synchronized the project's core documentation and branding.
+Completed the upgrade of the Go-native Healer (Hypercode Kernel) to full autonomous maturity and synchronized the project's core documentation and branding.
 
 ## Accomplishments
 - **Autonomous Healer Loop**: Upgraded `go/internal/healer/healer.go` with a multi-turn `diagnose -> fix -> verify -> retry` cycle.
 - **Verification Integration**: Integrated `CodeExecutor` to run native verification tests (`tsc`, `vitest`, `go test`).
 - **L2 Vault Integration**: Heal events are now persisted to the SQLite-based long-term memory vault.
-- **Documentation Sync**: Updated `VERSION.md`, `VISION.md`, `ROADMAP.md`, `TODO.md`, and `CHANGELOG.md` to align with the Nexus Kernel / HyperCode product model.
+- **Documentation Sync**: Updated `VERSION.md`, `VISION.md`, `ROADMAP.md`, `TODO.md`, and `CHANGELOG.md` to align with the Hypercode Kernel / HyperCode product model.
 - **Universal Instructions**: Centralized agent directives in `docs/UNIVERSAL_LLM_INSTRUCTIONS.md`.
 
 ## Blockers / Issues

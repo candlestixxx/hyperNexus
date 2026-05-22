@@ -1,6 +1,6 @@
 /**
  * @file metamcp-schema.ts
- * @description SQLite schema definition for MetaMCP integration into Borg.
+ * @description SQLite schema definition for MetaMCP integration into Hypercode.
  * @module packages/core/src/db/metamcp-schema
  *
  * WHAT:
@@ -9,7 +9,7 @@
  * but uses SQLite-compatible column types.
  *
  * WHY:
- * Borg runs primarily as a local application where SQLite (`better-sqlite3`) is the standard embedded database.
+ * Hypercode runs primarily as a local application where SQLite (`better-sqlite3`) is the standard embedded database.
  * The original MetaMCP uses PostgreSQL (`pg`). To support full feature parity locally without requiring a running
  * Postgres instance, we verify and adapt the schema to SQLite.
  *
@@ -44,7 +44,7 @@ export const DockerSessionStatusEnum = ["PENDING", "RUNNING", "STOPPED", "ERROR"
 
 /**
  * Table: mcp_servers
- * Stores configuration for upstream MCP servers (the ones Borg connects TO).
+ * Stores configuration for upstream MCP servers (the ones Hypercode connects TO).
  */
 export const mcpServersTable = sqliteTable(
     "mcp_servers",
@@ -1020,7 +1020,7 @@ export const publishedMcpValidationRunsTable = sqliteTable(
 
 /**
  * Table: links_backlog
- * Canonical Borg link backlog, initially fed by BobbyBookmarks and designed to
+ * Canonical Hypercode link backlog, initially fed by BobbyBookmarks and designed to
  * become one of the data sources for the universal integrated MCP directory.
  */
 export const linksBacklogTable = sqliteTable(

@@ -1,7 +1,7 @@
 <<<<<<< HEAD
-# Borg Deployment Instructions
+# Hypercode Deployment Instructions
 
-_This document contains the latest deployment instructions for the Borg Universal AI Dashboard and Cognitive Control Plane._
+_This document contains the latest deployment instructions for the Hypercode Universal AI Dashboard and Cognitive Control Plane._
 
 ## Prerequisites
 
@@ -13,8 +13,8 @@ _This document contains the latest deployment instructions for the Borg Universa
 
 1.  **Clone the Repository**:
     ```bash
-    git clone https://github.com/robertpelloni/borg.git
-    cd borg
+    git clone https://github.com/robertpelloni/hypercode.git
+    cd hypercode
     ```
 
 2.  **Initialize Submodules**:
@@ -35,9 +35,9 @@ _This document contains the latest deployment instructions for the Borg Universa
 
 ## Running the Platform
 
-Borg is designed as a long-running service that manages PC memory, CPU, disk, and bandwidth usage.
+Hypercode is designed as a long-running service that manages PC memory, CPU, disk, and bandwidth usage.
 
-### Start the Borg Hub
+### Start the Hypercode Hub
 Use the provided startup scripts:
 
 **Windows**:
@@ -46,33 +46,33 @@ Use the provided startup scripts:
 ```
 
 `start.bat` defaults to `pnpm run build:workspace` (faster startup, skips extension-only build stages).
-It starts Borg only; Maestro is now launched separately.
+It starts Hypercode only; Maestro is now launched separately.
 It also runs a native-runtime preflight that repairs missing `better-sqlite3` and Electron runtime artifacts when possible.
 To force a full build before startup, set:
 
 ```bash
-set BORG_FULL_BUILD=1
+set HYPERCODE_FULL_BUILD=1
 .\start.bat
 ```
 
 For repeat local runs where dependencies are already installed, you can skip the install step:
 
 ```bash
-set BORG_SKIP_INSTALL=1
+set HYPERCODE_SKIP_INSTALL=1
 .\start.bat
 ```
 
 For the fastest local restart loop (when you know previous build artifacts are still valid), you can also skip the build step:
 
 ```bash
-set BORG_SKIP_BUILD=1
+set HYPERCODE_SKIP_BUILD=1
 .\start.bat
 ```
 
 If you need to bypass the native preflight explicitly, set:
 
 ```bash
-set BORG_SKIP_NATIVE_PREFLIGHT=1
+set HYPERCODE_SKIP_NATIVE_PREFLIGHT=1
 .\start.bat
 ```
 
@@ -95,7 +95,7 @@ pnpm dev
 ```
 
 This will:
-1. Start the Borg Server (core).
+1. Start the Hypercode Server (core).
 2. Start the MCP Router (client/server proxy).
 3. Open the Web Dashboard (Next.js) at `http://localhost:3000`.
 
@@ -110,7 +110,7 @@ pnpm start
 Once the dashboard is running, navigate to the **Integrations** tab in the WebUI to install:
 *   Browser Extensions (Chrome, Firefox).
 *   IDE Plugins (VSCode, Cursor, Windsurf).
-*   CLI Harnesses, with `borg` now tracked as Borg's primary CLI harness lane via `submodules/borg` and surfaced as a Go/Cobra runtime with REPL + `pipe` metadata (still **Experimental**).
+*   CLI Harnesses, with `hypercode` now tracked as Hypercode's primary CLI harness lane via `submodules/hypercode` and surfaced as a Go/Cobra runtime with REPL + `pipe` metadata (still **Experimental**).
 
 ## Package Manager Requirement
 
@@ -147,9 +147,9 @@ If strict visuals fail, run `pnpm run sync:screenshot-status` to resync the READ
 
 ## MCP Configuration
 
-MCP server definitions are stored in `~/.borg/mcp.json` (or `mcp.jsonc` for commented JSON). On first run, Borg migrates any legacy config from the workspace root to `~/.borg/`.
+MCP server definitions are stored in `~/.hypercode/mcp.json` (or `mcp.jsonc` for commented JSON). On first run, Hypercode migrates any legacy config from the workspace root to `~/.hypercode/`.
 
-Example `~/.borg/mcp.json`:
+Example `~/.hypercode/mcp.json`:
 ```json
 {
   "mcpServers": {
@@ -173,15 +173,15 @@ Always On tools are permanently advertised to clients and available for the sema
 
 | Service | Default Port | Override |
 |---------|-------------|----------|
-| Core API (Borg CLI control plane) | 4000 | `borg start --port <number>` |
+| Core API (Hypercode CLI control plane) | 4000 | `hypercode start --port <number>` |
 | Web Dashboard (Next.js) | 3000 | `PORT` |
-| Orchestrator | 3847 | `BORG_ORCHESTRATOR_PORT` |
+| Orchestrator | 3847 | `HYPERCODE_ORCHESTRATOR_PORT` |
 | MCP Proxy (stdio) | stdin/stdout | N/A |
 
 =======
 # Deployment Instructions
 
-## borg `1.0.0-alpha.1`
+## hypercode `1.0.0-alpha.1`
 
 ### 1. Build Requirements
 - Node.js >= 24
@@ -200,7 +200,7 @@ This will compile the TypeScript monorepo, build the web assets, and launch the 
 To run the Go bridge alongside the main control plane:
 ```bash
 cd go
-go run ./cmd/borg serve
+go run ./cmd/hypercode serve
 ```
 
 ### 4. Extensions
@@ -211,8 +211,8 @@ pnpm run build:extensions
 
 ### 5. Production Docker
 ```bash
-docker build -f Dockerfile.prod -t borg:latest .
-docker run -p 3000:3000 -p 4000:4000 -v borg-data:/root/.borg borg:latest
+docker build -f Dockerfile.prod -t hypercode:latest .
+docker run -p 3000:3000 -p 4000:4000 -v hypercode-data:/root/.hypercode hypercode:latest
 ```
 
 ## Health Checks

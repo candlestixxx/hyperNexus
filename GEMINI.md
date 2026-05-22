@@ -36,15 +36,15 @@ Best suited for:
 
 When analyzing future architecture, use this recommended target layout:
 
-- `borg` / `borgd` for the core control plane
+- `hypercode` / `hypercoded` for the core control plane
 - `hypermcpd` plus `hypermcp-indexer` for MCP routing and metadata work
 - `hypermemd` plus `hyperingest` for memory/session/resource/background ingestion
 - `hyperharness` / `hyperharnessd` for harness execution surfaces
-- `borg-web` and `borg-native` as client applications
+- `hypercode-web` and `hypercode-native` as client applications
 
 Use these ownership assumptions during analysis:
 
-- `borgd` owns orchestration and operator-facing state
+- `hypercoded` owns orchestration and operator-facing state
 - `hypermcpd` owns MCP lifecycle, routing, and inventory exposure
 - `hypermcp-indexer` owns scrape/probe/cache refresh jobs
 - `hypermemd` owns memory/session/resource persistence and serving
@@ -61,12 +61,12 @@ Gemini should bias toward:
 =======
 # Gemini Instructions
 
-> **CRITICAL**: Read `docs/UNIVERSAL_LLM_INSTRUCTIONS.md` first. It contains the mandatory rules for all AI agents working on borg.
+> **CRITICAL**: Read `docs/UNIVERSAL_LLM_INSTRUCTIONS.md` first. It contains the mandatory rules for all AI agents working on hypercode.
 
 ## Gemini-Specific Directives
 
 ### 1. Role Context
-You are Gemini, the **speed and scale** specialist for Borg. Your primary strengths are:
+You are Gemini, the **speed and scale** specialist for Hypercode. Your primary strengths are:
 - Massive context window — analyze entire codebases at once
 - Speed — rapid implementation of well-defined features
 - Recursive scripts — bulk refactoring, automation, repo maintenance
@@ -93,7 +93,7 @@ You are Gemini, the **speed and scale** specialist for Borg. Your primary streng
 
 ### 5. Build Verification
 ```bash
-cd go && go build -buildvcs=false ./cmd/borg
+cd go && go build -buildvcs=false ./cmd/hypercode
 cd .. && pnpm -C packages/core exec tsc --noEmit
 ```
 

@@ -1,4 +1,4 @@
-# AGENTS — Nexus Kernel & HyperCode Contributor Guide
+# AGENTS — Hypercode Kernel & HyperCode Contributor Guide
 
 > **CRITICAL: ALL AGENTS MUST READ `docs/UNIVERSAL_LLM_INSTRUCTIONS.md` BEFORE PROCEEDING.**
 
@@ -49,7 +49,7 @@ Please summarize anything you have learned during this session that was not obvi
 3. Bump `VERSION` file and sync all `package.json` files
 4. Update `CHANGELOG.md` with what changed
 5. Commit with version number in message: `feat: description (v1.0.0-alpha.X)`
-6. Push to both remotes: `origin` and `borg-upstream`
+6. Push to both remotes: `origin` and `hypercode-upstream`
 7. Update `TODO.md` and `ROADMAP.md` if priorities changed
 
 Please include https://github.com/robertpelloni/jules-autopilot as a dashboard for integrating google jules cloud dev env, and also https://github.com/robertpelloni/opencode-autopilot, and please also make a dashboard with links to all convenient major AI tools, like a section for the billing for API key for gemini/vertex/aistudio/cloud, azure, openrouter, chatgpt/openai api key, claude api key, and then also links to the pro plan membership subscription management page, and then use the spreadsheet i linked with all the ai tools on another dashboard page to detect all installed tools and link to their homepage, and then detect whether they are connected using account oauth or api key, and show usage for each provider both account and api key and show budgets, copilot plus subscription, and then also make a dashboard page similar to the jules-app page for copilot cloud, claude chrome, claude cloud, openai codex cloud, and other providers like blocks, basically useful dashboard pages that organize everything into one place both locally and remote.
@@ -65,7 +65,7 @@ Please include https://github.com/robertpelloni/jules-autopilot as a dashboard f
 | Next.js Dashboard | 3000 | Web observation deck |
 | Socket.io | 3001 | Real-time swarm signals |
 | tRPC Bridge | 4100 | TypeScript Control Plane API |
-| Nexus Go Kernel | 4300 | Authoritative native sidecar |
+| Hypercode Go Kernel | 4300 | Authoritative native sidecar |
 
 ## 5. Development Rituals
 1. **Sync**: `git fetch --all && git status` (Verify clean `main`).

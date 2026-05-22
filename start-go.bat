@@ -2,7 +2,7 @@
 setlocal EnableDelayedExpansion
 
 REM ==============================================
-REM  HyperCode AIOS - Go Sidecar Startup
+REM  HyperCode HYPERCODE - Go Sidecar Startup
 REM  Starts the Go-native control plane only
 REM ==============================================
 

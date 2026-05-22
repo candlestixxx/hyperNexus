@@ -11,7 +11,7 @@ _Last updated: 2026-05-17, version 1.0.0-alpha.61_
 
 ## P1 — Should do next (Features & Parity)
 
-- [ ] **Browser Extension Attach**: Implement the DOM injection to add a "Nexus Kernel" button to Claude.ai and ChatGPT.
+- [ ] **Browser Extension Attach**: Implement the DOM injection to add a "Hypercode Kernel" button to Claude.ai and ChatGPT.
 - [ ] **Wails Migration**: Scaffold the `apps/native-ui` directory using Wails for the Go-native dashboard.
 - [ ] **A2A Mesh Protocol**: Implement the discovery layer for agents running on different local network hosts.
 - [ ] **TOON Format**: Implement the native Go encoder/decoder for the TOON (Thread-Oriented Object Notation) context format.

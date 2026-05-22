@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { CLAUDE_MEM_CAPABILITIES, getClaudeMemOperatorGuidance, getClaudeMemStatusSummary } from './claude-mem-status';
 
 describe('claude-mem status helpers', () => {
-    it('summarizes the current Borg claude-mem parity state honestly', () => {
+    it('summarizes the current Hypercode claude-mem parity state honestly', () => {
         expect(getClaudeMemStatusSummary({ ready: true }, [
             { id: 'browser-extension-chromium', status: 'ready' },
             { id: 'browser-extension-firefox', status: 'ready' },
@@ -118,7 +118,7 @@ describe('claude-mem status helpers', () => {
             },
         })).toEqual({
             title: 'Adapter store not created yet',
-            detail: 'No Borg-managed claude_mem store exists yet. When the adapter initializes, it seeds 5 default buckets for project context, user facts, style preferences, commands, and general notes.',
+            detail: 'No Hypercode-managed claude_mem store exists yet. When the adapter initializes, it seeds 5 default buckets for project context, user facts, style preferences, commands, and general notes.',
             tone: 'warning',
         });
     });
@@ -160,7 +160,7 @@ describe('claude-mem status helpers', () => {
             },
         })).toEqual({
             title: 'Claude-mem adapter not active in the runtime pipeline',
-            detail: 'Core reports the active memory pipeline as json with json. The adapter file can still exist on disk, but Borg is not currently writing new memories through claude-mem.',
+            detail: 'Core reports the active memory pipeline as json with json. The adapter file can still exist on disk, but Hypercode is not currently writing new memories through claude-mem.',
             tone: 'warning',
         });
     });

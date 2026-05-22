@@ -242,7 +242,7 @@ describe('buildStartupStatusSnapshot', () => {
                     clients: [
                         {
                             clientId: 'client-1',
-                            clientName: 'Borg VS Code Bridge',
+                            clientName: 'Hypercode VS Code Bridge',
                             clientType: 'vscode-extension',
                             version: '1.2.3',
                             platform: 'VS Code 1.99',
@@ -749,7 +749,7 @@ describe('buildStartupStatusSnapshot', () => {
             },
             claudeMem: {
                 enabled: true,
-                storePath: '.borg/claude_mem.json',
+                storePath: '.hypercode/claude_mem.json',
                 storeExists: false,
                 totalEntries: 0,
                 sectionCount: 0,

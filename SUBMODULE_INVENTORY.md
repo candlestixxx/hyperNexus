@@ -37,4 +37,4 @@ https://github.com/yasasbanukaofficial/claude-code | unknown |
 | packages/claude-mem | main | unknown | https://github.com/robertpelloni/claude-mem | unknown |
 | apps/maestro | main | unknown | https://github.com/robertpelloni/Maestro | unknown |
 | submodules/prism-mcp | main | unknown | https://github.com/dcostenco/prism-mcp | unknown |
-| submodules/borg | main | unknown | https://github.com/robertpelloni/borg.git | unknown |
+| submodules/hypercode | main | unknown | https://github.com/robertpelloni/hypercode.git | unknown |

@@ -400,7 +400,7 @@ describe('system status startup helpers', () => {
 
         expect(buildSystemStartupNotice(startupStatus)).toEqual({
             title: 'Compat fallback active',
-            detail: 'Live startup telemetry is unavailable, so Borg is showing config-backed compatibility state instead of the full core startup contract.',
+            detail: 'Live startup telemetry is unavailable, so Hypercode is showing config-backed compatibility state instead of the full core startup contract.',
             tone: 'warning',
         });
 
@@ -511,7 +511,7 @@ describe('system status startup helpers', () => {
             name: 'Core API',
             status: 'Pending',
             latency: 'connecting',
-            detail: 'Connecting to live startup telemetry from Borg Core.',
+            detail: 'Connecting to live startup telemetry from Hypercode Core.',
         });
     });
 });

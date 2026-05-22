@@ -25,4 +25,4 @@
 | **gemini-cli** | `gemini-cli` | Reference | Pending |
 | **external/MetaMCP** | `external/MetaMCP` | Core Capability | Active |
 | **apps/maestro** | `apps/maestro` | UI (Legacy) | Active |
-| **submodules/borg** | `submodules/borg` | Parent Repo | Active |
+| **submodules/hypercode** | `submodules/hypercode` | Parent Repo | Active |

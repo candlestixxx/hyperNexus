@@ -2,7 +2,7 @@ import { JSDOM } from 'jsdom';
 import { db } from '../../db/index.js';
 import { linksBacklogTable } from '../../db/metamcp-schema.js';
 import { eq, asc } from 'drizzle-orm';
-import { DEFAULT_OPENROUTER_FREE_MODEL, LLMService } from '@borg/ai';
+import { DEFAULT_OPENROUTER_FREE_MODEL, LLMService } from '@hypercode/ai';
 import { formatOptionalSqliteFailure, isSqliteUnavailableError } from '../../db/sqliteAvailability.js';
 
 export class LinkCrawlerWorker {

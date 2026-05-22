@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useHealerStream } from '@borg/ui';
+import { useHealerStream } from '@hypercode/ui';
 
 export default function HealerDashboard() {
     const { events, isLoading } = useHealerStream();

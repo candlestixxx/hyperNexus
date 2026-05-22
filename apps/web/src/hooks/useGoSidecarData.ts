@@ -194,6 +194,17 @@ export interface GoSessionSummary {
   logs: Array<{ timestamp: number; stream: 'stdout' | 'stderr' | 'system'; message: string }>;
 }
 
+export interface GoHealerHistory {
+  count: number;
+  history: Array<{
+    timestamp: number;
+    error: string;
+    fix: any;
+    success: boolean;
+    attempts: number;
+  }>;
+}
+
 // ────────────────────────────────────────────────────────────────────────────
 // Hook: useGoSidecarDashboard
 // ────────────────────────────────────────────────────────────────────────────
@@ -205,6 +216,7 @@ export interface GoSidecarDashboardData {
   providers: GoProviderSummary[];
   fallbackChain: GoFallbackSummary[];
   sessions: GoSessionSummary[];
+  healerHistory: GoHealerHistory | null;
   goVersion: string | null;
   connected: boolean;
   lastFetchedAt: number | null;
@@ -217,6 +229,7 @@ const EMPTY_DASHBOARD: GoSidecarDashboardData = {
   providers: [],
   fallbackChain: [],
   sessions: [],
+  healerHistory: null,
   goVersion: null,
   connected: false,
   lastFetchedAt: null,
@@ -237,6 +250,7 @@ export function useGoSidecarDashboard(pollIntervalMs = 5000): GoSidecarDashboard
       servers,
       billingStatus,
       sessions,
+      healerHistory,
       healthData,
       healthFallback,
     ] = await Promise.all([
@@ -245,6 +259,7 @@ export function useGoSidecarDashboard(pollIntervalMs = 5000): GoSidecarDashboard
       fetchSidecar<GoServerSummary[]>('/api/mcp/servers'),
       fetchSidecar<any>('/api/billing/status'),
       fetchSidecar<{ count: number; sessions: GoSessionSummary[] }>('/api/native/session/list'),
+      fetchSidecar<GoHealerHistory>('/api/native/healer/history'),
       fetchSidecar<any>('/api/health'),
       fetchSidecar<any>('/health'),
     ]);
@@ -269,6 +284,7 @@ export function useGoSidecarDashboard(pollIntervalMs = 5000): GoSidecarDashboard
       providers,
       fallbackChain,
       sessions: (sessions as any)?.sessions ?? sessions ?? [],
+      healerHistory,
       goVersion: effectiveHealth?.version ?? null,
       connected,
       lastFetchedAt: Date.now(),

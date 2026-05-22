@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.0-alpha.62] - 2026-05-17
+
+### Added
+- **Dashboard Truth Pass**: Added an "Immune System" status card to `DashboardHomeView` and integrated real-time data from the Go `HealerService` via the `/api/native/healer/history` endpoint to ensure the dashboard reflects the truth of the system's healing capability.
+
 ## [1.0.0-alpha.61] - 2026-05-17
 
 ### Added

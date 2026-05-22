@@ -242,6 +242,7 @@ export function DashboardHomeClient() {
       providers={providers}
       fallbackChain={fallbackChain}
       sessions={sessions}
+      healerHistory={goData.healerHistory}
       installSurfaceArtifacts={installArtifactsQuery.data ?? null}
       onStartSession={(sessionId) => {
         setPendingSessionActionId(sessionId);

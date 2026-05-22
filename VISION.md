@@ -27,3 +27,6 @@ Upgraded the **Autonomous Healer** to a full multi-turn loop. Hypercode now perf
 
 ### Phase 6: Native Integration & Protocol (Target v1.1.0)
 The next evolution focuses on the transition from Electron to a Wails-native runtime and the introduction of the `hypercode://` protocol for seamless browser-to-kernel attachment.
+
+### Phase 7: Ecosystem & Parity (Target v1.2.0)
+Expand browser extension integration (Claude.ai, ChatGPT) to utilize the Nexus kernel's L2 Vault persistence and `hypercode://` protocol. Increase observability across the TS control plane with comprehensive tracking of deep research and biological memory health metrics.

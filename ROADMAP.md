@@ -1,6 +1,6 @@
 # Roadmap: AI Hypercode (Hypercode & HyperCode)
 
-_Last updated: 2026-05-17, version 1.0.0-alpha.61_
+_Last updated: 2026-05-17, version 1.0.0-alpha.62_
 
 ## Status legend
 
@@ -31,7 +31,7 @@ _Last updated: 2026-05-17, version 1.0.0-alpha.61_
 - **Progressive Skill Disclosure**: BM25/Cosine ranking engine for JIT skill loading.
 - **Stream Stabilization**: Exponential backoff and history replay for tRPC subscriptions.
 
-## Active Sprint: Phase 5 - Native Integration
+## Active Sprint: Phase 6 - Native Integration & Protocol
 
 ### A. Universal Protocol & Attachment (BETA)
 - [ ] Implement `hypercode://` protocol handlers for deep-linking.

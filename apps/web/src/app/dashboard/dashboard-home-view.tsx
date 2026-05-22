@@ -191,6 +191,17 @@ export interface DashboardInstallSurfaceArtifact {
     status: 'ready' | 'partial' | 'missing';
 }
 
+export interface DashboardGoHealerHistory {
+    count: number;
+    history: Array<{
+        timestamp: number;
+        error: string;
+        fix: any;
+        success: boolean;
+        attempts: number;
+    }>;
+}
+
 export interface DashboardHomeViewProps {
     generatedAtLabel: string;
     currentTimestamp?: number | null;
@@ -202,6 +213,7 @@ export interface DashboardHomeViewProps {
     providers: DashboardProviderSummary[];
     fallbackChain: DashboardFallbackSummary[];
     sessions: DashboardSessionSummary[];
+    healerHistory?: DashboardGoHealerHistory | null;
     installSurfaceArtifacts?: DashboardInstallSurfaceArtifact[] | null;
     onStartSession?: (sessionId: string) => void;
     onStopSession?: (sessionId: string) => void;
@@ -990,6 +1002,7 @@ export function DashboardHomeView({
     providers,
     fallbackChain,
     sessions,
+    healerHistory,
     installSurfaceArtifacts,
     onStartSession,
     onStopSession,
@@ -1142,8 +1155,18 @@ export function DashboardHomeView({
                                 <dd className="mt-2 text-2xl font-semibold text-white">{isBootstrapping ? '—' : sessions.filter((session) => session.status === 'running').length}</dd>
                             </div>
                             <div className="rounded-2xl border border-slate-800 bg-slate-950/70 p-4">
-                                <dt className="text-sm text-slate-400">Configured providers</dt>
-                                <dd className="mt-2 text-2xl font-semibold text-white">{isBootstrapping ? '—' : providers.filter((provider) => provider.configured).length}</dd>
+                                <div className="flex items-center justify-between">
+                                    <dt className="text-sm text-slate-400">Immune System</dt>
+                                    <Link href="/dashboard/healer" className="text-[10px] text-blue-400 hover:text-blue-300 transition-colors uppercase tracking-wider">
+                                        View
+                                    </Link>
+                                </div>
+                                <dd className="mt-2 flex items-baseline gap-2">
+                                    <span className="text-2xl font-semibold text-white">{isBootstrapping ? '—' : (healerHistory?.count || 0)}</span>
+                                    <span className="text-xs text-emerald-400">
+                                        {isBootstrapping ? '' : `${healerHistory?.history?.filter(h => h.success).length || 0} neutralized`}
+                                    </span>
+                                </dd>
                             </div>
                         </dl>
 

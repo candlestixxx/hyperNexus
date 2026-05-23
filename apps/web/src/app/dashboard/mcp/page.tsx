@@ -525,10 +525,11 @@ function AddServerForm({ onDone }: { onDone: () => void }): React.JSX.Element {
     );
 }
 
-function classifyImportNames(importedNames: string[], existingServerNames: string[]): BulkImportClassification {
+function classifyImportNames(importedNames: string[] | undefined | null, existingServerNames: string[]): BulkImportClassification {
+    const names = Array.isArray(importedNames) ? importedNames : [];
     const existingNames = new Set(existingServerNames.map((name) => name.trim()).filter(Boolean));
 
-    return importedNames.reduce<BulkImportClassification>((result, name) => {
+    return names.reduce<BulkImportClassification>((result, name) => {
         if (existingNames.has(name)) {
             result.updatingNames.push(name);
         } else {

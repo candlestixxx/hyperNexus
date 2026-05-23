@@ -311,6 +311,178 @@ function initializeSchema(database: InstanceType<typeof Database>): void {
             FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
         );
 
+        CREATE TABLE IF NOT EXISTS workflows (
+            id TEXT PRIMARY KEY,
+            name TEXT NOT NULL,
+            description TEXT,
+            nodes_json TEXT NOT NULL DEFAULT '[]',
+            edges_json TEXT NOT NULL DEFAULT '[]',
+            created_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
+            updated_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
+            user_id TEXT,
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+        );
+
+        CREATE TABLE IF NOT EXISTS workspace_secrets (
+            key TEXT PRIMARY KEY,
+            value TEXT NOT NULL,
+            created_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
+            updated_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now'))
+        );
+
+        CREATE TABLE IF NOT EXISTS imported_sessions (
+            uuid TEXT PRIMARY KEY,
+            source_tool TEXT NOT NULL,
+            source_path TEXT NOT NULL,
+            external_session_id TEXT,
+            title TEXT,
+            session_format TEXT NOT NULL DEFAULT 'generic',
+            transcript TEXT NOT NULL,
+            excerpt TEXT,
+            working_directory TEXT,
+            transcript_hash TEXT NOT NULL,
+            transcript_archive_path TEXT,
+            transcript_metadata_archive_path TEXT,
+            transcript_archive_format TEXT,
+            transcript_stored_bytes INTEGER,
+            normalized_session TEXT NOT NULL,
+            metadata TEXT NOT NULL DEFAULT '{}',
+            discovered_at INTEGER NOT NULL,
+            imported_at INTEGER NOT NULL,
+            last_modified_at INTEGER,
+            created_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
+            updated_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now'))
+        );
+
+        CREATE TABLE IF NOT EXISTS imported_session_memories (
+            uuid TEXT PRIMARY KEY,
+            imported_session_uuid TEXT NOT NULL,
+            memory_index INTEGER NOT NULL,
+            kind TEXT NOT NULL DEFAULT 'memory',
+            content TEXT NOT NULL,
+            tags TEXT NOT NULL DEFAULT '[]',
+            source TEXT NOT NULL DEFAULT 'heuristic',
+            metadata TEXT NOT NULL DEFAULT '{}',
+            created_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
+            FOREIGN KEY (imported_session_uuid) REFERENCES imported_sessions(uuid) ON DELETE CASCADE
+        );
+
+        CREATE TABLE IF NOT EXISTS published_mcp_servers (
+            uuid TEXT PRIMARY KEY,
+            canonical_id TEXT NOT NULL UNIQUE,
+            display_name TEXT NOT NULL,
+            description TEXT,
+            author TEXT,
+            repository_url TEXT,
+            homepage_url TEXT,
+            icon_url TEXT,
+            transport TEXT NOT NULL DEFAULT 'unknown',
+            install_method TEXT NOT NULL DEFAULT 'unknown',
+            auth_model TEXT NOT NULL DEFAULT 'unknown',
+            status TEXT NOT NULL DEFAULT 'discovered',
+            confidence INTEGER NOT NULL DEFAULT 0,
+            tags TEXT NOT NULL DEFAULT '[]',
+            categories TEXT NOT NULL DEFAULT '[]',
+            stars INTEGER,
+            last_seen_at INTEGER,
+            last_verified_at INTEGER,
+            created_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
+            updated_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now'))
+        );
+
+        CREATE TABLE IF NOT EXISTS published_mcp_server_sources (
+            uuid TEXT PRIMARY KEY,
+            server_uuid TEXT NOT NULL,
+            source_name TEXT NOT NULL,
+            source_url TEXT,
+            raw_payload TEXT,
+            first_seen_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
+            last_seen_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
+            FOREIGN KEY (server_uuid) REFERENCES published_mcp_servers(uuid) ON DELETE CASCADE
+        );
+
+        CREATE TABLE IF NOT EXISTS published_mcp_config_recipes (
+            uuid TEXT PRIMARY KEY,
+            server_uuid TEXT NOT NULL,
+            recipe_version INTEGER NOT NULL DEFAULT 1,
+            template TEXT NOT NULL,
+            required_secrets TEXT NOT NULL DEFAULT '[]',
+            required_env TEXT NOT NULL DEFAULT '{}',
+            confidence INTEGER NOT NULL DEFAULT 0,
+            explanation TEXT,
+            is_active INTEGER NOT NULL DEFAULT 1,
+            generated_by TEXT NOT NULL DEFAULT 'Configurator',
+            created_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
+            updated_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
+            FOREIGN KEY (server_uuid) REFERENCES published_mcp_servers(uuid) ON DELETE CASCADE
+        );
+
+        CREATE TABLE IF NOT EXISTS published_mcp_validation_runs (
+            uuid TEXT PRIMARY KEY,
+            server_uuid TEXT NOT NULL,
+            run_mode TEXT NOT NULL,
+            started_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
+            finished_at INTEGER,
+            outcome TEXT NOT NULL DEFAULT 'pending',
+            failure_class TEXT,
+            tool_count INTEGER,
+            findings_summary TEXT,
+            performed_by TEXT NOT NULL DEFAULT 'Verifier',
+            created_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
+            FOREIGN KEY (server_uuid) REFERENCES published_mcp_servers(uuid) ON DELETE CASCADE
+        );
+
+        CREATE TABLE IF NOT EXISTS links_backlog (
+            uuid TEXT PRIMARY KEY,
+            url TEXT NOT NULL,
+            normalized_url TEXT NOT NULL UNIQUE,
+            title TEXT,
+            description TEXT,
+            tags TEXT NOT NULL DEFAULT '[]',
+            source TEXT NOT NULL DEFAULT 'manual',
+            is_duplicate INTEGER NOT NULL DEFAULT 0,
+            duplicate_of TEXT,
+            research_status TEXT NOT NULL DEFAULT 'pending',
+            http_status INTEGER,
+            page_title TEXT,
+            page_description TEXT,
+            favicon_url TEXT,
+            researched_at INTEGER,
+            cluster_id TEXT,
+            bobbybookmarks_bookmark_id INTEGER,
+            import_session_id INTEGER,
+            raw_payload TEXT,
+            synced_at INTEGER,
+            created_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
+            updated_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now'))
+        );
+
+        CREATE TABLE IF NOT EXISTS council_debates (
+            id TEXT PRIMARY KEY,
+            title TEXT NOT NULL,
+            session_id TEXT,
+            workspace_id TEXT,
+            task_type TEXT NOT NULL DEFAULT 'general',
+            status TEXT NOT NULL DEFAULT 'completed',
+            consensus REAL NOT NULL DEFAULT 0,
+            weighted_consensus REAL NOT NULL DEFAULT 0,
+            outcome TEXT NOT NULL,
+            rounds INTEGER NOT NULL DEFAULT 1,
+            timestamp INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
+            data TEXT NOT NULL
+        );
+
+        CREATE TABLE IF NOT EXISTS council_workspaces (
+            id TEXT PRIMARY KEY,
+            name TEXT NOT NULL,
+            path TEXT NOT NULL,
+            status TEXT NOT NULL DEFAULT 'active',
+            config TEXT NOT NULL DEFAULT '{}',
+            description TEXT,
+            created_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
+            updated_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now'))
+        );
+
         CREATE INDEX IF NOT EXISTS mcp_servers_name_idx ON mcp_servers(name);
         CREATE INDEX IF NOT EXISTS mcp_servers_user_id_idx ON mcp_servers(user_id);
         CREATE UNIQUE INDEX IF NOT EXISTS mcp_servers_name_user_unique ON mcp_servers(name, user_id);
@@ -362,6 +534,22 @@ function initializeSchema(database: InstanceType<typeof Database>): void {
         CREATE UNIQUE INDEX IF NOT EXISTS tsi_unique_idx ON tool_set_items(tool_set_uuid, tool_uuid);
 
         CREATE UNIQUE INDEX IF NOT EXISTS saved_scripts_name_user_unique_idx ON saved_scripts(name, user_id);
+
+        CREATE INDEX IF NOT EXISTS imported_sessions_transcript_hash_idx ON imported_sessions(transcript_hash);
+        CREATE UNIQUE INDEX IF NOT EXISTS imported_sessions_transcript_hash_unique ON imported_sessions(transcript_hash);
+        CREATE INDEX IF NOT EXISTS imported_session_memories_session_idx ON imported_session_memories(imported_session_uuid);
+        CREATE UNIQUE INDEX IF NOT EXISTS imported_session_memories_session_index_unique ON imported_session_memories(imported_session_uuid, memory_index);
+
+        CREATE INDEX IF NOT EXISTS pms_canonical_id_idx ON published_mcp_servers(canonical_id);
+        CREATE INDEX IF NOT EXISTS pms_status_idx ON published_mcp_servers(status);
+        CREATE INDEX IF NOT EXISTS pms_updated_at_idx ON published_mcp_servers(updated_at);
+        CREATE UNIQUE INDEX IF NOT EXISTS pmss_unique_server_source_idx ON published_mcp_server_sources(server_uuid, source_name);
+        CREATE INDEX IF NOT EXISTS pmcr_active_idx ON published_mcp_config_recipes(server_uuid, is_active);
+        CREATE INDEX IF NOT EXISTS pmvr_outcome_idx ON published_mcp_validation_runs(outcome);
+
+        CREATE INDEX IF NOT EXISTS links_backlog_normalized_url_idx ON links_backlog(normalized_url);
+        CREATE INDEX IF NOT EXISTS links_backlog_research_status_idx ON links_backlog(research_status);
+        CREATE INDEX IF NOT EXISTS links_backlog_synced_at_idx ON links_backlog(synced_at);
     `);
 
     // Dynamic Migrations for existing databases
@@ -371,6 +559,11 @@ function initializeSchema(database: InstanceType<typeof Database>): void {
         if (!hasAlwaysOn) {
             database.exec(`ALTER TABLE mcp_servers ADD COLUMN always_on INTEGER NOT NULL DEFAULT 0;`);
             console.info("[DB Migration] Added 'always_on' column to mcp_servers table.");
+        }
+        const hasSourcePublished = tableInfo.some((col) => col.name === "source_published_server_uuid");
+        if (!hasSourcePublished) {
+            database.exec(`ALTER TABLE mcp_servers ADD COLUMN source_published_server_uuid TEXT;`);
+            console.info("[DB Migration] Added 'source_published_server_uuid' column to mcp_servers table.");
         }
     } catch (err) {
         console.warn("[DB Migration] Failed to alter mcp_servers table:", err);

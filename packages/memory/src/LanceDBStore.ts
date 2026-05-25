@@ -128,7 +128,7 @@ export class LanceDBStore implements IVectorStore {
             let q = table.search(await this.createEmbeddings('query')).limit(limit);
             if (where) q = q.where(where);
             const rows = await q.toArray();
-            return rows.map(r => {
+            return rows.map((r: any) => {
                 const metadata = r.metadata ? JSON.parse(r.metadata) : {};
                 return { ...r, ...metadata };
             });
@@ -141,7 +141,7 @@ export class LanceDBStore implements IVectorStore {
             let q = table.search(await this.createEmbeddings(query)).limit(limit);
             if (where) q = q.where(where);
             const rows = await q.toArray();
-            return rows.map(r => {
+            return rows.map((r: any) => {
                 const metadata = r.metadata ? JSON.parse(r.metadata) : {};
                 return { ...r, ...metadata };
             });

@@ -41,16 +41,27 @@ export class LanceDBStore implements IVectorStore {
 
     async addMemory(content: string, metadata: any) {
         const vector = await this.createEmbeddings(content);
-        const data = [{ vector, text: content, ...metadata, heat_score: metadata.heat_score ?? 50, last_accessed_at: Date.now(), timestamp: Date.now() }];
+        const { id, type, namespace, heat_score, ...rest } = metadata;
+        const data = [{
+            vector,
+            text: content,
+            id: id || `mem-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
+            type: type || 'memory',
+            namespace: namespace || 'project',
+            metadata: JSON.stringify(rest),
+            heat_score: heat_score ?? 50,
+            last_accessed_at: Date.now(),
+            timestamp: Date.now()
+        }];
         try {
-            const table = await this.db.openTable('memories');
+            const table = await this.db.openTable('knowledge_memories');
             await table.add(data);
         } catch (e: any) {
             try {
-                await this.db.createTable('memories', data);
+                await this.db.createTable('knowledge_memories', data);
             } catch (inner: any) {
                 if (String(inner).includes('already exists')) {
-                    const table = await this.db.openTable('memories');
+                    const table = await this.db.openTable('knowledge_memories');
                     await table.add(data);
                 } else {
                     throw inner;
@@ -60,19 +71,29 @@ export class LanceDBStore implements IVectorStore {
     }
 
     async addDocuments(docs: any[]) {
-        const processed = await Promise.all(docs.map(async d => ({
-            ...d, vector: d.vector || await this.createEmbeddings(d.text || d.content),
-            heat_score: d.heat_score ?? 50, last_accessed_at: d.last_accessed_at ?? Date.now(), timestamp: d.timestamp || Date.now()
-        })));
+        const processed = await Promise.all(docs.map(async d => {
+            const { id, type, namespace, heat_score, text, content, vector, ...rest } = d;
+            return {
+                vector: vector || await this.createEmbeddings(text || content),
+                text: text || content,
+                id: id || `doc-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
+                type: type || 'document',
+                namespace: namespace || 'project',
+                metadata: JSON.stringify(rest),
+                heat_score: heat_score ?? 50,
+                last_accessed_at: Date.now(),
+                timestamp: Date.now()
+            };
+        }));
         try {
-            const table = await this.db.openTable('memories');
+            const table = await this.db.openTable('knowledge_memories');
             await table.add(processed);
         } catch (e: any) {
             try {
-                await this.db.createTable('memories', processed);
+                await this.db.createTable('knowledge_memories', processed);
             } catch (inner: any) {
                 if (String(inner).includes('already exists')) {
-                    const table = await this.db.openTable('memories');
+                    const table = await this.db.openTable('knowledge_memories');
                     await table.add(processed);
                 } else {
                     throw inner;
@@ -80,45 +101,65 @@ export class LanceDBStore implements IVectorStore {
             }
         }
     }
+
     async get(id: string) {
         try {
-            const table = await this.db.openTable('memories');
+            const table = await this.db.openTable('knowledge_memories');
             const res = await table.search(await this.createEmbeddings('')).where(`id = '${id}'`).limit(1).toArray();
-            return res.length > 0 ? res[0] : null;
+            if (res.length === 0) return null;
+            const item = res[0];
+            const metadata = item.metadata ? JSON.parse(item.metadata) : {};
+            return { ...item, ...metadata };
         } catch (e) { return null; }
     }
 
     async delete(ids: string[]) {
-        const table = await this.db.openTable('memories');
-        await table.delete(ids.map(id => `id = '${id}'`).join(' OR '));
+        try {
+            const table = await this.db.openTable('knowledge_memories');
+            await table.delete(ids.map(id => `id = '${id}'`).join(' OR '));
+        } catch (e) { /* ignore if table not found */ }
     }
 
-    async reset() { await this.db.dropTable('memories'); }
+    async reset() { try { await this.db.dropTable('knowledge_memories'); } catch (e) {} }
 
     async listDocuments(where?: string, limit: number = 100) {
-        const table = await this.db.openTable('memories');
-        let q = table.search(await this.createEmbeddings('query')).limit(limit);
-        if (where) q = q.where(where);
-        return await q.toArray();
+        try {
+            const table = await this.db.openTable('knowledge_memories');
+            let q = table.search(await this.createEmbeddings('query')).limit(limit);
+            if (where) q = q.where(where);
+            const rows = await q.toArray();
+            return rows.map(r => {
+                const metadata = r.metadata ? JSON.parse(r.metadata) : {};
+                return { ...r, ...metadata };
+            });
+        } catch (e) { return []; }
     }
 
     async search(query: string, limit: number = 5, where?: string) {
-        const table = await this.db.openTable('memories');
-        let q = table.search(await this.createEmbeddings(query)).limit(limit);
-        if (where) q = q.where(where);
-        return await q.toArray();
+        try {
+            const table = await this.db.openTable('knowledge_memories');
+            let q = table.search(await this.createEmbeddings(query)).limit(limit);
+            if (where) q = q.where(where);
+            const rows = await q.toArray();
+            return rows.map(r => {
+                const metadata = r.metadata ? JSON.parse(r.metadata) : {};
+                return { ...r, ...metadata };
+            });
+        } catch (e) { return []; }
     }
 
     async maintenance() {
-        const table = await this.db.openTable('memories');
-        const all = await table.search(await this.createEmbeddings('')).limit(10000).toArray();
-        const now = Date.now();
-        const updates = all.map((item: any) => {
-            const elapsed = now - (item.last_accessed_at || item.timestamp);
-            const decay = Math.pow(0.5, elapsed / this.HEAT_DECAY_HALFLIFE_MS);
-            return { ...item, heat_score: (item.heat_score || 50) * decay };
-        });
-        await this.db.dropTable('memories');
-        await this.db.createTable('memories', updates);
+        try {
+            const table = await this.db.openTable('knowledge_memories');
+            const all = await table.search(await this.createEmbeddings('')).limit(10000).toArray();
+            const now = Date.now();
+            const updates = all.map((item: any) => {
+                const elapsed = now - (item.last_accessed_at || item.timestamp);
+                const decay = Math.pow(0.5, elapsed / this.HEAT_DECAY_HALFLIFE_MS);
+                return { ...item, heat_score: (item.heat_score || 50) * decay };
+            });
+            await this.db.dropTable('knowledge_memories');
+            await this.db.createTable('knowledge_memories', updates);
+        } catch (e) { /* ignore */ }
     }
 }

@@ -1,5 +1,6 @@
 import Database from 'better-sqlite3';
 import path from 'path';
+import fs from 'node:fs';
 import { randomUUID } from 'crypto';
 import { linksBacklogRepository, type UpsertLinkBacklogInput } from '../../db/repositories/links-backlog.repo.js';
 import { normalizeBookmarkUrl } from '../../services/bobby-bookmarks-adapter.js';
@@ -37,6 +38,18 @@ export class BobbyBookmarksSyncWorker {
 
     private async sync(): Promise<void> {
         try {
+            // Ensure parent directory exists to avoid better-sqlite3 TypeError
+            const dbDir = path.dirname(this.dbPath);
+            if (!fs.existsSync(dbDir)) {
+                console.warn(`[hypercodeingest] BobbyBookmarks directory not found at ${dbDir}. Skipping sync.`);
+                return;
+            }
+
+            if (!fs.existsSync(this.dbPath)) {
+                console.warn(`[hypercodeingest] BobbyBookmarks DB not found at ${this.dbPath}. Skipping sync.`);
+                return;
+            }
+
             const db = new Database(this.dbPath, { readonly: true });
             
             // We just need the basic details from the local DB

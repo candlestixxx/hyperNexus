@@ -45,8 +45,17 @@ export class LanceDBStore implements IVectorStore {
         try {
             const table = await this.db.openTable('memories');
             await table.add(data);
-        } catch (e) {
-            await this.db.createTable('memories', data);
+        } catch (e: any) {
+            try {
+                await this.db.createTable('memories', data);
+            } catch (inner: any) {
+                if (String(inner).includes('already exists')) {
+                    const table = await this.db.openTable('memories');
+                    await table.add(data);
+                } else {
+                    throw inner;
+                }
+            }
         }
     }
 
@@ -58,11 +67,19 @@ export class LanceDBStore implements IVectorStore {
         try {
             const table = await this.db.openTable('memories');
             await table.add(processed);
-        } catch (e) {
-            await this.db.createTable('memories', processed);
+        } catch (e: any) {
+            try {
+                await this.db.createTable('memories', processed);
+            } catch (inner: any) {
+                if (String(inner).includes('already exists')) {
+                    const table = await this.db.openTable('memories');
+                    await table.add(processed);
+                } else {
+                    throw inner;
+                }
+            }
         }
     }
-
     async get(id: string) {
         try {
             const table = await this.db.openTable('memories');

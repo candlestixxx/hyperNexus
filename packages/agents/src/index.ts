@@ -126,7 +126,10 @@ export const SwarmRole = {
 } as const;
 
 export const a2aBroker = {
-  routeMessage: async (msg: any) => { console.warn('[A2ABroker:Stub] routeMessage (ignored):', msg); },
+  routeMessage: async (msg: any) => { 
+    if (msg?.type?.toLowerCase() === 'heartbeat') return;
+    console.warn('[A2ABroker:Stub] routeMessage (ignored):', msg); 
+  },
   on: (_event: string, _cb: Function) => {},
   listAgents: () => [] as any[],
   getHistory: () => [] as any[],

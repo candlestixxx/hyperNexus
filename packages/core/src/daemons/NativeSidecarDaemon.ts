@@ -9,7 +9,7 @@ export class NativeSidecarDaemon {
 
     constructor(
         private readonly eventBus: EventBus,
-        private readonly sidecarUrl: string = process.env.HYPERCODE_SIDECAR_URL || 'http://localhost:4300'
+        private readonly sidecarUrl: string = process.env.HYPERCODE_SIDECAR_URL || 'http://127.0.0.1:4300'
     ) {}
 
     async start() {

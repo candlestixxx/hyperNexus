@@ -227,6 +227,7 @@ type MCPServerOptions = {
     skipAutoDrive?: boolean;
     skipMesh?: boolean;
     skipStdio?: boolean;
+    skipRepoGraph?: boolean;
     inputTools?: InputTools;
     systemStatusTool?: SystemStatusTool;
     processRegistry?: ProcessRegistry;
@@ -2524,7 +2525,7 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
      * These are used to "warm up" the model's tool surface without a search turn.
      */
     public async getPredictedToolAds(chatHistory: string, activeGoal: string): Promise<string[]> {
-        const SIDECAR_URL = process.env.HYPERCODE_SIDECAR_URL || 'http://localhost:4300';
+        const SIDECAR_URL = process.env.HYPERCODE_SIDECAR_URL || 'http://127.0.0.1:4300';
         try {
             const response = await fetch(`${SIDECAR_URL}/api/mcp/tools/predict`, {
                 method: 'POST',
@@ -3730,8 +3731,12 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
         this.linkCrawlerWorker.start();
         this.nativeSidecarDaemon.start().catch(e => console.error("[MCPServer] Native sidecar daemon failed to start:", e));
 
-        // Build Graph in Background
-        this.autoTestService.repoGraph.buildGraph().catch(e => console.error("Graph build failed", e));
+        // Build Graph in Background (unless skipped)
+        if (!this.options.skipRepoGraph) {
+            this.autoTestService.repoGraph.buildGraph().catch(e => console.error("Graph build failed", e));
+        } else {
+            console.error("[MCPServer] Skipping RepoGraph build (minimal mode).");
+        }
 
         mcpServerDebugLog('[MCPServer] 🚀 Hypercode Core ready.');
         mcpServerDebugLog('[MCPServer] Preparing request handlers...');

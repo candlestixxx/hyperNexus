@@ -35,8 +35,14 @@ export class RepoGraphService {
         this.consumers.clear();
         this.dependencies.clear();
 
+        let count = 0;
         for (const file of files) {
             await this.analyzeFile(file);
+            count++;
+            if (count % 50 === 0) {
+                // Yield to event loop to keep server responsive
+                await new Promise(resolve => setImmediate(resolve));
+            }
         }
 
         this.isInitialized = true;

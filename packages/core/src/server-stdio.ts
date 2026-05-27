@@ -1,18 +1,23 @@
 
+// MCP stdio requires stdout to remain pristine JSON-RPC output only.
+// This must happen BEFORE any other imports to prevent protocol corruption.
 function redirectProtocolUnsafeConsoleMethods(): void {
     const stderr = console.error.bind(console);
-
     console.log = stderr;
     console.info = stderr;
+    console.warn = stderr;
     console.debug = stderr;
     console.trace = stderr;
+    console.time = ((label?: string) => { /* no-op */ }) as typeof console.time;
+    console.timeEnd = ((label?: string) => { /* no-op */ }) as typeof console.timeEnd;
     console.dir = ((...args: unknown[]) => stderr(...args)) as typeof console.dir;
 }
+redirectProtocolUnsafeConsoleMethods();
+
+import './debug_marker.js';
+import { MCPServer } from './MCPServer.js';
 
 async function main() {
-    // MCP stdio requires stdout to remain pristine JSON-RPC output only.
-    redirectProtocolUnsafeConsoleMethods();
-
     process.on('unhandledRejection', (reason) => {
         console.error('[Hypercode Core] Unhandled promise rejection:', reason);
     });
@@ -23,20 +28,7 @@ async function main() {
     });
 
     try {
-        const { ensureBackgroundCoreRunning } = await import('./backgroundCoreBootstrap.js');
-        void ensureBackgroundCoreRunning({
-            waitForReady: false,
-            log: (message, ...optionalParams) => console.error(message, ...optionalParams),
-        }).then((result) => {
-            if (result.status === 'spawned') {
-                console.error(`[Hypercode Core] Background control-plane bootstrap requested (PID: ${result.pid ?? 'unknown'}).`);
-            }
-        }).catch((error) => {
-            console.error('[Hypercode Core] Background control-plane bootstrap failed:', error);
-        });
-
-        const { MCPServer } = await import('./MCPServer.js');
-        const mcp = new MCPServer({ skipWebsocket: true });
+        const mcp = new MCPServer({ skipWebsocket: true, skipRepoGraph: true });
         await mcp.start();
         console.error("[Hypercode Core] MCP Server Stdio Entry Point Started.");
     } catch (err) {

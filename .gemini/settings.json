@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "hypercode": {
+      "command": "node",
+      "args": [
+        "C:\\Users\\jakeg\\workspace\\hypercode\\packages\\core\\dist\\server-stdio.js"
+      ]
+    }
+  }
+}

@@ -36,7 +36,7 @@ export class Router {
     private toolCache: Map<string, string> = new Map();
 
     constructor(private config: RouterConfig = {}) {
-        console.log("Router initialized");
+        // console.log("Router initialized");
     }
 
     /**
@@ -70,19 +70,6 @@ export class Router {
             metamcpLogStore.addLog(name, 'error', 'stderr error', error);
         });
 
-        transport.stdout?.on('data', (chunk: Buffer) => {
-            const message = chunk.toString().trim();
-            if (!message) {
-                return;
-            }
-
-            metamcpLogStore.addLog(name, 'info', message);
-        });
-
-        transport.stdout?.on('error', (error: Error) => {
-            metamcpLogStore.addLog(name, 'error', 'stdout error', error);
-        });
-
         const client = new Client(
             {
                 name: "hypercode-router",
@@ -95,7 +82,7 @@ export class Router {
 
         await client.connect(transport);
         this.clients.set(name, client);
-        console.log(`Connected to MCP Server: ${name}`);
+        // console.log(`Connected to MCP Server: ${name}`);
         return client;
     }
 

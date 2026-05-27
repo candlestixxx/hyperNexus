@@ -20,7 +20,10 @@ export function registerScriptsCommand(program: Command): void {
       let scriptList: any[] = [];
       try {
         const res = await fetch(`${GO_URL}/api/scripts`, { signal: AbortSignal.timeout(5000) });
-        if (res.ok) scriptList = (await res.json()).data ?? [];
+        if (res.ok) {
+          const json = await res.json();
+          scriptList = Array.isArray(json) ? json : (json.data ?? []);
+        }
       } catch {}
 
       if (opts.json) {
@@ -55,10 +58,9 @@ export function registerScriptsCommand(program: Command): void {
         const res = await fetch(`${GO_URL}/api/scripts/create`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, description: opts.description, language: opts.language, content: opts.content ?? '' }),
+          body: JSON.stringify({ name, description: opts.description, language: opts.language, code: opts.content ?? '' }),
           signal: AbortSignal.timeout(5000),
-        });
-        if (res.ok) {
+        });        if (res.ok) {
           console.log(chalk.green(`  ✓ Script '${name}' created`));
         } else {
           console.log(chalk.yellow(`  ⚠ Create returned ${res.status}`));

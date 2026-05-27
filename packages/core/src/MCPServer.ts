@@ -228,6 +228,7 @@ type MCPServerOptions = {
     skipMesh?: boolean;
     skipStdio?: boolean;
     skipRepoGraph?: boolean;
+    minimal?: boolean;
     inputTools?: InputTools;
     systemStatusTool?: SystemStatusTool;
     processRegistry?: ProcessRegistry;
@@ -3723,21 +3724,24 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
         // Register this workspace globally
         workspaceTracker.registerWorkspace(process.cwd());
 
-        // Trigger automatic session discovery/import in the background
-        this.sessionImportService.startAutoImport();
-        
-        // Start hyperingest background workers
-        this.bobbyBookmarksSyncWorker.start();
-        this.linkCrawlerWorker.start();
-        this.nativeSidecarDaemon.start().catch(e => console.error("[MCPServer] Native sidecar daemon failed to start:", e));
+        if (!this.options.minimal) {
+            // Trigger automatic session discovery/import in the background
+            this.sessionImportService.startAutoImport();
+
+            // Start hyperingest background workers
+            this.bobbyBookmarksSyncWorker.start();
+            this.linkCrawlerWorker.start();
+            this.nativeSidecarDaemon.start().catch(e => console.error("[MCPServer] Native sidecar daemon failed to start:", e));
+        } else {
+            console.error("[MCPServer] Minimal mode active; skipping background ingestion and sidecar bridges.");
+        }
 
         // Build Graph in Background (unless skipped)
-        if (!this.options.skipRepoGraph) {
+        if (!this.options.skipRepoGraph && !this.options.minimal) {
             this.autoTestService.repoGraph.buildGraph().catch(e => console.error("Graph build failed", e));
         } else {
             console.error("[MCPServer] Skipping RepoGraph build (minimal mode).");
         }
-
         mcpServerDebugLog('[MCPServer] 🚀 Hypercode Core ready.');
         mcpServerDebugLog('[MCPServer] Preparing request handlers...');
 

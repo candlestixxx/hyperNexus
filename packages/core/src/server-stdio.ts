@@ -28,7 +28,7 @@ async function main() {
     });
 
     try {
-        const mcp = new MCPServer({ skipWebsocket: true, skipRepoGraph: true });
+        const mcp = new MCPServer({ skipWebsocket: true, skipRepoGraph: true, minimal: true });
         await mcp.start();
         console.error("[Hypercode Core] MCP Server Stdio Entry Point Started.");
     } catch (err) {

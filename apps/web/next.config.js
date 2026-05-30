@@ -20,9 +20,9 @@ const nextConfig = {
 	transpilePackages: ["@hypercode/ui"],
 
 	// Turbopack config (Next.js 16 default)
-	turbopack: {
+	/* turbopack: {
 		root: require("path").resolve(__dirname, "..", ".."),
-	},
+	}, */
 
 	// Silence type errors during build
 	typescript: {

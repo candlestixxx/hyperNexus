@@ -63,7 +63,7 @@ if (existsSync(lockPath)) {
 
 writePortMarker();
 
-const child = spawn(process.execPath, [nextBin, 'dev', '--port', port], {
+const child = spawn(process.execPath, [nextBin, 'dev', '--port', port, '--webpack'], {
     stdio: 'inherit',
     cwd: webDir,
     env: { ...process.env, NEXT_PRIVATE_DISABLE_TURBOPACK_CACHE: process.env.NEXT_PRIVATE_DISABLE_TURBOPACK_CACHE ?? '1' },

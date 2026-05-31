@@ -14934,7 +14934,7 @@ func (s *Server) localCallMCPMetaTool(r *http.Request, payload map[string]any) (
 				"content": []map[string]any{
 					{
 						"type": "text",
-						"text": prettyJSON(results),
+						"text": prettyJSON(map[string]any{"tools": results}),
 					},
 				},
 			},

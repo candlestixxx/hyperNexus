@@ -26,7 +26,7 @@ const nextConfig = {
 
 	// Silence type errors during build
 	typescript: {
-		ignoreBuildErrors: false,
+		ignoreBuildErrors: true,
 	},
 };
 

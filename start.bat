@@ -83,7 +83,7 @@ if exist bin\hypercode.exe (
 
 REM Start Next.js dashboard in background
 set DASH_PORT=%HYPERCODE_DASH_PORT%
-if "%DASH_PORT%"=="" set DASH_PORT=3000
+if "%DASH_PORT%"=="" set DASH_PORT=8888
 REM Fix Turbopack LevelDB deadlock on Windows
 set NEXT_PRIVATE_DISABLE_TURBOPACK_CACHE=1
 curl -s -o nul -w "%%{http_code}" http://127.0.0.1:%DASH_PORT%/dashboard > "%TEMP%\hypercode_web_check.txt" 2>nul

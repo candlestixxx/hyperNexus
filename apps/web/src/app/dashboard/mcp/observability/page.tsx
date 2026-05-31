@@ -34,7 +34,7 @@ export default function ObservabilityDashboard() {
         <div className="p-8 space-y-8">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">Observability</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">MetaMCP Observability Dashboard</h1>
                     <p className="text-zinc-500">
                         Metrics and analytics for MCP tool usage
                     </p>

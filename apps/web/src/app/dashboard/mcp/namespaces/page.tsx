@@ -15,7 +15,7 @@ export default function NamespacesDashboard() {
         <div className="p-8 space-y-8">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">Namespaces</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">MetaMCP Resource Namespaces</h1>
                     <p className="text-zinc-500">
                         Isolate and organize MCP servers into logical groups
                     </p>

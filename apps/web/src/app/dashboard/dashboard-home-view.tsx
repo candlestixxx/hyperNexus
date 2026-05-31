@@ -1050,7 +1050,7 @@ export function DashboardHomeView({
                                 Hypercode 1.0 control plane
                             </span>
                             <div className="space-y-2">
-                                <h1 className="text-3xl font-semibold tracking-tight text-white">Operator dashboard</h1>
+                                <h1 className="text-3xl font-semibold tracking-tight text-white">Main Mission Control</h1>
                                 <p className="max-w-3xl text-sm text-slate-300">
                                     One page to see whether the MCP router is alive, which providers can take traffic, and what your supervised CLI sessions are doing.
                                 </p>

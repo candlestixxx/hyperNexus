@@ -197,7 +197,7 @@ export default function AIToolsDashboard() {
         <div className="p-8 space-y-8 h-full overflow-y-auto">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">AI Tools</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">AI Provider Credentials Status</h1>
                     <p className="text-zinc-500">Unified operational view of CLI harness detection, provider connectivity, tool inventory, and MCP readiness.</p>
                 </div>
                 <div className="flex flex-wrap items-center gap-2">

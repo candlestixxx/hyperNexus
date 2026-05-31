@@ -77,7 +77,7 @@ export default function CommandDashboard() {
             <div>
                 <h1 className="text-3xl font-bold tracking-tight text-white flex items-center gap-3">
                     <Terminal className="h-8 w-8 text-emerald-500" />
-                    Command Center
+                    Control Console REPL
                 </h1>
                 <p className="text-zinc-500 mt-2">
                     Execute slash commands and inspect available command handlers registered with Hypercode Core.

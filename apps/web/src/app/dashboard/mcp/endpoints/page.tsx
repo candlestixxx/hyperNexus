@@ -16,7 +16,7 @@ export default function EndpointsDashboard() {
         <div className="p-8 space-y-8">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">Endpoints</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">MetaMCP API Endpoints</h1>
                     <p className="text-zinc-500">
                         Expose namespaces as public or private API endpoints
                     </p>

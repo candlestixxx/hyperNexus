@@ -302,7 +302,7 @@ export default function MemoryDashboard() {
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight text-white flex items-center gap-3">
                         <Brain className="h-8 w-8 text-pink-500" />
-                        Hypercode Memory Control
+                        L1/L2/L3 Memory Vault
                     </h1>
                     <p className="text-zinc-500 mt-2">
                         Search and inspect Hypercode-native facts, observations, prompts, session summaries, and adapter exports from one control surface.

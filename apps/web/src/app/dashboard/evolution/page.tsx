@@ -67,7 +67,7 @@ export default function EvolutionPage() {
         <div className="p-6 space-y-6">
             <header className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">Evolution Engine</h1>
+                    <h1 className="text-3xl font-bold tracking-tight">Prompt Mutation Engine</h1>
                     <p className="text-muted-foreground">The Darwin Protocol: Mutation and Natural Selection of Agents.</p>
                 </div>
                 <Button variant="outline" onClick={() => refetch()}><RefreshCcw className="w-4 h-4 mr-2" /> Refresh</Button>

@@ -95,7 +95,7 @@ export default function SecurityPage() {
         <div className="p-6 space-y-6">
             <header className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">Security & Governance</h1>
+                    <h1 className="text-3xl font-bold tracking-tight">Autonomy & Security Governance</h1>
                     <p className="text-muted-foreground">Manage permissions, policies, and view audit logs.</p>
                 </div>
                 <div className="flex items-center gap-4">

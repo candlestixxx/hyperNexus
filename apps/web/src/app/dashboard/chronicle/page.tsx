@@ -84,7 +84,7 @@ export default function ChronicleDashboard() {
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight text-white flex items-center gap-3">
                         <ScrollText className="h-8 w-8 text-violet-500" />
-                        Chronicle
+                        Workspace Git History
                     </h1>
                     <p className="text-zinc-500 mt-2">
                         Git commit log and working-tree status for the active Hypercode workspace.

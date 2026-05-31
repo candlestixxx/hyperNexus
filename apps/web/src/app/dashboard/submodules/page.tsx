@@ -35,7 +35,7 @@ export default function SubmodulesPage() {
         <div className="p-8 space-y-8 max-w-7xl mx-auto">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">System Knowledge & Modules</h1>
+                    <h1 className="text-3xl font-bold tracking-tight">Git Submodule Manager</h1>
                     <p className="text-muted-foreground mt-1">Manage git submodules, project structure, and external resources.</p>
                 </div>
                 <HealButton />

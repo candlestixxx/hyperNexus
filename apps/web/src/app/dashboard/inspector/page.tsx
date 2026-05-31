@@ -15,7 +15,7 @@ export default function InspectorPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-2xl font-bold text-white">Traffic Inspector</h1>
+                    <h1 className="text-2xl font-bold text-white">MCP Packet Capture Inspector</h1>
                     <p className="text-zinc-500">Real-time packet capture of MCP tool events</p>
                 </div>
                 <Link

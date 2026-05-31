@@ -111,7 +111,7 @@ export default function MetaMCPPage() {
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="text-2xl font-bold text-white">
-                        MetaMCP Management
+                        MetaMCP Remote Server Pool
                     </h1>
                     <p className="mt-1 text-sm text-gray-400">
                         Manage MCP servers via the MetaMCP backend at port 12009

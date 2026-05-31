@@ -15,7 +15,7 @@ export default function PoliciesDashboard() {
         <div className="p-8 space-y-8">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">Access Policies</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">MetaMCP Tool Access Policies</h1>
                     <p className="text-zinc-500">
                         Define Allow/Deny rules for MCP tools and resources
                     </p>

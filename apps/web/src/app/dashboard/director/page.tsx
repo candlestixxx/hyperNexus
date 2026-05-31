@@ -25,7 +25,7 @@ export default function DirectorPage() {
                 <div>
                     <div className="flex items-center gap-3">
                         <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
-                            The Director's Office
+                            Director Agent Strategy Room
                         </h1>
                         <Badge variant="outline" className="border-amber-500/30 text-amber-500 bg-amber-500/10">Labs</Badge>
                     </div>

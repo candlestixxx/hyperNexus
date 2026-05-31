@@ -15,7 +15,7 @@ export default function AuditDashboard() {
         <div className="p-8 space-y-8 h-full flex flex-col">
             <div className="flex justify-between items-center shrink-0">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">System Audit</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">MetaMCP System Audit Trail</h1>
                     <p className="text-zinc-500">
                         Immutable record of system actions and security events
                     </p>

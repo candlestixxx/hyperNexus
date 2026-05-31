@@ -37,7 +37,7 @@ export default function PlansDashboard() {
         <div className="container mx-auto p-6 space-y-6">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">Plan & Build</h1>
+                    <h1 className="text-3xl font-bold tracking-tight">Staged Changes Sandbox</h1>
                     <p className="text-muted-foreground">Detailed diff sandbox and checkpoint management.</p>
                 </div>
                 <div className="flex items-center gap-4">

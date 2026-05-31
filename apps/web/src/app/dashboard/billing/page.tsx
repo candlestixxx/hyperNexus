@@ -163,7 +163,7 @@ export default function ProviderAuthBillingMatrix() {
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight text-white flex items-center gap-3">
                         <Database className="h-8 w-8 text-emerald-500" />
-                        Provider Auth & Billing Matrix
+                        API Keys, Routing & Billing
                     </h1>
                     <p className="text-zinc-500 mt-2">
                         Comprehensive overview of AI model quotas, pricing, and system authentication keys.

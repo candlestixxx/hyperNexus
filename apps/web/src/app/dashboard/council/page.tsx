@@ -61,7 +61,7 @@ export default function CouncilPage() {
                     <div>
                         <div className="flex items-center gap-3">
                             <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-                                The Council
+                                Consensus Debate Council
                             </h1>
                             <Badge variant="outline" className="border-purple-500/30 text-purple-400 bg-purple-500/10">Labs</Badge>
                         </div>

@@ -346,7 +346,7 @@ function InspectorDashboardContent() {
         <div className="p-8 space-y-8 h-full flex flex-col">
             <div className="flex justify-between items-center shrink-0">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">Inspector</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">MetaMCP Call & Trace Inspector</h1>
                     <p className="text-zinc-500">
                         Inspect tools, manage the session working set, and watch live router traffic with less guesswork and more receipts
                     </p>

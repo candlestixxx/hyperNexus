@@ -940,7 +940,7 @@ export default function MCPDashboard(): React.JSX.Element {
         <div className="p-4 sm:p-6 xl:p-8 space-y-8">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">MCP Router Control Plane</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">MetaMCP Aggregator Hub</h1>
                     <p className="text-zinc-500 mt-2 max-w-3xl">
                         Hypercode should read like the ultimate MCP aggregator/router first: one operator surface, many downstream servers, semantic search and grouping, lifecycle control, traffic visibility, and client config sync.
                     </p>

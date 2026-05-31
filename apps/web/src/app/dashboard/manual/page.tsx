@@ -41,7 +41,7 @@ export default function ManualPage() {
             <div className="flex flex-col gap-2">
                 <h1 className="text-4xl font-bold tracking-tight text-white flex items-center gap-3">
                     <Book className="w-8 h-8 text-blue-400" />
-                    Hypercode User Manual
+                    User Guide & Runbooks
                 </h1>
                 <p className="text-xl text-muted-foreground">
                     Comprehensive guide to the Neural Operating System {versionLabel}.

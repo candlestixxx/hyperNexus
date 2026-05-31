@@ -41,7 +41,7 @@ export default function EventsPage() {
         <div className="container mx-auto p-6 space-y-6">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">System Nervous System</h1>
+                    <h1 className="text-3xl font-bold tracking-tight">System Event Stream</h1>
                     <p className="text-muted-foreground">Real-time event stream from sensors and reactors.</p>
                 </div>
                 <div className="flex gap-3 items-center">

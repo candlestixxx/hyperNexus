@@ -35,7 +35,7 @@ export default function SettingsDashboard() {
         <div className="p-6 space-y-6 h-full flex flex-col">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-yellow-400">System Settings</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-yellow-400">Raw Configuration Editor</h1>
                     <p className="text-muted-foreground">Manage core configuration (.hypercode/config.json)</p>
                 </div>
                 <Button

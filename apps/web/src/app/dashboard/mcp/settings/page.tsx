@@ -34,7 +34,7 @@ export default function MCPSettings() {
         <div className="p-8 space-y-8">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">Global Configuration</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">MetaMCP Router JSON Settings</h1>
                     <p className="text-zinc-500">
                         System-wide settings and feature flags
                     </p>

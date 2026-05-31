@@ -22,7 +22,7 @@ export default function MetricsPage() {
     return (
         <div className="p-6 space-y-6">
             <div className="flex flex-col gap-2">
-                <h1 className="text-3xl font-bold tracking-tight">📊 Metrics</h1>
+                <h1 className="text-3xl font-bold tracking-tight">Performance Analytics</h1>
                 <p className="text-muted-foreground">
                     System performance telemetry and resource monitoring.
                 </p>

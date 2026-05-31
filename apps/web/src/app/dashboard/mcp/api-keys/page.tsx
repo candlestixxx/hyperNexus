@@ -15,7 +15,7 @@ export default function ApiKeysDashboard() {
         <div className="p-8 space-y-8">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">API Keys</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">MetaMCP Client API Keys</h1>
                     <p className="text-zinc-500">
                         Manage authentication keys for accessing managed endpoints
                     </p>

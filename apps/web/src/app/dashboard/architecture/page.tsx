@@ -8,7 +8,7 @@ export default function ArchitecturePage() {
 
     return (
         <div className="p-6">
-            <h1 className="text-2xl font-bold mb-6">Project Architecture & Submodules</h1>
+            <h1 className="text-2xl font-bold mb-6">Monorepo Component Topology</h1>
 
             <div className="space-y-6">
                 {/* Project Structure */}

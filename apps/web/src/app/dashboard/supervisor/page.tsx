@@ -43,7 +43,7 @@ export default function SupervisorPage() {
     return (
         <div className="p-6 space-y-6 h-full flex flex-col">
             <div className="flex flex-col gap-2">
-                <h1 className="text-3xl font-bold tracking-tight">👮 Supervisor</h1>
+                <h1 className="text-3xl font-bold tracking-tight">Hierarchical Goal Planner</h1>
                 <p className="text-muted-foreground">
                     Hierarchical task delegation and sub-agent orchestration.
                 </p>

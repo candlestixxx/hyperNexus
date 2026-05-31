@@ -122,7 +122,7 @@ export default function LibraryDashboard() {
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight text-white flex items-center gap-3">
                         <Library className="h-8 w-8 text-amber-500" />
-                        Resource Library
+                        Asset & Reference Library
                     </h1>
                     <p className="text-zinc-500 mt-2 max-w-2xl">
                         Central hub for scripts, skills, tool sets, memory, plans, and documentation — all the reusable resources that power Hypercode workflows.

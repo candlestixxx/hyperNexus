@@ -17,7 +17,7 @@ export default function ScriptsDashboard() {
         <div className="p-8 space-y-8">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">Saved Scripts</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">Saved Automation Scripts</h1>
                     <p className="text-zinc-500">
                         Manage and execute reusable automation scripts
                     </p>

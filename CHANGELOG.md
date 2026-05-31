@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.0-alpha.63] - 2026-05-31
+
+### Changed
+- **Dashboard Accuracy Renaming Sweep**: Renamed and clarified all 54 dashboard navigation links and page header elements to match their precise backend functionalities and system components, aligning the UI with the truth of the system architecture.
+
 ## [1.0.0-alpha.62] - 2026-05-17
 
 ### Added

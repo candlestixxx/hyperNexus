@@ -31,7 +31,7 @@ export default function CodeDashboard() {
         <div className="p-6 space-y-6 h-full flex flex-col">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-blue-400">Code Intelligence</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-blue-400">LSP Code Symbol Navigator</h1>
                     <p className="text-muted-foreground">LSP Symbol Navigation & Search</p>
                 </div>
                 <Button

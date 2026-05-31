@@ -19,7 +19,7 @@ export default function CatalogDashboard() {
         <div className="p-8 space-y-8">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">Tool Catalog</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">MetaMCP Indexed Tool Catalog</h1>
                     <p className="text-zinc-500">
                         Searchable index of all capabilities available to the system
                     </p>

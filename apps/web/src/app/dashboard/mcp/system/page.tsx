@@ -56,7 +56,7 @@ export default function SystemStatusDashboard() {
         <div className="p-8 space-y-8 h-full overflow-y-auto">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">System Status</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">MetaMCP Gateway Health</h1>
                     <p className="text-zinc-500">
                         Infrastructure health and resource usage
                     </p>

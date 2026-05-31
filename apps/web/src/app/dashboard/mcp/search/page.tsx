@@ -683,7 +683,7 @@ function SearchDashboard() {
         <div className="p-8 space-y-8 h-full flex flex-col">
             <div className="flex justify-between items-center shrink-0">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">Semantic Search</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">MetaMCP Semantic Vector Search</h1>
                     <p className="text-zinc-500">
                         Search, load, and triage tools without dumping the entire catalog into the model’s face
                     </p>

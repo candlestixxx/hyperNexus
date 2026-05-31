@@ -1,4 +1,3 @@
-
 # Gemini Instructions
 
 > **CRITICAL**: Read `docs/UNIVERSAL_LLM_INSTRUCTIONS.md` first. It contains the mandatory rules for all AI agents working on hypercode.
@@ -44,5 +43,3 @@ cd .. && pnpm -C packages/core exec tsc --noEmit
 - If you notice UI inconsistencies, flag them for Claude
 
 *Keep this file scoped strictly to Gemini-specific heuristics. Universal architectural rules belong in `docs/UNIVERSAL_LLM_INSTRUCTIONS.md`.*
-
-

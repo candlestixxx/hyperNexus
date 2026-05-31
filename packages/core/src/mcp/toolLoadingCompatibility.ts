@@ -22,7 +22,7 @@ export async function executeSearchToolsCompatibility<T>(
     const query = typeof args.query === 'string' ? args.query : '';
     const limit = typeof args.limit === 'number' ? args.limit : 10;
     const results = await searchTools(query, limit);
-    return createTextResult(JSON.stringify(results, null, 2));
+    return createTextResult(JSON.stringify({ tools: results }, null, 2));
 }
 
 export async function executeLoadToolCompatibility(

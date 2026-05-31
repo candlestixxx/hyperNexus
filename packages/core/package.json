@@ -29,6 +29,8 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@hono/node-server": "^1.19.11",
+    "@hono/zod-validator": "^0.7.2",
     "@hypercode/adk": "workspace:*",
     "@hypercode/agents": "workspace:*",
     "@hypercode/ai": "workspace:*",
@@ -37,8 +39,6 @@
     "@hypercode/search": "workspace:*",
     "@hypercode/tools": "workspace:*",
     "@hypercode/types": "workspace:*",
-    "@hono/node-server": "^1.19.11",
-    "@hono/zod-validator": "^0.7.2",
     "@hyperswarm/secret-stream": "^6.9.1",
     "@lancedb/lancedb": "^0.23.0",
     "@modelcontextprotocol/sdk": "^1.27.1",
@@ -56,7 +56,7 @@
     "adm-zip": "^0.5.17",
     "apache-arrow": "^21.1.0",
     "b4a": "^1.7.3",
-    "better-sqlite3": "^12.6.2",
+    "better-sqlite3": "^12.10.0",
     "chokidar": "^4.0.3",
     "commander": "^14.0.3",
     "cors": "^2.8.5",

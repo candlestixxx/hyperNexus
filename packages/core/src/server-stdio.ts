@@ -1,19 +1,5 @@
 
-// MCP stdio requires stdout to remain pristine JSON-RPC output only.
-// This must happen BEFORE any other imports to prevent protocol corruption.
-function redirectProtocolUnsafeConsoleMethods(): void {
-    const stderr = console.error.bind(console);
-    console.log = stderr;
-    console.info = stderr;
-    console.warn = stderr;
-    console.debug = stderr;
-    console.trace = stderr;
-    console.time = ((label?: string) => { /* no-op */ }) as typeof console.time;
-    console.timeEnd = ((label?: string) => { /* no-op */ }) as typeof console.timeEnd;
-    console.dir = ((...args: unknown[]) => stderr(...args)) as typeof console.dir;
-}
-redirectProtocolUnsafeConsoleMethods();
-
+import './redirect.js';
 import './debug_marker.js';
 import { MCPServer } from './MCPServer.js';
 

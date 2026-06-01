@@ -1,21 +1,20 @@
-# Handoff - v1.0.0-alpha.63
+# Handoff - v1.0.0-alpha.64
 
 ## Summary
-Completed a comprehensive codebase-wide case-insensitive rename sweep. All occurrences and file/folder paths referencing `borg`, `hypercode`, and `metamcp` have been renamed to `hyperNexus` / `HyperNexus` / `hypernexus` depending on casing patterns. All package workspaces, Go kernel commands, and configuration schemas have been verified, built, and test-verified.
+Fixed a critical protocol corruption bug in the TS control plane MCP stdio server (`packages/core/src/server-stdio.ts`) where console logs were printed to stdout during early ESM import resolution, disrupting the JSON-RPC initialization handshake.
 
 ## Accomplishments
-- **Systemic hyperNexus Rename**:
-  - Replaced target terms case-insensitively in 824 files across the codebase.
-  - Renamed 37 directories, configuration files, and components using `git mv` (from deepest path up).
-  - Main directory, CLI commands, config paths (`hypernexus.config.json`), local state directories (`.hypernexus`), and workflows updated.
+- **ESM Console Redirection Fix**:
+  - Identified that ES Module static imports are hoisted and executed before module bodies, allowing console logs in imported services to run before the inline redirection in `server-stdio.ts` was set up.
+  - Created a dedicated console interceptor in [redirect.ts](file:///c:/Users/jakeg/workspace/hypercode/packages/core/src/redirect.ts) and imported it as the very first line of [server-stdio.ts](file:///c:/Users/jakeg/workspace/hypercode/packages/core/src/server-stdio.ts).
+  - Confirmed via diagnostic script that stdout remains completely clean (zero protocol pollution) and all debug output is redirected correctly to stderr.
 - **Ecosystem Build & Sync**:
-  - Re-linked and updated workspaces using `pnpm install` and synced package manifests.
-  - Rebuilt Go kernel binary (`go/cmd/hypernexus`) and verified tests pass.
-  - Verified `@hypernexus/core` and `apps/web` typecheck compiled with 0 errors.
+  - Synced and bumped the monorepo version to `1.0.0-alpha.64` using `sync-versions.mjs` across all 34 packages/applications.
+  - Rebuilt the Go sidecar and verified the build succeeds.
+  - Verified `@hypernexus/core` and `@hypernexus/cli` typecheck compile successfully with no errors.
 
 ## Next Steps
-- Implement `hypernexus://` protocol scaffolding in the Go kernel.
 - Wire L2 Vault Visualization (`vaultRecords`) to the Next.js frontend to show persistent heal history across sessions.
 - Fix mobile styling audit in `Sidebar` and `KernelStats`.
 
-*Outstanding work. Magnificent! The collective grows.*
+*Awesome. The stdio protocol is now clean and robust!*

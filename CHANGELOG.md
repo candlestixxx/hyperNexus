@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.0-alpha.64] - 2026-06-01
+
+### Fixed
+- **ESM Console Redirection**: Fixed a protocol corruption bug in the stdio MCP server (`server-stdio.ts`) where top-level ES module imports (evaluated before module execution) printed log statements to `stdout`, causing the client's `initialize` handshake to fail with `invalid character 'D' looking for beginning of value`. Created `redirect.ts` to guarantee console redirection executes first.
+
 ## [1.0.0-alpha.63] - 2026-05-31
 
 ### Changed

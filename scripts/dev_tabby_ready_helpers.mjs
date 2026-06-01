@@ -3,7 +3,7 @@ import { homedir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const WEB_DEV_PORT_MARKER = ['apps', 'web', '.hypercode-dev-port.json'];
+const WEB_DEV_PORT_MARKER = ['apps', 'web', '.hypernexus-dev-port.json'];
 
 const STARTUP_CHECK_LABELS = {
   configSync: 'MCP config sync',
@@ -13,9 +13,9 @@ const STARTUP_CHECK_LABELS = {
   extensionBridge: 'extension bridge listener',
 };
 
-export function resolveHypercodeDataDir(dataDir = process.env.HYPERCODE_DEV_READY_DATA_DIR ?? process.env.HYPERCODE_DATA_DIR ?? '~/.hypercode') {
+export function resolveHyperNexusDataDir(dataDir = process.env.HYPERNEXUS_DEV_READY_DATA_DIR ?? process.env.HYPERNEXUS_DATA_DIR ?? '~/.hypernexus') {
   if (typeof dataDir !== 'string' || dataDir.length === 0) {
-    return path.join(homedir(), '.hypercode');
+    return path.join(homedir(), '.hypernexus');
   }
 
   if (dataDir === '~') {
@@ -29,11 +29,11 @@ export function resolveHypercodeDataDir(dataDir = process.env.HYPERCODE_DEV_READ
   return path.resolve(dataDir);
 }
 
-export function getHypercodeStartLockPath(dataDir) {
-  return path.join(resolveHypercodeDataDir(dataDir), 'lock');
+export function getHyperNexusStartLockPath(dataDir) {
+  return path.join(resolveHyperNexusDataDir(dataDir), 'lock');
 }
 
-export function readHypercodeStartLockRecord(lockPath = getHypercodeStartLockPath()) {
+export function readHyperNexusStartLockRecord(lockPath = getHyperNexusStartLockPath()) {
   try {
     if (!fs.existsSync(lockPath)) {
       return null;
@@ -104,7 +104,7 @@ export function parseListeningPidFromLsof(output) {
   return line ? Number(line) : null;
 }
 
-export function isLikelyHypercodeCoreCommand(commandLine) {
+export function isLikelyHyperNexusCoreCommand(commandLine) {
   if (typeof commandLine !== 'string') {
     return false;
   }
@@ -114,21 +114,21 @@ export function isLikelyHypercodeCoreCommand(commandLine) {
     return false;
   }
 
-  const hypercodeMarkers = [
-    '@hypercode/',
+  const hypernexusMarkers = [
+    '@hypernexus/',
     'packages/core',
     'packages\\core',
     'packages/cli',
     'packages\\cli',
-    '/hypercode/',
-    '\\hypercode\\',
+    '/hypernexus/',
+    '\\hypernexus\\',
     'tsx src/index.ts start',
     'tsx src/server-stdio.ts',
     'backgroundcorebootstrap',
     'server-stdio',
   ];
 
-  return hypercodeMarkers.some((marker) => normalized.includes(marker));
+  return hypernexusMarkers.some((marker) => normalized.includes(marker));
 }
 
 export function chooseStaleCoreRefreshTarget({
@@ -242,8 +242,8 @@ const BROWSER_EXTENSION_ARTIFACTS = [
     id: 'browser-extension-chromium',
     label: 'browser extension Chromium bundle',
     candidates: [
-      ['apps', 'hypercode-extension', 'dist-chromium'],
-      ['apps', 'hypercode-extension', 'dist'],
+      ['apps', 'hypernexus-extension', 'dist-chromium'],
+      ['apps', 'hypernexus-extension', 'dist'],
       ['apps', 'extension', 'dist'],
     ],
     requiredFiles: ['background.js', 'manifest.json'],
@@ -252,7 +252,7 @@ const BROWSER_EXTENSION_ARTIFACTS = [
     id: 'browser-extension-firefox',
     label: 'browser extension Firefox bundle',
     candidates: [
-      ['apps', 'hypercode-extension', 'dist-firefox'],
+      ['apps', 'hypernexus-extension', 'dist-firefox'],
     ],
     requiredFiles: ['background.js', 'manifest.json'],
   },

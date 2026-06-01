@@ -1,6 +1,6 @@
-# hypercode Versioning Checklist
+# hypernexus Versioning Checklist
 
-Use this checklist any time hypercode version changes (e.g. `0.9.1` -> `0.9.2`).
+Use this checklist any time hypernexus version changes (e.g. `0.9.1` -> `0.9.2`).
 
 ## Source of truth
 

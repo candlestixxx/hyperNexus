@@ -1,14 +1,14 @@
 
 'use client';
 
-import { Card, CardHeader, CardTitle, CardContent } from "@hypercode/ui";
-import { Button } from "@hypercode/ui";
-import { Badge } from "@hypercode/ui";
-import { ScrollArea } from "@hypercode/ui";
+import { Card, CardHeader, CardTitle, CardContent } from "@hypernexus/ui";
+import { Button } from "@hypernexus/ui";
+import { Badge } from "@hypernexus/ui";
+import { ScrollArea } from "@hypernexus/ui";
 import { useState, useEffect } from "react";
 import { Loader2, MessageSquare, Gavel, User, Play, RefreshCw, ChevronRight } from "lucide-react";
-import { Input } from "@hypercode/ui";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@hypercode/ui";
+import { Input } from "@hypernexus/ui";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@hypernexus/ui";
 import { trpc } from "@/utils/trpc";
 import { DebateVisualizer } from "@/components/council/DebateVisualizer";
 import { normalizeCouncilSessions, type CouncilSessionRow } from './council-page-normalizers';
@@ -61,7 +61,7 @@ export default function CouncilPage() {
                     <div>
                         <div className="flex items-center gap-3">
                             <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-                                The Council
+                                Consensus Debate Council
                             </h1>
                             <Badge variant="outline" className="border-purple-500/30 text-purple-400 bg-purple-500/10">Labs</Badge>
                         </div>

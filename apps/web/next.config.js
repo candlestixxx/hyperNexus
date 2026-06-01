@@ -17,7 +17,7 @@ const nextConfig = {
 	reactStrictMode: false,
 
 	// Transpile packages
-	transpilePackages: ["@hypercode/ui"],
+	transpilePackages: ["@hypernexus/ui"],
 
 	// Turbopack config (Next.js 16 default)
 	/* turbopack: {

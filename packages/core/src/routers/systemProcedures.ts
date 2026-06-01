@@ -21,7 +21,7 @@ import { summarizeCachedInventory } from './startupInventorySummary.js';
 import type { MemoryPipelineSummary } from '../services/memory/MemoryManager.js';
 import { mcpServerPool } from '../services/mcp-server-pool.service.js';
 
-const EXECUTION_ENV_CACHE_TTL_MS = Number(process.env.HYPERCODE_EXECUTION_ENV_CACHE_TTL_MS ?? 30_000);
+const EXECUTION_ENV_CACHE_TTL_MS = Number(process.env.HYPERNEXUS_EXECUTION_ENV_CACHE_TTL_MS ?? 30_000);
 
 let executionEnvironmentCache:
     | {
@@ -69,7 +69,7 @@ async function getCachedExecutionEnvironment() {
 
 export const systemProcedures = {
     health: publicProcedure.query(() => {
-        return { status: 'running', service: '@hypercode/core' };
+        return { status: 'running', service: '@hypernexus/core' };
     }),
     startupStatus: publicProcedure.query(async () => {
         const mcpServer = getMcpServer();

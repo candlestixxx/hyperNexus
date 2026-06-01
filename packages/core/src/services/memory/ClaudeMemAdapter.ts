@@ -3,7 +3,7 @@
  *
  * claude-mem stores per-project context as structured markdown sections inside
  * a single `.claude/CLAUDE.md` file.  This adapter translates that format into
- * Hypercode's Memory/IMemoryProvider interface so it can participate in the
+ * HyperNexus's Memory/IMemoryProvider interface so it can participate in the
  * redundant memory pipeline alongside JsonMemoryProvider (and future vector
  * stores).
  *
@@ -59,8 +59,8 @@ export class ClaudeMemAdapter implements IMemoryProvider {
     private initialized = false;
 
     constructor(workspaceRoot: string) {
-        // Store in .hypercode/claude_mem.json alongside other Hypercode data
-        this.storePath = path.join(workspaceRoot, '.hypercode', 'claude_mem.json');
+        // Store in .hypernexus/claude_mem.json alongside other HyperNexus data
+        this.storePath = path.join(workspaceRoot, '.hypernexus', 'claude_mem.json');
     }
 
     async init(): Promise<void> {

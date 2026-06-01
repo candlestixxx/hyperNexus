@@ -1,9 +1,9 @@
 {
   "mcpServers": {
-    "hypercode-supervisor": {
+    "hypernexus-supervisor": {
       "command": "C:\\Program Files\\nodejs\\node.exe",
       "args": [
-        "C:\\Users\\jakeg\\workspace\\hypercode\\packages\\hypercode-supervisor\\dist\\index.js"
+        "C:\\Users\\jakeg\\workspace\\hypernexus\\packages\\hypernexus-supervisor\\dist\\index.js"
       ],
       "env": [
         "NODE_ENV"
@@ -300,7 +300,7 @@
     /* "filesystem": {
       "command": "C:\\Program Files\\nodejs\\node.exe",
       "args": [
-        "C:\\Users\\jakeg\\workspace\\hypercode\\node_modules\\.pnpm\\node_modules\\@modelcontextprotocol\\server-filesystem\\dist\\index.js",
+        "C:\\Users\\jakeg\\workspace\\hypernexus\\node_modules\\.pnpm\\node_modules\\@modelcontextprotocol\\server-filesystem\\dist\\index.js",
         "C:\\Users\\jakeg\\workspace\\"
       ],
       "env": []
@@ -694,7 +694,7 @@
     "serena": {
       "command": "uvx",
       "args": [
-        "--from git+https://github.com/orhypercode/serena",
+        "--from git+https://github.com/orhypernexus/serena",
         "serena",
         "start-mcp-server",
         "--context",

@@ -8,8 +8,8 @@ build/
 *.tsbuildinfo
 bin/*.exe
 bin/*.exe~
-go/hypercode
-go/hypercode.exe
+go/hypernexus
+go/hypernexus.exe
 !bin/.gitkeep
 
 # === Environment and secrets ===
@@ -71,35 +71,35 @@ audit-*.jsonl
 .turbo/
 **/.turbo/
 
-# === Hypercode runtime state ===
-.hypercode/
-**/.hypercode/
-.hypercode-session.json
-.hypercode_startup_marker
-**/.hypercode_startup_marker
+# === HyperNexus runtime state ===
+.hypernexus/
+**/.hypernexus/
+.hypernexus-session.json
+.hypernexus_startup_marker
+**/.hypernexus_startup_marker
 .cli_startup_marker
 **/.cli_startup_marker
-.hypercode_boot_check
-**/.hypercode_boot_check
-.hypercode/skills/
-.hypercode/db/
-.hypercode/agent_memory/
-.hypercode/handoffs/
-.hypercode/memory/
-.hypercode/worktrees/
-.hypercode/workflows_test_*/
-.hypercode/shell_history.json
-.hypercode/policy.json
-.hypercode/imported_sessions/
+.hypernexus_boot_check
+**/.hypernexus_boot_check
+.hypernexus/skills/
+.hypernexus/db/
+.hypernexus/agent_memory/
+.hypernexus/handoffs/
+.hypernexus/memory/
+.hypernexus/worktrees/
+.hypernexus/workflows_test_*/
+.hypernexus/shell_history.json
+.hypernexus/policy.json
+.hypernexus/imported_sessions/
 
-# === Hypercode legacy (deprecated) ===
-.hypercode/
-**/.hypercode/
+# === HyperNexus legacy (deprecated) ===
+.hypernexus/
+**/.hypernexus/
 .antigravity/
-.hypercode-session.json
-.tmp-hypercode-dist-probe.mjs
-apps/web/.hypercode-dev-port.json
-apps/web/.hypercode-dev-port.json
+.hypernexus-session.json
+.tmp-hypernexus-dist-probe.mjs
+apps/web/.hypernexus-dev-port.json
+apps/web/.hypernexus-dev-port.json
 
 # === Database runtime ===
 *.db
@@ -119,7 +119,7 @@ data/vectordb/
 
 # === Session state ===
 .pi/
-.hypercode/
+.hypernexus/
 .git-rewrite/
 **/.git-rewrite/
 
@@ -150,10 +150,10 @@ archive/
 
 # === Reference material (not part of project) ===
 collection-claude-code-source-code-main/
-hypercode-mcp-server/
+hypernexus-mcp-server/
 
 # === Stale submodule dirs ===
-hypercode/research/
+hypernexus/research/
 hyperingest/
 hypermcp/
 hypermem/
@@ -163,7 +163,7 @@ jules-autopilot/
 # === Misc generated ===
 **/dist-chromium/
 **/dist-firefox/
-metamcp.db
+hypernexus.db
 tmp_*.ts
 tmp_*.tsx
 tmp_*.js

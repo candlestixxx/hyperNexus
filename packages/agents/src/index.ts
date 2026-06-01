@@ -1,6 +1,6 @@
-// @hypercode/agents — comprehensive stub package
+// @hypernexus/agents — comprehensive stub package
 // Provides runtime-safe class stubs with full method surface area
-// that @hypercode/core actually calls. Real implementations live in @hypercode/core runtime.
+// that @hypernexus/core actually calls. Real implementations live in @hypernexus/core runtime.
 
 export * from './orchestration/RiskEvaluator.js';
 export * from './orchestration/DebateEngine.js';

@@ -1,7 +1,7 @@
 "use client";
 
-import { Card, CardContent } from "@hypercode/ui";
-import { Button } from "@hypercode/ui";
+import { Card, CardContent } from "@hypernexus/ui";
+import { Button } from "@hypernexus/ui";
 import { Activity, Server, Cpu, HardDrive, Network, Globe, Radio, Puzzle } from "lucide-react";
 import { trpc } from '@/utils/trpc';
 import { toast } from 'sonner';
@@ -56,7 +56,7 @@ export default function SystemStatusDashboard() {
         <div className="p-8 space-y-8 h-full overflow-y-auto">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">System Status</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">HyperNexus Gateway Health</h1>
                     <p className="text-zinc-500">
                         Infrastructure health and resource usage
                     </p>
@@ -184,7 +184,7 @@ export default function SystemStatusDashboard() {
                         <div className="space-y-4">
                             {startupChecks.length === 0 ? (
                                 <div className="rounded border border-zinc-800 bg-zinc-950 p-4 text-sm text-zinc-500">
-                                    Connecting to live startup telemetry from Hypercode Core…
+                                    Connecting to live startup telemetry from HyperNexus Core…
                                 </div>
                             ) : startupChecks.map((check) => (
                                 <HealthRow key={check.name} name={check.name} status={check.status} latency={check.latency} detail={check.detail} />

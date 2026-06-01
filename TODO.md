@@ -1,17 +1,18 @@
 # TODO
 
-_Last updated: 2026-05-17, version 1.0.0-alpha.62_
+_Last updated: 2026-05-31, version 1.0.0-alpha.63_
 
 ## P0 — Must do now (Stability & Truth)
 
-- [ ] **Protocol Scaffolding**: Implement the basic `hypercode://` handler in the Go kernel to support session attachment.
+- [ ] **Protocol Scaffolding**: Implement the basic `hypernexus://` handler in the Go kernel to support session attachment.
 - [x] **Dashboard Truth Pass**: Verify that the "Immune System" status card in the dashboard shows real-time data from the Go `HealerService`.
+- [x] **Dashboard Accuracy Renaming Sweep**: Renamed and clarified all 54 dashboard navigation links and page header elements for architectural precision and function alignment.
 - [ ] **L2 Vault Visualization**: Wire the `vaultRecords` query to the Next.js frontend to show persistent heal history.
 - [ ] **Mobile Style Audit**: Fix overlapping elements in the Sidebar and KernelStats on small viewports.
 
 ## P1 — Should do next (Features & Parity)
 
-- [ ] **Browser Extension Attach**: Implement the DOM injection to add a "Hypercode Kernel" button to Claude.ai and ChatGPT.
+- [ ] **Browser Extension Attach**: Implement the DOM injection to add a "HyperNexus Kernel" button to Claude.ai and ChatGPT.
 - [ ] **Wails Migration**: Scaffold the `apps/native-ui` directory using Wails for the Go-native dashboard.
 - [ ] **A2A Mesh Protocol**: Implement the discovery layer for agents running on different local network hosts.
 - [ ] **TOON Format**: Implement the native Go encoder/decoder for the TOON (Thread-Oriented Object Notation) context format.

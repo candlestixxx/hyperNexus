@@ -12,10 +12,10 @@
     "noImplicitAny": false,
     "skipLibCheck": true,
     "paths": {
-      "@hypercode/core": [
+      "@hypernexus/core": [
         "../core/src/index.ts"
       ],
-      "@hypercode/core/*": [
+      "@hypernexus/core/*": [
         "../core/src/*"
       ]
     }

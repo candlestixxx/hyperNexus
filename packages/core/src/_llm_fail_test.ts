@@ -1,6 +1,6 @@
 
-import { LLMService } from "@hypercode/ai";
-import { ModelSelector } from "@hypercode/ai";
+import { LLMService } from "@hypernexus/ai";
+import { ModelSelector } from "@hypernexus/ai";
 
 /**
  * Manual test script to verify LLM Swapping.

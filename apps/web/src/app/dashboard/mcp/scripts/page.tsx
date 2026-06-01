@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from "@hypercode/ui";
-import { Button } from "@hypercode/ui";
+import { Card, CardHeader, CardTitle, CardContent } from "@hypernexus/ui";
+import { Button } from "@hypernexus/ui";
 import { Loader2, Plus, FileCode, Trash2, Play, Edit2 } from "lucide-react";
 import { trpc } from '@/utils/trpc';
 import { toast } from 'sonner';
@@ -17,7 +17,7 @@ export default function ScriptsDashboard() {
         <div className="p-8 space-y-8">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">Saved Scripts</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">Saved Automation Scripts</h1>
                     <p className="text-zinc-500">
                         Manage and execute reusable automation scripts
                     </p>

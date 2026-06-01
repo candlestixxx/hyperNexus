@@ -1,7 +1,7 @@
 import { SpecializedAgent } from '../mesh/SpecializedAgent.js';
 import { DeepResearchService } from '../services/DeepResearchService.js';
-import { A2AMessage, A2AMessageType, IA2AClient, A2ATask } from "@hypercode/adk";
-import { a2aBroker } from "@hypercode/agents";
+import { A2AMessage, A2AMessageType, IA2AClient, A2ATask } from "@hypernexus/adk";
+import { a2aBroker } from "@hypernexus/agents";
 
 /**
  * ResearcherAgent

@@ -1,4 +1,4 @@
-module github.com/robertpelloni/hypercode
+module github.com/robertpelloni/hypernexus
 
 go 1.25.0
 

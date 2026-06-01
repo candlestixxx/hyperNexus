@@ -1,4 +1,4 @@
-import { LLMService } from "@hypercode/ai";
+import { LLMService } from "@hypernexus/ai";
 import { JSDOM } from 'jsdom';
 
 export interface Metadata {

@@ -2,7 +2,7 @@
 
 _Last updated: 2026-04-19_
 
-This document tracks all external submodules merged into the HyperCode workspace to ensure feature parity and architectural integration.
+This document tracks all external submodules merged into the HyperNexus workspace to ensure feature parity and architectural integration.
 
 ## Current Submodules
 

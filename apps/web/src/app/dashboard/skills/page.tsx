@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import { trpc } from '@/utils/trpc';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@hypercode/ui';
-import { Input } from '@hypercode/ui';
-import { Button } from '@hypercode/ui';
-import { Badge } from "@hypercode/ui";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@hypernexus/ui';
+import { Input } from '@hypernexus/ui';
+import { Button } from '@hypernexus/ui';
+import { Badge } from "@hypernexus/ui";
 import { Hammer, BookOpen, Terminal, CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
 
 interface SkillListItem {
@@ -72,7 +72,7 @@ export default function SkillsPage() {
         <div className="container mx-auto p-6 space-y-6">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">Skill Acquisition</h1>
+                    <h1 className="text-3xl font-bold tracking-tight">Skill Assimilation Console</h1>
                     <p className="text-muted-foreground">Teach the agent new capabilities by pointing it to documentation.</p>
                 </div>
             </div>

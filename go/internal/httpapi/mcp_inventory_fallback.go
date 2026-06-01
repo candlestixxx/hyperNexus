@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hypercodehq/hypercode-go/internal/harnesses"
-	"github.com/hypercodehq/hypercode-go/internal/mcp"
+	"github.com/hypernexushq/hypernexus-go/internal/harnesses"
+	"github.com/hypernexushq/hypernexus-go/internal/mcp"
 )
 
 type localMCPInventoryView struct {

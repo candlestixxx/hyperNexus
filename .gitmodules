@@ -88,9 +88,9 @@
 [submodule "qwen-code-cli"]
 	path = qwen-code-cli
 	url = https://github.com/dinoanderson/qwen_cli_coder
-[submodule "external/MetaMCP"]
-        path = external/MetaMCP
-        url = https://github.com/robertpelloni/MetaMCP
+[submodule "external/HyperNexus"]
+        path = external/HyperNexus
+        url = https://github.com/robertpelloni/HyperNexus
 [submodule "submodules/mcpproxy"]
 	path = archive/submodules/mcpproxy
         url = https://github.com/Dumbris/mcpproxy
@@ -112,6 +112,6 @@
 [submodule "submodules/prism-mcp"]
 	path = submodules/prism-mcp
 	url = https://github.com/dcostenco/prism-mcp
-[submodule "submodules/hypercode"]
-	path = submodules/hypercode
-	url = https://github.com/robertpelloni/hypercode.git
+[submodule "submodules/hypernexus"]
+	path = submodules/hypernexus
+	url = https://github.com/robertpelloni/hypernexus.git

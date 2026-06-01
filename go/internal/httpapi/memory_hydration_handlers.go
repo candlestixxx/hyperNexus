@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/hypercodehq/hypercode-go/internal/memorystore"
+	"github.com/hypernexushq/hypernexus-go/internal/memorystore"
 )
 
 // handleMemoryHydrate triggers the memory hydration engine to scan the

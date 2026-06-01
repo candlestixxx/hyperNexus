@@ -263,7 +263,7 @@ export function buildSystemStartupNotice(startupStatus: SystemStartupStatusInput
     if (startupStatus?.status === 'degraded') {
         return {
             title: 'Compat fallback active',
-            detail: summary || 'Live startup telemetry is unavailable, so Hypercode is showing config-backed compatibility state instead of the full core startup contract.',
+            detail: summary || 'Live startup telemetry is unavailable, so HyperNexus is showing config-backed compatibility state instead of the full core startup contract.',
             tone: 'warning',
         };
     }
@@ -510,10 +510,10 @@ export function buildSystemComponentHealthRows(
             status: startupTelemetryConnecting ? 'Pending' : (startupStatus?.status === 'running' ? 'Operational' : 'Pending'),
             latency: startupTelemetryConnecting ? 'connecting' : (startupStatus?.ready ? 'ready' : 'warming'),
             detail: startupTelemetryConnecting
-                ? 'Connecting to live startup telemetry from Hypercode Core.'
+                ? 'Connecting to live startup telemetry from HyperNexus Core.'
                 : startupStatus?.ready
                 ? 'Authoritative startup contract is online and reporting readiness.'
-                : 'Waiting for Hypercode Core startup checks to finish reporting.',
+                : 'Waiting for HyperNexus Core startup checks to finish reporting.',
         },
         {
             name: 'Cached MCP inventory',
@@ -537,7 +537,7 @@ export function buildSystemComponentHealthRows(
             latency: browserStatus?.available ? `${browserStatus?.pageCount ?? 0} pages` : '-',
             detail: browserStatus?.available
                 ? 'Browser automation/runtime endpoints are online.'
-                : 'Browser runtime is not currently reachable from Hypercode.',
+                : 'Browser runtime is not currently reachable from HyperNexus.',
         },
         {
             name: 'Extension bridge',
@@ -562,7 +562,7 @@ export function buildSystemComponentHealthRows(
             status: execution?.ready ? 'Operational' : 'Pending',
             latency: `${execution?.verifiedToolCount ?? 0}/${execution?.toolCount ?? 0} tools`,
             detail: execution?.ready
-                ? `${execution?.preferredShellLabel ?? 'Preferred shell'} is available for Hypercode task execution.`
+                ? `${execution?.preferredShellLabel ?? 'Preferred shell'} is available for HyperNexus task execution.`
                 : 'Waiting for shell and tool verification to complete.',
         },
     ];

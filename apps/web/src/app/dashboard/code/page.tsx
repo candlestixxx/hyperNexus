@@ -2,10 +2,10 @@
 
 import { trpc } from '@/utils/trpc';
 import { useState } from 'react';
-import { Card } from '@hypercode/ui';
-import { Input } from '@hypercode/ui';
-import { Button } from '@hypercode/ui';
-import { ScrollArea } from '@hypercode/ui';
+import { Card } from '@hypernexus/ui';
+import { Input } from '@hypernexus/ui';
+import { Button } from '@hypernexus/ui';
+import { ScrollArea } from '@hypernexus/ui';
 
 export default function CodeDashboard() {
     const [filePath, setFilePath] = useState('packages/core/src/MCPServer.ts');
@@ -31,7 +31,7 @@ export default function CodeDashboard() {
         <div className="p-6 space-y-6 h-full flex flex-col">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-blue-400">Code Intelligence</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-blue-400">LSP Code Symbol Navigator</h1>
                     <p className="text-muted-foreground">LSP Symbol Navigation & Search</p>
                 </div>
                 <Button

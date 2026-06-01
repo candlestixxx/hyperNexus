@@ -17,7 +17,7 @@ export class BobbyBookmarksSyncWorker {
     public start(intervalMs: number = 60 * 60 * 1000): void {
         if (this.isRunning) return;
         this.isRunning = true;
-        console.log('[hypercodeingest] Starting BobbyBookmarks local DB sync worker...');
+        console.log('[hypernexusingest] Starting BobbyBookmarks local DB sync worker...');
         
         // Run immediately
         void this.sync();
@@ -33,7 +33,7 @@ export class BobbyBookmarksSyncWorker {
             clearInterval(this.interval);
             this.interval = null;
         }
-        console.log('[hypercodeingest] Stopped BobbyBookmarks local DB sync worker.');
+        console.log('[hypernexusingest] Stopped BobbyBookmarks local DB sync worker.');
     }
 
     private async sync(): Promise<void> {
@@ -41,12 +41,12 @@ export class BobbyBookmarksSyncWorker {
             // Ensure parent directory exists to avoid better-sqlite3 TypeError
             const dbDir = path.dirname(this.dbPath);
             if (!fs.existsSync(dbDir)) {
-                console.warn(`[hypercodeingest] BobbyBookmarks directory not found at ${dbDir}. Skipping sync.`);
+                console.warn(`[hypernexusingest] BobbyBookmarks directory not found at ${dbDir}. Skipping sync.`);
                 return;
             }
 
             if (!fs.existsSync(this.dbPath)) {
-                console.warn(`[hypercodeingest] BobbyBookmarks DB not found at ${this.dbPath}. Skipping sync.`);
+                console.warn(`[hypernexusingest] BobbyBookmarks DB not found at ${this.dbPath}. Skipping sync.`);
                 return;
             }
 
@@ -56,7 +56,7 @@ export class BobbyBookmarksSyncWorker {
             const rows = db.prepare(`SELECT * FROM bookmarks`).all() as any[];
             db.close();
 
-            console.log(`[hypercodeingest] Found ${rows.length} raw URLs in local BobbyBookmarks DB. Syncing to metamcp...`);
+            console.log(`[hypernexusingest] Found ${rows.length} raw URLs in local BobbyBookmarks DB. Syncing to hypernexus...`);
 
             let synced = 0;
             let errors = 0;
@@ -85,12 +85,12 @@ export class BobbyBookmarksSyncWorker {
                 }
             }
 
-            console.log(`[hypercodeingest] Successfully synced ${synced} bookmarks to the Links Backlog (${errors} errors).`);
+            console.log(`[hypernexusingest] Successfully synced ${synced} bookmarks to the Links Backlog (${errors} errors).`);
         } catch (error: any) {
             if (error.code === 'SQLITE_CANTOPEN') {
-                console.warn(`[hypercodeingest] BobbyBookmarks DB not found at ${this.dbPath}. Skipping sync.`);
+                console.warn(`[hypernexusingest] BobbyBookmarks DB not found at ${this.dbPath}. Skipping sync.`);
             } else {
-                console.error('[hypercodeingest] Error during sync:', error);
+                console.error('[hypernexusingest] Error during sync:', error);
             }
         }
     }

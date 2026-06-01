@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hypercodehq/hypercode-go/internal/providers"
+	"github.com/hypernexushq/hypernexus-go/internal/providers"
 )
 
 func (s *Server) handleBillingStatus(w http.ResponseWriter, r *http.Request) {

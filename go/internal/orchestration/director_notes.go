@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/hypercodehq/hypercode-go/internal/ai"
+	"github.com/hypernexushq/hypernexus-go/internal/ai"
 )
 
 type DirectorNote struct {
@@ -31,7 +31,7 @@ func NewDirectorNotesManager() *DirectorNotesManager {
 
 func (m *DirectorNotesManager) SynthesizeSessionNote(ctx context.Context, objective string, transcript string) (*DirectorNote, error) {
 	prompt := fmt.Sprintf(`
-		You are the Hypercode Director.
+		You are the HyperNexus Director.
 		Summarize the following session transcript into a high-level note.
 		
 		OBJECTIVE: %s
@@ -48,7 +48,7 @@ func (m *DirectorNotesManager) SynthesizeSessionNote(ctx context.Context, object
 	`, objective, transcript[:min(8000, len(transcript))])
 
 	resp, err := ai.AutoRoute(ctx, []ai.Message{
-		{Role: "system", Content: "You are the Hypercode Director."},
+		{Role: "system", Content: "You are the HyperNexus Director."},
 		{Role: "user", Content: prompt},
 	})
 

@@ -44,7 +44,7 @@ export default function ReaderPage() {
     return (
         <div className="space-y-6 max-w-4xl mx-auto">
             <div className="flex flex-col gap-2">
-                <h1 className="text-2xl font-bold tracking-tight text-white">Page Reader</h1>
+                <h1 className="text-2xl font-bold tracking-tight text-white">Web Markdown Scraper</h1>
                 <p className="text-zinc-400">Scrape and convert any webpage to Markdown for LLM consumption.</p>
             </div>
 

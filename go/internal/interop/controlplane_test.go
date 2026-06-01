@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/hypercodehq/hypercode-go/internal/lockfile"
+	"github.com/hypernexushq/hypernexus-go/internal/lockfile"
 )
 
 func TestDiscoverControlPlanes(t *testing.T) {

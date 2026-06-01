@@ -2,20 +2,20 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { IConfigProvider, McpServerConfig, SavedScriptConfig, SavedToolSetConfig } from '../../interfaces/IConfigProvider.js';
-import { HypercodeMcpJsonConfig, getHypercodeConfigDir, loadHypercodeMcpConfig, writeHypercodeMcpConfig } from '../../mcp/mcpJsonConfig.js';
+import { HyperNexusMcpJsonConfig, getHyperNexusConfigDir, loadHyperNexusMcpConfig, writeHyperNexusMcpConfig } from '../../mcp/mcpJsonConfig.js';
 import { buildToolPreferenceSettings, readToolPreferencesFromSettings } from '../../routers/mcp-tool-preferences.js';
 
 export class JsonConfigProvider implements IConfigProvider {
     private configDir: string;
-    private config: HypercodeMcpJsonConfig = { mcpServers: {} };
+    private config: HyperNexusMcpJsonConfig = { mcpServers: {} };
 
-    constructor(configDir: string = getHypercodeConfigDir()) {
+    constructor(configDir: string = getHyperNexusConfigDir()) {
         this.configDir = configDir;
     }
 
     async init(): Promise<void> {
         try {
-            this.config = await loadHypercodeMcpConfig(this.configDir);
+            this.config = await loadHyperNexusMcpConfig(this.configDir);
         } catch (error: any) {
             if (error.code === 'ENOENT') {
                 // File doesn't exist, create default
@@ -214,7 +214,7 @@ export class JsonConfigProvider implements IConfigProvider {
     }
 
     private async saveConfig(): Promise<void> {
-        await writeHypercodeMcpConfig(this.config, this.configDir);
+        await writeHyperNexusMcpConfig(this.config, this.configDir);
     }
 }
 

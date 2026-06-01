@@ -125,7 +125,7 @@ export default function KnowledgeDashboard() {
         <div className="p-8 bg-gray-900 min-h-screen text-gray-100 font-mono">
             <header className="mb-8 border-b border-gray-700 pb-4 flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold text-blue-400">KNOWLEDGE BASE</h1>
+                    <h1 className="text-3xl font-bold text-blue-400">Submodules & Agent Hub</h1>
                     <p className="text-gray-400">External Intelligence & Submodules</p>
                 </div>
                 <div className="text-right">

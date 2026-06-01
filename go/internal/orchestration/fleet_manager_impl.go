@@ -3,9 +3,9 @@ package orchestration
 import (
 	"context"
 
-	"github.com/hypercodehq/hypercode-go/internal/session"
-	"github.com/hypercodehq/hypercode-go/internal/controlplane"
-	"github.com/hypercodehq/hypercode-go/internal/supervisor"
+	"github.com/hypernexushq/hypernexus-go/internal/session"
+	"github.com/hypernexushq/hypernexus-go/internal/controlplane"
+	"github.com/hypernexushq/hypernexus-go/internal/supervisor"
 )
 
 type FleetManagerPlus struct {

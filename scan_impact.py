@@ -2,7 +2,7 @@ import os
 import re
 import subprocess
 
-targets = ["borg", "hypervisor", "nexus", "aios"]
+targets = ["hypernexus", "hypervisor", "nexus", "aios"]
 pattern = re.compile("|".join(targets), re.IGNORECASE)
 
 def get_tracked_files():
@@ -20,7 +20,7 @@ for f in files:
         if pattern.search(part):
             # We need the actual path to the item that needs renaming
             # If a parent dir needs renaming, it will be found as we check parts
-            # e.g. apps/borg-extension/src/file.ts -> apps/borg-extension needs renaming
+            # e.g. apps/hypernexus-extension/src/file.ts -> apps/hypernexus-extension needs renaming
             # We'll handle this by collecting all prefixes that match
             curr_path = ""
             for p in parts:

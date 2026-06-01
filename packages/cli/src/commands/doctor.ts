@@ -1,5 +1,5 @@
 /**
- * `hypercode doctor` — Diagnose common issues and suggest fixes
+ * `hypernexus doctor` — Diagnose common issues and suggest fixes
  */
 import type { Command } from 'commander';
 
@@ -14,7 +14,7 @@ export function registerDoctorCommand(program: Command): void {
       const { homedir } = await import('os');
       const home = homedir();
 
-      console.log(chalk.bold.cyan('\n  Hypercode Doctor — Diagnostics\n'));
+      console.log(chalk.bold.cyan('\n  HyperNexus Doctor — Diagnostics\n'));
 
       let issues = 0;
       let checks = 0;
@@ -28,12 +28,12 @@ export function registerDoctorCommand(program: Command): void {
         } else {
           issues++;
           console.log(chalk.red('  ✗') + ' Server returned ' + res.status);
-          console.log(chalk.dim('    Fix: Run `hypercode start`'));
+          console.log(chalk.dim('    Fix: Run `hypernexus start`'));
         }
       } catch {
         issues++;
         console.log(chalk.red('  ✗') + ' Server not running');
-        console.log(chalk.dim('    Fix: Run `hypercode start`'));
+        console.log(chalk.dim('    Fix: Run `hypernexus start`'));
       }
 
       // Check 2: Go sidecar
@@ -87,13 +87,13 @@ export function registerDoctorCommand(program: Command): void {
 
       // Check 6: Config directory
       checks++;
-      const configDir = resolve(home, '.hypercode');
+      const configDir = resolve(home, '.hypernexus');
       if (existsSync(configDir)) {
         console.log(chalk.green('  ✓') + ` Config dir exists (${configDir})`);
       } else {
         issues++;
         console.log(chalk.yellow('  ⚠') + ' Config dir missing');
-        console.log(chalk.dim('    Fix: Run `hypercode config init --global`'));
+        console.log(chalk.dim('    Fix: Run `hypernexus config init --global`'));
       }
 
       // Check 7: mcp.jsonc
@@ -104,7 +104,7 @@ export function registerDoctorCommand(program: Command): void {
       } else {
         issues++;
         console.log(chalk.yellow('  ⚠') + ' mcp.jsonc not found in cwd');
-        console.log(chalk.dim('    Fix: Run from the hypercode workspace root'));
+        console.log(chalk.dim('    Fix: Run from the hypernexus workspace root'));
       }
 
       // Check 8: VERSION file
@@ -119,17 +119,17 @@ export function registerDoctorCommand(program: Command): void {
 
       // Check 9: Go binary
       checks++;
-      const goBin = resolve(process.cwd(), 'go', 'hypercode.exe');
+      const goBin = resolve(process.cwd(), 'go', 'hypernexus.exe');
       if (existsSync(goBin)) {
         console.log(chalk.green('  ✓') + ' Go binary exists');
       } else {
-        const goBinAlt = resolve(process.cwd(), 'go', 'hypercode');
+        const goBinAlt = resolve(process.cwd(), 'go', 'hypernexus');
         if (existsSync(goBinAlt)) {
           console.log(chalk.green('  ✓') + ' Go binary exists');
         } else {
           issues++;
           console.log(chalk.yellow('  ⚠') + ' Go binary not built');
-          console.log(chalk.dim('    Fix: cd go && go build ./cmd/hypercode'));
+          console.log(chalk.dim('    Fix: cd go && go build ./cmd/hypernexus'));
         }
       }
 
@@ -138,7 +138,7 @@ export function registerDoctorCommand(program: Command): void {
         const { readdirSync: readDir, readFileSync: readFile } = await import('fs');
         const { join: joinPath } = await import('path');
         const { homedir: getHome } = await import('os');
-        const pidDir = joinPath(getHome(), '.hypercode', 'mcp-pids');
+        const pidDir = joinPath(getHome(), '.hypernexus', 'mcp-pids');
         if (existsSync(pidDir)) {
           const pidFiles = readDir(pidDir).filter(f => f.endsWith('.pid'));
           let alive = 0;
@@ -153,7 +153,7 @@ export function registerDoctorCommand(program: Command): void {
           if (alive > 0) {
             console.log(chalk.green('  ✓') + ` MCP Fleet: ${alive}/${pidFiles.length} servers alive`);
           } else {
-            console.log(chalk.dim('  ○') + ' MCP Fleet: no servers spawned (use hypercode mcp connect-all)');
+            console.log(chalk.dim('  ○') + ' MCP Fleet: no servers spawned (use hypernexus mcp connect-all)');
           }
         }
       } catch {}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from 'react';
-import { Card, CardHeader, CardTitle, CardContent, Button, Badge, ScrollArea } from "@hypercode/ui";
+import { Card, CardHeader, CardTitle, CardContent, Button, Badge, ScrollArea } from "@hypernexus/ui";
 import { Loader2, Brain, Search, Database, History, Zap, Filter, Plus, Save, Download, RefreshCw, ChevronRight } from "lucide-react";
 import { trpc } from '@/utils/trpc';
 import { toast } from 'sonner';
@@ -35,7 +35,7 @@ const MEMORY_FORMAT_OPTIONS: Array<{ value: MemoryInterchangeFormat; label: stri
     { value: 'json', label: 'Canonical JSON' },
     { value: 'csv', label: 'Canonical CSV' },
     { value: 'jsonl', label: 'Canonical JSONL' },
-    { value: 'json-provider', label: 'Hypercode JSON Provider' },
+    { value: 'json-provider', label: 'HyperNexus JSON Provider' },
     { value: 'claude-mem-store', label: 'Claude-Mem Store' },
 ];
 
@@ -302,10 +302,10 @@ export default function MemoryDashboard() {
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight text-white flex items-center gap-3">
                         <Brain className="h-8 w-8 text-pink-500" />
-                        Hypercode Memory Control
+                        L1/L2/L3 Memory Vault
                     </h1>
                     <p className="text-zinc-500 mt-2">
-                        Search and inspect Hypercode-native facts, observations, prompts, session summaries, and adapter exports from one control surface.
+                        Search and inspect HyperNexus-native facts, observations, prompts, session summaries, and adapter exports from one control surface.
                     </p>
                 </div>
                 <div className="flex gap-4">
@@ -347,7 +347,7 @@ export default function MemoryDashboard() {
                         <CardHeader className="pb-3">
                             <CardTitle className="text-sm font-bold text-zinc-400 uppercase tracking-widest flex items-center gap-2">
                                 <Brain className="h-4 w-4" />
-                                Hypercode Memory Model
+                                HyperNexus Memory Model
                             </CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-3 text-xs text-zinc-300">
@@ -422,7 +422,7 @@ export default function MemoryDashboard() {
                                         const url = URL.createObjectURL(blob);
                                         const a = document.createElement('a');
                                         a.href = url;
-                                        a.download = `hypercode-memories.${extension}`;
+                                        a.download = `hypernexus-memories.${extension}`;
                                         a.click();
                                         URL.revokeObjectURL(url);
                                         toast.success(`Exported as ${MEMORY_FORMAT_OPTIONS.find(option => option.value === exportFormat)?.label || exportFormat}`);
@@ -508,7 +508,7 @@ export default function MemoryDashboard() {
                                             const url = URL.createObjectURL(blob);
                                             const a = document.createElement('a');
                                             a.href = url;
-                                            a.download = `hypercode-memory-converted.${extension}`;
+                                            a.download = `hypernexus-memory-converted.${extension}`;
                                             a.click();
                                             URL.revokeObjectURL(url);
                                             toast.success(`Converted ${exportFormat} → ${convertToFormat}`);

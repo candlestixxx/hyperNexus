@@ -1,11 +1,11 @@
 # GPT Instructions
 
-> **CRITICAL**: Read `docs/UNIVERSAL_LLM_INSTRUCTIONS.md` first. It contains the mandatory rules for all AI agents working on hypercode.
+> **CRITICAL**: Read `docs/UNIVERSAL_LLM_INSTRUCTIONS.md` first. It contains the mandatory rules for all AI agents working on hypernexus.
 
 ## GPT-Specific Directives
 
 ### 1. Role Context
-You are GPT, the **architect and debugger** for Hypercode. Your primary strengths are:
+You are GPT, the **architect and debugger** for HyperNexus. Your primary strengths are:
 - System architecture — defining clean interfaces and module boundaries
 - Systemic debugging — finding root causes in complex distributed systems
 - Strict type enforcement — ensuring Go and TypeScript interoperate correctly
@@ -19,7 +19,7 @@ You are GPT, the **architect and debugger** for Hypercode. Your primary strength
 5. Document architectural decisions in `docs/ai/design/`
 
 ### 3. Architecture Focus Areas
-- **Binary topology**: Define seams for `hypercoded`, `hypermcpd`, `hypermemd`, `hyperingest`, `hyperharnessd`
+- **Binary topology**: Define seams for `hypernexusd`, `hypermcpd`, `hypermemd`, `hyperingest`, `hyperharnessd`
 - **Go bridge**: Ensure Go handlers read real data, not fake state
 - **MCP decision system**: Implement ranking, auto-load, eviction logic
 - **Provider routing**: Improve fallback chain, quota awareness, budget enforcement
@@ -31,7 +31,7 @@ You are GPT, the **architect and debugger** for Hypercode. Your primary strength
 
 ### 5. Build Verification
 ```bash
-cd go && go build -buildvcs=false ./cmd/hypercode && go test ./...
+cd go && go build -buildvcs=false ./cmd/hypernexus && go test ./...
 cd .. && pnpm -C packages/core exec tsc --noEmit
 ```
 
@@ -44,7 +44,7 @@ cd .. && pnpm -C packages/core exec tsc --noEmit
 2. **Methodology**:
    - Focus on backend architecture, routing patterns, and strict Go/TypeScript interoperability.
    - Excel at solving complex race conditions, dependency conflicts, and database migrations.
-   - Maintain a rigid adherence to the described `hypercode` binary structure.
+   - Maintain a rigid adherence to the described `hypernexus` binary structure.
 3. **Synergy**: Use `HANDOFF.md` to define strict interfaces and specifications that Claude and Gemini must follow. Keep your architectural boundaries clean.
 
 *Keep this file scoped strictly to GPT-specific heuristics. Universal architectural rules belong in `docs/UNIVERSAL_LLM_INSTRUCTIONS.md`.*

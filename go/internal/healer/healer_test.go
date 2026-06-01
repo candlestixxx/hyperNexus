@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/hypercodehq/hypercode-go/internal/controlplane"
+	"github.com/hypernexushq/hypernexus-go/internal/controlplane"
 )
 
 type mockVault struct {

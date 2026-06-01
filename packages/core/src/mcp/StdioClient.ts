@@ -1,10 +1,10 @@
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
-import type { MCPServerConfig } from "../config/HypercodeConfig.js";
-import { metamcpLogStore } from "../services/log-store.service.js";
+import type { MCPServerConfig } from "../config/HyperNexusConfig.js";
+import { hypernexusLogStore } from "../services/log-store.service.js";
 import { ProcessManagedStdioTransport } from "../transports/process-managed.transport.js";
 
 import { db } from "../db/index.js";
-import { workspaceSecretsTable } from "../db/metamcp-schema.js";
+import { workspaceSecretsTable } from "../db/hypernexus-schema.js";
 
 export class StdioClient {
     private client: Client | null = null;
@@ -72,11 +72,11 @@ export class StdioClient {
                 return;
             }
 
-            metamcpLogStore.addLog(this.name, 'error', message);
+            hypernexusLogStore.addLog(this.name, 'error', message);
         });
 
         this.transport.stderr?.on('error', (error: Error) => {
-            metamcpLogStore.addLog(this.name, 'error', 'stderr error', error);
+            hypernexusLogStore.addLog(this.name, 'error', 'stderr error', error);
         });
 
         this.transport.stdout?.on('data', (chunk: Buffer) => {
@@ -85,15 +85,15 @@ export class StdioClient {
                 return;
             }
 
-            metamcpLogStore.addLog(this.name, 'info', message);
+            hypernexusLogStore.addLog(this.name, 'info', message);
         });
 
         this.transport.stdout?.on('error', (error: Error) => {
-            metamcpLogStore.addLog(this.name, 'error', 'stdout error', error);
+            hypernexusLogStore.addLog(this.name, 'error', 'stdout error', error);
         });
 
         this.client = new Client({
-            name: `hypercode-client-${this.name}`,
+            name: `hypernexus-client-${this.name}`,
             version: "1.0.0",
         }, {
             capabilities: {

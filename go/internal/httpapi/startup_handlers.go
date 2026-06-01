@@ -7,9 +7,9 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/hypercodehq/hypercode-go/internal/config"
-	"github.com/hypercodehq/hypercode-go/internal/interop"
-	"github.com/hypercodehq/hypercode-go/internal/memorystore"
+	"github.com/hypernexushq/hypernexus-go/internal/config"
+	"github.com/hypernexushq/hypernexus-go/internal/interop"
+	"github.com/hypernexushq/hypernexus-go/internal/memorystore"
 )
 
 type StartupBlockingReason struct {
@@ -112,7 +112,7 @@ func (s *Server) buildStartupStatus(ctx context.Context) (StartupStatus, error) 
 				"workspaceRootAvailable": configStatus.WorkspaceRoot.Exists,
 				"goConfigDirAvailable":   configStatus.ConfigDir.Exists,
 				"mainConfigDirAvailable": configStatus.MainConfigDir.Exists,
-				"repoConfigAvailable":    configStatus.HypercodeConfigFile.Exists,
+				"repoConfigAvailable":    configStatus.HyperNexusConfigFile.Exists,
 				"mcpConfigAvailable":     configStatus.MCPConfigFile.Exists,
 			},
 			"memory": map[string]any{
@@ -155,8 +155,8 @@ func (s *Server) importedSessionMaintenanceStats(ctx context.Context) ImportedSe
 		return archivedImportedSessionMaintenanceStats(archivedRecords)
 	}
 
-	// Ensure .hypercode/imported_sessions exists
-	_ = os.MkdirAll(filepath.Join(s.cfg.WorkspaceRoot, ".hypercode", "imported_sessions"), 0755)
+	// Ensure .hypernexus/imported_sessions exists
+	_ = os.MkdirAll(filepath.Join(s.cfg.WorkspaceRoot, ".hypernexus", "imported_sessions"), 0755)
 
 	candidates, err := s.scanValidatedImportSources()
 	if err != nil {

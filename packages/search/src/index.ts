@@ -1,6 +1,6 @@
-// @hypercode/search — runtime-safe class stubs
-// Provides class stubs that @hypercode/core uses as both types and values.
-// Real implementations live in @hypercode/core runtime.
+// @hypernexus/search — runtime-safe class stubs
+// Provides class stubs that @hypernexus/core uses as both types and values.
+// Real implementations live in @hypernexus/core runtime.
 
 export interface SearchResult {
   title: string;

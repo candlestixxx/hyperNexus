@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/hypercodehq/hypercode-go/internal/providers"
+	"github.com/hypernexushq/hypernexus-go/internal/providers"
 )
 
 type WaterfallClient struct {

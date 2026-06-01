@@ -23,6 +23,6 @@
 | **copilot-cli** | `copilot-cli` | Reference | Pending |
 | **factory-cli** | `factory-cli` | Reference | Pending |
 | **gemini-cli** | `gemini-cli` | Reference | Pending |
-| **external/MetaMCP** | `external/MetaMCP` | Core Capability | Active |
+| **external/HyperNexus** | `external/HyperNexus` | Core Capability | Active |
 | **apps/maestro** | `apps/maestro` | UI (Legacy) | Active |
-| **submodules/hypercode** | `submodules/hypercode` | Parent Repo | Active |
+| **submodules/hypernexus** | `submodules/hypernexus` | Parent Repo | Active |

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/hypercodehq/hypercode-go/internal/ai"
+	"github.com/hypernexushq/hypernexus-go/internal/ai"
 )
 
 var autoRoute = ai.AutoRoute

@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/hypercodehq/hypercode-go/internal/ai"
-	"github.com/hypercodehq/hypercode-go/internal/orchestration"
+	"github.com/hypernexushq/hypernexus-go/internal/ai"
+	"github.com/hypernexushq/hypernexus-go/internal/orchestration"
 )
 
 func (s *Server) handleAgentChat(w http.ResponseWriter, r *http.Request) {

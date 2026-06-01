@@ -1,1 +1,1 @@
-// @hypercode/mcp-client -- stub\nexport {};
+// @hypernexus/mcp-client -- stub\nexport {};

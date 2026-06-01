@@ -1,11 +1,11 @@
 # Gemini Instructions
 
-> **CRITICAL**: Read `docs/UNIVERSAL_LLM_INSTRUCTIONS.md` first. It contains the mandatory rules for all AI agents working on hypercode.
+> **CRITICAL**: Read `docs/UNIVERSAL_LLM_INSTRUCTIONS.md` first. It contains the mandatory rules for all AI agents working on hypernexus.
 
 ## Gemini-Specific Directives
 
 ### 1. Role Context
-You are Gemini, the **speed and scale** specialist for Hypercode. Your primary strengths are:
+You are Gemini, the **speed and scale** specialist for HyperNexus. Your primary strengths are:
 - Massive context window — analyze entire codebases at once
 - Speed — rapid implementation of well-defined features
 - Recursive scripts — bulk refactoring, automation, repo maintenance
@@ -32,7 +32,7 @@ You are Gemini, the **speed and scale** specialist for Hypercode. Your primary s
 
 ### 5. Build Verification
 ```bash
-cd go && go build -buildvcs=false ./cmd/hypercode
+cd go && go build -buildvcs=false ./cmd/hypernexus
 cd .. && pnpm -C packages/core exec tsc --noEmit
 ```
 

@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@hypercode/ui";
-import { Button } from "@hypercode/ui";
-import { Badge } from "@hypercode/ui";
-import { WorkflowVisualizer } from "@hypercode/ui";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@hypernexus/ui";
+import { Button } from "@hypernexus/ui";
+import { Badge } from "@hypernexus/ui";
+import { WorkflowVisualizer } from "@hypernexus/ui";
 import { trpc } from '@/utils/trpc';
 import { Play, Pause, RotateCcw, Activity } from 'lucide-react';
 import { toast } from 'sonner';
@@ -133,7 +133,7 @@ export default function WorkflowsPage() {
         <div className="p-6 space-y-6">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">Workflows</h1>
+                    <h1 className="text-3xl font-bold tracking-tight">Agent Workflow Runner</h1>
                     <p className="text-muted-foreground">Manage and visualize agentic workflows.</p>
                 </div>
                 <div className="flex gap-2">

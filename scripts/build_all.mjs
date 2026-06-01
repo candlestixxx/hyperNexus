@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
 /**
- * Cross-platform Hypercode build orchestrator.
+ * Cross-platform HyperNexus build orchestrator.
  *
  * Why this exists:
  * - Root Turbo builds only cover packages included in `pnpm-workspace.yaml`.
- * - Some extension deliverables live outside the root workspace (`apps/hypercode-extension`).
+ * - Some extension deliverables live outside the root workspace (`apps/hypernexus-extension`).
  * - The JetBrains plugin uses Gradle, so it needs a native build step.
  * - The richer browser extension has separate Chromium and Firefox modes that would
  *   otherwise overwrite the same `dist/` directory.
@@ -238,21 +238,21 @@ function runWorkspaceBuild() {
 
   const claudeMemRoot = path.join(repoRoot, "packages", "claude-mem");
   const claudeMemPackageName = getWorkspacePackageName(claudeMemRoot, "claude-mem");
-  const shouldRequireClaudeMem = process.env.HYPERCODE_REQUIRE_CLAUDE_MEM_BUILD === "true";
+  const shouldRequireClaudeMem = process.env.HYPERNEXUS_REQUIRE_CLAUDE_MEM_BUILD === "true";
   const claudeMemHasMergeMarkers = directoryHasMergeMarkers(path.join(claudeMemRoot, "src"))
     || directoryHasMergeMarkers(path.join(claudeMemRoot, "scripts"));
 
   if (claudeMemHasMergeMarkers && !shouldRequireClaudeMem) {
     const exclusionTargets = Array.from(new Set(["claude-mem", claudeMemPackageName]));
-    printStep(`Detected unresolved merge markers in packages/claude-mem; excluding ${exclusionTargets.join(", ")} from the workspace build so Hypercode can still start.`);
+    printStep(`Detected unresolved merge markers in packages/claude-mem; excluding ${exclusionTargets.join(", ")} from the workspace build so HyperNexus can still start.`);
     for (const target of exclusionTargets) {
       turboArgs.push(`--filter=!${target}`);
     }
   }
 
-  // Exclude hypercode-extension from workspace turbo build � its nested pnpm
+  // Exclude hypernexus-extension from workspace turbo build � its nested pnpm
   // workspace needs a separate install step. Non-blocking for dashboard startup.
-  turboArgs.push(`--filter=!hypercode-extension`);
+  turboArgs.push(`--filter=!hypernexus-extension`);
 
   const result = runPnpm(
     turboArgs,
@@ -271,7 +271,7 @@ function runWorkspaceBuild() {
 }
 
 function runBrowserExtensionBuilds() {
-  const extensionRoot = path.join(repoRoot, "apps", "hypercode-extension");
+  const extensionRoot = path.join(repoRoot, "apps", "hypernexus-extension");
   const distDir = path.join(extensionRoot, "dist");
   const chromiumDistDir = path.join(extensionRoot, "dist-chromium");
   const firefoxDistDir = path.join(extensionRoot, "dist-firefox");
@@ -279,13 +279,13 @@ function runBrowserExtensionBuilds() {
   const chromiumSnapshotDir = path.join(snapshotRoot, "dist-chromium-snapshot");
 
   if (!existsSync(extensionRoot)) {
-    printStep("Skipping browser-extension aggregate build because `apps/hypercode-extension` is not present.");
+    printStep("Skipping browser-extension aggregate build because `apps/hypernexus-extension` is not present.");
     return;
   }
 
   mkdirSync(snapshotRoot, { recursive: true });
 
-  printStep("Installing Hypercode browser-extension workspace dependencies...");
+  printStep("Installing HyperNexus browser-extension workspace dependencies...");
   const installResult = runPnpm(["install", "--frozen-lockfile"], {
     cwd: extensionRoot,
     env: {
@@ -312,7 +312,7 @@ function runBrowserExtensionBuilds() {
     printStep("Browser-extension dependencies installed via --ignore-scripts fallback.");
   }
 
-  printStep("Building Hypercode browser extension for Chromium/Chrome/Edge...");
+  printStep("Building HyperNexus browser extension for Chromium/Chrome/Edge...");
   const chromiumBuild = runPnpm(["run", "base-build"], {
     cwd: extensionRoot,
     env: {
@@ -333,7 +333,7 @@ function runBrowserExtensionBuilds() {
   copyDirectory(distDir, chromiumDistDir);
   copyDirectory(distDir, chromiumSnapshotDir);
 
-  printStep("Building Hypercode browser extension for Firefox...");
+  printStep("Building HyperNexus browser extension for Firefox...");
   const firefoxBuild = runPnpm(["run", "base-build"], {
     cwd: extensionRoot,
     env: {
@@ -400,8 +400,8 @@ function runJetBrainsBuild() {
 
   const gradle = detectGradleCommand(jetbrainsRoot);
   if (!gradle) {
-    const strictJetBrainsBuild = process.env.HYPERCODE_REQUIRE_JETBRAINS_BUILD === "true";
-    const message = "Skipping JetBrains plugin build because Gradle is not available. Install Gradle or add a Gradle wrapper under `packages/jetbrains`, or set HYPERCODE_REQUIRE_JETBRAINS_BUILD=true to fail instead.";
+    const strictJetBrainsBuild = process.env.HYPERNEXUS_REQUIRE_JETBRAINS_BUILD === "true";
+    const message = "Skipping JetBrains plugin build because Gradle is not available. Install Gradle or add a Gradle wrapper under `packages/jetbrains`, or set HYPERNEXUS_REQUIRE_JETBRAINS_BUILD=true to fail instead.";
 
     if (strictJetBrainsBuild) {
       fail(message);

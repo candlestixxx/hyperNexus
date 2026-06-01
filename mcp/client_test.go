@@ -8,12 +8,12 @@ import (
 
 func TestClientUsesAdapterToolHints(t *testing.T) {
 	home := t.TempDir()
-	hypercodeDir := filepath.Join(home, ".hypercode")
-	if err := os.MkdirAll(hypercodeDir, 0o755); err != nil {
+	hypernexusDir := filepath.Join(home, ".hypernexus")
+	if err := os.MkdirAll(hypernexusDir, 0o755); err != nil {
 		t.Fatal(err)
 	}
 	config := `{"mcpServers":{"demo":{"command":"cmd","args":["/c","echo demo"]}}}`
-	if err := os.WriteFile(filepath.Join(hypercodeDir, "mcp.json"), []byte(config), 0o644); err != nil {
+	if err := os.WriteFile(filepath.Join(hypernexusDir, "mcp.json"), []byte(config), 0o644); err != nil {
 		t.Fatal(err)
 	}
 	setMCPEnv(t, home)

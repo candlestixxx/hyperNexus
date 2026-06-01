@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { PageHeader } from '@/components/PageHeader';
 import { PageStatusBanner } from '@/components/PageStatusBanner';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, Button, Input } from '@hypercode/ui';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, Button, Input } from '@hypernexus/ui';
 import { SwarmTranscript } from '@/components/swarm/SwarmTranscript';
 import { trpc } from '@/utils/trpc';
 import {
@@ -385,7 +385,7 @@ export default function SwarmDashboard() {
     return (
         <div className="flex flex-col h-full bg-slate-950 text-slate-100 p-6 space-y-6 overflow-hidden">
             <PageHeader
-                title="Swarm Orchestration"
+                title="Multi-Agent Swarm Console"
                 description="Horizontal multi-model delegation, adversarial debates, and consensus voting."
             />
             <PageStatusBanner

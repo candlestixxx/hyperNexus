@@ -15,16 +15,16 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/hypercodehq/hypercode-go/internal/cache"
-	"github.com/hypercodehq/hypercode-go/internal/ctxharvester"
-	"github.com/hypercodehq/hypercode-go/internal/eventbus"
-	"github.com/hypercodehq/hypercode-go/internal/healer"
-	"github.com/hypercodehq/hypercode-go/internal/mcp"
-	"github.com/hypercodehq/hypercode-go/internal/metrics"
-	processmanager "github.com/hypercodehq/hypercode-go/internal/process"
-	"github.com/hypercodehq/hypercode-go/internal/session"
-	"github.com/hypercodehq/hypercode-go/internal/toolregistry"
-	"github.com/hypercodehq/hypercode-go/internal/workspaces"
+	"github.com/hypernexushq/hypernexus-go/internal/cache"
+	"github.com/hypernexushq/hypernexus-go/internal/ctxharvester"
+	"github.com/hypernexushq/hypernexus-go/internal/eventbus"
+	"github.com/hypernexushq/hypernexus-go/internal/healer"
+	"github.com/hypernexushq/hypernexus-go/internal/mcp"
+	"github.com/hypernexushq/hypernexus-go/internal/metrics"
+	processmanager "github.com/hypernexushq/hypernexus-go/internal/process"
+	"github.com/hypernexushq/hypernexus-go/internal/session"
+	"github.com/hypernexushq/hypernexus-go/internal/toolregistry"
+	"github.com/hypernexushq/hypernexus-go/internal/workspaces"
 )
 
 // ==================== MCP Decision System ====================

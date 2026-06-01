@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from "@hypercode/ui";
-import { Button } from "@hypercode/ui";
+import { Card, CardHeader, CardTitle, CardContent } from "@hypernexus/ui";
+import { Button } from "@hypernexus/ui";
 import { Loader2, Save, RotateCcw } from "lucide-react";
 import { trpc } from '@/utils/trpc';
 import { toast } from 'sonner';
@@ -34,7 +34,7 @@ export default function MCPSettings() {
         <div className="p-8 space-y-8">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">Global Configuration</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">HyperNexus Router JSON Settings</h1>
                     <p className="text-zinc-500">
                         System-wide settings and feature flags
                     </p>

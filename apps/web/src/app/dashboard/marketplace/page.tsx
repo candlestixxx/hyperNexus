@@ -33,7 +33,7 @@ export default function MarketplacePage() {
         <div className="p-8 max-w-7xl mx-auto space-y-8">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white mb-2">Marketplace</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white mb-2">Agent & Skill Marketplace</h1>
                     <p className="text-zinc-400">Discover and install AI agents, tools, and skills.</p>
                 </div>
                 <div className="flex gap-2">

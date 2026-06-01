@@ -174,7 +174,7 @@ export interface SessionPersistenceConfig {
 }
 
 export type CLIType =
-  | 'hypercode'
+  | 'hypernexus'
   | 'opencode'
   | 'antigravity'
   | 'claude'

@@ -2,7 +2,7 @@ import { and, desc, eq } from "drizzle-orm";
 import { randomUUID } from "node:crypto";
 import { db } from "../index.js";
 import { mcpServersTable, toolCallLogsTable } from "../mcp-admin-schema.js";
-import { MetaMcpLogEntry } from "../../types/metamcp/logs.zod.js";
+import { HyperNexusLogEntry } from "../../types/hypernexus/logs.zod.js";
 
 type ToolCallLogInsert = typeof toolCallLogsTable.$inferInsert;
 
@@ -38,7 +38,7 @@ export class LogsRepository {
         limit?: number;
         sessionId?: string;
         serverName?: string;
-    }): Promise<MetaMcpLogEntry[]> {
+    }): Promise<HyperNexusLogEntry[]> {
         const limit = input?.limit ?? 100;
         const filters = [
             input?.sessionId ? eq(toolCallLogsTable.session_id, input.sessionId) : undefined,

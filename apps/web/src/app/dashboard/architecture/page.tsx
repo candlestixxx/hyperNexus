@@ -8,7 +8,7 @@ export default function ArchitecturePage() {
 
     return (
         <div className="p-6">
-            <h1 className="text-2xl font-bold mb-6">Project Architecture & Submodules</h1>
+            <h1 className="text-2xl font-bold mb-6">Monorepo Component Topology</h1>
 
             <div className="space-y-6">
                 {/* Project Structure */}
@@ -22,11 +22,11 @@ export default function ArchitecturePage() {
   
 /packages
   /core             # Core Agentic Framework (MCPServer, Director, Memory)
-  /cli              # CLI functionality (hypercode start, hypercode doctor)
+  /cli              # CLI functionality (hypernexus start, hypernexus doctor)
   /vscode           # VS Code Extension (Editor Interface)
   
 /dockers
-  /hypercode-server      # Containerized Deployment
+  /hypernexus-server      # Containerized Deployment
   
 /docs               # Documentation & Research
 `}

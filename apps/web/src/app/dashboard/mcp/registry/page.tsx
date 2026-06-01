@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from "@hypercode/ui";
-import { Button } from "@hypercode/ui";
+import { Card, CardHeader, CardTitle, CardContent } from "@hypernexus/ui";
+import { Button } from "@hypernexus/ui";
 import { Loader2, Globe, Download, ExternalLink, Database } from "lucide-react";
 import { trpc } from '@/utils/trpc';
 import { toast } from 'sonner';
@@ -92,7 +92,7 @@ export default function RegistryDashboard() {
         <div className="p-8 space-y-8">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">Public Registry</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">HyperNexus Public Registry</h1>
                     <p className="text-zinc-500">
                         Discover and install community MCP servers
                     </p>

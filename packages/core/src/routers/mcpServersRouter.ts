@@ -8,11 +8,11 @@ import {
     McpServerCreateInputSchema,
     McpServerUpdateInputSchema
 } from '../types/mcp-admin/index.js';
-import { loadHypercodeMcpConfig } from '../mcp/mcpJsonConfig.js';
+import { loadHyperNexusMcpConfig } from '../mcp/mcpJsonConfig.js';
 import { clientConfigSyncService, SUPPORTED_MCP_CLIENTS } from '../mcp/clientConfigSync.js';
 import { rethrowSqliteUnavailableAsTrpc } from './sqliteTrpc.js';
 
-const MASTER_INDEX_PATH = path.join(process.cwd(), 'HYPERCODE_MASTER_INDEX.jsonc');
+const MASTER_INDEX_PATH = path.join(process.cwd(), 'HYPERNEXUS_MASTER_INDEX.jsonc');
 
 const stripJsonComments = (content: string) =>
     content.replace(/\\"|"(?:\\"|[^"])*"|(\/\/.*|\/\*[\s\S]*?\*\/)/g, (m, g) => g ? '' : m);
@@ -44,7 +44,7 @@ export const mcpServersRouter = t.router({
             const userId = getContextUserId(ctx);
             const [servers, config] = await Promise.all([
                 mcpServersRepository.findAll(userId),
-                loadHypercodeMcpConfig(),
+                loadHyperNexusMcpConfig(),
             ]);
 
             return servers.map((server) => ({
@@ -62,7 +62,7 @@ export const mcpServersRouter = t.router({
             try {
                 const [server, config] = await Promise.all([
                     mcpServersRepository.findByUuid(input.uuid),
-                    loadHypercodeMcpConfig(),
+                    loadHyperNexusMcpConfig(),
                 ]);
 
                 if (!server) {
@@ -234,7 +234,7 @@ export const mcpServersRouter = t.router({
             }
 
             const detail = error instanceof SyntaxError
-                ? 'HYPERCODE_MASTER_INDEX.jsonc contains invalid JSON.'
+                ? 'HYPERNEXUS_MASTER_INDEX.jsonc contains invalid JSON.'
                 : error instanceof Error
                     ? error.message
                     : String(error);

@@ -4,11 +4,11 @@ const DEFAULT_UPSTREAM_TRPC_URL = 'http://127.0.0.1:4100/trpc';
 const DEFAULT_GO_API_BASE = 'http://127.0.0.1:4300';
 
 function resolveUpstreamBase(): string {
-  return process.env.HYPERCODE_TRPC_UPSTREAM?.trim() || DEFAULT_UPSTREAM_TRPC_URL;
+  return process.env.HYPERNEXUS_TRPC_UPSTREAM?.trim() || DEFAULT_UPSTREAM_TRPC_URL;
 }
 
 function resolveGoApiBase(): string {
-  return process.env.HYPERCODE_GO_API_BASE?.trim() || DEFAULT_GO_API_BASE;
+  return process.env.HYPERNEXUS_GO_API_BASE?.trim() || DEFAULT_GO_API_BASE;
 }
 
 function getProcedurePath(req: Request): string {

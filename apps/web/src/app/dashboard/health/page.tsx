@@ -1,8 +1,8 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@hypercode/ui";
-import { Badge } from "@hypercode/ui";
-import { Button } from "@hypercode/ui";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@hypernexus/ui";
+import { Badge } from "@hypernexus/ui";
+import { Button } from "@hypernexus/ui";
 import { Activity, Server, AlertTriangle, RefreshCcw, HardDrive, Cpu, Network, Radio } from "lucide-react";
 import { trpc } from '@/utils/trpc';
 import { toast } from 'sonner';
@@ -68,7 +68,7 @@ export default function HealthDashboard() {
                         System Health
                     </h1>
                     <p className="text-zinc-500 mt-1">
-                        Monitor Hypercode infrastructure status, component uptime, and server crash rates.
+                        Monitor HyperNexus infrastructure status, component uptime, and server crash rates.
                     </p>
                 </div>
                 <Button 

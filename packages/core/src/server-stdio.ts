@@ -19,18 +19,18 @@ import { MCPServer } from './MCPServer.js';
 
 async function main() {
     process.on('unhandledRejection', (reason) => {
-        console.error('[Hypercode Core] Unhandled promise rejection:', reason);
+        console.error('[HyperNexus Core] Unhandled promise rejection:', reason);
     });
 
     process.on('uncaughtException', (error) => {
-        console.error('[Hypercode Core] Uncaught exception:', error);
+        console.error('[HyperNexus Core] Uncaught exception:', error);
         process.exit(1);
     });
 
     try {
         const mcp = new MCPServer({ skipWebsocket: true, skipRepoGraph: true, minimal: true });
         await mcp.start();
-        console.error("[Hypercode Core] MCP Server Stdio Entry Point Started.");
+        console.error("[HyperNexus Core] MCP Server Stdio Entry Point Started.");
     } catch (err) {
         console.error("Failed to start MCP server:", err);
         process.exit(1);

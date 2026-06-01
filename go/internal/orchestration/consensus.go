@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hypercodehq/hypercode-go/internal/ai"
-	"github.com/hypercodehq/hypercode-go/internal/controlplane"
+	"github.com/hypernexushq/hypernexus-go/internal/ai"
+	"github.com/hypernexushq/hypernexus-go/internal/controlplane"
 )
 
 type ConsensusEngine struct {

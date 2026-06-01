@@ -17,14 +17,14 @@ type Status struct {
 	WorkspaceRoot        PathStatus `json:"workspaceRoot"`
 	ConfigDir            PathStatus `json:"configDir"`
 	MainConfigDir        PathStatus `json:"mainConfigDir"`
-	HypercodeConfigFile       PathStatus `json:"hypercodeConfigFile"`
+	HyperNexusConfigFile       PathStatus `json:"hypernexusConfigFile"`
 	MCPConfigFile        PathStatus `json:"mcpConfigFile"`
 	GoLockPath           PathStatus `json:"goLockPath"`
 	MainLockPath         PathStatus `json:"mainLockPath"`
 	ImportedInstructions PathStatus `json:"importedInstructions"`
 	SectionedMemoryStore PathStatus `json:"sectionedMemoryStore"`
 	LegacyMemoryStore    PathStatus `json:"legacyMemoryStore"`
-	HypercodeSubmodule        PathStatus `json:"hypercodeSubmodule"`
+	HyperNexusSubmodule        PathStatus `json:"hypernexusSubmodule"`
 }
 
 func Snapshot(cfg Config) Status {
@@ -35,14 +35,14 @@ func Snapshot(cfg Config) Status {
 		WorkspaceRoot:        buildPathStatus(cfg.WorkspaceRoot),
 		ConfigDir:            buildPathStatus(cfg.ConfigDir),
 		MainConfigDir:        buildPathStatus(cfg.MainConfigDir),
-		HypercodeConfigFile:       buildPathStatus(filepath.Join(cfg.WorkspaceRoot, "hypercode.config.json")),
+		HyperNexusConfigFile:       buildPathStatus(filepath.Join(cfg.WorkspaceRoot, "hypernexus.config.json")),
 		MCPConfigFile:        buildPathStatus(filepath.Join(cfg.WorkspaceRoot, "mcp.jsonc")),
 		GoLockPath:           buildPathStatus(cfg.LockPath()),
 		MainLockPath:         buildPathStatus(cfg.MainLockPath()),
 		ImportedInstructions: buildPathStatus(cfg.ImportedInstructionsPath()),
-		SectionedMemoryStore: buildPathStatus(filepath.Join(cfg.WorkspaceRoot, ".hypercode", "sectioned_memory.json")),
-		LegacyMemoryStore:    buildPathStatus(filepath.Join(cfg.WorkspaceRoot, ".hypercode", "claude_mem.json")),
-		HypercodeSubmodule:        buildPathStatus(filepath.Join(cfg.WorkspaceRoot, "submodules", "hypercode")),
+		SectionedMemoryStore: buildPathStatus(filepath.Join(cfg.WorkspaceRoot, ".hypernexus", "sectioned_memory.json")),
+		LegacyMemoryStore:    buildPathStatus(filepath.Join(cfg.WorkspaceRoot, ".hypernexus", "claude_mem.json")),
+		HyperNexusSubmodule:        buildPathStatus(filepath.Join(cfg.WorkspaceRoot, "submodules", "hypernexus")),
 	}
 }
 

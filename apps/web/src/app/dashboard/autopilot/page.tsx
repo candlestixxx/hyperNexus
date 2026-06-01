@@ -13,7 +13,7 @@ export default function AutopilotDashboardPage() {
         <div className="w-full h-full flex flex-col">
             <div className="p-4 border-b border-gray-800 flex justify-between items-center bg-gray-900">
                 <div>
-                    <h1 className="text-xl font-bold text-white">OpenCode Autopilot</h1>
+                    <h1 className="text-xl font-bold text-white">OpenCode Autopilot Console</h1>
                     <p className="text-gray-400 text-sm">Multi-Model AI Council & Governance</p>
                 </div>
                 <div className="flex gap-2">

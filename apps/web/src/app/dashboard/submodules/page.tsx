@@ -1,9 +1,9 @@
 'use client';
 
-import { Card, CardHeader, CardTitle, CardContent, CardDescription, Tabs, TabsContent, TabsList, TabsTrigger } from "@hypercode/ui";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription, Tabs, TabsContent, TabsList, TabsTrigger } from "@hypernexus/ui";
 import { useEffect, useState } from "react";
 import { fetchSubmodulesAction, healSubmodulesAction, fetchUserLinksAction } from "./actions";
-import { Button } from "@hypercode/ui";
+import { Button } from "@hypernexus/ui";
 import { Loader2, RefreshCw, GitCommit, Calendar, ExternalLink, Copy, Check } from "lucide-react";
 import {
     normalizeSubmodules,
@@ -35,7 +35,7 @@ export default function SubmodulesPage() {
         <div className="p-8 space-y-8 max-w-7xl mx-auto">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">System Knowledge & Modules</h1>
+                    <h1 className="text-3xl font-bold tracking-tight">Git Submodule Manager</h1>
                     <p className="text-muted-foreground mt-1">Manage git submodules, project structure, and external resources.</p>
                 </div>
                 <HealButton />
@@ -162,7 +162,7 @@ export default function SubmodulesPage() {
                 <TabsContent value="structure">
                     <Card>
                         <CardHeader>
-                            <CardTitle>Hypercode Project Structure</CardTitle>
+                            <CardTitle>HyperNexus Project Structure</CardTitle>
                             <CardDescription>
                                 Architectural overview of the monorepo.
                             </CardDescription>

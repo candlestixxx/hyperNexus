@@ -4,11 +4,11 @@ import path from 'node:path';
 import type { RegisteredBridgeClient } from '../bridge/bridge-manifest.js';
 import type { ExecutionEnvironmentSummary } from '../services/execution-environment.js';
 
-let hypercodeVersionPromise: Promise<string> | null = null;
+let hypernexusVersionPromise: Promise<string> | null = null;
 
-async function getHypercodeVersion(): Promise<string> {
-    if (!hypercodeVersionPromise) {
-        hypercodeVersionPromise = (async () => {
+async function getHyperNexusVersion(): Promise<string> {
+    if (!hypernexusVersionPromise) {
+        hypernexusVersionPromise = (async () => {
             try {
                 const version = await readFile(path.join(process.cwd(), 'VERSION'), 'utf-8');
                 const trimmed = version.trim();
@@ -32,7 +32,7 @@ async function getHypercodeVersion(): Promise<string> {
         })();
     }
 
-    return hypercodeVersionPromise;
+    return hypernexusVersionPromise;
 }
 
 type StartupStatusInput = {
@@ -290,7 +290,7 @@ export async function buildStartupStatusSnapshot(input: StartupStatusInput) {
         ? 'All startup checks passed.'
         : `Startup pending: ${blockingReasons.map((reason) => reason.detail).join(' ')}`;
 
-    const version = await getHypercodeVersion();
+    const version = await getHyperNexusVersion();
 
     return {
         status: 'running',

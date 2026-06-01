@@ -1,15 +1,15 @@
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
-import { Card, CardContent } from "@hypercode/ui";
-import { Button } from "@hypercode/ui";
+import { Card, CardContent } from "@hypernexus/ui";
+import { Button } from "@hypernexus/ui";
 import { Loader2, Send, Bot, User, Terminal } from "lucide-react";
 import { trpc } from '@/utils/trpc';
 import { toast } from 'sonner';
 
 export default function AgentPlayground() {
     const [messages, setMessages] = useState<Array<{ role: 'user' | 'assistant', content: string, tools?: any[] }>>([
-        { role: 'assistant', content: "Hello! I'm your MetaMCP Agent. I have access to all your connected tools. How can I help you today?" }
+        { role: 'assistant', content: "Hello! I'm your HyperNexus Agent. I have access to all your connected tools. How can I help you today?" }
     ]);
     const [input, setInput] = useState('');
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -49,7 +49,7 @@ export default function AgentPlayground() {
         <div className="p-8 space-y-8 h-full flex flex-col">
             <div className="flex justify-between items-center shrink-0">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">Agent Playground</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">HyperNexus Agent Playground</h1>
                     <p className="text-zinc-500">
                         Chat with an agent capable of using your tools
                     </p>

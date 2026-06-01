@@ -1,13 +1,13 @@
 import { z } from 'zod';
 import { t, publicProcedure, adminProcedure } from '../lib/trpc-core.js';
-import { resolveOrchestratorBase } from '../lib/hypercode-orchestrator.js';
+import { resolveOrchestratorBase } from '../lib/hypernexus-orchestrator.js';
 
 /**
  * Session Export/Import Router
  *
  * Provides the ability to:
  * - Export sessions and memories to portable JSON/ZIP formats
- * - Import sessions from other Hypercode instances or environments
+ * - Import sessions from other HyperNexus instances or environments
  * - Auto-detect session formats from various CLI tools
  * - Cross-environment memory transfer
  */
@@ -54,7 +54,7 @@ export interface ExportedSession {
 export interface ExportPackage {
     version: '1.0';
     exportedAt: number;
-    hypercodeVersion: string;
+    hypernexusVersion: string;
     environment: string;
     sessionCount: number;
     sessions: ExportedSession[];
@@ -93,7 +93,7 @@ const SESSION_FORMAT_SIGNATURES: Record<string, { paths: string[]; type: string 
     'opencode': { paths: ['.docs/ai-logs'], type: 'opencode' },
     'aider': { paths: ['.aider.chat.history.md', '.aider.tags.cache'], type: 'aider' },
     'windsurf': { paths: ['.windsurf', '.docs/ai-logs'], type: 'windsurf' },
-    'hypercode': { paths: ['.hypercode', '.hypercode/sessions'], type: 'hypercode' },
+    'hypernexus': { paths: ['.hypernexus', '.hypernexus/sessions'], type: 'hypernexus' },
     'continue': { paths: ['.continue', '.continue/sessions'], type: 'continue' },
     'copilot': { paths: ['.github/copilot'], type: 'copilot' },
 };
@@ -103,8 +103,8 @@ function detectSessionFormat(data: unknown): string {
 
     const record = data as Record<string, unknown>;
 
-    // Check for Hypercode export format
-    if (record.version === '1.0' && Array.isArray(record.sessions)) return 'hypercode-export';
+    // Check for HyperNexus export format
+    if (record.version === '1.0' && Array.isArray(record.sessions)) return 'hypernexus-export';
 
     // Check for Claude Code format  
     if (record.type === 'conversation' && record.messages) return 'claude-code';
@@ -128,7 +128,7 @@ function parseImportData(rawData: string): { format: string; sessions: ExportedS
 
     const format = detectSessionFormat(parsed);
 
-    if (format === 'hypercode-export') {
+    if (format === 'hypernexus-export') {
         const pkg = parsed as ExportPackage;
         return { format, sessions: pkg.sessions };
     }
@@ -187,8 +187,8 @@ export async function loadExportableOrchestratorSessions(
         })
         .map((record) => ({
         id: String(record.id ?? `exported_${Date.now()}`),
-        name: String(record.currentTask || 'Hypercode Session'),
-        cliType: 'hypercode',
+        name: String(record.currentTask || 'HyperNexus Session'),
+        cliType: 'hypernexus',
         status: String(record.status || 'unknown'),
         createdAt: typeof record.startTime === 'number' ? record.startTime : Date.now(),
         workingDirectory: process.cwd(),
@@ -204,7 +204,7 @@ export async function restoreSessionViaOrchestrator(
     orchestratorBase: string | null = resolveOrchestratorBase(),
 ): Promise<{ ok: true } | { ok: false; reason: string }> {
     if (!orchestratorBase) {
-        return { ok: false, reason: 'No Hypercode Orchestrator base configured.' };
+        return { ok: false, reason: 'No HyperNexus Orchestrator base configured.' };
     }
 
     try {
@@ -240,7 +240,7 @@ export const sessionExportRouter = t.router({
             const pkg: ExportPackage = {
                 version: '1.0',
                 exportedAt: Date.now(),
-                hypercodeVersion: '0.90.5',
+                hypernexusVersion: '0.90.5',
                 environment: process.platform,
                 sessionCount: 0,
                 sessions: [],
@@ -251,7 +251,7 @@ export const sessionExportRouter = t.router({
                 pkg.sessions = await loadExportableOrchestratorSessions(fetch, undefined, input.sessionIds);
                 pkg.sessionCount = pkg.sessions.length;
             } catch (e: any) {
-                console.warn(`[SessionExport] Hypercode Orchestrator unavailable (${e.message}). Exporting empty sessions list.`);
+                console.warn(`[SessionExport] HyperNexus Orchestrator unavailable (${e.message}). Exporting empty sessions list.`);
             }
 
             const exportId = `export_${Date.now()}`;

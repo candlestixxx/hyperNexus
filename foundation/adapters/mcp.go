@@ -7,7 +7,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/robertpelloni/hypercode/hypercode"
+	"github.com/robertpelloni/hypernexus/hypernexus"
 )
 
 type MCPStatus struct {
@@ -42,7 +42,7 @@ type MCPCallResult struct {
 }
 
 type MCPAdapter struct {
-	hypercodeAdapter *hypercode.Adapter
+	hypernexusAdapter *hypernexus.Adapter
 	workingDir  string
 	homeDir     string
 }
@@ -50,7 +50,7 @@ type MCPAdapter struct {
 func NewMCPAdapter(workingDir string) *MCPAdapter {
 	homeDir, _ := os.UserHomeDir()
 	return &MCPAdapter{
-		hypercodeAdapter: hypercode.NewAdapter(),
+		hypernexusAdapter: hypernexus.NewAdapter(),
 		workingDir:  workingDir,
 		homeDir:     homeDir,
 	}
@@ -101,10 +101,10 @@ func (a *MCPAdapter) ListTools() ([]string, error) {
 
 func (a *MCPAdapter) RouteCall(serverName, request string) string {
 	payload := fmt.Sprintf("%s:%s", strings.TrimSpace(serverName), strings.TrimSpace(request))
-	if a.hypercodeAdapter == nil {
+	if a.hypernexusAdapter == nil {
 		return payload
 	}
-	return a.hypercodeAdapter.RouteMCP(payload)
+	return a.hypernexusAdapter.RouteMCP(payload)
 }
 
 func (a *MCPAdapter) CallTool(req MCPCallRequest) (MCPCallResult, error) {
@@ -169,10 +169,10 @@ func defaultToolHintsForServer(name string, server MCPServerConfig) []string {
 }
 
 func (a *MCPAdapter) routeHint(name string) string {
-	if a.hypercodeAdapter == nil {
+	if a.hypernexusAdapter == nil {
 		return name
 	}
-	return a.hypercodeAdapter.RouteMCP(name)
+	return a.hypernexusAdapter.RouteMCP(name)
 }
 
 func commandResolvable(command string) bool {

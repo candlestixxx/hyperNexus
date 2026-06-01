@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { trpc } from '@/utils/trpc';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@hypercode/ui';
-import { Badge } from "@hypercode/ui";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@hypernexus/ui';
+import { Badge } from "@hypernexus/ui";
 import { Activity, File, Terminal, Zap, Cpu, Clock } from 'lucide-react';
 
 export default function EventsPage() {
@@ -41,7 +41,7 @@ export default function EventsPage() {
         <div className="container mx-auto p-6 space-y-6">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">System Nervous System</h1>
+                    <h1 className="text-3xl font-bold tracking-tight">System Event Stream</h1>
                     <p className="text-muted-foreground">Real-time event stream from sensors and reactors.</p>
                 </div>
                 <div className="flex gap-3 items-center">
@@ -101,7 +101,7 @@ export default function EventsPage() {
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-2">
                                 <Cpu className="w-5 h-5 text-green-400" />
-                                <span>Hypercode Core</span>
+                                <span>HyperNexus Core</span>
                             </div>
                             <Badge className={systemStatus?.status === 'online' ? "bg-green-600" : "bg-red-600"}>
                                 {systemStatus?.status === 'online' ? 'Online' : 'Offline'}

@@ -1508,7 +1508,7 @@ describe('DashboardHomeView', () => {
     expect(html).toContain('Integration Hub');
     expect(html).toContain('Server health and traffic');
     expect(html).toContain('Startup readiness');
-    expect(html).toContain('Install &amp; connect Hypercode');
+    expect(html).toContain('Install &amp; connect HyperNexus');
     expect(html).toContain('Browser extensions');
     expect(html).toContain('Editor surfaces');
     expect(html).toContain('Client config sync');

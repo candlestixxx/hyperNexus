@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hypercodehq/hypercode-go/internal/mcp"
+	"github.com/hypernexushq/hypernexus-go/internal/mcp"
 )
 
 func (s *Server) handleMCPStatus(w http.ResponseWriter, r *http.Request) {

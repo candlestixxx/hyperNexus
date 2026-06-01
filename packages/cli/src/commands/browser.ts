@@ -1,5 +1,5 @@
 /**
- * `hypercode browser` — Browser automation control
+ * `hypernexus browser` — Browser automation control
  */
 import type { Command } from 'commander';
 

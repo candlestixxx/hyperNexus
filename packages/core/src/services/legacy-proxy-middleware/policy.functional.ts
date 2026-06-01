@@ -1,1 +1,1 @@
-export * from "../metamcp-middleware/policy.functional.js";
+export * from "../hypernexus-middleware/policy.functional.js";

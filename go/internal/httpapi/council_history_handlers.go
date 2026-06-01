@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/hypercodehq/hypercode-go/internal/orchestration"
+	"github.com/hypernexushq/hypernexus-go/internal/orchestration"
 )
 
 func (s *Server) handleCouncilHistoryStatus(w http.ResponseWriter, r *http.Request) {

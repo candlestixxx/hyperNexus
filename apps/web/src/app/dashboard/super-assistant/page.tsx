@@ -2,11 +2,11 @@
 
 import React from "react";
 import { trpc } from "@/utils/trpc";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@hypercode/ui";
-import { Badge } from "@hypercode/ui";
-import { Button } from "@hypercode/ui";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@hypercode/ui";
-import { ScrollArea } from "@hypercode/ui";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@hypernexus/ui";
+import { Badge } from "@hypernexus/ui";
+import { Button } from "@hypernexus/ui";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@hypernexus/ui";
+import { ScrollArea } from "@hypernexus/ui";
 import { Bot, Wrench, Server, Cpu, Activity, Zap, Loader2, RefreshCw, AlertTriangle } from "lucide-react";
 
 interface ToolItem {
@@ -58,7 +58,7 @@ export default function SuperAssistantDashboardPage() {
             <div className="p-4 border-b border-gray-800 flex justify-between items-center bg-gray-900">
                 <div>
                     <h1 className="text-xl font-bold text-white flex items-center gap-2">
-                        <Bot className="w-5 h-5 text-purple-400" /> MCP SuperAssistant
+                        <Bot className="w-5 h-5 text-purple-400" /> MCP Overview & Tools
                     </h1>
                     <p className="text-gray-400 text-sm">
                         System-wide MCP capability overview — {tools.length} tools, {servers.length} servers, {skills.length} skills

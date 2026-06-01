@@ -1,8 +1,8 @@
 /**
- * hypercode MCP Configuration Service
+ * hypernexus MCP Configuration Service
  *
  * Manages MCP server configurations:
- * - Auto-detection of .mcp.json, .hypercode.json (legacy .legacy_config.json) config files
+ * - Auto-detection of .mcp.json, .hypernexus.json (legacy .legacy_config.json) config files
  * - Environment variable expansion
  * - Secrets management
  * - Multi-format support (Claude, OpenAI, Google)
@@ -69,7 +69,7 @@ export class ConfigurationService extends EventEmitter {
         const cwd = process.cwd();
         return [
             path.join(cwd, '.mcp.json'),
-            path.join(cwd, '.hypercode.json'),
+            path.join(cwd, '.hypernexus.json'),
             path.join(cwd, '.legacy_config.json'),
             path.join(cwd, 'config', 'mcp.json'),
             path.join(cwd, '.config', 'mcp.json'),
@@ -112,7 +112,7 @@ export class ConfigurationService extends EventEmitter {
      * Check if file is a MCP config file
      */
     isConfigFile(filename) {
-        return ['.mcp.json', '.hypercode.json', '.legacy_config.json', 'mcp.json'].includes(filename);
+        return ['.mcp.json', '.hypernexus.json', '.legacy_config.json', 'mcp.json'].includes(filename);
     }
     /**
      * Load and parse a config file
@@ -133,10 +133,10 @@ export class ConfigurationService extends EventEmitter {
      * Detect config format from file content
      */
     detectConfigFormat(filePath, parsed) {
-        if (filePath.includes('.hypercode.json'))
-            return 'hypercode';
+        if (filePath.includes('.hypernexus.json'))
+            return 'hypernexus';
         if (filePath.includes('.legacy_config.json'))
-            return 'hypercode';
+            return 'hypernexus';
         if (parsed.mcpServers)
             return 'claude';
         if (parsed.tools)
@@ -164,7 +164,7 @@ export class ConfigurationService extends EventEmitter {
             case 'google':
                 rawServers = parsed.servers || [];
                 break;
-            case 'hypercode':
+            case 'hypernexus':
             case 'legacy':
                 rawServers = parsed.servers || [];
                 break;
@@ -193,9 +193,9 @@ export class ConfigurationService extends EventEmitter {
                 case 'google':
                     server = this.normalizeGoogleServer(raw);
                     break;
-                case 'hypercode':
+                case 'hypernexus':
                 case 'legacy':
-                    server = this.normalizeHypercodeServer(raw);
+                    server = this.normalizeHyperNexusServer(raw);
                     break;
             }
             if (server) {
@@ -268,9 +268,9 @@ export class ConfigurationService extends EventEmitter {
         };
     }
     /**
-     * Normalize hypercode format server
+     * Normalize hypernexus format server
      */
-    normalizeHypercodeServer(raw) {
+    normalizeHyperNexusServer(raw) {
         return {
             id: this.generateServerId(raw.name),
             name: raw.name,
@@ -289,7 +289,7 @@ export class ConfigurationService extends EventEmitter {
         };
     }
     normalizeLegacyServer(raw) {
-        return this.normalizeHypercodeServer(raw);
+        return this.normalizeHyperNexusServer(raw);
     }
     /**
      * Generate unique server ID
@@ -402,7 +402,7 @@ export class ConfigurationService extends EventEmitter {
     /**
      * Export all configurations to file
      */
-    async exportConfigs(format = 'hypercode') {
+    async exportConfigs(format = 'hypernexus') {
         const servers = this.db.getAllMcpServers();
         let output;
         switch (format) {
@@ -420,7 +420,7 @@ export class ConfigurationService extends EventEmitter {
             case 'google':
                 output = { servers: servers };
                 break;
-            case 'hypercode':
+            case 'hypernexus':
             case 'legacy':
                 output = { servers };
                 break;
@@ -430,7 +430,7 @@ export class ConfigurationService extends EventEmitter {
     /**
      * Write configuration to file
      */
-    async writeConfig(filePath, format = 'hypercode') {
+    async writeConfig(filePath, format = 'hypernexus') {
         const content = await this.exportConfigs(format);
         const dir = path.dirname(filePath);
         await fs.mkdir(dir, { recursive: true });

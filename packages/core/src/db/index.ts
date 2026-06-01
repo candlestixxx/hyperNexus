@@ -582,7 +582,7 @@ function initializeSchema(database: InstanceType<typeof Database>): void {
 }
 
 // Default to SQLite local file
-const dbPath = process.env.DATABASE_URL || "metamcp.db";
+const dbPath = process.env.DATABASE_URL || "hypernexus.db";
 
 // Ensure we are using absolute path if it is a local file
 const resolvedDbPath = dbPath.startsWith("file:")

@@ -32,7 +32,7 @@ import {
     type PublishedServerStatusEnum,
     type ValidationRunModeEnum,
     type ValidationRunOutcomeEnum,
-} from "../metamcp-schema.js";
+} from "../hypernexus-schema.js";
 
 // ---- Type aliases ----
 

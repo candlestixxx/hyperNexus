@@ -3,7 +3,7 @@ import path from 'node:path';
 
 import type { SavedScriptConfig, SavedToolSetConfig } from '../interfaces/IConfigProvider.js';
 
-export type HypercodeMcpToolMetadata = {
+export type HyperNexusMcpToolMetadata = {
     name: string;
     title?: string | null;
     description?: string | null;
@@ -21,7 +21,7 @@ export type HypercodeMcpToolMetadata = {
     raw?: Record<string, unknown> | null;
 };
 
-export type HypercodeMcpServerDiscoveryMetadata = {
+export type HyperNexusMcpServerDiscoveryMetadata = {
     status: 'ready' | 'failed' | 'unsupported' | 'pending';
     metadataVersion?: number;
     metadataSource?: 'binary' | 'cache' | 'derived';
@@ -43,11 +43,11 @@ export type HypercodeMcpServerDiscoveryMetadata = {
     headerKeys?: string[];
     reloadableFromCache?: boolean;
     toolCount: number;
-    tools: HypercodeMcpToolMetadata[];
+    tools: HyperNexusMcpToolMetadata[];
     error?: string;
 };
 
-export type HypercodeMcpServerEntry = {
+export type HyperNexusMcpServerEntry = {
     command?: string;
     args?: string[];
     env?: Record<string, string>;
@@ -55,11 +55,11 @@ export type HypercodeMcpServerEntry = {
     disabled?: boolean;
     description?: string | null;
     type?: 'STDIO' | 'SSE' | 'STREAMABLE_HTTP';
-    _meta?: HypercodeMcpServerDiscoveryMetadata;
+    _meta?: HyperNexusMcpServerDiscoveryMetadata;
 };
 
-export type HypercodeMcpJsonConfig = {
-    mcpServers: Record<string, HypercodeMcpServerEntry>;
+export type HyperNexusMcpJsonConfig = {
+    mcpServers: Record<string, HyperNexusMcpServerEntry>;
     alwaysVisibleTools?: string[];
     scripts?: SavedScriptConfig[];
     toolSets?: SavedToolSetConfig[];
@@ -69,13 +69,13 @@ export type HypercodeMcpJsonConfig = {
 
 import os from 'node:os';
 
-const JSONC_HEADER = `// Hypercode MCP configuration\n// This file is Hypercode-owned and may include cached server metadata under mcpServers.<name>._meta.\n`;
+const JSONC_HEADER = `// HyperNexus MCP configuration\n// This file is HyperNexus-owned and may include cached server metadata under mcpServers.<name>._meta.\n`;
 
-export function getHypercodeConfigDir(): string {
+export function getHyperNexusConfigDir(): string {
     // If there is an mcp.jsonc in the current working directory, use it
     // This allows project-level config to be the source of truth if intended.
-    if (process.env.HYPERCODE_CONFIG_DIR) {
-        return process.env.HYPERCODE_CONFIG_DIR;
+    if (process.env.HYPERNEXUS_CONFIG_DIR) {
+        return process.env.HYPERNEXUS_CONFIG_DIR;
     }
     const cwdPath = process.cwd();
     try {
@@ -86,18 +86,18 @@ export function getHypercodeConfigDir(): string {
     } catch {
         // Fall back
     }
-    return path.join(os.homedir(), '.hypercode');
+    return path.join(os.homedir(), '.hypernexus');
 }
 
-export function getHypercodeMcpJsoncPath(configDir: string = getHypercodeConfigDir()): string {
+export function getHyperNexusMcpJsoncPath(configDir: string = getHyperNexusConfigDir()): string {
     return path.join(configDir, 'mcp.jsonc');
 }
 
-export function getHypercodeMcpJsonPath(configDir: string = getHypercodeConfigDir()): string {
+export function getHyperNexusMcpJsonPath(configDir: string = getHyperNexusConfigDir()): string {
     return path.join(configDir, 'mcp.json');
 }
 
-export function getHypercodeToolCachePath(configDir: string = getHypercodeConfigDir()): string {
+export function getHyperNexusToolCachePath(configDir: string = getHyperNexusConfigDir()): string {
     return path.join(configDir, 'mcp-cache.json');
 }
 
@@ -179,12 +179,12 @@ export function stripJsonComments(content: string): string {
     return result;
 }
 
-function normalizeConfigShape(config: unknown): HypercodeMcpJsonConfig {
+function normalizeConfigShape(config: unknown): HyperNexusMcpJsonConfig {
     if (!config || typeof config !== 'object') {
         return { mcpServers: {} };
     }
 
-    const candidate = config as HypercodeMcpJsonConfig;
+    const candidate = config as HyperNexusMcpJsonConfig;
     return {
         ...candidate,
         mcpServers: candidate.mcpServers && typeof candidate.mcpServers === 'object'
@@ -205,7 +205,7 @@ function normalizeConfigShape(config: unknown): HypercodeMcpJsonConfig {
     };
 }
 
-function toCompatibilityConfig(config: HypercodeMcpJsonConfig): Record<string, unknown> {
+function toCompatibilityConfig(config: HyperNexusMcpJsonConfig): Record<string, unknown> {
     const compatibilityServers = Object.fromEntries(
         Object.entries(config.mcpServers || {}).map(([name, server]) => {
             const { _meta: _ignoredMeta, ...serverWithoutMeta } = server;
@@ -223,8 +223,8 @@ function toCompatibilityConfig(config: HypercodeMcpJsonConfig): Record<string, u
     return compatibilityConfig;
 }
 
-export async function loadHypercodeMcpConfig(configDir?: string): Promise<HypercodeMcpJsonConfig> {
-    const jsoncPath = getHypercodeMcpJsoncPath(configDir);
+export async function loadHyperNexusMcpConfig(configDir?: string): Promise<HyperNexusMcpJsonConfig> {
+    const jsoncPath = getHyperNexusMcpJsoncPath(configDir);
 
     try {
         const raw = await fs.readFile(jsoncPath, 'utf-8');
@@ -239,10 +239,10 @@ export async function loadHypercodeMcpConfig(configDir?: string): Promise<Hyperc
     return { mcpServers: {} };
 }
 
-export async function writeHypercodeMcpConfig(config: HypercodeMcpJsonConfig, configDir?: string): Promise<void> {
+export async function writeHyperNexusMcpConfig(config: HyperNexusMcpJsonConfig, configDir?: string): Promise<void> {
     const normalized = normalizeConfigShape(config);
-    const jsoncPath = getHypercodeMcpJsoncPath(configDir);
-    const jsonPath = getHypercodeMcpJsonPath(configDir);
+    const jsoncPath = getHyperNexusMcpJsoncPath(configDir);
+    const jsonPath = getHyperNexusMcpJsonPath(configDir);
 
     await fs.mkdir(path.dirname(jsoncPath), { recursive: true });
 
@@ -252,15 +252,15 @@ export async function writeHypercodeMcpConfig(config: HypercodeMcpJsonConfig, co
     await fs.writeFile(jsonPath, jsonBody, 'utf-8');
 }
 
-export async function writeToolCache(config: HypercodeMcpJsonConfig, configDir?: string): Promise<void> {
-    const cachePath = getHypercodeToolCachePath(configDir);
+export async function writeToolCache(config: HyperNexusMcpJsonConfig, configDir?: string): Promise<void> {
+    const cachePath = getHyperNexusToolCachePath(configDir);
     await fs.mkdir(path.dirname(cachePath), { recursive: true });
     await fs.writeFile(cachePath, JSON.stringify(config, null, 2), 'utf-8');
 }
 
-export async function loadToolCache(configDir?: string): Promise<HypercodeMcpJsonConfig | null> {
+export async function loadToolCache(configDir?: string): Promise<HyperNexusMcpJsonConfig | null> {
     try {
-        const raw = await fs.readFile(getHypercodeToolCachePath(configDir), 'utf-8');
+        const raw = await fs.readFile(getHyperNexusToolCachePath(configDir), 'utf-8');
         return normalizeConfigShape(JSON.parse(raw));
     } catch {
         return null;
@@ -268,4 +268,4 @@ export async function loadToolCache(configDir?: string): Promise<HypercodeMcpJso
 }
 
 
-// Aliases removed — original functions already use Hypercode naming
+// Aliases removed — original functions already use HyperNexus naming

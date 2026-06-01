@@ -3,15 +3,15 @@
 
 import React, { useState } from 'react';
 import { trpc } from '@/utils/trpc';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@hypercode/ui';
-import { Badge } from '@hypercode/ui';
-import { Button } from '@hypercode/ui';
-import { Input } from '@hypercode/ui';
-import { Textarea } from '@hypercode/ui';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@hypercode/ui";
-import { ScrollArea } from '@hypercode/ui';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@hypernexus/ui';
+import { Badge } from '@hypernexus/ui';
+import { Button } from '@hypernexus/ui';
+import { Input } from '@hypernexus/ui';
+import { Textarea } from '@hypernexus/ui';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@hypernexus/ui";
+import { ScrollArea } from '@hypernexus/ui';
 import { RefreshCcw, Dna, FlaskConical, Play, CheckCircle, XCircle } from 'lucide-react';
-import { useToast } from "@hypercode/ui";
+import { useToast } from "@hypernexus/ui";
 
 export default function EvolutionPage() {
     const { toast } = useToast();
@@ -67,7 +67,7 @@ export default function EvolutionPage() {
         <div className="p-6 space-y-6">
             <header className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">Evolution Engine</h1>
+                    <h1 className="text-3xl font-bold tracking-tight">Prompt Mutation Engine</h1>
                     <p className="text-muted-foreground">The Darwin Protocol: Mutation and Natural Selection of Agents.</p>
                 </div>
                 <Button variant="outline" onClick={() => refetch()}><RefreshCcw className="w-4 h-4 mr-2" /> Refresh</Button>

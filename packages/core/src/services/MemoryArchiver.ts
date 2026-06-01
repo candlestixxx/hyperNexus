@@ -21,9 +21,9 @@
 import fs from 'fs/promises';
 import path from 'path';
 import AdmZip from 'adm-zip';
-import { LLMService } from "@hypercode/ai";
+import { LLMService } from "@hypernexus/ai";
 import { AgentMemoryService } from "./AgentMemoryService.js";
-import { A2ALogger } from "@hypercode/agents";
+import { A2ALogger } from "@hypernexus/agents";
 
 export interface ArchivedSessionMetadata {
     originalId: string;

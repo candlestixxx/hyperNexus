@@ -2,13 +2,13 @@
 
 import { trpc } from '@/utils/trpc';
 import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@hypercode/ui';
-import { Button } from '@hypercode/ui';
-import { Badge } from '@hypercode/ui';
-import { ScrollArea } from '@hypercode/ui';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@hypercode/ui";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@hypernexus/ui';
+import { Button } from '@hypernexus/ui';
+import { Badge } from '@hypernexus/ui';
+import { ScrollArea } from '@hypernexus/ui';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@hypernexus/ui";
 import { GitBranch, GitCommit, Play, Rewind, CheckCircle, XCircle, AlertCircle, FileCode } from 'lucide-react';
-import { Alert, AlertDescription, AlertTitle } from "@hypercode/ui";
+import { Alert, AlertDescription, AlertTitle } from "@hypernexus/ui";
 
 export default function PlansDashboard() {
     const [activeTab, setActiveTab] = useState('diffs');
@@ -37,7 +37,7 @@ export default function PlansDashboard() {
         <div className="container mx-auto p-6 space-y-6">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">Plan & Build</h1>
+                    <h1 className="text-3xl font-bold tracking-tight">Staged Changes Sandbox</h1>
                     <p className="text-muted-foreground">Detailed diff sandbox and checkpoint management.</p>
                 </div>
                 <div className="flex items-center gap-4">

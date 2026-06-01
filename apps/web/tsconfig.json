@@ -28,10 +28,10 @@
       "@/*": [
         "./src/*"
       ],
-      "@hypercode/ui": [
+      "@hypernexus/ui": [
         "../../packages/ui/src/index.tsx"
       ],
-      "@hypercode/ui/*": [
+      "@hypernexus/ui/*": [
         "../../packages/ui/src/*"
       ]
     }
@@ -40,9 +40,9 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.mts",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hypercodehq/hypercode-go/internal/config"
+	"github.com/hypernexushq/hypernexus-go/internal/config"
 )
 
 // handleServiceConnectivity reports the health of connections between
@@ -146,11 +146,11 @@ func (s *Server) handleMCPClientSync(w http.ResponseWriter, r *http.Request) {
 	sd := config.DefaultServiceDiscovery()
 	sidecarBase := sd.GoSidecarBaseURL()
 
-	// Build Hypercode MCP server entries for the target client
+	// Build HyperNexus MCP server entries for the target client
 	servers := map[string]any{
-		"hypercode": map[string]any{
+		"hypernexus": map[string]any{
 			"url":   fmt.Sprintf("%s/mcp", sidecarBase),
-			"notes": "Hypercode Go Control Plane — aggregated MCP router",
+			"notes": "HyperNexus Go Control Plane — aggregated MCP router",
 		},
 	}
 

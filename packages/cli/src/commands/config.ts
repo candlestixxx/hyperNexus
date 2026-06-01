@@ -1,13 +1,13 @@
 /**
- * `hypercode config` - Configuration management
+ * `hypernexus config` - Configuration management
  *
- * View, set, and manage Hypercode HYPERCODE configuration including
+ * View, set, and manage HyperNexus HYPERNEXUS configuration including
  * all subsystem settings, secrets, and environment variables.
  *
  * @example
- *   hypercode config show                # Show current config
- *   hypercode config set server.port 8080
- *   hypercode config secrets             # Manage secrets
+ *   hypernexus config show                # Show current config
+ *   hypernexus config set server.port 8080
+ *   hypernexus config secrets             # Manage secrets
  */
 
 import type { Command } from "commander";
@@ -17,12 +17,12 @@ export function registerConfigCommand(program: Command): void {
 		.command("config")
 		.alias("cfg")
 		.description(
-			"Config — view and manage Hypercode configuration, secrets, and environment variables",
+			"Config — view and manage HyperNexus configuration, secrets, and environment variables",
 		);
 
 	config
 		.command("show")
-		.description("Display the current Hypercode configuration")
+		.description("Display the current HyperNexus configuration")
 		.option("--json", "Output as raw JSON")
 		.option(
 			"--section <section>",
@@ -87,7 +87,7 @@ export function registerConfigCommand(program: Command): void {
 					checkIntervalMs: 60000,
 				},
 				logLevel: "info",
-				dataDir: "~/.hypercode",
+				dataDir: "~/.hypernexus",
 			};
 
 			// Merge server config if available
@@ -104,7 +104,7 @@ export function registerConfigCommand(program: Command): void {
 			}
 
 			const chalk = (await import("chalk")).default;
-			console.log(chalk.bold.cyan("\n  Hypercode Configuration\n"));
+			console.log(chalk.bold.cyan("\n  HyperNexus Configuration\n"));
 			const printConfig = (obj: Record<string, unknown>, prefix = "  ") => {
 				for (const [key, val] of Object.entries(obj)) {
 					if (typeof val === "object" && val !== null && !Array.isArray(val)) {
@@ -133,11 +133,11 @@ export function registerConfigCommand(program: Command): void {
 			"after",
 			`
 Examples:
-  $ hypercode config set server.port 8080
-  $ hypercode config set mcp.toonFormat true
-  $ hypercode config set memory.primaryBackend sqlite
-  $ hypercode config set director.enabled true
-  $ hypercode config set logLevel debug
+  $ hypernexus config set server.port 8080
+  $ hypernexus config set mcp.toonFormat true
+  $ hypernexus config set memory.primaryBackend sqlite
+  $ hypernexus config set director.enabled true
+  $ hypernexus config set logLevel debug
     `,
 		)
 		.action(async (key, value) => {
@@ -146,7 +146,7 @@ Examples:
 			const { resolve, dirname } = await import("path");
 			const { homedir } = await import("os");
 
-			const configDir = process.env.HYPERCODE_CONFIG_DIR || resolve(homedir(), ".hypercode");
+			const configDir = process.env.HYPERNEXUS_CONFIG_DIR || resolve(homedir(), ".hypernexus");
 			const configPath = resolve(configDir, "config.jsonc");
 
 			let config: Record<string, any> = {};
@@ -184,7 +184,7 @@ Examples:
 			const { homedir } = await import("os");
 			const chalk = (await import("chalk")).default;
 
-			const configDir = process.env.HYPERCODE_CONFIG_DIR || resolve(homedir(), ".hypercode");
+			const configDir = process.env.HYPERNEXUS_CONFIG_DIR || resolve(homedir(), ".hypernexus");
 			const configPath = resolve(configDir, "config.jsonc");
 
 			let config: Record<string, any> = {};
@@ -223,13 +223,13 @@ Examples:
 		.addHelpText(
 			"after",
 			`
-Secrets are stored encrypted in ~/.hypercode/secrets.enc
+Secrets are stored encrypted in ~/.hypernexus/secrets.enc
 
 Examples:
-  $ hypercode config secrets --list
-  $ hypercode config secrets --set OPENAI_API_KEY
-  $ hypercode config secrets --delete GITHUB_TOKEN
-  $ hypercode config secrets --env
+  $ hypernexus config secrets --list
+  $ hypernexus config secrets --set OPENAI_API_KEY
+  $ hypernexus config secrets --delete GITHUB_TOKEN
+  $ hypernexus config secrets --env
     `,
 		)
 		.action(async (opts) => {
@@ -255,7 +255,7 @@ Examples:
 				const { readFileSync, writeFileSync, mkdirSync } = await import("fs");
 				const { resolve, dirname } = await import("path");
 				const { homedir } = await import("os");
-				const configDir = process.env.HYPERCODE_CONFIG_DIR || resolve(homedir(), ".hypercode");
+				const configDir = process.env.HYPERNEXUS_CONFIG_DIR || resolve(homedir(), ".hypernexus");
 				const configPath = resolve(configDir, "config.jsonc");
 				let config: Record<string, any> = {};
 				try {
@@ -291,10 +291,10 @@ Examples:
 	config
 		.command("init")
 		.description(
-			"Initialize Hypercode configuration in current directory or globally",
+			"Initialize HyperNexus configuration in current directory or globally",
 		)
-		.option("--global", "Initialize global config at ~/.hypercode/")
-		.option("--local", "Initialize local .hypercode/ config in current directory")
+		.option("--global", "Initialize global config at ~/.hypernexus/")
+		.option("--local", "Initialize local .hypernexus/ config in current directory")
 		.action(async (opts) => {
 			const chalk = (await import("chalk")).default;
 			const { mkdirSync, existsSync, writeFileSync } = await import("fs");
@@ -302,8 +302,8 @@ Examples:
 			const { homedir } = await import("os");
 			const home = homedir();
 
-			const scope = opts.global ? "global (~/.hypercode/)" : "local (.hypercode/)";
-			const baseDir = opts.global ? resolve(home, ".hypercode") : resolve(process.cwd(), ".hypercode");
+			const scope = opts.global ? "global (~/.hypernexus/)" : "local (.hypernexus/)";
+			const baseDir = opts.global ? resolve(home, ".hypernexus") : resolve(process.cwd(), ".hypernexus");
 
 			// Create directory
 			mkdirSync(baseDir, { recursive: true });

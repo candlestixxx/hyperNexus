@@ -3,7 +3,7 @@
 import {
   detectBrowserExtensionArtifacts,
   getPreferredWebPorts,
-  readHypercodeStartLockRecord,
+  readHyperNexusStartLockRecord,
   summarizeBrowserExtensionArtifacts,
 } from './dev_tabby_ready_helpers.mjs';
 
@@ -70,15 +70,15 @@ function formatLine(service, result) {
 
 function getFailureHint(serviceId) {
   switch (serviceId) {
-    case 'hypercode-web':
-      return 'Dashboard is unreachable. Start the web runtime with `hypercode dashboard` or `pnpm -C apps/web dev`.';
-    case 'hypercode-core':
-      return 'Core control plane is unreachable. Start it with `hypercode start --port 4100`.';
-    case 'hypercode-startup-status':
+    case 'hypernexus-web':
+      return 'Dashboard is unreachable. Start the web runtime with `hypernexus dashboard` or `pnpm -C apps/web dev`.';
+    case 'hypernexus-core':
+      return 'Core control plane is unreachable. Start it with `hypernexus start --port 4100`.';
+    case 'hypernexus-startup-status':
       return 'Dashboard can load, but startupStatus is not reachable through the web proxy.';
-    case 'hypercode-go-sidecar':
-            return 'Go sidecar is unreachable. Build with go build ./cmd/hypercode and run bin/hypercode.exe -port 4300.';
-        case 'hypercode-mcp-status':
+    case 'hypernexus-go-sidecar':
+            return 'Go sidecar is unreachable. Build with go build ./cmd/hypernexus and run bin/hypernexus.exe -port 4300.';
+        case 'hypernexus-mcp-status':
       return 'Dashboard can load, but MCP status is not reachable through the web proxy.';
     default:
       return 'Service did not become ready within the retry window.';
@@ -90,10 +90,10 @@ function buildWebUrls() {
 }
 
 function buildCoreUrls() {
-  const lockRecord = readHypercodeStartLockRecord();
+  const lockRecord = readHyperNexusStartLockRecord();
   return uniquePorts([
     lockRecord?.port,
-    normalizePort(process.env.HYPERCODE_PORT),
+    normalizePort(process.env.HYPERNEXUS_PORT),
     4100,
   ]).map((port) => `http://127.0.0.1:${port}/health`);
 }
@@ -142,28 +142,28 @@ function collectExtensionArtifacts() {
 }
 
 async function main() {
-  const goSidecarPort = normalizePort(process.env.HYPERCODE_GO_PORT) || 4300;
+  const goSidecarPort = normalizePort(process.env.HYPERNEXUS_GO_PORT) || 4300;
 const services = [
     {
-      id: 'hypercode-web',
-      description: 'Hypercode Next.js dashboard',
+      id: 'hypernexus-web',
+      description: 'HyperNexus Next.js dashboard',
       critical: !softMode,
       urls: buildWebUrls(),
     },
     {
-      id: 'hypercode-core',
-      description: 'Hypercode core control plane health',
+      id: 'hypernexus-core',
+      description: 'HyperNexus core control plane health',
       critical: true,
       urls: buildCoreUrls(),
     },
     {
-        id: 'hypercode-go-sidecar',
+        id: 'hypernexus-go-sidecar',
         description: 'Go sidecar health',
         critical: false,
         urls: [`http://127.0.0.1:${goSidecarPort}/health`],
     },
     {
-      id: 'hypercode-startup-status',
+      id: 'hypernexus-startup-status',
       description: 'startupStatus through dashboard proxy',
       critical: !softMode,
       urls: getPreferredWebPorts(REPO_ROOT, WEB_PORT_CANDIDATES).map((port) =>
@@ -171,7 +171,7 @@ const services = [
       ),
     },
     {
-      id: 'hypercode-mcp-status',
+      id: 'hypernexus-mcp-status',
       description: 'mcp.getStatus through dashboard proxy',
       critical: !softMode,
       urls: getPreferredWebPorts(REPO_ROOT, WEB_PORT_CANDIDATES).map((port) =>
@@ -181,7 +181,7 @@ const services = [
   ];
 
   if (!jsonMode) {
-    console.log(`\n[Hypercode Dev Readiness] timeout=${REQUEST_TIMEOUT_MS}ms mode=${softMode ? 'soft' : 'strict'}`);
+    console.log(`\n[HyperNexus Dev Readiness] timeout=${REQUEST_TIMEOUT_MS}ms mode=${softMode ? 'soft' : 'strict'}`);
   }
 
   const serviceResults = await Promise.all(
@@ -248,6 +248,6 @@ const services = [
 }
 
 main().catch((error) => {
-  console.error('[Hypercode Dev Readiness] Unexpected error:', error);
+  console.error('[HyperNexus Dev Readiness] Unexpected error:', error);
   process.exit(1);
 });

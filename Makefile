@@ -10,7 +10,7 @@ build: build-go build-ts build-cli
 	@echo "✓ All builds complete (v$(VERSION))"
 
 build-go:
-	cd go && go build -buildvcs=false -ldflags "-X internal/buildinfo.Version=$(VERSION)" -o ../../bin/hypercode$(EXT) ./cmd/hypercode
+	cd go && go build -buildvcs=false -ldflags "-X internal/buildinfo.Version=$(VERSION)" -o ../../bin/hypernexus$(EXT) ./cmd/hypernexus
 
 build-ts:
 	pnpm -C packages/core exec tsc
@@ -53,6 +53,6 @@ start: build
 	./start.bat
 
 version:
-	@echo "hypercode v$(VERSION)"
+	@echo "hypernexus v$(VERSION)"
 	@echo "CLI: $$(node packages/cli/dist/cli/src/index.js --version 2>/dev/null || echo 'not built')"
-	@echo "Go:  $$(bin/hypercode version 2>/dev/null || echo 'not built')"
+	@echo "Go:  $$(bin/hypernexus version 2>/dev/null || echo 'not built')"

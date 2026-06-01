@@ -885,7 +885,7 @@ export function buildDashboardAlerts(
             id: 'startup-compat-fallback',
             severity: 'warning',
             title: 'Startup is using local compat fallback',
-            detail: startupSummary || 'Live startup telemetry is unavailable, so Hypercode is showing config-backed compatibility state instead of the full core startup contract.',
+            detail: startupSummary || 'Live startup telemetry is unavailable, so HyperNexus is showing config-backed compatibility state instead of the full core startup contract.',
             href: '/dashboard/mcp/system',
             hrefLabel: 'Review startup status',
         });
@@ -1047,7 +1047,7 @@ export function DashboardHomeView({
                     <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
                         <div className="space-y-3">
                             <span className="inline-flex items-center rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-200">
-                                Hypercode 1.0 control plane
+                                HyperNexus 1.0 control plane
                             </span>
                             <div className="space-y-2">
                                 <h1 className="text-3xl font-semibold tracking-tight text-white">Main Mission Control</h1>
@@ -1094,7 +1094,7 @@ export function DashboardHomeView({
 
                         {isBootstrapping ? (
                             <div className="mt-4 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 p-4 text-sm text-cyan-100">
-                                Connecting to live core telemetry. Hypercode will replace these neutral placeholders as soon as the first startup snapshot arrives.
+                                Connecting to live core telemetry. HyperNexus will replace these neutral placeholders as soon as the first startup snapshot arrives.
                             </div>
                         ) : dashboardAlerts.length === 0 ? (
                             <div className="mt-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-sm text-emerald-100">
@@ -1310,7 +1310,7 @@ export function DashboardHomeView({
                         <div className="mt-6 rounded-2xl border border-slate-800 bg-slate-950/70 p-4">
                             <div className="flex items-start justify-between gap-4">
                                 <div>
-                                    <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-300">Install &amp; connect Hypercode</h3>
+                                    <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-300">Install &amp; connect HyperNexus</h3>
                                     <p className="mt-1 text-sm text-slate-500">Fast path for getting browser bridges, editor surfaces, and managed MCP configs into the tools you already use.</p>
                                 </div>
                                 <Link
@@ -1334,7 +1334,7 @@ export function DashboardHomeView({
                                 </div>
                                 <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-3 text-sm text-slate-300">
                                     <div className="font-medium text-white">Client config sync</div>
-                                    <p className="mt-2 text-slate-400">Push Hypercode-managed MCP endpoints into Claude Desktop, Cursor, and VS Code without manual JSON surgery.</p>
+                                    <p className="mt-2 text-slate-400">Push HyperNexus-managed MCP endpoints into Claude Desktop, Cursor, and VS Code without manual JSON surgery.</p>
                                 </div>
                             </div>
                         </div>
@@ -1465,7 +1465,7 @@ export function DashboardHomeView({
                                                 </p>
                                                 {session.autoRestart === false ? (
                                                     <p className="mt-2 text-xs text-amber-300">
-                                                        Manual restart only · Hypercode will not auto-restart this session after a crash.
+                                                        Manual restart only · HyperNexus will not auto-restart this session after a crash.
                                                     </p>
                                                 ) : null}
                                                 {session.status === 'restarting' && session.scheduledRestartAt ? (

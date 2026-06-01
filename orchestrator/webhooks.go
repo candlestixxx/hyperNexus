@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	foundationorchestration "github.com/robertpelloni/hypercode/foundation/orchestration"
+	foundationorchestration "github.com/robertpelloni/hypernexus/foundation/orchestration"
 )
 
 type WebhookPayload struct {
@@ -16,8 +16,8 @@ type WebhookPayload struct {
 	Data   json.RawMessage `json:"data"`
 }
 
-// HandleHypercodeWebhook processes real-time synchronization routes mirroring the JULES TS implementation.
-func HandleHypercodeWebhook(payload WebhookPayload, queue *TaskQueue, ws *TelemetrySocket) (map[string]interface{}, error) {
+// HandleHyperNexusWebhook processes real-time synchronization routes mirroring the JULES TS implementation.
+func HandleHyperNexusWebhook(payload WebhookPayload, queue *TaskQueue, ws *TelemetrySocket) (map[string]interface{}, error) {
 	source := payload.Source
 	if source == "" {
 		source = "unknown"
@@ -28,7 +28,7 @@ func HandleHypercodeWebhook(payload WebhookPayload, queue *TaskQueue, ws *Teleme
 		ID:        uuid.New().String(),
 		SessionId: "global",
 		Type:      "info",
-		Message:   fmt.Sprintf("Received Hypercode signal: %s from %s", payload.Type, source),
+		Message:   fmt.Sprintf("Received HyperNexus signal: %s from %s", payload.Type, source),
 		Metadata:  string(payload.Data),
 	}
 	if err := DB.Create(&actionLog).Error; err != nil {
@@ -59,7 +59,7 @@ func HandleHypercodeWebhook(payload WebhookPayload, queue *TaskQueue, ws *Teleme
 	}
 
 	rawJson, _ := json.Marshal(emitPayload)
-	ws.Broadcast(fmt.Sprintf(`{"event": "hypercode_signal_received", "payload": %s}`, string(rawJson)))
+	ws.Broadcast(fmt.Sprintf(`{"event": "hypernexus_signal_received", "payload": %s}`, string(rawJson)))
 
 	return map[string]interface{}{"success": true, "processed": true, "plan": plan}, nil
 }

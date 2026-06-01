@@ -1,7 +1,7 @@
 package eventbus
 
 import (
-	"github.com/hypercodehq/hypercode-go/internal/orchestration"
+	"github.com/hypernexushq/hypernexus-go/internal/orchestration"
 )
 
 type A2ASignalPayload struct {

@@ -2,7 +2,7 @@
 setlocal EnableDelayedExpansion
 
 REM ==============================================
-REM  HyperCode HYPERCODE - Go Sidecar Startup
+REM  HyperNexus HYPERNEXUS - Go Sidecar Startup
 REM  Starts the Go-native control plane only
 REM ==============================================
 
@@ -10,12 +10,12 @@ for /f "tokens=*" %%v in ('type VERSION 2^>nul') do set VER=%%v
 if "%VER%"=="" set VER=dev
 
 REM -- Configuration ----------------------------------
-set GO_PORT=%HYPERCODE_GO_PORT%
+set GO_PORT=%HYPERNEXUS_GO_PORT%
 if "%GO_PORT%"=="" set GO_PORT=4300
-set GO_HOST=%HYPERCODE_GO_HOST%
+set GO_HOST=%HYPERNEXUS_GO_HOST%
 if "%GO_HOST%"=="" set GO_HOST=127.0.0.1
-set GO_CONFIG=%HYPERCODE_GO_CONFIG%
-if "%GO_CONFIG%"=="" set GO_CONFIG=%USERPROFILE%\.hypercode-go
+set GO_CONFIG=%HYPERNEXUS_GO_CONFIG%
+if "%GO_CONFIG%"=="" set GO_CONFIG=%USERPROFILE%\.hypernexus-go
 
 REM -- 1. Check Go Installation ----------------------
 where go >nul 2>nul
@@ -27,13 +27,13 @@ if errorlevel 1 (
 REM -- 2. Build Go Sidecar ---------------------------
 echo [1/3] Building Go sidecar v%VER%...
 cd go
-go build -ldflags "-X github.com/hypercodehq/hypercode-go/internal/buildinfo.Version=%VER%" -buildvcs=false -o ..\bin\hypercode.exe ./cmd/hypercode 2>nul
+go build -ldflags "-X github.com/hypernexushq/hypernexus-go/internal/buildinfo.Version=%VER%" -buildvcs=false -o ..\bin\hypernexus.exe ./cmd/hypernexus 2>nul
 if errorlevel 1 (
     echo [FATAL] Go build failed.
     cd ..
     exit /b 1
 )
-echo   OK bin\hypercode.exe
+echo   OK bin\hypernexus.exe
 cd ..
 
 REM -- 3. Check if Already Running -------------------
@@ -61,5 +61,5 @@ echo   Config:   %GO_CONFIG%
 echo.
 echo [3/3] Running (Ctrl+C to stop)...
 echo.
-bin\hypercode.exe -port %GO_PORT% -host %GO_HOST% -config-dir %GO_CONFIG%
+bin\hypernexus.exe -port %GO_PORT% -host %GO_HOST% -config-dir %GO_CONFIG%
 exit /b %errorlevel%

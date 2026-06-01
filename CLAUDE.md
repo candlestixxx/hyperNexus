@@ -30,21 +30,21 @@ Best suited for:
 ## Notes
 
 - Build verification in `apps/web` is often more trustworthy than dev mode.
-- `apps/web` imports shared UI from `@hypercode/ui`, never `@/components/ui/*`.
+- `apps/web` imports shared UI from `@hypernexus/ui`, never `@/components/ui/*`.
 
 ## Binary-topology context
 
-When working on the long-term hypercode architecture, assume the recommended direction is:
+When working on the long-term hypernexus architecture, assume the recommended direction is:
 
-- `hypercode` / `hypercoded` as the main operator CLI + daemon pair
+- `hypernexus` / `hypernexusd` as the main operator CLI + daemon pair
 - `hypermcpd` for MCP routing/aggregation
 - `hypermemd` and `hyperingest` for memory/resource/background ingestion concerns
 - `hyperharnessd` for harness runtime isolation
-- `hypercode-web` and `hypercode-native` as clients, not alternate orchestration backends
+- `hypernexus-web` and `hypernexus-native` as clients, not alternate orchestration backends
 
 Use these ownership assumptions while designing boundaries:
 
-- `hypercoded` owns orchestration, supervision, and operator-facing control-plane truth
+- `hypernexusd` owns orchestration, supervision, and operator-facing control-plane truth
 - `hypermcpd` owns MCP registry, routing, and tool mediation
 - `hypermemd` owns long-running memory/session/resource state
 - `hyperingest` owns batch imports and normalization work
@@ -60,12 +60,12 @@ Claude should bias toward:
 =======
 # Claude Instructions
 
-> **CRITICAL**: Read `docs/UNIVERSAL_LLM_INSTRUCTIONS.md` first. It contains the mandatory rules for all AI agents working on hypercode.
+> **CRITICAL**: Read `docs/UNIVERSAL_LLM_INSTRUCTIONS.md` first. It contains the mandatory rules for all AI agents working on hypernexus.
 
 ## Claude-Specific Directives
 
 ### 1. Role Context
-You are Claude, the **deep implementer** for Hypercode. Your primary strengths are:
+You are Claude, the **deep implementer** for HyperNexus. Your primary strengths are:
 - Deep, thorough implementation of complex features
 - UI/UX perfection — polished, responsive React components
 - Comprehensive documentation — every feature explained in depth
@@ -81,7 +81,7 @@ You are Claude, the **deep implementer** for Hypercode. Your primary strengths a
 
 ### 3. Implementation Standards
 - **TypeScript**: Use strict types. Avoid `any`, `@ts-ignore`, or misleading adapters.
-- **React**: Import shared UI from `@hypercode/ui`. Use `lucide-react` for icons.
+- **React**: Import shared UI from `@hypernexus/ui`. Use `lucide-react` for icons.
 - **Components**: Every dashboard page should show real data, not mocks.
 - **Comments**: Add comments for complex logic, NOT for self-explanatory code.
 - **Error handling**: Every API call should handle failures gracefully.
@@ -110,7 +110,7 @@ pnpm -C packages/cli exec tsc --noEmit
 - **Gemini model names**: Google changes them frequently; verify current names
 - **mcp.jsonc is 34K+ lines**: Edit surgically, never rewrite
 - **Go server is a bridge**: Don't assume Go owns any state exclusively
-1. **Role Context**: You are Claude, focusing on deep implementation, UI/UX perfection, documentation, and styling within the hypercode project.
+1. **Role Context**: You are Claude, focusing on deep implementation, UI/UX perfection, documentation, and styling within the hypernexus project.
 2. **Methodology**:
    - Apply rigorous type enforcement for TypeScript.
    - Design React components with visual excellence and proper hydration handling.

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from "@hypercode/ui";
-import { Button } from "@hypercode/ui";
+import { Card, CardHeader, CardTitle, CardContent } from "@hypernexus/ui";
+import { Button } from "@hypernexus/ui";
 import { Loader2, Plus, Box, Trash2, Layers, Wrench, Check } from "lucide-react";
 import { trpc } from '@/utils/trpc';
 import { toast } from 'sonner';
@@ -16,7 +16,7 @@ export default function ToolSetsDashboard() {
         <div className="p-8 space-y-8">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">MetaMCP Pre-grouped Tool Sets</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">HyperNexus Pre-grouped Tool Sets</h1>
                     <p className="text-zinc-500">
                         Group multiple tools into reusable logical sets
                     </p>

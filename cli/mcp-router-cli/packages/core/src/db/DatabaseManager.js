@@ -13,9 +13,9 @@ export class DatabaseManager extends EventEmitter {
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir, { recursive: true });
         }
-        const hypercodeDbPath = path.join(dir, 'hypercode.db');
-        const legacyDbPath = path.join(dir, 'legacy_hypercode.db');
-        const dbPath = fs.existsSync(hypercodeDbPath) ? hypercodeDbPath : (fs.existsSync(legacyDbPath) ? legacyDbPath : hypercodeDbPath);
+        const hypernexusDbPath = path.join(dir, 'hypernexus.db');
+        const legacyDbPath = path.join(dir, 'legacy_hypernexus.db');
+        const dbPath = fs.existsSync(hypernexusDbPath) ? hypernexusDbPath : (fs.existsSync(legacyDbPath) ? legacyDbPath : hypernexusDbPath);
         this.db = new Database(dbPath);
         // Enable foreign keys
         this.db.pragma('foreign_keys = ON');
@@ -446,7 +446,7 @@ export class DatabaseManager extends EventEmitter {
     // API Keys
     // ============================================
     createApiKey(name, scopes = ['read']) {
-        const plainKey = `hypercode_${crypto.randomBytes(32).toString('hex')}`;
+        const plainKey = `hypernexus_${crypto.randomBytes(32).toString('hex')}`;
         const keyHash = crypto.createHash('sha256').update(plainKey).digest('hex');
         const keyPrefix = plainKey.substring(0, 12);
         const apiKey = {

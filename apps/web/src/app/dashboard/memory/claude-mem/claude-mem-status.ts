@@ -61,13 +61,13 @@ export const CLAUDE_MEM_CAPABILITIES: ClaudeMemCapability[] = [
     {
         title: 'Schema-inspired claude-mem adapter',
         status: 'shipped',
-        note: 'Hypercode ships a dedicated `ClaudeMemAdapter` that mirrors claude-mem-style sections inside a Hypercode-managed local store.',
+        note: 'HyperNexus ships a dedicated `ClaudeMemAdapter` that mirrors claude-mem-style sections inside a HyperNexus-managed local store.',
         evidence: 'packages/core/src/services/memory/ClaudeMemAdapter.ts',
     },
     {
         title: 'Redundant fan-out persistence',
         status: 'shipped',
-        note: 'The default memory manager can fan out writes to both Hypercode JSON memory and the claude-mem-inspired adapter.',
+        note: 'The default memory manager can fan out writes to both HyperNexus JSON memory and the claude-mem-inspired adapter.',
         evidence: 'packages/core/src/services/memory/RedundantMemoryManager.ts',
     },
     {
@@ -79,67 +79,67 @@ export const CLAUDE_MEM_CAPABILITIES: ClaudeMemCapability[] = [
     {
         title: 'Dedicated operator parity surface',
         status: 'shipped',
-        note: 'Hypercode now exposes a route that tells the truth about current claude-mem assimilation instead of quietly forwarding to the generic vector explorer.',
+        note: 'HyperNexus now exposes a route that tells the truth about current claude-mem assimilation instead of quietly forwarding to the generic vector explorer.',
         evidence: 'apps/web/src/app/dashboard/memory/claude-mem/page.tsx',
     },
     {
-        title: 'Canonical Hypercode observation schema',
+        title: 'Canonical HyperNexus observation schema',
         status: 'shipped',
-        note: 'Hypercode defines shared observation input contracts in `@hypercode/types` and stores typed observation payloads with facts, concepts, files, hashes, and timestamps.',
+        note: 'HyperNexus defines shared observation input contracts in `@hypernexus/types` and stores typed observation payloads with facts, concepts, files, hashes, and timestamps.',
         evidence: 'packages/types/src/schemas/memory.ts',
     },
     {
         title: 'Structured prompt and session summary capture',
         status: 'shipped',
-        note: 'Hypercode natively records structured user prompts and supervised-session summaries alongside the adapter layer, instead of relying on the claude-mem store alone.',
+        note: 'HyperNexus natively records structured user prompts and supervised-session summaries alongside the adapter layer, instead of relying on the claude-mem store alone.',
         evidence: 'packages/core/src/services/AgentMemoryService.ts',
     },
     {
-        title: 'Generic Hypercode memory search foundation',
+        title: 'Generic HyperNexus memory search foundation',
         status: 'partial',
-        note: 'Hypercode can already search observations, prompts, summaries, and raw memory records from the main memory dashboard, but that is not yet a dedicated claude-mem search/timeline workflow.',
+        note: 'HyperNexus can already search observations, prompts, summaries, and raw memory records from the main memory dashboard, but that is not yet a dedicated claude-mem search/timeline workflow.',
         evidence: 'apps/web/src/app/dashboard/memory/page.tsx',
     },
     {
         title: 'Vector and graph memory primitives adjacent to the adapter',
         status: 'partial',
-        note: 'Hypercode has broader memory infrastructure around the adapter, but it is not yet wired into a native claude-mem runtime story.',
+        note: 'HyperNexus has broader memory infrastructure around the adapter, but it is not yet wired into a native claude-mem runtime story.',
         evidence: 'apps/web/src/app/dashboard/memory/page.tsx',
     },
     {
         title: 'Claude Code lifecycle hooks',
         status: 'missing',
-        note: 'Hypercode does not currently register SessionStart, UserPromptSubmit, PreToolUse, PostToolUse, Stop, or SessionEnd hooks into Claude Code.',
+        note: 'HyperNexus does not currently register SessionStart, UserPromptSubmit, PreToolUse, PostToolUse, Stop, or SessionEnd hooks into Claude Code.',
         evidence: 'Gap vs upstream claude-mem hook system',
     },
     {
         title: 'Structured observation compression pipeline',
         status: 'partial',
-        note: 'Hypercode already records heuristic typed observations with facts, concepts, files, and deduplicated hashes, but it does not yet have claude-mem-style model-driven observation workers or response processors.',
+        note: 'HyperNexus already records heuristic typed observations with facts, concepts, files, and deduplicated hashes, but it does not yet have claude-mem-style model-driven observation workers or response processors.',
         evidence: 'packages/core/src/services/AgentMemoryService.ts',
     },
     {
         title: 'Progressive-disclosure memory injection',
         status: 'missing',
-        note: 'Hypercode does not yet assemble claude-mem-style session context with index/detail/source layers and token-budgeted injection.',
+        note: 'HyperNexus does not yet assemble claude-mem-style session context with index/detail/source layers and token-budgeted injection.',
         evidence: 'Gap vs upstream ContextBuilder / ObservationCompiler pipeline',
     },
     {
         title: 'Observation-centric search and timeline workflow',
         status: 'missing',
-        note: 'Upstream tools like `search`, `timeline`, and `get_observations` do not have Hypercode-native claude-mem equivalents yet.',
+        note: 'Upstream tools like `search`, `timeline`, and `get_observations` do not have HyperNexus-native claude-mem equivalents yet.',
         evidence: 'Gap vs upstream memory MCP toolset',
     },
     {
         title: 'Transcript compression / Endless Mode',
         status: 'missing',
-        note: 'Hypercode does not currently rewrite long-running transcripts in place to replace bulky tool output with compressed memories.',
+        note: 'HyperNexus does not currently rewrite long-running transcripts in place to replace bulky tool output with compressed memories.',
         evidence: 'Gap vs upstream transcript transformer and watcher',
     },
     {
         title: 'Relational session-observation storage model',
         status: 'missing',
-        note: 'There is no Hypercode-native claude-mem schema yet for sessions, observations, summaries, prompts, correlations, and a persistent pending queue.',
+        note: 'There is no HyperNexus-native claude-mem schema yet for sessions, observations, summaries, prompts, correlations, and a persistent pending queue.',
         evidence: 'Gap vs upstream SQLite schema and queueing model',
     },
 ];
@@ -153,17 +153,17 @@ export const CLAUDE_MEM_IMPLEMENTATION_FILES = [
     {
         label: 'Redundant write manager',
         path: 'packages/core/src/services/memory/RedundantMemoryManager.ts',
-        note: 'Fans out reads/writes across Hypercode JSON memory and the claude-mem-inspired adapter.',
+        note: 'Fans out reads/writes across HyperNexus JSON memory and the claude-mem-inspired adapter.',
     },
     {
-        label: 'Primary Hypercode memory dashboard',
+        label: 'Primary HyperNexus memory dashboard',
         path: 'apps/web/src/app/dashboard/memory/page.tsx',
-        note: 'Hypercode-native view for observations, prompts, session summaries, search, and provider interchange.',
+        note: 'HyperNexus-native view for observations, prompts, session summaries, search, and provider interchange.',
     },
     {
         label: 'This parity page',
         path: 'apps/web/src/app/dashboard/memory/claude-mem/page.tsx',
-        note: 'Operator-facing truth table for what Hypercode has and has not assimilated from claude-mem yet.',
+        note: 'Operator-facing truth table for what HyperNexus has and has not assimilated from claude-mem yet.',
     },
 ];
 
@@ -199,7 +199,7 @@ export function getClaudeMemOperatorGuidance(storeStatus?: ClaudeMemStoreSnapsho
     if (!storeStatus) {
         return {
             title: 'Reading adapter state',
-            detail: 'Waiting for core to report whether the Hypercode-managed claude-mem store exists and how many default buckets are already seeded.',
+            detail: 'Waiting for core to report whether the HyperNexus-managed claude-mem store exists and how many default buckets are already seeded.',
             tone: 'warming',
         };
     }
@@ -214,7 +214,7 @@ export function getClaudeMemOperatorGuidance(storeStatus?: ClaudeMemStoreSnapsho
         const providerLabel = runtimePipeline.providerNames?.length ? runtimePipeline.providerNames.join(', ') : 'no active providers reported';
         return {
             title: 'Claude-mem adapter not active in the runtime pipeline',
-            detail: `Core reports the active memory pipeline as ${runtimePipeline.configuredMode ?? 'unknown'} with ${providerLabel}. The adapter file can still exist on disk, but Hypercode is not currently writing new memories through claude-mem.`,
+            detail: `Core reports the active memory pipeline as ${runtimePipeline.configuredMode ?? 'unknown'} with ${providerLabel}. The adapter file can still exist on disk, but HyperNexus is not currently writing new memories through claude-mem.`,
             tone: 'warning',
         };
     }
@@ -222,7 +222,7 @@ export function getClaudeMemOperatorGuidance(storeStatus?: ClaudeMemStoreSnapsho
     if (!storeStatus.exists) {
         return {
             title: 'Adapter store not created yet',
-            detail: `No Hypercode-managed claude_mem store exists yet. When the adapter initializes, it seeds ${defaultSectionCount} default buckets for project context, user facts, style preferences, commands, and general notes.`,
+            detail: `No HyperNexus-managed claude_mem store exists yet. When the adapter initializes, it seeds ${defaultSectionCount} default buckets for project context, user facts, style preferences, commands, and general notes.`,
             tone: 'warning',
         };
     }
@@ -294,7 +294,7 @@ export function getClaudeMemStatusSummary(
     const coreStatusDetail = !startupStatus
         ? null
         : startupStatus.status === 'degraded'
-            ? (startupSummary || 'Live startup telemetry is unavailable, so Hypercode is serving a cached compatibility snapshot.')
+            ? (startupSummary || 'Live startup telemetry is unavailable, so HyperNexus is serving a cached compatibility snapshot.')
             : !coreReady && startupSummary
                 ? startupSummary
                 : null;

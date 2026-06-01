@@ -1,4 +1,4 @@
-import { WorkshopPage } from '@hypercode/ui';
+import { WorkshopPage } from '@hypernexus/ui';
 
 export default function Page() {
     return <WorkshopPage />;

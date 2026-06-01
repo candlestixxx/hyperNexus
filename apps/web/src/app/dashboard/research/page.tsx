@@ -1,10 +1,10 @@
 'use client';
 
-import { Card, CardHeader, CardTitle, CardContent } from "@hypercode/ui";
-import { Button } from "@hypercode/ui";
-import { Input } from "@hypercode/ui";
-import { Badge } from "@hypercode/ui";
-import { ScrollArea } from "@hypercode/ui";
+import { Card, CardHeader, CardTitle, CardContent } from "@hypernexus/ui";
+import { Button } from "@hypernexus/ui";
+import { Input } from "@hypernexus/ui";
+import { Badge } from "@hypernexus/ui";
+import { ScrollArea } from "@hypernexus/ui";
 import { useEffect, useState } from "react";
 import { Loader2, Search, BookOpen, GitBranch, ExternalLink, Network } from "lucide-react";
 import { trpc } from '@/utils/trpc';

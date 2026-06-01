@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/robertpelloni/hypercode/cmd"
+	"github.com/robertpelloni/hypernexus/cmd"
 )
 
 func main() {

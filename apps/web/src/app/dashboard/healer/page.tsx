@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useHealerStream } from '@hypercode/ui';
+import { useHealerStream } from '@hypernexus/ui';
 
 export default function HealerDashboard() {
     const { events, isLoading } = useHealerStream();

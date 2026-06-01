@@ -1,5 +1,5 @@
 {
-  "name": "@hypercode/search",
+  "name": "@hypernexus/search",
   "version": "1.0.0-alpha.63",
   "private": true,
   "main": "dist/index.js",
@@ -17,7 +17,7 @@
     "lint": "eslint --no-eslintrc --parser @typescript-eslint/parser \"src/**/*.{ts,tsx,js,mjs,cjs}\""
   },
   "dependencies": {
-    "@hypercode/adk": "workspace:*",
+    "@hypernexus/adk": "workspace:*",
     "@vscode/ripgrep": "^1.17.0"
   },
   "devDependencies": {

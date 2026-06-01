@@ -1,8 +1,8 @@
 ## 🏗️ Technical Architecture
 
 ### Overview
-Hypercode Orchestrator is the council and session-supervision subsystem inside the Hypercode monorepo. This document describes the original standalone architecture that informed the integrated runtime now hosted in Hypercode core and the web dashboard.
-hypercode Orchestrator is the council and session-supervision subsystem inside the hypercode monorepo. This document describes the original standalone architecture that informed the integrated runtime now hosted in hypercode core and the web dashboard.
+HyperNexus Orchestrator is the council and session-supervision subsystem inside the HyperNexus monorepo. This document describes the original standalone architecture that informed the integrated runtime now hosted in HyperNexus core and the web dashboard.
+hypernexus Orchestrator is the council and session-supervision subsystem inside the hypernexus monorepo. This document describes the original standalone architecture that informed the integrated runtime now hosted in hypernexus core and the web dashboard.
 
 ### Monorepo Structure
 
@@ -136,18 +136,18 @@ OPENAI_API_KEY, ANTHROPIC_API_KEY, DEEPSEEK_API_KEY,
 GEMINI_API_KEY, GROK_API_KEY, QWEN_API_KEY, KIMI_API_KEY
 
 # Server Config
-HYPERCODE_ORCHESTRATOR_PORT=3847
-HYPERCODE_ORCHESTRATOR_HOST=0.0.0.0
-HYPERCODE_ORCHESTRATOR_BASE_PORT=4096
-HYPERCODE_ORCHESTRATOR_DEBATE_ROUNDS=2
-HYPERCODE_ORCHESTRATOR_CONSENSUS=0.7
-HYPERCODE_ORCHESTRATOR_SMART_PILOT=false
-HYPERCODE_ORCHESTRATOR_PORT=3847
-HYPERCODE_ORCHESTRATOR_HOST=0.0.0.0
-HYPERCODE_ORCHESTRATOR_BASE_PORT=4096
-HYPERCODE_ORCHESTRATOR_DEBATE_ROUNDS=2
-HYPERCODE_ORCHESTRATOR_CONSENSUS=0.7
-HYPERCODE_ORCHESTRATOR_SMART_PILOT=false
+HYPERNEXUS_ORCHESTRATOR_PORT=3847
+HYPERNEXUS_ORCHESTRATOR_HOST=0.0.0.0
+HYPERNEXUS_ORCHESTRATOR_BASE_PORT=4096
+HYPERNEXUS_ORCHESTRATOR_DEBATE_ROUNDS=2
+HYPERNEXUS_ORCHESTRATOR_CONSENSUS=0.7
+HYPERNEXUS_ORCHESTRATOR_SMART_PILOT=false
+HYPERNEXUS_ORCHESTRATOR_PORT=3847
+HYPERNEXUS_ORCHESTRATOR_HOST=0.0.0.0
+HYPERNEXUS_ORCHESTRATOR_BASE_PORT=4096
+HYPERNEXUS_ORCHESTRATOR_DEBATE_ROUNDS=2
+HYPERNEXUS_ORCHESTRATOR_CONSENSUS=0.7
+HYPERNEXUS_ORCHESTRATOR_SMART_PILOT=false
 
 # Legacy compatibility aliases
 AUTOPILOT_PORT=3847
@@ -158,8 +158,8 @@ AUTOPILOT_CONSENSUS=0.7
 AUTOPILOT_SMART_PILOT=false
 ```
 
-**Config File** (`.hypercode/orchestrator/config.json`, with `.autopilot/config.json` still supported as a legacy fallback)
-**Config File** (`.hypercode/orchestrator/config.json`, with `.autopilot/config.json` still supported as a legacy fallback)
+**Config File** (`.hypernexus/orchestrator/config.json`, with `.autopilot/config.json` still supported as a legacy fallback)
+**Config File** (`.hypernexus/orchestrator/config.json`, with `.autopilot/config.json` still supported as a legacy fallback)
 ```json
 {
   "council": {

@@ -1,15 +1,15 @@
 /**
- * `hypercode start` - Start the HYPERCODE backend server
+ * `hypernexus start` - Start the HYPERNEXUS backend server
  *
- * Launches the Hypercode core server with Express/tRPC/WebSocket/MCP endpoints.
+ * Launches the HyperNexus core server with Express/tRPC/WebSocket/MCP endpoints.
  * The server provides the API backend for the WebUI dashboard, CLI commands,
  * and external MCP clients.
  *
  * @example
- *   hypercode start                    # Start on default port 3000
- *   hypercode start --port 8080        # Start on custom port
- *   hypercode start --no-mcp           # Start without MCP server
- *   hypercode start --config ./my.json # Use custom config file
+ *   hypernexus start                    # Start on default port 3000
+ *   hypernexus start --port 8080        # Start on custom port
+ *   hypernexus start --no-mcp           # Start without MCP server
+ *   hypernexus start --config ./my.json # Use custom config file
  */
 
 import {
@@ -42,7 +42,7 @@ async function getVersion(): Promise<string> {
 	return "dev";
 }
 
-export interface HypercodeStartLockRecord {
+export interface HyperNexusStartLockRecord {
 	instanceId: string;
 	pid: number;
 	port: number;
@@ -53,7 +53,7 @@ export interface HypercodeStartLockRecord {
 	startedAt?: string;
 }
 
-export interface HypercodeStartLockHandle {
+export interface HyperNexusStartLockHandle {
 	port: number;
 	lockPath: string;
 	clearedStaleLock: boolean;
@@ -62,7 +62,7 @@ export interface HypercodeStartLockHandle {
 	releaseSync: () => void;
 }
 
-export interface HypercodeStartLifecycleHandlers {
+export interface HyperNexusStartLifecycleHandlers {
 	cleanup: () => void;
 	handleSigint: () => void;
 	handleSigterm: () => void;
@@ -147,11 +147,11 @@ export async function isPortFree(port: number): Promise<boolean> {
 	});
 }
 
-function readStartLock(lockPath: string): HypercodeStartLockRecord | null {
+function readStartLock(lockPath: string): HyperNexusStartLockRecord | null {
 	try {
 		const parsed = JSON.parse(
 			readFileSync(lockPath, "utf8"),
-		) as Partial<HypercodeStartLockRecord>;
+		) as Partial<HyperNexusStartLockRecord>;
 		if (
 			typeof parsed.instanceId !== "string" ||
 			typeof parsed.pid !== "number" ||
@@ -162,13 +162,13 @@ function readStartLock(lockPath: string): HypercodeStartLockRecord | null {
 			return null;
 		}
 
-		return parsed as HypercodeStartLockRecord;
+		return parsed as HyperNexusStartLockRecord;
 	} catch {
 		return null;
 	}
 }
 
-function writeStartLock(lockPath: string, record: HypercodeStartLockRecord): void {
+function writeStartLock(lockPath: string, record: HyperNexusStartLockRecord): void {
 	const fd = openSync(lockPath, "wx");
 	try {
 		writeFileSync(fd, `${JSON.stringify(record, null, 2)}\n`, "utf8");
@@ -180,7 +180,7 @@ function writeStartLock(lockPath: string, record: HypercodeStartLockRecord): voi
 export async function acquireSingleInstanceLock(
 	options: AcquireSingleInstanceLockOptions,
 	deps: AcquireSingleInstanceLockDeps = {},
-): Promise<HypercodeStartLockHandle> {
+): Promise<HyperNexusStartLockHandle> {
 	const now = deps.now ?? (() => new Date());
 	const getPid = deps.getPid ?? (() => process.pid);
 	const checkProcessRunning = deps.isProcessRunning ?? isProcessRunning;
@@ -191,7 +191,7 @@ export async function acquireSingleInstanceLock(
 	mkdirSync(resolvedDataDir, { recursive: true });
 
 	const pid = getPid();
-	const instanceId = `hypercode-${pid}-${now().getTime()}`;
+	const instanceId = `hypernexus-${pid}-${now().getTime()}`;
 	let selectedPort = options.requestedPort;
 	let clearedStaleLock = false;
 	let reusedStalePort = false;
@@ -204,7 +204,7 @@ export async function acquireSingleInstanceLock(
 				port: selectedPort,
 				host: options.host,
 				createdAt: now().toISOString(),
-		version: process.env.HYPERCODE_VERSION || "1.0.0-alpha.60",
+		version: process.env.HYPERNEXUS_VERSION || "1.0.0-alpha.60",
 		startedAt: now().toISOString(),
 			});
 
@@ -240,7 +240,7 @@ export async function acquireSingleInstanceLock(
 
 				if (!lockedPortIsFree) {
 					throw new Error(
-						`Hypercode is already running (PID ${existingLock.pid}) on port ${existingLock.port}. ` +
+						`HyperNexus is already running (PID ${existingLock.pid}) on port ${existingLock.port}. ` +
 							`Stop that process before starting another instance, or remove ${lockPath} if it is incorrect.`,
 					);
 				}
@@ -263,7 +263,7 @@ export async function acquireSingleInstanceLock(
 		}
 	}
 
-	throw new Error(`Unable to acquire Hypercode startup lock at ${lockPath}`);
+	throw new Error(`Unable to acquire HyperNexus startup lock at ${lockPath}`);
 }
 
 export async function startCoreRuntime(
@@ -275,7 +275,7 @@ export async function startCoreRuntime(
 		autoDrive?: boolean;
 	},
 	loadCore: () => Promise<CoreRuntimeModule> = async () =>
-		await import("@hypercode/core"),
+		await import("@hypernexus/core"),
 ) {
 	const core = await loadCore();
 
@@ -293,9 +293,9 @@ export async function startCoreRuntime(
 }
 
 export function createLockLifecycleHandlers(
-	lockHandle: HypercodeStartLockHandle,
+	lockHandle: HyperNexusStartLockHandle,
 	deps: CreateLockLifecycleHandlersDeps = {},
-): HypercodeStartLifecycleHandlers {
+): HyperNexusStartLifecycleHandlers {
 	const exit = deps.exit ?? ((code: number) => process.exit(code));
 	const logError =
 		deps.logError ??
@@ -337,27 +337,27 @@ export function registerStartCommand(program: Command): void {
 	program
 		.command("start")
 		.description(
-			"Start the Hypercode HYPERCODE backend server (Express/tRPC/WebSocket/MCP)",
+			"Start the HyperNexus HYPERNEXUS backend server (Express/tRPC/WebSocket/MCP)",
 		)
 		.option("-p, --port <number>", "tRPC control-plane port", "4100")
 		.option("-H, --host <address>", "Server host address", "0.0.0.0")
 		.option("--no-mcp", "Disable the MCP server endpoint")
-		.option("--supervisor", "Enable Hypercode supervisor startup")
+		.option("--supervisor", "Enable HyperNexus supervisor startup")
 		.option("--auto-drive", "Enable Director auto-drive after startup")
 		.option("--no-dashboard", "Disable serving the WebUI dashboard")
 		.option("-c, --config <path>", "Path to config file")
-		.option("-d, --data-dir <path>", "Data directory for Hypercode state", "~/.hypercode")
+		.option("-d, --data-dir <path>", "Data directory for HyperNexus state", "~/.hypernexus")
 		.option("--daemon", "Run as background daemon")
 		.addHelpText(
 			"after",
 			`
 Examples:
-  $ hypercode start                     Start with defaults (tRPC on port 4100)
-  $ hypercode start -p 8080             Start on port 8080
-  $ hypercode start --no-mcp            Start without MCP server
-  $ hypercode start --auto-drive        Start the Director after boot completes
-  $ hypercode start --daemon            Run as background service
-  $ hypercode start --host 127.0.0.1    Bind to localhost only
+  $ hypernexus start                     Start with defaults (tRPC on port 4100)
+  $ hypernexus start -p 8080             Start on port 8080
+  $ hypernexus start --no-mcp            Start without MCP server
+  $ hypernexus start --auto-drive        Start the Director after boot completes
+  $ hypernexus start --daemon            Run as background service
+  $ hypernexus start --host 127.0.0.1    Bind to localhost only
     `,
 		)
 		.action(async (opts) => {
@@ -366,9 +366,9 @@ Examples:
 			const host = opts.host;
 			const explicitPort =
 				process.argv.includes("--port") || process.argv.includes("-p");
-			let lockHandle: HypercodeStartLockHandle | null = null;
+			let lockHandle: HyperNexusStartLockHandle | null = null;
 
-			console.log(chalk.bold.cyan(`\n  ⬡ Hypercode HYPERCODE v${await getVersion()}`));
+			console.log(chalk.bold.cyan(`\n  ⬡ HyperNexus HYPERNEXUS v${await getVersion()}`));
 			console.log(chalk.dim("  The Neural Operating System\n"));
 
 			try {
@@ -400,7 +400,7 @@ Examples:
 				if (lockHandle.clearedStaleLock) {
 					console.log(
 						chalk.yellow(
-							`  ↺ Cleared stale Hypercode lock${lockHandle.reusedStalePort ? ` and reused port ${port}` : ""}`,
+							`  ↺ Cleared stale HyperNexus lock${lockHandle.reusedStalePort ? ` and reused port ${port}` : ""}`,
 						),
 					);
 				}
@@ -464,13 +464,13 @@ Examples:
 				try {
 					const { existsSync } = await import('fs');
 					const { resolve } = await import('path');
-					const goBin = resolve(process.cwd(), 'go', 'hypercode.exe');
+					const goBin = resolve(process.cwd(), 'go', 'hypernexus.exe');
 					if (existsSync(goBin)) {
 						const { spawn } = await import('child_process');
 						const goProc = spawn(goBin, ['serve', '--port', '4300'], {
 							stdio: 'ignore',
 							detached: true,
-							env: { ...process.env, HYPERCODE_WORKSPACE: process.cwd() },
+							env: { ...process.env, HYPERNEXUS_WORKSPACE: process.cwd() },
 						});
 						goProc.unref();
 						console.log(chalk.green('  ✓ Go sidecar launched on port 4300'));

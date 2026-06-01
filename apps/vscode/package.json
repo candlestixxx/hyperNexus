@@ -1,9 +1,9 @@
 {
-  "name": "hypercode-vscode-extension",
-  "displayName": "Hypercode Plugin",
+  "name": "hypernexus-vscode-extension",
+  "displayName": "HyperNexus Plugin",
   "version": "1.0.0-alpha.63",
-  "description": "Connect VS Code to Hypercode Hub for AI agent orchestration, memory management, and tool invocation",
-  "publisher": "hypercode",
+  "description": "Connect VS Code to HyperNexus Hub for AI agent orchestration, memory management, and tool invocation",
+  "publisher": "hypernexus",
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -28,107 +28,107 @@
   "contributes": {
     "commands": [
       {
-        "command": "hypercode.connect",
-        "title": "Hypercode: Connect to Core"
+        "command": "hypernexus.connect",
+        "title": "HyperNexus: Connect to Core"
       },
       {
-        "command": "hypercode.disconnect",
-        "title": "Hypercode: Disconnect from Core"
+        "command": "hypernexus.disconnect",
+        "title": "HyperNexus: Disconnect from Core"
       },
       {
-        "command": "hypercode.showStatus",
-        "title": "Hypercode: Show Hub Status"
+        "command": "hypernexus.showStatus",
+        "title": "HyperNexus: Show Hub Status"
       },
       {
-        "command": "hypercode.runAgent",
-        "title": "Hypercode: Run Agent"
+        "command": "hypernexus.runAgent",
+        "title": "HyperNexus: Run Agent"
       },
       {
-        "command": "hypercode.searchMemory",
-        "title": "Hypercode: Search Memory"
+        "command": "hypernexus.searchMemory",
+        "title": "HyperNexus: Search Memory"
       },
       {
-        "command": "hypercode.ingestUrl",
-        "title": "Hypercode: Ingest URL to Knowledge"
+        "command": "hypernexus.ingestUrl",
+        "title": "HyperNexus: Ingest URL to Knowledge"
       },
       {
-        "command": "hypercode.ingestSelectionToRag",
-        "title": "Hypercode: Ingest Selection to RAG"
+        "command": "hypernexus.ingestSelectionToRag",
+        "title": "HyperNexus: Ingest Selection to RAG"
       },
       {
-        "command": "hypercode.rememberSelection",
-        "title": "Hypercode: Remember Selection"
+        "command": "hypernexus.rememberSelection",
+        "title": "HyperNexus: Remember Selection"
       },
       {
-        "command": "hypercode.listTools",
-        "title": "Hypercode: List Tools"
+        "command": "hypernexus.listTools",
+        "title": "HyperNexus: List Tools"
       },
       {
-        "command": "hypercode.invokeTool",
-        "title": "Hypercode: Invoke Tool"
+        "command": "hypernexus.invokeTool",
+        "title": "HyperNexus: Invoke Tool"
       },
       {
-        "command": "hypercode.openDashboard",
-        "title": "Hypercode: Open Dashboard"
+        "command": "hypernexus.openDashboard",
+        "title": "HyperNexus: Open Dashboard"
       },
       {
-        "command": "hypercode.showLogs",
-        "title": "Hypercode: Show Logs"
+        "command": "hypernexus.showLogs",
+        "title": "HyperNexus: Show Logs"
       },
       {
-        "command": "hypercode.startDebate",
-        "title": "Hypercode: Start Council Debate"
+        "command": "hypernexus.startDebate",
+        "title": "HyperNexus: Start Council Debate"
       },
       {
-        "command": "hypercode.viewAnalytics",
-        "title": "Hypercode: View Supervisor Analytics"
+        "command": "hypernexus.viewAnalytics",
+        "title": "HyperNexus: View Supervisor Analytics"
       },
       {
-        "command": "hypercode.listDebateTemplates",
-        "title": "Hypercode: List Debate Templates"
+        "command": "hypernexus.listDebateTemplates",
+        "title": "HyperNexus: List Debate Templates"
       },
       {
-        "command": "hypercode.architectMode",
-        "title": "Hypercode: Architect Mode (Two-Model)"
+        "command": "hypernexus.architectMode",
+        "title": "HyperNexus: Architect Mode (Two-Model)"
       }
     ],
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "hypercodeSidebar",
-          "title": "Hypercode",
-          "icon": "resources/hypercode.svg"
+          "id": "hypernexusSidebar",
+          "title": "HyperNexus",
+          "icon": "resources/hypernexus.svg"
         }
       ]
     },
     "views": {
-      "hypercodeSidebar": [
+      "hypernexusSidebar": [
         {
           "type": "webview",
-          "id": "hypercode.dispatchView",
+          "id": "hypernexus.dispatchView",
           "name": "Mini Dashboard"
         }
       ]
     },
     "configuration": {
-      "title": "Hypercode",
+      "title": "HyperNexus",
       "properties": {
-        "hypercode.coreUrl": {
+        "hypernexus.coreUrl": {
           "type": "string",
           "default": "ws://localhost:3001",
-          "description": "URL of the Hypercode Core WebSocket server"
+          "description": "URL of the HyperNexus Core WebSocket server"
         },
-        "hypercode.apiKey": {
+        "hypernexus.apiKey": {
           "type": "string",
           "default": "",
           "description": "API key for authenticated Core access"
         },
-        "hypercode.dashboardUrl": {
+        "hypernexus.dashboardUrl": {
           "type": "string",
           "default": "http://localhost:3000",
-          "description": "Base URL of the Hypercode web dashboard used for deep links from the VS Code extension"
+          "description": "Base URL of the HyperNexus web dashboard used for deep links from the VS Code extension"
         },
-        "hypercode.autoConnect": {
+        "hypernexus.autoConnect": {
           "type": "boolean",
           "default": true,
           "description": "Automatically connect to Core on startup"
@@ -138,14 +138,14 @@
     "menus": {
       "editor/context": [
         {
-          "command": "hypercode.ingestSelectionToRag",
+          "command": "hypernexus.ingestSelectionToRag",
           "when": "editorHasSelection",
-          "group": "hypercode@1"
+          "group": "hypernexus@1"
         },
         {
-          "command": "hypercode.rememberSelection",
+          "command": "hypernexus.rememberSelection",
           "when": "editorHasSelection",
-          "group": "hypercode@2"
+          "group": "hypernexus@2"
         }
       ]
     }

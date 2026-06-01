@@ -23,7 +23,7 @@ mcpServerDebugLog('[MCPServer] ✓ path/url/fs');
 import { Router } from "./Router.js";
 mcpServerDebugLog('[MCPServer] ✓ Router');
 
-import { ModelSelector, LLMService } from "@hypercode/ai";
+import { ModelSelector, LLMService } from "@hypernexus/ai";
 import { CoreModelSelector } from './providers/CoreModelSelector.js';
 mcpServerDebugLog('[MCPServer] ✓ ModelSelector');
 
@@ -33,8 +33,8 @@ import http from 'http';
 mcpServerDebugLog('[MCPServer] ✓ ws/http');
 
 import { McpmInstaller } from "./skills/McpmInstaller.js";
-import { Director, ToolPredictor, PairOrchestrator, SwarmController, SwarmRole, a2aBroker, A2ALogger } from "@hypercode/agents";
-import { Council, CouncilRole } from "@hypercode/agents";
+import { Director, ToolPredictor, PairOrchestrator, SwarmController, SwarmRole, a2aBroker, A2ALogger } from "@hypernexus/agents";
+import { Council, CouncilRole } from "@hypernexus/agents";
 import { GeminiAgent } from "./agents/GeminiAgent.js";
 import { ClaudeAgent } from "./agents/ClaudeAgent.js";
 import { MetaArchitectAgent } from "./agents/MetaArchitectAgent.js";
@@ -52,7 +52,7 @@ import { MeshService, SwarmMessageType } from './mesh/MeshService.js';
 import { GitWorktreeManager } from "./orchestrator/GitWorktreeManager.js";
 import { AuditService } from "./security/AuditService.js";
 import { GitService } from "./services/GitService.js";
-import { Supervisor } from "@hypercode/agents";
+import { Supervisor } from "@hypernexus/agents";
 import { SkillRegistry } from "./skills/SkillRegistry.js";
 import { SuggestionService } from "./suggestions/SuggestionService.js";
 import { ResearchService } from "./services/ResearchService.js";
@@ -99,7 +99,7 @@ import { ProjectTracker } from "./services/ProjectTracker.js";
 import { MissionService } from "./services/MissionService.js";
 import { buildToolObservationInput } from './services/toolObservationMemory.js';
 import { detectLocalExecutionEnvironment } from './services/execution-environment.js';
-import { loadHypercodeMcpConfig } from './mcp/mcpJsonConfig.js';
+import { loadHyperNexusMcpConfig } from './mcp/mcpJsonConfig.js';
 import {
     buildAutomaticToolContextFingerprint,
     buildAutomaticToolContextMemory,
@@ -131,7 +131,7 @@ import {
     ChainExecutor,
     type ChainRequest,
     getAllParityTools
-} from "@hypercode/tools";
+} from "@hypernexus/tools";
 mcpServerDebugLog('[MCPServer] ✓ All Tools & ChainExecutor');
 
 mcpServerDebugLog('[MCPServer] ✓ All Tools & ChainExecutor');
@@ -160,8 +160,8 @@ import { EmbeddingService } from './services/rag/EmbeddingService.js';
 
 
 import { PermissionManager, AutonomyLevel } from "./security/PermissionManager.js";
-import { BrowserTool } from "@hypercode/tools";
-import { SearchService } from "@hypercode/search";
+import { BrowserTool } from "@hypernexus/tools";
+import { SearchService } from "@hypernexus/search";
 import { CouncilService } from "./services/CouncilService.js";
 import { BrowserService } from "./services/BrowserService.js";
 import type { ConnectedClient } from './services/mcp-client.service.js';
@@ -416,10 +416,10 @@ export class MCPServer {
     }
 
     /**
-     * Reason: Hypercode now captures session-start and stop-time memory, but still needs
+     * Reason: HyperNexus now captures session-start and stop-time memory, but still needs
      * post-tool lifecycle observations without wiring every caller individually.
      * What: best-effort bridge from centralized tool execution into structured memory observations.
-     * Why: keeps claude-mem-style lifecycle capture native to Hypercode while never blocking tool execution.
+     * Why: keeps claude-mem-style lifecycle capture native to HyperNexus while never blocking tool execution.
      */
     private async captureToolObservation(event: {
         toolName: string;
@@ -441,11 +441,11 @@ export class MCPServer {
     }
 
     /**
-     * Reason: Hypercode can already rank relevant memories for a tool call, but until now
+     * Reason: HyperNexus can already rank relevant memories for a tool call, but until now
      * that JIT context stayed behind an explicit helper instead of being used automatically.
      * What: resolves compact pre-tool context using current session goal/objective state,
      * broadcasts a short preview to the inspector, and stores deduped session memory.
-     * Why: gives Hypercode a native PreToolUse-style lifecycle seam without mutating downstream schemas.
+     * Why: gives HyperNexus a native PreToolUse-style lifecycle seam without mutating downstream schemas.
      */
     private async resolveAutomaticToolContext(toolName: string, args: unknown): Promise<ToolContextPayload | null> {
         if (!shouldResolveAutomaticToolContext(toolName) || !this.agentMemoryService?.getToolContext) {
@@ -491,7 +491,7 @@ export class MCPServer {
 
     private async syncNativeToolPreferences(): Promise<void> {
         try {
-            const config = await loadHypercodeMcpConfig();
+            const config = await loadHyperNexusMcpConfig();
             const settings = config.settings as { toolSelection?: { importantTools?: unknown; alwaysLoadedTools?: unknown } } | undefined;
             const preferences = readToolPreferencesFromSettings(settings?.toolSelection);
             this.nativeSessionMetaTools.setAlwaysLoadedTools(preferences.alwaysLoadedTools);
@@ -524,7 +524,7 @@ export class MCPServer {
         this.missionService = new MissionService(process.cwd()); // Phase 80: Swarm Persistence
 
         this.memoryManager = new MemoryManager(process.cwd());
-        this.agentMemoryService = new AgentMemoryService({ persistDir: path.join(process.cwd(), '.hypercode', 'agent_memory') }, this.memoryManager);
+        this.agentMemoryService = new AgentMemoryService({ persistDir: path.join(process.cwd(), '.hypernexus', 'agent_memory') }, this.memoryManager);
 
         this.director = new Director(this);
         this.council = new Council(this.modelSelector);
@@ -555,7 +555,7 @@ export class MCPServer {
         this.systemStatusTool = options.systemStatusTool || new SystemStatusTool();
         this.processRegistry = options.processRegistry || new ProcessRegistry();
         this.terminalService = new TerminalService(this.processRegistry);
-        this.mcpmInstaller = new McpmInstaller(path.join(process.cwd(), '.hypercode', 'skills'));
+        this.mcpmInstaller = new McpmInstaller(path.join(process.cwd(), '.hypernexus', 'skills'));
         this.spawnerService = SpawnerService.getInstance();
         this.configManager = new ConfigManager();
         this.mcpConfigService = new McpConfigService();
@@ -616,7 +616,7 @@ export class MCPServer {
         this.promptRegistry = new PromptRegistry();
         this.skillRegistry = new SkillRegistry([
             path.join(process.cwd(), 'packages', 'core', 'src', 'skills'),
-            path.join(process.cwd(), '.hypercode', 'skills')
+            path.join(process.cwd(), '.hypernexus', 'skills')
         ]);
         // SearchService is needed for DeepResearchService types
         const searchService = new SearchService();
@@ -685,7 +685,7 @@ export class MCPServer {
         this.lspService = new LSPService(process.cwd());
         this.planService = new PlanService({ rootPath: process.cwd() });
         this.codeModeService = new CodeModeService({ timeout: 30000, allowAsync: true });
-        this.workflowEngine = new WorkflowEngine({ persistDir: path.join(process.cwd(), '.hypercode', 'workflows') });
+        this.workflowEngine = new WorkflowEngine({ persistDir: path.join(process.cwd(), '.hypernexus', 'workflows') });
         this.lspTools = new LSPTools(process.cwd());
         // MemoryManager + AgentMemoryService initialized early
         this.sessionImportService = new SessionImportService(this.llmService, this.agentMemoryService, process.cwd());
@@ -783,7 +783,7 @@ export class MCPServer {
 
         // Phase 65: Marketplace (Depends on Mesh)
         this.marketplaceService = new MarketplaceService(
-            path.join(process.cwd(), '.hypercode', 'skills'),
+            path.join(process.cwd(), '.hypernexus', 'skills'),
             undefined // this.meshService
         );
 
@@ -832,7 +832,7 @@ export class MCPServer {
 
     private createServerInstance(): { server: Server; ready: Promise<void> } {
         const s = new Server(
-            { name: "hypercode-core", version: "0.99.1" },
+            { name: "hypernexus-core", version: "0.99.1" },
             {
                 capabilities: {
                     tools: {},
@@ -958,21 +958,21 @@ export class MCPServer {
             }
 
             if (permission === 'NEEDS_CONSULTATION') {
-                console.log(`[Hypercode Core] Consulting Council for: ${name}`);
+                console.log(`[HyperNexus Core] Consulting Council for: ${name}`);
                 this.auditService.log('TOOL_CONSULTATION', { tool: name, args }, 'WARN');
                 const debate = await this.council.runConsensusSession(`Execute tool '${name}' with args: ${JSON.stringify(args)}`);
 
                 if (!debate.approved) {
                     throw new Error(`Council Denied Execution: ${debate.summary}`);
                 }
-                console.log(`[Hypercode Core] Council Approved: ${debate.summary}`);
+                console.log(`[HyperNexus Core] Council Approved: ${debate.summary}`);
             }
 
             // 1. Internal Status / Config Tools
             let result;
             if (name === "router_status") {
                 result = {
-                    content: [{ type: "text", text: "Hypercode Router is active." }],
+                    content: [{ type: "text", text: "HyperNexus Router is active." }],
                 };
             }
             else if (name === "set_autonomy") {
@@ -986,7 +986,7 @@ export class MCPServer {
                 const text = args?.text as string;
                 // SAFETY: Default to false to prevent feedback loops. Explicitly set true if needed.
                 const submit = args?.submit as boolean ?? false;
-                console.log(`[Hypercode Core] Chat Reply Requested: ${text} (submit: ${submit})`);
+                console.log(`[HyperNexus Core] Chat Reply Requested: ${text} (submit: ${submit})`);
 
                 if (this.wssInstance) {
                     this.wssInstance.clients.forEach((client: any) => {
@@ -1829,7 +1829,7 @@ export class MCPServer {
             else if (name === "analyze_screenshot") {
                 const prompt = args.prompt as string;
                 try {
-                    console.log(`[Hypercode Core] 👁️ Analyzing screenshot with prompt: "${prompt}"...`);
+                    console.log(`[HyperNexus Core] 👁️ Analyzing screenshot with prompt: "${prompt}"...`);
                     const data = await this.captureScreenshotFromBrowser();
                     const base64 = data.split(',')[1];
                     const mimeType = "image/jpeg";
@@ -1977,7 +1977,7 @@ export class MCPServer {
             }
             else if (name === "index_codebase") {
                 const dir = args?.path || process.cwd();
-                console.log(`[Hypercode Core] Indexing codebase at ${dir}...`);
+                console.log(`[HyperNexus Core] Indexing codebase at ${dir}...`);
                 const count = await this.memoryManager.indexCodebase(dir);
                 result = {
                     content: [{ type: "text", text: `Indexed ${count} documents/chunks from ${dir}.` }]
@@ -1985,7 +1985,7 @@ export class MCPServer {
             }
             else if (name === "search_codebase") {
                 const query = args?.query as string;
-                console.log(`[Hypercode Core] Semantic Searching for: ${query}`);
+                console.log(`[HyperNexus Core] Semantic Searching for: ${query}`);
                 const matches = await this.memoryManager.search(query);
 
                 let text = `Searching for: "${query}"\n\n`;
@@ -2300,7 +2300,7 @@ export class MCPServer {
                 result = { content: [{ type: "text", text: success ? "Healer successfully fixed the error." : "Healer could not fix this error autonomously." }] };
             }
             else if (name === "get_project_context") {
-                const contextPath = path.join(process.cwd(), '.hypercode', 'project_context.md');
+                const contextPath = path.join(process.cwd(), '.hypernexus', 'project_context.md');
                 let projectContent = "";
                 if (fs.existsSync(contextPath)) {
                     projectContent = await fs.promises.readFile(contextPath, 'utf-8');
@@ -2323,9 +2323,9 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
                 result = { content: [{ type: "text", text: `${projectContent}\n\n---\n${envReport}` }] };
             }
             else if (name === "update_project_context") {
-                const contextPath = path.join(process.cwd(), '.hypercode', 'project_context.md');
-                const hypercodeDir = path.join(process.cwd(), '.hypercode');
-                if (!fs.existsSync(hypercodeDir)) fs.mkdirSync(hypercodeDir, { recursive: true });
+                const contextPath = path.join(process.cwd(), '.hypernexus', 'project_context.md');
+                const hypernexusDir = path.join(process.cwd(), '.hypernexus');
+                if (!fs.existsSync(hypernexusDir)) fs.mkdirSync(hypernexusDir, { recursive: true });
                 
                 await fs.promises.writeFile(contextPath, args.content as string);
                 result = { content: [{ type: "text", text: "Project context updated successfully." }] };
@@ -2424,9 +2424,9 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
                                 }
                             }
 
-                            // Skip proxy routing once the Hypercode-native aggregator path has run.
+                            // Skip proxy routing once the HyperNexus-native aggregator path has run.
                         } else {
-                            // Hypercode-native fallback path for unscoped tools.
+                            // HyperNexus-native fallback path for unscoped tools.
                             try {
                                 this.nativeSessionMetaTools.touchLoadedTool(name);
                                 result = await this.mcpAggregator.executeTool(name, args);
@@ -2526,7 +2526,7 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
      * These are used to "warm up" the model's tool surface without a search turn.
      */
     public async getPredictedToolAds(chatHistory: string, activeGoal: string): Promise<string[]> {
-        const SIDECAR_URL = process.env.HYPERCODE_SIDECAR_URL || 'http://127.0.0.1:4300';
+        const SIDECAR_URL = process.env.HYPERNEXUS_SIDECAR_URL || 'http://127.0.0.1:4300';
         try {
             const response = await fetch(`${SIDECAR_URL}/api/mcp/tools/predict`, {
                 method: 'POST',
@@ -2551,7 +2551,7 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
         const internalTools: any[] = [
             {
                 name: "router_status",
-                description: "Check the status of the Hypercode Router",
+                description: "Check the status of the HyperNexus Router",
                 inputSchema: { type: "object", properties: {} },
             },
             {
@@ -2603,7 +2603,7 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
             },
             {
                 name: "assimilate_skill",
-                description: "Convert a research item into a functional Hypercode Skill (runbook)",
+                description: "Convert a research item into a functional HyperNexus Skill (runbook)",
                 inputSchema: {
                     type: "object",
                     properties: {
@@ -2661,7 +2661,7 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
             },
             {
                 name: "a2a_broadcast",
-                description: "Broadcast an A2A message to all registered Hypercode autonomous agents.",
+                description: "Broadcast an A2A message to all registered HyperNexus autonomous agents.",
                 inputSchema: {
                     type: "object",
                     properties: {
@@ -3393,7 +3393,7 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
             },
             {
                 name: "auto_heal",
-                description: "Hands off a technical error or failing test to the Hypercode Healer. The system will autonomously diagnose the error, generate a fix, and apply it to the source code.",
+                description: "Hands off a technical error or failing test to the HyperNexus Healer. The system will autonomously diagnose the error, generate a fix, and apply it to the source code.",
                 inputSchema: {
                     type: "object",
                     properties: {
@@ -3423,7 +3423,7 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
             // Phase 60: The Mesh tools
             {
                 name: "swarm_broadcast",
-                description: "Broadcast a message to the Hypercode P2P Swarm",
+                description: "Broadcast a message to the HyperNexus P2P Swarm",
                 inputSchema: {
                     type: "object",
                     properties: {
@@ -3487,7 +3487,7 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
     }
 
     private async setupHandlers(serverInstance: Server) {
-        mcpServerDebugLog('[MCPServer] Using Hypercode-native MCP handlers.');
+        mcpServerDebugLog('[MCPServer] Using HyperNexus-native MCP handlers.');
         await this.setupDirectHandlers(serverInstance);
     }
 
@@ -3530,8 +3530,8 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
 
     private setupDirectDiscoveryHandlers(serverInstance: Server): void {
         const context = {
-            namespaceUuid: 'hypercode-core-namespace',
-            sessionId: 'hypercode-core-session',
+            namespaceUuid: 'hypernexus-core-namespace',
+            sessionId: 'hypernexus-core-session',
             includeInactiveServers: false,
         };
 
@@ -3742,7 +3742,7 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
         } else {
             console.error("[MCPServer] Skipping RepoGraph build (minimal mode).");
         }
-        mcpServerDebugLog('[MCPServer] 🚀 Hypercode Core ready.');
+        mcpServerDebugLog('[MCPServer] 🚀 HyperNexus Core ready.');
         mcpServerDebugLog('[MCPServer] Preparing request handlers...');
 
         // 1. Start Stdio (for local CLI usage)
@@ -3750,7 +3750,7 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
             mcpServerDebugLog('[MCPServer] Connecting Stdio...');
             const stdioTransport = new StdioServerTransport();
             await this.server.connect(stdioTransport);
-            mcpServerDebugLog('Hypercode Core: Stdio Transport Active');
+            mcpServerDebugLog('HyperNexus Core: Stdio Transport Active');
         } else {
             mcpServerDebugLog('[MCPServer] Skipping Stdio transport (managed by external loader).');
         }
@@ -4027,7 +4027,7 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
                 }
 
                 bridgePortConflictHandled = true;
-                console.warn(`[Hypercode Core] ⚠️ WebSocket bridge port ${PORT} is already in use. Skipping bridge startup while keeping the rest of Hypercode online.`);
+                console.warn(`[HyperNexus Core] ⚠️ WebSocket bridge port ${PORT} is already in use. Skipping bridge startup while keeping the rest of HyperNexus online.`);
                 this.wssInstance = null;
             };
 
@@ -4037,7 +4037,7 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
                     return;
                 }
 
-                console.error(`[Hypercode Core] ❌ WebSocket Server Error (Port ${PORT}):`, err.message);
+                console.error(`[HyperNexus Core] ❌ WebSocket Server Error (Port ${PORT}):`, err.message);
             });
 
             wss.on('error', (err: any) => {
@@ -4046,7 +4046,7 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
                     return;
                 }
 
-                console.error(`[Hypercode Core] ❌ WebSocket bridge runtime error (Port ${PORT}):`, err.message);
+                console.error(`[HyperNexus Core] ❌ WebSocket bridge runtime error (Port ${PORT}):`, err.message);
             });
 
             const bridgeListening = await new Promise<boolean>((resolve) => {
@@ -4062,7 +4062,7 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
                 };
 
                 httpServer.once('listening', () => {
-                    mcpServerDebugLog(`Hypercode Core: WebSocket Transport Active on ws://localhost:${PORT}`);
+                    mcpServerDebugLog(`HyperNexus Core: WebSocket Transport Active on ws://localhost:${PORT}`);
                     finalize(true);
                 });
 
@@ -4106,14 +4106,14 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
                 ws.on('message', async (data: any) => {
                     try {
                         const msg = JSON.parse(data.toString());
-                        if (msg.type === 'HYPERCODE_CLIENT_HELLO') {
+                        if (msg.type === 'HYPERNEXUS_CLIENT_HELLO') {
                             const existing = this.bridgeClients.get(ws) ?? createDefaultBridgeClient(clientId);
                             const updated = applyBridgeClientHello(existing, msg, Date.now());
                             this.bridgeClients.set(ws, updated);
 
                             if (ws.readyState === 1) {
                                 ws.send(JSON.stringify({
-                                    type: 'HYPERCODE_CORE_MANIFEST',
+                                    type: 'HYPERNEXUS_CORE_MANIFEST',
                                     manifest: buildBridgeManifest(Array.from(this.bridgeClients.values())),
                                 }));
                             }
@@ -4280,24 +4280,24 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
             const rootDir = this.findMonorepoRoot(__dirname);
             mcpServerDebugLog(`[MCPServer] DEBUG rootDir: ${rootDir}`);
             if (rootDir) {
-                const supervisorPath = path.join(rootDir, 'packages', 'hypercode-supervisor', 'dist', 'index.js');
+                const supervisorPath = path.join(rootDir, 'packages', 'hypernexus-supervisor', 'dist', 'index.js');
                 mcpServerDebugLog(`[MCPServer] Supervisor Path Resolved: ${supervisorPath}`);
 
-                await this.router.connectToServer('hypercode-supervisor', 'node', [supervisorPath]);
-                mcpServerDebugLog(`Hypercode Core: Connected to Supervisor at ${supervisorPath}`);
+                await this.router.connectToServer('hypernexus-supervisor', 'node', [supervisorPath]);
+                mcpServerDebugLog(`HyperNexus Core: Connected to Supervisor at ${supervisorPath}`);
 
                 // Phase 16: Google Workspace Integration
                 const workspacePath = path.join(rootDir, 'external', 'mcp-servers', 'workspace', 'workspace-server', 'dist', 'index.js');
                 mcpServerDebugLog(`[MCPServer] Google Workspace Server Path: ${workspacePath}`);
                 if (fs.existsSync(workspacePath)) {
                     await this.router.connectToServer('google-workspace', 'node', [workspacePath]);
-                    mcpServerDebugLog('Hypercode Core: Connected to Google Workspace Server (GMail/Calendar)');
+                    mcpServerDebugLog('HyperNexus Core: Connected to Google Workspace Server (GMail/Calendar)');
                 }
             } else {
                 console.error("[MCPServer] Failed to locate Monorepo Root. Skipping Supervisor.");
             }
         } catch (e: any) {
-            console.error("Hypercode Core: Failed to connect to Supervisor. Native automation disabled.", e.message);
+            console.error("HyperNexus Core: Failed to connect to Supervisor. Native automation disabled.", e.message);
         }
 
         if (this.wsServer && this.wssInstance) {
@@ -4357,20 +4357,20 @@ async function startDirectlyIfExecuted(): Promise<void> {
     redirectProtocolUnsafeConsoleMethodsForDirectExecution();
 
     process.on('unhandledRejection', (reason) => {
-        console.error('[Hypercode Core] Unhandled promise rejection:', reason);
+        console.error('[HyperNexus Core] Unhandled promise rejection:', reason);
     });
 
     process.on('uncaughtException', (error) => {
-        console.error('[Hypercode Core] Uncaught exception:', error);
+        console.error('[HyperNexus Core] Uncaught exception:', error);
         process.exit(1);
     });
 
     try {
         const mcp = new MCPServer({ skipWebsocket: true });
         await mcp.start();
-        console.error('[Hypercode Core] MCPServer direct entrypoint started.');
+        console.error('[HyperNexus Core] MCPServer direct entrypoint started.');
     } catch (error) {
-        console.error('[Hypercode Core] Failed to start direct MCP entrypoint:', error);
+        console.error('[HyperNexus Core] Failed to start direct MCP entrypoint:', error);
         process.exit(1);
     }
 }

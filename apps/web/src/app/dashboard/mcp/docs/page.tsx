@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Card, CardContent } from "@hypercode/ui";
-import { Button } from "@hypercode/ui";
+import { Card, CardContent } from "@hypernexus/ui";
+import { Button } from "@hypernexus/ui";
 import { FileText, Loader2, RefreshCw } from "lucide-react";
 import { trpc } from '@/utils/trpc';
 
@@ -65,7 +65,7 @@ export default function DocsDashboard() {
         <div className="p-8 space-y-8 h-full overflow-y-auto">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">MetaMCP API Reference Docs</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">HyperNexus API Reference Docs</h1>
                     <p className="text-zinc-500">
                         Live project docs loaded from workspace files
                     </p>

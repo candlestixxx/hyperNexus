@@ -5,8 +5,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/robertpelloni/hypercode/config"
-	"github.com/robertpelloni/hypercode/llm"
+	"github.com/robertpelloni/hypernexus/config"
+	"github.com/robertpelloni/hypernexus/llm"
 )
 
 type ProviderStatus struct {

@@ -2,10 +2,10 @@
 
 import { trpc } from "@/utils/trpc";
 import { useState } from 'react';
-import { Card } from '@hypercode/ui';
-import { Button } from '@hypercode/ui';
-import { Input } from '@hypercode/ui';
-import { Textarea } from '@hypercode/ui';
+import { Card } from '@hypernexus/ui';
+import { Button } from '@hypernexus/ui';
+import { Input } from '@hypernexus/ui';
+import { Textarea } from '@hypernexus/ui';
 
 export default function SupervisorPage() {
     const [goal, setGoal] = useState('');

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import { Card } from "@hypercode/ui";
-import { Button } from "@hypercode/ui";
+import { Card } from "@hypernexus/ui";
+import { Button } from "@hypernexus/ui";
 import { Loader2, Calendar, User, Search, FileText } from "lucide-react";
 import { trpc } from '@/utils/trpc';
 import { toast } from 'sonner';
@@ -15,7 +15,7 @@ export default function AuditDashboard() {
         <div className="p-8 space-y-8 h-full flex flex-col">
             <div className="flex justify-between items-center shrink-0">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">MetaMCP System Audit Trail</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">HyperNexus System Audit Trail</h1>
                     <p className="text-zinc-500">
                         Immutable record of system actions and security events
                     </p>

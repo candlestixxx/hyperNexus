@@ -33,7 +33,7 @@ func TestToolResultSnapshots(t *testing.T) {
   ],
   "isError": false
 }`)
-	mustExecSnapshot(t, runtime, "edit", EditToolInput{Path: "snap.txt", Edits: []EditReplacement{{OldText: "hello", NewText: "hypercode"}}}, `{
+	mustExecSnapshot(t, runtime, "edit", EditToolInput{Path: "snap.txt", Edits: []EditReplacement{{OldText: "hello", NewText: "hypernexus"}}}, `{
   "toolName": "edit",
   "content": [
     {
@@ -42,7 +42,7 @@ func TestToolResultSnapshots(t *testing.T) {
     }
   ],
   "details": {
-    "diff": "hypercode",
+    "diff": "hypernexus",
     "firstChangedLine": 1
   },
   "isError": false
@@ -107,7 +107,7 @@ func normalizeToolResultSnapshot(t *testing.T, result *ToolResult) string {
 			diff = ansiPattern.ReplaceAllString(diff, "")
 			// Handle various diff formats by checking for key content
 			if strings.Contains(diff, "hype") && strings.Contains(diff, "code") {
-				details["diff"] = "hypercode"
+				details["diff"] = "hypernexus"
 			} else {
 				details["diff"] = diff
 			}

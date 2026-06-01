@@ -1,5 +1,5 @@
 {
-  "name": "@hypercode/mcp-registry",
+  "name": "@hypernexus/mcp-registry",
   "version": "1.0.0-alpha.63",
   "private": true,
   "main": "dist/index.js",

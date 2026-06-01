@@ -56,43 +56,43 @@ export interface NavSection {
 
 export const META_MCP_NAV: NavItem[] = [
     {
-        title: "MetaMCP Aggregator Hub",
+        title: "HyperNexus Aggregator Hub",
         href: "/dashboard/mcp",
         icon: Server,
         variant: "default",
     },
     {
-        title: "MetaMCP Remote Server Pool",
-        href: "/dashboard/mcp/metamcp",
+        title: "HyperNexus Remote Server Pool",
+        href: "/dashboard/mcp/hypernexus",
         icon: Network,
         variant: "ghost",
     },
     {
-        title: "MetaMCP Resource Namespaces",
+        title: "HyperNexus Resource Namespaces",
         href: "/dashboard/mcp/namespaces",
         icon: Box,
         variant: "ghost",
     },
     {
-        title: "MetaMCP API Endpoints",
+        title: "HyperNexus API Endpoints",
         href: "/dashboard/mcp/endpoints",
         icon: Globe,
         variant: "ghost",
     },
     {
-        title: "MetaMCP Client API Keys",
+        title: "HyperNexus Client API Keys",
         href: "/dashboard/mcp/api-keys",
         icon: Key,
         variant: "ghost",
     },
     {
-        title: "MetaMCP Pre-grouped Tool Sets",
+        title: "HyperNexus Pre-grouped Tool Sets",
         href: "/dashboard/mcp/tool-sets",
         icon: Layers,
         variant: "ghost",
     },
     {
-        title: "MetaMCP Tool Access Policies",
+        title: "HyperNexus Tool Access Policies",
         href: "/dashboard/mcp/policies",
         icon: Shield,
         variant: "ghost",
@@ -104,31 +104,31 @@ export const META_MCP_NAV: NavItem[] = [
         variant: "ghost",
     },
     {
-        title: "MetaMCP System Audit Trail",
+        title: "HyperNexus System Audit Trail",
         href: "/dashboard/mcp/audit",
         icon: FileText,
         variant: "ghost",
     },
     {
-        title: "MetaMCP Daemon & Server Logs",
+        title: "HyperNexus Daemon & Server Logs",
         href: "/dashboard/mcp/logs",
         icon: Activity,
         variant: "ghost",
     },
     {
-        title: "MetaMCP Observability Dashboard",
+        title: "HyperNexus Observability Dashboard",
         href: "/dashboard/mcp/observability",
         icon: Zap,
         variant: "ghost",
     },
     {
-        title: "MetaMCP Call & Trace Inspector",
+        title: "HyperNexus Call & Trace Inspector",
         href: "/dashboard/mcp/inspector",
         icon: Wrench,
         variant: "ghost",
     },
     {
-        title: "MetaMCP Agent Playground",
+        title: "HyperNexus Agent Playground",
         href: "/dashboard/mcp/agent",
         icon: Bot,
         variant: "ghost",
@@ -140,37 +140,37 @@ export const META_MCP_NAV: NavItem[] = [
         variant: "ghost",
     },
     {
-        title: "MetaMCP Gateway Health",
+        title: "HyperNexus Gateway Health",
         href: "/dashboard/mcp/system",
         icon: Activity,
         variant: "ghost",
     },
     {
-        title: "MetaMCP Semantic Vector Search",
+        title: "HyperNexus Semantic Vector Search",
         href: "/dashboard/mcp/search",
         icon: Search,
         variant: "ghost",
     },
     {
-        title: "MetaMCP Public Registry",
+        title: "HyperNexus Public Registry",
         href: "/dashboard/mcp/registry",
         icon: Download,
         variant: "ghost",
     },
     {
-        title: "MetaMCP Indexed Tool Catalog",
+        title: "HyperNexus Indexed Tool Catalog",
         href: "/dashboard/mcp/catalog",
         icon: Search,
         variant: "ghost",
     },
     {
-        title: "MetaMCP API Reference Docs",
+        title: "HyperNexus API Reference Docs",
         href: "/dashboard/mcp/docs",
         icon: BookOpen,
         variant: "ghost",
     },
     {
-        title: "MetaMCP Router JSON Settings",
+        title: "HyperNexus Router JSON Settings",
         href: "/dashboard/mcp/settings",
         icon: Settings,
         variant: "ghost",
@@ -231,7 +231,7 @@ export const MAIN_DASHBOARD_NAV: NavItem[] = [
 
 export const SIDEBAR_SECTIONS: NavSection[] = [
     {
-        title: "MetaMCP Tools",
+        title: "HyperNexus Tools",
         items: META_MCP_NAV,
     },
     {

@@ -2,9 +2,9 @@
 
 import { trpc } from '@/utils/trpc';
 import { useState, useEffect } from 'react';
-import { Card } from '@hypercode/ui';
-import { Button } from '@hypercode/ui';
-import { Textarea } from '@hypercode/ui';
+import { Card } from '@hypernexus/ui';
+import { Button } from '@hypernexus/ui';
+import { Textarea } from '@hypernexus/ui';
 
 export default function SettingsDashboard() {
     const [configJson, setConfigJson] = useState('');
@@ -36,7 +36,7 @@ export default function SettingsDashboard() {
             <div className="flex justify-between items-center">
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight text-yellow-400">Raw Configuration Editor</h1>
-                    <p className="text-muted-foreground">Manage core configuration (.hypercode/config.json)</p>
+                    <p className="text-muted-foreground">Manage core configuration (.hypernexus/config.json)</p>
                 </div>
                 <Button
                     onClick={handleSave}

@@ -3,6 +3,7 @@
 ## [1.0.0-alpha.63] - 2026-05-31
 
 ### Changed
+- **Systemic hyperNexus Rename**: Performed a case-insensitive, codebase-wide rename of all instances of `borg`, `hypercode`, and `metamcp` to `hyperNexus` / `HyperNexus` / `hypernexus` to unify product branding, repository configuration, package identifiers, and system terminology.
 - **Dashboard Accuracy Renaming Sweep**: Renamed and clarified all 54 dashboard navigation links and page header elements to match their precise backend functionalities and system components, aligning the UI with the truth of the system architecture.
 
 ## [1.0.0-alpha.62] - 2026-05-17
@@ -21,7 +22,7 @@
   - Wired Healer service to the `controlplane.MemoryVault` for persistent intelligence harvesting.
   - Every heal attempt is now committed to the SQLite-based L2 Vault, enabling fleet-wide shared learning.
 - **Phase 5 Scoping**:
-  - Authored updated `VISION.md` and `ROADMAP.md` focusing on the Hypercode Kernel (Hypercode) and HyperCode (Product) brand distinction.
+  - Authored updated `VISION.md` and `ROADMAP.md` focusing on the HyperNexus Kernel (HyperNexus) and HyperNexus (Product) brand distinction.
 
 ### Fixed
 - Go Healer: Resolved double-escaping of `fmt.Sprintf` tokens in generated code.
@@ -74,7 +75,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - Optimized `useResizeObserver` with `requestAnimationFrame` for smoother UI scaling.
 - Enhanced `DebateVisualizer` with real-time consensus agreement metrics and progress bars.
-- Hardened agent chat resilience and submission hooks in `Hypercode Supervisor`.
+- Hardened agent chat resilience and submission hooks in `HyperNexus Supervisor`.
 
 ### Fixed
 - UI regression where focus was stolen at an excessive rate during autonomous cycles.
@@ -97,7 +98,7 @@ All notable changes to this project will be documented in this file.
 - **Standardized Responsive UI**: Integrated `useResizeObserver` hook into `KnowledgeGraph` and `GraphPanel`.
 
 ### Changed
-- **CLI Go-API Binding**: Updated `hypercode mcp sync` to utilize the Go-native sync endpoints.
+- **CLI Go-API Binding**: Updated `hypernexus mcp sync` to utilize the Go-native sync endpoints.
 - **Project Structure**: Cleaned up orphaned submodule references and synchronized monorepo-wide versions.
 
 
@@ -150,25 +151,25 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Added
 - **MCP Fleet Lifecycle Management**: Full control surface for spawning and managing an MCP fleet.
-  - `hypercode mcp fleet` — Lists all fleet processes (12/16 alive).
-  - `hypercode mcp start-all/stop-all` — Batch process management with PID tracking.
-  - `hypercode mcp restart/connect-all` — Resilience tools for maintaining fleet uptime.
-  - PID files persisted in `~/.hypercode/mcp-pids/` for survival across CLI sessions.
+  - `hypernexus mcp fleet` — Lists all fleet processes (12/16 alive).
+  - `hypernexus mcp start-all/stop-all` — Batch process management with PID tracking.
+  - `hypernexus mcp restart/connect-all` — Resilience tools for maintaining fleet uptime.
+  - PID files persisted in `~/.hypernexus/mcp-pids/` for survival across CLI sessions.
 - **Go Sidecar Fallbacks for CLI**: Unified data retrieval for commands when tRPC is uninitialized.
-  - `hypercode billing status/quotas/fallback` — Displays 8 providers and routing order (Google → OpenAI).
-  - `hypercode knowledge stats` — Reports 13,478 nodes from the memory-backed graph.
-  - `hypercode swarm missions` — Time-stamped history of 3 active orchestration missions.
-  - `hypercode context stats` — Validated reporting of harvested codebase chunks.
+  - `hypernexus billing status/quotas/fallback` — Displays 8 providers and routing order (Google → OpenAI).
+  - `hypernexus knowledge stats` — Reports 13,478 nodes from the memory-backed graph.
+  - `hypernexus swarm missions` — Time-stamped history of 3 active orchestration missions.
+  - `hypernexus context stats` — Validated reporting of harvested codebase chunks.
 - **System Metrics & Inventory**:
-  - `hypercode metrics system` — Real-time 32-core AMD64 host monitoring + heap tracking.
-  - `hypercode inventory` — Comprehensive mapping of 51 tools (Go 1.26, Node 24) and 49 harnesses.
+  - `hypernexus metrics system` — Real-time 32-core AMD64 host monitoring + heap tracking.
+  - `hypernexus inventory` — Comprehensive mapping of 51 tools (Go 1.26, Node 24) and 49 harnesses.
 - **Cloud Dev & Project Context**:
-  - `hypercode cloud sessions/providers` — Verified Jules (Google) autopilot integration.
-  - `hypercode about` — Complete version and submodule manifest.
+  - `hypernexus cloud sessions/providers` — Verified Jules (Google) autopilot integration.
+  - `hypernexus about` — Complete version and submodule manifest.
 
 ### Fixed
-- **tRPC Path Routing**: Corrected `hypercodeContext` and `planService` procedure paths in the CLI.
-- **Data Fidelity**: Eliminated "0" placeholders in `hypercode status` and `hypercode info` by bridging to Go telemetry.
+- **tRPC Path Routing**: Corrected `hypernexusContext` and `planService` procedure paths in the CLI.
+- **Data Fidelity**: Eliminated "0" placeholders in `hypernexus status` and `hypernexus info` by bridging to Go telemetry.
 - **Mission ID Mapping**: Fixed property mismatch (`missionId` vs `id`) in swarm mission lists.
 
 ### Verified
@@ -179,19 +180,19 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [1.0.0-alpha.40] - 2025-04-30
 
 ### Added
-- `hypercode top` — Live system monitor with auto-refresh (TS server, MCP, Go sidecar)
-- `hypercode config get/set` — Read/write `~/.hypercode/config.jsonc` with dot-notation keys
-- `hypercode mcp inspect <name>` — Detailed server info from tRPC API
-- `hypercode mcp add <name> <cmd>` — Add servers via `mcpServers.create` tRPC endpoint
+- `hypernexus top` — Live system monitor with auto-refresh (TS server, MCP, Go sidecar)
+- `hypernexus config get/set` — Read/write `~/.hypernexus/config.jsonc` with dot-notation keys
+- `hypernexus mcp inspect <name>` — Detailed server info from tRPC API
+- `hypernexus mcp add <name> <cmd>` — Add servers via `mcpServers.create` tRPC endpoint
 - Lightweight MCP init when `--no-mcp` flag used (tRPC routers still functional)
 - Full-stack smoke test (`scripts/smoke-test.cjs`) — 12/12 pass
 - Go sidecar route count corrected to 543 across 26 categories
 
 ### Changed
 - All CLI commands now query live tRPC API — zero placeholder output remains
-- `hypercode status` shows both TS server and Go sidecar status
-- `hypercode session start` tries real API with helpful fallback message
-- `hypercode mcp start/stop` call real tRPC endpoints
+- `hypernexus status` shows both TS server and Go sidecar status
+- `hypernexus session start` tries real API with helpful fallback message
+- `hypernexus mcp start/stop` call real tRPC endpoints
 - All 25+ package.json versions synced from VERSION file
 
 ### Verified
@@ -200,7 +201,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - Go sidecar: 543 routes, Go→TS bridge verified for sessions, tools, settings, skills
 - TypeScript: 0 errors across core/cli/web
 - Go: 25/25 test packages pass
-- Zero "hypercode" references in active source
+- Zero "hypernexus" references in active source
 
 ## [1.0.0-alpha.39]
 
@@ -211,9 +212,9 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Fixed
 - 8 tRPC routers (suggestions, session, billing, director, supervisor, healer, knowledge, commands, workflow) now gracefully handle uninitialized services with safe empty defaults.
-- Dynamic VERSION file read in `hypercode start` banner (was hardcoded alpha.36).
+- Dynamic VERSION file read in `hypernexus start` banner (was hardcoded alpha.36).
 - Go binary output path in start.bat/start.sh corrected from `../../bin` to `../bin`.
-- Go ldflags use full module path `github.com/hypercodehq/hypercode-go/internal/buildinfo.Version`.
+- Go ldflags use full module path `github.com/hypernexushq/hypernexus-go/internal/buildinfo.Version`.
 - Dashboard dev script uses spawn instead of execFileSync, correct 3-level path resolution.
 - Turbopack root configured in next.config.js to fix workspace detection warning.
 - CLI bin entry corrected from `dist/index.js` to `dist/cli/src/index.js`.
@@ -221,7 +222,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [1.0.0-alpha.38]
 
 ### Added
-- Created 8 `@hypercode/*` stub packages (types, agents, ai, tools, adk, mcp-registry, memory, search) with proper TypeScript declarations, ESM runtime stubs, and zod schemas.
+- Created 8 `@hypernexus/*` stub packages (types, agents, ai, tools, adk, mcp-registry, memory, search) with proper TypeScript declarations, ESM runtime stubs, and zod schemas.
 - Added `apps/web/scripts/dev.mjs` for `pnpm -C apps/web dev` support.
 - Unified start script (start.bat/start.sh) launches Go sidecar + TS control plane together.
 
@@ -239,7 +240,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [1.0.0-alpha.37]
 
 ### Added
-- Created 8 `@hypercode/*` stub packages (types, agents, ai, tools, adk, mcp-registry, memory, search) with proper TypeScript declarations, ESM runtime stubs, and zod schemas.
+- Created 8 `@hypernexus/*` stub packages (types, agents, ai, tools, adk, mcp-registry, memory, search) with proper TypeScript declarations, ESM runtime stubs, and zod schemas.
 - Added `apps/web/scripts/dev.mjs` for `pnpm -C apps/web dev` support.
 
 ### Fixed
@@ -255,8 +256,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [1.0.0-alpha.35]
 
 ### Changed
-- Completed hypercode→hypercode rename: zero references remain in all active TS/Go/JSON source.
-- Renamed 4 tracked files (HyperCodeConfig→HypercodeConfig, hypercode-orchestrator→hypercode-orchestrator, etc.).
+- Completed hypernexus→hypernexus rename: zero references remain in all active TS/Go/JSON source.
+- Renamed 4 tracked files (HyperNexusConfig→HyperNexusConfig, hypernexus-orchestrator→hypernexus-orchestrator, etc.).
 - Updated go.mod module path, Dockerfiles, .dockerignore.
 - Fixed duplicate identifier errors from bulk rename in mcpJsonConfig.ts.
 - Bumped all package.json versions to 1.0.0-alpha.35.
@@ -267,36 +268,36 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - **Go test suite passes 100%** (`go test ./...` — 25 testable packages, 0 failures)
 - **TypeScript `packages/core` type-checks with 0 errors** (`tsc --noEmit` — clean)
 - **916 missing source files recovered** from git history across 5 packages
-- All `@hypercode` references renamed to `@hypercode` throughout codebase
+- All `@hypernexus` references renamed to `@hypernexus` throughout codebase
 
 ### Fixed
-- Resolved all Go compile errors: deduplicated import blocks across 12+ files, fixed merged harness registry (duplicate `package` declaration), exported `HypercodeSubmodule` field for cross-package access.
+- Resolved all Go compile errors: deduplicated import blocks across 12+ files, fixed merged harness registry (duplicate `package` declaration), exported `HyperNexusSubmodule` field for cross-package access.
 - Restored missing `tsconfig.json` files for `packages/core`, `packages/cli`, `apps/web`, and `packages/tsconfig/base.json`.
 - Resolved merge conflict artifacts in 3 `package.json` files.
 - Fixed `AgentDiscovery.ts` merged class (two classes merged into one file — kept complete version).
 - Fixed `server_test.go` brace mismatch (depth 2 → 0): removed duplicate code blocks.
 - Fixed `inventory_test.go` DB path mismatch (test created DB in wrong subdirectory).
 - Fixed `ctxharvester` chunk ID collisions — chunks in same millisecond generated identical map keys. Added atomic sequence counter.
-- Fixed `db/index.ts` — added missing `sqliteInstance` export and `getHypercodeMcpJsoncPath`/`loadHypercodeMcpConfig`/`writeHypercodeMcpConfig` aliases.
+- Fixed `db/index.ts` — added missing `sqliteInstance` export and `getHyperNexusMcpJsoncPath`/`loadHyperNexusMcpConfig`/`writeHyperNexusMcpConfig` aliases.
 - Added `@ts-expect-error` for 48 inferred schema type mismatches (drizzle-orm optional vs required properties).
 
 ### Added
 - Restored 555 missing TypeScript source files to `packages/core/src` from git history.
 - Restored 361 missing source files across `apps/web`, `packages/cli`, `packages/browser`, `packages/ui`.
-- Created 9 stub sub-packages (`@hypercode/adk`, `@hypercode/agents`, `@hypercode/ai`, `@hypercode/mcp-registry`, `@hypercode/memory`, `@hypercode/search`, `@hypercode/tools`, `@hypercode/types`, `@hypercode/tsconfig`) with auto-generated type exports.
+- Created 9 stub sub-packages (`@hypernexus/adk`, `@hypernexus/agents`, `@hypernexus/ai`, `@hypernexus/mcp-registry`, `@hypernexus/memory`, `@hypernexus/search`, `@hypernexus/tools`, `@hypernexus/types`, `@hypernexus/tsconfig`) with auto-generated type exports.
 - Restored `pnpm-workspace.yaml` and full `package.json` dependency list.
 
 ### Changed
 - Version bumped to `1.0.0-alpha.34` across all monorepo packages.
-- Removed `metamcp.db` (2.1 GB) and `.hypercode/` local state artifacts from git history.
+- Removed `hypernexus.db` (2.1 GB) and `.hypernexus/` local state artifacts from git history.
 - Disabled `declaration` emit in core tsconfig (not needed for application code).
-- Fixed `inventory_test.go` DB path mismatch — test created `metamcp.db` in `workspace/packages/core/` but code reads from `workspace/metamcp.db`.
+- Fixed `inventory_test.go` DB path mismatch — test created `hypernexus.db` in `workspace/packages/core/` but code reads from `workspace/hypernexus.db`.
 - Fixed `ctxharvester` chunk ID collisions — chunks created in the same millisecond generated identical IDs, causing map overwrites. Added atomic sequence counter.
 - **Go test suite now passes 100%** (`go test ./...` — all 25 testable packages pass, zero failures).
 
 ### Changed
 - Version bumped to `1.0.0-alpha.34` across all monorepo packages.
-- Removed `metamcp.db` (2.1 GB) and `.hypercode/` local state artifacts from git history.
+- Removed `hypernexus.db` (2.1 GB) and `.hypernexus/` local state artifacts from git history.
 
 ## [1.0.0-alpha.32] - 2026-04-09
 
@@ -305,7 +306,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - **Go CacheService**: Generic TTL+LRU in-memory cache with periodic cleanup goroutine, event callbacks, singleton registry, and transparent `Cached()` helper.
 - **Go ContextHarvester**: Full port of semantic chunking, relevance scoring, time decay, keyword boosting, access frequency, pruning, and compacting from TS.
 - **Go GitService**: Comprehensive native git operations (log, status, revert, reset, diff, blame, stash, branch, add, commit, fetch, pull, push, show).
-- **Go WorkspaceTracker**: Workspace registration, discovery, validation, and persistence to `~/.hypercode/workspaces.json`.
+- **Go WorkspaceTracker**: Workspace registration, discovery, validation, and persistence to `~/.hypernexus/workspaces.json`.
 - **Go MetricsService**: Counters, gauges, histograms, Prometheus export, downsampled time series, system monitoring goroutine.
 - **Go ProcessManager**: Child process lifecycle management with stdin/stdout/stderr streaming.
 - **Go HealerService**: LLM-powered error diagnosis, fix generation, and auto-heal with heal history.
@@ -317,7 +318,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ### Fixed
 - **A2A_BRIDGE_SIGNAL Zod Validation**: Added missing `A2A_BRIDGE_SIGNAL` to the mesh protocol `SwarmMessageTypeSchema` Zod enum, fixing a startup crash.
 - **Duplicate Route Registration**: Fixed `/api/scripts/*` routes being registered twice, causing a panic in the Go sidecar.
-- **Build Fix**: Rebuilt `@hypercode/agents` package to resolve missing `taskQueue` export in `agentRouter.ts`.
+- **Build Fix**: Rebuilt `@hypernexus/agents` package to resolve missing `taskQueue` export in `agentRouter.ts`.
 
 ## [1.0.0-alpha.31] - 2026-04-08
 
@@ -326,7 +327,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - **Go Memory Reactor**: Implemented a native Go `MemoryReactor` for workspace context harvesting, semantic chunking, and incremental indexing.
 
 ### Fixed
-- **Build Resolution**: Fixed a `getNegotiations` type error in `agentRouter.ts` by performing a clean build of the `@hypercode/agents` package.
+- **Build Resolution**: Fixed a `getNegotiations` type error in `agentRouter.ts` by performing a clean build of the `@hypernexus/agents` package.
 - **Go Registry Sync**: Wired the native Go `ConfigManager` to correctly support autonomous tool registration without the Node control plane.
 
 ## [1.0.0-alpha.30] - 2026-04-08
@@ -343,7 +344,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Added
 - **A2A Handshake Parity (Go)**: Completed the port of the multi-turn task negotiation pattern to Go, enabling native agents to bid on goals independently.
-- **Go Skill Store Persistence**: The native Go sidecar can now independently manage `.md` runbooks in the `.hypercode/skills` directory.
+- **Go Skill Store Persistence**: The native Go sidecar can now independently manage `.md` runbooks in the `.hypernexus/skills` directory.
 
 ### Fixed
 - **Go Build Conflict**: Resolved an import ambiguity in the Go high-value link analysis logic by adding an explicit package alias, fixing a `undefined: json` build failure.
@@ -352,7 +353,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [1.0.0-alpha.28] - 2026-04-08
 
 ### Fixed
-- **Runtime Startup Fix**: Added missing `adm-zip` runtime dependency to `@hypercode/core`, resolving a crash during server initialization.
+- **Runtime Startup Fix**: Added missing `adm-zip` runtime dependency to `@hypernexus/core`, resolving a crash during server initialization.
 
 ### Added
 - **Go A2A Handshake**: Implemented the Task Negotiation pattern in the Go sidecar, matching the TypeScript implementation for autonomous agent task bidding.
@@ -416,7 +417,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Changed
 - **Default Tool Visibility**: Standard library tools (bash, read, write, edit, grep, etc.) and Tool Parity Aliases are now `alwaysOn` by default. This ensures models like `pi` can see and use them immediately without a manual "load" turn.
-- **Flatter Session Archives**: Updated `ImportedSessionStore` to use a flatter directory structure for `.gz` files, preventing the creation of thousands of subdirectories in the `.hypercode` folder.
+- **Flatter Session Archives**: Updated `ImportedSessionStore` to use a flatter directory structure for `.gz` files, preventing the creation of thousands of subdirectories in the `.hypernexus` folder.
 - **Go A2A Parity**: Ported the `A2ALogger` to native Go, providing persistent auditing for signals routed through the sidecar.
 - **Capability Exchange**: Implemented an automated "Capability Exchange" pattern in the `A2ABroker`. Agents now broadcast their roles and capabilities (e.g., 'Frontier Architect', 'Web Researcher') when they join the pool.
 
@@ -477,19 +478,19 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - **Swarm Tools**: Added `swarm_start_session` tool for one-shot autonomous task execution by a model team.
 
 ### Changed
-- **Renaming Cleanup**: Renamed `hypercode.config.json` to `hypercode.config.json`.
-- **Submodule Renaming**: Completed the rename of `hypercode` adapter to `hypercode` adapter in the `hyperharness` submodule and cleaned up redundant files.
+- **Renaming Cleanup**: Renamed `hypernexus.config.json` to `hypernexus.config.json`.
+- **Submodule Renaming**: Completed the rename of `hypernexus` adapter to `hypernexus` adapter in the `hyperharness` submodule and cleaned up redundant files.
 
 ## [1.0.0-alpha.15] - 2026-04-08
 
 ### Changed
-- **Consolidated Renaming**: Renamed remaining `hypercode` references to `Hypercode` across `AGENTS.md`, `DEPLOY.md`, and other root documentation. Renamed `hypercode.config.json` to `hypercode.config.json`.
-- **Submodule Cleanup**: Renamed `hypercode` adapter to `hypercode` adapter in `submodules/hyperharness` and removed redundant `hypercode` folder. Updated system prompts to refer to `Hypercode`.
+- **Consolidated Renaming**: Renamed remaining `hypernexus` references to `HyperNexus` across `AGENTS.md`, `DEPLOY.md`, and other root documentation. Renamed `hypernexus.config.json` to `hypernexus.config.json`.
+- **Submodule Cleanup**: Renamed `hypernexus` adapter to `hypernexus` adapter in `submodules/hyperharness` and removed redundant `hypernexus` folder. Updated system prompts to refer to `HyperNexus`.
 - **Go Sidecar Monitoring**: Implemented a native `ConversationMonitor` loop in the Go sidecar that runs the `ToolPredictor` autonomously for active sessions.
 - **BobbyBookmarks Expansion**: Updated `BobbyBookmarksSyncWorker` to ingest bookmarks from `data/bobbybookmarks/bookmarks.txt` in addition to the SQLite DB, with automatic deduplication.
 
 ### Added
-- **Agent-to-Agent (A2A) Protocol**: Defined the A2A communication protocol in `@hypercode/adk` and implemented the `A2ABroker` in both TypeScript and Go.
+- **Agent-to-Agent (A2A) Protocol**: Defined the A2A communication protocol in `@hypernexus/adk` and implemented the `A2ABroker` in both TypeScript and Go.
 - **A2A Dashboard Integration**: Added an A2A Message Broker view to the Agent Command Center dashboard, showing live message traffic between agents.
 - **A2A Tooling**: Added `a2a_broadcast` and `a2a_list_agents` MCP tools.
 
@@ -497,7 +498,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Fixed
 - **Build Stabilization**: Fixed `tsc` errors in `MCPServer.ts` and `Director.ts` caused by missing type casts and null/undefined mismatches.
-- **Package Integrity**: Successfully built `@hypercode/tools` and `@hypercode/agents` packages, ensuring new exports are available workspace-wide.
+- **Package Integrity**: Successfully built `@hypernexus/tools` and `@hypernexus/agents` packages, ensuring new exports are available workspace-wide.
 
 ### Changed
 - **Go Parity expansion**: Added native Go tool handlers for the core parity tools (Claude Code, Codex, OpenCode/Pi). The Go sidecar now executes these tools natively when the Node control plane is unreachable.
@@ -540,7 +541,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Changed
 - **Go Sidecar Version Sync**: `go/internal/buildinfo/buildinfo.go` now injects version from VERSION file at build time via `-ldflags`. Created `scripts/build-go.sh` for consistent builds.
-- **Submodule Pushes**: Pushed cloud-orchestrator, hyperharness, and claude-mem to their remotes. Merged hyperharness stash (hypercode→hypercode renames, foundation adapters).
+- **Submodule Pushes**: Pushed cloud-orchestrator, hyperharness, and claude-mem to their remotes. Merged hyperharness stash (hypernexus→hypernexus renames, foundation adapters).
 - **Documentation**: Updated HANDOFF.md, MEMORY.md (4 new observations), TODO.md. Verified meta-tool decision system is fully implemented (not just scaffolded).
 - **Build Verification**: Go binary compiles cleanly (18MB, 543 routes). TypeScript compiles cleanly. Doctor 11/11 checks pass.
 
@@ -575,7 +576,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [1.0.0-alpha.1] - 2026-04-02
 
 ### Added
-- **Global Workspace Tracker**: Added a `WorkspaceTracker` daemon service that automatically registers new session directories into `~/.hypercode/workspaces.json`. The web dashboard (`/dashboard/session`) now prominently features a "Recent Workspaces" visualization for fast multi-project hopping.
+- **Global Workspace Tracker**: Added a `WorkspaceTracker` daemon service that automatically registers new session directories into `~/.hypernexus/workspaces.json`. The web dashboard (`/dashboard/session`) now prominently features a "Recent Workspaces" visualization for fast multi-project hopping.
 - **Robust Regression Coverage**: Created dedicated Vitest suites in `cachedToolInventory.test.ts` to strictly validate MCP discovery fallback behavior under simulated SQLite failures.
 
 ## [1.0.0-alpha.1] - 2026-04-02
@@ -592,9 +593,9 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [1.0.0-alpha.1] - 2026-04-02
 
 ### Added
-- **hypercodeingest Daemon Processes**: Implemented the first standalone daemon package boundaries for `hypercodeingest` via `BobbyBookmarksSyncWorker` and `LinkCrawlerWorker`.
-- **Autonomous Link Crawler**: hypercode now autonomously crawls pending URLs in the Links Backlog using `jsdom` to extract OpenGraph tags, favicons, and page descriptions, feeding the raw text to a configured LLM to automatically generate semantic tags and categories without user intervention.
-- **Cross-Database Backlog Sync**: Built a background daemon worker to seamlessly and safely synchronize the external `resources.db` bookmarks fed by the Python ecosystem into the canonical `metamcp.db` `links_backlog` table.
+- **hypernexusingest Daemon Processes**: Implemented the first standalone daemon package boundaries for `hypernexusingest` via `BobbyBookmarksSyncWorker` and `LinkCrawlerWorker`.
+- **Autonomous Link Crawler**: hypernexus now autonomously crawls pending URLs in the Links Backlog using `jsdom` to extract OpenGraph tags, favicons, and page descriptions, feeding the raw text to a configured LLM to automatically generate semantic tags and categories without user intervention.
+- **Cross-Database Backlog Sync**: Built a background daemon worker to seamlessly and safely synchronize the external `resources.db` bookmarks fed by the Python ecosystem into the canonical `hypernexus.db` `links_backlog` table.
 
 ## [1.0.0-alpha.1] - 2026-04-02
 
@@ -606,18 +607,18 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Fixed
 - **MCP Database Destructive Sync**: Fixed a critical bug in `McpConfigService.syncWithDatabase()` that was wiping out SQLite tool records (and resetting their `always_on` status) when `mcp.jsonc` was empty.
-- **Config Directory Resolution**: Changed `getHypercodeConfigDir()` to respect local workspace `mcp.jsonc` configs, improving the loader's ability to find active tool caches.
-- **Split-Brain MCP Loader**: Fixed the `stdioLoader` returning 0 tools by caching the database inventory to `.hypercode/mcp-cache.json` during synchronization via `exportToolCache()`, allowing the lightweight proxy to serve both manually configured servers and database-discovered directories without slowing down initialization.
-- **Config Directory Resolution**: Changed `getHypercodeConfigDir()` to respect local workspace `mcp.jsonc` configs, improving the loader's ability to find active tool caches.
-- **Split-Brain MCP Loader**: Fixed the `stdioLoader` returning 0 tools by caching the database inventory to `.hypercode/mcp-cache.json` during synchronization via `exportToolCache()`, allowing the lightweight proxy to serve both manually configured servers and database-discovered directories without slowing down initialization.
+- **Config Directory Resolution**: Changed `getHyperNexusConfigDir()` to respect local workspace `mcp.jsonc` configs, improving the loader's ability to find active tool caches.
+- **Split-Brain MCP Loader**: Fixed the `stdioLoader` returning 0 tools by caching the database inventory to `.hypernexus/mcp-cache.json` during synchronization via `exportToolCache()`, allowing the lightweight proxy to serve both manually configured servers and database-discovered directories without slowing down initialization.
+- **Config Directory Resolution**: Changed `getHyperNexusConfigDir()` to respect local workspace `mcp.jsonc` configs, improving the loader's ability to find active tool caches.
+- **Split-Brain MCP Loader**: Fixed the `stdioLoader` returning 0 tools by caching the database inventory to `.hypernexus/mcp-cache.json` during synchronization via `exportToolCache()`, allowing the lightweight proxy to serve both manually configured servers and database-discovered directories without slowing down initialization.
 - **Tool Inventory Merging**: Fixed `getCachedToolInventory()` to correctly merge database snapshots with `mcp.jsonc` snapshots instead of treating them as mutually exclusive.
 
 ## [2.7.130] — 2026-03-14
 
-- fixed(mcp/config): local dashboard compatibility-mode MCP config writes now target Hypercode config home (`~/.hypercode/mcp.jsonc` + `~/.hypercode/mcp.json`) instead of repo-root files.
-- changed(mcp/config): local compatibility-mode reads now prioritize Hypercode config home and retain repo-root `mcp.jsonc`/`mcp.json` as legacy fallback read sources only.
-- test(mcp/config): updated tRPC route compatibility tests to run against an isolated temporary `HYPERCODE_CONFIG_DIR`, validating local managed-server actions without mutating workspace-root config files.
-- changed(mcp/search-ui): MCP JSONC editor tooltip now reflects Hypercode config-home save location rather than claiming root-repo writes.
+- fixed(mcp/config): local dashboard compatibility-mode MCP config writes now target HyperNexus config home (`~/.hypernexus/mcp.jsonc` + `~/.hypernexus/mcp.json`) instead of repo-root files.
+- changed(mcp/config): local compatibility-mode reads now prioritize HyperNexus config home and retain repo-root `mcp.jsonc`/`mcp.json` as legacy fallback read sources only.
+- test(mcp/config): updated tRPC route compatibility tests to run against an isolated temporary `HYPERNEXUS_CONFIG_DIR`, validating local managed-server actions without mutating workspace-root config files.
+- changed(mcp/search-ui): MCP JSONC editor tooltip now reflects HyperNexus config-home save location rather than claiming root-repo writes.
 
 ## [2.7.129] — 2026-03-14
 
@@ -692,10 +693,10 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - changed(mcp/working-set): added operator-configurable working-set capacity controls — `maxLoadedTools` (4..64, default 16) and `maxHydratedSchemas` (2..32, default 8) are now persisted in `mcp.jsonc` preferences.
 - changed(mcp/working-set): `SessionToolWorkingSet` gained a `reconfigure()` method so capacity changes take effect on the live session immediately after saving preferences, without a restart.
 - changed(mcp/working-set): added a bounded eviction-history ring buffer (last 20 events) with `getEvictionHistory()` / `clearEvictionHistory()` — each entry records the evicted tool name, timestamp, and tier (`loaded` | `hydrated`).
-- changed(mcp/meta-tools): added two new meta-tools — `set_capacity` (reconfigures the working-set limits at runtime) and `get_eviction_history` (returns the bounded recent eviction log). Registered in `toolLoadingDefinitions.ts` and handled in `metamcp-proxy.service.ts`.
+- changed(mcp/meta-tools): added two new meta-tools — `set_capacity` (reconfigures the working-set limits at runtime) and `get_eviction_history` (returns the bounded recent eviction log). Registered in `toolLoadingDefinitions.ts` and handled in `hypernexus-proxy.service.ts`.
 - changed(mcp/search): `/dashboard/mcp/search` now includes a "Working-set capacity" panel with sliders for `maxLoadedTools`/`maxHydratedSchemas` that save immediately to preferences and apply to the live session.
 - changed(mcp/search): `/dashboard/mcp/search` now shows a "Recent evictions" panel (conditionally visible) listing the last up to 10 evicted tools with their tier and relative timestamp, polling every 8 s.
-- test(core): updated `metamcp-session-working-set.service.test.ts` with focused coverage for `reconfigure()`, eviction history recording, and `clearEvictionHistory()`.
+- test(core): updated `hypernexus-session-working-set.service.test.ts` with focused coverage for `reconfigure()`, eviction history recording, and `clearEvictionHistory()`.
 
 ## [2.7.117] — 2026-03-14
 
@@ -740,7 +741,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - feat(dashboard): added `/dashboard/command` — Command Center page with live slash-command list, REPL execution via `commands` tRPC namespace, and arrow-key history navigation.
 - feat(dashboard): added `/dashboard/chronicle` — Git Chronicle page with configurable commit log and working-tree status via `git` tRPC namespace.
 - feat(dashboard): added `/dashboard/library` — Resource Library hub linking to scripts, skills, tool sets, memory, plans, manual, chronicle, and architecture with live item counts from `savedScripts` and `skills` tRPC namespaces.
-- feat(dashboard): added `/dashboard/context` — Context Manager page for add/remove/clear of context files and assembled context prompt viewer via `hypercodeContext` tRPC namespace.
+- feat(dashboard): added `/dashboard/context` — Context Manager page for add/remove/clear of context files and assembled context prompt viewer via `hypernexusContext` tRPC namespace.
 - changed(nav): added "Sessions" link to `CORE_DASHBOARD_NAV` pointing to `/dashboard/session` so the session supervisor is reachable from the main nav section.
 - changed(nav): added "Context Manager" entry to `LABS_DASHBOARD_NAV` pointing to `/dashboard/context`.
 - changed(nav): added inline descriptions for `Command`, `Symbols`, `Code`, `Chronicle`, and `Library` nav items.
@@ -750,7 +751,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- **Repo-wide Hypercode Rename**: Executed the broad "hypercode" → "hypercode" rename across the entire repository (200+ files), including Go module name, imports, environment variables, directories, and documentation.
+- **Repo-wide HyperNexus Rename**: Executed the broad "hypernexus" → "hypernexus" rename across the entire repository (200+ files), including Go module name, imports, environment variables, directories, and documentation.
 - **Go-Native Catalog Ingestion**: Ported the MCP catalog ingestion core and Glama adapter to Go, enabling native listing from external registries.
 - **Go-Native AutoDev Manager**: Ported the test/lint retry loop logic to Go, allowing native shell execution with retries in degraded mode.
 - **Go-Native Swarm & Squad State**: Ported swarm mission and squad member state management to Go, persisted to local JSON state files.
@@ -759,14 +760,14 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Added
 - **Saved Scripts Dashboard Edit Flow**: The Saved Scripts dashboard now exposes a real edit/update UI wired to `savedScripts.update`, so operators can modify existing scripts directly from `/dashboard/mcp/scripts` instead of relying on backend-only update support.
-- **Saved Scripts Update Fallback Parity**: Extended the saved-scripts Go/degraded-dashboard parity slice to cover `savedScripts.update`, adding truthful local `.hypercode/config.json` update ownership in Go plus shared Next.js compat routing through `/api/scripts/update` when the TypeScript control plane is unavailable.
-- **Saved Scripts Go Fallback Parity**: Completed truthful Go-local fallback ownership for saved script create/delete/execute routes, including local `.hypercode/config.json` persistence, local node-backed execution, focused Go HTTP regression coverage, and degraded dashboard compat routing through `/api/scripts*` when the TypeScript control plane is unavailable.
-- **Hyperharness Submodule Canonicalization**: Restored the tracked harness gitlink back to `submodules/hyperharness`, updated `.gitmodules` to the Hyperharness upstream URL, removed the stale tracked `submodules/hypercode` gitlink, and aligned the staged submodule SHA with the latest upstream HEAD (`98785f5c95c0c870e71aa4c635dd293017504802`).
+- **Saved Scripts Update Fallback Parity**: Extended the saved-scripts Go/degraded-dashboard parity slice to cover `savedScripts.update`, adding truthful local `.hypernexus/config.json` update ownership in Go plus shared Next.js compat routing through `/api/scripts/update` when the TypeScript control plane is unavailable.
+- **Saved Scripts Go Fallback Parity**: Completed truthful Go-local fallback ownership for saved script create/delete/execute routes, including local `.hypernexus/config.json` persistence, local node-backed execution, focused Go HTTP regression coverage, and degraded dashboard compat routing through `/api/scripts*` when the TypeScript control plane is unavailable.
+- **Hyperharness Submodule Canonicalization**: Restored the tracked harness gitlink back to `submodules/hyperharness`, updated `.gitmodules` to the Hyperharness upstream URL, removed the stale tracked `submodules/hypernexus` gitlink, and aligned the staged submodule SHA with the latest upstream HEAD (`98785f5c95c0c870e71aa4c635dd293017504802`).
 
 ### Fixed
 - **Core Metrics Build Break**: Repaired a malformed `MetricsService.getStats()` implementation where the intended `series` field had been split out of the return object, restoring `packages/core` TypeScript buildability.
-- **Context Router Rename Drift**: Standardized the shared tRPC context router naming on `hypercodeContext` across core and UI/dashboard consumers, removing a real typed-client mismatch that was breaking the `apps/web` production build.
-- **Web Runtime Hypercode Env Aliases**: Updated the shared web compat runtime to prefer `HYPERCODE_TRPC_UPSTREAM` and `HYPERCODE_CONFIG_DIR` while still honoring legacy `HYPERCODE_*` environment names for compatibility.
+- **Context Router Rename Drift**: Standardized the shared tRPC context router naming on `hypernexusContext` across core and UI/dashboard consumers, removing a real typed-client mismatch that was breaking the `apps/web` production build.
+- **Web Runtime HyperNexus Env Aliases**: Updated the shared web compat runtime to prefer `HYPERNEXUS_TRPC_UPSTREAM` and `HYPERNEXUS_CONFIG_DIR` while still honoring legacy `HYPERNEXUS_*` environment names for compatibility.
 
 ### Added
 - **Supervisor Chat-State Resolver Extraction**: the decision that classifies a chat as `awaiting_action`, `ready_for_input`, or `unknown` now lives in the tested `decision_logic` layer instead of only inside `detectChatState`, with direct Node coverage for all three outcomes.
@@ -774,102 +775,102 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - **Supervisor Surface Classifier Extraction**: title/process-based chat-surface detection now lives in the tested `decision_logic` layer instead of being embedded only in the UI automation file, with direct coverage for browser-family and title/process classifier behavior.
 - **Supervisor Surface Override Docs Sync**: the dashboard tools docs now list the supported `surfaceOverride` parameter on `detect_chat_state`, `click_action_buttons`, `set_chat_input`, and `submit_chat_input`, matching the live MCP schema.
 - **Supervisor Docs Contract Sync**: the dashboard tools documentation now describes the simplified Antigravity-first supervisor contract truthfully, including targeted `detect_chat_surface`, narrowed approval clicking, terminal-aware composer targeting, simplified `advance_chat`, and the current supervisor settings surface.
-- **Supervisor Decision Regression Coverage**: `packages/hypercode-supervisor` now has built-in Node test coverage for the pure Antigravity decision logic that detects approval/composer hints and resolves action labels, reducing the chance that future generic tweaks reintroduce dropdown-style or terminal-target regressions.
-- **Antigravity-First Supervisor Simplification**: `packages/hypercode-supervisor` now narrows its live action/composer path for browser-hosted coding chats by rejecting menu/dropdown-style pseudo-buttons, filtering terminal-like `Document`/`Edit` surfaces such as `@terminal:pwsh` out of chat-composer selection, re-focusing the chosen composer before submission, and promoting generic browser windows to the `antigravity` profile when visible approval/composer hints match that UI.
+- **Supervisor Decision Regression Coverage**: `packages/hypernexus-supervisor` now has built-in Node test coverage for the pure Antigravity decision logic that detects approval/composer hints and resolves action labels, reducing the chance that future generic tweaks reintroduce dropdown-style or terminal-target regressions.
+- **Antigravity-First Supervisor Simplification**: `packages/hypernexus-supervisor` now narrows its live action/composer path for browser-hosted coding chats by rejecting menu/dropdown-style pseudo-buttons, filtering terminal-like `Document`/`Edit` surfaces such as `@terminal:pwsh` out of chat-composer selection, re-focusing the chosen composer before submission, and promoting generic browser windows to the `antigravity` profile when visible approval/composer hints match that UI.
 - **Supervisor Targeted Surface Probe API**: `detect_chat_surface` now accepts `windowTitle` and `processName` so operators can directly probe non-foreground windows instead of only the active surface, matching the runtime's targeted detection support.
-- **Supervisor Targeted Surface Detection**: `packages/hypercode-supervisor` now derives surface profiles from the same targeted window used by inspection/click/type/submit operations when `windowTitle` or `processName` is supplied, so profile defaults no longer come from an unrelated active window.
+- **Supervisor Targeted Surface Detection**: `packages/hypernexus-supervisor` now derives surface profiles from the same targeted window used by inspection/click/type/submit operations when `windowTitle` or `processName` is supplied, so profile defaults no longer come from an unrelated active window.
 - **Supervisor Override Plumbing**: `surfaceOverride` is now honored consistently across `click_action_buttons`, `set_chat_input`, and `submit_chat_input`, closing the gap between the MCP schemas and the actual runtime profile selection path.
-- **Supervisor Surface Overrides**: `packages/hypercode-supervisor` now exposes `list_surface_profiles` and supports `surfaceOverride` on detection/advance flows so higher-level automation can force the intended fork profile when heuristic surface detection is ambiguous.
-- **Supervisor Input Targeting Profiles**: `packages/hypercode-supervisor` now uses each detected surface profile to choose composer control preference order for `set_chat_input` and `submit_chat_input`, so browser-like chats keep preferring `Document` controls while editor-like chats can prefer `Edit` controls.
-- **Supervisor Surface Profiles**: `packages/hypercode-supervisor` now attaches a small fork-aware surface profile to each detected chat surface (`antigravity`, `gemini-web`, `claude-web`, `chatgpt-web`, `copilot`, `cursor`, `browser-chat`, `vscode`), and `advance_chat` / `detect_chat_state` / `click_action_buttons` now use those profiles to choose default action labels, submit chords, and input-preference hints instead of relying on one generic fallback path.
-- **Supervisor Settings & Exact Action Matching**: `packages/hypercode-supervisor` now persists operator defaults for bump text, action labels, submit behavior, and timing in `~/.hypercode/supervisor-settings.json`, and `click_action_buttons` now requires normalized exact label matches instead of loose substring scoring so labels like `Run` no longer drift toward unrelated affordances such as `Always Run`.
-- **Supervisor UI Automation Bridge**: `packages/hypercode-supervisor` now exposes a real Windows UI Automation bridge for chat surfaces instead of only a blind SendKeys shim. The MCP surface now includes `detect_chat_surface`, `inspect_window_ui`, `detect_chat_state`, `click_action_buttons`, `set_chat_input`, `submit_chat_input`, and `advance_chat`, using control-type-aware inspection/clicking so action buttons like Run/Expand/Accept are targeted more truthfully without treating generic dropdowns as buttons.
-- **CLI MCP Auto-Start Truthfulness**: `hypercode mcp add` now supports a real `--no-auto-start` path, so registry creation can truthfully persist either `always_on: true` or `always_on: false` instead of only behaving like always-on registration.
-- **CLI MCP Namespace Truthfulness**: `hypercode mcp add --namespace <ns>` now fails explicitly for non-default namespaces because the live `mcpServers.create` contract still has no namespace field or mapping mutation; the CLI no longer echoes namespace assignment as if it succeeded.
-- **CLI Provider Fallback Mutation Truthfulness**: `hypercode provider fallback --strategy` now calls the live billing mutation path for both global and task-specific routing (`billing.setRoutingStrategy` and `billing.setTaskRoutingRule` when `--task-type` is supplied) using the backend's real strategy set (`cheapest`, `best`, `round-robin`), while unsupported `provider fallback --set` still fails explicitly instead of printing success-shaped guidance for a nonexistent fallback-chain mutation route.
-- **CLI Session Broadcast Truthfulness**: `hypercode session broadcast --cloud` now calls the live `cloudDev.broadcastMessage` control-plane mutation with structured `--json` output, while unsupported local-session broadcast and `session cloud --transfer` now fail explicitly instead of printing fake success or soft placeholder copy.
-- **CLI Remaining Stub Hardening**: `hypercode session pause`, `tools rename`, `mcp start`, `mcp stop`, `mcp restart`, and `mcp install` no longer print fabricated success. They now fail explicitly with structured live-unavailable errors because the control plane still has no real pause, rename, MCP lifecycle, or MCP install routes behind those commands.
-- **CLI Agent Truthfulness Hardening**: `hypercode agent list`, `agent spawn`, `agent stop`, `agent status`, and `agent chat` no longer fabricate agent inventory, fake agent ids, fake stop success, fake empty running-agent state, or a fake attached interactive shell. They now fail explicitly with structured live-unavailable errors, while the already-real `agent council --status` path remains available.
-- **CLI Provider Write Surface**: `hypercode provider add` and `hypercode provider remove` now use live provider settings routes instead of printing fabricated success, wiring API-key-backed providers through `settings.getProviders`, `settings.updateProviderKey`, and `settings.removeProviderKey`, adding a new core `removeProviderKey` mutation for env-backed provider removal, and failing explicitly for unsupported placeholder-only options like OAuth, custom base URLs, and model allowlists.
-- **CLI MCP Config IO Surface**: `hypercode mcp export`, `hypercode mcp import`, and `hypercode mcp sync` now use live control-plane routes for raw JSONC config export/import and supported client config preview/sync (`claude-desktop`, `cursor`, `vscode`), perform real local file IO, support structured `--json` output, and fail explicitly for unsupported placeholder-only options like `mcp import --merge` or unsupported sync clients instead of printing fabricated success.
-- **CLI Memory Write Surfaces**: `hypercode memory add`, `hypercode memory export`, and `hypercode memory import` now call live `memory.addFact`, `memory.exportMemories`, and `memory.importMemories` control-plane routes, perform real file IO for import/export, and fail explicitly for unsupported placeholder-only flags instead of printing fabricated success messages.
-- **CLI Config Reset/Init Surface**: `hypercode config reset` and `hypercode config init` now call live `config.reset` and `config.init` control-plane mutations, with scoped reset support, real config-file initialization, and structured `--json` output instead of fabricated success messages.
-- **CLI Session Import Surface**: `hypercode session import <file>` now reads the local export file, calls the live `sessionExport.import` control-plane mutation, supports `--dry-run`, `--replace`, `--source-environment`, and structured `--json` output instead of printing a fabricated success message.
-- **CLI Session Export Surface**: `hypercode session export <id>` now calls the live `sessionExport.export` control-plane mutation, passes the requested `sessionIds` filter through to the core export path, writes the returned portable package to disk, and supports truthful `--json` output instead of a fabricated success message.
-- **CLI MCP Registry Write Surface**: `hypercode mcp add` and `hypercode mcp remove` now call the live `mcpServers.create`, `mcpServers.list`, and `mcpServers.delete` control-plane routes instead of printing fabricated success messages, with structured `--json` output and truthful registry mutation results.
-- **CLI Tool Group Write Surface**: `hypercode tools groups --create` and `hypercode tools groups --delete` now call the live `toolSets.create` and `toolSets.delete` control-plane mutations instead of printing fabricated success messages, with structured `--json` output and truthful group mutation results.
-- **CLI Tool Toggle Surface**: `hypercode tools enable <name>` and `hypercode tools disable <name>` now call the live `tools.setAlwaysOn` control-plane mutation instead of printing fabricated success messages, with structured `--json` output and truthful always-on tool state updates.
-- **CLI Session Resume Surface**: `hypercode session resume <id>` now calls the live `session.restart` control-plane mutation instead of printing a fabricated success message, with structured `--json` output and truthful resumed-session status reporting.
-- **CLI Session Stop Surface**: `hypercode session stop <id>` now calls the live `session.stop` control-plane mutation instead of printing a fabricated success message, with `--force`, structured `--json` output, and truthful stopped-session status reporting.
-- **CLI Session Start Surface**: `hypercode session start <workdir>` now calls the live `session.create` and `session.start` control-plane mutations instead of fabricating a timestamp-based session id, with structured `--json` output, truthful started-session metadata, and actionable control-plane error reporting.
-- **CLI Provider Fallback Default Surface**: `hypercode provider fallback` without `--show` now reads the live `billing.getFallbackChain` route instead of printing a fabricated "not configured" summary, so the default read path is truthful and consistent with `--show`.
-- **CLI Secrets Write Surface**: `hypercode config secrets --set` and `hypercode config secrets --delete` now call the live `secrets.set` and `secrets.delete` control-plane mutations instead of printing placeholder success, with scriptable `--value` support, structured `--json` output, non-interactive safeguards, and actionable control-plane error reporting.
-- **CLI Provider Readiness Surface**: `hypercode provider test <name>` now queries the live `settings.getProviders` and `billing.getProviderQuotas` control-plane routes instead of printing a fabricated connectivity check, with structured `--json` output, truthful configured/authenticated/availability reporting, and actionable control-plane error reporting.
-- **CLI MCP Traffic Surface**: `hypercode mcp traffic` now reads the live `mcp.traffic` route instead of printing a static watcher banner, with structured `--json` output, server/method filtering, bounded history, and actionable control-plane error reporting.
-- **CLI MCP Inspect Surface**: `hypercode mcp inspect <name>` now reads the live `mcp.listServers` and `mcp.listTools` inventories instead of printing a fabricated stopped/zero-tools snapshot, with structured `--json` output and actionable control-plane error reporting.
-- **CLI MCP Config Surface**: `hypercode mcp config` now reads the live `config.list` MCP section instead of printing a fabricated router config, with structured `--json` output and actionable control-plane error reporting.
-- **CLI Agent Council Status Surface**: `hypercode agent council --status` now queries the live `director.status`, `supervisor.status`, and `council.status` control-plane routes instead of printing hardcoded "not configured" state, with structured `--json` output and actionable control-plane error reporting.
-- **CLI Provider Fallback Surface**: `hypercode provider fallback --show` now queries the live `billing.getFallbackChain` control-plane route instead of printing a fabricated "not configured" chain, with structured `--json` output, task-type filtering, and actionable control-plane error reporting.
-- **CLI Secrets Inventory Surface**: `hypercode config secrets --list` now queries the live `secrets.list` control-plane route instead of always printing a fake empty state, with structured `--json` output, masked table rendering, and actionable control-plane error reporting.
-- **CLI Tool Group Surface**: `hypercode tools groups` now queries live tool-set inventory from the control plane instead of always printing an empty-state placeholder, with structured `--json` output and actionable control-plane error reporting.
-- **CLI Memory Read Surfaces**: `hypercode memory search`, `hypercode memory list`, and `hypercode memory stats` now query live control-plane memory routes instead of fabricated empty or zero state, with structured `--json` output and actionable control-plane error reporting.
-- **CLI Cloud Session Surface**: `hypercode session cloud` now queries live cloud provider, session, and aggregate stats routes instead of always printing an empty-state placeholder, with structured `--json` output and actionable control-plane error reporting.
-- **CLI Session Inventory Surface**: `hypercode session list` now queries live local supervisor sessions and live cloud-dev sessions instead of always printing an empty-state placeholder, with merged JSON output, active-only filtering, cloud-only filtering, and actionable control-plane error reporting.
-- **CLI Status Operator Surface**: `hypercode status` now queries live control-plane startup, MCP, session, and provider routes instead of inventing a fake summary, with JSON output and actionable control-plane error reporting.
-- **CLI Provider Operator Surface**: `hypercode provider list` and `hypercode provider quota` now query live control-plane provider and billing routes instead of placeholder output, including JSON mode, merged configured/authenticated/quota state, provider filtering, and actionable control-plane error reporting.
-- **CLI Config Operator Surface**: `hypercode config show`, `hypercode config get`, and `hypercode config set` now query live control-plane configuration routes instead of invented defaults and placeholder output, with JSON mode, section selection, typed value reconstruction for display, and actionable control-plane error reporting.
-- **CLI MCP Operator Surface**: `hypercode mcp list`, `hypercode mcp tools`, and `hypercode mcp search` now query live control-plane MCP inventory and registry snapshot surfaces instead of placeholder empty-state output, including JSON mode, server/namespace filtering, registry-category filtering, and actionable control-plane error reporting.
-- **CLI Tool Detail Surface**: `hypercode tools info <name>` now queries the live control plane via `tools.get`, supports JSON output, and renders real server/schema detail instead of a placeholder message.
-- **CLI Tools Operator Surface**: `hypercode tools list` and `hypercode tools search` now query the live control plane via `mcp.listTools` and `mcp.searchTools` instead of placeholder output, including JSON mode, list filters, top-k limiting, ranked search result state, and actionable control-plane error reporting.
-- **Architecture Rollout Map**: Documented the recommended Hypercode binary family, ownership boundaries, binary-to-package evolution, and first preferred extraction seams (`hypercoded` first, then `hypermcpd`) across `AGENTS.md`, `HANDOFF.md`, `CLAUDE.md`, `GEMINI.md`, `README.md`, `ROADMAP.md`, and `TODO.md` so future implementation work converges on one modular-monolith-first plan.
-- **Supervisor Decision Regression Coverage**: `packages/hypercode-supervisor` now has built-in Node test coverage for the pure Antigravity decision logic that detects approval/composer hints and resolves action labels, reducing the chance that future generic tweaks reintroduce dropdown-style or terminal-target regressions.
-- **Antigravity-First Supervisor Simplification**: `packages/hypercode-supervisor` now narrows its live action/composer path for browser-hosted coding chats by rejecting menu/dropdown-style pseudo-buttons, filtering terminal-like `Document`/`Edit` surfaces such as `@terminal:pwsh` out of chat-composer selection, re-focusing the chosen composer before submission, and promoting generic browser windows to the `antigravity` profile when visible approval/composer hints match that UI.
+- **Supervisor Surface Overrides**: `packages/hypernexus-supervisor` now exposes `list_surface_profiles` and supports `surfaceOverride` on detection/advance flows so higher-level automation can force the intended fork profile when heuristic surface detection is ambiguous.
+- **Supervisor Input Targeting Profiles**: `packages/hypernexus-supervisor` now uses each detected surface profile to choose composer control preference order for `set_chat_input` and `submit_chat_input`, so browser-like chats keep preferring `Document` controls while editor-like chats can prefer `Edit` controls.
+- **Supervisor Surface Profiles**: `packages/hypernexus-supervisor` now attaches a small fork-aware surface profile to each detected chat surface (`antigravity`, `gemini-web`, `claude-web`, `chatgpt-web`, `copilot`, `cursor`, `browser-chat`, `vscode`), and `advance_chat` / `detect_chat_state` / `click_action_buttons` now use those profiles to choose default action labels, submit chords, and input-preference hints instead of relying on one generic fallback path.
+- **Supervisor Settings & Exact Action Matching**: `packages/hypernexus-supervisor` now persists operator defaults for bump text, action labels, submit behavior, and timing in `~/.hypernexus/supervisor-settings.json`, and `click_action_buttons` now requires normalized exact label matches instead of loose substring scoring so labels like `Run` no longer drift toward unrelated affordances such as `Always Run`.
+- **Supervisor UI Automation Bridge**: `packages/hypernexus-supervisor` now exposes a real Windows UI Automation bridge for chat surfaces instead of only a blind SendKeys shim. The MCP surface now includes `detect_chat_surface`, `inspect_window_ui`, `detect_chat_state`, `click_action_buttons`, `set_chat_input`, `submit_chat_input`, and `advance_chat`, using control-type-aware inspection/clicking so action buttons like Run/Expand/Accept are targeted more truthfully without treating generic dropdowns as buttons.
+- **CLI MCP Auto-Start Truthfulness**: `hypernexus mcp add` now supports a real `--no-auto-start` path, so registry creation can truthfully persist either `always_on: true` or `always_on: false` instead of only behaving like always-on registration.
+- **CLI MCP Namespace Truthfulness**: `hypernexus mcp add --namespace <ns>` now fails explicitly for non-default namespaces because the live `mcpServers.create` contract still has no namespace field or mapping mutation; the CLI no longer echoes namespace assignment as if it succeeded.
+- **CLI Provider Fallback Mutation Truthfulness**: `hypernexus provider fallback --strategy` now calls the live billing mutation path for both global and task-specific routing (`billing.setRoutingStrategy` and `billing.setTaskRoutingRule` when `--task-type` is supplied) using the backend's real strategy set (`cheapest`, `best`, `round-robin`), while unsupported `provider fallback --set` still fails explicitly instead of printing success-shaped guidance for a nonexistent fallback-chain mutation route.
+- **CLI Session Broadcast Truthfulness**: `hypernexus session broadcast --cloud` now calls the live `cloudDev.broadcastMessage` control-plane mutation with structured `--json` output, while unsupported local-session broadcast and `session cloud --transfer` now fail explicitly instead of printing fake success or soft placeholder copy.
+- **CLI Remaining Stub Hardening**: `hypernexus session pause`, `tools rename`, `mcp start`, `mcp stop`, `mcp restart`, and `mcp install` no longer print fabricated success. They now fail explicitly with structured live-unavailable errors because the control plane still has no real pause, rename, MCP lifecycle, or MCP install routes behind those commands.
+- **CLI Agent Truthfulness Hardening**: `hypernexus agent list`, `agent spawn`, `agent stop`, `agent status`, and `agent chat` no longer fabricate agent inventory, fake agent ids, fake stop success, fake empty running-agent state, or a fake attached interactive shell. They now fail explicitly with structured live-unavailable errors, while the already-real `agent council --status` path remains available.
+- **CLI Provider Write Surface**: `hypernexus provider add` and `hypernexus provider remove` now use live provider settings routes instead of printing fabricated success, wiring API-key-backed providers through `settings.getProviders`, `settings.updateProviderKey`, and `settings.removeProviderKey`, adding a new core `removeProviderKey` mutation for env-backed provider removal, and failing explicitly for unsupported placeholder-only options like OAuth, custom base URLs, and model allowlists.
+- **CLI MCP Config IO Surface**: `hypernexus mcp export`, `hypernexus mcp import`, and `hypernexus mcp sync` now use live control-plane routes for raw JSONC config export/import and supported client config preview/sync (`claude-desktop`, `cursor`, `vscode`), perform real local file IO, support structured `--json` output, and fail explicitly for unsupported placeholder-only options like `mcp import --merge` or unsupported sync clients instead of printing fabricated success.
+- **CLI Memory Write Surfaces**: `hypernexus memory add`, `hypernexus memory export`, and `hypernexus memory import` now call live `memory.addFact`, `memory.exportMemories`, and `memory.importMemories` control-plane routes, perform real file IO for import/export, and fail explicitly for unsupported placeholder-only flags instead of printing fabricated success messages.
+- **CLI Config Reset/Init Surface**: `hypernexus config reset` and `hypernexus config init` now call live `config.reset` and `config.init` control-plane mutations, with scoped reset support, real config-file initialization, and structured `--json` output instead of fabricated success messages.
+- **CLI Session Import Surface**: `hypernexus session import <file>` now reads the local export file, calls the live `sessionExport.import` control-plane mutation, supports `--dry-run`, `--replace`, `--source-environment`, and structured `--json` output instead of printing a fabricated success message.
+- **CLI Session Export Surface**: `hypernexus session export <id>` now calls the live `sessionExport.export` control-plane mutation, passes the requested `sessionIds` filter through to the core export path, writes the returned portable package to disk, and supports truthful `--json` output instead of a fabricated success message.
+- **CLI MCP Registry Write Surface**: `hypernexus mcp add` and `hypernexus mcp remove` now call the live `mcpServers.create`, `mcpServers.list`, and `mcpServers.delete` control-plane routes instead of printing fabricated success messages, with structured `--json` output and truthful registry mutation results.
+- **CLI Tool Group Write Surface**: `hypernexus tools groups --create` and `hypernexus tools groups --delete` now call the live `toolSets.create` and `toolSets.delete` control-plane mutations instead of printing fabricated success messages, with structured `--json` output and truthful group mutation results.
+- **CLI Tool Toggle Surface**: `hypernexus tools enable <name>` and `hypernexus tools disable <name>` now call the live `tools.setAlwaysOn` control-plane mutation instead of printing fabricated success messages, with structured `--json` output and truthful always-on tool state updates.
+- **CLI Session Resume Surface**: `hypernexus session resume <id>` now calls the live `session.restart` control-plane mutation instead of printing a fabricated success message, with structured `--json` output and truthful resumed-session status reporting.
+- **CLI Session Stop Surface**: `hypernexus session stop <id>` now calls the live `session.stop` control-plane mutation instead of printing a fabricated success message, with `--force`, structured `--json` output, and truthful stopped-session status reporting.
+- **CLI Session Start Surface**: `hypernexus session start <workdir>` now calls the live `session.create` and `session.start` control-plane mutations instead of fabricating a timestamp-based session id, with structured `--json` output, truthful started-session metadata, and actionable control-plane error reporting.
+- **CLI Provider Fallback Default Surface**: `hypernexus provider fallback` without `--show` now reads the live `billing.getFallbackChain` route instead of printing a fabricated "not configured" summary, so the default read path is truthful and consistent with `--show`.
+- **CLI Secrets Write Surface**: `hypernexus config secrets --set` and `hypernexus config secrets --delete` now call the live `secrets.set` and `secrets.delete` control-plane mutations instead of printing placeholder success, with scriptable `--value` support, structured `--json` output, non-interactive safeguards, and actionable control-plane error reporting.
+- **CLI Provider Readiness Surface**: `hypernexus provider test <name>` now queries the live `settings.getProviders` and `billing.getProviderQuotas` control-plane routes instead of printing a fabricated connectivity check, with structured `--json` output, truthful configured/authenticated/availability reporting, and actionable control-plane error reporting.
+- **CLI MCP Traffic Surface**: `hypernexus mcp traffic` now reads the live `mcp.traffic` route instead of printing a static watcher banner, with structured `--json` output, server/method filtering, bounded history, and actionable control-plane error reporting.
+- **CLI MCP Inspect Surface**: `hypernexus mcp inspect <name>` now reads the live `mcp.listServers` and `mcp.listTools` inventories instead of printing a fabricated stopped/zero-tools snapshot, with structured `--json` output and actionable control-plane error reporting.
+- **CLI MCP Config Surface**: `hypernexus mcp config` now reads the live `config.list` MCP section instead of printing a fabricated router config, with structured `--json` output and actionable control-plane error reporting.
+- **CLI Agent Council Status Surface**: `hypernexus agent council --status` now queries the live `director.status`, `supervisor.status`, and `council.status` control-plane routes instead of printing hardcoded "not configured" state, with structured `--json` output and actionable control-plane error reporting.
+- **CLI Provider Fallback Surface**: `hypernexus provider fallback --show` now queries the live `billing.getFallbackChain` control-plane route instead of printing a fabricated "not configured" chain, with structured `--json` output, task-type filtering, and actionable control-plane error reporting.
+- **CLI Secrets Inventory Surface**: `hypernexus config secrets --list` now queries the live `secrets.list` control-plane route instead of always printing a fake empty state, with structured `--json` output, masked table rendering, and actionable control-plane error reporting.
+- **CLI Tool Group Surface**: `hypernexus tools groups` now queries live tool-set inventory from the control plane instead of always printing an empty-state placeholder, with structured `--json` output and actionable control-plane error reporting.
+- **CLI Memory Read Surfaces**: `hypernexus memory search`, `hypernexus memory list`, and `hypernexus memory stats` now query live control-plane memory routes instead of fabricated empty or zero state, with structured `--json` output and actionable control-plane error reporting.
+- **CLI Cloud Session Surface**: `hypernexus session cloud` now queries live cloud provider, session, and aggregate stats routes instead of always printing an empty-state placeholder, with structured `--json` output and actionable control-plane error reporting.
+- **CLI Session Inventory Surface**: `hypernexus session list` now queries live local supervisor sessions and live cloud-dev sessions instead of always printing an empty-state placeholder, with merged JSON output, active-only filtering, cloud-only filtering, and actionable control-plane error reporting.
+- **CLI Status Operator Surface**: `hypernexus status` now queries live control-plane startup, MCP, session, and provider routes instead of inventing a fake summary, with JSON output and actionable control-plane error reporting.
+- **CLI Provider Operator Surface**: `hypernexus provider list` and `hypernexus provider quota` now query live control-plane provider and billing routes instead of placeholder output, including JSON mode, merged configured/authenticated/quota state, provider filtering, and actionable control-plane error reporting.
+- **CLI Config Operator Surface**: `hypernexus config show`, `hypernexus config get`, and `hypernexus config set` now query live control-plane configuration routes instead of invented defaults and placeholder output, with JSON mode, section selection, typed value reconstruction for display, and actionable control-plane error reporting.
+- **CLI MCP Operator Surface**: `hypernexus mcp list`, `hypernexus mcp tools`, and `hypernexus mcp search` now query live control-plane MCP inventory and registry snapshot surfaces instead of placeholder empty-state output, including JSON mode, server/namespace filtering, registry-category filtering, and actionable control-plane error reporting.
+- **CLI Tool Detail Surface**: `hypernexus tools info <name>` now queries the live control plane via `tools.get`, supports JSON output, and renders real server/schema detail instead of a placeholder message.
+- **CLI Tools Operator Surface**: `hypernexus tools list` and `hypernexus tools search` now query the live control plane via `mcp.listTools` and `mcp.searchTools` instead of placeholder output, including JSON mode, list filters, top-k limiting, ranked search result state, and actionable control-plane error reporting.
+- **Architecture Rollout Map**: Documented the recommended HyperNexus binary family, ownership boundaries, binary-to-package evolution, and first preferred extraction seams (`hypernexusd` first, then `hypermcpd`) across `AGENTS.md`, `HANDOFF.md`, `CLAUDE.md`, `GEMINI.md`, `README.md`, `ROADMAP.md`, and `TODO.md` so future implementation work converges on one modular-monolith-first plan.
+- **Supervisor Decision Regression Coverage**: `packages/hypernexus-supervisor` now has built-in Node test coverage for the pure Antigravity decision logic that detects approval/composer hints and resolves action labels, reducing the chance that future generic tweaks reintroduce dropdown-style or terminal-target regressions.
+- **Antigravity-First Supervisor Simplification**: `packages/hypernexus-supervisor` now narrows its live action/composer path for browser-hosted coding chats by rejecting menu/dropdown-style pseudo-buttons, filtering terminal-like `Document`/`Edit` surfaces such as `@terminal:pwsh` out of chat-composer selection, re-focusing the chosen composer before submission, and promoting generic browser windows to the `antigravity` profile when visible approval/composer hints match that UI.
 - **Supervisor Targeted Surface Probe API**: `detect_chat_surface` now accepts `windowTitle` and `processName` so operators can directly probe non-foreground windows instead of only the active surface, matching the runtime's targeted detection support.
-- **Supervisor Targeted Surface Detection**: `packages/hypercode-supervisor` now derives surface profiles from the same targeted window used by inspection/click/type/submit operations when `windowTitle` or `processName` is supplied, so profile defaults no longer come from an unrelated active window.
+- **Supervisor Targeted Surface Detection**: `packages/hypernexus-supervisor` now derives surface profiles from the same targeted window used by inspection/click/type/submit operations when `windowTitle` or `processName` is supplied, so profile defaults no longer come from an unrelated active window.
 - **Supervisor Override Plumbing**: `surfaceOverride` is now honored consistently across `click_action_buttons`, `set_chat_input`, and `submit_chat_input`, closing the gap between the MCP schemas and the actual runtime profile selection path.
-- **Supervisor Surface Overrides**: `packages/hypercode-supervisor` now exposes `list_surface_profiles` and supports `surfaceOverride` on detection/advance flows so higher-level automation can force the intended fork profile when heuristic surface detection is ambiguous.
-- **Supervisor Input Targeting Profiles**: `packages/hypercode-supervisor` now uses each detected surface profile to choose composer control preference order for `set_chat_input` and `submit_chat_input`, so browser-like chats keep preferring `Document` controls while editor-like chats can prefer `Edit` controls.
-- **Supervisor Surface Profiles**: `packages/hypercode-supervisor` now attaches a small fork-aware surface profile to each detected chat surface (`antigravity`, `gemini-web`, `claude-web`, `chatgpt-web`, `copilot`, `cursor`, `browser-chat`, `vscode`), and `advance_chat` / `detect_chat_state` / `click_action_buttons` now use those profiles to choose default action labels, submit chords, and input-preference hints instead of relying on one generic fallback path.
-- **Supervisor Settings & Exact Action Matching**: `packages/hypercode-supervisor` now persists operator defaults for bump text, action labels, submit behavior, and timing in `~/.hypercode/supervisor-settings.json`, and `click_action_buttons` now requires normalized exact label matches instead of loose substring scoring so labels like `Run` no longer drift toward unrelated affordances such as `Always Run`.
-- **Supervisor UI Automation Bridge**: `packages/hypercode-supervisor` now exposes a real Windows UI Automation bridge for chat surfaces instead of only a blind SendKeys shim. The MCP surface now includes `detect_chat_surface`, `inspect_window_ui`, `detect_chat_state`, `click_action_buttons`, `set_chat_input`, `submit_chat_input`, and `advance_chat`, using control-type-aware inspection/clicking so action buttons like Run/Expand/Accept are targeted more truthfully without treating generic dropdowns as buttons.
-- **CLI MCP Auto-Start Truthfulness**: `hypercode mcp add` now supports a real `--no-auto-start` path, so registry creation can truthfully persist either `always_on: true` or `always_on: false` instead of only behaving like always-on registration.
-- **CLI MCP Namespace Truthfulness**: `hypercode mcp add --namespace <ns>` now fails explicitly for non-default namespaces because the live `mcpServers.create` contract still has no namespace field or mapping mutation; the CLI no longer echoes namespace assignment as if it succeeded.
-- **CLI Provider Fallback Mutation Truthfulness**: `hypercode provider fallback --strategy` now calls the live billing mutation path for both global and task-specific routing (`billing.setRoutingStrategy` and `billing.setTaskRoutingRule` when `--task-type` is supplied) using the backend's real strategy set (`cheapest`, `best`, `round-robin`), while unsupported `provider fallback --set` still fails explicitly instead of printing success-shaped guidance for a nonexistent fallback-chain mutation route.
-- **CLI Session Broadcast Truthfulness**: `hypercode session broadcast --cloud` now calls the live `cloudDev.broadcastMessage` control-plane mutation with structured `--json` output, while unsupported local-session broadcast and `session cloud --transfer` now fail explicitly instead of printing fake success or soft placeholder copy.
-- **CLI Remaining Stub Hardening**: `hypercode session pause`, `tools rename`, `mcp start`, `mcp stop`, `mcp restart`, and `mcp install` no longer print fabricated success. They now fail explicitly with structured live-unavailable errors because the control plane still has no real pause, rename, MCP lifecycle, or MCP install routes behind those commands.
-- **CLI Agent Truthfulness Hardening**: `hypercode agent list`, `agent spawn`, `agent stop`, `agent status`, and `agent chat` no longer fabricate agent inventory, fake agent ids, fake stop success, fake empty running-agent state, or a fake attached interactive shell. They now fail explicitly with structured live-unavailable errors, while the already-real `agent council --status` path remains available.
-- **CLI Provider Write Surface**: `hypercode provider add` and `hypercode provider remove` now use live provider settings routes instead of printing fabricated success, wiring API-key-backed providers through `settings.getProviders`, `settings.updateProviderKey`, and `settings.removeProviderKey`, adding a new core `removeProviderKey` mutation for env-backed provider removal, and failing explicitly for unsupported placeholder-only options like OAuth, custom base URLs, and model allowlists.
-- **CLI MCP Config IO Surface**: `hypercode mcp export`, `hypercode mcp import`, and `hypercode mcp sync` now use live control-plane routes for raw JSONC config export/import and supported client config preview/sync (`claude-desktop`, `cursor`, `vscode`), perform real local file IO, support structured `--json` output, and fail explicitly for unsupported placeholder-only options like `mcp import --merge` or unsupported sync clients instead of printing fabricated success.
-- **CLI Memory Write Surfaces**: `hypercode memory add`, `hypercode memory export`, and `hypercode memory import` now call live `memory.addFact`, `memory.exportMemories`, and `memory.importMemories` control-plane routes, perform real file IO for import/export, and fail explicitly for unsupported placeholder-only flags instead of printing fabricated success messages.
-- **CLI Config Reset/Init Surface**: `hypercode config reset` and `hypercode config init` now call live `config.reset` and `config.init` control-plane mutations, with scoped reset support, real config-file initialization, and structured `--json` output instead of fabricated success messages.
-- **CLI Session Import Surface**: `hypercode session import <file>` now reads the local export file, calls the live `sessionExport.import` control-plane mutation, supports `--dry-run`, `--replace`, `--source-environment`, and structured `--json` output instead of printing a fabricated success message.
-- **CLI Session Export Surface**: `hypercode session export <id>` now calls the live `sessionExport.export` control-plane mutation, passes the requested `sessionIds` filter through to the core export path, writes the returned portable package to disk, and supports truthful `--json` output instead of a fabricated success message.
-- **CLI MCP Registry Write Surface**: `hypercode mcp add` and `hypercode mcp remove` now call the live `mcpServers.create`, `mcpServers.list`, and `mcpServers.delete` control-plane routes instead of printing fabricated success messages, with structured `--json` output and truthful registry mutation results.
-- **CLI Tool Group Write Surface**: `hypercode tools groups --create` and `hypercode tools groups --delete` now call the live `toolSets.create` and `toolSets.delete` control-plane mutations instead of printing fabricated success messages, with structured `--json` output and truthful group mutation results.
-- **CLI Tool Toggle Surface**: `hypercode tools enable <name>` and `hypercode tools disable <name>` now call the live `tools.setAlwaysOn` control-plane mutation instead of printing fabricated success messages, with structured `--json` output and truthful always-on tool state updates.
-- **CLI Session Resume Surface**: `hypercode session resume <id>` now calls the live `session.restart` control-plane mutation instead of printing a fabricated success message, with structured `--json` output and truthful resumed-session status reporting.
-- **CLI Session Stop Surface**: `hypercode session stop <id>` now calls the live `session.stop` control-plane mutation instead of printing a fabricated success message, with `--force`, structured `--json` output, and truthful stopped-session status reporting.
-- **CLI Session Start Surface**: `hypercode session start <workdir>` now calls the live `session.create` and `session.start` control-plane mutations instead of fabricating a timestamp-based session id, with structured `--json` output, truthful started-session metadata, and actionable control-plane error reporting.
-- **CLI Provider Fallback Default Surface**: `hypercode provider fallback` without `--show` now reads the live `billing.getFallbackChain` route instead of printing a fabricated "not configured" summary, so the default read path is truthful and consistent with `--show`.
-- **CLI Secrets Write Surface**: `hypercode config secrets --set` and `hypercode config secrets --delete` now call the live `secrets.set` and `secrets.delete` control-plane mutations instead of printing placeholder success, with scriptable `--value` support, structured `--json` output, non-interactive safeguards, and actionable control-plane error reporting.
-- **CLI Provider Readiness Surface**: `hypercode provider test <name>` now queries the live `settings.getProviders` and `billing.getProviderQuotas` control-plane routes instead of printing a fabricated connectivity check, with structured `--json` output, truthful configured/authenticated/availability reporting, and actionable control-plane error reporting.
-- **CLI MCP Traffic Surface**: `hypercode mcp traffic` now reads the live `mcp.traffic` route instead of printing a static watcher banner, with structured `--json` output, server/method filtering, bounded history, and actionable control-plane error reporting.
-- **CLI MCP Inspect Surface**: `hypercode mcp inspect <name>` now reads the live `mcp.listServers` and `mcp.listTools` inventories instead of printing a fabricated stopped/zero-tools snapshot, with structured `--json` output and actionable control-plane error reporting.
-- **CLI MCP Config Surface**: `hypercode mcp config` now reads the live `config.list` MCP section instead of printing a fabricated router config, with structured `--json` output and actionable control-plane error reporting.
-- **CLI Agent Council Status Surface**: `hypercode agent council --status` now queries the live `director.status`, `supervisor.status`, and `council.status` control-plane routes instead of printing hardcoded "not configured" state, with structured `--json` output and actionable control-plane error reporting.
-- **CLI Provider Fallback Surface**: `hypercode provider fallback --show` now queries the live `billing.getFallbackChain` control-plane route instead of printing a fabricated "not configured" chain, with structured `--json` output, task-type filtering, and actionable control-plane error reporting.
-- **CLI Secrets Inventory Surface**: `hypercode config secrets --list` now queries the live `secrets.list` control-plane route instead of always printing a fake empty state, with structured `--json` output, masked table rendering, and actionable control-plane error reporting.
-- **CLI Tool Group Surface**: `hypercode tools groups` now queries live tool-set inventory from the control plane instead of always printing an empty-state placeholder, with structured `--json` output and actionable control-plane error reporting.
-- **CLI Memory Read Surfaces**: `hypercode memory search`, `hypercode memory list`, and `hypercode memory stats` now query live control-plane memory routes instead of fabricated empty or zero state, with structured `--json` output and actionable control-plane error reporting.
-- **CLI Cloud Session Surface**: `hypercode session cloud` now queries live cloud provider, session, and aggregate stats routes instead of always printing an empty-state placeholder, with structured `--json` output and actionable control-plane error reporting.
-- **CLI Session Inventory Surface**: `hypercode session list` now queries live local supervisor sessions and live cloud-dev sessions instead of always printing an empty-state placeholder, with merged JSON output, active-only filtering, cloud-only filtering, and actionable control-plane error reporting.
-- **CLI Status Operator Surface**: `hypercode status` now queries live control-plane startup, MCP, session, and provider routes instead of inventing a fake summary, with JSON output and actionable control-plane error reporting.
-- **CLI Provider Operator Surface**: `hypercode provider list` and `hypercode provider quota` now query live control-plane provider and billing routes instead of placeholder output, including JSON mode, merged configured/authenticated/quota state, provider filtering, and actionable control-plane error reporting.
-- **CLI Config Operator Surface**: `hypercode config show`, `hypercode config get`, and `hypercode config set` now query live control-plane configuration routes instead of invented defaults and placeholder output, with JSON mode, section selection, typed value reconstruction for display, and actionable control-plane error reporting.
-- **CLI MCP Operator Surface**: `hypercode mcp list`, `hypercode mcp tools`, and `hypercode mcp search` now query live control-plane MCP inventory and registry snapshot surfaces instead of placeholder empty-state output, including JSON mode, server/namespace filtering, registry-category filtering, and actionable control-plane error reporting.
-- **CLI Tool Detail Surface**: `hypercode tools info <name>` now queries the live control plane via `tools.get`, supports JSON output, and renders real server/schema detail instead of a placeholder message.
-- **CLI Tools Operator Surface**: `hypercode tools list` and `hypercode tools search` now query the live control plane via `mcp.listTools` and `mcp.searchTools` instead of placeholder output, including JSON mode, list filters, top-k limiting, ranked search result state, and actionable control-plane error reporting.
-- **Architecture Rollout Map**: Documented the recommended hypercode binary family, ownership boundaries, binary-to-package evolution, and first preferred extraction seams (`hypercoded` first, then `hypercodemcpd`) across `AGENTS.md`, `HANDOFF.md`, `CLAUDE.md`, `GEMINI.md`, `README.md`, `ROADMAP.md`, and `TODO.md` so future implementation work converges on one modular-monolith-first plan.
+- **Supervisor Surface Overrides**: `packages/hypernexus-supervisor` now exposes `list_surface_profiles` and supports `surfaceOverride` on detection/advance flows so higher-level automation can force the intended fork profile when heuristic surface detection is ambiguous.
+- **Supervisor Input Targeting Profiles**: `packages/hypernexus-supervisor` now uses each detected surface profile to choose composer control preference order for `set_chat_input` and `submit_chat_input`, so browser-like chats keep preferring `Document` controls while editor-like chats can prefer `Edit` controls.
+- **Supervisor Surface Profiles**: `packages/hypernexus-supervisor` now attaches a small fork-aware surface profile to each detected chat surface (`antigravity`, `gemini-web`, `claude-web`, `chatgpt-web`, `copilot`, `cursor`, `browser-chat`, `vscode`), and `advance_chat` / `detect_chat_state` / `click_action_buttons` now use those profiles to choose default action labels, submit chords, and input-preference hints instead of relying on one generic fallback path.
+- **Supervisor Settings & Exact Action Matching**: `packages/hypernexus-supervisor` now persists operator defaults for bump text, action labels, submit behavior, and timing in `~/.hypernexus/supervisor-settings.json`, and `click_action_buttons` now requires normalized exact label matches instead of loose substring scoring so labels like `Run` no longer drift toward unrelated affordances such as `Always Run`.
+- **Supervisor UI Automation Bridge**: `packages/hypernexus-supervisor` now exposes a real Windows UI Automation bridge for chat surfaces instead of only a blind SendKeys shim. The MCP surface now includes `detect_chat_surface`, `inspect_window_ui`, `detect_chat_state`, `click_action_buttons`, `set_chat_input`, `submit_chat_input`, and `advance_chat`, using control-type-aware inspection/clicking so action buttons like Run/Expand/Accept are targeted more truthfully without treating generic dropdowns as buttons.
+- **CLI MCP Auto-Start Truthfulness**: `hypernexus mcp add` now supports a real `--no-auto-start` path, so registry creation can truthfully persist either `always_on: true` or `always_on: false` instead of only behaving like always-on registration.
+- **CLI MCP Namespace Truthfulness**: `hypernexus mcp add --namespace <ns>` now fails explicitly for non-default namespaces because the live `mcpServers.create` contract still has no namespace field or mapping mutation; the CLI no longer echoes namespace assignment as if it succeeded.
+- **CLI Provider Fallback Mutation Truthfulness**: `hypernexus provider fallback --strategy` now calls the live billing mutation path for both global and task-specific routing (`billing.setRoutingStrategy` and `billing.setTaskRoutingRule` when `--task-type` is supplied) using the backend's real strategy set (`cheapest`, `best`, `round-robin`), while unsupported `provider fallback --set` still fails explicitly instead of printing success-shaped guidance for a nonexistent fallback-chain mutation route.
+- **CLI Session Broadcast Truthfulness**: `hypernexus session broadcast --cloud` now calls the live `cloudDev.broadcastMessage` control-plane mutation with structured `--json` output, while unsupported local-session broadcast and `session cloud --transfer` now fail explicitly instead of printing fake success or soft placeholder copy.
+- **CLI Remaining Stub Hardening**: `hypernexus session pause`, `tools rename`, `mcp start`, `mcp stop`, `mcp restart`, and `mcp install` no longer print fabricated success. They now fail explicitly with structured live-unavailable errors because the control plane still has no real pause, rename, MCP lifecycle, or MCP install routes behind those commands.
+- **CLI Agent Truthfulness Hardening**: `hypernexus agent list`, `agent spawn`, `agent stop`, `agent status`, and `agent chat` no longer fabricate agent inventory, fake agent ids, fake stop success, fake empty running-agent state, or a fake attached interactive shell. They now fail explicitly with structured live-unavailable errors, while the already-real `agent council --status` path remains available.
+- **CLI Provider Write Surface**: `hypernexus provider add` and `hypernexus provider remove` now use live provider settings routes instead of printing fabricated success, wiring API-key-backed providers through `settings.getProviders`, `settings.updateProviderKey`, and `settings.removeProviderKey`, adding a new core `removeProviderKey` mutation for env-backed provider removal, and failing explicitly for unsupported placeholder-only options like OAuth, custom base URLs, and model allowlists.
+- **CLI MCP Config IO Surface**: `hypernexus mcp export`, `hypernexus mcp import`, and `hypernexus mcp sync` now use live control-plane routes for raw JSONC config export/import and supported client config preview/sync (`claude-desktop`, `cursor`, `vscode`), perform real local file IO, support structured `--json` output, and fail explicitly for unsupported placeholder-only options like `mcp import --merge` or unsupported sync clients instead of printing fabricated success.
+- **CLI Memory Write Surfaces**: `hypernexus memory add`, `hypernexus memory export`, and `hypernexus memory import` now call live `memory.addFact`, `memory.exportMemories`, and `memory.importMemories` control-plane routes, perform real file IO for import/export, and fail explicitly for unsupported placeholder-only flags instead of printing fabricated success messages.
+- **CLI Config Reset/Init Surface**: `hypernexus config reset` and `hypernexus config init` now call live `config.reset` and `config.init` control-plane mutations, with scoped reset support, real config-file initialization, and structured `--json` output instead of fabricated success messages.
+- **CLI Session Import Surface**: `hypernexus session import <file>` now reads the local export file, calls the live `sessionExport.import` control-plane mutation, supports `--dry-run`, `--replace`, `--source-environment`, and structured `--json` output instead of printing a fabricated success message.
+- **CLI Session Export Surface**: `hypernexus session export <id>` now calls the live `sessionExport.export` control-plane mutation, passes the requested `sessionIds` filter through to the core export path, writes the returned portable package to disk, and supports truthful `--json` output instead of a fabricated success message.
+- **CLI MCP Registry Write Surface**: `hypernexus mcp add` and `hypernexus mcp remove` now call the live `mcpServers.create`, `mcpServers.list`, and `mcpServers.delete` control-plane routes instead of printing fabricated success messages, with structured `--json` output and truthful registry mutation results.
+- **CLI Tool Group Write Surface**: `hypernexus tools groups --create` and `hypernexus tools groups --delete` now call the live `toolSets.create` and `toolSets.delete` control-plane mutations instead of printing fabricated success messages, with structured `--json` output and truthful group mutation results.
+- **CLI Tool Toggle Surface**: `hypernexus tools enable <name>` and `hypernexus tools disable <name>` now call the live `tools.setAlwaysOn` control-plane mutation instead of printing fabricated success messages, with structured `--json` output and truthful always-on tool state updates.
+- **CLI Session Resume Surface**: `hypernexus session resume <id>` now calls the live `session.restart` control-plane mutation instead of printing a fabricated success message, with structured `--json` output and truthful resumed-session status reporting.
+- **CLI Session Stop Surface**: `hypernexus session stop <id>` now calls the live `session.stop` control-plane mutation instead of printing a fabricated success message, with `--force`, structured `--json` output, and truthful stopped-session status reporting.
+- **CLI Session Start Surface**: `hypernexus session start <workdir>` now calls the live `session.create` and `session.start` control-plane mutations instead of fabricating a timestamp-based session id, with structured `--json` output, truthful started-session metadata, and actionable control-plane error reporting.
+- **CLI Provider Fallback Default Surface**: `hypernexus provider fallback` without `--show` now reads the live `billing.getFallbackChain` route instead of printing a fabricated "not configured" summary, so the default read path is truthful and consistent with `--show`.
+- **CLI Secrets Write Surface**: `hypernexus config secrets --set` and `hypernexus config secrets --delete` now call the live `secrets.set` and `secrets.delete` control-plane mutations instead of printing placeholder success, with scriptable `--value` support, structured `--json` output, non-interactive safeguards, and actionable control-plane error reporting.
+- **CLI Provider Readiness Surface**: `hypernexus provider test <name>` now queries the live `settings.getProviders` and `billing.getProviderQuotas` control-plane routes instead of printing a fabricated connectivity check, with structured `--json` output, truthful configured/authenticated/availability reporting, and actionable control-plane error reporting.
+- **CLI MCP Traffic Surface**: `hypernexus mcp traffic` now reads the live `mcp.traffic` route instead of printing a static watcher banner, with structured `--json` output, server/method filtering, bounded history, and actionable control-plane error reporting.
+- **CLI MCP Inspect Surface**: `hypernexus mcp inspect <name>` now reads the live `mcp.listServers` and `mcp.listTools` inventories instead of printing a fabricated stopped/zero-tools snapshot, with structured `--json` output and actionable control-plane error reporting.
+- **CLI MCP Config Surface**: `hypernexus mcp config` now reads the live `config.list` MCP section instead of printing a fabricated router config, with structured `--json` output and actionable control-plane error reporting.
+- **CLI Agent Council Status Surface**: `hypernexus agent council --status` now queries the live `director.status`, `supervisor.status`, and `council.status` control-plane routes instead of printing hardcoded "not configured" state, with structured `--json` output and actionable control-plane error reporting.
+- **CLI Provider Fallback Surface**: `hypernexus provider fallback --show` now queries the live `billing.getFallbackChain` control-plane route instead of printing a fabricated "not configured" chain, with structured `--json` output, task-type filtering, and actionable control-plane error reporting.
+- **CLI Secrets Inventory Surface**: `hypernexus config secrets --list` now queries the live `secrets.list` control-plane route instead of always printing a fake empty state, with structured `--json` output, masked table rendering, and actionable control-plane error reporting.
+- **CLI Tool Group Surface**: `hypernexus tools groups` now queries live tool-set inventory from the control plane instead of always printing an empty-state placeholder, with structured `--json` output and actionable control-plane error reporting.
+- **CLI Memory Read Surfaces**: `hypernexus memory search`, `hypernexus memory list`, and `hypernexus memory stats` now query live control-plane memory routes instead of fabricated empty or zero state, with structured `--json` output and actionable control-plane error reporting.
+- **CLI Cloud Session Surface**: `hypernexus session cloud` now queries live cloud provider, session, and aggregate stats routes instead of always printing an empty-state placeholder, with structured `--json` output and actionable control-plane error reporting.
+- **CLI Session Inventory Surface**: `hypernexus session list` now queries live local supervisor sessions and live cloud-dev sessions instead of always printing an empty-state placeholder, with merged JSON output, active-only filtering, cloud-only filtering, and actionable control-plane error reporting.
+- **CLI Status Operator Surface**: `hypernexus status` now queries live control-plane startup, MCP, session, and provider routes instead of inventing a fake summary, with JSON output and actionable control-plane error reporting.
+- **CLI Provider Operator Surface**: `hypernexus provider list` and `hypernexus provider quota` now query live control-plane provider and billing routes instead of placeholder output, including JSON mode, merged configured/authenticated/quota state, provider filtering, and actionable control-plane error reporting.
+- **CLI Config Operator Surface**: `hypernexus config show`, `hypernexus config get`, and `hypernexus config set` now query live control-plane configuration routes instead of invented defaults and placeholder output, with JSON mode, section selection, typed value reconstruction for display, and actionable control-plane error reporting.
+- **CLI MCP Operator Surface**: `hypernexus mcp list`, `hypernexus mcp tools`, and `hypernexus mcp search` now query live control-plane MCP inventory and registry snapshot surfaces instead of placeholder empty-state output, including JSON mode, server/namespace filtering, registry-category filtering, and actionable control-plane error reporting.
+- **CLI Tool Detail Surface**: `hypernexus tools info <name>` now queries the live control plane via `tools.get`, supports JSON output, and renders real server/schema detail instead of a placeholder message.
+- **CLI Tools Operator Surface**: `hypernexus tools list` and `hypernexus tools search` now query the live control plane via `mcp.listTools` and `mcp.searchTools` instead of placeholder output, including JSON mode, list filters, top-k limiting, ranked search result state, and actionable control-plane error reporting.
+- **Architecture Rollout Map**: Documented the recommended hypernexus binary family, ownership boundaries, binary-to-package evolution, and first preferred extraction seams (`hypernexusd` first, then `hypernexusmcpd`) across `AGENTS.md`, `HANDOFF.md`, `CLAUDE.md`, `GEMINI.md`, `README.md`, `ROADMAP.md`, and `TODO.md` so future implementation work converges on one modular-monolith-first plan.
 - **Go Skills Summary Route**: The experimental Go workspace now exposes `/api/skills/summary`, a progressive-disclosure skill catalog that trims the bridged TypeScript skill registry down to compact `id`, `name`, `folder`, and `path` metadata with optional query filtering instead of eagerly exposing full description/content payloads.
 - **Go MCP Auto-Call Bridge**: The experimental Go workspace now exposes `/api/mcp/tools/auto-call`, a dedicated bridge that wraps the TypeScript `auto_call_tool` meta-tool so sidecar and operator surfaces can request one-shot semantic tool discovery and execution without manually constructing the inner `mcp.callTool` payload.
 - **Go Session Scanner Unit Coverage**: Added direct `go/internal/sessionimport/scanner_test.go` coverage for `sessionimport.Scanner` root reporting, candidate discovery, overlapping-root deduplication, and directory-skip behavior so automatic import discovery is validated below the HTTP layer instead of only through sidecar route tests.
@@ -885,30 +886,30 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - **Go AutoDev Bridge Surface**: The experimental Go workspace now exposes `/api/autodev/start-loop`, `/api/autodev/cancel-loop`, `/api/autodev/loops`, `/api/autodev/loop`, and `/api/autodev/clear-completed`, extending truthful autoDev loop visibility and control from Go while keeping the underlying loop runtime TypeScript-owned.
 - **Go Darwin Bridge Surface**: The experimental Go workspace now exposes `/api/darwin/evolve`, `/api/darwin/experiment`, and `/api/darwin/status`, extending truthful Darwin mutation and experiment visibility from Go while keeping the specialized runtime TypeScript-owned.
 - **Go Squad Bridge Surface**: The experimental Go workspace now exposes `/api/squad`, `/api/squad/spawn`, `/api/squad/kill`, `/api/squad/chat`, `/api/squad/indexer/toggle`, and `/api/squad/indexer/status`, extending truthful squad-member and indexer control from Go while keeping the runtime TypeScript-owned.
-- **Supervisor Base Resolution & Go Bridge Surface**: Core supervisor routing now resolves the Hypercode orchestrator base from explicit env, live lock-file state, or configured public URLs instead of hardcoding `localhost:3847`, and the experimental Go workspace now exposes `/api/supervisor/decompose`, `/api/supervisor/supervise`, `/api/supervisor/status`, `/api/supervisor/tasks`, and `/api/supervisor/cancel` as truthful bridges to that TypeScript surface.
+- **Supervisor Base Resolution & Go Bridge Surface**: Core supervisor routing now resolves the HyperNexus orchestrator base from explicit env, live lock-file state, or configured public URLs instead of hardcoding `localhost:3847`, and the experimental Go workspace now exposes `/api/supervisor/decompose`, `/api/supervisor/supervise`, `/api/supervisor/status`, `/api/supervisor/tasks`, and `/api/supervisor/cancel` as truthful bridges to that TypeScript surface.
 - **Session Export Base Resolution**: Core session export/import now reuses the shared orchestrator base resolver instead of hardcoding `localhost:3847`, so the already-ported Go `/api/session-export/*` bridge follows live lock-file/env routing and reports missing orchestrator configuration explicitly during restore attempts.
 - **Swarm Council Base Resolution**: Core swarm orchestration helpers (`SwarmOrchestrator`, `DebateProtocol`, and `ConsensusEngine`) now reuse the shared orchestrator base resolver instead of hardcoding `localhost:3847`, so already-ported swarm/council Go surfaces follow live lock/env routing while preserving existing local fallbacks when no orchestrator base is available.
-- **Go Session Bridge Default Cleanup**: The Go sidecar's upstream tRPC session bridge no longer blind-probes `127.0.0.1:3847/trpc` as a default fallback; it now relies on the live main lock file, explicit `HYPERCODE_TRPC_UPSTREAM`, and the remaining active default ports instead of stale legacy probing.
+- **Go Session Bridge Default Cleanup**: The Go sidecar's upstream tRPC session bridge no longer blind-probes `127.0.0.1:3847/trpc` as a default fallback; it now relies on the live main lock file, explicit `HYPERNEXUS_TRPC_UPSTREAM`, and the remaining active default ports instead of stale legacy probing.
 - **Go Config Router Bridge Surface**: The experimental Go workspace now exposes the compact TypeScript `config` router under `/api/config/*`, including key/value CRUD, MCP timeout controls, session lifetime, signup/auth flags, auth providers, and always-visible tools, while keeping the native `/api/config/status` snapshot as the Go-owned path/config health surface.
 - **Orchestrator Terminology Alignment**: Updated live operator-facing labels and service names to prefer `electron-orchestrator`, `cloud-orchestrator`, and `cli-orchestrator`, while preserving legacy paths and upstream URLs where deeper migrations are not yet complete.
-- **Hypercode Harness Assimilation**: Added `submodules/hypercode` as a tracked upstream and introduced a shared Hypercode CLI harness registry so `hypercode` is now the primary `hypercode session` harness identity.
-- **Hypercode Tool Inventory Visibility**: Hypercode CLI and the Go sidecar harness registry now surface Hypercode's source-backed tool calls by reading `submodules/hypercode/tools/*.go`, while keeping other external harnesses labeled as install/runtime metadata only until deeper bridge contracts exist.
-- **CLI Mesh Operator Surface**: Added a real `hypercode mesh` command group with `status`, `peers`, `capabilities`, and `find` subcommands backed by the live tRPC control plane via `HYPERCODE_TRPC_UPSTREAM` or the Hypercode startup lock instead of placeholder output.
-- **Antigravity Harness Visibility**: Hypercode's CLI and Go harness inventories now include Antigravity as a docs-backed metadata-only editor harness, while explicitly withholding source-backed tool/session parity claims until a real shell contract exists.
-- **Experimental Go Port Workspace**: Added an isolated `go/` sidecar workspace for feasibility testing a Go-native Hypercode control-plane slice without disturbing the existing Node/Next fork. The initial port exposes health, sessions, and CLI-tools endpoints plus a separate `.hypercode-go` lock/config path.
-- **Go Sidecar Interop**: The experimental Go workspace now reports both the main Node Hypercode lock and the Go sidecar lock via `/api/runtime/locks`, so coexistence can be tested without rewiring the primary startup path.
-- **Supervisor Base Resolution & Go Bridge Surface**: Core supervisor routing now resolves the hypercode orchestrator base from explicit env, live lock-file state, or configured public URLs instead of hardcoding `localhost:3847`, and the experimental Go workspace now exposes `/api/supervisor/decompose`, `/api/supervisor/supervise`, `/api/supervisor/status`, `/api/supervisor/tasks`, and `/api/supervisor/cancel` as truthful bridges to that TypeScript surface.
+- **HyperNexus Harness Assimilation**: Added `submodules/hypernexus` as a tracked upstream and introduced a shared HyperNexus CLI harness registry so `hypernexus` is now the primary `hypernexus session` harness identity.
+- **HyperNexus Tool Inventory Visibility**: HyperNexus CLI and the Go sidecar harness registry now surface HyperNexus's source-backed tool calls by reading `submodules/hypernexus/tools/*.go`, while keeping other external harnesses labeled as install/runtime metadata only until deeper bridge contracts exist.
+- **CLI Mesh Operator Surface**: Added a real `hypernexus mesh` command group with `status`, `peers`, `capabilities`, and `find` subcommands backed by the live tRPC control plane via `HYPERNEXUS_TRPC_UPSTREAM` or the HyperNexus startup lock instead of placeholder output.
+- **Antigravity Harness Visibility**: HyperNexus's CLI and Go harness inventories now include Antigravity as a docs-backed metadata-only editor harness, while explicitly withholding source-backed tool/session parity claims until a real shell contract exists.
+- **Experimental Go Port Workspace**: Added an isolated `go/` sidecar workspace for feasibility testing a Go-native HyperNexus control-plane slice without disturbing the existing Node/Next fork. The initial port exposes health, sessions, and CLI-tools endpoints plus a separate `.hypernexus-go` lock/config path.
+- **Go Sidecar Interop**: The experimental Go workspace now reports both the main Node HyperNexus lock and the Go sidecar lock via `/api/runtime/locks`, so coexistence can be tested without rewiring the primary startup path.
+- **Supervisor Base Resolution & Go Bridge Surface**: Core supervisor routing now resolves the hypernexus orchestrator base from explicit env, live lock-file state, or configured public URLs instead of hardcoding `localhost:3847`, and the experimental Go workspace now exposes `/api/supervisor/decompose`, `/api/supervisor/supervise`, `/api/supervisor/status`, `/api/supervisor/tasks`, and `/api/supervisor/cancel` as truthful bridges to that TypeScript surface.
 - **Session Export Base Resolution**: Core session export/import now reuses the shared orchestrator base resolver instead of hardcoding `localhost:3847`, so the already-ported Go `/api/session-export/*` bridge follows live lock-file/env routing and reports missing orchestrator configuration explicitly during restore attempts.
 - **Swarm Council Base Resolution**: Core swarm orchestration helpers (`SwarmOrchestrator`, `DebateProtocol`, and `ConsensusEngine`) now reuse the shared orchestrator base resolver instead of hardcoding `localhost:3847`, so already-ported swarm/council Go surfaces follow live lock/env routing while preserving existing local fallbacks when no orchestrator base is available.
-- **Go Session Bridge Default Cleanup**: The Go sidecar's upstream tRPC session bridge no longer blind-probes `127.0.0.1:3847/trpc` as a default fallback; it now relies on the live main lock file, explicit `HYPERCODE_TRPC_UPSTREAM`, and the remaining active default ports instead of stale legacy probing.
+- **Go Session Bridge Default Cleanup**: The Go sidecar's upstream tRPC session bridge no longer blind-probes `127.0.0.1:3847/trpc` as a default fallback; it now relies on the live main lock file, explicit `HYPERNEXUS_TRPC_UPSTREAM`, and the remaining active default ports instead of stale legacy probing.
 - **Go Config Router Bridge Surface**: The experimental Go workspace now exposes the compact TypeScript `config` router under `/api/config/*`, including key/value CRUD, MCP timeout controls, session lifetime, signup/auth flags, auth providers, and always-visible tools, while keeping the native `/api/config/status` snapshot as the Go-owned path/config health surface.
 - **Orchestrator Terminology Alignment**: Updated live operator-facing labels and service names to prefer `electron-orchestrator`, `cloud-orchestrator`, and `cli-orchestrator`, while preserving legacy paths and upstream URLs where deeper migrations are not yet complete.
-- **hypercode Harness Assimilation**: Added `submodules/hypercode` as a tracked upstream and introduced a shared hypercode CLI harness registry so `hypercode` is now the primary `hypercode session` harness identity.
-- **hypercode Tool Inventory Visibility**: hypercode CLI and the Go sidecar harness registry now surface hypercode's source-backed tool calls by reading `submodules/hypercode/tools/*.go`, while keeping other external harnesses labeled as install/runtime metadata only until deeper bridge contracts exist.
-- **CLI Mesh Operator Surface**: Added a real `hypercode mesh` command group with `status`, `peers`, `capabilities`, and `find` subcommands backed by the live tRPC control plane via `HYPERCODE_TRPC_UPSTREAM` or the hypercode startup lock instead of placeholder output.
-- **Antigravity Harness Visibility**: hypercode's CLI and Go harness inventories now include Antigravity as a docs-backed metadata-only editor harness, while explicitly withholding source-backed tool/session parity claims until a real shell contract exists.
-- **Experimental Go Port Workspace**: Added an isolated `go/` sidecar workspace for feasibility testing a Go-native hypercode control-plane slice without disturbing the existing Node/Next fork. The initial port exposes health, sessions, and CLI-tools endpoints plus a separate `.hypercode-go` lock/config path.
-- **Go Sidecar Interop**: The experimental Go workspace now reports both the main Node hypercode lock and the Go sidecar lock via `/api/runtime/locks`, so coexistence can be tested without rewiring the primary startup path.
+- **hypernexus Harness Assimilation**: Added `submodules/hypernexus` as a tracked upstream and introduced a shared hypernexus CLI harness registry so `hypernexus` is now the primary `hypernexus session` harness identity.
+- **hypernexus Tool Inventory Visibility**: hypernexus CLI and the Go sidecar harness registry now surface hypernexus's source-backed tool calls by reading `submodules/hypernexus/tools/*.go`, while keeping other external harnesses labeled as install/runtime metadata only until deeper bridge contracts exist.
+- **CLI Mesh Operator Surface**: Added a real `hypernexus mesh` command group with `status`, `peers`, `capabilities`, and `find` subcommands backed by the live tRPC control plane via `HYPERNEXUS_TRPC_UPSTREAM` or the hypernexus startup lock instead of placeholder output.
+- **Antigravity Harness Visibility**: hypernexus's CLI and Go harness inventories now include Antigravity as a docs-backed metadata-only editor harness, while explicitly withholding source-backed tool/session parity claims until a real shell contract exists.
+- **Experimental Go Port Workspace**: Added an isolated `go/` sidecar workspace for feasibility testing a Go-native hypernexus control-plane slice without disturbing the existing Node/Next fork. The initial port exposes health, sessions, and CLI-tools endpoints plus a separate `.hypernexus-go` lock/config path.
+- **Go Sidecar Interop**: The experimental Go workspace now reports both the main Node hypernexus lock and the Go sidecar lock via `/api/runtime/locks`, so coexistence can be tested without rewiring the primary startup path.
 - **Go Runtime Status Summary**: The experimental Go workspace now exposes `/api/runtime/status`, a read-only summary endpoint that combines sidecar health, lock visibility plus compact running counts, config-path health, total and available CLI tool/harness counts, imported-instructions availability, provider totals plus configured/authenticated/executable counts and auth/task buckets, memory availability plus default-section and per-section entry breakdowns, discovered-session counts plus session task/model-hint breakdowns and TypeScript supervisor-bridge visibility, import-root health, and import-source candidates plus compact valid/invalid, aggregate estimated size, source-type, model-hint, and error buckets for easier coexistence checks.
 - **Go Session Supervisor Bridge**: The experimental Go workspace now exposes `/api/sessions/supervisor/catalog`, `/list`, `/get`, `/create`, `/start`, `/stop`, `/restart`, `/logs`, `/execute-shell`, `/attach-info`, `/health`, `/state`, `/update-state`, `/clear`, `/heartbeat`, and `/restore` as bridge routes into the existing TypeScript `sessionRouter`, so the sidecar can drive supervised-session lifecycle, diagnostics, and shared session-state flows through the live main control plane instead of staying discovery-only.
 - **Go MCP Admin Bridge**: The experimental Go workspace now also exposes `/api/mcp/lifecycle-modes`, `/api/mcp/runtime-servers/add`, and `/api/mcp/runtime-servers/remove` as bridge routes into the existing TypeScript `mcpRouter`, so sidecar operators can update MCP pool lifecycle modes and add or remove downstream runtime servers without leaving the Go control-plane surface.
@@ -928,24 +929,24 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - **Go OAuth, Research, Pulse, and Export Bridge Surface**: The experimental Go workspace now exposes `/api/oauth/*`, `/api/research/*`, `/api/pulse/*`, and `/api/session-export/*` bridge routes into the existing TypeScript auth, research, observability, and session portability routers, extending practical parity without claiming lifecycle-heavy autonomy or browser ownership.
 - **Go UI Helper Bridge Surface**: The experimental Go workspace now exposes `/api/browser-extension/*`, `/api/open-webui/*`, `/api/code-mode/*`, `/api/submodules/*`, `/api/suggestions/*`, and `/api/plan/*` bridge routes into the existing TypeScript UI-helper routers, extending operator-facing utility parity while still leaving full browser, cloud, and autonomy lifecycles in TypeScript.
 - **Go API Index Surface**: The experimental Go workspace now exposes `/api/index`, a compact self-describing route index listing the current read-only sidecar endpoints, categories, and short descriptions.
-- **Go Memory Bridge**: The experimental Go workspace now exposes the main fork's auto-imported instructions document via `/api/runtime/imported-instructions`, giving the sidecar port a read-only continuity bridge into Hypercode's existing session-import output.
-- **Go Session Source Scanner**: The experimental Go workspace now exposes `/api/import/roots` and `/api/import/sources`, a read-only view of explicit Hypercode-style discovery roots plus discovered artifacts across `.claude`, `.copilot/session-state`, and broader workspace/home OpenAI or ChatGPT export folders including `.chatgpt`, `ChatGPT`, and `OpenAI`.
+- **Go Memory Bridge**: The experimental Go workspace now exposes the main fork's auto-imported instructions document via `/api/runtime/imported-instructions`, giving the sidecar port a read-only continuity bridge into HyperNexus's existing session-import output.
+- **Go Session Source Scanner**: The experimental Go workspace now exposes `/api/import/roots` and `/api/import/sources`, a read-only view of explicit HyperNexus-style discovery roots plus discovered artifacts across `.claude`, `.copilot/session-state`, and broader workspace/home OpenAI or ChatGPT export folders including `.chatgpt`, `ChatGPT`, and `OpenAI`.
 - **Go Session Summary Surface**: The experimental Go workspace now exposes `/api/sessions/summary`, a compact read-only summary of discovered sessions grouped by CLI type, session format, inferred task, and detected model hints.
-- **Go Sectioned Memory Status**: The experimental Go workspace now exposes `/api/memory/hypercode-memory/status`, a read-only summary of Hypercode's sectioned-memory store with legacy `claude_mem.json` fallback, section counts, missing default buckets, and latest update timestamps.
+- **Go Sectioned Memory Status**: The experimental Go workspace now exposes `/api/memory/hypernexus-memory/status`, a read-only summary of HyperNexus's sectioned-memory store with legacy `claude_mem.json` fallback, section counts, missing default buckets, and latest update timestamps.
 - **Go Import Validation Surface**: The experimental Go workspace now exposes `/api/import/validate`, `/api/import/candidates`, `/api/import/manifest`, and `/api/import/summary`, so discovered session artifacts can be validated, enriched with format/model metadata, exported as a structured read-only manifest, and summarized by source tool, format, validity, model hints, and validation-error buckets.
-- **Go Harness Registry Surface**: The experimental Go workspace now exposes `/api/cli/harnesses`, a read-only harness registry that mirrors the main CLI lane's harness identities, maturity labels, runtime metadata, and install visibility for `hypercode`, `opencode`, `claude`, `codex`, `gemini`, `goose`, and `custom`.
+- **Go Harness Registry Surface**: The experimental Go workspace now exposes `/api/cli/harnesses`, a read-only harness registry that mirrors the main CLI lane's harness identities, maturity labels, runtime metadata, and install visibility for `hypernexus`, `opencode`, `claude`, `codex`, `gemini`, `goose`, and `custom`.
 - **Go CLI Summary Surface**: The experimental Go workspace now exposes `/api/cli/summary`, a compact read-only summary of detected CLI tools, installed harnesses, and the current primary harness so operators can inspect sidecar CLI readiness in one call.
 - **Go Discovered Sessions Surface**: The experimental Go workspace now exposes discovered session artifacts through `/api/sessions`, returning read-only `discovered` entries with source path, format, validation state, and detected model hints instead of an always-empty session list.
-- **Go Config Status Surface**: The experimental Go workspace now exposes `/api/config/status`, a read-only summary of sidecar wiring including workspace, config, lock, repo-level Hypercode and MCP config files, imported-instructions, memory-store, and hypercode-submodule paths.
-- **Go Memory Bridge**: The experimental Go workspace now exposes the main fork's auto-imported instructions document via `/api/runtime/imported-instructions`, giving the sidecar port a read-only continuity bridge into hypercode's existing session-import output.
-- **Go Session Source Scanner**: The experimental Go workspace now exposes `/api/import/roots` and `/api/import/sources`, a read-only view of explicit hypercode-style discovery roots plus discovered artifacts across `.claude`, `.copilot/session-state`, and broader workspace/home OpenAI or ChatGPT export folders including `.chatgpt`, `ChatGPT`, and `OpenAI`.
+- **Go Config Status Surface**: The experimental Go workspace now exposes `/api/config/status`, a read-only summary of sidecar wiring including workspace, config, lock, repo-level HyperNexus and MCP config files, imported-instructions, memory-store, and hypernexus-submodule paths.
+- **Go Memory Bridge**: The experimental Go workspace now exposes the main fork's auto-imported instructions document via `/api/runtime/imported-instructions`, giving the sidecar port a read-only continuity bridge into hypernexus's existing session-import output.
+- **Go Session Source Scanner**: The experimental Go workspace now exposes `/api/import/roots` and `/api/import/sources`, a read-only view of explicit hypernexus-style discovery roots plus discovered artifacts across `.claude`, `.copilot/session-state`, and broader workspace/home OpenAI or ChatGPT export folders including `.chatgpt`, `ChatGPT`, and `OpenAI`.
 - **Go Session Summary Surface**: The experimental Go workspace now exposes `/api/sessions/summary`, a compact read-only summary of discovered sessions grouped by CLI type, session format, inferred task, and detected model hints.
-- **Go Sectioned Memory Status**: The experimental Go workspace now exposes `/api/memory/hypercode-memory/status`, a read-only summary of hypercode's sectioned-memory store with legacy `claude_mem.json` fallback, section counts, missing default buckets, and latest update timestamps.
+- **Go Sectioned Memory Status**: The experimental Go workspace now exposes `/api/memory/hypernexus-memory/status`, a read-only summary of hypernexus's sectioned-memory store with legacy `claude_mem.json` fallback, section counts, missing default buckets, and latest update timestamps.
 - **Go Import Validation Surface**: The experimental Go workspace now exposes `/api/import/validate`, `/api/import/candidates`, `/api/import/manifest`, and `/api/import/summary`, so discovered session artifacts can be validated, enriched with format/model metadata, exported as a structured read-only manifest, and summarized by source tool, format, validity, model hints, and validation-error buckets.
-- **Go Harness Registry Surface**: The experimental Go workspace now exposes `/api/cli/harnesses`, a read-only harness registry that mirrors the main CLI lane's harness identities, maturity labels, runtime metadata, and install visibility for `hypercode`, `opencode`, `claude`, `codex`, `gemini`, `goose`, and `custom`.
+- **Go Harness Registry Surface**: The experimental Go workspace now exposes `/api/cli/harnesses`, a read-only harness registry that mirrors the main CLI lane's harness identities, maturity labels, runtime metadata, and install visibility for `hypernexus`, `opencode`, `claude`, `codex`, `gemini`, `goose`, and `custom`.
 - **Go CLI Summary Surface**: The experimental Go workspace now exposes `/api/cli/summary`, a compact read-only summary of detected CLI tools, installed harnesses, and the current primary harness so operators can inspect sidecar CLI readiness in one call.
 - **Go Discovered Sessions Surface**: The experimental Go workspace now exposes discovered session artifacts through `/api/sessions`, returning read-only `discovered` entries with source path, format, validation state, and detected model hints instead of an always-empty session list.
-- **Go Config Status Surface**: The experimental Go workspace now exposes `/api/config/status`, a read-only summary of sidecar wiring including workspace, config, lock, repo-level hypercode and MCP config files, imported-instructions, memory-store, and hypercode-submodule paths.
+- **Go Config Status Surface**: The experimental Go workspace now exposes `/api/config/status`, a read-only summary of sidecar wiring including workspace, config, lock, repo-level hypernexus and MCP config files, imported-instructions, memory-store, and hypernexus-submodule paths.
 - **Go Provider Status Surface**: The experimental Go workspace now exposes `/api/providers/status`, a read-only provider credential summary covering configured/authenticated state and auth-method hints for the current sidecar environment.
 - **Go Provider Catalog Surface**: The experimental Go workspace now exposes `/api/providers/catalog`, a read-only provider metadata view covering default models, auth methods, preferred tasks, executability, and current sidecar credential visibility.
 - **Go Provider Summary Surface**: The experimental Go workspace now exposes `/api/providers/summary`, a compact read-only provider rollup covering provider counts, configuration counts, executability, auth-method buckets, and preferred-task buckets.
@@ -953,24 +954,24 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Changed
 - **Startup and Catalog-Ingestion Reality Tracking**: Updated `HANDOFF.md`, `ROADMAP.md`, and `TODO.md` to reflect the current stabilization lane more truthfully: `start.bat` and workspace builds are healthy again, while the next concrete runtime issue is published MCP catalog ingestion drift from third-party registry endpoints.
-- **CLI Harness Visibility**: Added `hypercode session harnesses` and expanded `hypercode session start` help/output so harness maturity, upstream source, launch command, and the Hypercode primary-lane designation are visible from the compiled CLI.
-- **Core Harness Detection Modes**: `@hypercode/core` harness detection now distinguishes command-detected vs manual/docs-backed harnesses, so Antigravity can appear in core inventory surfaces without being misrepresented as a PATH CLI or supervised shell target.
-- **Harness Parity Summaries**: `hypercode session harnesses`, Go `/api/cli/summary`, and Go `/api/runtime/status` now publish explicit source-backed vs metadata-only vs operator-defined harness counts plus enumerated source-backed tool totals, so parity claims stay measurable instead of implied.
-- **Hypercode Runtime Metadata**: Advanced the Hypercode submodule to its Go/Cobra implementation and updated Hypercode docs to describe the current upstream truth: default TUI REPL, `pipe` command, and Hypercode-aware adapter package, still labeled **Experimental**.
-- **Session Import Coverage**: Extended imported-session discovery to include Simon Willison `llm` CLI `logs.db` histories, converting logged conversations and standalone responses into imported Hypercode sessions with preserved tool-call/result markers and token metadata.
-- **CLI Harness Visibility**: Added `hypercode session harnesses` and expanded `hypercode session start` help/output so harness maturity, upstream source, launch command, and the hypercode primary-lane designation are visible from the compiled CLI.
-- **Core Harness Detection Modes**: `@hypercode/core` harness detection now distinguishes command-detected vs manual/docs-backed harnesses, so Antigravity can appear in core inventory surfaces without being misrepresented as a PATH CLI or supervised shell target.
-- **Harness Parity Summaries**: `hypercode session harnesses`, Go `/api/cli/summary`, and Go `/api/runtime/status` now publish explicit source-backed vs metadata-only vs operator-defined harness counts plus enumerated source-backed tool totals, so parity claims stay measurable instead of implied.
-- **hypercode Runtime Metadata**: Advanced the hypercode submodule to its Go/Cobra implementation and updated hypercode docs to describe the current upstream truth: default TUI REPL, `pipe` command, and hypercode-aware adapter package, still labeled **Experimental**.
-- **Session Import Coverage**: Extended imported-session discovery to include Simon Willison `llm` CLI `logs.db` histories, converting logged conversations and standalone responses into imported hypercode sessions with preserved tool-call/result markers and token metadata.
+- **CLI Harness Visibility**: Added `hypernexus session harnesses` and expanded `hypernexus session start` help/output so harness maturity, upstream source, launch command, and the HyperNexus primary-lane designation are visible from the compiled CLI.
+- **Core Harness Detection Modes**: `@hypernexus/core` harness detection now distinguishes command-detected vs manual/docs-backed harnesses, so Antigravity can appear in core inventory surfaces without being misrepresented as a PATH CLI or supervised shell target.
+- **Harness Parity Summaries**: `hypernexus session harnesses`, Go `/api/cli/summary`, and Go `/api/runtime/status` now publish explicit source-backed vs metadata-only vs operator-defined harness counts plus enumerated source-backed tool totals, so parity claims stay measurable instead of implied.
+- **HyperNexus Runtime Metadata**: Advanced the HyperNexus submodule to its Go/Cobra implementation and updated HyperNexus docs to describe the current upstream truth: default TUI REPL, `pipe` command, and HyperNexus-aware adapter package, still labeled **Experimental**.
+- **Session Import Coverage**: Extended imported-session discovery to include Simon Willison `llm` CLI `logs.db` histories, converting logged conversations and standalone responses into imported HyperNexus sessions with preserved tool-call/result markers and token metadata.
+- **CLI Harness Visibility**: Added `hypernexus session harnesses` and expanded `hypernexus session start` help/output so harness maturity, upstream source, launch command, and the hypernexus primary-lane designation are visible from the compiled CLI.
+- **Core Harness Detection Modes**: `@hypernexus/core` harness detection now distinguishes command-detected vs manual/docs-backed harnesses, so Antigravity can appear in core inventory surfaces without being misrepresented as a PATH CLI or supervised shell target.
+- **Harness Parity Summaries**: `hypernexus session harnesses`, Go `/api/cli/summary`, and Go `/api/runtime/status` now publish explicit source-backed vs metadata-only vs operator-defined harness counts plus enumerated source-backed tool totals, so parity claims stay measurable instead of implied.
+- **hypernexus Runtime Metadata**: Advanced the hypernexus submodule to its Go/Cobra implementation and updated hypernexus docs to describe the current upstream truth: default TUI REPL, `pipe` command, and hypernexus-aware adapter package, still labeled **Experimental**.
+- **Session Import Coverage**: Extended imported-session discovery to include Simon Willison `llm` CLI `logs.db` histories, converting logged conversations and standalone responses into imported hypernexus sessions with preserved tool-call/result markers and token metadata.
 - **Experimental Antigravity Import Coverage**: Imported-session discovery now probes the reverse-engineered `~/.gemini/antigravity/brain` root for local Antigravity artifacts/logs, labels imported sessions as experimental metadata, and broadens JSON log text extraction so nested request/response-style records import more truthfully without claiming a stable Antigravity transcript contract.
 - **ChatGPT Export Coverage**: Imported-session discovery now expands exported ChatGPT `conversations.json` mapping trees into per-conversation sessions, following the active `current_node` branch instead of flattening whole export bundles into one transcript.
 - **VS Code Extension Import Coverage**: Imported-session discovery now scans workspace `.vscode` and VS Code `globalStorage` extension files for session-like transcripts while explicitly skipping the Copilot Chat roots already covered by dedicated import rules.
 - **Orchestrator Naming Convergence**: Updated top-level docs and operator-facing dashboard labels to present the desktop lane as `electron-orchestrator`, the cloud lane as `cloud-orchestrator`, and the local terminal lane as `cli-orchestrator`, while preserving existing code paths and legacy aliases during the transition.
-- **Go Sidecar Framing**: Updated the experimental Go sidecar help text and startup log to describe that workspace explicitly as the `cli-orchestrator` port instead of a generic Hypercode control plane.
-- **Parity Framing**: Tightened root documentation so Hypercode no longer implies `electron-orchestrator` and `cli-orchestrator` already have 100% feature parity; the desktop lane is broader today, while the CLI lane remains the cleaner control-plane and Go-port target.
-- **Go Sidecar Framing**: Updated the experimental Go sidecar help text and startup log to describe that workspace explicitly as the `cli-orchestrator` port instead of a generic hypercode control plane.
-- **Parity Framing**: Tightened root documentation so hypercode no longer implies `electron-orchestrator` and `cli-orchestrator` already have 100% feature parity; the desktop lane is broader today, while the CLI lane remains the cleaner control-plane and Go-port target.
+- **Go Sidecar Framing**: Updated the experimental Go sidecar help text and startup log to describe that workspace explicitly as the `cli-orchestrator` port instead of a generic HyperNexus control plane.
+- **Parity Framing**: Tightened root documentation so HyperNexus no longer implies `electron-orchestrator` and `cli-orchestrator` already have 100% feature parity; the desktop lane is broader today, while the CLI lane remains the cleaner control-plane and Go-port target.
+- **Go Sidecar Framing**: Updated the experimental Go sidecar help text and startup log to describe that workspace explicitly as the `cli-orchestrator` port instead of a generic hypernexus control plane.
+- **Parity Framing**: Tightened root documentation so hypernexus no longer implies `electron-orchestrator` and `cli-orchestrator` already have 100% feature parity; the desktop lane is broader today, while the CLI lane remains the cleaner control-plane and Go-port target.
 
 ### Fixed
 - **Maestro Native ABI Truthfulness**: Electron-native `better-sqlite3` failures in `apps/maestro` now report both the isolated `native-modules` load failure and the shared-module fallback failure, the Windows build guide now explains that `scripts/ensure-native-runtime.mjs` is the real startup preflight/repair path, and the stats integration coverage now matches the isolated-or-shared native binding reality instead of assuming only the shared `node_modules` layout.
@@ -985,8 +986,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - **Workflow Graph and Designer Truthfulness**: Workflow graph reads now return a real not-found error instead of a fake empty graph, and the mounted enterprise `WorkflowDesigner` now surfaces explicit list/load/save errors while rejecting malformed workflow API payloads instead of falling back to believable empty/default UI.
 - **Extension Storage Restricted-Page Truthfulness**: The content-script extension storage adapter no longer falls back to page `localStorage` after real extension storage access is denied, so restricted pages stop silently mirroring extension state into page-scoped storage while true non-extension/test environments still keep the legacy fallback.
 - **Extension Execution-History Restricted-Page Truthfulness**: The render-prescript executed-function history path now uses in-memory session state in extension-backed contexts instead of relying on page `localStorage` for synchronous duplicate checks, preserving immediate auto-execution guards without keeping restricted pages coupled to page-scoped persistence.
-- **Extension Dead Permission Storage Cleanup**: Removed the unused `ToolPermission` localStorage helper path from `apps/hypercode-extension/pages/content/src/utils/storage.ts`, eliminating the last obvious dead page-storage abstraction from the live content utility layer.
-- **Extension Dead Permission Storage Cleanup**: Removed the unused `ToolPermission` localStorage helper path from `apps/hypercode-extension/pages/content/src/utils/storage.ts`, eliminating the last obvious dead page-storage abstraction from the live content utility layer.
+- **Extension Dead Permission Storage Cleanup**: Removed the unused `ToolPermission` localStorage helper path from `apps/hypernexus-extension/pages/content/src/utils/storage.ts`, eliminating the last obvious dead page-storage abstraction from the live content utility layer.
+- **Extension Dead Permission Storage Cleanup**: Removed the unused `ToolPermission` localStorage helper path from `apps/hypernexus-extension/pages/content/src/utils/storage.ts`, eliminating the last obvious dead page-storage abstraction from the live content utility layer.
 - **Extension Storage Audit Closeout**: Updated the remaining render-prescript history comment and handoff/plan notes to reflect current reality: the checked-in content runtime no longer has live restricted-page storage coupling beyond intentional non-extension fallback helpers, with the leftover `localStorage` references now mostly limited to tests and documentation.
 - **BobbyBookmarks URL Canonicalization**: The TypeScript BobbyBookmarks backlog adapter now matches the shared BobbyBookmarks dedup normalization rules more closely by lowercasing host/path, stripping broader tracking params, removing default ports, normalizing trailing slashes, and adding `https://` to bare URLs before backlog upserts.
 - **Maestro Tailwind CSS Warning**: Stopped Tailwind from generating an invalid `.\[-\:\\s\|\] { -: \s|; }` rule from a markdown-table separator regex in `documentStats.ts`, eliminating the `Expected identifier but found "-"` CSS minification warning while preserving table stripping behavior.
@@ -1000,8 +1001,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - **CacheService**: Generic LRU+TTL in-memory cache with events, singleton-per-namespace, automatic cleanup timer, and `cached()` async decorator helper.
 - **ConnectionPoolService**: Generic connection pool with factory/destroyer/validator lifecycle, bounded acquire with timeout/backpressure, graceful drain, and `ConnectionPoolManager` static registry.
 - **TelemetryService**: W3C Trace Context compatible distributed tracing with span lifecycle, attributes, events, async `trace()` wrapper, traceparent export/parse, and ring-buffered completed spans.
-- **Prism MCP Reference Submodule**: Added `submodules/prism-mcp` so Hypercode can track upstream Prism memory/dashboard work as a first-class reference repository during assimilation.
-- **Prism MCP Reference Submodule**: Added `submodules/prism-mcp` so hypercode can track upstream Prism memory/dashboard work as a first-class reference repository during assimilation.
+- **Prism MCP Reference Submodule**: Added `submodules/prism-mcp` so HyperNexus can track upstream Prism memory/dashboard work as a first-class reference repository during assimilation.
+- **Prism MCP Reference Submodule**: Added `submodules/prism-mcp` so hypernexus can track upstream Prism memory/dashboard work as a first-class reference repository during assimilation.
 
 ### Fixed
 - **Core Test Suite Stabilization**: Reduced test failures from 49 to 3 (407→450+ tests pass). Fixed 14 test files:
@@ -1016,20 +1017,20 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
   - `lifecycle.test.ts` / `crash-isolation.test.ts` — Added lazy connection triggers
   - `native-session-meta-tools.test.ts` — Updated for auto-load behavior
   - `execution-environment.test.ts` — Updated note text
-  - `McpmInstaller.test.ts` — Added `@hypercode/mcp-registry` mock
+  - `McpmInstaller.test.ts` — Added `@hypernexus/mcp-registry` mock
 - **Session Import Coverage**: Extended imported-session discovery to include VS Code and VS Code Insiders Copilot Chat transcripts from `emptyWindowChatSessions`, while excluding known Cursor workspace metadata files that are not real chat sessions.
-- **OpenAI Session Import Coverage**: Hypercode now discovers OpenAI or ChatGPT export JSON histories from explicit `.openai` / `.chatgpt` / `ChatGPT` / `OpenAI` roots and normalizes them into readable user/assistant transcripts with tool-call markers.
-- **Prism Session Import Coverage**: Hypercode can now ingest Prism local `~/.prism-mcp/data.db` ledger and handoff rows as imported sessions, including behavioral `event_type` / `confidence_score` / `importance` metadata and derived correction warnings.
-- **Memory Bootstrap Idempotency**: Hardened `@hypercode/memory` LanceDB startup so concurrent first writes no longer crash Hypercode with `Table 'memories' already exists`; the adapter now retries `openTable()` after a competing creator wins the race.
+- **OpenAI Session Import Coverage**: HyperNexus now discovers OpenAI or ChatGPT export JSON histories from explicit `.openai` / `.chatgpt` / `ChatGPT` / `OpenAI` roots and normalizes them into readable user/assistant transcripts with tool-call markers.
+- **Prism Session Import Coverage**: HyperNexus can now ingest Prism local `~/.prism-mcp/data.db` ledger and handoff rows as imported sessions, including behavioral `event_type` / `confidence_score` / `importance` metadata and derived correction warnings.
+- **Memory Bootstrap Idempotency**: Hardened `@hypernexus/memory` LanceDB startup so concurrent first writes no longer crash HyperNexus with `Table 'memories' already exists`; the adapter now retries `openTable()` after a competing creator wins the race.
 - **Import Throughput + Coverage**: Imported-session discovery now includes home-directory `~/.opencode` and `~/.aider` roots, and session-memory extraction falls back straight to heuristics when no OpenAI key is configured instead of stalling on provider fallback.
-- **LanceDB Schema Drift Tolerance**: Existing `memories` tables created with older metadata schemas no longer reject new import fields like `sourceTool`; Hypercode now constrains append rows to the live LanceDB schema when needed.
-  - `McpmInstaller.test.ts` — Added `@hypercode/mcp-registry` mock
+- **LanceDB Schema Drift Tolerance**: Existing `memories` tables created with older metadata schemas no longer reject new import fields like `sourceTool`; HyperNexus now constrains append rows to the live LanceDB schema when needed.
+  - `McpmInstaller.test.ts` — Added `@hypernexus/mcp-registry` mock
 - **Session Import Coverage**: Extended imported-session discovery to include VS Code and VS Code Insiders Copilot Chat transcripts from `emptyWindowChatSessions`, while excluding known Cursor workspace metadata files that are not real chat sessions.
-- **OpenAI Session Import Coverage**: hypercode now discovers OpenAI or ChatGPT export JSON histories from explicit `.openai` / `.chatgpt` / `ChatGPT` / `OpenAI` roots and normalizes them into readable user/assistant transcripts with tool-call markers.
-- **Prism Session Import Coverage**: hypercode can now ingest Prism local `~/.prism-mcp/data.db` ledger and handoff rows as imported sessions, including behavioral `event_type` / `confidence_score` / `importance` metadata and derived correction warnings.
-- **Memory Bootstrap Idempotency**: Hardened `@hypercode/memory` LanceDB startup so concurrent first writes no longer crash hypercode with `Table 'memories' already exists`; the adapter now retries `openTable()` after a competing creator wins the race.
+- **OpenAI Session Import Coverage**: hypernexus now discovers OpenAI or ChatGPT export JSON histories from explicit `.openai` / `.chatgpt` / `ChatGPT` / `OpenAI` roots and normalizes them into readable user/assistant transcripts with tool-call markers.
+- **Prism Session Import Coverage**: hypernexus can now ingest Prism local `~/.prism-mcp/data.db` ledger and handoff rows as imported sessions, including behavioral `event_type` / `confidence_score` / `importance` metadata and derived correction warnings.
+- **Memory Bootstrap Idempotency**: Hardened `@hypernexus/memory` LanceDB startup so concurrent first writes no longer crash hypernexus with `Table 'memories' already exists`; the adapter now retries `openTable()` after a competing creator wins the race.
 - **Import Throughput + Coverage**: Imported-session discovery now includes home-directory `~/.opencode` and `~/.aider` roots, and session-memory extraction falls back straight to heuristics when no OpenAI key is configured instead of stalling on provider fallback.
-- **LanceDB Schema Drift Tolerance**: Existing `memories` tables created with older metadata schemas no longer reject new import fields like `sourceTool`; hypercode now constrains append rows to the live LanceDB schema when needed.
+- **LanceDB Schema Drift Tolerance**: Existing `memories` tables created with older metadata schemas no longer reject new import fields like `sourceTool`; hypernexus now constrains append rows to the live LanceDB schema when needed.
 - **Startup Hardening**: Maestro's postinstall native rebuild wrapper now downgrades known Windows `EPERM` file-lock failures on `better-sqlite3` to warnings, so workspace install can continue while startup preflight still verifies actual Electron runtime readiness.
 
 ### Version
@@ -1038,8 +1039,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [0.99.8] — 2026-03-24
 
 ### Added
-- **Complete Roadmap Vision**: Generated and updated `IDEAS.md` files for all remaining repositories and packages (`adk`, `agents`, `search`, `tools`, `memory`, `vscode`, `mobile`). This provides a comprehensive, high-intelligence roadmap for every component of the Hypercode ecosystem.
-- **Complete Roadmap Vision**: Generated and updated `IDEAS.md` files for all remaining repositories and packages (`adk`, `agents`, `search`, `tools`, `memory`, `vscode`, `mobile`). This provides a comprehensive, high-intelligence roadmap for every component of the hypercode ecosystem.
+- **Complete Roadmap Vision**: Generated and updated `IDEAS.md` files for all remaining repositories and packages (`adk`, `agents`, `search`, `tools`, `memory`, `vscode`, `mobile`). This provides a comprehensive, high-intelligence roadmap for every component of the HyperNexus ecosystem.
+- **Complete Roadmap Vision**: Generated and updated `IDEAS.md` files for all remaining repositories and packages (`adk`, `agents`, `search`, `tools`, `memory`, `vscode`, `mobile`). This provides a comprehensive, high-intelligence roadmap for every component of the hypernexus ecosystem.
 - **Mobile Companion Hardening**: Updated `apps/mobile` connectivity to correctly point to the standardized port `3847`, enabling real-time telemetry and monitoring from the React Native wireframes.
 
 ### Version
@@ -1064,14 +1065,14 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - **Phase O Initialization**: Officially entered Phase O (Dashboard Convergence & v1.0.0) with an updated ROADMAP.md and VISION.md reflecting the path toward a stable release.
 - **tRPC SSE for Extensions**: Implemented `TRPCProvider.tsx` in `packages/claude-mem` dashboard with `unstable_httpSubscriptionLink` and `splitLink`. This allows extension webviews to handle tRPC subscriptions over HTTP SSE, resolving the "Subscriptions unsupported by httpLink" error in restricted browser contexts.
 - **Storage Access Fallback**: Created a `safeStorage` utility in `packages/claude-mem` that automatically falls back to in-memory storage when `localStorage` is inaccessible, fixing access errors in sandboxed extension webviews.
-- **Ambitious Roadmap Expansion**: Seeded `IDEAS.md` files across all major repositories (`ai`, `core`, `mcp-client`, `ui`, `web`, `maestro`, `hypercode-extension`) with high-intelligence proposals including a Rust micro-kernel, P2P Hive Mind, and Bobcoin integration.
+- **Ambitious Roadmap Expansion**: Seeded `IDEAS.md` files across all major repositories (`ai`, `core`, `mcp-client`, `ui`, `web`, `maestro`, `hypernexus-extension`) with high-intelligence proposals including a Rust micro-kernel, P2P Hive Mind, and Bobcoin integration.
 
 ### Fixed
-- **Port 3847 Harmonization**: Standardized the `HYPERCODE_ORCHESTRATOR_PORT` to `3847` across all packages (`packages/ui`, `apps/web`, `apps/maestro`), resolving persistent `ERR_CONNECTION_REFUSED` errors from legacy port 3001 references.
-- **Ambitious Roadmap Expansion**: Seeded `IDEAS.md` files across all major repositories (`ai`, `core`, `mcp-client`, `ui`, `web`, `maestro`, `hypercode-extension`) with high-intelligence proposals including a Rust micro-kernel, P2P Hive Mind, and Bobcoin integration.
+- **Port 3847 Harmonization**: Standardized the `HYPERNEXUS_ORCHESTRATOR_PORT` to `3847` across all packages (`packages/ui`, `apps/web`, `apps/maestro`), resolving persistent `ERR_CONNECTION_REFUSED` errors from legacy port 3001 references.
+- **Ambitious Roadmap Expansion**: Seeded `IDEAS.md` files across all major repositories (`ai`, `core`, `mcp-client`, `ui`, `web`, `maestro`, `hypernexus-extension`) with high-intelligence proposals including a Rust micro-kernel, P2P Hive Mind, and Bobcoin integration.
 
 ### Fixed
-- **Port 3847 Harmonization**: Standardized the `HYPERCODE_ORCHESTRATOR_PORT` to `3847` across all packages (`packages/ui`, `apps/web`, `apps/maestro`), resolving persistent `ERR_CONNECTION_REFUSED` errors from legacy port 3001 references.
+- **Port 3847 Harmonization**: Standardized the `HYPERNEXUS_ORCHESTRATOR_PORT` to `3847` across all packages (`packages/ui`, `apps/web`, `apps/maestro`), resolving persistent `ERR_CONNECTION_REFUSED` errors from legacy port 3001 references.
 - **CI/CD Stabilization**: Restored GitHub frontpage "Green" status by resolving linting and type errors in `apps/maestro`:
     - Installed missing `@types/mdast` dependency.
     - Removed redundant `@ts-expect-error` directives.
@@ -1085,8 +1086,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [0.99.3] — 2026-03-23
 
 ### Added
-- **System Configuration Dashboard:** Completely expanded `/dashboard/config` from a simple 14-line wrapper into a comprehensive System Configuration surface using a multi-tab layout (`@hypercode/ui` Tabs).
-- **System Configuration Dashboard:** Completely expanded `/dashboard/config` from a simple 14-line wrapper into a comprehensive System Configuration surface using a multi-tab layout (`@hypercode/ui` Tabs).
+- **System Configuration Dashboard:** Completely expanded `/dashboard/config` from a simple 14-line wrapper into a comprehensive System Configuration surface using a multi-tab layout (`@hypernexus/ui` Tabs).
+- **System Configuration Dashboard:** Completely expanded `/dashboard/config` from a simple 14-line wrapper into a comprehensive System Configuration surface using a multi-tab layout (`@hypernexus/ui` Tabs).
 - **Model Providers Panel:** Added `ModelProvidersList` to manage LLM API keys natively in the dashboard, persisting directly to the workspace `.env` file via `settingsRouter`.
 - **System Limits Panel:** Added `SystemLimitsPanel` to manage authentication boundaries (disable signups, SSO, basic auth) and MCP execution limits (timeout resets) via `configRouter`.
 
@@ -1098,8 +1099,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ## [0.99.2] — 2026-03-24
 
-- **Council Router Build Error:** Rewrote `packages/core/src/routers/council/index.ts` to expose `members` and `updateMembers` as direct top-level procedures. These were previously orphaned in `routers/councilRouter.ts` (never imported by `trpc.ts`), causing TypeScript errors in `providers/routing/page.tsx`. Both `@hypercode/core` and `@hypercode/web` now typecheck cleanly.
-- **Council Router Build Error:** Rewrote `packages/core/src/routers/council/index.ts` to expose `members` and `updateMembers` as direct top-level procedures. These were previously orphaned in `routers/councilRouter.ts` (never imported by `trpc.ts`), causing TypeScript errors in `providers/routing/page.tsx`. Both `@hypercode/core` and `@hypercode/web` now typecheck cleanly.
+- **Council Router Build Error:** Rewrote `packages/core/src/routers/council/index.ts` to expose `members` and `updateMembers` as direct top-level procedures. These were previously orphaned in `routers/councilRouter.ts` (never imported by `trpc.ts`), causing TypeScript errors in `providers/routing/page.tsx`. Both `@hypernexus/core` and `@hypernexus/web` now typecheck cleanly.
+- **Council Router Build Error:** Rewrote `packages/core/src/routers/council/index.ts` to expose `members` and `updateMembers` as direct top-level procedures. These were previously orphaned in `routers/councilRouter.ts` (never imported by `trpc.ts`), causing TypeScript errors in `providers/routing/page.tsx`. Both `@hypernexus/core` and `@hypernexus/web` now typecheck cleanly.
 
 ### Changed
 - **Branch Cleanup:** Deleted 96 of 104 local feature branches (94 already-merged, 2 legacy v2.7.x pre-Phase-Bankruptcy). Pruned orphaned git worktree. Repository now has a single clean `main` branch.
@@ -1152,31 +1153,31 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ### Always On Tools & Semantic Auto-Execution
 - feat(core/db): Added `always_on` boolean column to both `mcp_servers` and `tools` SQLite tables for persistent Always On state.
 - feat(core/mcp): Implemented `executeSemanticAutoCall` in `compatibilityToolRuntime.ts` — uses LLM-based tool selection to automatically match and execute the best tool for a given query.
-- feat(core/mcp): Registered `auto_call_tool` as a global meta-tool in `metamcp-proxy.service.ts`, bridging arbitrary text queries into the semantic execution engine.
+- feat(core/mcp): Registered `auto_call_tool` as a global meta-tool in `hypernexus-proxy.service.ts`, bridging arbitrary text queries into the semantic execution engine.
 - feat(web/mcp): Added "Always On" toggle to MCP server cards on `/dashboard/mcp` for server-level auto-load.
 - feat(web/mcp): Added per-tool "Always On" toggle in the MCP Inspector (`/dashboard/mcp/inspector`).
 - fix(web/mcp): Corrected `setAlwaysOn` mutation property names (`uuid`/`alwaysOn`) to match backend schema.
 
 ### Build Fixes
 - fix(web): Replaced broken `@/components/ui/scroll-area` import in `DebateVisualizer.tsx` with a plain overflow div.
-- fix(web): Merged `Textarea` import from non-existent `@/components/ui/textarea` into `@hypercode/ui` in `swarm/page.tsx`.
+- fix(web): Merged `Textarea` import from non-existent `@/components/ui/textarea` into `@hypernexus/ui` in `swarm/page.tsx`.
 - fix: Cleaned autopilot bump text corruption from `process-managed.transport.js`.
 
 ### Documentation
-- docs: Updated `DEPLOY.md` with MCP configuration path (`~/.hypercode/`), Always On tools documentation, and ports reference table.
-- fix(web): Merged `Textarea` import from non-existent `@/components/ui/textarea` into `@hypercode/ui` in `swarm/page.tsx`.
+- docs: Updated `DEPLOY.md` with MCP configuration path (`~/.hypernexus/`), Always On tools documentation, and ports reference table.
+- fix(web): Merged `Textarea` import from non-existent `@/components/ui/textarea` into `@hypernexus/ui` in `swarm/page.tsx`.
 - fix: Cleaned autopilot bump text corruption from `process-managed.transport.js`.
 
 ### Documentation
-- docs: Updated `DEPLOY.md` with MCP configuration path (`~/.hypercode/`), Always On tools documentation, and ports reference table.
+- docs: Updated `DEPLOY.md` with MCP configuration path (`~/.hypernexus/`), Always On tools documentation, and ports reference table.
 - docs: Updated `TODO.md` — marked tool semantic search/RAG as complete.
 
 ## [0.99.1] — 2026-03-22
 ### Added
 - **TOON Parser Engine:** Replaced the stub JSON serializer in `core/mcp` with a full Tool-Optimized Output Notation parser that compresses LLM context by stripping redundant braces/quotes into a lightweight pseudo-YAML payload framed by `<toon>` tags.
 - **Traffic Inspector TOON Renderer:** Added `<ToonRenderer />` to the dashboard's MCP Traffic Inspector. Raw JSON tool arguments and results are now automatically detected and syntax-highlighted inside an elegant custom emerald component.
-- **Dependency:** Added `yaml` to `@hypercode/core` to support lossless parsing and serialization.
-- **Dependency:** Added `yaml` to `@hypercode/core` to support lossless parsing and serialization.
+- **Dependency:** Added `yaml` to `@hypernexus/core` to support lossless parsing and serialization.
+- **Dependency:** Added `yaml` to `@hypernexus/core` to support lossless parsing and serialization.
 - **Stability:** Hardened yaml ESM imports to use explicit named destructured imports (`parse, stringify`) natively avoiding `default` package resolution mismatch across monorepos.
 
 ## [0.99.1] — 2026-03-22
@@ -1195,8 +1196,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Dashboard & MCP Router
 
-- feat(web/dashboard): Promoted `hypercode-orchestrator` (opencode-autopilot) to a first-class feature by creating a standalone `HypercodeOrchestratorWidget` and refactoring the main dashboard grid to give it half the page real estate.
-- feat(web/dashboard): Promoted `hypercode-orchestrator` (opencode-autopilot) to a first-class feature by creating a standalone `HypercodeOrchestratorWidget` and refactoring the main dashboard grid to give it half the page real estate.
+- feat(web/dashboard): Promoted `hypernexus-orchestrator` (opencode-autopilot) to a first-class feature by creating a standalone `HyperNexusOrchestratorWidget` and refactoring the main dashboard grid to give it half the page real estate.
+- feat(web/dashboard): Promoted `hypernexus-orchestrator` (opencode-autopilot) to a first-class feature by creating a standalone `HyperNexusOrchestratorWidget` and refactoring the main dashboard grid to give it half the page real estate.
 - feat(dev): Integrated the Orchestrator server into the standard `pnpm dev` stack. The `dev_tabby_ready.mjs` script now automatically spawns the orchestrator process and validates its health before declaring the stack ready.
 - feat(core/mcp): Implemented Last-Known-Good (LKG) configuration persistence in `MCPConfigStore`. The system now maintains an `mcp_servers.lkg.json` backup that is automatically updated on successful reads/writes.
 - feat(core/mcp): Updated `MCPAggregator` to fallback to LKG configuration if the primary `mcp_servers.json` is missing or corrupted, ensuring immediate availability of known servers during flaky environment injections.
@@ -1212,8 +1213,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - feat(web/billing): Implemented `ProviderDetailPanel` — a sliding sheet subpanel that drills down into granular quota data for individual providers. Includes tracking for primary consumption vs. limits, multiple usage windows (session, daily, weekly), and real-time technical status (auth method, data confidence, rate limits).
 - feat(web/billing): Updated the main provider capabilities table to be interactive; clicking a row now opens the detail subpanel for that provider.
 - feat(web/billing): Extended `normalizeBillingQuotaRows` to include `windows` and `resetDate` data, enabling rich drilldown views.
-- refactor(ui): Added `indicatorClassName` support to the shared `Progress` component in `@hypercode/ui`, allowing for semantic progress bar coloring (e.g., emerald for healthy, amber for warning, red for exhausted).
-- refactor(ui): Added `indicatorClassName` support to the shared `Progress` component in `@hypercode/ui`, allowing for semantic progress bar coloring (e.g., emerald for healthy, amber for warning, red for exhausted).
+- refactor(ui): Added `indicatorClassName` support to the shared `Progress` component in `@hypernexus/ui`, allowing for semantic progress bar coloring (e.g., emerald for healthy, amber for warning, red for exhausted).
+- refactor(ui): Added `indicatorClassName` support to the shared `Progress` component in `@hypernexus/ui`, allowing for semantic progress bar coloring (e.g., emerald for healthy, amber for warning, red for exhausted).
 - chore: Bumped `VERSION` to `0.99.1`.
 
 ## [0.99.1] — 2026-03-21
@@ -1680,8 +1681,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - docs(memory): Created `MEMORY.md` to track architectural insights, code style preferences, and the 7-Step Merge Protocol.
 - docs(deploy): Created `DEPLOY.md` to provide exact startup and deployment instructions.
 - docs(agents): Unified LLM instructions into `docs/UNIVERSAL_LLM_INSTRUCTIONS.md` and updated `AGENTS.md`, `GEMINI.md`, `CLAUDE.md`, `GPT.md`, and `copilot-instructions.md` to inherit from this universal base.
-- feat(council): Completed the 100% assimilation of opencode-autopilot into Hypercode core (now Hypercode Orchestrator), bringing multi-model debate, PTY session supervision, and the Roundtable dashboard natively into the platform. Submodule removed.
-- feat(council): Completed the 100% assimilation of opencode-autopilot into hypercode core (now hypercode Orchestrator), bringing multi-model debate, PTY session supervision, and the Roundtable dashboard natively into the platform. Submodule removed.
+- feat(council): Completed the 100% assimilation of opencode-autopilot into HyperNexus core (now HyperNexus Orchestrator), bringing multi-model debate, PTY session supervision, and the Roundtable dashboard natively into the platform. Submodule removed.
+- feat(council): Completed the 100% assimilation of opencode-autopilot into hypernexus core (now hypernexus Orchestrator), bringing multi-model debate, PTY session supervision, and the Roundtable dashboard natively into the platform. Submodule removed.
 
 ## [0.9.13] — 2026-03-20
 
@@ -1829,8 +1830,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - fix(test): Added missing `scoreBreakdown` property to test fixtures in `toolSearchRanking.test.ts`:
   - Updated 4 test objects to include required `ToolSearchScoreBreakdown` property
-  - Resolved TS2741 compilation errors in @hypercode/cli build
-  - Resolved TS2741 compilation errors in @hypercode/cli build
+  - Resolved TS2741 compilation errors in @hypernexus/cli build
+  - Resolved TS2741 compilation errors in @hypernexus/cli build
   - All test cases now provide complete, type-safe ranking result objects
 
 - chore(build): Full monorepo build now succeeds — all 26 packages compile without errors
@@ -1912,8 +1913,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - feat(web/registry): Server name cells in registry table are now **clickable** — navigate to `/dashboard/registry/[uuid]` on click, with hover color change to indicate interactivity
 
-- chore(branding): Renamed all remaining `HYPERCODE`/`hypercode` legacy references to `hypercode`/`Hypercode` across `archive/` SDKs (Python, Rust, Go), nvim plugin, archive docs and handoff files, `AGENTS.md`, and `UNIVERSAL_LLM_INSTRUCTIONS.md`
-- chore(branding): Renamed all remaining `HYPERCODE`/`hypercode` legacy references to `hypercode`/`hypercode` across `archive/` SDKs (Python, Rust, Go), nvim plugin, archive docs and handoff files, `AGENTS.md`, and `UNIVERSAL_LLM_INSTRUCTIONS.md`
+- chore(branding): Renamed all remaining `HYPERNEXUS`/`hypernexus` legacy references to `hypernexus`/`HyperNexus` across `archive/` SDKs (Python, Rust, Go), nvim plugin, archive docs and handoff files, `AGENTS.md`, and `UNIVERSAL_LLM_INSTRUCTIONS.md`
+- chore(branding): Renamed all remaining `HYPERNEXUS`/`hypernexus` legacy references to `hypernexus`/`hypernexus` across `archive/` SDKs (Python, Rust, Go), nvim plugin, archive docs and handoff files, `AGENTS.md`, and `UNIVERSAL_LLM_INSTRUCTIONS.md`
 
 - chore(version): Bumped `VERSION` from `0.9.1` → `0.9.4` to sync with CHANGELOG, then to `0.9.5` for this release
 
@@ -2052,8 +2053,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
   - `PROJECT_ROUNDTABLE_EXECUTIVE_PROMPT.md`
   - `PROJECT_ROUNDTABLE_SCORECARD_TEMPLATE.md`
 - docs(roundtable): The new brief inventories the repo’s major apps/packages/submodules, distinguishes implemented vs partial vs planned feature families, captures the actual active task queue from `archive/tasks/active/`, and explicitly calls out current documentation drift (missing root canonical files, archive-vs-live path mismatch, and index references to non-existent docs).
-- docs(index): Added the new roundtable documentation set to `HYPERCODE_MASTER_INDEX.jsonc` so future sessions and reviewers can discover the current debate materials without relying on stale archived copies.
-- docs(index): Added the new roundtable documentation set to `HYPERCODE_MASTER_INDEX.jsonc` so future sessions and reviewers can discover the current debate materials without relying on stale archived copies.
+- docs(index): Added the new roundtable documentation set to `HYPERNEXUS_MASTER_INDEX.jsonc` so future sessions and reviewers can discover the current debate materials without relying on stale archived copies.
+- docs(index): Added the new roundtable documentation set to `HYPERNEXUS_MASTER_INDEX.jsonc` so future sessions and reviewers can discover the current debate materials without relying on stale archived copies.
 - chore(version): Synchronized active version references to `0.9.1` across `VERSION`, `VERSION.md`, active `package.json` manifests, visible UI/runtime literals, and the README heading.
 
 ## [2.7.334] — 2026-03-18
@@ -2182,10 +2183,10 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [2.7.319] — 2026-03-17
 
 - chore(version): Updated `.vibe-config.json` version from "1.0.0" to canonical "2.7.318" for consistency across all version sources.
-- chore(branding): Replaced "Codename: HYPERCODE (AI Operating System)" with "Codename: Hypercode" in AGENTS.md version headers. Removed all HYPERCODE references from planning/discussion sections.
-- chore(compatibility): Verified backward compatibility maintained — legacy `.legacy_config.json` and `legacy` format exports continue to work as aliases to `hypercode` via ConfigurationService normalization.
-- chore(branding): Replaced "Codename: HYPERCODE (AI Operating System)" with "Codename: hypercode" in AGENTS.md version headers. Removed all HYPERCODE references from planning/discussion sections.
-- chore(compatibility): Verified backward compatibility maintained — legacy `.legacy_config.json` and `legacy` format exports continue to work as aliases to `hypercode` via ConfigurationService normalization.
+- chore(branding): Replaced "Codename: HYPERNEXUS (AI Operating System)" with "Codename: HyperNexus" in AGENTS.md version headers. Removed all HYPERNEXUS references from planning/discussion sections.
+- chore(compatibility): Verified backward compatibility maintained — legacy `.legacy_config.json` and `legacy` format exports continue to work as aliases to `hypernexus` via ConfigurationService normalization.
+- chore(branding): Replaced "Codename: HYPERNEXUS (AI Operating System)" with "Codename: hypernexus" in AGENTS.md version headers. Removed all HYPERNEXUS references from planning/discussion sections.
+- chore(compatibility): Verified backward compatibility maintained — legacy `.legacy_config.json` and `legacy` format exports continue to work as aliases to `hypernexus` via ConfigurationService normalization.
 - validation: CLI already uses canonical `readCanonicalVersion()` from VERSION file; no hardcoded version strings found in active code paths.
 
 ## [2.7.318] — 2026-03-17
@@ -2206,14 +2207,14 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [2.7.316] — 2026-03-17
 
 - chore(cli/version): Standardized active CLI-facing version drift by removing fallback `0.0.1` header default in `packages/cli/src/ui/components/Header.tsx` and keeping runtime version display tied to canonical version flow.
-- chore(cli/branding): Rebranded active MCP router CLI entrypoints to `hypercode-mcp-router` in TypeScript sources (`cli/mcp-router-cli/mcp-router-cli.ts`, `cli/mcp-router-cli/mcp-router-cli-mock.ts`).
-- chore(cli/compat): Maintained export-format compatibility by treating `hypercode` as the primary format while preserving legacy internal format handling in `mcp-router-cli`, avoiding abrupt behavior breaks.
-- chore(core/config): Updated active MCP router core config handling to prefer `.hypercode.json` / `hypercode` while keeping legacy `.legacy_config.json` / `legacy` aliases for backward compatibility (`cli/mcp-router-cli/packages/core/src/services/ConfigurationService.js`).
-- chore(core/db): Switched MCP router DB startup to prefer `hypercode.db` while auto-falling back to `legacy_hypercode.db`; new API keys now use `hypercode_` prefix (`cli/mcp-router-cli/packages/core/src/db/DatabaseManager.js`).
-- chore(cli/branding): Rebranded active MCP router CLI entrypoints to `hypercode-mcp-router` in TypeScript sources (`cli/mcp-router-cli/mcp-router-cli.ts`, `cli/mcp-router-cli/mcp-router-cli-mock.ts`).
-- chore(cli/compat): Maintained export-format compatibility by treating `hypercode` as the primary format while preserving legacy internal format handling in `mcp-router-cli`, avoiding abrupt behavior breaks.
-- chore(core/config): Updated active MCP router core config handling to prefer `.hypercode.json` / `hypercode` while keeping legacy `.legacy_config.json` / `legacy` aliases for backward compatibility (`cli/mcp-router-cli/packages/core/src/services/ConfigurationService.js`).
-- chore(core/db): Switched MCP router DB startup to prefer `hypercode.db` while auto-falling back to `legacy_hypercode.db`; new API keys now use `hypercode_` prefix (`cli/mcp-router-cli/packages/core/src/db/DatabaseManager.js`).
+- chore(cli/branding): Rebranded active MCP router CLI entrypoints to `hypernexus-mcp-router` in TypeScript sources (`cli/mcp-router-cli/mcp-router-cli.ts`, `cli/mcp-router-cli/mcp-router-cli-mock.ts`).
+- chore(cli/compat): Maintained export-format compatibility by treating `hypernexus` as the primary format while preserving legacy internal format handling in `mcp-router-cli`, avoiding abrupt behavior breaks.
+- chore(core/config): Updated active MCP router core config handling to prefer `.hypernexus.json` / `hypernexus` while keeping legacy `.legacy_config.json` / `legacy` aliases for backward compatibility (`cli/mcp-router-cli/packages/core/src/services/ConfigurationService.js`).
+- chore(core/db): Switched MCP router DB startup to prefer `hypernexus.db` while auto-falling back to `legacy_hypernexus.db`; new API keys now use `hypernexus_` prefix (`cli/mcp-router-cli/packages/core/src/db/DatabaseManager.js`).
+- chore(cli/branding): Rebranded active MCP router CLI entrypoints to `hypernexus-mcp-router` in TypeScript sources (`cli/mcp-router-cli/mcp-router-cli.ts`, `cli/mcp-router-cli/mcp-router-cli-mock.ts`).
+- chore(cli/compat): Maintained export-format compatibility by treating `hypernexus` as the primary format while preserving legacy internal format handling in `mcp-router-cli`, avoiding abrupt behavior breaks.
+- chore(core/config): Updated active MCP router core config handling to prefer `.hypernexus.json` / `hypernexus` while keeping legacy `.legacy_config.json` / `legacy` aliases for backward compatibility (`cli/mcp-router-cli/packages/core/src/services/ConfigurationService.js`).
+- chore(core/db): Switched MCP router DB startup to prefer `hypernexus.db` while auto-falling back to `legacy_hypernexus.db`; new API keys now use `hypernexus_` prefix (`cli/mcp-router-cli/packages/core/src/db/DatabaseManager.js`).
 - docs(version): Standardized stale alpha-track references in canonical docs (`VISION.md`, `TODO.md`) to the current release line.
 
 ## [2.7.315] — 2026-03-17
@@ -2239,8 +2240,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [2.7.312] — 2026-03-17
 
 - task completed: P0-1 (Task 007: Startup Orchestration Truthfulness) - Deterministic boot contract verified with 13/13 startup tests passing, canonical readiness definition implemented, fresh-install boot flow validated.
-- task completed: P0-6 (Task 008: Dashboard Honesty Pass) - All core dashboard pages labeled with proper maturity badges (beta/stable/experimental), primary nav distinguishes Hypercode 1.0 features from Labs/Experimental surfaces, external embeds clearly marked.
-- task completed: P0-6 (Task 008: Dashboard Honesty Pass) - All core dashboard pages labeled with proper maturity badges (beta/stable/experimental), primary nav distinguishes hypercode 1.0 features from Labs/Experimental surfaces, external embeds clearly marked.
+- task completed: P0-6 (Task 008: Dashboard Honesty Pass) - All core dashboard pages labeled with proper maturity badges (beta/stable/experimental), primary nav distinguishes HyperNexus 1.0 features from Labs/Experimental surfaces, external embeds clearly marked.
+- task completed: P0-6 (Task 008: Dashboard Honesty Pass) - All core dashboard pages labeled with proper maturity badges (beta/stable/experimental), primary nav distinguishes hypernexus 1.0 features from Labs/Experimental surfaces, external embeds clearly marked.
 - task completed: P1-7 (Task 009: Health, Logs & Operator Surfaces) - Health/Logs/Audit dashboard pages complete with real tRPC integration, searchable/filterable entries, appropriate status labeling, backend routers fully utilized.
 - test(validation): P0 prerequisites confirmed stable - web build all routes prerendered, startup orchestration 13/13 tests, core package 156/157 (99.4%).
 
@@ -2261,29 +2262,29 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ## [2.7.308] — 2026-03-17
 
-- fix(core/mcp): Fixed `recordEviction()` function calls in `metamcp-session-working-set.service.ts` to use correct 3-parameter signature instead of object parameter (lines 93, 110).
+- fix(core/mcp): Fixed `recordEviction()` function calls in `hypernexus-session-working-set.service.ts` to use correct 3-parameter signature instead of object parameter (lines 93, 110).
 - fix(web/next): Added Suspense boundaries to client components using `useSearchParams()` CSR bailout at `/dashboard/mcp/search` and `/dashboard/mcp/testing/servers` pages to comply with Next.js 16.1 rendering requirements.
 - test(validation): Full web app build validated successfully with webpack backend; all dashboard routes prerendered without errors.
 
 ## [2.7.307] — 2026-03-17
 
-- feat(core/mcp): Upgraded `SessionToolWorkingSet` with explicit runtime `reconfigure(...)` support and bounded eviction history (`getEvictionHistory` / `clearEvictionHistory`) so capacity and eviction telemetry remain observable through Hypercode-native meta-tools.
-- feat(core/mcp): Upgraded `SessionToolWorkingSet` with explicit runtime `reconfigure(...)` support and bounded eviction history (`getEvictionHistory` / `clearEvictionHistory`) so capacity and eviction telemetry remain observable through hypercode-native meta-tools.
+- feat(core/mcp): Upgraded `SessionToolWorkingSet` with explicit runtime `reconfigure(...)` support and bounded eviction history (`getEvictionHistory` / `clearEvictionHistory`) so capacity and eviction telemetry remain observable through HyperNexus-native meta-tools.
+- feat(core/mcp): Upgraded `SessionToolWorkingSet` with explicit runtime `reconfigure(...)` support and bounded eviction history (`getEvictionHistory` / `clearEvictionHistory`) so capacity and eviction telemetry remain observable through hypernexus-native meta-tools.
 - feat(core/mcp): Hardened working-set eviction accounting with idle-aware metadata (`idleEvicted`, `idleDurationMs`, `tier`) and unified history recording for both loaded-tier and hydrated-tier evictions.
-- feat(core/mcp): Added native `set_capacity`, `get_eviction_history`, and `clear_eviction_history` handling in `NativeSessionMetaTools` to keep direct/native mode behavior aligned with MetaMCP proxy expectations.
+- feat(core/mcp): Added native `set_capacity`, `get_eviction_history`, and `clear_eviction_history` handling in `NativeSessionMetaTools` to keep direct/native mode behavior aligned with HyperNexus proxy expectations.
 - test(core): Added focused `SessionToolWorkingSet` coverage (`packages/core/src/mcp/SessionToolWorkingSet.test.ts`) and expanded native meta-tool tests for capacity updates + eviction history (`packages/core/src/mcp/NativeSessionMetaTools.test.ts`); focused tests passed and direct core typecheck passed (`pnpm -C packages/core exec tsc --noEmit`).
 
 ## [2.7.306] — 2026-03-17
 
-- fix(core/mcp): Switched legacy downstream stdio client paths (`Router` and `mcp/StdioClient`) to Hypercode's managed stdio transport so Windows child consoles stay hidden while stdout/stderr remain observable in the MetaMCP log store.
-- fix(core/mcp): Switched legacy downstream stdio client paths (`Router` and `mcp/StdioClient`) to hypercode's managed stdio transport so Windows child consoles stay hidden while stdout/stderr remain observable in the MetaMCP log store.
+- fix(core/mcp): Switched legacy downstream stdio client paths (`Router` and `mcp/StdioClient`) to HyperNexus's managed stdio transport so Windows child consoles stay hidden while stdout/stderr remain observable in the HyperNexus log store.
+- fix(core/mcp): Switched legacy downstream stdio client paths (`Router` and `mcp/StdioClient`) to hypernexus's managed stdio transport so Windows child consoles stay hidden while stdout/stderr remain observable in the HyperNexus log store.
 - test(core): Added regression coverage proving legacy stdio client paths now request managed piped diagnostics instead of raw SDK stdio transport (`packages/core/src/stdio-transport-visibility.test.ts`).
 - test(core): Focused stdio validation passed (`packages/core/src/backgroundCoreBootstrap.test.ts`, `packages/core/src/stdioLoader.test.ts`, `packages/core/src/stdio-transport-visibility.test.ts`); direct core typecheck passed (`pnpm -C packages/core exec tsc --noEmit --pretty false`).
 
 ## [2.7.305] — 2026-03-17
 
-- feat(core/mcp): Split the stdio-facing Hypercode MCP entrypoint into a lightweight loader that advertises cached downstream tool inventory immediately, triggers background core startup, and avoids cold-start stalls during MCP host discovery.
-- feat(core/mcp): Split the stdio-facing hypercode MCP entrypoint into a lightweight loader that advertises cached downstream tool inventory immediately, triggers background core startup, and avoids cold-start stalls during MCP host discovery.
+- feat(core/mcp): Split the stdio-facing HyperNexus MCP entrypoint into a lightweight loader that advertises cached downstream tool inventory immediately, triggers background core startup, and avoids cold-start stalls during MCP host discovery.
+- feat(core/mcp): Split the stdio-facing hypernexus MCP entrypoint into a lightweight loader that advertises cached downstream tool inventory immediately, triggers background core startup, and avoids cold-start stalls during MCP host discovery.
 - feat(core/mcp): Added a dedicated loader status tool plus HTTP proxy handoff for tool execution so the stdio loader can report warming state until the background control plane is ready.
 - refactor(core/orchestrator): Background control-plane startup now launches `MCPServer` with `skipStdio`, leaving stdio ownership to the external loader and preventing duplicated transport responsibility.
 - test(core): Focused loader/bootstrap tests passed (`packages/core/src/backgroundCoreBootstrap.test.ts`, `packages/core/src/stdioLoader.test.ts`); direct core typecheck passed (`pnpm -C packages/core exec tsc --noEmit --pretty false`).
@@ -2458,8 +2459,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ## [2.7.277] — 2026-03-16
 
-- feat(web/mcp/search): `Hydrate schema` now supports load-aware hydration from search results and lane cards — if a tool is not loaded, Hypercode performs `load -> hydrate` in one action.
-- feat(web/mcp/search): `Hydrate schema` now supports load-aware hydration from search results and lane cards — if a tool is not loaded, hypercode performs `load -> hydrate` in one action.
+- feat(web/mcp/search): `Hydrate schema` now supports load-aware hydration from search results and lane cards — if a tool is not loaded, HyperNexus performs `load -> hydrate` in one action.
+- feat(web/mcp/search): `Hydrate schema` now supports load-aware hydration from search results and lane cards — if a tool is not loaded, hypernexus performs `load -> hydrate` in one action.
 - feat(web/mcp/search): Added `Tool visibility lanes` panel with explicit `Always-on advertised` and `Keep warm profile` sections, each showing current loaded/schema state and direct load/hydrate actions.
 - feat(web/mcp/search): Schema-ready badges now resolve from live working-set state so hydrated status remains accurate even when catalog metadata lags.
 - test(validation): `WEB_TSC_OK`; focused MCP tests passed (`apps/web/src/lib/mcp-import.test.ts`, `apps/web/src/app/dashboard/mcp/mcp-dashboard-utils.test.ts`).
@@ -2639,8 +2640,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ## [2.7.251] — 2026-03-16
 
-- feat(web/dashboard): New `system/page.tsx` — operator console showing Hypercode uptime, subsystem readiness checks (from `startupStatus` contract), blocking boot reasons, and navigation cards to Health, Logs, and Audit.
-- feat(web/dashboard): New `system/page.tsx` — operator console showing hypercode uptime, subsystem readiness checks (from `startupStatus` contract), blocking boot reasons, and navigation cards to Health, Logs, and Audit.
+- feat(web/dashboard): New `system/page.tsx` — operator console showing HyperNexus uptime, subsystem readiness checks (from `startupStatus` contract), blocking boot reasons, and navigation cards to Health, Logs, and Audit.
+- feat(web/dashboard): New `system/page.tsx` — operator console showing hypernexus uptime, subsystem readiness checks (from `startupStatus` contract), blocking boot reasons, and navigation cards to Health, Logs, and Audit.
 - feat(web/dashboard): `health/page.tsx` — added `PageStatusBanner` (beta) for maturity labeling.
 - feat(web/dashboard): `logs/page.tsx` — added `PageStatusBanner` (beta) for maturity labeling.
 - feat(web/dashboard): `audit/page.tsx` — added `PageStatusBanner` (beta) for maturity labeling.
@@ -2650,8 +2651,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - fix(core/startup): `buildStartupStatusSnapshot` no longer blocks a **zero-server fresh install** on `mcp_config_sync_pending`. When `configuredServerCount === 0 && persistedServerCount === 0`, config sync is trivially satisfied — waiting for `lastCompletedAt` would stall the boot indefinitely with no MCP servers to sync.
 - fix(core/startup): `configuredServerCount` is now computed before `configSyncReady` so the zero-server guard can reference it cleanly.
-- fix(cli/start): `hypercode start` banner now reads the actual version from the repo `VERSION` file instead of the hardcoded `v2.5.0` string.
-- fix(cli/start): `hypercode start` banner now reads the actual version from the repo `VERSION` file instead of the hardcoded `v2.5.0` string.
+- fix(cli/start): `hypernexus start` banner now reads the actual version from the repo `VERSION` file instead of the hardcoded `v2.5.0` string.
+- fix(cli/start): `hypernexus start` banner now reads the actual version from the repo `VERSION` file instead of the hardcoded `v2.5.0` string.
 - test(core/startup): 2 new tests — `zero-server fresh install boots cleanly when aggregator is initialized even if config sync has never run` + `zero-server pre-init: shows mcp_aggregator_not_initialized but not mcp_config_sync_pending while aggregator bootstraps`; total `startupStatus.test.ts` now 13/13.
 - test(validation): `vitest startupStatus.test.ts` 13/13 passed · `CORE_TSC_OK`.
 
@@ -2660,8 +2661,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - feat(web/dashboard): New `PageStatusBanner` component (`apps/web/src/components/PageStatusBanner.tsx`) provides reusable `experimental` (amber), `beta` (blue), and `external-embed` (gray) status labels for dashboard pages.
 - feat(web/dashboard): `autopilot/page.tsx` — marked **external-embed**: embeds OpenCode Autopilot dashboard via iframe; URL visible in banner note.
 - feat(web/dashboard): `webui/page.tsx` — marked **external-embed**: embeds Open-WebUI via iframe; URL visible in banner note.
-- feat(web/dashboard): `deer-flow/page.tsx` — marked **experimental**: DeerFlow is an external LangGraph agent harness; Hypercode-native orchestration planned for a future release.
-- feat(web/dashboard): `deer-flow/page.tsx` — marked **experimental**: DeerFlow is an external LangGraph agent harness; hypercode-native orchestration planned for a future release.
+- feat(web/dashboard): `deer-flow/page.tsx` — marked **experimental**: DeerFlow is an external LangGraph agent harness; HyperNexus-native orchestration planned for a future release.
+- feat(web/dashboard): `deer-flow/page.tsx` — marked **experimental**: DeerFlow is an external LangGraph agent harness; hypernexus-native orchestration planned for a future release.
 - feat(web/dashboard): `workflows/page.tsx` — marked **beta**: workflow execution UI is functional but under active development.
 - feat(web/dashboard): `swarm/page.tsx` — marked **experimental**: swarm multi-agent orchestration (consensus, slashing, adversarial debate) is under active development.
 - test(validation): `WEB_TSC_OK` — no TypeScript errors.
@@ -2724,42 +2725,42 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [2.7.240] — 2026-03-15
 
 - changed(web/mcp-search): `apps/web/src/app/dashboard/mcp/search/page.tsx` adds a new telemetry triage preset, **Manual failures**, which filters to `source=manual-action`, `status=error`, and a 1h window for one-click operator debugging of direct load/unload/hydrate failures.
-- test(validation): reran focused MCP suites (`toolSearchRanking`, `metamcp-session-working-set`) with `18` tests passing and revalidated web TypeScript gate (`WEB_TSC_OK`).
+- test(validation): reran focused MCP suites (`toolSearchRanking`, `hypernexus-session-working-set`) with `18` tests passing and revalidated web TypeScript gate (`WEB_TSC_OK`).
 
 ## [2.7.239] — 2026-03-15
 
 - feat(core/mcp): `packages/core/src/routers/mcpRouter.ts` now records **manual-action error telemetry** for `loadTool`, `unloadTool`, and `getToolSchema` mutations when downstream MCP calls fail, including tool name, event type, source attribution, and latency.
 - changed(core/mcp): manual mutation handlers now emit telemetry in both success and failure paths before rethrowing errors, improving operator visibility for failed direct actions from the dashboard.
-- test(validation): reran focused MCP suites (`toolSearchRanking`, `metamcp-session-working-set`) with `18` tests passing and revalidated web TypeScript gate (`WEB_TSC_OK`).
+- test(validation): reran focused MCP suites (`toolSearchRanking`, `hypernexus-session-working-set`) with `18` tests passing and revalidated web TypeScript gate (`WEB_TSC_OK`).
 
 ## [2.7.238] — 2026-03-15
 
 - feat(core/mcp): `packages/core/src/routers/mcpRouter.ts` now emits explicit telemetry `source` attribution for non-search events: `runtime-search` and `cached-ranking` for auto-load load events, and `manual-action` for direct load/unload/hydrate actions.
 - feat(core/mcp): `packages/core/src/mcp/toolSelectionTelemetry.ts` extends the telemetry source contract to include `manual-action`, enabling reliable operator triage of user-triggered actions versus automatic routing.
 - changed(web/mcp-search): `apps/web/src/app/dashboard/mcp/search/page.tsx` now supports `manual-action` in telemetry source URL hydration, local filter persistence, source stats/trends, and source filter controls.
-- test(validation): reran focused MCP suites (`toolSearchRanking`, `metamcp-session-working-set`) with `18` tests passing and revalidated web TypeScript gate (`WEB_TSC_OK`).
+- test(validation): reran focused MCP suites (`toolSearchRanking`, `hypernexus-session-working-set`) with `18` tests passing and revalidated web TypeScript gate (`WEB_TSC_OK`).
 
 ## [2.7.237] — 2026-03-15
 
 - feat(core/mcp): `packages/core/src/mcp/toolSearchRanking.ts` now treats runtime auto-loaded top results (`loaded + autoLoaded`) as a first-class evaluated `loaded` outcome, preserving confidence/score-gap/min-threshold context instead of collapsing to a non-applicable state.
 - changed(core/mcp): runtime `search_tools` telemetry in `packages/core/src/routers/mcpRouter.ts` now consumes evaluator decisions directly for runtime auto-loads, eliminating placeholder confidence values and aligning runtime/cached decision semantics.
 - test(core/mcp): expanded `packages/core/src/mcp/toolSearchRanking.test.ts` with regression coverage for runtime auto-loaded vs manually loaded top-result behavior.
-- test(validation): reran focused MCP suites (`toolSearchRanking`, `metamcp-session-working-set`) with `18` tests passing and revalidated web TypeScript gate (`WEB_TSC_OK`).
+- test(validation): reran focused MCP suites (`toolSearchRanking`, `hypernexus-session-working-set`) with `18` tests passing and revalidated web TypeScript gate (`WEB_TSC_OK`).
 
 ## [2.7.236] — 2026-03-15
 
 - feat(core/mcp): `packages/core/src/routers/mcpRouter.ts` now applies confidence-based auto-load evaluation telemetry for runtime `search_tools` responses too (not just cached ranking), including outcome, skip reason, execution status, and threshold fields in emitted search events.
 - fix(core/mcp-search): runtime search profile reranking now preserves runtime `autoLoaded` state by tool name so operator telemetry and loaded-state badges no longer silently drop auto-load attribution when profile ranking is active.
 - feat(core/mcp): auto-load `load` telemetry emitted from both runtime-search and cached-ranking paths now records working-set pressure snapshots when available (`loaded/hydrated` counts, caps, utilization, idle threshold), improving triage under capacity pressure.
-- test(validation): reran focused MCP suites (`toolSearchRanking`, `metamcp-session-working-set`) with `16` tests passing and revalidated web TypeScript gate with explicit `WEB_TSC_OK`.
+- test(validation): reran focused MCP suites (`toolSearchRanking`, `hypernexus-session-working-set`) with `16` tests passing and revalidated web TypeScript gate with explicit `WEB_TSC_OK`.
 
 ## [2.7.235] — 2026-03-15
 
 - feat(core/mcp): `packages/core/src/routers/mcpRouter.ts` now records working-set pressure snapshot fields (`loadedToolCount`, `hydratedSchemaCount`, configured caps, utilization percentages, idle-eviction threshold) on load/unload/hydrate telemetry events.
 - feat(core/mcp): `packages/core/src/mcp/toolSelectionTelemetry.ts` extends the telemetry contract with explicit working-set pressure/limit fields so dashboard consumers can reason about routing behavior under capacity pressure.
 - changed(web/mcp-search): `apps/web/src/app/dashboard/mcp/search/page.tsx` now surfaces pressure context in telemetry cards (loaded/hydrated utilization and idle-eviction threshold), sorts loaded-tool sections by recency, and highlights high idle-eviction risk in the working-set panel.
-- test(core/mcp): expanded `packages/core/src/services/metamcp-session-working-set.service.test.ts` for idle-threshold limit defaults/reconfiguration/clamping and stronger LRU-use assertions.
-- test(validation): reran focused core suites (`metamcp-session-working-set`, `CoreModelSelector`) with `23` tests passing; reran web `tsc --noEmit` with explicit `WEB_TSC_OK`.
+- test(core/mcp): expanded `packages/core/src/services/hypernexus-session-working-set.service.test.ts` for idle-threshold limit defaults/reconfiguration/clamping and stronger LRU-use assertions.
+- test(validation): reran focused core suites (`hypernexus-session-working-set`, `CoreModelSelector`) with `23` tests passing; reran web `tsc --noEmit` with explicit `WEB_TSC_OK`.
 
 ## [2.7.234] — 2026-03-15
 
@@ -3142,14 +3143,14 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [2.7.173] — 2026-03-15
 
 - changed(web/mcp): `/dashboard/mcp/inspector` telemetry now mirrors search-page decision observability by surfacing ignored-result counts and ignored top-choice names per event.
-- feat(web/mcp): added an inspector telemetry triage preset for `Auto-load skips` to quickly isolate cached-ranking search decisions where Hypercode intentionally did not auto-load.
-- feat(web/mcp): added an inspector telemetry triage preset for `Auto-load skips` to quickly isolate cached-ranking search decisions where hypercode intentionally did not auto-load.
+- feat(web/mcp): added an inspector telemetry triage preset for `Auto-load skips` to quickly isolate cached-ranking search decisions where HyperNexus intentionally did not auto-load.
+- feat(web/mcp): added an inspector telemetry triage preset for `Auto-load skips` to quickly isolate cached-ranking search decisions where hypernexus intentionally did not auto-load.
 - changed(web/mcp): inspector telemetry cards now include second-result context (`secondResultName`, `secondMatchReason`, `secondScore`) to make ranking ambiguity easier to debug during operator triage.
 
 ## [2.7.172] — 2026-03-15
 
-- feat(core/mcp): search telemetry now records `ignoredResultCount` and compact `ignoredResultNames` so operators can see what ranked options Hypercode intentionally did not load.
-- feat(core/mcp): search telemetry now records `ignoredResultCount` and compact `ignoredResultNames` so operators can see what ranked options hypercode intentionally did not load.
+- feat(core/mcp): search telemetry now records `ignoredResultCount` and compact `ignoredResultNames` so operators can see what ranked options HyperNexus intentionally did not load.
+- feat(core/mcp): search telemetry now records `ignoredResultCount` and compact `ignoredResultNames` so operators can see what ranked options hypernexus intentionally did not load.
 - changed(core/mcp): runtime-search, cached-ranking, and live-aggregator search paths now all emit ignored-candidate context alongside top/second score telemetry.
 - feat(web/mcp): `/dashboard/mcp/search` telemetry panel now surfaces ignored-result counts and ignored top-choice names per event, plus an `Auto-load skips` preset for faster triage of decision friction.
 
@@ -3248,8 +3249,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ## [2.7.154] — 2026-03-15
 
-- feat(core/mcp): added runtime lifecycle mode controls in `McpServerPool` via `getLifecycleModes()` and `setLifecycleModes()` so lazy/single-active policy can be changed without restarting Hypercode.
-- feat(core/mcp): added runtime lifecycle mode controls in `McpServerPool` via `getLifecycleModes()` and `setLifecycleModes()` so lazy/single-active policy can be changed without restarting hypercode.
+- feat(core/mcp): added runtime lifecycle mode controls in `McpServerPool` via `getLifecycleModes()` and `setLifecycleModes()` so lazy/single-active policy can be changed without restarting HyperNexus.
+- feat(core/mcp): added runtime lifecycle mode controls in `McpServerPool` via `getLifecycleModes()` and `setLifecycleModes()` so lazy/single-active policy can be changed without restarting hypernexus.
 - feat(core/mcp): added `mcp.setLifecycleModes` admin mutation to update lazy session startup and single-active downstream policy at runtime.
 - feat(web/mcp): added Router Status control buttons in `/dashboard/mcp` to toggle Lazy Sessions and Single-active mode directly from the dashboard.
 - changed(core/mcp): `mcp.getStatus` lifecycle values now reflect live pool runtime settings rather than process env defaults.
@@ -3267,13 +3268,13 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ## [2.7.151] — 2026-03-15
 
-- feat(core/mcp): downstream MCP processes now default to lazy session mode (`HYPERCODE_MCP_LAZY_SESSIONS`), preventing idle prewarm spawns until a tool is actually executed.
-- feat(core/mcp): global single-active downstream lifecycle added (`HYPERCODE_MCP_SINGLE_ACTIVE_SERVER`) so one downstream server process remains active at a time; stale active/idle sessions are cleaned before switching.
-- feat(core/mcp): downstream MCP processes now default to lazy session mode (`HYPERCODE_MCP_LAZY_SESSIONS`), preventing idle prewarm spawns until a tool is actually executed.
-- feat(core/mcp): global single-active downstream lifecycle added (`HYPERCODE_MCP_SINGLE_ACTIVE_SERVER`) so one downstream server process remains active at a time; stale active/idle sessions are cleaned before switching.
-- changed(core/mcp): `tools/list` in MetaMCP proxy now prefers cached tool inventory (`getCachedToolInventory`) to avoid spawning all downstream servers during initial MCP host load.
+- feat(core/mcp): downstream MCP processes now default to lazy session mode (`HYPERNEXUS_MCP_LAZY_SESSIONS`), preventing idle prewarm spawns until a tool is actually executed.
+- feat(core/mcp): global single-active downstream lifecycle added (`HYPERNEXUS_MCP_SINGLE_ACTIVE_SERVER`) so one downstream server process remains active at a time; stale active/idle sessions are cleaned before switching.
+- feat(core/mcp): downstream MCP processes now default to lazy session mode (`HYPERNEXUS_MCP_LAZY_SESSIONS`), preventing idle prewarm spawns until a tool is actually executed.
+- feat(core/mcp): global single-active downstream lifecycle added (`HYPERNEXUS_MCP_SINGLE_ACTIVE_SERVER`) so one downstream server process remains active at a time; stale active/idle sessions are cleaned before switching.
+- changed(core/mcp): `tools/list` in HyperNexus proxy now prefers cached tool inventory (`getCachedToolInventory`) to avoid spawning all downstream servers during initial MCP host load.
 - changed(core/mcp): downstream tool execution now lazy-connects on first call when no active client mapping exists, instead of requiring eager bootstrap during discovery.
-- changed(core/mcp): STDIO downstream client wiring now logs both `stderr` and `stdout` to MetaMCP log store while keeping child processes hidden on Windows.
+- changed(core/mcp): STDIO downstream client wiring now logs both `stderr` and `stdout` to HyperNexus log store while keeping child processes hidden on Windows.
 
 ## [2.7.150] — 2026-03-14
 
@@ -3384,8 +3385,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ## [2.7.134] — 2026-03-14
 
-- fixed(mcp/discovery): added per-server timeout guards for downstream `prompts/list`, `resources/list`, and `resources/templates/list` requests so slow or hung downstream servers cannot stall Hypercode discovery handlers.
-- fixed(mcp/discovery): added per-server timeout guards for downstream `prompts/list`, `resources/list`, and `resources/templates/list` requests so slow or hung downstream servers cannot stall hypercode discovery handlers.
+- fixed(mcp/discovery): added per-server timeout guards for downstream `prompts/list`, `resources/list`, and `resources/templates/list` requests so slow or hung downstream servers cannot stall HyperNexus discovery handlers.
+- fixed(mcp/discovery): added per-server timeout guards for downstream `prompts/list`, `resources/list`, and `resources/templates/list` requests so slow or hung downstream servers cannot stall hypernexus discovery handlers.
 - fixed(mcp/discovery): added timeout protection around downstream session bootstrap (`mcpServerPool.getSession`) during discovery scans to prevent `/mcp list` prompt discovery from hanging on unhealthy servers.
 - test(core): added `packages/core/src/mcp/downstreamDiscovery.test.ts` coverage for prompt-discovery timeout fallback and mixed healthy+hung server behavior.
 - changed(build): rebuilt `packages/core/dist` so `server-stdio.js` picks up the MCP discovery timeout fix at runtime.
@@ -3407,14 +3408,14 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ## [2.7.130] — 2026-03-14
 
-- fixed(mcp/config): local dashboard compatibility-mode MCP config writes now target Hypercode config home (`~/.hypercode/mcp.jsonc` + `~/.hypercode/mcp.json`) instead of repo-root files.
-- changed(mcp/config): local compatibility-mode reads now prioritize Hypercode config home and retain repo-root `mcp.jsonc`/`mcp.json` as legacy fallback read sources only.
-- test(mcp/config): updated tRPC route compatibility tests to run against an isolated temporary `HYPERCODE_CONFIG_DIR`, validating local managed-server actions without mutating workspace-root config files.
-- changed(mcp/search-ui): MCP JSONC editor tooltip now reflects Hypercode config-home save location rather than claiming root-repo writes.
-- fixed(mcp/config): local dashboard compatibility-mode MCP config writes now target hypercode config home (`~/.hypercode/mcp.jsonc` + `~/.hypercode/mcp.json`) instead of repo-root files.
-- changed(mcp/config): local compatibility-mode reads now prioritize hypercode config home and retain repo-root `mcp.jsonc`/`mcp.json` as legacy fallback read sources only.
-- test(mcp/config): updated tRPC route compatibility tests to run against an isolated temporary `HYPERCODE_CONFIG_DIR`, validating local managed-server actions without mutating workspace-root config files.
-- changed(mcp/search-ui): MCP JSONC editor tooltip now reflects hypercode config-home save location rather than claiming root-repo writes.
+- fixed(mcp/config): local dashboard compatibility-mode MCP config writes now target HyperNexus config home (`~/.hypernexus/mcp.jsonc` + `~/.hypernexus/mcp.json`) instead of repo-root files.
+- changed(mcp/config): local compatibility-mode reads now prioritize HyperNexus config home and retain repo-root `mcp.jsonc`/`mcp.json` as legacy fallback read sources only.
+- test(mcp/config): updated tRPC route compatibility tests to run against an isolated temporary `HYPERNEXUS_CONFIG_DIR`, validating local managed-server actions without mutating workspace-root config files.
+- changed(mcp/search-ui): MCP JSONC editor tooltip now reflects HyperNexus config-home save location rather than claiming root-repo writes.
+- fixed(mcp/config): local dashboard compatibility-mode MCP config writes now target hypernexus config home (`~/.hypernexus/mcp.jsonc` + `~/.hypernexus/mcp.json`) instead of repo-root files.
+- changed(mcp/config): local compatibility-mode reads now prioritize hypernexus config home and retain repo-root `mcp.jsonc`/`mcp.json` as legacy fallback read sources only.
+- test(mcp/config): updated tRPC route compatibility tests to run against an isolated temporary `HYPERNEXUS_CONFIG_DIR`, validating local managed-server actions without mutating workspace-root config files.
+- changed(mcp/search-ui): MCP JSONC editor tooltip now reflects hypernexus config-home save location rather than claiming root-repo writes.
 
 ## [2.7.129] — 2026-03-14
 
@@ -3489,10 +3490,10 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - changed(mcp/working-set): added operator-configurable working-set capacity controls — `maxLoadedTools` (4..64, default 16) and `maxHydratedSchemas` (2..32, default 8) are now persisted in `mcp.jsonc` preferences.
 - changed(mcp/working-set): `SessionToolWorkingSet` gained a `reconfigure()` method so capacity changes take effect on the live session immediately after saving preferences, without a restart.
 - changed(mcp/working-set): added a bounded eviction-history ring buffer (last 20 events) with `getEvictionHistory()` / `clearEvictionHistory()` — each entry records the evicted tool name, timestamp, and tier (`loaded` | `hydrated`).
-- changed(mcp/meta-tools): added two new meta-tools — `set_capacity` (reconfigures the working-set limits at runtime) and `get_eviction_history` (returns the bounded recent eviction log). Registered in `toolLoadingDefinitions.ts` and handled in `metamcp-proxy.service.ts`.
+- changed(mcp/meta-tools): added two new meta-tools — `set_capacity` (reconfigures the working-set limits at runtime) and `get_eviction_history` (returns the bounded recent eviction log). Registered in `toolLoadingDefinitions.ts` and handled in `hypernexus-proxy.service.ts`.
 - changed(mcp/search): `/dashboard/mcp/search` now includes a "Working-set capacity" panel with sliders for `maxLoadedTools`/`maxHydratedSchemas` that save immediately to preferences and apply to the live session.
 - changed(mcp/search): `/dashboard/mcp/search` now shows a "Recent evictions" panel (conditionally visible) listing the last up to 10 evicted tools with their tier and relative timestamp, polling every 8 s.
-- test(core): updated `metamcp-session-working-set.service.test.ts` with focused coverage for `reconfigure()`, eviction history recording, and `clearEvictionHistory()`.
+- test(core): updated `hypernexus-session-working-set.service.test.ts` with focused coverage for `reconfigure()`, eviction history recording, and `clearEvictionHistory()`.
 
 ## [2.7.117] — 2026-03-14
 
@@ -3537,8 +3538,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - feat(dashboard): added `/dashboard/command` — Command Center page with live slash-command list, REPL execution via `commands` tRPC namespace, and arrow-key history navigation.
 - feat(dashboard): added `/dashboard/chronicle` — Git Chronicle page with configurable commit log and working-tree status via `git` tRPC namespace.
 - feat(dashboard): added `/dashboard/library` — Resource Library hub linking to scripts, skills, tool sets, memory, plans, manual, chronicle, and architecture with live item counts from `savedScripts` and `skills` tRPC namespaces.
-- feat(dashboard): added `/dashboard/context` — Context Manager page for add/remove/clear of context files and assembled context prompt viewer via `hypercodeContext` tRPC namespace.
-- feat(dashboard): added `/dashboard/context` — Context Manager page for add/remove/clear of context files and assembled context prompt viewer via `hypercodeContext` tRPC namespace.
+- feat(dashboard): added `/dashboard/context` — Context Manager page for add/remove/clear of context files and assembled context prompt viewer via `hypernexusContext` tRPC namespace.
+- feat(dashboard): added `/dashboard/context` — Context Manager page for add/remove/clear of context files and assembled context prompt viewer via `hypernexusContext` tRPC namespace.
 - changed(nav): added "Sessions" link to `CORE_DASHBOARD_NAV` pointing to `/dashboard/session` so the session supervisor is reachable from the main nav section.
 - changed(nav): added "Context Manager" entry to `LABS_DASHBOARD_NAV` pointing to `/dashboard/context`.
 - changed(nav): added inline descriptions for `Command`, `Symbols`, `Code`, `Chronicle`, and `Library` nav items.
@@ -3565,20 +3566,20 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - changed(dashboard): improved the `/dashboard` first-run zero-provider experience so the overview metric, provider panel, and fallback panel now tell operators to configure their first provider instead of showing passive empty-state copy.
 
-- docs(readme): aligned `README.md` with the current local `pnpm run dev` readiness launcher, clarified that Docker still exposes the dashboard on `localhost:3001`, documented dynamic dashboard port fallback for local dev, and pointed the repo layout at `apps/hypercode-extension` as the official browser-extension workspace.
+- docs(readme): aligned `README.md` with the current local `pnpm run dev` readiness launcher, clarified that Docker still exposes the dashboard on `localhost:3001`, documented dynamic dashboard port fallback for local dev, and pointed the repo layout at `apps/hypernexus-extension` as the official browser-extension workspace.
 
 - docs(deploy): aligned `DEPLOY.md` with the verified `0.9.0-beta` control-plane workflow, including the root `pnpm run dev` readiness launcher, dashboard port fallback behavior, core bridge probes on `3001`, and startup troubleshooting for dynamic dashboard ports.
 
-- fix(startup): gate verbose `packages/core/src/MCPServer.ts` import/boot progress logs behind `HYPERCODE_MCP_SERVER_DEBUG=1` or `DEBUG=hypercode:mcp-server`, keeping normal `pnpm run dev` output quiet while preserving real errors and fallback warnings.
+- fix(startup): gate verbose `packages/core/src/MCPServer.ts` import/boot progress logs behind `HYPERNEXUS_MCP_SERVER_DEBUG=1` or `DEBUG=hypernexus:mcp-server`, keeping normal `pnpm run dev` output quiet while preserving real errors and fallback warnings.
 
-- fix(startup): `pnpm run dev` now best-effort replaces a reused Hypercode core bridge that is healthy but serving an older `startupStatus` contract by stopping the stale owner via the Hypercode startup lock when available, or via the current port-3001 listener PID only when that listener's command line still looks Hypercode-owned, before launching a fresh CLI/core instance.
-- docs(readme): aligned `README.md` with the current local `pnpm run dev` readiness launcher, clarified that Docker still exposes the dashboard on `localhost:3001`, documented dynamic dashboard port fallback for local dev, and pointed the repo layout at `apps/hypercode-extension` as the official browser-extension workspace.
+- fix(startup): `pnpm run dev` now best-effort replaces a reused HyperNexus core bridge that is healthy but serving an older `startupStatus` contract by stopping the stale owner via the HyperNexus startup lock when available, or via the current port-3001 listener PID only when that listener's command line still looks HyperNexus-owned, before launching a fresh CLI/core instance.
+- docs(readme): aligned `README.md` with the current local `pnpm run dev` readiness launcher, clarified that Docker still exposes the dashboard on `localhost:3001`, documented dynamic dashboard port fallback for local dev, and pointed the repo layout at `apps/hypernexus-extension` as the official browser-extension workspace.
 
 - docs(deploy): aligned `DEPLOY.md` with the verified `0.9.0-beta` control-plane workflow, including the root `pnpm run dev` readiness launcher, dashboard port fallback behavior, core bridge probes on `3001`, and startup troubleshooting for dynamic dashboard ports.
 
-- fix(startup): gate verbose `packages/core/src/MCPServer.ts` import/boot progress logs behind `HYPERCODE_MCP_SERVER_DEBUG=1` or `DEBUG=hypercode:mcp-server`, keeping normal `pnpm run dev` output quiet while preserving real errors and fallback warnings.
+- fix(startup): gate verbose `packages/core/src/MCPServer.ts` import/boot progress logs behind `HYPERNEXUS_MCP_SERVER_DEBUG=1` or `DEBUG=hypernexus:mcp-server`, keeping normal `pnpm run dev` output quiet while preserving real errors and fallback warnings.
 
-- fix(startup): `pnpm run dev` now best-effort replaces a reused hypercode core bridge that is healthy but serving an older `startupStatus` contract by stopping the stale owner via the hypercode startup lock when available, or via the current port-3001 listener PID only when that listener's command line still looks hypercode-owned, before launching a fresh CLI/core instance.
+- fix(startup): `pnpm run dev` now best-effort replaces a reused hypernexus core bridge that is healthy but serving an older `startupStatus` contract by stopping the stale owner via the hypernexus startup lock when available, or via the current port-3001 listener PID only when that listener's command line still looks hypernexus-owned, before launching a fresh CLI/core instance.
 
 - fix(startup): `pnpm run dev` now requires the live `startupStatus` payload to expose the current readiness-contract fields before declaring the stack ready, so reusing an older core bridge no longer produces a false green boot summary and instead surfaces a specific startup-contract refresh warning.
 
@@ -3598,170 +3599,170 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - changed(memory): added a backend `getMemoryTimelineWindow` path plus a pure session-window helper so `/dashboard/memory` can show nearby same-session records around the selected memory anchor instead of relying only on generic related-record heuristics.
 - changed(memory): added a backend `searchMemoryPivot` path and service-level structured pivot matching for session/tool/concept/file metadata, then wired `/dashboard/memory` to use those backend results so inspector pivots return real related records instead of only steering local UI state.
 - changed(memory): added one-click inspector search pivots to `/dashboard/memory` so selected records can immediately re-query by session, tool, concept, or file metadata, and made `All Records` aggregate generic facts with observation/prompt/session-summary searches instead of only hitting the generic memory path.
-- changed(memory): added related-record pivots to the `/dashboard/memory` inspector so selected observations, prompts, and session summaries can jump to correlated records from the same session, tool, source, concepts, or files without leaving the native Hypercode memory timeline.
-- changed(memory): turned `/dashboard/memory` search results into a structured timeline plus detail inspector, grouping records by day and rendering observation/prompt/session-summary sections so operators can drill into Hypercode-native memory provenance instead of scanning a flat blob list.
-- changed(memory): upgraded `/dashboard/memory` from a generic full-text list into a Hypercode-native record explorer with explicit search modes for facts, observations, prompts, and session summaries, added a visible memory-model explainer, and extracted tested helper logic for coherent record titles, previews, timestamps, and provenance tokens.
-- changed(memory): aligned the primary memory dashboard and claude-mem parity surface around Hypercode's actual native memory model, including typed observations, captured prompts, session summaries, clearer provenance, and corrected tier/stat reporting instead of framing claude-mem as the whole runtime story.
-- docs(tasking): completed the ecosystem assimilation consolidation brief, promoted the memory-story follow-up into `tasks/active/`, and anchored the Hypercode-native Track A-F capability map in the roadmap, TODO, and handoff docs so future work references scoped Hypercode tracks instead of repo-wide parity demands.
-- fixed(startup): aligned the Tabby dev launcher waiting logic with resident/always-on MCP runtime semantics, so Hypercode no longer reports startup complete before resident servers warm or waits on the wrong live-runtime label.
-- changed(startup): Hypercode's stdio MCP entrypoint now best-effort boots the long-running Hypercode core as a detached background process when an MCP client launches the router before the control plane is already up, so the interactive MCP client can proceed while the dashboard/bridge warm in parallel.
+- changed(memory): added related-record pivots to the `/dashboard/memory` inspector so selected observations, prompts, and session summaries can jump to correlated records from the same session, tool, source, concepts, or files without leaving the native HyperNexus memory timeline.
+- changed(memory): turned `/dashboard/memory` search results into a structured timeline plus detail inspector, grouping records by day and rendering observation/prompt/session-summary sections so operators can drill into HyperNexus-native memory provenance instead of scanning a flat blob list.
+- changed(memory): upgraded `/dashboard/memory` from a generic full-text list into a HyperNexus-native record explorer with explicit search modes for facts, observations, prompts, and session summaries, added a visible memory-model explainer, and extracted tested helper logic for coherent record titles, previews, timestamps, and provenance tokens.
+- changed(memory): aligned the primary memory dashboard and claude-mem parity surface around HyperNexus's actual native memory model, including typed observations, captured prompts, session summaries, clearer provenance, and corrected tier/stat reporting instead of framing claude-mem as the whole runtime story.
+- docs(tasking): completed the ecosystem assimilation consolidation brief, promoted the memory-story follow-up into `tasks/active/`, and anchored the HyperNexus-native Track A-F capability map in the roadmap, TODO, and handoff docs so future work references scoped HyperNexus tracks instead of repo-wide parity demands.
+- fixed(startup): aligned the Tabby dev launcher waiting logic with resident/always-on MCP runtime semantics, so HyperNexus no longer reports startup complete before resident servers warm or waits on the wrong live-runtime label.
+- changed(startup): HyperNexus's stdio MCP entrypoint now best-effort boots the long-running HyperNexus core as a detached background process when an MCP client launches the router before the control plane is already up, so the interactive MCP client can proceed while the dashboard/bridge warm in parallel.
 - changed(mcp): always-on downstream MCP servers now warm in the background from cached advertised inventory, keeping startup non-blocking while exposing live runtime state, warmup posture, and latest runtime errors more truthfully in the MCP dashboard and inspection panel.
 - fixed(startup): `startupStatus` now counts only actually connected downstream MCP servers as live, while separately surfacing warming and failed warmup counts so the dashboard no longer overstates live runtime readiness during non-blocking startup.
-- changed(startup): split Hypercode startup readiness into cached MCP inventory vs live MCP runtime semantics, including advertised cached server/tool counts and always-on tool counts so operators can see what is available immediately while live connections continue warming.
+- changed(startup): split HyperNexus startup readiness into cached MCP inventory vs live MCP runtime semantics, including advertised cached server/tool counts and always-on tool counts so operators can see what is available immediately while live connections continue warming.
 - changed(dashboard): updated the home dashboard, MCP system status helpers, and launcher waiting labels to explain cached-vs-live MCP posture, memory/context readiness, and non-blocking warmup behavior more truthfully.
 - test(startup): added focused regression coverage for always-on cached tool advertisement, cached-vs-live startup checklist copy, system status rows, and launcher wait-label semantics.
 - fix(mcp): `discoverServerTools` now supports SSE and STREAMABLE_HTTP transports alongside STDIO, with a 30-second timeout to prevent hanging discoveries.
-- fix(config): `mcp.json` and `mcp.jsonc` now default to `~/.hypercode/` instead of the workspace root via new `getHypercodeConfigDir()` helper; `JsonConfigProvider` updated to match.
+- fix(config): `mcp.json` and `mcp.jsonc` now default to `~/.hypernexus/` instead of the workspace root via new `getHyperNexusConfigDir()` helper; `JsonConfigProvider` updated to match.
 ## [0.9.0-beta] - 2026-03-11
 
 ### ✨ Features & Parity Updates
-- **Health, Logs & Operator Surfaces**: Exposed real-time tRPC-driven dashboards under the "Hypercode 1.0 Core" section.
+- **Health, Logs & Operator Surfaces**: Exposed real-time tRPC-driven dashboards under the "HyperNexus 1.0 Core" section.
   - `Health Dashboard`: Tracks system startup readiness, event bus/DB status, and instance-level MCP server crash counts/error states.
   - `Logs Dashboard`: Live searchable view of tool executions, error rates, average latency, and top requested tools.
   - `System Audit Dashboard`: Centralized timeline of security, configuration, and agent-driven events.
-- **Dashboard Honesty Pass**: Restructured application navigation (Top Nav & Sidebar) to clearly separate "Hypercode 1.0 Core" features from "Labs & Experimental" pages.
-- changed(memory): added related-record pivots to the `/dashboard/memory` inspector so selected observations, prompts, and session summaries can jump to correlated records from the same session, tool, source, concepts, or files without leaving the native hypercode memory timeline.
-- changed(memory): turned `/dashboard/memory` search results into a structured timeline plus detail inspector, grouping records by day and rendering observation/prompt/session-summary sections so operators can drill into hypercode-native memory provenance instead of scanning a flat blob list.
-- changed(memory): upgraded `/dashboard/memory` from a generic full-text list into a hypercode-native record explorer with explicit search modes for facts, observations, prompts, and session summaries, added a visible memory-model explainer, and extracted tested helper logic for coherent record titles, previews, timestamps, and provenance tokens.
-- changed(memory): aligned the primary memory dashboard and claude-mem parity surface around hypercode's actual native memory model, including typed observations, captured prompts, session summaries, clearer provenance, and corrected tier/stat reporting instead of framing claude-mem as the whole runtime story.
-- docs(tasking): completed the ecosystem assimilation consolidation brief, promoted the memory-story follow-up into `tasks/active/`, and anchored the hypercode-native Track A-F capability map in the roadmap, TODO, and handoff docs so future work references scoped hypercode tracks instead of repo-wide parity demands.
-- fixed(startup): aligned the Tabby dev launcher waiting logic with resident/always-on MCP runtime semantics, so hypercode no longer reports startup complete before resident servers warm or waits on the wrong live-runtime label.
-- changed(startup): hypercode's stdio MCP entrypoint now best-effort boots the long-running hypercode core as a detached background process when an MCP client launches the router before the control plane is already up, so the interactive MCP client can proceed while the dashboard/bridge warm in parallel.
+- **Dashboard Honesty Pass**: Restructured application navigation (Top Nav & Sidebar) to clearly separate "HyperNexus 1.0 Core" features from "Labs & Experimental" pages.
+- changed(memory): added related-record pivots to the `/dashboard/memory` inspector so selected observations, prompts, and session summaries can jump to correlated records from the same session, tool, source, concepts, or files without leaving the native hypernexus memory timeline.
+- changed(memory): turned `/dashboard/memory` search results into a structured timeline plus detail inspector, grouping records by day and rendering observation/prompt/session-summary sections so operators can drill into hypernexus-native memory provenance instead of scanning a flat blob list.
+- changed(memory): upgraded `/dashboard/memory` from a generic full-text list into a hypernexus-native record explorer with explicit search modes for facts, observations, prompts, and session summaries, added a visible memory-model explainer, and extracted tested helper logic for coherent record titles, previews, timestamps, and provenance tokens.
+- changed(memory): aligned the primary memory dashboard and claude-mem parity surface around hypernexus's actual native memory model, including typed observations, captured prompts, session summaries, clearer provenance, and corrected tier/stat reporting instead of framing claude-mem as the whole runtime story.
+- docs(tasking): completed the ecosystem assimilation consolidation brief, promoted the memory-story follow-up into `tasks/active/`, and anchored the hypernexus-native Track A-F capability map in the roadmap, TODO, and handoff docs so future work references scoped hypernexus tracks instead of repo-wide parity demands.
+- fixed(startup): aligned the Tabby dev launcher waiting logic with resident/always-on MCP runtime semantics, so hypernexus no longer reports startup complete before resident servers warm or waits on the wrong live-runtime label.
+- changed(startup): hypernexus's stdio MCP entrypoint now best-effort boots the long-running hypernexus core as a detached background process when an MCP client launches the router before the control plane is already up, so the interactive MCP client can proceed while the dashboard/bridge warm in parallel.
 - changed(mcp): always-on downstream MCP servers now warm in the background from cached advertised inventory, keeping startup non-blocking while exposing live runtime state, warmup posture, and latest runtime errors more truthfully in the MCP dashboard and inspection panel.
 - fixed(startup): `startupStatus` now counts only actually connected downstream MCP servers as live, while separately surfacing warming and failed warmup counts so the dashboard no longer overstates live runtime readiness during non-blocking startup.
-- changed(startup): split hypercode startup readiness into cached MCP inventory vs live MCP runtime semantics, including advertised cached server/tool counts and always-on tool counts so operators can see what is available immediately while live connections continue warming.
+- changed(startup): split hypernexus startup readiness into cached MCP inventory vs live MCP runtime semantics, including advertised cached server/tool counts and always-on tool counts so operators can see what is available immediately while live connections continue warming.
 - changed(dashboard): updated the home dashboard, MCP system status helpers, and launcher waiting labels to explain cached-vs-live MCP posture, memory/context readiness, and non-blocking warmup behavior more truthfully.
 - test(startup): added focused regression coverage for always-on cached tool advertisement, cached-vs-live startup checklist copy, system status rows, and launcher wait-label semantics.
 - fix(mcp): `discoverServerTools` now supports SSE and STREAMABLE_HTTP transports alongside STDIO, with a 30-second timeout to prevent hanging discoveries.
-- fix(config): `mcp.json` and `mcp.jsonc` now default to `~/.hypercode/` instead of the workspace root via new `getHypercodeConfigDir()` helper; `JsonConfigProvider` updated to match.
+- fix(config): `mcp.json` and `mcp.jsonc` now default to `~/.hypernexus/` instead of the workspace root via new `getHyperNexusConfigDir()` helper; `JsonConfigProvider` updated to match.
 ## [0.9.0-beta] - 2026-03-11
 
 ### ✨ Features & Parity Updates
-- **Health, Logs & Operator Surfaces**: Exposed real-time tRPC-driven dashboards under the "hypercode 1.0 Core" section.
+- **Health, Logs & Operator Surfaces**: Exposed real-time tRPC-driven dashboards under the "hypernexus 1.0 Core" section.
   - `Health Dashboard`: Tracks system startup readiness, event bus/DB status, and instance-level MCP server crash counts/error states.
   - `Logs Dashboard`: Live searchable view of tool executions, error rates, average latency, and top requested tools.
   - `System Audit Dashboard`: Centralized timeline of security, configuration, and agent-driven events.
-- **Dashboard Honesty Pass**: Restructured application navigation (Top Nav & Sidebar) to clearly separate "hypercode 1.0 Core" features from "Labs & Experimental" pages.
+- **Dashboard Honesty Pass**: Restructured application navigation (Top Nav & Sidebar) to clearly separate "hypernexus 1.0 Core" features from "Labs & Experimental" pages.
 - **Experimental Guardrails**: Added explicit "Labs" and "Beta" UI badges to developmental surfaces including the Director, Council, and Super Assistant dashboards.
 
 ### 🐛 Fixes & Polish
 - **Session Supervisor Operator Loop**: Added clear UI badges for "Manual Restart" and "Crashed" session states, surfaced underlying crash errors on session cards, enforced reliable worktree isolation when configured, and improved cross-platform terminal attach commands.
 - **System Status Truthfulness**: The System Status page now renders live tRPC data for Database (SQLite), Event Bus, Version (v0.9.0-beta), and real-time Uptime, removing previously hardcoded placeholders.
 - **MCP Discovery Timeout**: Added a 30-second timeout to MCP server discovery handshakes to prevent infinite hanging when an upstream server stalls.
-- docs: replaced the root `ROADMAP.md` milestone stub with a reality-based roadmap that reflects the current shipped, partial, and blocked Hypercode surfaces.
+- docs: replaced the root `ROADMAP.md` milestone stub with a reality-based roadmap that reflects the current shipped, partial, and blocked HyperNexus surfaces.
 - docs: added canonical root `TODO.md` and `HANDOFF.md` files so implementor models have an ordered queue and current handoff instead of relying on archived docs.
-- fix(cli): `hypercode start` now writes a single-instance lock in `~/.hypercode/lock`, refuses duplicate live startups, clears stale locks automatically, and reuses the stale lock's old port when that port is still available.
-- changed(mcp): removed the active namespaces/endpoints tRPC surface from Hypercode's current control plane so MCP discovery now leans on semantic search/grouping instead of operator-managed namespace or multi-endpoint configuration.
-- fix(core): resolve the supervisor entry from the monorepo root instead of the caller cwd so `@hypercode/cli` dev startup no longer looks for `packages/cli/packages/hypercode-supervisor/dist/index.js`.
-- docs: replaced the root `ROADMAP.md` milestone stub with a reality-based roadmap that reflects the current shipped, partial, and blocked hypercode surfaces.
+- fix(cli): `hypernexus start` now writes a single-instance lock in `~/.hypernexus/lock`, refuses duplicate live startups, clears stale locks automatically, and reuses the stale lock's old port when that port is still available.
+- changed(mcp): removed the active namespaces/endpoints tRPC surface from HyperNexus's current control plane so MCP discovery now leans on semantic search/grouping instead of operator-managed namespace or multi-endpoint configuration.
+- fix(core): resolve the supervisor entry from the monorepo root instead of the caller cwd so `@hypernexus/cli` dev startup no longer looks for `packages/cli/packages/hypernexus-supervisor/dist/index.js`.
+- docs: replaced the root `ROADMAP.md` milestone stub with a reality-based roadmap that reflects the current shipped, partial, and blocked hypernexus surfaces.
 - docs: added canonical root `TODO.md` and `HANDOFF.md` files so implementor models have an ordered queue and current handoff instead of relying on archived docs.
-- fix(cli): `hypercode start` now writes a single-instance lock in `~/.hypercode/lock`, refuses duplicate live startups, clears stale locks automatically, and reuses the stale lock's old port when that port is still available.
-- changed(mcp): removed the active namespaces/endpoints tRPC surface from hypercode's current control plane so MCP discovery now leans on semantic search/grouping instead of operator-managed namespace or multi-endpoint configuration.
-- fix(core): resolve the supervisor entry from the monorepo root instead of the caller cwd so `@hypercode/cli` dev startup no longer looks for `packages/cli/packages/hypercode-supervisor/dist/index.js`.
+- fix(cli): `hypernexus start` now writes a single-instance lock in `~/.hypernexus/lock`, refuses duplicate live startups, clears stale locks automatically, and reuses the stale lock's old port when that port is still available.
+- changed(mcp): removed the active namespaces/endpoints tRPC surface from hypernexus's current control plane so MCP discovery now leans on semantic search/grouping instead of operator-managed namespace or multi-endpoint configuration.
+- fix(core): resolve the supervisor entry from the monorepo root instead of the caller cwd so `@hypernexus/cli` dev startup no longer looks for `packages/cli/packages/hypernexus-supervisor/dist/index.js`.
 - fix(core): defer the MCP bridge HTTP/WebSocket bind to `MCPServer.start()` while preserving `/api/mesh/stream`, so the control plane claims port `3001` in one place during startup.
 - test(core): added `packages/core/test/orchestrator.test.ts` to lock the cwd-independent supervisor resolution behavior.
 
 ### Added
-- Added a Hypercode-native structured observation ingest path in `AgentMemoryService`, including typed observation records, heuristic fact/concept/file extraction, short-window content-hash deduplication, richer memory stats, and new memory-router procedures for recording plus querying recent/searchable observations.
-- Added provider-native memory interchange support for Hypercode JSON and claude-mem stores, including import/export and format conversion through the memory dashboard and tRPC API.
+- Added a HyperNexus-native structured observation ingest path in `AgentMemoryService`, including typed observation records, heuristic fact/concept/file extraction, short-window content-hash deduplication, richer memory stats, and new memory-router procedures for recording plus querying recent/searchable observations.
+- Added provider-native memory interchange support for HyperNexus JSON and claude-mem stores, including import/export and format conversion through the memory dashboard and tRPC API.
 - Added one-click MCP server operator actions on `/dashboard/mcp`, including a combined `Load + cache` flow plus direct shortcuts into tool inspection, tool-behavior editing, and logs for each downstream server.
 - Added default-section coverage reporting to `memory.getClaudeMemStatus` plus state-aware operator guidance on `/dashboard/memory/claude-mem`, so the parity page now distinguishes between a missing adapter store, an empty seeded store, incomplete default bucket coverage, and an actively populated claude-mem shell.
-- Added active memory-pipeline reporting to `memory.getClaudeMemStatus`, so `/dashboard/memory/claude-mem` now shows whether claude-mem is actually wired into Hypercode's current runtime memory fan-out instead of only inferring readiness from the presence of `.hypercode/claude_mem.json` on disk.
-- Added a core-backed install-artifact detector for the Integration Hub so `/dashboard/integrations` now reports whether browser-extension bundles, Firefox-ready assets, VS Code `.vsix` packages, and Hypercode MCP config sources actually exist on disk instead of only showing static build hints.
-- Added a formal extension-bridge client registration contract in `packages/core/src/bridge/bridge-manifest.ts`, including `HYPERCODE_CLIENT_HELLO` metadata normalization plus supported non-MCP capability and hook-phase manifests for live bridge clients.
+- Added active memory-pipeline reporting to `memory.getClaudeMemStatus`, so `/dashboard/memory/claude-mem` now shows whether claude-mem is actually wired into HyperNexus's current runtime memory fan-out instead of only inferring readiness from the presence of `.hypernexus/claude_mem.json` on disk.
+- Added a core-backed install-artifact detector for the Integration Hub so `/dashboard/integrations` now reports whether browser-extension bundles, Firefox-ready assets, VS Code `.vsix` packages, and HyperNexus MCP config sources actually exist on disk instead of only showing static build hints.
+- Added a formal extension-bridge client registration contract in `packages/core/src/bridge/bridge-manifest.ts`, including `HYPERNEXUS_CLIENT_HELLO` metadata normalization plus supported non-MCP capability and hook-phase manifests for live bridge clients.
 - Added focused bridge-manifest regression coverage in `packages/core/src/bridge/bridge-manifest.test.ts` for default client registration, hello metadata merge behavior, and stable manifest generation.
 - Added task-filtered fallback-chain inspection to `billing.getFallbackChain`, plus a selector on `/dashboard/billing` so operators can inspect the ranked provider chain for general, coding, planning, research, worker, and supervisor work instead of only a single generic fallback list.
-- Added a core-backed `memory.getClaudeMemStatus` query plus live adapter-store details on `/dashboard/memory/claude-mem`, so the parity page now reports actual `.hypercode/claude_mem.json` existence, section counts, and last-update state instead of only static audit copy.
-- Added a dedicated `/dashboard/memory/claude-mem` parity/status surface that replaces the old vector-dashboard passthrough with an honest view of Hypercode's current claude-mem assimilation: shipped adapter pieces, partial adjacent memory foundations, and the still-missing upstream hook/search/injection/runtime gaps.
+- Added a core-backed `memory.getClaudeMemStatus` query plus live adapter-store details on `/dashboard/memory/claude-mem`, so the parity page now reports actual `.hypernexus/claude_mem.json` existence, section counts, and last-update state instead of only static audit copy.
+- Added a dedicated `/dashboard/memory/claude-mem` parity/status surface that replaces the old vector-dashboard passthrough with an honest view of HyperNexus's current claude-mem assimilation: shipped adapter pieces, partial adjacent memory foundations, and the still-missing upstream hook/search/injection/runtime gaps.
 - Added a cross-panel operator alert strip to `/dashboard` that summarizes router disconnects, startup readiness drift, degraded providers, and failed supervised sessions in one place so first-time operators can spot trouble without scanning every panel.
-- Added a real supervised-session creation flow on `/dashboard/session`, including detected CLI harness selection, working-directory/env/arg inputs, worktree and auto-restart toggles, and live session controls so operators can launch Hypercode-managed CLI sessions from the dashboard instead of only from backend procedures.
+- Added a real supervised-session creation flow on `/dashboard/session`, including detected CLI harness selection, working-directory/env/arg inputs, worktree and auto-restart toggles, and live session controls so operators can launch HyperNexus-managed CLI sessions from the dashboard instead of only from backend procedures.
 - Added a session details dialog on `/dashboard/session` with buffered supervisor logs, health status, and copyable attach command details so the session supervisor now exposes operator-facing runtime context instead of only compact card summaries.
-- Added a task-routing matrix to `/dashboard/billing` plus a new billing router query so operators can see Hypercode's per-task provider strategy defaults and top-ranked fallback previews for coding, planning, research, worker, supervisor, and general requests.
+- Added a task-routing matrix to `/dashboard/billing` plus a new billing router query so operators can see HyperNexus's per-task provider strategy defaults and top-ranked fallback previews for coding, planning, research, worker, supervisor, and general requests.
 - Added fleet-level MCP discovery actions on `/dashboard/mcp`, including managed-server summary counts plus one-click retry for unresolved metadata and full binary rediscovery across all managed servers.
-- Added editable provider-routing controls on `/dashboard/billing`, including live default strategy updates and per-task routing overrides so operators can tune cost-versus-quality behavior without restarting Hypercode.
-- Added the thirteenth MCP-SuperAssistant assimilation slice for Hypercode's browser extension by preserving stable DOM-backed message identifiers in chat-surface snapshots when surfaces expose them, which reduces operator-facing timeline churn during streaming updates.
-- Added the twelfth MCP-SuperAssistant assimilation slice for Hypercode's browser extension by making chat-surface streaming detection adapter-aware for key surfaces like ChatGPT, Claude, and Gemini, so in-progress assistant output survives nested DOM wrappers more reliably.
-- Added the eleventh MCP-SuperAssistant assimilation slice for Hypercode's browser extension by making chat-surface role inference adapter-aware for key surfaces like ChatGPT, Claude, and Gemini, so nested DOM wrappers preserve who said what more reliably.
-- Added the tenth MCP-SuperAssistant assimilation slice for Hypercode's browser extension by preserving per-execution streaming state in chat-surface snapshots, so pending or newly matched tool runs stay visibly "live" in the traffic inspector instead of dropping back to static timeline rows.
-- Added the ninth MCP-SuperAssistant assimilation slice for Hypercode's browser extension by preserving best-effort message roles and streaming-state hints in chat-surface snapshots, so the traffic inspector can distinguish user, assistant, tool, and in-progress messages instead of showing anonymous text only.
-- Added the eighth MCP-SuperAssistant assimilation slice for Hypercode's browser extension by recognizing unfinished streaming markdown fence blocks in chat-surface snapshots, so in-progress tool calls and results show up before the closing fence lands.
-- Added the seventh MCP-SuperAssistant assimilation slice for Hypercode's browser extension by teaching chat-surface snapshots to recognize unfenced plain-text tool calls and function results, then correlate them into the execution timeline alongside XML/JSON/markdown payloads.
-- Added the sixth MCP-SuperAssistant assimilation slice for Hypercode's browser extension by correlating chat-surface tool calls and function results into a lightweight execution timeline that survives unmatched pending/result-only observations.
-- Added the fifth MCP-SuperAssistant assimilation slice for Hypercode's browser extension by enriching chat-surface snapshots with structured function-result status, summary, and key-field extraction for future render-widget and automation work.
-- Added the fourth MCP-SuperAssistant assimilation slice for Hypercode's browser extension by enriching chat-surface snapshots with extracted tool parameters and function-result candidate detection for future automation and widget rendering work.
-- Added the third MCP-SuperAssistant assimilation slice for Hypercode's browser extension by introducing chat-surface observation telemetry, lightweight tool-call candidate extraction, and traffic-inspector visibility for supported web AI chat surfaces.
-- Added the second MCP-SuperAssistant assimilation slice for Hypercode's browser extension by introducing a host-aware adapter registry plus an injected shadow-DOM sidebar scaffold across the supported browser-chat footprint.
-- Added in-page Hypercode browser actions for supported AI chat surfaces, including adapter-detected input/submit controls, quick page absorption, RAG ingestion, URL copy, and dashboard deep-linking from the new sidebar shell.
-- Added the first MCP-SuperAssistant assimilation slice for Hypercode's browser extension by widening the manifest/content-script browser-chat footprint to ChatGPT, Claude, Gemini, Google AI Studio, Perplexity, Grok, DeepSeek, OpenRouter, T3 Chat, GitHub Copilot, Mistral, Kimi, Qwen Chat, and Z.ai across Chrome/Edge/Firefox.
+- Added editable provider-routing controls on `/dashboard/billing`, including live default strategy updates and per-task routing overrides so operators can tune cost-versus-quality behavior without restarting HyperNexus.
+- Added the thirteenth MCP-SuperAssistant assimilation slice for HyperNexus's browser extension by preserving stable DOM-backed message identifiers in chat-surface snapshots when surfaces expose them, which reduces operator-facing timeline churn during streaming updates.
+- Added the twelfth MCP-SuperAssistant assimilation slice for HyperNexus's browser extension by making chat-surface streaming detection adapter-aware for key surfaces like ChatGPT, Claude, and Gemini, so in-progress assistant output survives nested DOM wrappers more reliably.
+- Added the eleventh MCP-SuperAssistant assimilation slice for HyperNexus's browser extension by making chat-surface role inference adapter-aware for key surfaces like ChatGPT, Claude, and Gemini, so nested DOM wrappers preserve who said what more reliably.
+- Added the tenth MCP-SuperAssistant assimilation slice for HyperNexus's browser extension by preserving per-execution streaming state in chat-surface snapshots, so pending or newly matched tool runs stay visibly "live" in the traffic inspector instead of dropping back to static timeline rows.
+- Added the ninth MCP-SuperAssistant assimilation slice for HyperNexus's browser extension by preserving best-effort message roles and streaming-state hints in chat-surface snapshots, so the traffic inspector can distinguish user, assistant, tool, and in-progress messages instead of showing anonymous text only.
+- Added the eighth MCP-SuperAssistant assimilation slice for HyperNexus's browser extension by recognizing unfinished streaming markdown fence blocks in chat-surface snapshots, so in-progress tool calls and results show up before the closing fence lands.
+- Added the seventh MCP-SuperAssistant assimilation slice for HyperNexus's browser extension by teaching chat-surface snapshots to recognize unfenced plain-text tool calls and function results, then correlate them into the execution timeline alongside XML/JSON/markdown payloads.
+- Added the sixth MCP-SuperAssistant assimilation slice for HyperNexus's browser extension by correlating chat-surface tool calls and function results into a lightweight execution timeline that survives unmatched pending/result-only observations.
+- Added the fifth MCP-SuperAssistant assimilation slice for HyperNexus's browser extension by enriching chat-surface snapshots with structured function-result status, summary, and key-field extraction for future render-widget and automation work.
+- Added the fourth MCP-SuperAssistant assimilation slice for HyperNexus's browser extension by enriching chat-surface snapshots with extracted tool parameters and function-result candidate detection for future automation and widget rendering work.
+- Added the third MCP-SuperAssistant assimilation slice for HyperNexus's browser extension by introducing chat-surface observation telemetry, lightweight tool-call candidate extraction, and traffic-inspector visibility for supported web AI chat surfaces.
+- Added the second MCP-SuperAssistant assimilation slice for HyperNexus's browser extension by introducing a host-aware adapter registry plus an injected shadow-DOM sidebar scaffold across the supported browser-chat footprint.
+- Added in-page HyperNexus browser actions for supported AI chat surfaces, including adapter-detected input/submit controls, quick page absorption, RAG ingestion, URL copy, and dashboard deep-linking from the new sidebar shell.
+- Added the first MCP-SuperAssistant assimilation slice for HyperNexus's browser extension by widening the manifest/content-script browser-chat footprint to ChatGPT, Claude, Gemini, Google AI Studio, Perplexity, Grok, DeepSeek, OpenRouter, T3 Chat, GitHub Copilot, Mistral, Kimi, Qwen Chat, and Z.ai across Chrome/Edge/Firefox.
 - Added a richer `apps/extension` popup operator view that now reports the active surface, supported-platform footprint, and live bridge capabilities instead of only showing ingest buttons.
-- Added a real `/dashboard/super-assistant` parity/status surface that distinguishes what Hypercode has already assimilated from MCP-SuperAssistant (generic bridge footprint and browser tooling) versus the still-pending adapter/sidebar/automation slices.
-- Added a hypercode-native structured observation ingest path in `AgentMemoryService`, including typed observation records, heuristic fact/concept/file extraction, short-window content-hash deduplication, richer memory stats, and new memory-router procedures for recording plus querying recent/searchable observations.
-- Added provider-native memory interchange support for hypercode JSON and claude-mem stores, including import/export and format conversion through the memory dashboard and tRPC API.
+- Added a real `/dashboard/super-assistant` parity/status surface that distinguishes what HyperNexus has already assimilated from MCP-SuperAssistant (generic bridge footprint and browser tooling) versus the still-pending adapter/sidebar/automation slices.
+- Added a hypernexus-native structured observation ingest path in `AgentMemoryService`, including typed observation records, heuristic fact/concept/file extraction, short-window content-hash deduplication, richer memory stats, and new memory-router procedures for recording plus querying recent/searchable observations.
+- Added provider-native memory interchange support for hypernexus JSON and claude-mem stores, including import/export and format conversion through the memory dashboard and tRPC API.
 - Added one-click MCP server operator actions on `/dashboard/mcp`, including a combined `Load + cache` flow plus direct shortcuts into tool inspection, tool-behavior editing, and logs for each downstream server.
 - Added default-section coverage reporting to `memory.getClaudeMemStatus` plus state-aware operator guidance on `/dashboard/memory/claude-mem`, so the parity page now distinguishes between a missing adapter store, an empty seeded store, incomplete default bucket coverage, and an actively populated claude-mem shell.
-- Added active memory-pipeline reporting to `memory.getClaudeMemStatus`, so `/dashboard/memory/claude-mem` now shows whether claude-mem is actually wired into hypercode's current runtime memory fan-out instead of only inferring readiness from the presence of `.hypercode/claude_mem.json` on disk.
-- Added a core-backed install-artifact detector for the Integration Hub so `/dashboard/integrations` now reports whether browser-extension bundles, Firefox-ready assets, VS Code `.vsix` packages, and hypercode MCP config sources actually exist on disk instead of only showing static build hints.
-- Added a formal extension-bridge client registration contract in `packages/core/src/bridge/bridge-manifest.ts`, including `HYPERCODE_CLIENT_HELLO` metadata normalization plus supported non-MCP capability and hook-phase manifests for live bridge clients.
+- Added active memory-pipeline reporting to `memory.getClaudeMemStatus`, so `/dashboard/memory/claude-mem` now shows whether claude-mem is actually wired into hypernexus's current runtime memory fan-out instead of only inferring readiness from the presence of `.hypernexus/claude_mem.json` on disk.
+- Added a core-backed install-artifact detector for the Integration Hub so `/dashboard/integrations` now reports whether browser-extension bundles, Firefox-ready assets, VS Code `.vsix` packages, and hypernexus MCP config sources actually exist on disk instead of only showing static build hints.
+- Added a formal extension-bridge client registration contract in `packages/core/src/bridge/bridge-manifest.ts`, including `HYPERNEXUS_CLIENT_HELLO` metadata normalization plus supported non-MCP capability and hook-phase manifests for live bridge clients.
 - Added focused bridge-manifest regression coverage in `packages/core/src/bridge/bridge-manifest.test.ts` for default client registration, hello metadata merge behavior, and stable manifest generation.
 - Added task-filtered fallback-chain inspection to `billing.getFallbackChain`, plus a selector on `/dashboard/billing` so operators can inspect the ranked provider chain for general, coding, planning, research, worker, and supervisor work instead of only a single generic fallback list.
-- Added a core-backed `memory.getClaudeMemStatus` query plus live adapter-store details on `/dashboard/memory/claude-mem`, so the parity page now reports actual `.hypercode/claude_mem.json` existence, section counts, and last-update state instead of only static audit copy.
-- Added a dedicated `/dashboard/memory/claude-mem` parity/status surface that replaces the old vector-dashboard passthrough with an honest view of hypercode's current claude-mem assimilation: shipped adapter pieces, partial adjacent memory foundations, and the still-missing upstream hook/search/injection/runtime gaps.
+- Added a core-backed `memory.getClaudeMemStatus` query plus live adapter-store details on `/dashboard/memory/claude-mem`, so the parity page now reports actual `.hypernexus/claude_mem.json` existence, section counts, and last-update state instead of only static audit copy.
+- Added a dedicated `/dashboard/memory/claude-mem` parity/status surface that replaces the old vector-dashboard passthrough with an honest view of hypernexus's current claude-mem assimilation: shipped adapter pieces, partial adjacent memory foundations, and the still-missing upstream hook/search/injection/runtime gaps.
 - Added a cross-panel operator alert strip to `/dashboard` that summarizes router disconnects, startup readiness drift, degraded providers, and failed supervised sessions in one place so first-time operators can spot trouble without scanning every panel.
-- Added a real supervised-session creation flow on `/dashboard/session`, including detected CLI harness selection, working-directory/env/arg inputs, worktree and auto-restart toggles, and live session controls so operators can launch hypercode-managed CLI sessions from the dashboard instead of only from backend procedures.
+- Added a real supervised-session creation flow on `/dashboard/session`, including detected CLI harness selection, working-directory/env/arg inputs, worktree and auto-restart toggles, and live session controls so operators can launch hypernexus-managed CLI sessions from the dashboard instead of only from backend procedures.
 - Added a session details dialog on `/dashboard/session` with buffered supervisor logs, health status, and copyable attach command details so the session supervisor now exposes operator-facing runtime context instead of only compact card summaries.
-- Added a task-routing matrix to `/dashboard/billing` plus a new billing router query so operators can see hypercode's per-task provider strategy defaults and top-ranked fallback previews for coding, planning, research, worker, supervisor, and general requests.
+- Added a task-routing matrix to `/dashboard/billing` plus a new billing router query so operators can see hypernexus's per-task provider strategy defaults and top-ranked fallback previews for coding, planning, research, worker, supervisor, and general requests.
 - Added fleet-level MCP discovery actions on `/dashboard/mcp`, including managed-server summary counts plus one-click retry for unresolved metadata and full binary rediscovery across all managed servers.
-- Added editable provider-routing controls on `/dashboard/billing`, including live default strategy updates and per-task routing overrides so operators can tune cost-versus-quality behavior without restarting hypercode.
-- Added the thirteenth MCP-SuperAssistant assimilation slice for hypercode's browser extension by preserving stable DOM-backed message identifiers in chat-surface snapshots when surfaces expose them, which reduces operator-facing timeline churn during streaming updates.
-- Added the twelfth MCP-SuperAssistant assimilation slice for hypercode's browser extension by making chat-surface streaming detection adapter-aware for key surfaces like ChatGPT, Claude, and Gemini, so in-progress assistant output survives nested DOM wrappers more reliably.
-- Added the eleventh MCP-SuperAssistant assimilation slice for hypercode's browser extension by making chat-surface role inference adapter-aware for key surfaces like ChatGPT, Claude, and Gemini, so nested DOM wrappers preserve who said what more reliably.
-- Added the tenth MCP-SuperAssistant assimilation slice for hypercode's browser extension by preserving per-execution streaming state in chat-surface snapshots, so pending or newly matched tool runs stay visibly "live" in the traffic inspector instead of dropping back to static timeline rows.
-- Added the ninth MCP-SuperAssistant assimilation slice for hypercode's browser extension by preserving best-effort message roles and streaming-state hints in chat-surface snapshots, so the traffic inspector can distinguish user, assistant, tool, and in-progress messages instead of showing anonymous text only.
-- Added the eighth MCP-SuperAssistant assimilation slice for hypercode's browser extension by recognizing unfinished streaming markdown fence blocks in chat-surface snapshots, so in-progress tool calls and results show up before the closing fence lands.
-- Added the seventh MCP-SuperAssistant assimilation slice for hypercode's browser extension by teaching chat-surface snapshots to recognize unfenced plain-text tool calls and function results, then correlate them into the execution timeline alongside XML/JSON/markdown payloads.
-- Added the sixth MCP-SuperAssistant assimilation slice for hypercode's browser extension by correlating chat-surface tool calls and function results into a lightweight execution timeline that survives unmatched pending/result-only observations.
-- Added the fifth MCP-SuperAssistant assimilation slice for hypercode's browser extension by enriching chat-surface snapshots with structured function-result status, summary, and key-field extraction for future render-widget and automation work.
-- Added the fourth MCP-SuperAssistant assimilation slice for hypercode's browser extension by enriching chat-surface snapshots with extracted tool parameters and function-result candidate detection for future automation and widget rendering work.
-- Added the third MCP-SuperAssistant assimilation slice for hypercode's browser extension by introducing chat-surface observation telemetry, lightweight tool-call candidate extraction, and traffic-inspector visibility for supported web AI chat surfaces.
-- Added the second MCP-SuperAssistant assimilation slice for hypercode's browser extension by introducing a host-aware adapter registry plus an injected shadow-DOM sidebar scaffold across the supported browser-chat footprint.
-- Added in-page hypercode browser actions for supported AI chat surfaces, including adapter-detected input/submit controls, quick page absorption, RAG ingestion, URL copy, and dashboard deep-linking from the new sidebar shell.
-- Added the first MCP-SuperAssistant assimilation slice for hypercode's browser extension by widening the manifest/content-script browser-chat footprint to ChatGPT, Claude, Gemini, Google AI Studio, Perplexity, Grok, DeepSeek, OpenRouter, T3 Chat, GitHub Copilot, Mistral, Kimi, Qwen Chat, and Z.ai across Chrome/Edge/Firefox.
+- Added editable provider-routing controls on `/dashboard/billing`, including live default strategy updates and per-task routing overrides so operators can tune cost-versus-quality behavior without restarting hypernexus.
+- Added the thirteenth MCP-SuperAssistant assimilation slice for hypernexus's browser extension by preserving stable DOM-backed message identifiers in chat-surface snapshots when surfaces expose them, which reduces operator-facing timeline churn during streaming updates.
+- Added the twelfth MCP-SuperAssistant assimilation slice for hypernexus's browser extension by making chat-surface streaming detection adapter-aware for key surfaces like ChatGPT, Claude, and Gemini, so in-progress assistant output survives nested DOM wrappers more reliably.
+- Added the eleventh MCP-SuperAssistant assimilation slice for hypernexus's browser extension by making chat-surface role inference adapter-aware for key surfaces like ChatGPT, Claude, and Gemini, so nested DOM wrappers preserve who said what more reliably.
+- Added the tenth MCP-SuperAssistant assimilation slice for hypernexus's browser extension by preserving per-execution streaming state in chat-surface snapshots, so pending or newly matched tool runs stay visibly "live" in the traffic inspector instead of dropping back to static timeline rows.
+- Added the ninth MCP-SuperAssistant assimilation slice for hypernexus's browser extension by preserving best-effort message roles and streaming-state hints in chat-surface snapshots, so the traffic inspector can distinguish user, assistant, tool, and in-progress messages instead of showing anonymous text only.
+- Added the eighth MCP-SuperAssistant assimilation slice for hypernexus's browser extension by recognizing unfinished streaming markdown fence blocks in chat-surface snapshots, so in-progress tool calls and results show up before the closing fence lands.
+- Added the seventh MCP-SuperAssistant assimilation slice for hypernexus's browser extension by teaching chat-surface snapshots to recognize unfenced plain-text tool calls and function results, then correlate them into the execution timeline alongside XML/JSON/markdown payloads.
+- Added the sixth MCP-SuperAssistant assimilation slice for hypernexus's browser extension by correlating chat-surface tool calls and function results into a lightweight execution timeline that survives unmatched pending/result-only observations.
+- Added the fifth MCP-SuperAssistant assimilation slice for hypernexus's browser extension by enriching chat-surface snapshots with structured function-result status, summary, and key-field extraction for future render-widget and automation work.
+- Added the fourth MCP-SuperAssistant assimilation slice for hypernexus's browser extension by enriching chat-surface snapshots with extracted tool parameters and function-result candidate detection for future automation and widget rendering work.
+- Added the third MCP-SuperAssistant assimilation slice for hypernexus's browser extension by introducing chat-surface observation telemetry, lightweight tool-call candidate extraction, and traffic-inspector visibility for supported web AI chat surfaces.
+- Added the second MCP-SuperAssistant assimilation slice for hypernexus's browser extension by introducing a host-aware adapter registry plus an injected shadow-DOM sidebar scaffold across the supported browser-chat footprint.
+- Added in-page hypernexus browser actions for supported AI chat surfaces, including adapter-detected input/submit controls, quick page absorption, RAG ingestion, URL copy, and dashboard deep-linking from the new sidebar shell.
+- Added the first MCP-SuperAssistant assimilation slice for hypernexus's browser extension by widening the manifest/content-script browser-chat footprint to ChatGPT, Claude, Gemini, Google AI Studio, Perplexity, Grok, DeepSeek, OpenRouter, T3 Chat, GitHub Copilot, Mistral, Kimi, Qwen Chat, and Z.ai across Chrome/Edge/Firefox.
 - Added a richer `apps/extension` popup operator view that now reports the active surface, supported-platform footprint, and live bridge capabilities instead of only showing ingest buttons.
-- Added a real `/dashboard/super-assistant` parity/status surface that distinguishes what hypercode has already assimilated from MCP-SuperAssistant (generic bridge footprint and browser tooling) versus the still-pending adapter/sidebar/automation slices.
+- Added a real `/dashboard/super-assistant` parity/status surface that distinguishes what hypernexus has already assimilated from MCP-SuperAssistant (generic bridge footprint and browser tooling) versus the still-pending adapter/sidebar/automation slices.
 - Added a canonical `startupStatus` tRPC system procedure in `packages/core` that summarizes MCP, memory, browser, session-supervisor, and extension-bridge readiness for boot-time orchestration and dashboard consumers.
 - Added boot-state tracking getters for MCP config sync, session restoration, and MCP aggregator initialization so `startupStatus` can report completed startup work instead of only object presence.
 - Added a normalized provider-routing layer under `packages/core/src/providers/` with provider auth-state detection, quota snapshots, task-aware routing strategies, and fallback-chain inspection for dashboard consumers.
 - Added focused provider-routing regression coverage in `packages/core/providers/__tests__/` for auth normalization, quota tracking, deterministic strategy ordering, and quota/rate-limit failover behavior.
 - Added a new supervised CLI session runtime under `packages/core/src/supervisor/` with typed session metadata, crash-aware restart handling, persisted session state, log capture, attach info, and worktree-aware isolation hooks.
 - Added focused session-supervisor coverage in `packages/core/supervisor/__tests__/` for spawn, restart, health, persistence, and parallel worktree isolation behavior.
-- Added a real `/dashboard` home surface in `apps/web/src/app/dashboard/` that composes live MCP status, recent traffic, supervised session controls, and provider quota/fallback state into the four Hypercode 1.0 panels.
-- Added a real `/dashboard` home surface in `apps/web/src/app/dashboard/` that composes live MCP status, recent traffic, supervised session controls, and provider quota/fallback state into the four hypercode 1.0 panels.
+- Added a real `/dashboard` home surface in `apps/web/src/app/dashboard/` that composes live MCP status, recent traffic, supervised session controls, and provider quota/fallback state into the four HyperNexus 1.0 panels.
+- Added a real `/dashboard` home surface in `apps/web/src/app/dashboard/` that composes live MCP status, recent traffic, supervised session controls, and provider quota/fallback state into the four hypernexus 1.0 panels.
 - Added focused web coverage for the new dashboard home view and summary helpers in `apps/web/src/app/dashboard/dashboard-home-view.test.tsx`.
 - Added dashboard integration coverage under `apps/web/tests/integration/` for MCP router status bridging, provider fallback visibility, and supervised session lifecycle actions.
 
 ### Changed
-- Clarified `/dashboard/mcp` when Hypercode is operating in local compat fallback mode by surfacing fleet-level `Local compat` counts plus per-server labels that explain those action links are backed by Hypercode-managed local config records while live core telemetry is unavailable.
-- Clarified `/dashboard/mcp` when hypercode is operating in local compat fallback mode by surfacing fleet-level `Local compat` counts plus per-server labels that explain those action links are backed by hypercode-managed local config records while live core telemetry is unavailable.
+- Clarified `/dashboard/mcp` when HyperNexus is operating in local compat fallback mode by surfacing fleet-level `Local compat` counts plus per-server labels that explain those action links are backed by HyperNexus-managed local config records while live core telemetry is unavailable.
+- Clarified `/dashboard/mcp` when hypernexus is operating in local compat fallback mode by surfacing fleet-level `Local compat` counts plus per-server labels that explain those action links are backed by hypernexus-managed local config records while live core telemetry is unavailable.
 - Made `/dashboard/integrations` operator actions directly copyable with inline clipboard feedback, so build commands, install commands, bundle paths, manifest paths, and internal routes can be used without manual retyping.
 - Made `/dashboard/integrations` more actionable by deriving a concrete operator action for each install surface, such as the loadable unpacked folder, Firefox manifest path, VSIX install command, packaging command, or MCP settings route.
 - Refined `/dashboard/integrations` artifact reporting again so install cards now identify the detected artifact kind (for example VSIX package vs compiled output vs unpacked browser bundle) and show the exact detected timestamp alongside the relative freshness label.
 - Enriched `/dashboard/integrations` install-surface detection and cards with declared package version plus artifact age/freshness metadata, so operators can tell whether a detected extension bundle, VSIX, or config source looks current instead of only knowing that a path exists.
-- Tightened `/dashboard/integrations` so browser-extension install cards now point at the current packaged `apps/hypercode-extension` workspace and include status-aware next-step guidance such as build, package, load, or sync actions instead of only static install prose.
-- Refined the `startupStatus` readiness contract so Hypercode now treats an initialized-but-empty MCP inventory as valid, reports the extension bridge as ready when the listener is accepting connections even before any clients attach, and keeps the dashboard startup checklist aligned with that fresher boot semantics instead of waiting forever on zero-client/zero-server fresh installs.
-- Replaced the root `build` entrypoint with a cross-platform `scripts/build_all.mjs` orchestrator that now builds Hypercode's first-party Turbo workspace graph, refreshes and builds the excluded `apps/hypercode-extension` workspace for both Chromium and Firefox while preserving separate `dist-chromium` / `dist-firefox` outputs, and skips the JetBrains plugin only when Gradle is unavailable unless `HYPERCODE_REQUIRE_JETBRAINS_BUILD=true` is set.
-- Extended Hypercode Core's live extension bridge in `packages/core/src/MCPServer.ts` and `packages/core/src/routers/systemProcedures.ts` so connected browser and VS Code clients now self-identify, advertise non-MCP capabilities and supported hook phases, and surface that richer runtime state through `startupStatus` instead of only reporting a raw websocket client count.
-- Updated the browser extension, VS Code extension, and `/dashboard/integrations` operator surface so live bridge clients now register with Hypercode Core on connect and the Integration Hub shows connected clients, advertised non-MCP capabilities, hook phases, and last-seen metadata.
+- Tightened `/dashboard/integrations` so browser-extension install cards now point at the current packaged `apps/hypernexus-extension` workspace and include status-aware next-step guidance such as build, package, load, or sync actions instead of only static install prose.
+- Refined the `startupStatus` readiness contract so HyperNexus now treats an initialized-but-empty MCP inventory as valid, reports the extension bridge as ready when the listener is accepting connections even before any clients attach, and keeps the dashboard startup checklist aligned with that fresher boot semantics instead of waiting forever on zero-client/zero-server fresh installs.
+- Replaced the root `build` entrypoint with a cross-platform `scripts/build_all.mjs` orchestrator that now builds HyperNexus's first-party Turbo workspace graph, refreshes and builds the excluded `apps/hypernexus-extension` workspace for both Chromium and Firefox while preserving separate `dist-chromium` / `dist-firefox` outputs, and skips the JetBrains plugin only when Gradle is unavailable unless `HYPERNEXUS_REQUIRE_JETBRAINS_BUILD=true` is set.
+- Extended HyperNexus Core's live extension bridge in `packages/core/src/MCPServer.ts` and `packages/core/src/routers/systemProcedures.ts` so connected browser and VS Code clients now self-identify, advertise non-MCP capabilities and supported hook phases, and surface that richer runtime state through `startupStatus` instead of only reporting a raw websocket client count.
+- Updated the browser extension, VS Code extension, and `/dashboard/integrations` operator surface so live bridge clients now register with HyperNexus Core on connect and the Integration Hub shows connected clients, advertised non-MCP capabilities, hook phases, and last-seen metadata.
 - Updated the home dashboard session ordering so attention-needed supervised sessions (`error`, `restarting`, and other transitional states) now appear ahead of merely recent healthy sessions, making crash/restart posture easier to spot at a glance.
-- Exposed session restart policy in the dashboard and session views, so operators can now see when a supervised CLI session is configured for manual restart only instead of assuming Hypercode will always auto-recover it after a crash.
-- Enriched the supervised session surface so Hypercode now records queued restart timestamps and last-exit details in `packages/core/src/supervisor/`, then surfaces restart countdowns on `/dashboard` and `/dashboard/session` instead of making operators infer backoff posture from raw logs alone.
-- Tightened `/dashboard/integrations` so browser-extension install cards now point at the current packaged `apps/hypercode-extension` workspace and include status-aware next-step guidance such as build, package, load, or sync actions instead of only static install prose.
-- Refined the `startupStatus` readiness contract so hypercode now treats an initialized-but-empty MCP inventory as valid, reports the extension bridge as ready when the listener is accepting connections even before any clients attach, and keeps the dashboard startup checklist aligned with that fresher boot semantics instead of waiting forever on zero-client/zero-server fresh installs.
-- Replaced the root `build` entrypoint with a cross-platform `scripts/build_all.mjs` orchestrator that now builds hypercode's first-party Turbo workspace graph, refreshes and builds the excluded `apps/hypercode-extension` workspace for both Chromium and Firefox while preserving separate `dist-chromium` / `dist-firefox` outputs, and skips the JetBrains plugin only when Gradle is unavailable unless `HYPERCODE_REQUIRE_JETBRAINS_BUILD=true` is set.
-- Extended hypercode Core's live extension bridge in `packages/core/src/MCPServer.ts` and `packages/core/src/routers/systemProcedures.ts` so connected browser and VS Code clients now self-identify, advertise non-MCP capabilities and supported hook phases, and surface that richer runtime state through `startupStatus` instead of only reporting a raw websocket client count.
-- Updated the browser extension, VS Code extension, and `/dashboard/integrations` operator surface so live bridge clients now register with hypercode Core on connect and the Integration Hub shows connected clients, advertised non-MCP capabilities, hook phases, and last-seen metadata.
+- Exposed session restart policy in the dashboard and session views, so operators can now see when a supervised CLI session is configured for manual restart only instead of assuming HyperNexus will always auto-recover it after a crash.
+- Enriched the supervised session surface so HyperNexus now records queued restart timestamps and last-exit details in `packages/core/src/supervisor/`, then surfaces restart countdowns on `/dashboard` and `/dashboard/session` instead of making operators infer backoff posture from raw logs alone.
+- Tightened `/dashboard/integrations` so browser-extension install cards now point at the current packaged `apps/hypernexus-extension` workspace and include status-aware next-step guidance such as build, package, load, or sync actions instead of only static install prose.
+- Refined the `startupStatus` readiness contract so hypernexus now treats an initialized-but-empty MCP inventory as valid, reports the extension bridge as ready when the listener is accepting connections even before any clients attach, and keeps the dashboard startup checklist aligned with that fresher boot semantics instead of waiting forever on zero-client/zero-server fresh installs.
+- Replaced the root `build` entrypoint with a cross-platform `scripts/build_all.mjs` orchestrator that now builds hypernexus's first-party Turbo workspace graph, refreshes and builds the excluded `apps/hypernexus-extension` workspace for both Chromium and Firefox while preserving separate `dist-chromium` / `dist-firefox` outputs, and skips the JetBrains plugin only when Gradle is unavailable unless `HYPERNEXUS_REQUIRE_JETBRAINS_BUILD=true` is set.
+- Extended hypernexus Core's live extension bridge in `packages/core/src/MCPServer.ts` and `packages/core/src/routers/systemProcedures.ts` so connected browser and VS Code clients now self-identify, advertise non-MCP capabilities and supported hook phases, and surface that richer runtime state through `startupStatus` instead of only reporting a raw websocket client count.
+- Updated the browser extension, VS Code extension, and `/dashboard/integrations` operator surface so live bridge clients now register with hypernexus Core on connect and the Integration Hub shows connected clients, advertised non-MCP capabilities, hook phases, and last-seen metadata.
 - Updated the home dashboard session ordering so attention-needed supervised sessions (`error`, `restarting`, and other transitional states) now appear ahead of merely recent healthy sessions, making crash/restart posture easier to spot at a glance.
-- Exposed session restart policy in the dashboard and session views, so operators can now see when a supervised CLI session is configured for manual restart only instead of assuming hypercode will always auto-recover it after a crash.
-- Enriched the supervised session surface so hypercode now records queued restart timestamps and last-exit details in `packages/core/src/supervisor/`, then surfaces restart countdowns on `/dashboard` and `/dashboard/session` instead of making operators infer backoff posture from raw logs alone.
+- Exposed session restart policy in the dashboard and session views, so operators can now see when a supervised CLI session is configured for manual restart only instead of assuming hypernexus will always auto-recover it after a crash.
+- Enriched the supervised session surface so hypernexus now records queued restart timestamps and last-exit details in `packages/core/src/supervisor/`, then surfaces restart countdowns on `/dashboard` and `/dashboard/session` instead of making operators infer backoff posture from raw logs alone.
 - Updated the Jules session activity feed so transcript export actions now live behind the upper-right overflow menu, with PDF print joining the existing Markdown/Text/JSON exports through a print-friendly transcript layout.
 - Updated the same activity-feed export flow to use format-specific MIME types for Markdown/TXT/JSON downloads and aligned the transcript menu label from `Text` to `TXT`.
 - Updated the Jules activity feed's new below-bubble action row so copy now unwraps real message text from placeholder/wrapped payloads and hides itself for empty or non-copyable entries instead of copying useless sentinel strings.
@@ -3770,10 +3771,10 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - Updated the browser content script and `/dashboard/super-assistant` parity copy to reflect that role inference now uses adapter-aware DOM selectors before falling back to generic class/attribute heuristics.
 - Updated the browser chat-surface observer, protocol spec, traffic inspector, and `/dashboard/super-assistant` parity copy to surface execution-level streaming metadata alongside the existing message, tool-call, and function-result hints.
 - Updated the browser chat-surface observer, protocol spec, traffic inspector, and `/dashboard/super-assistant` parity copy to surface message-role and streaming metadata alongside the existing tool-call/result timeline.
-- Updated the browser chat-surface observer, protocol spec, and `/dashboard/super-assistant` parity copy to reflect that Hypercode now understands both complete and still-streaming fenced tool/result hints, not just fully closed blocks.
-- Updated the browser chat-surface observer, protocol spec, and `/dashboard/super-assistant` parity copy to reflect that Hypercode now recognizes both fenced and plain-text streamed tool/result hints before the full AST/widget layer lands.
-- Updated the browser chat-surface observer, protocol spec, and `/dashboard/super-assistant` parity copy to reflect that hypercode now understands both complete and still-streaming fenced tool/result hints, not just fully closed blocks.
-- Updated the browser chat-surface observer, protocol spec, and `/dashboard/super-assistant` parity copy to reflect that hypercode now recognizes both fenced and plain-text streamed tool/result hints before the full AST/widget layer lands.
+- Updated the browser chat-surface observer, protocol spec, and `/dashboard/super-assistant` parity copy to reflect that HyperNexus now understands both complete and still-streaming fenced tool/result hints, not just fully closed blocks.
+- Updated the browser chat-surface observer, protocol spec, and `/dashboard/super-assistant` parity copy to reflect that HyperNexus now recognizes both fenced and plain-text streamed tool/result hints before the full AST/widget layer lands.
+- Updated the browser chat-surface observer, protocol spec, and `/dashboard/super-assistant` parity copy to reflect that hypernexus now understands both complete and still-streaming fenced tool/result hints, not just fully closed blocks.
+- Updated the browser chat-surface observer, protocol spec, and `/dashboard/super-assistant` parity copy to reflect that hypernexus now recognizes both fenced and plain-text streamed tool/result hints before the full AST/widget layer lands.
 - Updated the dashboard traffic inspector, protocol spec, and `/dashboard/super-assistant` parity copy to surface the new chat-surface execution timeline alongside tool-call and function-result summaries.
 - Updated the dashboard traffic inspector and `/dashboard/super-assistant` parity copy to surface structured function-result telemetry instead of only raw candidate detection.
 - Updated the dashboard traffic inspector and `/dashboard/super-assistant` parity copy to surface the richer chat-surface snapshots, including structured tool-call parameters and function-result summaries.
@@ -3786,81 +3787,81 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - Surfaced the richer `startupStatus` payload on the dashboard home and MCP system pages so operators can see startup readiness, cached router inventory, config-sync completion, session restore progress, and extension-bridge state without reading launcher logs.
 - Upgraded `apps/web/src/app/dashboard/billing/page.tsx` into a more actionable operator surface by adding direct provider portal links for API keys, usage, billing, subscriptions, and docs, while exposing richer auth-state details from `packages/core/src/routers/billingRouter.ts`.
 - Upgraded `apps/web/src/app/dashboard/mcp/ai-tools/page.tsx` into a practical AI tool directory backed by live CLI harness detection, supervised-session counts, and provider-auth/quota metadata, so operators can quickly see which local harnesses are installed and jump into provider management from the same surface.
-- Added a new `/dashboard/integrations` hub that consolidates Hypercode browser-extension install paths, VS Code packaging hints, supported MCP client sync targets, known config locations for adjacent clients, and live bridge/runtime readiness into one operator-facing setup surface.
+- Added a new `/dashboard/integrations` hub that consolidates HyperNexus browser-extension install paths, VS Code packaging hints, supported MCP client sync targets, known config locations for adjacent clients, and live bridge/runtime readiness into one operator-facing setup surface.
 - Submodule inventory and cleanup tooling now use `.gitmodules` as the live registry source; `scripts/update_submodules_doc.mjs` rebuilds `docs/SUBMODULES.md` from the current registry, `docs/SUBMODULE_DASHBOARD.md` reflects the actual five approved tracked submodules, and `scripts/prune_orphaned_gitlinks.mjs` can remove legacy orphaned gitlinks from the index without touching the five live entries.
-- Direct Hypercode-native MCP mode now exposes a MetaMCP-compatible `run_code` alias and executes it without requiring operators to manually toggle Code Mode first, shrinking the remaining proxy-only surface in `packages/core/src/MCPServer.ts`.
-- Direct Hypercode-native MCP mode now also exposes a MetaMCP-compatible `run_python` alias backed by Hypercode's sandbox service, further reducing the remaining MetaMCP-only execution surface.
-- Direct Hypercode-native MCP mode now also exposes a MetaMCP-compatible `run_agent` path backed by Hypercode's native LLM service and delegated direct-mode tool execution, including recursion guards that keep autonomous agent loops from re-entering `run_agent` or `run_code`.
-- Direct Hypercode-native MCP mode now also exposes a MetaMCP-compatible `save_memory` alias backed by Hypercode's native agent memory service, trimming another direct-mode dependency on the MetaMCP proxy.
-- Direct Hypercode-native MCP mode now also exposes MetaMCP-compatible `save_script` plus direct-mode `script__*` saved-script tools backed by Hypercode-managed config storage and sandbox execution.
-- Direct Hypercode-native MCP mode now also exposes MetaMCP-compatible `save_tool_set`, `load_tool_set`, and `toolset_list` behavior backed by Hypercode-managed config storage plus the native session working set, eliminating another chunk of remaining direct-mode proxy dependence.
-- Direct Hypercode-native MCP mode now also exposes MetaMCP-compatible `import_mcp_config` backed by Hypercode's existing config import service, which closes out the old proxy meta-tool cluster for direct-mode sessions.
-- Hypercode-native MCP handlers now serve downstream `prompts/list`, `prompts/get`, `resources/list`, `resources/read`, and `resources/templates/list` through the shared downstream session pool, so prompt/resource discovery no longer depends on the MetaMCP bridge even when that bridge is still mounted for tool middleware.
-- The optional MetaMCP proxy now reuses Hypercode's shared downstream discovery helper for prompt/resource/template passthrough instead of maintaining a second inline implementation, narrowing the remaining bridge-specific surface to tool list/call middleware behavior.
-- `packages/core/src/MCPServer.ts` now mounts the optional MetaMCP proxy with downstream discovery registration disabled, so Hypercode's native prompt/resource handlers stay canonical while the proxy is reduced further toward tool list/call middleware responsibilities.
+- Direct HyperNexus-native MCP mode now exposes a HyperNexus-compatible `run_code` alias and executes it without requiring operators to manually toggle Code Mode first, shrinking the remaining proxy-only surface in `packages/core/src/MCPServer.ts`.
+- Direct HyperNexus-native MCP mode now also exposes a HyperNexus-compatible `run_python` alias backed by HyperNexus's sandbox service, further reducing the remaining HyperNexus-only execution surface.
+- Direct HyperNexus-native MCP mode now also exposes a HyperNexus-compatible `run_agent` path backed by HyperNexus's native LLM service and delegated direct-mode tool execution, including recursion guards that keep autonomous agent loops from re-entering `run_agent` or `run_code`.
+- Direct HyperNexus-native MCP mode now also exposes a HyperNexus-compatible `save_memory` alias backed by HyperNexus's native agent memory service, trimming another direct-mode dependency on the HyperNexus proxy.
+- Direct HyperNexus-native MCP mode now also exposes HyperNexus-compatible `save_script` plus direct-mode `script__*` saved-script tools backed by HyperNexus-managed config storage and sandbox execution.
+- Direct HyperNexus-native MCP mode now also exposes HyperNexus-compatible `save_tool_set`, `load_tool_set`, and `toolset_list` behavior backed by HyperNexus-managed config storage plus the native session working set, eliminating another chunk of remaining direct-mode proxy dependence.
+- Direct HyperNexus-native MCP mode now also exposes HyperNexus-compatible `import_mcp_config` backed by HyperNexus's existing config import service, which closes out the old proxy meta-tool cluster for direct-mode sessions.
+- HyperNexus-native MCP handlers now serve downstream `prompts/list`, `prompts/get`, `resources/list`, `resources/read`, and `resources/templates/list` through the shared downstream session pool, so prompt/resource discovery no longer depends on the HyperNexus bridge even when that bridge is still mounted for tool middleware.
+- The optional HyperNexus proxy now reuses HyperNexus's shared downstream discovery helper for prompt/resource/template passthrough instead of maintaining a second inline implementation, narrowing the remaining bridge-specific surface to tool list/call middleware behavior.
+- `packages/core/src/MCPServer.ts` now mounts the optional HyperNexus proxy with downstream discovery registration disabled, so HyperNexus's native prompt/resource handlers stay canonical while the proxy is reduced further toward tool list/call middleware responsibilities.
 - Wired `packages/core/src/MCPServer.ts` to use `CoreModelSelector` and updated `billingRouter` to surface normalized provider quota/auth/fallback data when available.
 - Extended `packages/core/src/routers/sessionRouter.ts` with supervisor-backed create/list/start/stop/restart/log/health procedures while preserving the existing lightweight session-state endpoints.
-- Changed MCP server persistence so `packages/core` now discovers STDIO tool metadata when servers are created or updated, stores the rich cache in Hypercode-owned `mcp.jsonc`, mirrors discovered tools into the existing DB cache, and keeps a stripped `mcp.json` compatibility export for clients that only understand standard MCP config.
-- Archived the legacy phase-based roadmap to `docs/archive/ROADMAP_LEGACY.md` and replaced `ROADMAP.md` with the Hypercode 1.0/1.5/2.0 milestone plan.
+- Changed MCP server persistence so `packages/core` now discovers STDIO tool metadata when servers are created or updated, stores the rich cache in HyperNexus-owned `mcp.jsonc`, mirrors discovered tools into the existing DB cache, and keeps a stripped `mcp.json` compatibility export for clients that only understand standard MCP config.
+- Archived the legacy phase-based roadmap to `docs/archive/ROADMAP_LEGACY.md` and replaced `ROADMAP.md` with the HyperNexus 1.0/1.5/2.0 milestone plan.
 - Seeded the task-file workflow under `tasks/` with initial clean-install, MCP router, provider fallback, session supervisor, and dashboard task briefs.
-- Rewrote `README.md` around the focused Hypercode control-plane scope and updated the quick-start guidance to match the current install/start path.
-- Rewrote `VISION.md` to describe the long-term Hypercode direction in orchestration-first terms instead of the old assimilation/parity framing.
-- Added `docs/research/MCP_ROUTER_REFERENCE_EVALUATION_2026-03-07.md`, comparing external MCP router candidates against Hypercode 1.0 requirements and documenting the recommendation to use upstreams as references rather than adopting a foreign router as Hypercode's base.
+- Rewrote `README.md` around the focused HyperNexus control-plane scope and updated the quick-start guidance to match the current install/start path.
+- Rewrote `VISION.md` to describe the long-term HyperNexus direction in orchestration-first terms instead of the old assimilation/parity framing.
+- Added `docs/research/MCP_ROUTER_REFERENCE_EVALUATION_2026-03-07.md`, comparing external MCP router candidates against HyperNexus 1.0 requirements and documenting the recommendation to use upstreams as references rather than adopting a foreign router as HyperNexus's base.
 - Tightened the MCP disclosure design guidance in `docs/research/MCP_ROUTER_REFERENCE_EVALUATION_2026-03-07.md` and `docs/guides/PROGRESSIVE_DISCLOSURE.md` to define a tiny always-visible meta-tool set, deferred binary startup, and tool-count-based loading/unloading thresholds.
-- Expanded the MCP router research memo with the second lazy-loading/code-mode repo set, a concrete analysis of why aggregators fail in practice, and a Hypercode-specific hybrid blueprint covering ranked discovery, silent high-confidence loads, deferred binary startup, profiles, code mode, and operator-visible routing decisions.
-- Tightened the MetaMCP session working-set runtime to use smaller progressive-disclosure caps, added explicit `unload_tool` / `list_loaded_tools` meta-tools, and added focused unit coverage for loaded-tool and hydrated-schema eviction behavior.
+- Expanded the MCP router research memo with the second lazy-loading/code-mode repo set, a concrete analysis of why aggregators fail in practice, and a HyperNexus-specific hybrid blueprint covering ranked discovery, silent high-confidence loads, deferred binary startup, profiles, code mode, and operator-visible routing decisions.
+- Tightened the HyperNexus session working-set runtime to use smaller progressive-disclosure caps, added explicit `unload_tool` / `list_loaded_tools` meta-tools, and added focused unit coverage for loaded-tool and hydrated-schema eviction behavior.
 - Refreshed the MCP dashboard search and inspector pages to reflect the new progressive-disclosure flow with visible working-set state, quick load/unload/schema actions, and a more inspector-style multi-pane operator layout inspired by the reviewed example projects.
-- Rebuilt `/dashboard/mcp` around Hypercode's router/aggregator control-plane story, added `/dashboard/mcp/testing` for exploratory MCP surfaces, and updated the MCP navigation so testing workflows no longer crowd the main control-plane landing page.
-- Tightened remaining MCP UI copy so Hypercode's router/control-plane stays primary while the upstream MetaMCP integration is described explicitly as a bridge detail in the sidebar palette, testing lab, and bridge-management page.
-- Tightened MCP bridge naming further so navigation and bridge-management UI present Hypercode as the primary server-bridge surface while still identifying MetaMCP as the upstream implementation detail.
-- Refreshed `docs/guides/PROGRESSIVE_DISCLOSURE.md` to match the current search/load/schema/unload working-set model and aligned the remaining MCP landing-page and agent-playground labels with the Hypercode-first server-bridge terminology.
-- Finished the remaining MCP copy cleanup by renaming the standalone bridge embed page to Hypercode-first bridge terminology and tightening the agent-playground description around the router session working set.
-- Renamed the sidebar command-palette MCP action to match the Hypercode router naming and refreshed the live MCP API/bridge docs so Hypercode stays primary while MetaMCP is documented as the upstream bridge layer.
-- Started the runtime MetaMCP extraction by adding a real `MCP_DISABLE_METAMCP` source-level path in `packages/core/src/MCPServer.ts`, wiring Hypercode-native direct MCP handlers when the proxy is disabled, and adding focused tests for the new mode-selection helpers.
-- Added a Hypercode-native session working-set manager and direct-handler meta tools (`search_tools`, `load_tool`, `get_tool_schema`, `unload_tool`, `list_loaded_tools`) so the MetaMCP-disabled runtime keeps progressive disclosure behavior without relying on the old proxy layer.
-- Removed the redundant constructor-time `MetaMCPController` initialization in `MCPServer`, so the remaining MetaMCP attachment happens only once through the real `setupHandlers()` path with the actual native tool list.
-- Reduced proxy dependence further by routing namespaced downstream tools through Hypercode's native `MCPAggregator` before the MetaMCP proxy, keeping the bridge focused on non-namespaced proxy-only behavior.
-- Expanded Hypercode-first downstream routing so plain tool names that already belong to the aggregated MCP inventory also prefer `MCPAggregator` execution before falling back to the MetaMCP proxy path.
-- Removed the hard `MetaMCPController` import from `MCPServer`, lazy-loaded the bridge only when needed, and made startup fall back to Hypercode-native direct handlers if MetaMCP bootstrap fails.
-- Removed the hard `executeProxiedTool` import from `MCPServer`, lazy-loaded the MetaMCP proxy executor only when proxy execution is still required, and kept Hypercode-native aggregator/router fallback behavior when the proxy module is unavailable.
-- Added a new `/dashboard/integrations` hub that consolidates hypercode browser-extension install paths, VS Code packaging hints, supported MCP client sync targets, known config locations for adjacent clients, and live bridge/runtime readiness into one operator-facing setup surface.
+- Rebuilt `/dashboard/mcp` around HyperNexus's router/aggregator control-plane story, added `/dashboard/mcp/testing` for exploratory MCP surfaces, and updated the MCP navigation so testing workflows no longer crowd the main control-plane landing page.
+- Tightened remaining MCP UI copy so HyperNexus's router/control-plane stays primary while the upstream HyperNexus integration is described explicitly as a bridge detail in the sidebar palette, testing lab, and bridge-management page.
+- Tightened MCP bridge naming further so navigation and bridge-management UI present HyperNexus as the primary server-bridge surface while still identifying HyperNexus as the upstream implementation detail.
+- Refreshed `docs/guides/PROGRESSIVE_DISCLOSURE.md` to match the current search/load/schema/unload working-set model and aligned the remaining MCP landing-page and agent-playground labels with the HyperNexus-first server-bridge terminology.
+- Finished the remaining MCP copy cleanup by renaming the standalone bridge embed page to HyperNexus-first bridge terminology and tightening the agent-playground description around the router session working set.
+- Renamed the sidebar command-palette MCP action to match the HyperNexus router naming and refreshed the live MCP API/bridge docs so HyperNexus stays primary while HyperNexus is documented as the upstream bridge layer.
+- Started the runtime HyperNexus extraction by adding a real `MCP_DISABLE_HYPERNEXUS` source-level path in `packages/core/src/MCPServer.ts`, wiring HyperNexus-native direct MCP handlers when the proxy is disabled, and adding focused tests for the new mode-selection helpers.
+- Added a HyperNexus-native session working-set manager and direct-handler meta tools (`search_tools`, `load_tool`, `get_tool_schema`, `unload_tool`, `list_loaded_tools`) so the HyperNexus-disabled runtime keeps progressive disclosure behavior without relying on the old proxy layer.
+- Removed the redundant constructor-time `HyperNexusController` initialization in `MCPServer`, so the remaining HyperNexus attachment happens only once through the real `setupHandlers()` path with the actual native tool list.
+- Reduced proxy dependence further by routing namespaced downstream tools through HyperNexus's native `MCPAggregator` before the HyperNexus proxy, keeping the bridge focused on non-namespaced proxy-only behavior.
+- Expanded HyperNexus-first downstream routing so plain tool names that already belong to the aggregated MCP inventory also prefer `MCPAggregator` execution before falling back to the HyperNexus proxy path.
+- Removed the hard `HyperNexusController` import from `MCPServer`, lazy-loaded the bridge only when needed, and made startup fall back to HyperNexus-native direct handlers if HyperNexus bootstrap fails.
+- Removed the hard `executeProxiedTool` import from `MCPServer`, lazy-loaded the HyperNexus proxy executor only when proxy execution is still required, and kept HyperNexus-native aggregator/router fallback behavior when the proxy module is unavailable.
+- Added a new `/dashboard/integrations` hub that consolidates hypernexus browser-extension install paths, VS Code packaging hints, supported MCP client sync targets, known config locations for adjacent clients, and live bridge/runtime readiness into one operator-facing setup surface.
 - Submodule inventory and cleanup tooling now use `.gitmodules` as the live registry source; `scripts/update_submodules_doc.mjs` rebuilds `docs/SUBMODULES.md` from the current registry, `docs/SUBMODULE_DASHBOARD.md` reflects the actual five approved tracked submodules, and `scripts/prune_orphaned_gitlinks.mjs` can remove legacy orphaned gitlinks from the index without touching the five live entries.
-- Direct hypercode-native MCP mode now exposes a MetaMCP-compatible `run_code` alias and executes it without requiring operators to manually toggle Code Mode first, shrinking the remaining proxy-only surface in `packages/core/src/MCPServer.ts`.
-- Direct hypercode-native MCP mode now also exposes a MetaMCP-compatible `run_python` alias backed by hypercode's sandbox service, further reducing the remaining MetaMCP-only execution surface.
-- Direct hypercode-native MCP mode now also exposes a MetaMCP-compatible `run_agent` path backed by hypercode's native LLM service and delegated direct-mode tool execution, including recursion guards that keep autonomous agent loops from re-entering `run_agent` or `run_code`.
-- Direct hypercode-native MCP mode now also exposes a MetaMCP-compatible `save_memory` alias backed by hypercode's native agent memory service, trimming another direct-mode dependency on the MetaMCP proxy.
-- Direct hypercode-native MCP mode now also exposes MetaMCP-compatible `save_script` plus direct-mode `script__*` saved-script tools backed by hypercode-managed config storage and sandbox execution.
-- Direct hypercode-native MCP mode now also exposes MetaMCP-compatible `save_tool_set`, `load_tool_set`, and `toolset_list` behavior backed by hypercode-managed config storage plus the native session working set, eliminating another chunk of remaining direct-mode proxy dependence.
-- Direct hypercode-native MCP mode now also exposes MetaMCP-compatible `import_mcp_config` backed by hypercode's existing config import service, which closes out the old proxy meta-tool cluster for direct-mode sessions.
-- hypercode-native MCP handlers now serve downstream `prompts/list`, `prompts/get`, `resources/list`, `resources/read`, and `resources/templates/list` through the shared downstream session pool, so prompt/resource discovery no longer depends on the MetaMCP bridge even when that bridge is still mounted for tool middleware.
-- The optional MetaMCP proxy now reuses hypercode's shared downstream discovery helper for prompt/resource/template passthrough instead of maintaining a second inline implementation, narrowing the remaining bridge-specific surface to tool list/call middleware behavior.
-- `packages/core/src/MCPServer.ts` now mounts the optional MetaMCP proxy with downstream discovery registration disabled, so hypercode's native prompt/resource handlers stay canonical while the proxy is reduced further toward tool list/call middleware responsibilities.
+- Direct hypernexus-native MCP mode now exposes a HyperNexus-compatible `run_code` alias and executes it without requiring operators to manually toggle Code Mode first, shrinking the remaining proxy-only surface in `packages/core/src/MCPServer.ts`.
+- Direct hypernexus-native MCP mode now also exposes a HyperNexus-compatible `run_python` alias backed by hypernexus's sandbox service, further reducing the remaining HyperNexus-only execution surface.
+- Direct hypernexus-native MCP mode now also exposes a HyperNexus-compatible `run_agent` path backed by hypernexus's native LLM service and delegated direct-mode tool execution, including recursion guards that keep autonomous agent loops from re-entering `run_agent` or `run_code`.
+- Direct hypernexus-native MCP mode now also exposes a HyperNexus-compatible `save_memory` alias backed by hypernexus's native agent memory service, trimming another direct-mode dependency on the HyperNexus proxy.
+- Direct hypernexus-native MCP mode now also exposes HyperNexus-compatible `save_script` plus direct-mode `script__*` saved-script tools backed by hypernexus-managed config storage and sandbox execution.
+- Direct hypernexus-native MCP mode now also exposes HyperNexus-compatible `save_tool_set`, `load_tool_set`, and `toolset_list` behavior backed by hypernexus-managed config storage plus the native session working set, eliminating another chunk of remaining direct-mode proxy dependence.
+- Direct hypernexus-native MCP mode now also exposes HyperNexus-compatible `import_mcp_config` backed by hypernexus's existing config import service, which closes out the old proxy meta-tool cluster for direct-mode sessions.
+- hypernexus-native MCP handlers now serve downstream `prompts/list`, `prompts/get`, `resources/list`, `resources/read`, and `resources/templates/list` through the shared downstream session pool, so prompt/resource discovery no longer depends on the HyperNexus bridge even when that bridge is still mounted for tool middleware.
+- The optional HyperNexus proxy now reuses hypernexus's shared downstream discovery helper for prompt/resource/template passthrough instead of maintaining a second inline implementation, narrowing the remaining bridge-specific surface to tool list/call middleware behavior.
+- `packages/core/src/MCPServer.ts` now mounts the optional HyperNexus proxy with downstream discovery registration disabled, so hypernexus's native prompt/resource handlers stay canonical while the proxy is reduced further toward tool list/call middleware responsibilities.
 - Wired `packages/core/src/MCPServer.ts` to use `CoreModelSelector` and updated `billingRouter` to surface normalized provider quota/auth/fallback data when available.
 - Extended `packages/core/src/routers/sessionRouter.ts` with supervisor-backed create/list/start/stop/restart/log/health procedures while preserving the existing lightweight session-state endpoints.
-- Changed MCP server persistence so `packages/core` now discovers STDIO tool metadata when servers are created or updated, stores the rich cache in hypercode-owned `mcp.jsonc`, mirrors discovered tools into the existing DB cache, and keeps a stripped `mcp.json` compatibility export for clients that only understand standard MCP config.
-- Archived the legacy phase-based roadmap to `docs/archive/ROADMAP_LEGACY.md` and replaced `ROADMAP.md` with the hypercode 1.0/1.5/2.0 milestone plan.
+- Changed MCP server persistence so `packages/core` now discovers STDIO tool metadata when servers are created or updated, stores the rich cache in hypernexus-owned `mcp.jsonc`, mirrors discovered tools into the existing DB cache, and keeps a stripped `mcp.json` compatibility export for clients that only understand standard MCP config.
+- Archived the legacy phase-based roadmap to `docs/archive/ROADMAP_LEGACY.md` and replaced `ROADMAP.md` with the hypernexus 1.0/1.5/2.0 milestone plan.
 - Seeded the task-file workflow under `tasks/` with initial clean-install, MCP router, provider fallback, session supervisor, and dashboard task briefs.
-- Rewrote `README.md` around the focused hypercode control-plane scope and updated the quick-start guidance to match the current install/start path.
-- Rewrote `VISION.md` to describe the long-term hypercode direction in orchestration-first terms instead of the old assimilation/parity framing.
-- Added `docs/research/MCP_ROUTER_REFERENCE_EVALUATION_2026-03-07.md`, comparing external MCP router candidates against hypercode 1.0 requirements and documenting the recommendation to use upstreams as references rather than adopting a foreign router as hypercode's base.
+- Rewrote `README.md` around the focused hypernexus control-plane scope and updated the quick-start guidance to match the current install/start path.
+- Rewrote `VISION.md` to describe the long-term hypernexus direction in orchestration-first terms instead of the old assimilation/parity framing.
+- Added `docs/research/MCP_ROUTER_REFERENCE_EVALUATION_2026-03-07.md`, comparing external MCP router candidates against hypernexus 1.0 requirements and documenting the recommendation to use upstreams as references rather than adopting a foreign router as hypernexus's base.
 - Tightened the MCP disclosure design guidance in `docs/research/MCP_ROUTER_REFERENCE_EVALUATION_2026-03-07.md` and `docs/guides/PROGRESSIVE_DISCLOSURE.md` to define a tiny always-visible meta-tool set, deferred binary startup, and tool-count-based loading/unloading thresholds.
-- Expanded the MCP router research memo with the second lazy-loading/code-mode repo set, a concrete analysis of why aggregators fail in practice, and a hypercode-specific hybrid blueprint covering ranked discovery, silent high-confidence loads, deferred binary startup, profiles, code mode, and operator-visible routing decisions.
-- Tightened the MetaMCP session working-set runtime to use smaller progressive-disclosure caps, added explicit `unload_tool` / `list_loaded_tools` meta-tools, and added focused unit coverage for loaded-tool and hydrated-schema eviction behavior.
+- Expanded the MCP router research memo with the second lazy-loading/code-mode repo set, a concrete analysis of why aggregators fail in practice, and a hypernexus-specific hybrid blueprint covering ranked discovery, silent high-confidence loads, deferred binary startup, profiles, code mode, and operator-visible routing decisions.
+- Tightened the HyperNexus session working-set runtime to use smaller progressive-disclosure caps, added explicit `unload_tool` / `list_loaded_tools` meta-tools, and added focused unit coverage for loaded-tool and hydrated-schema eviction behavior.
 - Refreshed the MCP dashboard search and inspector pages to reflect the new progressive-disclosure flow with visible working-set state, quick load/unload/schema actions, and a more inspector-style multi-pane operator layout inspired by the reviewed example projects.
-- Rebuilt `/dashboard/mcp` around hypercode's router/aggregator control-plane story, added `/dashboard/mcp/testing` for exploratory MCP surfaces, and updated the MCP navigation so testing workflows no longer crowd the main control-plane landing page.
-- Tightened remaining MCP UI copy so hypercode's router/control-plane stays primary while the upstream MetaMCP integration is described explicitly as a bridge detail in the sidebar palette, testing lab, and bridge-management page.
-- Tightened MCP bridge naming further so navigation and bridge-management UI present hypercode as the primary server-bridge surface while still identifying MetaMCP as the upstream implementation detail.
-- Refreshed `docs/guides/PROGRESSIVE_DISCLOSURE.md` to match the current search/load/schema/unload working-set model and aligned the remaining MCP landing-page and agent-playground labels with the hypercode-first server-bridge terminology.
-- Finished the remaining MCP copy cleanup by renaming the standalone bridge embed page to hypercode-first bridge terminology and tightening the agent-playground description around the router session working set.
-- Renamed the sidebar command-palette MCP action to match the hypercode router naming and refreshed the live MCP API/bridge docs so hypercode stays primary while MetaMCP is documented as the upstream bridge layer.
-- Started the runtime MetaMCP extraction by adding a real `MCP_DISABLE_METAMCP` source-level path in `packages/core/src/MCPServer.ts`, wiring hypercode-native direct MCP handlers when the proxy is disabled, and adding focused tests for the new mode-selection helpers.
-- Added a hypercode-native session working-set manager and direct-handler meta tools (`search_tools`, `load_tool`, `get_tool_schema`, `unload_tool`, `list_loaded_tools`) so the MetaMCP-disabled runtime keeps progressive disclosure behavior without relying on the old proxy layer.
-- Removed the redundant constructor-time `MetaMCPController` initialization in `MCPServer`, so the remaining MetaMCP attachment happens only once through the real `setupHandlers()` path with the actual native tool list.
-- Reduced proxy dependence further by routing namespaced downstream tools through hypercode's native `MCPAggregator` before the MetaMCP proxy, keeping the bridge focused on non-namespaced proxy-only behavior.
-- Expanded hypercode-first downstream routing so plain tool names that already belong to the aggregated MCP inventory also prefer `MCPAggregator` execution before falling back to the MetaMCP proxy path.
-- Removed the hard `MetaMCPController` import from `MCPServer`, lazy-loaded the bridge only when needed, and made startup fall back to hypercode-native direct handlers if MetaMCP bootstrap fails.
-- Removed the hard `executeProxiedTool` import from `MCPServer`, lazy-loaded the MetaMCP proxy executor only when proxy execution is still required, and kept hypercode-native aggregator/router fallback behavior when the proxy module is unavailable.
-- Removed the remaining `MetaMCPController` shim indirection by lazy-loading `attachTo(...)` directly from `MCPServer`, leaving the MetaMCP bridge as an optional attach step instead of a dedicated singleton controller service.
+- Rebuilt `/dashboard/mcp` around hypernexus's router/aggregator control-plane story, added `/dashboard/mcp/testing` for exploratory MCP surfaces, and updated the MCP navigation so testing workflows no longer crowd the main control-plane landing page.
+- Tightened remaining MCP UI copy so hypernexus's router/control-plane stays primary while the upstream HyperNexus integration is described explicitly as a bridge detail in the sidebar palette, testing lab, and bridge-management page.
+- Tightened MCP bridge naming further so navigation and bridge-management UI present hypernexus as the primary server-bridge surface while still identifying HyperNexus as the upstream implementation detail.
+- Refreshed `docs/guides/PROGRESSIVE_DISCLOSURE.md` to match the current search/load/schema/unload working-set model and aligned the remaining MCP landing-page and agent-playground labels with the hypernexus-first server-bridge terminology.
+- Finished the remaining MCP copy cleanup by renaming the standalone bridge embed page to hypernexus-first bridge terminology and tightening the agent-playground description around the router session working set.
+- Renamed the sidebar command-palette MCP action to match the hypernexus router naming and refreshed the live MCP API/bridge docs so hypernexus stays primary while HyperNexus is documented as the upstream bridge layer.
+- Started the runtime HyperNexus extraction by adding a real `MCP_DISABLE_HYPERNEXUS` source-level path in `packages/core/src/MCPServer.ts`, wiring hypernexus-native direct MCP handlers when the proxy is disabled, and adding focused tests for the new mode-selection helpers.
+- Added a hypernexus-native session working-set manager and direct-handler meta tools (`search_tools`, `load_tool`, `get_tool_schema`, `unload_tool`, `list_loaded_tools`) so the HyperNexus-disabled runtime keeps progressive disclosure behavior without relying on the old proxy layer.
+- Removed the redundant constructor-time `HyperNexusController` initialization in `MCPServer`, so the remaining HyperNexus attachment happens only once through the real `setupHandlers()` path with the actual native tool list.
+- Reduced proxy dependence further by routing namespaced downstream tools through hypernexus's native `MCPAggregator` before the HyperNexus proxy, keeping the bridge focused on non-namespaced proxy-only behavior.
+- Expanded hypernexus-first downstream routing so plain tool names that already belong to the aggregated MCP inventory also prefer `MCPAggregator` execution before falling back to the HyperNexus proxy path.
+- Removed the hard `HyperNexusController` import from `MCPServer`, lazy-loaded the bridge only when needed, and made startup fall back to hypernexus-native direct handlers if HyperNexus bootstrap fails.
+- Removed the hard `executeProxiedTool` import from `MCPServer`, lazy-loaded the HyperNexus proxy executor only when proxy execution is still required, and kept hypernexus-native aggregator/router fallback behavior when the proxy module is unavailable.
+- Removed the remaining `HyperNexusController` shim indirection by lazy-loading `attachTo(...)` directly from `MCPServer`, leaving the HyperNexus bridge as an optional attach step instead of a dedicated singleton controller service.
 - Linked the MCP search and inspector pages more tightly by deep-linking individual tool results into the inspector and auto-selecting the requested tool inside the inspector workspace.
 - Kept the MCP inspector URL synchronized with the current tool selection so manual focus changes preserve context across refreshes, shared links, and browser navigation.
 - Added direct inspector links to the MCP search page working-set sidebar so already-loaded tools can jump straight into the inspector without a second search.
@@ -3869,24 +3870,24 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - Wired the MCP dashboard search and inspector surfaces to the MCP router-backed tool inventory and embedded the shared traffic inspector directly in the inspector view.
 - Switched the MCP dashboard search page to the dedicated `mcp.searchTools` contract and embedded the live `TrafficInspector` into the MCP inspector page so the new router traffic/search APIs are operator-visible.
 - Added reusable MCP client-config sync support for Claude Desktop, Cursor, and VS Code, including resolved target discovery, previewable exported configs, and router-backed write operations.
-- Added an MCP settings dashboard surface for selecting supported clients, previewing the generated config JSON, and writing Hypercode-managed MCP config files directly from the UI.
-- Added an MCP settings dashboard surface for selecting supported clients, previewing the generated config JSON, and writing hypercode-managed MCP config files directly from the UI.
+- Added an MCP settings dashboard surface for selecting supported clients, previewing the generated config JSON, and writing HyperNexus-managed MCP config files directly from the UI.
+- Added an MCP settings dashboard surface for selecting supported clients, previewing the generated config JSON, and writing hypernexus-managed MCP config files directly from the UI.
 
 ### Fixed
 - Fixed the dashboard tRPC compatibility route in `apps/web/src/app/api/trpc/[trpc]/route.ts` so GET/query-style `mcpServers.get` requests now read their tRPC input from the URL `input` param during local fallback, which stops React Query from receiving `undefined` for local pseudo-managed server detail queries.
 - Fixed `pnpm run dev` on Windows/Tabby so the `scripts/dev_tabby_ready.mjs` launcher now actually executes its readiness loop instead of returning immediately when the direct-execution guard miscompares `import.meta.url` against `process.argv[1]`.
-- Fixed the excluded `apps/hypercode-extension` build path enough for root aggregation by adding the missing `eciesjs` dependency in `packages/env`, correcting Rollup plugin typings in `packages/hmr`, and tightening stale session supervisor runtime contracts in `packages/core/src/lib/trpc-core.ts` plus `packages/core/src/routers/sessionRouter.ts` so the dashboard session pages and root build compile cleanly again.
-- Fixed `hypercode start`/root `pnpm run dev` startup wiring so the CLI now launches Hypercode's real Core orchestrator and tRPC control plane instead of only instantiating `MCPServer` without starting the HTTP API, which restores `startupStatus`, `memory.getAgentStats`, and `browser.status` readiness probes during dev boot.
-- Fixed the web tRPC upstream preference order to probe the CLI dev control-plane port (`4100`) before the legacy `4000` path, so Windows dev environments where Docker/WSL already owns `4000` still route dashboard startup, memory, and browser queries into Hypercode Core.
-- Excluded the legacy nested `apps/hypercode-extension` monorepo from the root `pnpm-workspace.yaml`, so root `pnpm run dev` no longer parses that package's incompatible standalone `turbo.json` while bringing up Hypercode's main core/web/extension stack.
+- Fixed the excluded `apps/hypernexus-extension` build path enough for root aggregation by adding the missing `eciesjs` dependency in `packages/env`, correcting Rollup plugin typings in `packages/hmr`, and tightening stale session supervisor runtime contracts in `packages/core/src/lib/trpc-core.ts` plus `packages/core/src/routers/sessionRouter.ts` so the dashboard session pages and root build compile cleanly again.
+- Fixed `hypernexus start`/root `pnpm run dev` startup wiring so the CLI now launches HyperNexus's real Core orchestrator and tRPC control plane instead of only instantiating `MCPServer` without starting the HTTP API, which restores `startupStatus`, `memory.getAgentStats`, and `browser.status` readiness probes during dev boot.
+- Fixed the web tRPC upstream preference order to probe the CLI dev control-plane port (`4100`) before the legacy `4000` path, so Windows dev environments where Docker/WSL already owns `4000` still route dashboard startup, memory, and browser queries into HyperNexus Core.
+- Excluded the legacy nested `apps/hypernexus-extension` monorepo from the root `pnpm-workspace.yaml`, so root `pnpm run dev` no longer parses that package's incompatible standalone `turbo.json` while bringing up HyperNexus's main core/web/extension stack.
 - Fixed `packages/core/src/mcp/MCPAggregator.ts` so ordinary downstream tool-call failures no longer mark an otherwise healthy MCP server as fully errored; the router now preserves connected status while still recording the failure in server state and traffic history.
-- Fixed the dashboard tRPC proxy in `apps/web` so it now probes Hypercode Core's actual default tRPC endpoint on `http://127.0.0.1:4100/trpc` before legacy MCP bridge fallbacks, which restores mutations like `mcpServers.bulkImport` instead of surfacing a proxy-generated 502.
-- Fixed the excluded `apps/hypercode-extension` build path enough for root aggregation by adding the missing `eciesjs` dependency in `packages/env`, correcting Rollup plugin typings in `packages/hmr`, and tightening stale session supervisor runtime contracts in `packages/core/src/lib/trpc-core.ts` plus `packages/core/src/routers/sessionRouter.ts` so the dashboard session pages and root build compile cleanly again.
-- Fixed `hypercode start`/root `pnpm run dev` startup wiring so the CLI now launches hypercode's real Core orchestrator and tRPC control plane instead of only instantiating `MCPServer` without starting the HTTP API, which restores `startupStatus`, `memory.getAgentStats`, and `browser.status` readiness probes during dev boot.
-- Fixed the web tRPC upstream preference order to probe the CLI dev control-plane port (`4100`) before the legacy `4000` path, so Windows dev environments where Docker/WSL already owns `4000` still route dashboard startup, memory, and browser queries into hypercode Core.
-- Excluded the legacy nested `apps/hypercode-extension` monorepo from the root `pnpm-workspace.yaml`, so root `pnpm run dev` no longer parses that package's incompatible standalone `turbo.json` while bringing up hypercode's main core/web/extension stack.
+- Fixed the dashboard tRPC proxy in `apps/web` so it now probes HyperNexus Core's actual default tRPC endpoint on `http://127.0.0.1:4100/trpc` before legacy MCP bridge fallbacks, which restores mutations like `mcpServers.bulkImport` instead of surfacing a proxy-generated 502.
+- Fixed the excluded `apps/hypernexus-extension` build path enough for root aggregation by adding the missing `eciesjs` dependency in `packages/env`, correcting Rollup plugin typings in `packages/hmr`, and tightening stale session supervisor runtime contracts in `packages/core/src/lib/trpc-core.ts` plus `packages/core/src/routers/sessionRouter.ts` so the dashboard session pages and root build compile cleanly again.
+- Fixed `hypernexus start`/root `pnpm run dev` startup wiring so the CLI now launches hypernexus's real Core orchestrator and tRPC control plane instead of only instantiating `MCPServer` without starting the HTTP API, which restores `startupStatus`, `memory.getAgentStats`, and `browser.status` readiness probes during dev boot.
+- Fixed the web tRPC upstream preference order to probe the CLI dev control-plane port (`4100`) before the legacy `4000` path, so Windows dev environments where Docker/WSL already owns `4000` still route dashboard startup, memory, and browser queries into hypernexus Core.
+- Excluded the legacy nested `apps/hypernexus-extension` monorepo from the root `pnpm-workspace.yaml`, so root `pnpm run dev` no longer parses that package's incompatible standalone `turbo.json` while bringing up hypernexus's main core/web/extension stack.
 - Fixed `packages/core/src/mcp/MCPAggregator.ts` so ordinary downstream tool-call failures no longer mark an otherwise healthy MCP server as fully errored; the router now preserves connected status while still recording the failure in server state and traffic history.
-- Fixed the dashboard tRPC proxy in `apps/web` so it now probes hypercode Core's actual default tRPC endpoint on `http://127.0.0.1:4100/trpc` before legacy MCP bridge fallbacks, which restores mutations like `mcpServers.bulkImport` instead of surfacing a proxy-generated 502.
+- Fixed the dashboard tRPC proxy in `apps/web` so it now probes hypernexus Core's actual default tRPC endpoint on `http://127.0.0.1:4100/trpc` before legacy MCP bridge fallbacks, which restores mutations like `mcpServers.bulkImport` instead of surfacing a proxy-generated 502.
 - Fixed the dashboard MCP query bridge in `apps/web/src/app/api/trpc/[trpc]/route.ts` so modern procedure batches (`mcp.listServers`, `mcp.listTools`, `mcp.getStatus`) now fall back through the compatibility bridge instead of incorrectly returning `502 Bad Gateway` when the upstream is unavailable.
 - Fixed the Next.js app-route typing contract in `apps/web` by moving `resolveUpstreamBases` out of `src/app/api/trpc/[trpc]/` into `src/lib/trpc-upstream.ts`, which removes the illegal extra route export and restores clean webpack builds.
 - Made root `pnpm install` succeed on Windows by replacing the `packages/MCP-SuperAssistant` bash-based `copy_env` postinstall step with a cross-platform Node-based copy.
@@ -3897,22 +3898,22 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - Corrected the web runtime stage in `Dockerfile` to expose Next.js' actual internal port (`3000`) instead of the host-mapped dashboard port.
 - Declared `date-fns` in `apps/web/package.json` so the Dockerized dashboard build resolves the `LogEntry` timestamp formatter the same way the local workspace build does.
 - Replaced the stock Next.js metadata in `apps/web/src/app/layout.tsx` so the live dashboard no longer shows the `Create Next App` title.
-- Excluded nested `.hypercode/worktrees/**` copies from the root `vitest.config.ts` discovery and coverage paths so workspace-root validation no longer pulls duplicate shadow tests into the main suite.
-- Excluded nested `.hypercode/worktrees/**` copies from the root `vitest.config.ts` discovery and coverage paths so workspace-root validation no longer pulls duplicate shadow tests into the main suite.
+- Excluded nested `.hypernexus/worktrees/**` copies from the root `vitest.config.ts` discovery and coverage paths so workspace-root validation no longer pulls duplicate shadow tests into the main suite.
+- Excluded nested `.hypernexus/worktrees/**` copies from the root `vitest.config.ts` discovery and coverage paths so workspace-root validation no longer pulls duplicate shadow tests into the main suite.
 
 ### Validated
 - Verified `pnpm exec vitest run apps/web/src/app/api/trpc/[trpc]/route.test.ts` passes after the local compat query-input fallback fix.
 - Verified `pnpm exec vitest run apps/web/src/app/dashboard/mcp/mcp-dashboard-utils.test.ts` passes and `pnpm -C apps/web exec tsc --noEmit --pretty false` succeeds after adding local compat fallback labeling to `/dashboard/mcp`.
 - Verified `pnpm exec vitest run packages/core/src/routers/startupStatus.test.ts apps/web/src/app/dashboard/dashboard-home-view.test.tsx apps/web/src/app/dashboard/DashboardHomeClient.test.tsx apps/web/tests/integration/mcp-to-dashboard.test.ts` passes after tightening the startup readiness semantics.
 - Verified `pnpm -C packages/core exec tsc --noEmit` returns `CORE_TSC_OK` and `pnpm -C apps/web exec tsc --noEmit --pretty false` returns `WEB_TSC_OK` after wiring the refined startup snapshot through core and dashboard consumers.
-- Verified `pnpm run build` now completes successfully from the repository root, including the first-party workspace build plus the excluded Hypercode browser-extension Chromium/Firefox build flow, with JetBrains downgraded to an explicit warning when Gradle is not installed locally.
+- Verified `pnpm run build` now completes successfully from the repository root, including the first-party workspace build plus the excluded HyperNexus browser-extension Chromium/Firefox build flow, with JetBrains downgraded to an explicit warning when Gradle is not installed locally.
 - Verified `pnpm exec vitest run packages/cli/src/commands/start.test.ts` passes after wiring the CLI start path into the real Core orchestrator.
 - Verified `pnpm exec vitest run --config vitest.config.ts packages/core/src/bridge/bridge-manifest.test.ts apps/web/src/app/dashboard/integrations/integration-catalog.test.ts` passes after wiring live bridge client registration and Integration Hub capability reporting.
-- Verified `pnpm exec turbo run dev --dry --concurrency 22 --filter=!mcp-superassistant --filter=!@extension/hmr --filter=!@opencode-autopilot/cli --filter=!backend --filter=!frontend --filter=!@repo/*` now completes planning without the previous `turbo_json_parse_error` from `apps/hypercode-extension/turbo.json`.
-- Verified `pnpm run build` now completes successfully from the repository root, including the first-party workspace build plus the excluded hypercode browser-extension Chromium/Firefox build flow, with JetBrains downgraded to an explicit warning when Gradle is not installed locally.
+- Verified `pnpm exec turbo run dev --dry --concurrency 22 --filter=!mcp-superassistant --filter=!@extension/hmr --filter=!@opencode-autopilot/cli --filter=!backend --filter=!frontend --filter=!@repo/*` now completes planning without the previous `turbo_json_parse_error` from `apps/hypernexus-extension/turbo.json`.
+- Verified `pnpm run build` now completes successfully from the repository root, including the first-party workspace build plus the excluded hypernexus browser-extension Chromium/Firefox build flow, with JetBrains downgraded to an explicit warning when Gradle is not installed locally.
 - Verified `pnpm exec vitest run packages/cli/src/commands/start.test.ts` passes after wiring the CLI start path into the real Core orchestrator.
 - Verified `pnpm exec vitest run --config vitest.config.ts packages/core/src/bridge/bridge-manifest.test.ts apps/web/src/app/dashboard/integrations/integration-catalog.test.ts` passes after wiring live bridge client registration and Integration Hub capability reporting.
-- Verified `pnpm exec turbo run dev --dry --concurrency 22 --filter=!mcp-superassistant --filter=!@extension/hmr --filter=!@opencode-autopilot/cli --filter=!backend --filter=!frontend --filter=!@repo/*` now completes planning without the previous `turbo_json_parse_error` from `apps/hypercode-extension/turbo.json`.
+- Verified `pnpm exec turbo run dev --dry --concurrency 22 --filter=!mcp-superassistant --filter=!@extension/hmr --filter=!@opencode-autopilot/cli --filter=!backend --filter=!frontend --filter=!@repo/*` now completes planning without the previous `turbo_json_parse_error` from `apps/hypernexus-extension/turbo.json`.
 - Verified `pnpm exec vitest run apps/web/src/app/dashboard/DashboardHomeClient.test.tsx apps/web/src/app/dashboard/dashboard-home-view.test.tsx` passes after prioritizing attention-needed sessions in the home dashboard ordering.
 - Verified `pnpm exec vitest run apps/web/src/app/dashboard/dashboard-home-view.test.tsx apps/web/src/app/dashboard/DashboardHomeClient.test.tsx` passes after surfacing manual-restart policy visibility for supervised sessions.
 - Verified `pnpm exec vitest run packages/core/src/supervisor/SessionSupervisor.test.ts apps/web/src/app/dashboard/dashboard-home-view.test.tsx` passes after adding queued restart visibility for supervised sessions.
@@ -3938,8 +3939,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - Verified `pnpm exec vitest run packages/core/mcp/__tests__/direct-mode-compatibility.test.ts packages/core/mcp/__tests__/downstream-discovery.test.ts packages/core/mcp/__tests__/native-session-meta-tools.test.ts packages/core/mcp/__tests__/meta-mcp-mode.test.ts packages/core/mcp/__tests__/aggregator.test.ts packages/core/mcp/__tests__/crash-isolation.test.ts` passes.
 - Re-verified `pnpm exec vitest run packages/core/mcp/__tests__/downstream-discovery.test.ts packages/core/mcp/__tests__/direct-mode-compatibility.test.ts` passes after the proxy-side de-duplication, and `pnpm -C packages/core exec tsc --noEmit` still returns `CORE_TSC_OK`.
 - Re-verified `pnpm exec vitest run packages/core/mcp/__tests__/downstream-discovery.test.ts packages/core/mcp/__tests__/direct-mode-compatibility.test.ts` passes after disabling duplicate proxy discovery registration in `MCPServer`, and `pnpm -C packages/core exec tsc --noEmit` still returns `CORE_TSC_OK`.
-- Verified `pnpm exec vitest run packages/core/test/proxy_middleware.test.ts packages/core/test/proxy_logging_middleware.test.ts packages/core/mcp/__tests__/downstream-discovery.test.ts packages/core/mcp/__tests__/direct-mode-compatibility.test.ts` now completes cleanly with the proxy tests intentionally skipped and the focused MCP tests passing, after excluding `.hypercode/worktrees/**` from root Vitest discovery.
-- Verified `pnpm exec vitest run packages/core/test/proxy_middleware.test.ts packages/core/test/proxy_logging_middleware.test.ts packages/core/mcp/__tests__/downstream-discovery.test.ts packages/core/mcp/__tests__/direct-mode-compatibility.test.ts` now completes cleanly with the proxy tests intentionally skipped and the focused MCP tests passing, after excluding `.hypercode/worktrees/**` from root Vitest discovery.
+- Verified `pnpm exec vitest run packages/core/test/proxy_middleware.test.ts packages/core/test/proxy_logging_middleware.test.ts packages/core/mcp/__tests__/downstream-discovery.test.ts packages/core/mcp/__tests__/direct-mode-compatibility.test.ts` now completes cleanly with the proxy tests intentionally skipped and the focused MCP tests passing, after excluding `.hypernexus/worktrees/**` from root Vitest discovery.
+- Verified `pnpm exec vitest run packages/core/test/proxy_middleware.test.ts packages/core/test/proxy_logging_middleware.test.ts packages/core/mcp/__tests__/downstream-discovery.test.ts packages/core/mcp/__tests__/direct-mode-compatibility.test.ts` now completes cleanly with the proxy tests intentionally skipped and the focused MCP tests passing, after excluding `.hypernexus/worktrees/**` from root Vitest discovery.
 - Added focused `packages/core/test/mcpJsonConfig.test.ts` coverage for rich `mcp.jsonc` persistence, clean `mcp.json` compatibility export, and metadata preservation through the JSON config provider.
 - Verified `pnpm exec vitest run packages/core/providers/__tests__/auth.test.ts packages/core/providers/__tests__/quota-tracker.test.ts packages/core/providers/__tests__/strategy.test.ts packages/core/providers/__tests__/fallback-chain.test.ts` passes.
 - Verified `pnpm exec vitest run packages/core/supervisor/__tests__/spawn.test.ts packages/core/supervisor/__tests__/restart.test.ts packages/core/supervisor/__tests__/health.test.ts packages/core/supervisor/__tests__/worktree.test.ts packages/core/supervisor/__tests__/session-persist.test.ts` passes.
@@ -3968,23 +3969,23 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ## [2.7.109] - 2026-03-06
 ### Changed
-- Replaced the old assimilation-oriented `AGENTS.md` with a focused Hypercode v1.0 stabilization directive centered on the control-plane kernel: MCP routing, provider fallback, session supervision, dashboard workflows, and capability contracts.
+- Replaced the old assimilation-oriented `AGENTS.md` with a focused HyperNexus v1.0 stabilization directive centered on the control-plane kernel: MCP routing, provider fallback, session supervision, dashboard workflows, and capability contracts.
 - Added explicit stop conditions, scope restrictions, test expectations, and documentation-truth rules for future development agents.
 
 ### Documentation
-- Standardized the root instruction set to reference a root-level `ARCHITECTURE.md` as the canonical Hypercode architecture overview.
-- Replaced the old assimilation-oriented `AGENTS.md` with a focused hypercode v1.0 stabilization directive centered on the control-plane kernel: MCP routing, provider fallback, session supervision, dashboard workflows, and capability contracts.
+- Standardized the root instruction set to reference a root-level `ARCHITECTURE.md` as the canonical HyperNexus architecture overview.
+- Replaced the old assimilation-oriented `AGENTS.md` with a focused hypernexus v1.0 stabilization directive centered on the control-plane kernel: MCP routing, provider fallback, session supervision, dashboard workflows, and capability contracts.
 - Added explicit stop conditions, scope restrictions, test expectations, and documentation-truth rules for future development agents.
 
 ### Documentation
-- Standardized the root instruction set to reference a root-level `ARCHITECTURE.md` as the canonical hypercode architecture overview.
+- Standardized the root instruction set to reference a root-level `ARCHITECTURE.md` as the canonical hypernexus architecture overview.
 
 ## [2.7.108] - 2026-03-06
 ### Added
 - **Phase 146: Browser Knowledge Activity Dashboard Surface**
   - Added a dedicated Browser dashboard knowledge-activity card that combines live browser-originated `KNOWLEDGE_CAPTURED` and `RAG_INGESTED` websocket events with the canonical research ingestion queue summary.
-  - Added queue visibility for pending, failed, and recently processed URL ingests directly on the browser page so browser operators can see what the extension already pushed into Hypercode knowledge without detouring into separate dashboards.
-  - Added queue visibility for pending, failed, and recently processed URL ingests directly on the browser page so browser operators can see what the extension already pushed into hypercode knowledge without detouring into separate dashboards.
+  - Added queue visibility for pending, failed, and recently processed URL ingests directly on the browser page so browser operators can see what the extension already pushed into HyperNexus knowledge without detouring into separate dashboards.
+  - Added queue visibility for pending, failed, and recently processed URL ingests directly on the browser page so browser operators can see what the extension already pushed into hypernexus knowledge without detouring into separate dashboards.
   - Updated the extension parity matrix to reflect browser-dashboard visibility for recent knowledge and RAG activity.
 ### Validated
 - Verified `pnpm -C apps/web build --webpack` passes.
@@ -4012,8 +4013,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [2.7.105] - 2026-03-06
 ### Added
 - **Phase 143: Browser CDP Event Inspector Stream**
-  - Rebroadcast browser extension `BROWSER_DEBUG_EVENT` packets through Hypercode Core so Chrome DevTools Protocol events become part of the shared live traffic stream.
-  - Rebroadcast browser extension `BROWSER_DEBUG_EVENT` packets through hypercode Core so Chrome DevTools Protocol events become part of the shared live traffic stream.
+  - Rebroadcast browser extension `BROWSER_DEBUG_EVENT` packets through HyperNexus Core so Chrome DevTools Protocol events become part of the shared live traffic stream.
+  - Rebroadcast browser extension `BROWSER_DEBUG_EVENT` packets through hypernexus Core so Chrome DevTools Protocol events become part of the shared live traffic stream.
   - Extended the dashboard `TrafficInspector` to render live CDP event rows with method, tab id, source, and structured params output.
   - Hardened the browser dashboard proxy-fetch response rendering so loosely typed bridge payloads display safely under strict React/Next.js typing.
 ### Validated
@@ -4024,8 +4025,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [2.7.104] - 2026-03-06
 ### Added
 - **Phase 142: Browser Debug & Proxy Fetch Dashboard Surface**
-  - Added `browser.debug` and `browser.proxyFetch` procedures to the Core browser router, backed by the existing `browser_debug` and `browser_proxy_fetch` bridge methods in Hypercode Core and the browser extension.
-  - Added `browser.debug` and `browser.proxyFetch` procedures to the Core browser router, backed by the existing `browser_debug` and `browser_proxy_fetch` bridge methods in hypercode Core and the browser extension.
+  - Added `browser.debug` and `browser.proxyFetch` procedures to the Core browser router, backed by the existing `browser_debug` and `browser_proxy_fetch` bridge methods in HyperNexus Core and the browser extension.
+  - Added `browser.debug` and `browser.proxyFetch` procedures to the Core browser router, backed by the existing `browser_debug` and `browser_proxy_fetch` bridge methods in hypernexus Core and the browser extension.
   - Added a dedicated Browser dashboard proxy-fetch panel with URL, method, headers, request body, and live response rendering so browser-routed fetches are now directly usable from the UI.
   - Added a dedicated Browser dashboard CDP panel with attach/detach controls plus raw command execution for active-tab Chrome DevTools Protocol diagnostics.
   - Updated the extension parity matrix to mark CDP debug proxy and proxy fetch as shipped dashboard/browser capabilities instead of browser-extension-only hidden bridge features.
@@ -4047,10 +4048,10 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ### Added
 - **Phase 140: Extension URL Ingestion Parity**
   - Added a new Core compatibility endpoint `POST /knowledge.ingest-url` backed by the existing deep-research URL ingestion service.
-  - Added browser-extension popup support for ingesting the active tab URL or an operator-edited URL directly into Hypercode Knowledge.
-  - Added `Hypercode: Ingest URL to Knowledge` plus a matching VS Code mini-dashboard action so URL ingestion is now available from both extension surfaces.
-  - Added browser-extension popup support for ingesting the active tab URL or an operator-edited URL directly into hypercode Knowledge.
-  - Added `hypercode: Ingest URL to Knowledge` plus a matching VS Code mini-dashboard action so URL ingestion is now available from both extension surfaces.
+  - Added browser-extension popup support for ingesting the active tab URL or an operator-edited URL directly into HyperNexus Knowledge.
+  - Added `HyperNexus: Ingest URL to Knowledge` plus a matching VS Code mini-dashboard action so URL ingestion is now available from both extension surfaces.
+  - Added browser-extension popup support for ingesting the active tab URL or an operator-edited URL directly into hypernexus Knowledge.
+  - Added `hypernexus: Ingest URL to Knowledge` plus a matching VS Code mini-dashboard action so URL ingestion is now available from both extension surfaces.
   - Updated the parity matrix to mark URL ingestion as shipped across dashboard, browser extension, and VS Code extension.
 ### Validated
 - Verified Core typecheck plus browser and VS Code extension builds pass after the new URL ingestion flow was added.
@@ -4094,8 +4095,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [2.7.97] - 2026-03-06
 ### Added
 - **Phase 135: VS Code RAG Ingestion Parity**
-  - Added `Hypercode: Ingest Selection to RAG` to the VS Code extension so the active selection or full file can be sent directly to Hypercode's `/rag.ingest-text` compatibility endpoint.
-  - Added `hypercode: Ingest Selection to RAG` to the VS Code extension so the active selection or full file can be sent directly to hypercode's `/rag.ingest-text` compatibility endpoint.
+  - Added `HyperNexus: Ingest Selection to RAG` to the VS Code extension so the active selection or full file can be sent directly to HyperNexus's `/rag.ingest-text` compatibility endpoint.
+  - Added `hypernexus: Ingest Selection to RAG` to the VS Code extension so the active selection or full file can be sent directly to hypernexus's `/rag.ingest-text` compatibility endpoint.
   - Added a matching **Ingest to RAG** quick action to the VS Code mini-dashboard so RAG ingestion is available from both the command palette and the sidebar UI.
   - Added an editor context-menu entry for direct selection ingestion and updated the parity matrix to mark VS Code RAG ingestion as shipped.
 ### Validated
@@ -4104,8 +4105,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [2.7.96] - 2026-03-06
 ### Added
 - **Phase 134: Unified Extension WebSocket Protocol Specification**
-  - Added `docs/WEBSOCKET_PROTOCOL_SPEC.md` as the single implementation-aligned reference for the Hypercode Core, browser extension, and VS Code extension WebSocket bridge.
-  - Added `docs/WEBSOCKET_PROTOCOL_SPEC.md` as the single implementation-aligned reference for the hypercode Core, browser extension, and VS Code extension WebSocket bridge.
+  - Added `docs/WEBSOCKET_PROTOCOL_SPEC.md` as the single implementation-aligned reference for the HyperNexus Core, browser extension, and VS Code extension WebSocket bridge.
+  - Added `docs/WEBSOCKET_PROTOCOL_SPEC.md` as the single implementation-aligned reference for the hypernexus Core, browser extension, and VS Code extension WebSocket bridge.
   - Documented the currently implemented command, response, telemetry, and rebroadcast packet shapes, including `STATUS_UPDATE`/`RESPONSE` compatibility behavior and browser method-based RPC packets.
   - Captured the current protocol normalization debt and a recommended future envelope strategy so all extension surfaces can converge on one transport contract.
 ### Validated
@@ -4114,14 +4115,14 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [2.7.95] - 2026-03-06
 ### Added
 - **Phase 133: VS Code Mini Dashboard Parity**
-  - Recreated `packages/vscode/src/extension.ts` with a richer Hypercode sidebar that now functions as a real mini-dashboard instead of a thin dispatch-only surface.
+  - Recreated `packages/vscode/src/extension.ts` with a richer HyperNexus sidebar that now functions as a real mini-dashboard instead of a thin dispatch-only surface.
   - Added live sidebar snapshot state for Core connection health, active researcher/coder availability, active editor, active terminal, and a recent activity feed.
   - Added quick actions for dashboard deep links, memory, tools, logs, analytics, council/debate flows, architect mode, and direct tool invocation through the Core compatibility endpoint.
-  - Added `hypercode.dashboardUrl` configuration and updated the VS Code activity-bar view label from `Dispatch` to `Mini Dashboard` to reflect the expanded surface.
-  - Recreated `packages/vscode/src/extension.ts` with a richer hypercode sidebar that now functions as a real mini-dashboard instead of a thin dispatch-only surface.
+  - Added `hypernexus.dashboardUrl` configuration and updated the VS Code activity-bar view label from `Dispatch` to `Mini Dashboard` to reflect the expanded surface.
+  - Recreated `packages/vscode/src/extension.ts` with a richer hypernexus sidebar that now functions as a real mini-dashboard instead of a thin dispatch-only surface.
   - Added live sidebar snapshot state for Core connection health, active researcher/coder availability, active editor, active terminal, and a recent activity feed.
   - Added quick actions for dashboard deep links, memory, tools, logs, analytics, council/debate flows, architect mode, and direct tool invocation through the Core compatibility endpoint.
-  - Added `hypercode.dashboardUrl` configuration and updated the VS Code activity-bar view label from `Dispatch` to `Mini Dashboard` to reflect the expanded surface.
+  - Added `hypernexus.dashboardUrl` configuration and updated the VS Code activity-bar view label from `Dispatch` to `Mini Dashboard` to reflect the expanded surface.
 ### Validated
 - Verified `pnpm -C packages/vscode build` passes.
 - Verified VS Code diagnostics are clean for `packages/vscode/src/extension.ts` and `packages/vscode/package.json`.
@@ -4130,12 +4131,12 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ### Added
 - **Phase 132: Browser Extension Hardening & Options UX**
   - Added a real browser-extension settings surface via `apps/extension/options.html` and `apps/extension/src/options.ts` for editing the Core HTTP and WebSocket endpoints stored in `chrome.storage.sync`.
-  - Hardened the popup UX with richer online/offline messaging, endpoint visibility, a direct settings action, and disabled action buttons when Hypercode Core is unreachable.
+  - Hardened the popup UX with richer online/offline messaging, endpoint visibility, a direct settings action, and disabled action buttons when HyperNexus Core is unreachable.
   - Extended the background bridge to react to storage updates live, refresh connection URLs without restart, and return structured connection diagnostics to the popup.
-  - Added extension manifest/build support for the new options page and widened localhost host permissions to include the active Hypercode Core port (`3001`).
-  - Hardened the popup UX with richer online/offline messaging, endpoint visibility, a direct settings action, and disabled action buttons when hypercode Core is unreachable.
+  - Added extension manifest/build support for the new options page and widened localhost host permissions to include the active HyperNexus Core port (`3001`).
+  - Hardened the popup UX with richer online/offline messaging, endpoint visibility, a direct settings action, and disabled action buttons when hypernexus Core is unreachable.
   - Extended the background bridge to react to storage updates live, refresh connection URLs without restart, and return structured connection diagnostics to the popup.
-  - Added extension manifest/build support for the new options page and widened localhost host permissions to include the active hypercode Core port (`3001`).
+  - Added extension manifest/build support for the new options page and widened localhost host permissions to include the active hypernexus Core port (`3001`).
 ### Validated
 - Verified `pnpm -C apps/extension build` passes.
 - Verified extension TypeScript diagnostics are clean for `src/background.ts`, `src/popup.ts`, and `src/options.ts`.
@@ -4145,8 +4146,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [2.7.93] - 2026-03-06
 ### Added
 - **Phase 131: VS Code Sidebar Dispatch UI**
-  - Added a `Hypercode` activity-bar container and a `Dispatch` webview view to the VS Code extension.
-  - Added a `hypercode` activity-bar container and a `Dispatch` webview view to the VS Code extension.
+  - Added a `HyperNexus` activity-bar container and a `Dispatch` webview view to the VS Code extension.
+  - Added a `hypernexus` activity-bar container and a `Dispatch` webview view to the VS Code extension.
   - Added a sidebar UI for hub status, research dispatch, coder dispatch, and quick memory capture from the active selection.
   - Connected the sidebar UI to the already-shipped Core expert endpoints and refreshed sidebar status on Core connect/disconnect events.
 ### Validated
@@ -4157,10 +4158,10 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ### Added
 - **Phase 130: VS Code Expert Dispatch Commands**
   - Added `/expert.dispatch` and `/expert.status` Core compatibility endpoints so non-dashboard clients can invoke the existing researcher/coder agents and query their availability.
-  - Implemented `Hypercode: Run Agent` in the VS Code extension with command-palette-driven dispatch to either the Research Agent or Coder Agent.
-  - Implemented `Hypercode: Show Hub Status` in the VS Code extension to display Core connection state plus researcher/coder availability.
-  - Implemented `hypercode: Run Agent` in the VS Code extension with command-palette-driven dispatch to either the Research Agent or Coder Agent.
-  - Implemented `hypercode: Show Hub Status` in the VS Code extension to display Core connection state plus researcher/coder availability.
+  - Implemented `HyperNexus: Run Agent` in the VS Code extension with command-palette-driven dispatch to either the Research Agent or Coder Agent.
+  - Implemented `HyperNexus: Show Hub Status` in the VS Code extension to display Core connection state plus researcher/coder availability.
+  - Implemented `hypernexus: Run Agent` in the VS Code extension with command-palette-driven dispatch to either the Research Agent or Coder Agent.
+  - Implemented `hypernexus: Show Hub Status` in the VS Code extension to display Core connection state plus researcher/coder availability.
 ### Validated
 - Verified `pnpm -C packages/core exec tsc --noEmit` passes.
 - Verified `pnpm -C packages/vscode compile` passes.
@@ -4169,8 +4170,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [2.7.91] - 2026-03-06
 ### Added
 - **Phase 129: Browser Extension RAG Ingestion**
-  - Added a lightweight `/rag.ingest-text` Core compatibility endpoint backed by `DocumentIntakeService` so extension-captured page content can be chunked and embedded directly into Hypercode RAG memory.
-  - Added a lightweight `/rag.ingest-text` Core compatibility endpoint backed by `DocumentIntakeService` so extension-captured page content can be chunked and embedded directly into hypercode RAG memory.
+  - Added a lightweight `/rag.ingest-text` Core compatibility endpoint backed by `DocumentIntakeService` so extension-captured page content can be chunked and embedded directly into HyperNexus RAG memory.
+  - Added a lightweight `/rag.ingest-text` Core compatibility endpoint backed by `DocumentIntakeService` so extension-captured page content can be chunked and embedded directly into hypernexus RAG memory.
   - Added a dedicated **Ingest Page to RAG** action in the browser extension popup alongside the existing markdown memory capture flow.
   - Added extension background support for `INGEST_RAG_TEXT` so the popup can send page content into the new RAG ingestion endpoint without bespoke client-side chunking.
 ### Validated
@@ -4190,10 +4191,10 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [2.7.89] - 2026-03-06
 ### Added
 - **Phase 127 Completion: VS Code Knowledge Capture Bridge**
-  - Registered the existing `Hypercode: Remember Selection` command in the VS Code extension and wired it to emit `KNOWLEDGE_CAPTURE` events to Hypercode Core.
-  - Extended Phase 127 cross-surface knowledge capture so both the browser extension and VS Code can push context directly into Hypercode memory through the shared Core bridge.
-  - Registered the existing `hypercode: Remember Selection` command in the VS Code extension and wired it to emit `KNOWLEDGE_CAPTURE` events to hypercode Core.
-  - Extended Phase 127 cross-surface knowledge capture so both the browser extension and VS Code can push context directly into hypercode memory through the shared Core bridge.
+  - Registered the existing `HyperNexus: Remember Selection` command in the VS Code extension and wired it to emit `KNOWLEDGE_CAPTURE` events to HyperNexus Core.
+  - Extended Phase 127 cross-surface knowledge capture so both the browser extension and VS Code can push context directly into HyperNexus memory through the shared Core bridge.
+  - Registered the existing `hypernexus: Remember Selection` command in the VS Code extension and wired it to emit `KNOWLEDGE_CAPTURE` events to hypernexus Core.
+  - Extended Phase 127 cross-surface knowledge capture so both the browser extension and VS Code can push context directly into hypernexus memory through the shared Core bridge.
 ### Validated
 - Verified `pnpm -C packages/vscode compile` passes.
 - Verified `pnpm -C apps/web build --webpack` passes.
@@ -4201,10 +4202,10 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [2.7.88] - 2026-03-06
 ### Added
 - **Phase 127: Extension Surface Cross-Intelligence**
-  - Added a lightweight `/knowledge.capture` core endpoint so the browser extension can persist captured page context directly into Hypercode memory without round-tripping through legacy memorize paths.
-  - Rebroadcast browser extension console events and captured-page events over the shared Hypercode Core WebSocket as `BROWSER_LOG` and `KNOWLEDGE_CAPTURED` packets.
-  - Added a lightweight `/knowledge.capture` core endpoint so the browser extension can persist captured page context directly into hypercode memory without round-tripping through legacy memorize paths.
-  - Rebroadcast browser extension console events and captured-page events over the shared hypercode Core WebSocket as `BROWSER_LOG` and `KNOWLEDGE_CAPTURED` packets.
+  - Added a lightweight `/knowledge.capture` core endpoint so the browser extension can persist captured page context directly into HyperNexus memory without round-tripping through legacy memorize paths.
+  - Rebroadcast browser extension console events and captured-page events over the shared HyperNexus Core WebSocket as `BROWSER_LOG` and `KNOWLEDGE_CAPTURED` packets.
+  - Added a lightweight `/knowledge.capture` core endpoint so the browser extension can persist captured page context directly into hypernexus memory without round-tripping through legacy memorize paths.
+  - Rebroadcast browser extension console events and captured-page events over the shared hypernexus Core WebSocket as `BROWSER_LOG` and `KNOWLEDGE_CAPTURED` packets.
   - Extended the dashboard `TrafficInspector` to render browser console traffic and knowledge-capture activity in real time.
 ### Validated
 - Verified `pnpm -C packages/core exec tsc --noEmit` passes after the cross-surface bridge updates.
@@ -4214,13 +4215,13 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [2.7.87] - 2026-03-06
 ### Added
 - **Phase 126: Deferred Tool Loading Pipeline**
-  - Activated deferred MCP tool schema handling in the live MetaMCP proxy so progressive mode now advertises lightweight placeholder tools and caches full JSON schemas for explicit hydration.
+  - Activated deferred MCP tool schema handling in the live HyperNexus proxy so progressive mode now advertises lightweight placeholder tools and caches full JSON schemas for explicit hydration.
   - Added `get_tool_schema` as an explicit schema-resolution tool for sub-agents, allowing heavyweight tool contracts to load only on demand.
   - Extended the core tool registry and tRPC tools API with deferred metadata (`isDeferred`, `schemaParamCount`, full-schema detail behavior).
   - Updated the MCP catalog dashboard to badge deferred tools and explain when full schemas are intentionally withheld until requested.
 ### Validated
-- Rebuilt `@hypercode/core` to refresh exported declarations for the new deferred-tool contract.
-- Rebuilt `@hypercode/core` to refresh exported declarations for the new deferred-tool contract.
+- Rebuilt `@hypernexus/core` to refresh exported declarations for the new deferred-tool contract.
+- Rebuilt `@hypernexus/core` to refresh exported declarations for the new deferred-tool contract.
 - Verified `pnpm -C apps/web build --webpack` passes with the updated core and dashboard UI.
 
 ## [2.7.86] - 2026-03-06
@@ -4253,8 +4254,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [2.7.64] - 2026-03-06
 ### Fixed
 - **Phase 104: Browser Extension Env-Safe URLs**
-  - Replaced hardcoded `localhost:3001` in `background.ts` with configurable `chrome.storage.sync` keys (`hypercodeCoreUrl`, `hypercodeWsUrl`).
-  - Replaced hardcoded `localhost:3001` in `background.ts` with configurable `chrome.storage.sync` keys (`hypercodeCoreUrl`, `hypercodeWsUrl`).
+  - Replaced hardcoded `localhost:3001` in `background.ts` with configurable `chrome.storage.sync` keys (`hypernexusCoreUrl`, `hypernexusWsUrl`).
+  - Replaced hardcoded `localhost:3001` in `background.ts` with configurable `chrome.storage.sync` keys (`hypernexusCoreUrl`, `hypernexusWsUrl`).
   - WebSocket auto-reconnects when storage values change.
   - Updated Extension Parity Matrix Milestone 1 items.
 
@@ -4323,8 +4324,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ### Added
 - **Phase 97: External Link Ingestion Telemetry**
   - Built `scripts/record-fetch-outcome.mjs` to incrementally log fetch failures, successes, and pending queue targets.
-  - Deployed `Ingestion Dashboard` (`/dashboard/ingestion`) displaying real-time metrics for total, processed, pending, and failed ingestion queue items along with their respective stack traces from `HYPERCODE_MASTER_INDEX.jsonc`.
-  - Deployed `Ingestion Dashboard` (`/dashboard/ingestion`) displaying real-time metrics for total, processed, pending, and failed ingestion queue items along with their respective stack traces from `HYPERCODE_MASTER_INDEX.jsonc`.
+  - Deployed `Ingestion Dashboard` (`/dashboard/ingestion`) displaying real-time metrics for total, processed, pending, and failed ingestion queue items along with their respective stack traces from `HYPERNEXUS_MASTER_INDEX.jsonc`.
+  - Deployed `Ingestion Dashboard` (`/dashboard/ingestion`) displaying real-time metrics for total, processed, pending, and failed ingestion queue items along with their respective stack traces from `HYPERNEXUS_MASTER_INDEX.jsonc`.
   - Check-marked Phase 97 implementation points in `ROADMAP.md` and `DETAILED_BACKLOG.md` (Item 6.2).
 
 ## [2.7.56] - 2026-03-05
@@ -4614,15 +4615,15 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ### Added
 - **Phase 79: Swarm Event Visualization Engine**
 - Integrated real-time P2P traffic monitoring via SSE over port 3001.
-- Added a high-fidelity "Telemetry" dashboard in `@hypercode/web` with Framer Motion animations.
-- Added a high-fidelity "Telemetry" dashboard in `@hypercode/web` with Framer Motion animations.
+- Added a high-fidelity "Telemetry" dashboard in `@hypernexus/web` with Framer Motion animations.
+- Added a high-fidelity "Telemetry" dashboard in `@hypernexus/web` with Framer Motion animations.
 - Wired internal `MeshService` traffic to the central `MCPServer` `eventBus` for visualization.
 
 ## [2.7.38] - 2026-02-28
 
 ### Added
-- **Phase 78: Mesh Network Realization (Redis)**: Migrated `MeshService.ts` from a local-only simulation to a distributed Pub/Sub architecture using `ioredis`. Local node processes now detect standard `REDIS_URL` secrets to fuse instances to a `hypercode:swarm:mesh` channel, enabling swarm logic across server instances. Developed dual-topic stream architecture natively blocking pub/sub echo storms.
-- **Phase 78: Mesh Network Realization (Redis)**: Migrated `MeshService.ts` from a local-only simulation to a distributed Pub/Sub architecture using `ioredis`. Local node processes now detect standard `REDIS_URL` secrets to fuse instances to a `hypercode:swarm:mesh` channel, enabling swarm logic across server instances. Developed dual-topic stream architecture natively blocking pub/sub echo storms.
+- **Phase 78: Mesh Network Realization (Redis)**: Migrated `MeshService.ts` from a local-only simulation to a distributed Pub/Sub architecture using `ioredis`. Local node processes now detect standard `REDIS_URL` secrets to fuse instances to a `hypernexus:swarm:mesh` channel, enabling swarm logic across server instances. Developed dual-topic stream architecture natively blocking pub/sub echo storms.
+- **Phase 78: Mesh Network Realization (Redis)**: Migrated `MeshService.ts` from a local-only simulation to a distributed Pub/Sub architecture using `ioredis`. Local node processes now detect standard `REDIS_URL` secrets to fuse instances to a `hypernexus:swarm:mesh` channel, enabling swarm logic across server instances. Developed dual-topic stream architecture natively blocking pub/sub echo storms.
 
 ## [2.7.37] - 2026-02-28
 
@@ -4648,7 +4649,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [2.7.35] - 2026-02-28
 
 ### Fixed
-- **MetaMCP Backend Silent Startup Hang**: Root-caused and fixed a deadlock where `tsx watch` silently hung during ESM module evaluation. The underlying trigger was a `SyntaxError` from 8 missing table exports in the SQLite schema (`dockerSessionsTable`, `auditLogsTable`, `memoriesTable`, `policiesTable`, `toolCallLogsTable`, `toolSetsTable`, `toolSetItemsTable`, `savedScriptsTable`). Instead of surfacing the error, `tsx watch`'s AST parser entered an infinite loop.
+- **HyperNexus Backend Silent Startup Hang**: Root-caused and fixed a deadlock where `tsx watch` silently hung during ESM module evaluation. The underlying trigger was a `SyntaxError` from 8 missing table exports in the SQLite schema (`dockerSessionsTable`, `auditLogsTable`, `memoriesTable`, `policiesTable`, `toolCallLogsTable`, `toolSetsTable`, `toolSetItemsTable`, `savedScriptsTable`). Instead of surfacing the error, `tsx watch`'s AST parser entered an infinite loop.
 - **SQLite Schema Parity**: Migrated all 8 missing PostgreSQL table definitions to SQLite equivalents in `schema-sqlite.ts`, converting `uuid()` → `text()`, `timestamp()` → `integer({mode:"timestamp"})`, `jsonb()` → `text({mode:"json"})`, and `pgEnum()` → TypeScript `as const` arrays.
 - **Dev Watcher Stability**: Replaced `tsx watch` with Node.js native `--watch` flag (`node --watch --import tsx`) in the backend `package.json` dev script. Node's C++ ESM graph resolver handles circular dependencies gracefully, completely bypassing the `tsx` AST parser deadlock.
 - **Drizzle Migration**: Generated clean `drizzle-sqlite/0001_unknown_tyrannus.sql` migration covering all 24 SQLite tables.
@@ -4658,10 +4659,10 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Verified
 - **Full Dev Readiness**: All 4 critical services pass `verify_dev_readiness.mjs` in strict mode:
-  - ✅ `hypercode-web` (port 3000)
-  - ✅ `hypercode-web` (port 3000)
-  - ✅ `metamcp-frontend` (port 12008)
-  - ✅ `metamcp-backend` (port 12009, `/health` → 200 OK)
+  - ✅ `hypernexus-web` (port 3000)
+  - ✅ `hypernexus-web` (port 3000)
+  - ✅ `hypernexus-frontend` (port 12008)
+  - ✅ `hypernexus-backend` (port 12009, `/health` → 200 OK)
   - ✅ `autopilot-server` (port 3847)
 
 ## [2.7.34] - 2026-02-27
@@ -4669,14 +4670,14 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ### Added
 - **Phase 76: Deep Ecosystem Integration (Open-WebUI)**:
   - Added `external/open-webui` as the 7th submodule, integrating the robust conversational interface natively into the workspace.
-  - **Frontend Sync**: Scaffolded `/dashboard/webui` Next.js page, embedding the interface into Hypercode's primary navigation system (`nav-config.ts`), marking it as a top-level native integration tab.
-  - **Frontend Sync**: Scaffolded `/dashboard/webui` Next.js page, embedding the interface into hypercode's primary navigation system (`nav-config.ts`), marking it as a top-level native integration tab.
+  - **Frontend Sync**: Scaffolded `/dashboard/webui` Next.js page, embedding the interface into HyperNexus's primary navigation system (`nav-config.ts`), marking it as a top-level native integration tab.
+  - **Frontend Sync**: Scaffolded `/dashboard/webui` Next.js page, embedding the interface into hypernexus's primary navigation system (`nav-config.ts`), marking it as a top-level native integration tab.
   - **Backend Sync**: Created `openWebUIRouter.ts` and exposed it via the main `AppRouter`, proxying native tooling and swarm capabilities into the WebUI backend architecture.
 
 - **Phase 6: React Native Mobile App (Native PWA Shell)**:
   - Initialized an Expo React Native wrapper project via `npx create-expo-app` in `apps/mobile`.
-  - Wired `react-native-webview` with dynamic screen padding to natively mount the Hypercode web dashboard onto iOS and Android platforms.
-  - Wired `react-native-webview` with dynamic screen padding to natively mount the hypercode web dashboard onto iOS and Android platforms.
+  - Wired `react-native-webview` with dynamic screen padding to natively mount the HyperNexus web dashboard onto iOS and Android platforms.
+  - Wired `react-native-webview` with dynamic screen padding to natively mount the hypernexus web dashboard onto iOS and Android platforms.
 
 ### Changed
 - **Version Bump**: Incremented version to 2.7.34 to mark the completion of the baseline submodule integrations and mobile scaffolding.
@@ -4695,8 +4696,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Fixed
 - **tRPC v11 Migration**: Replaced deprecated `isLoading` with `isPending` across `swarm/page.tsx` (React Query v5 API).
-- **Stale Dist Types**: Rebuilt `@hypercode/core` dist declarations to propagate `swarmRouter` into `AppRouter` type for frontend consumption.
-- **Stale Dist Types**: Rebuilt `@hypercode/core` dist declarations to propagate `swarmRouter` into `AppRouter` type for frontend consumption.
+- **Stale Dist Types**: Rebuilt `@hypernexus/core` dist declarations to propagate `swarmRouter` into `AppRouter` type for frontend consumption.
+- **Stale Dist Types**: Rebuilt `@hypernexus/core` dist declarations to propagate `swarmRouter` into `AppRouter` type for frontend consumption.
 - **Implicit Any Parameters**: Added explicit type annotations to `.map()` callbacks in debate transcript and consensus candidate rendering.
 
 ## [2.7.31] - 2026-02-26
@@ -4727,9 +4728,9 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Added
 - **Phase 69: Deep Submodule Assimilation Sprint** — Completed full integration of all four core submodules.
-- **MetaMCP True Proxy Architecture**: `MCPServer.executeTool` now delegates to `executeProxiedTool` from the MetaMCP proxy service, with legacy fallbacks retained for backward compatibility.
-- **MCP-SuperAssistant Hypercode Bridge**: Injected Hypercode Hub WebSocket bridge (`connectHypercodeHub`) into SuperAssistant's background script and `window.hypercode.callTool()` API + console interceptor into the content script.
-- **MCP-SuperAssistant hypercode Bridge**: Injected hypercode Hub WebSocket bridge (`connectHypercodeHub`) into SuperAssistant's background script and `window.hypercode.callTool()` API + console interceptor into the content script.
+- **HyperNexus True Proxy Architecture**: `MCPServer.executeTool` now delegates to `executeProxiedTool` from the HyperNexus proxy service, with legacy fallbacks retained for backward compatibility.
+- **MCP-SuperAssistant HyperNexus Bridge**: Injected HyperNexus Hub WebSocket bridge (`connectHyperNexusHub`) into SuperAssistant's background script and `window.hypernexus.callTool()` API + console interceptor into the content script.
+- **MCP-SuperAssistant hypernexus Bridge**: Injected hypernexus Hub WebSocket bridge (`connectHyperNexusHub`) into SuperAssistant's background script and `window.hypernexus.callTool()` API + console interceptor into the content script.
 - **claude-mem Redundant Memory Pipeline**: Created `ClaudeMemAdapter.ts` (section-based storage) and `RedundantMemoryManager.ts` (fan-out writes to all providers). Default `MemoryManager` provider changed from `json` to `redundant`.
 - **Cloud Dev Management Dashboard**: Created `cloudDevRouter.ts` tRPC router for multi-provider cloud dev session management (Jules, Codex, Copilot Workspace, Devin) and `/dashboard/cloud-dev/page.tsx` with full CRUD UI.
 
@@ -4742,7 +4743,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - **Global Agents Directive Override**: Established a single source of truth for all Universal LLM Instructions to mandate strict version tracking and changelog maintenance. Rewrote `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `GPT.md`, `CODEX.md`, `GROK.md`, and `copilot-instructions.md` to cleanly inherit from `UNIVERSAL_LLM_INSTRUCTIONS.md`.
 
 ### Changed
-- **Submodule Assimilation Sprint**: Formally initialized the four core foundational submodules (`MetaMCP`, `MCP-SuperAssistant`, `jules-autopilot`, and `claude-mem`) into the project infrastructure. Updated `VISION.md`, `MEMORY.md`, and `DEPLOY.md` to reflect the newly integrated Deep Submodule assimilation plan.
+- **Submodule Assimilation Sprint**: Formally initialized the four core foundational submodules (`HyperNexus`, `MCP-SuperAssistant`, `jules-autopilot`, and `claude-mem`) into the project infrastructure. Updated `VISION.md`, `MEMORY.md`, and `DEPLOY.md` to reflect the newly integrated Deep Submodule assimilation plan.
 - **Version Bump**: Incremented version to 2.7.27.
 
 ## [2.7.26] - 2026-02-26
@@ -4752,15 +4753,15 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - **Type Safety Pass**: Removed 50+ `@ts-ignore` directives from `apps/web` and `packages/ui`.
 - **TRPC Router Typing**: Fixed generic TS inference errors in `appRouter` affecting `healerRouter` and `auditRouter`. Rewired all `SecurityPage`TRPC calls to correct `policies.*` and `audit.log` endpoints instead of previous untyped endpoints.
 - **Strict Compliance**: Both `packages/core` and `packages/ui` now successfully compile under `tsc --noEmit` locally with zero fallback mocks or stubs.
-- **Browser Extension Bridge**: Implemented fuzzy text matching and validated the end-to-end local MCP click action logic in `@hypercode/browser-extension-pkg` background execution worker.
-- **Browser Extension Bridge**: Implemented fuzzy text matching and validated the end-to-end local MCP click action logic in `@hypercode/browser-extension-pkg` background execution worker.
+- **Browser Extension Bridge**: Implemented fuzzy text matching and validated the end-to-end local MCP click action logic in `@hypernexus/browser-extension-pkg` background execution worker.
+- **Browser Extension Bridge**: Implemented fuzzy text matching and validated the end-to-end local MCP click action logic in `@hypernexus/browser-extension-pkg` background execution worker.
 
 ## [2.7.25] - 2026-02-25
 
 ### Added
 - **Phase 68: DeerFlow Super Agent Harness Assessment**: Successfully assimilated Bytedance's `deer-flow` deep-research reasoning super agent as a git submodule (`external/deer-flow`).
-- **Core Bridge Networking**: Scaffolded `@hypercode/core` with proxy mechanisms connected to the Python LangGraph gateway via `DeerFlowBridgeService.ts` and wired into Central TRPC scope via `deerFlowRouter.ts`.
-- **Core Bridge Networking**: Scaffolded `@hypercode/core` with proxy mechanisms connected to the Python LangGraph gateway via `DeerFlowBridgeService.ts` and wired into Central TRPC scope via `deerFlowRouter.ts`.
+- **Core Bridge Networking**: Scaffolded `@hypernexus/core` with proxy mechanisms connected to the Python LangGraph gateway via `DeerFlowBridgeService.ts` and wired into Central TRPC scope via `deerFlowRouter.ts`.
+- **Core Bridge Networking**: Scaffolded `@hypernexus/core` with proxy mechanisms connected to the Python LangGraph gateway via `DeerFlowBridgeService.ts` and wired into Central TRPC scope via `deerFlowRouter.ts`.
 - **Dashboard Portal Overlay**: Deep-linked the Next.js `deer-flow` UI overlay into the root Master Control Panel under `apps/web/src/app/dashboard/deer-flow`.
 
 ## [2.7.24] - 2026-02-25
@@ -4777,8 +4778,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - **Submodule Operations Dashboard**: Scaffolded the implementation plan for the Submodule DevOps Dashboard for Phase 64.
 
 ### Fixed
-- **Next.js Tailwind Build**: Fixed a Turbopack/Webpack configuration issue in `@hypercode/web` that was preventing Tailwind CSS v4 from building correctly on the MetaMCP Dashboard.
-- **Next.js Tailwind Build**: Fixed a Turbopack/Webpack configuration issue in `@hypercode/web` that was preventing Tailwind CSS v4 from building correctly on the MetaMCP Dashboard.
+- **Next.js Tailwind Build**: Fixed a Turbopack/Webpack configuration issue in `@hypernexus/web` that was preventing Tailwind CSS v4 from building correctly on the HyperNexus Dashboard.
+- **Next.js Tailwind Build**: Fixed a Turbopack/Webpack configuration issue in `@hypernexus/web` that was preventing Tailwind CSS v4 from building correctly on the HyperNexus Dashboard.
 
 ### Changed
 - **Version Bump**: Incremented version to 2.7.23.
@@ -4793,8 +4794,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Added
 - **Memory Multi-Backend (Phase 68)**: Assimilated `memora` and `memory-opensource` as physical submodules in `external/memory/`.
-- **Memora Integration**: Registered the `memora` MCP server in `hypercode.config.json` for semantic persistent storage.
-- **Memora Integration**: Registered the `memora` MCP server in `hypercode.config.json` for semantic persistent storage.
+- **Memora Integration**: Registered the `memora` MCP server in `hypernexus.config.json` for semantic persistent storage.
+- **Memora Integration**: Registered the `memora` MCP server in `hypernexus.config.json` for semantic persistent storage.
 - **Native Memory Viewer**: Replaced the `claude-mem` iframe with a high-fidelity, native React UI for searching and managing tiered agent memory (Session, Working, Long-Term).
 
 ### Changed
@@ -4812,7 +4813,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [2.7.19] - 2026-02-24
 
 ### Changed
-- **Submodule Consolidation (Phase 2)**: Removed 31 redundant submodule mappings for 8 high-offender repositories (`algonius-browser`, `bkircher/skills`, `awesome-ai-apps`, `toolsdk-mcp-registry`, `awesome-mcp-servers`, `goose`, `OpenHands`, `metamcp`), establishing canonical paths under `external/` or `references/`.
+- **Submodule Consolidation (Phase 2)**: Removed 31 redundant submodule mappings for 8 high-offender repositories (`algonius-browser`, `bkircher/skills`, `awesome-ai-apps`, `toolsdk-mcp-registry`, `awesome-mcp-servers`, `goose`, `OpenHands`, `hypernexus`), establishing canonical paths under `external/` or `references/`.
 - **Version Bump**: Incremented version to 2.7.19.
 
 ## [2.7.18] - 2026-02-24
@@ -4830,7 +4831,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Added
 - **Mesh Control Center**: Implemented `/dashboard/mesh` to close a critical "Dark Feature" gap. The new dashboard allows users to monitor P2P node connections, view connected peers, perform global broadcasts, and dispatch tasks to the swarm via the `askSwarm` endpoint.
-- **Master Index Enrichment**: Enriched the metadata for core orchestration submodules (`metamcp`, `owlex`, `roundtable`, `openhands`, `a2a`, etc.) with technical deep-dive information.
+- **Master Index Enrichment**: Enriched the metadata for core orchestration submodules (`hypernexus`, `owlex`, `roundtable`, `openhands`, `a2a`, etc.) with technical deep-dive information.
 
 ### Changed
 - **Version Bump**: Incremented version to 2.7.17 to track the successful implementation of the Mesh dashboard and navigation integration.
@@ -4855,8 +4856,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - **Research Index**: Created `research/LINK_DISCOVERY_INDEX.md` for tracking assimilation targets.
 
 ### Fixed
-- **Web Linting**: Resolved `@hypercode/web` release gate failure by mocking `eslint-plugin-react-hooks` in flat syntax config.
-- **Web Linting**: Resolved `@hypercode/web` release gate failure by mocking `eslint-plugin-react-hooks` in flat syntax config.
+- **Web Linting**: Resolved `@hypernexus/web` release gate failure by mocking `eslint-plugin-react-hooks` in flat syntax config.
+- **Web Linting**: Resolved `@hypernexus/web` release gate failure by mocking `eslint-plugin-react-hooks` in flat syntax config.
 - **Dashboard**: Regenerated `SUBMODULES.md` dashboard.
 
 ### Security
@@ -4937,8 +4938,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ### Changed
 
 - **Turbo lint scope stabilization**:
-  - Updated root `lint:turbo` script to temporarily exclude `@hypercode/web` in addition to existing exclusions.
-  - Updated root `lint:turbo` script to temporarily exclude `@hypercode/web` in addition to existing exclusions.
+  - Updated root `lint:turbo` script to temporarily exclude `@hypernexus/web` in addition to existing exclusions.
+  - Updated root `lint:turbo` script to temporarily exclude `@hypernexus/web` in addition to existing exclusions.
   - This isolates known legacy lint rule debt in `apps/web` while preserving monorepo lint signal for the remaining workspace packages.
 
 ### Validation
@@ -5030,13 +5031,13 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Fixed
 
-- **MetaMCP backend JSON-only startup log noise**:
-  - Updated `external/MetaMCP/apps/backend/src/lib/mcp-config.service.ts` to skip DB import migration when DB is intentionally unconfigured.
+- **HyperNexus backend JSON-only startup log noise**:
+  - Updated `external/HyperNexus/apps/backend/src/lib/mcp-config.service.ts` to skip DB import migration when DB is intentionally unconfigured.
   - Replaced misleading startup error path with explicit informational JSON-only mode handling.
 
 - **Strict local readiness regression gate**:
-  - Verified strict readiness pass across Hypercode web, MetaMCP frontend/backend, and autopilot server once services are active.
-  - Verified strict readiness pass across hypercode web, MetaMCP frontend/backend, and autopilot server once services are active.
+  - Verified strict readiness pass across HyperNexus web, HyperNexus frontend/backend, and autopilot server once services are active.
+  - Verified strict readiness pass across hypernexus web, HyperNexus frontend/backend, and autopilot server once services are active.
 
 ## [2.7.2] - 2026-02-22
 
@@ -5053,8 +5054,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - **Cross-Service Dev Readiness Checker**:
   - Added `scripts/verify_dev_readiness.mjs`.
   - Added root script `check:dev-readiness` in `package.json`.
-  - Verifies live readiness across Hypercode Web, MetaMCP frontend/backend, and OpenCode Autopilot server with deterministic endpoint checks.
-  - Verifies live readiness across hypercode Web, MetaMCP frontend/backend, and OpenCode Autopilot server with deterministic endpoint checks.
+  - Verifies live readiness across HyperNexus Web, HyperNexus frontend/backend, and OpenCode Autopilot server with deterministic endpoint checks.
+  - Verifies live readiness across hypernexus Web, HyperNexus frontend/backend, and OpenCode Autopilot server with deterministic endpoint checks.
   - Supports strict mode (non-zero on critical failures) and `--soft` mode for diagnostic runs.
 
 ### Fixed
@@ -5071,24 +5072,24 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ### Added
 
 - **Scalable Link Ingestion Sync**:
-  - Added `scripts/sync_master_index.mjs` to normalize and synchronize `HYPERCODE_MASTER_INDEX.jsonc` from `scripts/resources-list.json` and `scripts/ingestion-status.json`.
-  - Added `scripts/sync_master_index.mjs` to normalize and synchronize `HYPERCODE_MASTER_INDEX.jsonc` from `scripts/resources-list.json` and `scripts/ingestion-status.json`.
+  - Added `scripts/sync_master_index.mjs` to normalize and synchronize `HYPERNEXUS_MASTER_INDEX.jsonc` from `scripts/resources-list.json` and `scripts/ingestion-status.json`.
+  - Added `scripts/sync_master_index.mjs` to normalize and synchronize `HYPERNEXUS_MASTER_INDEX.jsonc` from `scripts/resources-list.json` and `scripts/ingestion-status.json`.
   - Added `scripts/ingestion-status.json` for explicit processed/pending/failed outcome tracking and failure retry seeds.
   - Added root script alias: `npm run index:sync`.
 
 ### Fixed
 
 - **API Router Refactoring (Database Decoupling)**:
-  - Refactored `toolsRouter` to use `ToolRegistry` instead of direct DB storage, resolving persistent type errors and aligning with MetaMCP architecture.
+  - Refactored `toolsRouter` to use `ToolRegistry` instead of direct DB storage, resolving persistent type errors and aligning with HyperNexus architecture.
   - Refactored `savedScriptsRouter` to use `JsonConfigProvider`, utilizing `mcp.json` as the single source of truth for script storage.
-  - Standardized tool naming convention to `server__tool` across `MetaMCPController` and `ToolRegistry`.
+  - Standardized tool naming convention to `server__tool` across `HyperNexusController` and `ToolRegistry`.
   - Created `common-utils.ts` to fully decouple utility functions from lingering database dependencies.
 
 ### Changed
 
 - **Master Index Schema Upgrade**:
-  - Upgraded `HYPERCODE_MASTER_INDEX.jsonc` to schema `hypercode-master-index/v2`.
-  - Upgraded `HYPERCODE_MASTER_INDEX.jsonc` to schema `hypercode-master-index/v2`.
+  - Upgraded `HYPERNEXUS_MASTER_INDEX.jsonc` to schema `hypernexus-master-index/v2`.
+  - Upgraded `HYPERNEXUS_MASTER_INDEX.jsonc` to schema `hypernexus-master-index/v2`.
   - Added ingestion telemetry (`ingestion.sources`, `ingestion.queue`) and expanded per-entry metadata (`fetch_status`, `fetch_error`, `fetch_attempts`, `last_checked_at`, `processed_at`, `normalized_url`, `discovered_from`).
   - Synced canonical corpus to 565 tracked links with queue visibility (`processed=6`, `pending=558`, `failed=1`).
 
@@ -5096,19 +5097,19 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Added
 
-- **Phase 67: MetaMCP Submodule Assimilation**:
-  - Added `https://github.com/robertpelloni/MetaMCP` as a Git submodule at `external/MetaMCP/`.
-  - Registered `external/MetaMCP/packages/*` and `external/MetaMCP/apps/*` in `pnpm-workspace.yaml` as first-class workspace members.
-  - Modified `external/MetaMCP/apps/backend/tsup.config.ts` to emit a separate library bundle at `dist/metamcp.js` alongside the main Express server.
-  - Created `packages/core/src/services/MetaMCPBridgeService.ts` — a typed HTTP client allowing Hypercode to communicate with the MetaMCP backend at `http://localhost:12009`.
-  - Created `packages/core/src/services/MetaMCPBridgeService.ts` — a typed HTTP client allowing hypercode to communicate with the MetaMCP backend at `http://localhost:12009`.
-  - Added 4 new TRPC procedures to `mcpServersRouter`: `listFromMetaMCP`, `metamcpStatus`, `createInMetaMCP`, `deleteFromMetaMCP`.
-  - Created ambient TypeScript declaration shim `packages/core/src/types/backend-metamcp.d.ts`.
+- **Phase 67: HyperNexus Submodule Assimilation**:
+  - Added `https://github.com/robertpelloni/HyperNexus` as a Git submodule at `external/HyperNexus/`.
+  - Registered `external/HyperNexus/packages/*` and `external/HyperNexus/apps/*` in `pnpm-workspace.yaml` as first-class workspace members.
+  - Modified `external/HyperNexus/apps/backend/tsup.config.ts` to emit a separate library bundle at `dist/hypernexus.js` alongside the main Express server.
+  - Created `packages/core/src/services/HyperNexusBridgeService.ts` — a typed HTTP client allowing HyperNexus to communicate with the HyperNexus backend at `http://localhost:12009`.
+  - Created `packages/core/src/services/HyperNexusBridgeService.ts` — a typed HTTP client allowing hypernexus to communicate with the HyperNexus backend at `http://localhost:12009`.
+  - Added 4 new TRPC procedures to `mcpServersRouter`: `listFromHyperNexus`, `hypernexusStatus`, `createInHyperNexus`, `deleteFromHyperNexus`.
+  - Created ambient TypeScript declaration shim `packages/core/src/types/backend-hypernexus.d.ts`.
 
 - **Phase 66: AI Command Center & Dashboards**:
   - Jules Autopilot Dashboard (`/dashboard/jules`) with API key controls and live connectivity testing.
-  - OpenCode Autopilot Dashboard integrated into Hypercode web.
-  - OpenCode Autopilot Dashboard integrated into hypercode web.
+  - OpenCode Autopilot Dashboard integrated into HyperNexus web.
+  - OpenCode Autopilot Dashboard integrated into hypernexus web.
   - Master AI Billing & API Key Dashboard.
   - Installed AI Tool Detector & Usage Tracker at `/dashboard/mcp/ai-tools`.
 
@@ -5118,8 +5119,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Fixed
 
-- `@hypercode/core` TypeScript build: restored missing `@hypercode/adk` dependency, resolved all merge conflict artifacts, confirmed `tsc` exits with code `0`.
-- `@hypercode/core` TypeScript build: restored missing `@hypercode/adk` dependency, resolved all merge conflict artifacts, confirmed `tsc` exits with code `0`.
+- `@hypernexus/core` TypeScript build: restored missing `@hypernexus/adk` dependency, resolved all merge conflict artifacts, confirmed `tsc` exits with code `0`.
+- `@hypernexus/core` TypeScript build: restored missing `@hypernexus/adk` dependency, resolved all merge conflict artifacts, confirmed `tsc` exits with code `0`.
 
 ## [2.6.3] - 2026-02-16
 ## [2.7.136] — 2026-03-14
@@ -5150,10 +5151,10 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
   - Replaced OAuth exchange stub with live provider token exchange flow in `oauthRouter.exchange` (session/client validation, token request, schema-validated persistence).
   - Rewired `agentRouter.chat` to live `llmService` generation with graceful degraded fallback behavior.
   - Replaced `agents/Researcher` stub output generation with model-backed synthesis + JSON extraction fallback.
-  - Replaced key MetaMCP proxy stub adapters for code execution, saved script CRUD/execution, tool search, and tool persistence with repository/service-backed implementations.
-  - Replaced MetaMCP `run_agent` stub path with LLM-backed orchestration and removed dead run_python stub branch.
-- **Jules dashboard accessibility in Hypercode Web**:
-- **Jules dashboard accessibility in hypercode Web**:
+  - Replaced key HyperNexus proxy stub adapters for code execution, saved script CRUD/execution, tool search, and tool persistence with repository/service-backed implementations.
+  - Replaced HyperNexus `run_agent` stub path with LLM-backed orchestration and removed dead run_python stub branch.
+- **Jules dashboard accessibility in HyperNexus Web**:
+- **Jules dashboard accessibility in hypernexus Web**:
   - Added `/dashboard/jules` in `apps/web` with embedded Jules Autopilot launch surface.
   - Added `apps/web` Jules API proxy route (`/api/jules`) for authenticated Jules API passthrough.
   - Added Jules card on dashboard home for direct discoverability.
@@ -5182,8 +5183,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 - **Dashboard Build Stabilization (18 component fixes)**:
   - Fixed 6 disabled router references (TraceViewer, SystemStatus, RemoteAccessCard, GlobalSearch, ConfigEditor, TestStatusWidget) — replaced with static placeholder UI
   - Fixed TrafficInspector `handleReplay()` — disabled `logs.read` router replaced with console warning
-  - Fixed router name mismatches: `context`→`hypercodeContext` (ContextWidget), `repoGraph`→`graph` (GraphWidget), `audit.getLogs`→`audit.query` (AuditLogViewer)
-  - Fixed router name mismatches: `context`→`hypercodeContext` (ContextWidget), `repoGraph`→`graph` (GraphWidget), `audit.getLogs`→`audit.query` (AuditLogViewer)
+  - Fixed router name mismatches: `context`→`hypernexusContext` (ContextWidget), `repoGraph`→`graph` (GraphWidget), `audit.getLogs`→`audit.query` (AuditLogViewer)
+  - Fixed router name mismatches: `context`→`hypernexusContext` (ContextWidget), `repoGraph`→`graph` (GraphWidget), `audit.getLogs`→`audit.query` (AuditLogViewer)
   - Fixed procedure: `shell.execute`→`commands.execute` (CommandRunner), input shape `path`→`filePath` (ContextWidget)
   - Fixed union type access with safe casts: IndexingStatus, SystemPulse, CouncilConfig
   - Fixed Badge variants: `"success"`→`"default"` (SystemPulse, evolution/page, security/page)
@@ -5335,8 +5336,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ### Added
 
 - **Phase 23 (Deep Data Search)**:
-  - Created `Indexer` and `CodeSplitter` in `@hypercode/memory`.
-  - Created `Indexer` and `CodeSplitter` in `@hypercode/memory`.
+  - Created `Indexer` and `CodeSplitter` in `@hypernexus/memory`.
+  - Created `Indexer` and `CodeSplitter` in `@hypernexus/memory`.
   - Added AST-based symbol extraction for TypeScript.
   - Added semantic chunking logic.
   - Exposed `memory_index_codebase` and `memory_search` tools in `MCPServer`.
@@ -5346,8 +5347,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Added
 
-- **Master MCP Server Architecture (Phase 21)**: Hypercode now aggregates downstream MCP servers (`git`, `filesystem`, etc.) via `MCPAggregator`.
-- **Master MCP Server Architecture (Phase 21)**: hypercode now aggregates downstream MCP servers (`git`, `filesystem`, etc.) via `MCPAggregator`.
+- **Master MCP Server Architecture (Phase 21)**: HyperNexus now aggregates downstream MCP servers (`git`, `filesystem`, etc.) via `MCPAggregator`.
+- **Master MCP Server Architecture (Phase 21)**: hypernexus now aggregates downstream MCP servers (`git`, `filesystem`, etc.) via `MCPAggregator`.
 - **Stdio Client**: Native integration for spawning and controlling local MCP tools.
 - **Unified Documentation**: Centralized all agent instructions into `docs/LLM_INSTRUCTIONS.md`.
 - **Vision Document**: Published `VISION.md` outlining the "Neural Operating System" goal.
@@ -5355,8 +5356,8 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Changed
 
-- **Config**: `hypercode.config.json` is now the primary configuration point for adding tools.
-- **Config**: `hypercode.config.json` is now the primary configuration point for adding tools.
+- **Config**: `hypernexus.config.json` is now the primary configuration point for adding tools.
+- **Config**: `hypernexus.config.json` is now the primary configuration point for adding tools.
 - **Routing**: Tool calls are now prefixed (e.g., `git_commit`) to allow namespace isolation between multiple servers.
 
 ## [1.7.0] - 2026-02-03
@@ -5365,27 +5366,27 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - **Core Infrastructure**: Registered LSP, Code Mode, and Plan Mode tools in MCPServer.
 - **Verification**: Added `CoreInfra.test.ts`.
-- **Broader Harness Catalog Alignment**: Expanded the TypeScript supervisor catalog, council CLI registry, compiled CLI harness list, and Go sidecar harness registry so Hypercode now tracks `hypercode`, `aider`, `cursor`, `copilot`, `qwen`, `superai-cli`, `codebuff`, `codemachine`, and `factory-droid` more consistently across session catalog and `/api/cli/harnesses` surfaces, while keeping non-Hypercode parity claims explicitly limited to install/runtime metadata.
+- **Broader Harness Catalog Alignment**: Expanded the TypeScript supervisor catalog, council CLI registry, compiled CLI harness list, and Go sidecar harness registry so HyperNexus now tracks `hypernexus`, `aider`, `cursor`, `copilot`, `qwen`, `superai-cli`, `codebuff`, `codemachine`, and `factory-droid` more consistently across session catalog and `/api/cli/harnesses` surfaces, while keeping non-HyperNexus parity claims explicitly limited to install/runtime metadata.
 
 ## [1.0.0-alpha.25] - 2026-04-11
 
 ### Changed
 - Converted experimental `TODO` endpoints in `go/internal/httpapi/cloud_orchestrator_handlers.go` into functional TS bridges with local Go fallbacks.
-- Fully assimilated Jules-Autopilot orchestration (`RiskEvaluator`, `DebateEngine`, `ConferenceManager`) into native `@hypercode/agents`.
-- Assimilated AI provider wrappers (Anthropic, OpenAI, Gemini) into native `@hypercode/ai` providers.
-- Assimilated BobbyBookmarks workers (`ResearchWorker`, `AutoTagger`) into `@hypercode/core/Memory`.
-- Assimalated Maestro logic (`AgentDiscovery`, `ContextGroomer`, `DirectorNotes`) natively into `@hypercode/core`.
+- Fully assimilated Jules-Autopilot orchestration (`RiskEvaluator`, `DebateEngine`, `ConferenceManager`) into native `@hypernexus/agents`.
+- Assimilated AI provider wrappers (Anthropic, OpenAI, Gemini) into native `@hypernexus/ai` providers.
+- Assimilated BobbyBookmarks workers (`ResearchWorker`, `AutoTagger`) into `@hypernexus/core/Memory`.
+- Assimalated Maestro logic (`AgentDiscovery`, `ContextGroomer`, `DirectorNotes`) natively into `@hypernexus/core`.
 - Updated `TODO.md` to check off A2A protocol implementation, dashboard verifications, and multi-model chatroom progress.
-- **Broader Harness Catalog Alignment**: Expanded the TypeScript supervisor catalog, council CLI registry, compiled CLI harness list, and Go sidecar harness registry so hypercode now tracks `hypercode`, `aider`, `cursor`, `copilot`, `qwen`, `superai-cli`, `codebuff`, `codemachine`, and `factory-droid` more consistently across session catalog and `/api/cli/harnesses` surfaces, while keeping non-hypercode parity claims explicitly limited to install/runtime metadata.
+- **Broader Harness Catalog Alignment**: Expanded the TypeScript supervisor catalog, council CLI registry, compiled CLI harness list, and Go sidecar harness registry so hypernexus now tracks `hypernexus`, `aider`, `cursor`, `copilot`, `qwen`, `superai-cli`, `codebuff`, `codemachine`, and `factory-droid` more consistently across session catalog and `/api/cli/harnesses` surfaces, while keeping non-hypernexus parity claims explicitly limited to install/runtime metadata.
 
 ## [1.0.0-alpha.38]
 
 ### Fixed
 - tRPC `getMcpServer()` returns a safe fallback instead of throwing when MCP isn't initialized.
 - REST API route ordering: `/api/scripts` now matches before the `/api/*` Hono wildcard.
-- All `@hypercode/*` runtime stubs now have real constructors (InputTools, SystemStatusTool, Director, Council, LLMService, etc.).
-- `HypercodeStartLockRecord` → `HypercodeStartLockRecord`, `HYPERCODE_CLIENT_HELLO` → `HYPERCODE_CLIENT_HELLO`.
-- Zero `hypercode` references remain in any active TypeScript source file.
+- All `@hypernexus/*` runtime stubs now have real constructors (InputTools, SystemStatusTool, Director, Council, LLMService, etc.).
+- `HyperNexusStartLockRecord` → `HyperNexusStartLockRecord`, `HYPERNEXUS_CLIENT_HELLO` → `HYPERNEXUS_CLIENT_HELLO`.
+- Zero `hypernexus` references remain in any active TypeScript source file.
 
 ### Verified
 - tRPC batch queries work through Next.js proxy: `startupStatus`, `mcp.listServers` return real data.
@@ -5396,17 +5397,17 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [1.0.0-alpha.41] - 2026-04-30
 
 ### Added
-- `hypercode catalog list/stats/search` — Browse 340 MCP servers from smithery.ai + GitHub catalog
-- `hypercode ping` — Connectivity and latency test (TS server, Go sidecar, MCP data)
-- `hypercode health` — 8 subsystem readiness checks with blocking reasons
-- `hypercode provider add` — Persist API keys to `~/.hypercode/config.jsonc`
-- `hypercode mcp connect-all` — Batch connect up to 20 MCP servers at once
-- `hypercode mcp sync` — Detects installed AI tools (Claude Desktop, Cursor, VS Code)
-- `hypercode mcp import <file>` — Import servers from JSON file via tRPC
-- `hypercode mcp install <pkg>` — Add server to config via tRPC
-- `hypercode mcp config` — Shows real MCP router settings from tRPC API
+- `hypernexus catalog list/stats/search` — Browse 340 MCP servers from smithery.ai + GitHub catalog
+- `hypernexus ping` — Connectivity and latency test (TS server, Go sidecar, MCP data)
+- `hypernexus health` — 8 subsystem readiness checks with blocking reasons
+- `hypernexus provider add` — Persist API keys to `~/.hypernexus/config.jsonc`
+- `hypernexus mcp connect-all` — Batch connect up to 20 MCP servers at once
+- `hypernexus mcp sync` — Detects installed AI tools (Claude Desktop, Cursor, VS Code)
+- `hypernexus mcp import <file>` — Import servers from JSON file via tRPC
+- `hypernexus mcp install <pkg>` — Add server to config via tRPC
+- `hypernexus mcp config` — Shows real MCP router settings from tRPC API
 - `mcp.connectServer/disconnectServer` — New tRPC mutations for connecting servers
-- Go sidecar auto-launch on `hypercode start` when binary exists
+- Go sidecar auto-launch on `hypernexus start` when binary exists
 - Dashboard dev command uses `pnpm` instead of hardcoded next binary path
 - Lightweight MCP init loads 115 server configs from `mcp.jsonc` into aggregator
 - `@trpc/react-query` and `ms` dependencies added for dashboard
@@ -5427,26 +5428,26 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [1.0.0-alpha.42] - 2026-04-30
 
 ### Added
-- `hypercode doctor` — 9 diagnostic checks with fix suggestions (all pass)
-- `hypercode info` — One-command system summary (server, Go, MCP, catalog, providers, tools)
-- `hypercode provider test` — Live API authentication for 7 providers (6/7 verified, 630+ models)
-- `hypercode provider quota` — Shows 7 providers with masked API keys
-- `hypercode provider fallback` — Configure model fallback chain (persisted to config)
-- `hypercode provider remove` — Deletes from config.jsonc
-- `hypercode tools harnesses` — 15 detected CLI harnesses (Aider, Claude Code, Codex, etc.)
-- `hypercode tools info <name>` — Shows server details from tRPC
-- `hypercode session export/import` — Real data round-trip via Go sidecar
-- `hypercode session broadcast` — Queries Go sidecar for active sessions
-- `hypercode session stop/resume/pause` — Wired to tRPC session procedures
-- `hypercode session cloud` — Detects cloud dev environments (OpenAI Codex found)
-- `hypercode session list` — Shows 50 discovered sessions from Go sidecar
-- `hypercode config secrets --list/--env` — 9 secrets detected, source detection
-- `hypercode about` — Quick-start guide added
+- `hypernexus doctor` — 9 diagnostic checks with fix suggestions (all pass)
+- `hypernexus info` — One-command system summary (server, Go, MCP, catalog, providers, tools)
+- `hypernexus provider test` — Live API authentication for 7 providers (6/7 verified, 630+ models)
+- `hypernexus provider quota` — Shows 7 providers with masked API keys
+- `hypernexus provider fallback` — Configure model fallback chain (persisted to config)
+- `hypernexus provider remove` — Deletes from config.jsonc
+- `hypernexus tools harnesses` — 15 detected CLI harnesses (Aider, Claude Code, Codex, etc.)
+- `hypernexus tools info <name>` — Shows server details from tRPC
+- `hypernexus session export/import` — Real data round-trip via Go sidecar
+- `hypernexus session broadcast` — Queries Go sidecar for active sessions
+- `hypernexus session stop/resume/pause` — Wired to tRPC session procedures
+- `hypernexus session cloud` — Detects cloud dev environments (OpenAI Codex found)
+- `hypernexus session list` — Shows 50 discovered sessions from Go sidecar
+- `hypernexus config secrets --list/--env` — 9 secrets detected, source detection
+- `hypernexus about` — Quick-start guide added
 - `scripts/test-workflow.cjs` — 10/10 end-to-end workflow test
 
 ### Changed
 - Lightweight MCP init loads 115 server configs from mcp.jsonc into aggregator
-- `hypercode start` auto-launches Go sidecar when binary exists
+- `hypernexus start` auto-launches Go sidecar when binary exists
 - Dashboard dev uses pnpm instead of hardcoded next binary path
 - Dashboard builds 86/86 pages (added @trpc/react-query, ms dependencies)
 - Dashboard tRPC proxy fixed: port 3001 → 4000
@@ -5467,22 +5468,22 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 ## [1.0.0-alpha.43] - 2026-04-30
 
 ### Added
-- `hypercode status` shows real data: 14,708 memories, 50 sessions, 8 providers (was all zeros)
-- `hypercode cloud` command — 4 cloud providers (Jules/Codex/Devin/Copilot), sessions, stats, loops
-- `hypercode billing` command — status, quotas, fallback chain, depleted models
-- `hypercode context` command — harvest, stats, list, prompt, clear
-- `hypercode knowledge` command — search, stats, resources
-- `hypercode swarm` command — start, missions, debate, consensus, capabilities, risk
-- `hypercode inventory` command — full system inventory from Go sidecar (51 tools, 49 harnesses)
-- `hypercode tools harnesses` — 15 detected CLI harnesses (Aider, Claude Code, Codex, etc.)
-- `hypercode tools info <name>` — shows real server details from tRPC
-- `hypercode doctor` — 9 diagnostic checks (server, Go, providers, Node, pnpm, config, etc.)
+- `hypernexus status` shows real data: 14,708 memories, 50 sessions, 8 providers (was all zeros)
+- `hypernexus cloud` command — 4 cloud providers (Jules/Codex/Devin/Copilot), sessions, stats, loops
+- `hypernexus billing` command — status, quotas, fallback chain, depleted models
+- `hypernexus context` command — harvest, stats, list, prompt, clear
+- `hypernexus knowledge` command — search, stats, resources
+- `hypernexus swarm` command — start, missions, debate, consensus, capabilities, risk
+- `hypernexus inventory` command — full system inventory from Go sidecar (51 tools, 49 harnesses)
+- `hypernexus tools harnesses` — 15 detected CLI harnesses (Aider, Claude Code, Codex, etc.)
+- `hypernexus tools info <name>` — shows real server details from tRPC
+- `hypernexus doctor` — 9 diagnostic checks (server, Go, providers, Node, pnpm, config, etc.)
 - `agent spawn/stop/status/chat` wired to Go sidecar squad API
 - `memory stats/search/list` wired to Go sidecar (14,708 entries visible)
 - `session export/import` round-trip verified via Go sidecar
 - `session broadcast` queries Go sidecar for active sessions
-- `hypercode top` shows memory stats line
-- `hypercode info` shows memory, cloud, sessions, harnesses
+- `hypernexus top` shows memory stats line
+- `hypernexus info` shows memory, cloud, sessions, harnesses
 - `mcp add/remove/install` tRPC body format fixed
 - End-to-end workflow test (10/10 steps)
 - 24 top-level commands, 62/62 tests

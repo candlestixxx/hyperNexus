@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/hypercodehq/hypercode-go/internal/mcp"
-	"github.com/hypercodehq/hypercode-go/internal/orchestration"
+	"github.com/hypernexushq/hypernexus-go/internal/mcp"
+	"github.com/hypernexushq/hypernexus-go/internal/orchestration"
 )
 
 type ExpertManager struct {

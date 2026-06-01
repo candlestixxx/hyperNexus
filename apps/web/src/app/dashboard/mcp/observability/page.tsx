@@ -1,7 +1,7 @@
 "use client";
 
 import type { ComponentType } from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from "@hypercode/ui";
+import { Card, CardHeader, CardTitle, CardContent } from "@hypernexus/ui";
 import { trpc } from '@/utils/trpc';
 import { Loader2, Activity, Clock, AlertTriangle, CheckCircle2 } from "lucide-react";
 
@@ -34,7 +34,7 @@ export default function ObservabilityDashboard() {
         <div className="p-8 space-y-8">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">MetaMCP Observability Dashboard</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">HyperNexus Observability Dashboard</h1>
                     <p className="text-zinc-500">
                         Metrics and analytics for MCP tool usage
                     </p>

@@ -3,15 +3,15 @@
 
 import React, { useState } from 'react';
 import { trpc } from '@/utils/trpc';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@hypercode/ui';
-import { Badge } from '@hypercode/ui';
-import { Button } from '@hypercode/ui';
-import { Input } from '@hypercode/ui';
-import { Textarea } from '@hypercode/ui';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@hypercode/ui";
-import { ScrollArea } from '@hypercode/ui';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@hypernexus/ui';
+import { Badge } from '@hypernexus/ui';
+import { Button } from '@hypernexus/ui';
+import { Input } from '@hypernexus/ui';
+import { Textarea } from '@hypernexus/ui';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@hypernexus/ui";
+import { ScrollArea } from '@hypernexus/ui';
 import { RefreshCcw, Dna, FlaskConical, Play, CheckCircle, XCircle } from 'lucide-react';
-import { useToast } from "@hypercode/ui";
+import { useToast } from "@hypernexus/ui";
 
 export default function EvolutionPage() {
     const { toast } = useToast();

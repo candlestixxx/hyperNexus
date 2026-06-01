@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/hypercodehq/hypercode-go/internal/buildinfo"
+	"github.com/hypernexushq/hypernexus-go/internal/buildinfo"
 )
 
 // handleSystemOverview returns a unified snapshot using Go-native data

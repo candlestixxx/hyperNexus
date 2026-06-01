@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-    "github.com/hypercodehq/hypercode-go/internal/providers"
+    "github.com/hypernexushq/hypernexus-go/internal/providers"
 )
 
 type Router struct {

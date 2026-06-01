@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hypercodehq/hypercode-go/internal/ai"
+	"github.com/hypernexushq/hypernexus-go/internal/ai"
 	_ "modernc.org/sqlite"
 )
 

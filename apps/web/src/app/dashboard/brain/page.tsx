@@ -2,7 +2,7 @@
 'use client';
 
 import React from 'react';
-import { KnowledgeGraph } from '@hypercode/ui';
+import { KnowledgeGraph } from '@hypernexus/ui';
 import { trpc } from '@/utils/trpc';
 
 export default function BrainPage() {

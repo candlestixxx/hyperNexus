@@ -1,9 +1,9 @@
 {
   "mcpServers": {
-    "hypercode": {
+    "hypernexus": {
       "command": "node",
       "args": [
-        "C:\\Users\\jakeg\\workspace\\hypercode\\packages\\core\\dist\\server-stdio.js"
+        "C:\\Users\\jakeg\\workspace\\hypernexus\\packages\\core\\dist\\server-stdio.js"
       ]
     }
   }

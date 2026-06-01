@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from "@hypercode/ui";
-import { Button } from "@hypercode/ui";
+import { Card, CardHeader, CardTitle, CardContent } from "@hypernexus/ui";
+import { Button } from "@hypernexus/ui";
 import { Loader2, Plus, Globe, Trash2, Key, Shield } from "lucide-react";
 import { trpc } from '@/utils/trpc';
 import { toast } from 'sonner';
@@ -16,7 +16,7 @@ export default function EndpointsDashboard() {
         <div className="p-8 space-y-8">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">MetaMCP API Endpoints</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-white">HyperNexus API Endpoints</h1>
                     <p className="text-zinc-500">
                         Expose namespaces as public or private API endpoints
                     </p>

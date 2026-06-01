@@ -29,7 +29,7 @@ https://github.com/yasasbanukaofficial/claude-code | unknown |
 | jules-extension | main | unknown | https://github.com/gemini-cli-extensions/jules | unknown |
 | kimi-cli | main | unknown | https://github.com/MoonshotAI/kimi-cli | unknown |
 | qwen-code-cli | main | unknown | https://github.com/dinoanderson/qwen_cli_coder | unknown |
-| external/MetaMCP | main | unknown | https://github.com/robertpelloni/MetaMCP | unknown |
+| external/HyperNexus | main | unknown | https://github.com/robertpelloni/HyperNexus | unknown |
 | archive/submodules/mcpproxy | main | unknown | https://github.com/Dumbris/mcpproxy | unknown |
 | archive/submodules/litellm | main | unknown | https://github.com/BerriAI/litellm | unknown |
 | archive/claude-mem | main | unknown | https://github.com/robertpelloni/claude-mem | unknown |
@@ -37,4 +37,4 @@ https://github.com/yasasbanukaofficial/claude-code | unknown |
 | packages/claude-mem | main | unknown | https://github.com/robertpelloni/claude-mem | unknown |
 | apps/maestro | main | unknown | https://github.com/robertpelloni/Maestro | unknown |
 | submodules/prism-mcp | main | unknown | https://github.com/dcostenco/prism-mcp | unknown |
-| submodules/hypercode | main | unknown | https://github.com/robertpelloni/hypercode.git | unknown |
+| submodules/hypernexus | main | unknown | https://github.com/robertpelloni/hypernexus.git | unknown |

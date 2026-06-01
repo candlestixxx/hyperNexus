@@ -1,13 +1,13 @@
 /**
- * `hypercode agent` - Agent management commands
+ * `hypernexus agent` - Agent management commands
  *
  * Manage AI agents: list available definitions, spawn instances,
  * monitor running agents, and interact via chat.
  *
  * @example
- *   hypercode agent list              # List available agent definitions
- *   hypercode agent spawn architect   # Spawn an architect agent
- *   hypercode agent chat agent_123    # Chat with a running agent
+ *   hypernexus agent list              # List available agent definitions
+ *   hypernexus agent spawn architect   # Spawn an architect agent
+ *   hypernexus agent chat agent_123    # Chat with a running agent
  */
 
 import type { Command } from 'commander';
@@ -81,7 +81,7 @@ export function registerAgentCommand(program: Command): void {
 
       console.log(chalk.bold.cyan('\n  Available Agents\n'));
       console.log(table.toString());
-      console.log(chalk.dim(`\n  ${agents.length} built-in agents. Use \`hypercode agent spawn <name>\` to start one.\n`));
+      console.log(chalk.dim(`\n  ${agents.length} built-in agents. Use \`hypernexus agent spawn <name>\` to start one.\n`));
     });
 
   agent
@@ -94,9 +94,9 @@ export function registerAgentCommand(program: Command): void {
     .option('--temperature <temp>', 'LLM temperature', '0.7')
     .addHelpText('after', `
 Examples:
-  $ hypercode agent spawn architect
-  $ hypercode agent spawn builder --model gpt-5.2 --workdir ./my-project
-  $ hypercode agent spawn researcher --provider google
+  $ hypernexus agent spawn architect
+  $ hypernexus agent spawn builder --model gpt-5.2 --workdir ./my-project
+  $ hypernexus agent spawn researcher --provider google
     `)
     .action(async (name, opts) => {
       const chalk = (await import('chalk')).default;

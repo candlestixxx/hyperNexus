@@ -14,13 +14,13 @@ export interface CliHarnessCatalogEntry {
 
 export const CLI_HARNESS_CATALOG: CliHarnessCatalogEntry[] = [
     {
-        id: 'hypercode',
-        name: 'Hypercode',
-        command: 'hypercode',
+        id: 'hypernexus',
+        name: 'HyperNexus',
+        command: 'hypernexus',
         args: [],
-        homepage: 'https://github.com/robertpelloni/hypercode',
-        docsUrl: 'https://github.com/robertpelloni/hypercode',
-        installHint: 'Use Hypercode\'s tracked `submodules/hyperharness` checkout or install Hypercode and ensure `hypercode` is on PATH.',
+        homepage: 'https://github.com/robertpelloni/hypernexus',
+        docsUrl: 'https://github.com/robertpelloni/hypernexus',
+        installHint: 'Use HyperNexus\'s tracked `submodules/hyperharness` checkout or install HyperNexus and ensure `hypernexus` is on PATH.',
         category: 'cli',
         sessionCapable: true,
         versionArgs: ['version'],
@@ -44,7 +44,7 @@ export const CLI_HARNESS_CATALOG: CliHarnessCatalogEntry[] = [
         args: [],
         homepage: 'https://antigravity.google/',
         docsUrl: 'https://antigravity.google/docs/home',
-        installHint: 'Download the Antigravity desktop app from https://antigravity.google/download and launch it directly; Hypercode does not currently detect it as a PATH CLI.',
+        installHint: 'Download the Antigravity desktop app from https://antigravity.google/download and launch it directly; HyperNexus does not currently detect it as a PATH CLI.',
         category: 'editor',
         sessionCapable: false,
         versionArgs: [],

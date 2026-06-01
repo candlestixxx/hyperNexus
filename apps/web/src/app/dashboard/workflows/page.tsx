@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@hypercode/ui";
-import { Button } from "@hypercode/ui";
-import { Badge } from "@hypercode/ui";
-import { WorkflowVisualizer } from "@hypercode/ui";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@hypernexus/ui";
+import { Button } from "@hypernexus/ui";
+import { Badge } from "@hypernexus/ui";
+import { WorkflowVisualizer } from "@hypernexus/ui";
 import { trpc } from '@/utils/trpc';
 import { Play, Pause, RotateCcw, Activity } from 'lucide-react';
 import { toast } from 'sonner';

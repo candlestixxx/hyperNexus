@@ -1,1 +1,1 @@
-export * from "../metamcp-middleware/logging.functional.js";
+export * from "../hypernexus-middleware/logging.functional.js";

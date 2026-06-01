@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/hypercodehq/hypercode-go/internal/mesh"
+	"github.com/hypernexushq/hypernexus-go/internal/mesh"
 )
 
 func (s *Server) handleMeshStatus(w http.ResponseWriter, r *http.Request) {

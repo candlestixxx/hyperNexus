@@ -16,13 +16,13 @@ interface CLIDefinition {
 
 export const CLI_DEFINITIONS: CLIDefinition[] = [
   {
-    type: 'hypercode',
-    name: 'Hypercode CLI',
-    command: 'hypercode',
+    type: 'hypernexus',
+    name: 'HyperNexus CLI',
+    command: 'hypernexus',
     serveArgs: [],
     versionArgs: ['version'],
-    detectCommands: ['hypercode'],
-    capabilities: ['chat', 'edit', 'repl', 'hypercode-adapter'],
+    detectCommands: ['hypernexus'],
+    capabilities: ['chat', 'edit', 'repl', 'hypernexus-adapter'],
     interactive: true,
     promptRegex: '(?i)(?:>)\\s*$',
   },

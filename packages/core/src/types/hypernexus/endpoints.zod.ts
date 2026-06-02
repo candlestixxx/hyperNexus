@@ -4,7 +4,7 @@
  * @module packages/core/src/types/hypernexus/endpoints.zod
 ========
  * @module packages/core/src/types/borg/endpoints.zod
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypercode/endpoints.zod.ts
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypernexus/endpoints.zod.ts
  *
  * WHAT:
  * Zod definitions for Routing Endpoints (exposing namespaces via HTTP/SSE).

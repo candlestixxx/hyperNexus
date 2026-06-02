@@ -687,7 +687,7 @@ describe('buildStartupStatusSnapshot', () => {
         expect(snapshot.checks.mcpAggregator.failedWarmupServerCount).toBe(1);
     });
 
-    it('keeps startup pending when hypercode is enabled but its store has not been initialized yet', async () => {
+    it('keeps startup pending when hypernexus is enabled but its store has not been initialized yet', async () => {
         const snapshot = await buildStartupStatusSnapshot({
             mcpServer: {
                 memoryManager: {},

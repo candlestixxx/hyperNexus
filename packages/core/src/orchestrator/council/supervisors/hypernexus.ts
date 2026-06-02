@@ -4,8 +4,8 @@ import type { Supervisor, SupervisorConfig, Message } from './types.js';
 <<<<<<<< HEAD:packages/core/src/orchestrator/council/supervisors/hypernexus.ts
 export class HyperNexusSupervisor implements Supervisor {
 ========
-export class HypercodeSupervisor implements Supervisor {
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/orchestrator/council/supervisors/hypercode.ts
+export class HyperNexusSupervisor implements Supervisor {
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/orchestrator/council/supervisors/hypernexus.ts
   name: string;
   provider: string;
   config: SupervisorConfig;
@@ -21,8 +21,8 @@ export class HypercodeSupervisor implements Supervisor {
 <<<<<<<< HEAD:packages/core/src/orchestrator/council/supervisors/hypernexus.ts
     // In HyperNexus, availability is checked via ProviderTruth
 ========
-    // In Hypercode, availability is checked via ProviderTruth
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/orchestrator/council/supervisors/hypercode.ts
+    // In HyperNexus, availability is checked via ProviderTruth
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/orchestrator/council/supervisors/hypernexus.ts
     const quotaService = (llm.modelSelector as any)?.getQuotaService?.();
     const quota = quotaService?.getQuota?.(this.config.provider);
     return !!quota && quota.authTruth === 'VALID';
@@ -35,9 +35,9 @@ export class HypercodeSupervisor implements Supervisor {
     // Convert council messages to HyperNexus format if needed
     // (Assuming HyperNexus generate accepts prompt string or similar)
 ========
-    // Convert council messages to Hypercode format if needed
-    // (Assuming Hypercode generate accepts prompt string or similar)
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/orchestrator/council/supervisors/hypercode.ts
+    // Convert council messages to HyperNexus format if needed
+    // (Assuming HyperNexus generate accepts prompt string or similar)
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/orchestrator/council/supervisors/hypernexus.ts
     const prompt = messages.map(m => `[${m.role.toUpperCase()}]: ${m.content}`).join('\n\n');
     
     const response = await (llm as any).generateText(

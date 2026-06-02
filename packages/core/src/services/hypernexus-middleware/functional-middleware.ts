@@ -10,7 +10,7 @@ import {
 export interface HyperNexusHandlerContext {
 ========
 export interface BorgHandlerContext {
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypercode-middleware/functional-middleware.ts
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypernexus-middleware/functional-middleware.ts
     namespaceUuid: string;
     sessionId: string;
     userId?: string; // User ID for access control and logging
@@ -23,7 +23,7 @@ export type ListToolsHandler = (
     context: HyperNexusHandlerContext,
 ========
     context: BorgHandlerContext,
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypercode-middleware/functional-middleware.ts
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypernexus-middleware/functional-middleware.ts
 ) => Promise<ListToolsResult>;
 
 export type CallToolHandler = (
@@ -32,7 +32,7 @@ export type CallToolHandler = (
     context: HyperNexusHandlerContext,
 ========
     context: BorgHandlerContext,
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypercode-middleware/functional-middleware.ts
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypernexus-middleware/functional-middleware.ts
 ) => Promise<CallToolResult>;
 
 // Middleware function types that can transform request/response
@@ -49,7 +49,7 @@ export type RequestTransformer<T> = (
     context: HyperNexusHandlerContext,
 ========
     context: BorgHandlerContext,
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypercode-middleware/functional-middleware.ts
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypernexus-middleware/functional-middleware.ts
 ) => Promise<T> | T;
 
 // Response transformer type
@@ -59,7 +59,7 @@ export type ResponseTransformer<T> = (
     context: HyperNexusHandlerContext,
 ========
     context: BorgHandlerContext,
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypercode-middleware/functional-middleware.ts
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypernexus-middleware/functional-middleware.ts
 ) => Promise<T> | T;
 
 /**
@@ -76,7 +76,7 @@ export function createFunctionalMiddleware<TRequest, TResponse>(options: {
             context: HyperNexusHandlerContext,
 ========
             context: BorgHandlerContext,
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypercode-middleware/functional-middleware.ts
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypernexus-middleware/functional-middleware.ts
         ) => Promise<TResponse>,
     ) => {
         return async (
@@ -85,7 +85,7 @@ export function createFunctionalMiddleware<TRequest, TResponse>(options: {
             context: HyperNexusHandlerContext,
 ========
             context: BorgHandlerContext,
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypercode-middleware/functional-middleware.ts
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypernexus-middleware/functional-middleware.ts
         ): Promise<TResponse> => {
             // Transform request if transformer provided
             let transformedRequest = request;

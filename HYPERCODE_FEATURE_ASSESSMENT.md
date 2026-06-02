@@ -3,7 +3,7 @@
 *Derived from: (1) HyperNexus codebase audit (2) 13,503 bookmark ecosystem intelligence*
 ========
 # HYPERCODE FEATURE ASSESSMENT & NEXT PRIORITIES
-*Derived from: (1) Hypercode codebase audit (2) 13,503 bookmark ecosystem intelligence*
+*Derived from: (1) HyperNexus codebase audit (2) 13,503 bookmark ecosystem intelligence*
 >>>>>>>> origin/jules-11468118918326359250-8f2d9620:HYPERCODE_FEATURE_ASSESSMENT.md
 *Date: 2026-05-08 | Version: 1.0.0-alpha.53*
 
@@ -16,7 +16,7 @@ HyperNexus is a **local-first cognitive control plane** — a Go+TypeScript modu
 ========
 ## WHAT HYPERCODE IS (Actual, Not Aspirational)
 
-Hypercode is a **local-first cognitive control plane** — a Go+TypeScript modular monolith that coordinates multi-agent LLM workflows, MCP tool routing, provider failover, memory persistence, and operator observability. It currently runs as two cooperating processes:
+HyperNexus is a **local-first cognitive control plane** — a Go+TypeScript modular monolith that coordinates multi-agent LLM workflows, MCP tool routing, provider failover, memory persistence, and operator observability. It currently runs as two cooperating processes:
 >>>>>>>> origin/jules-11468118918326359250-8f2d9620:HYPERCODE_FEATURE_ASSESSMENT.md
 
 - **Go Sidecar** (port 4300): 232 Go files, 446 HTTP handler methods, 18K-line server
@@ -25,7 +25,7 @@ Hypercode is a **local-first cognitive control plane** — a Go+TypeScript modul
 <<<<<<<< HEAD:HYPERNEXUS_FEATURE_ASSESSMENT.md
 - **SQLite storage**: hypernexus.db (35MB), .hypernexus/agent_memory/ (14,726 memories), .hypernexus/memory/ (13,478 contexts)
 ========
-- **SQLite storage**: hypercode.db (35MB), .hypercode/agent_memory/ (14,726 memories), .hypercode/memory/ (13,478 contexts)
+- **SQLite storage**: hypernexus.db (35MB), .hypernexus/agent_memory/ (14,726 memories), .hypernexus/memory/ (13,478 contexts)
 >>>>>>>> origin/jules-11468118918326359250-8f2d9620:HYPERCODE_FEATURE_ASSESSMENT.md
 
 ---
@@ -55,7 +55,7 @@ Hypercode is a **local-first cognitive control plane** — a Go+TypeScript modul
 <<<<<<<< HEAD:HYPERNEXUS_FEATURE_ASSESSMENT.md
 | **Knowledge Graph** | ✅ | ✅ | Stub | `@hypernexus/memory` exports `GraphNode`/`GraphEdge` **interfaces only** — actual implementations are `undefined`. `RepoGraphService` builds file-level import graphs but NOT semantic entity graphs |
 ========
-| **Knowledge Graph** | ✅ | ✅ | Stub | `@hypercode/memory` exports `GraphNode`/`GraphEdge` **interfaces only** — actual implementations are `undefined`. `RepoGraphService` builds file-level import graphs but NOT semantic entity graphs |
+| **Knowledge Graph** | ✅ | ✅ | Stub | `@hypernexus/memory` exports `GraphNode`/`GraphEdge` **interfaces only** — actual implementations are `undefined`. `RepoGraphService` builds file-level import graphs but NOT semantic entity graphs |
 >>>>>>>> origin/jules-11468118918326359250-8f2d9620:HYPERCODE_FEATURE_ASSESSMENT.md
 | **Context Harvester** | ✅ | ✅ | Beta | Harvest/prune/compact/rerank pipeline works. **Groomer is rudimentary** (token estimation, system message preservation only). No semantic compaction via LLM |
 | **Healer (Self-Healing)** | ✅ | ✅ | Beta | Error → LLM diagnosis → fix suggestion pipeline works. **No closed-loop** (execute fix → verify → retry). No stop hooks. No idle-state healing |
@@ -66,7 +66,7 @@ Hypercode is a **local-first cognitive control plane** — a Go+TypeScript modul
 <<<<<<<< HEAD:HYPERNEXUS_FEATURE_ASSESSMENT.md
 | **Skill Registry** | ✅ | ✅ | Beta | SKILL.md discovery + CRUD + search. **No /evolve command**, no win-rate tracking, no auto-retirement. 0 skills in `.hypernexus/skills/` |
 ========
-| **Skill Registry** | ✅ | ✅ | Beta | SKILL.md discovery + CRUD + search. **No /evolve command**, no win-rate tracking, no auto-retirement. 0 skills in `.hypercode/skills/` |
+| **Skill Registry** | ✅ | ✅ | Beta | SKILL.md discovery + CRUD + search. **No /evolve command**, no win-rate tracking, no auto-retirement. 0 skills in `.hypernexus/skills/` |
 >>>>>>>> origin/jules-11468118918326359250-8f2d9620:HYPERCODE_FEATURE_ASSESSMENT.md
 | **Skill Assimilation** | — | ✅ | Experimental | Researches topic → generates SKILL.md via LLM. **No feedback loop** — skills never improve from usage |
 | **Darwin (Self-Modification)** | ✅ | ✅ | Experimental | Prompt mutation + A/B testing. **No integration with skills or memory**. Runs in isolation |
@@ -101,7 +101,7 @@ The BobbyBookmarks database shows the AI engineering ecosystem is lopsided:
 <<<<<<<< HEAD:HYPERNEXUS_FEATURE_ASSESSMENT.md
 | Stack Layer | Systems | Saturation | HyperNexus Coverage |
 ========
-| Stack Layer | Systems | Saturation | Hypercode Coverage |
+| Stack Layer | Systems | Saturation | HyperNexus Coverage |
 >>>>>>>> origin/jules-11468118918326359250-8f2d9620:HYPERCODE_FEATURE_ASSESSMENT.md
 |-------------|---------|-----------|---------------|
 | Protocol (MCP, bridges) | 6,406 | 66% OVERBUILT | ✅ Strong |
@@ -120,8 +120,8 @@ The BobbyBookmarks database shows the AI engineering ecosystem is lopsided:
 - Self-Mod + Tools: 2.7% deficit → HyperNexus has tools but self-mod is disconnected
 - Memory + Tools: 1.7% deficit → HyperNexus's memory doesn't inform tool selection
 ========
-- Self-Mod + Tools: 2.7% deficit → Hypercode has tools but self-mod is disconnected
-- Memory + Tools: 1.7% deficit → Hypercode's memory doesn't inform tool selection
+- Self-Mod + Tools: 2.7% deficit → HyperNexus has tools but self-mod is disconnected
+- Memory + Tools: 1.7% deficit → HyperNexus's memory doesn't inform tool selection
 >>>>>>>> origin/jules-11468118918326359250-8f2d9620:HYPERCODE_FEATURE_ASSESSMENT.md
 - Infra + Memory: 1.2% deficit → No execution state in memory
 
@@ -132,7 +132,7 @@ The BobbyBookmarks database shows the AI engineering ecosystem is lopsided:
 <<<<<<<< HEAD:HYPERNEXUS_FEATURE_ASSESSMENT.md
 Ranked by: (1) evidence from ecosystem data, (2) HyperNexus's existing foundation to build on, (3) leverage — how much it unlocks downstream
 ========
-Ranked by: (1) evidence from ecosystem data, (2) Hypercode's existing foundation to build on, (3) leverage — how much it unlocks downstream
+Ranked by: (1) evidence from ecosystem data, (2) HyperNexus's existing foundation to build on, (3) leverage — how much it unlocks downstream
 >>>>>>>> origin/jules-11468118918326359250-8f2d9620:HYPERCODE_FEATURE_ASSESSMENT.md
 
 ### TIER 1: HIGH EVIDENCE + EXISTING FOUNDATION = DO NOW
@@ -142,7 +142,7 @@ Ranked by: (1) evidence from ecosystem data, (2) Hypercode's existing foundation
 <<<<<<<< HEAD:HYPERNEXUS_FEATURE_ASSESSMENT.md
 **HyperNexus foundation:** L1 Scratchpad + L2 Vault already work. 14,726 memories already stored.
 ========
-**Hypercode foundation:** L1 Scratchpad + L2 Vault already work. 14,726 memories already stored.
+**HyperNexus foundation:** L1 Scratchpad + L2 Vault already work. 14,726 memories already stored.
 >>>>>>>> origin/jules-11468118918326359250-8f2d9620:HYPERCODE_FEATURE_ASSESSMENT.md
 **Gap:** All memories are `long_term/project` — no real tiering. No heat scoring. No promotion/demotion.
 **What to build:**
@@ -158,7 +158,7 @@ Ranked by: (1) evidence from ecosystem data, (2) Hypercode's existing foundation
 <<<<<<<< HEAD:HYPERNEXUS_FEATURE_ASSESSMENT.md
 **HyperNexus foundation:** HealerService (TS) + healer.go (Go) already do error→diagnosis→fix suggestion
 ========
-**Hypercode foundation:** HealerService (TS) + healer.go (Go) already do error→diagnosis→fix suggestion
+**HyperNexus foundation:** HealerService (TS) + healer.go (Go) already do error→diagnosis→fix suggestion
 >>>>>>>> origin/jules-11468118918326359250-8f2d9620:HYPERCODE_FEATURE_ASSESSMENT.md
 **Gap:** No execute-fix-verify-retry cycle. No stop hooks. No idle-state healing.
 **What to build:**
@@ -173,8 +173,8 @@ Ranked by: (1) evidence from ecosystem data, (2) Hypercode's existing foundation
 **Evidence:** 37x enrichment (skill evolution), listed in HyperNexus's own TODO
 **HyperNexus foundation:** MCP Decision System already has the exact architecture (ranked search, auto-load, LRU eviction, profiles). SkillRegistry already discovers SKILL.md files.
 ========
-**Evidence:** 37x enrichment (skill evolution), listed in Hypercode's own TODO
-**Hypercode foundation:** MCP Decision System already has the exact architecture (ranked search, auto-load, LRU eviction, profiles). SkillRegistry already discovers SKILL.md files.
+**Evidence:** 37x enrichment (skill evolution), listed in HyperNexus's own TODO
+**HyperNexus foundation:** MCP Decision System already has the exact architecture (ranked search, auto-load, LRU eviction, profiles). SkillRegistry already discovers SKILL.md files.
 >>>>>>>> origin/jules-11468118918326359250-8f2d9620:HYPERCODE_FEATURE_ASSESSMENT.md
 **Gap:** Skills have no ranking, no working set, no eviction, no profile-based boosting. All-or-nothing.
 **What to build:**
@@ -192,7 +192,7 @@ Ranked by: (1) evidence from ecosystem data, (2) Hypercode's existing foundation
 <<<<<<<< HEAD:HYPERNEXUS_FEATURE_ASSESSMENT.md
 **HyperNexus foundation:** ContextHarvester + Groomer already compact context. Memory hydration already injects L2 into L1 on session start.
 ========
-**Hypercode foundation:** ContextHarvester + Groomer already compact context. Memory hydration already injects L2 into L1 on session start.
+**HyperNexus foundation:** ContextHarvester + Groomer already compact context. Memory hydration already injects L2 into L1 on session start.
 >>>>>>>> origin/jules-11468118918326359250-8f2d9620:HYPERCODE_FEATURE_ASSESSMENT.md
 **Gap:** No re-injection AFTER compaction. No PreToolUse/PostToolUse hooks.
 **What to build:**
@@ -207,7 +207,7 @@ Ranked by: (1) evidence from ecosystem data, (2) Hypercode's existing foundation
 <<<<<<<< HEAD:HYPERNEXUS_FEATURE_ASSESSMENT.md
 **HyperNexus foundation:** PairOrchestrator has the state machine. Council has debate/consensus. HumanVetoService exists.
 ========
-**Hypercode foundation:** PairOrchestrator has the state machine. Council has debate/consensus. HumanVetoService exists.
+**HyperNexus foundation:** PairOrchestrator has the state machine. Council has debate/consensus. HumanVetoService exists.
 >>>>>>>> origin/jules-11468118918326359250-8f2d9620:HYPERCODE_FEATURE_ASSESSMENT.md
 **Gap:** PairOrchestrator isn't wired to real sessions. Council debates don't produce actionable plans. No "Plan Mode" where premium model strategizes before cheap model executes.
 **What to build:**
@@ -222,7 +222,7 @@ Ranked by: (1) evidence from ecosystem data, (2) Hypercode's existing foundation
 <<<<<<<< HEAD:HYPERNEXUS_FEATURE_ASSESSMENT.md
 **HyperNexus foundation:** Both memory and tool selection are mature systems. They just don't talk.
 ========
-**Hypercode foundation:** Both memory and tool selection are mature systems. They just don't talk.
+**HyperNexus foundation:** Both memory and tool selection are mature systems. They just don't talk.
 >>>>>>>> origin/jules-11468118918326359250-8f2d9620:HYPERCODE_FEATURE_ASSESSMENT.md
 **What to build:**
 - `MemoryInformedRanking`: when searching tools, boost scores for tools that succeeded in similar past contexts
@@ -238,7 +238,7 @@ Ranked by: (1) evidence from ecosystem data, (2) Hypercode's existing foundation
 <<<<<<<< HEAD:HYPERNEXUS_FEATURE_ASSESSMENT.md
 **HyperNexus foundation:** RepoGraphService builds file-level graphs. KnowledgeService has graph interfaces. `@hypernexus/memory` exports GraphNode/GraphEdge types.
 ========
-**Hypercode foundation:** RepoGraphService builds file-level graphs. KnowledgeService has graph interfaces. `@hypercode/memory` exports GraphNode/GraphEdge types.
+**HyperNexus foundation:** RepoGraphService builds file-level graphs. KnowledgeService has graph interfaces. `@hypernexus/memory` exports GraphNode/GraphEdge types.
 >>>>>>>> origin/jules-11468118918326359250-8f2d9620:HYPERCODE_FEATURE_ASSESSMENT.md
 **Gap:** All graph implementations are stubs or file-level only. No semantic entity graph.
 **What to build:**
@@ -254,7 +254,7 @@ Ranked by: (1) evidence from ecosystem data, (2) Hypercode's existing foundation
 <<<<<<<< HEAD:HYPERNEXUS_FEATURE_ASSESSMENT.md
 **HyperNexus foundation:** SkillRegistry + SkillAssimilationService + DarwinService all exist in pieces.
 ========
-**Hypercode foundation:** SkillRegistry + SkillAssimilationService + DarwinService all exist in pieces.
+**HyperNexus foundation:** SkillRegistry + SkillAssimilationService + DarwinService all exist in pieces.
 >>>>>>>> origin/jules-11468118918326359250-8f2d9620:HYPERCODE_FEATURE_ASSESSMENT.md
 **Gap:** Skills never improve. Darwin mutates prompts but doesn't touch skills. No /evolve command. No win/loss tracking.
 **What to build:**
@@ -269,7 +269,7 @@ Ranked by: (1) evidence from ecosystem data, (2) Hypercode's existing foundation
 <<<<<<<< HEAD:HYPERNEXUS_FEATURE_ASSESSMENT.md
 **HyperNexus foundation:** HumanVetoService exists. A2A broker works. KnowledgeService has graph types.
 ========
-**Hypercode foundation:** HumanVetoService exists. A2A broker works. KnowledgeService has graph types.
+**HyperNexus foundation:** HumanVetoService exists. A2A broker works. KnowledgeService has graph types.
 >>>>>>>> origin/jules-11468118918326359250-8f2d9620:HYPERCODE_FEATURE_ASSESSMENT.md
 **Gap:** No system uses graph relationships to decide when to escalate to humans.
 **What to build:**
@@ -293,14 +293,14 @@ The data says these layers are OVERBUILT in the ecosystem. HyperNexus should **c
 | Another dashboard framework | 52% saturated | 91 pages is enough — focus on data quality, not more pages |
 | Another CLI harness | Crowded | HyperNexus should COORDINATE existing harnesses via parity aliases |
 ========
-The data says these layers are OVERBUILT in the ecosystem. Hypercode should **consume** them, not compete:
+The data says these layers are OVERBUILT in the ecosystem. HyperNexus should **consume** them, not compete:
 
 | Don't Build | Reason | Instead |
 |-------------|--------|---------|
-| Another agent framework | 52% saturated | Hypercode's swarm/council is sufficient — focus on making it reliable |
-| Another MCP server | 66% saturated | Hypercode should ROUTE existing servers, not create new ones |
+| Another agent framework | 52% saturated | HyperNexus's swarm/council is sufficient — focus on making it reliable |
+| Another MCP server | 66% saturated | HyperNexus should ROUTE existing servers, not create new ones |
 | Another dashboard framework | 52% saturated | 91 pages is enough — focus on data quality, not more pages |
-| Another CLI harness | Crowded | Hypercode should COORDINATE existing harnesses via parity aliases |
+| Another CLI harness | Crowded | HyperNexus should COORDINATE existing harnesses via parity aliases |
 >>>>>>>> origin/jules-11468118918326359250-8f2d9620:HYPERCODE_FEATURE_ASSESSMENT.md
 | P2P mesh / federation | Vision only | Not justified until single-node is rock solid |
 

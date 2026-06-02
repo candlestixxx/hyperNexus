@@ -5,8 +5,8 @@ import path from 'node:path';
 <<<<<<<< HEAD:packages/core/src/lib/hypernexus-orchestrator.ts
 type HyperNexusLockRecord = {
 ========
-type HypercodeLockRecord = {
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/lib/hypercode-orchestrator.ts
+type HyperNexusLockRecord = {
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/lib/hypernexus-orchestrator.ts
     port?: number;
     host?: string;
 };
@@ -35,9 +35,9 @@ function resolveBrowserHost(host: string): string {
 export function resolveHyperNexusConfigDir(env: OrchestratorEnv = process.env): string {
     const configuredDir = env.HYPERNEXUS_CONFIG_DIR?.trim();
 ========
-export function resolveHypercodeConfigDir(env: OrchestratorEnv = process.env): string {
+export function resolveHyperNexusConfigDir(env: OrchestratorEnv = process.env): string {
     const configuredDir = env.HYPERCODE_CONFIG_DIR?.trim();
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/lib/hypercode-orchestrator.ts
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/lib/hypernexus-orchestrator.ts
     if (configuredDir) {
         return configuredDir;
     }
@@ -53,16 +53,16 @@ export function resolveHyperNexusLockPath(env: OrchestratorEnv = process.env): s
 export function resolveLockedHyperNexusBase(env: OrchestratorEnv = process.env): string | null {
     const lockPath = resolveHyperNexusLockPath(env);
 ========
-    return path.join(os.homedir(), '.hypercode');
+    return path.join(os.homedir(), '.hypernexus');
 }
 
-export function resolveHypercodeLockPath(env: OrchestratorEnv = process.env): string {
-    return path.join(resolveHypercodeConfigDir(env), 'lock');
+export function resolveHyperNexusLockPath(env: OrchestratorEnv = process.env): string {
+    return path.join(resolveHyperNexusConfigDir(env), 'lock');
 }
 
-export function resolveLockedHypercodeBase(env: OrchestratorEnv = process.env): string | null {
-    const lockPath = resolveHypercodeLockPath(env);
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/lib/hypercode-orchestrator.ts
+export function resolveLockedHyperNexusBase(env: OrchestratorEnv = process.env): string | null {
+    const lockPath = resolveHyperNexusLockPath(env);
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/lib/hypernexus-orchestrator.ts
     if (!existsSync(lockPath)) {
         return null;
     }
@@ -71,8 +71,8 @@ export function resolveLockedHypercodeBase(env: OrchestratorEnv = process.env): 
 <<<<<<<< HEAD:packages/core/src/lib/hypernexus-orchestrator.ts
         const parsed = JSON.parse(readFileSync(lockPath, 'utf8')) as HyperNexusLockRecord;
 ========
-        const parsed = JSON.parse(readFileSync(lockPath, 'utf8')) as HypercodeLockRecord;
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/lib/hypercode-orchestrator.ts
+        const parsed = JSON.parse(readFileSync(lockPath, 'utf8')) as HyperNexusLockRecord;
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/lib/hypernexus-orchestrator.ts
         if (!parsed || typeof parsed.port !== 'number' || parsed.port <= 0) {
             return null;
         }
@@ -96,8 +96,8 @@ export function resolveOrchestratorBase(env: OrchestratorEnv = process.env): str
 ========
     return normalizeBaseURL(env.HYPERCODE_ORCHESTRATOR_URL)
         ?? normalizeBaseURL(env.HYPERCODE_TRPC_UPSTREAM)
-        ?? resolveLockedHypercodeBase(env)
+        ?? resolveLockedHyperNexusBase(env)
         ?? normalizeBaseURL(env.NEXT_PUBLIC_HYPERCODE_ORCHESTRATOR_URL)
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/lib/hypercode-orchestrator.ts
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/lib/hypernexus-orchestrator.ts
         ?? normalizeBaseURL(env.NEXT_PUBLIC_AUTOPILOT_URL);
 }

@@ -865,15 +865,15 @@ const Sidebar: React.FC<SidebarProps> = ({ initialPreferences }) => {
                 rel="noopener noreferrer"
                 aria-label="Visit hypernexus Extension repository"
 ========
-                href="https://github.com/srbhptl39/Hypercode-Extension"
+                href="https://github.com/srbhptl39/HyperNexus-Extension"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Visit Hypercode Extension repository"
-                href="https://github.com/srbhptl39/hypercode-Extension"
+                aria-label="Visit HyperNexus Extension repository"
+                href="https://github.com/srbhptl39/hypernexus-Extension"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Visit hypercode Extension repository"
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/pages/content/src/components/sidebar/Sidebar.tsx
+                aria-label="Visit hypernexus Extension repository"
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/components/sidebar/Sidebar.tsx
                 className="block">
                 {' '}
                 {/* Make link block for sizing */}
@@ -902,21 +902,21 @@ const Sidebar: React.FC<SidebarProps> = ({ initialPreferences }) => {
                   <Typography variant="h4" className="font-semibold">
                     hypernexus Extension
 ========
-                  href="https://github.com/srbhptl39/Hypercode-Extension"
+                  href="https://github.com/srbhptl39/HyperNexus-Extension"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-slate-800 dark:text-slate-100 hover:text-slate-600 dark:hover:text-slate-300 transition-colors duration-150 no-underline"
-                  aria-label="Visit Hypercode Extension repository">
+                  aria-label="Visit HyperNexus Extension repository">
                   <Typography variant="h4" className="font-semibold">
-                    Hypercode Extension
-                  href="https://github.com/srbhptl39/hypercode-Extension"
+                    HyperNexus Extension
+                  href="https://github.com/srbhptl39/hypernexus-Extension"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-slate-800 dark:text-slate-100 hover:text-slate-600 dark:hover:text-slate-300 transition-colors duration-150 no-underline"
-                  aria-label="Visit hypercode Extension repository">
+                  aria-label="Visit hypernexus Extension repository">
                   <Typography variant="h4" className="font-semibold">
-                    hypercode Extension
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/pages/content/src/components/sidebar/Sidebar.tsx
+                    hypernexus Extension
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/components/sidebar/Sidebar.tsx
                   </Typography>
                 </a>
                 {/* Existing icon link */}
@@ -933,17 +933,17 @@ const Sidebar: React.FC<SidebarProps> = ({ initialPreferences }) => {
                   className="ml-1 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300 transition-colors duration-150"
                   aria-label="Visit hypernexus Extension repository">
 ========
-                  href="https://github.com/srbhptl39/Hypercode-Extension"
+                  href="https://github.com/srbhptl39/HyperNexus-Extension"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="ml-1 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300 transition-colors duration-150"
-                  aria-label="Visit Hypercode Extension repository">
-                  href="https://github.com/srbhptl39/hypercode-Extension"
+                  aria-label="Visit HyperNexus Extension repository">
+                  href="https://github.com/srbhptl39/hypernexus-Extension"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="ml-1 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300 transition-colors duration-150"
-                  aria-label="Visit hypercode Extension repository">
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/pages/content/src/components/sidebar/Sidebar.tsx
+                  aria-label="Visit hypernexus Extension repository">
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/components/sidebar/Sidebar.tsx
                   <Icon name="arrow-up-right" size="xs" className="inline-block align-baseline" />
                 </a>
               </>

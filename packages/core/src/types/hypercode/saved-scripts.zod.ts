@@ -4,7 +4,7 @@
  * @module packages/core/src/types/hypernexus/saved-scripts.zod
 ========
  * @module packages/core/src/types/borg/saved-scripts.zod
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypercode/saved-scripts.zod.ts
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypernexus/saved-scripts.zod.ts
  *
  * WHAT:
  * Zod definitions for User Scripts.

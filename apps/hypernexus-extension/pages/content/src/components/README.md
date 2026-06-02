@@ -4,9 +4,9 @@
 This directory contains React components that make up the user interface of the HyperNexus Extension content script, integrated with the modern plugin architecture and state management system.
 This directory contains React components that make up the user interface of the hypernexus Extension content script, integrated with the modern plugin architecture and state management system.
 ========
-This directory contains React components that make up the user interface of the Hypercode Extension content script, integrated with the modern plugin architecture and state management system.
-This directory contains React components that make up the user interface of the hypercode Extension content script, integrated with the modern plugin architecture and state management system.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/pages/content/src/components/README.md
+This directory contains React components that make up the user interface of the HyperNexus Extension content script, integrated with the modern plugin architecture and state management system.
+This directory contains React components that make up the user interface of the hypernexus Extension content script, integrated with the modern plugin architecture and state management system.
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/components/README.md
 
 ## Overview
 

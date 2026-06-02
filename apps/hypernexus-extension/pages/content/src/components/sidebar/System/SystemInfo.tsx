@@ -47,9 +47,9 @@ const SystemInfo: React.FC = () => {
 {`hypernexus-extension/
 {`hypernexus-extension/
 ========
-{`hypercode-extension/
-{`hypercode-extension/
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/pages/content/src/components/sidebar/System/SystemInfo.tsx
+{`hypernexus-extension/
+{`hypernexus-extension/
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/components/sidebar/System/SystemInfo.tsx
 ├── chrome-extension/       (v1.1.0)
 │   ├── background/         (Service Worker)
 │   └── mcpclient/          (Protocol Layer)

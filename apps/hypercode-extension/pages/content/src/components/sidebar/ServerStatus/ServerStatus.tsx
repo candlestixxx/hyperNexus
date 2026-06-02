@@ -971,15 +971,15 @@ const ServerStatus: React.FC<ServerStatusProps> = ({ status: initialStatus }) =>
                   <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded font-mono text-xs border border-slate-200 dark:border-slate-700">
                     npx @srbhptl39/hypernexus-extension-proxy@latest --config ./config.json --outputTransport{' '}
 ========
-                    <strong>To start Hypercode Extension Proxy:</strong>
+                    <strong>To start HyperNexus Extension Proxy:</strong>
                   </div>
                   <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded font-mono text-xs border border-slate-200 dark:border-slate-700">
-                    npx @srbhptl39/hypercode-extension-proxy@latest --config ./config.json --outputTransport{' '}
-                    <strong>To start hypercode Extension Proxy:</strong>
+                    npx @srbhptl39/hypernexus-extension-proxy@latest --config ./config.json --outputTransport{' '}
+                    <strong>To start hypernexus Extension Proxy:</strong>
                   </div>
                   <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded font-mono text-xs border border-slate-200 dark:border-slate-700">
-                    npx @srbhptl39/hypercode-extension-proxy@latest --config ./config.json --outputTransport{' '}
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/pages/content/src/components/sidebar/ServerStatus/ServerStatus.tsx
+                    npx @srbhptl39/hypernexus-extension-proxy@latest --config ./config.json --outputTransport{' '}
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/components/sidebar/ServerStatus/ServerStatus.tsx
                     {connectionType === 'sse' ? 'sse' : connectionType === 'websocket' ? 'ws' : 'streamableHttp'}
                   </div>
                   <div className="mt-2 text-xs">

@@ -1,33 +1,33 @@
 /**
- * Hypercode Kernel Button Injection Service
+ * HyperNexus Kernel Button Injection Service
  *
  * Detects supported AI chat websites (Claude.ai, ChatGPT) and injects
- * a "Hypercode Kernel" button that attaches the local Hypercode Kernel to the
+ * a "HyperNexus Kernel" button that attaches the local HyperNexus Kernel to the
  * active conversation session.
  *
  * The button provides:
- * - One-click attachment to the local Hypercode Kernel (port 4300)
+ * - One-click attachment to the local HyperNexus Kernel (port 4300)
  * - Visual status indicator (connected/disconnected/warming)
- * - Context bridge: sends conversation context to Hypercode for memory & healing
+ * - Context bridge: sends conversation context to HyperNexus for memory & healing
  */
 
 import { createLogger } from '@extension/shared/lib/logger';
 
-const logger = createLogger('HypercodeKernelButton');
+const logger = createLogger('HyperNexusKernelButton');
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
-export type HypercodeKernelStatus = 'disconnected' | 'connecting' | 'connected' | 'error';
+export type HyperNexusKernelStatus = 'disconnected' | 'connecting' | 'connected' | 'error';
 
-export interface HypercodeKernelConfig {
+export interface HyperNexusKernelConfig {
   kernelUrl: string;
   bridgeUrl: string;
   autoAttach: boolean;
   pollIntervalMs: number;
 }
 
-export interface HypercodeKernelButtonState {
-  status: HypercodeKernelStatus;
+export interface HyperNexusKernelButtonState {
+  status: HyperNexusKernelStatus;
   kernelUrl: string;
   sessionId: string | null;
   connectedAt: number | null;
@@ -36,11 +36,11 @@ export interface HypercodeKernelButtonState {
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 
-const HYPERCODE_KERNEL_BUTTON_ID = 'hypercode-hypercode-kernel-btn';
-const HYPERCODE_KERNEL_STATUS_ID = 'hypercode-hypercode-kernel-status';
-const HYPERCODE_KERNEL_PANEL_ID = 'hypercode-hypercode-kernel-panel';
+const HYPERCODE_KERNEL_BUTTON_ID = 'hypernexus-hypernexus-kernel-btn';
+const HYPERCODE_KERNEL_STATUS_ID = 'hypernexus-hypernexus-kernel-status';
+const HYPERCODE_KERNEL_PANEL_ID = 'hypernexus-hypernexus-kernel-panel';
 
-const DEFAULT_CONFIG: HypercodeKernelConfig = {
+const DEFAULT_CONFIG: HyperNexusKernelConfig = {
   kernelUrl: 'http://127.0.0.1:4300',
   bridgeUrl: 'http://127.0.0.1:4100',
   autoAttach: false,
@@ -99,16 +99,16 @@ const BUTTON_STYLES = `
     border-color: rgba(56, 189, 248, 0.5);
     color: #38bdf8;
   }
-  #${HYPERCODE_KERNEL_BUTTON_ID}.hypercode-connected {
+  #${HYPERCODE_KERNEL_BUTTON_ID}.hypernexus-connected {
     border-color: rgba(52, 211, 153, 0.4);
     background: rgba(52, 211, 153, 0.08);
     color: #6ee7b7;
   }
-  #${HYPERCODE_KERNEL_BUTTON_ID}.hypercode-connected:hover {
+  #${HYPERCODE_KERNEL_BUTTON_ID}.hypernexus-connected:hover {
     background: rgba(52, 211, 153, 0.15);
     border-color: rgba(52, 211, 153, 0.5);
   }
-  #${HYPERCODE_KERNEL_BUTTON_ID}.hypercode-error {
+  #${HYPERCODE_KERNEL_BUTTON_ID}.hypernexus-error {
     border-color: rgba(248, 113, 113, 0.4);
     background: rgba(248, 113, 113, 0.08);
     color: #fca5a5;
@@ -121,23 +121,23 @@ const BUTTON_STYLES = `
     flex-shrink: 0;
     transition: background 0.2s;
   }
-  .hypercode-connected #${HYPERCODE_KERNEL_STATUS_ID} {
+  .hypernexus-connected #${HYPERCODE_KERNEL_STATUS_ID} {
     background: #34d399;
     box-shadow: 0 0 6px rgba(52, 211, 153, 0.5);
-    animation: hypercode-pulse 2s ease-in-out infinite;
+    animation: hypernexus-pulse 2s ease-in-out infinite;
   }
-  .hypercode-error #${HYPERCODE_KERNEL_STATUS_ID} {
+  .hypernexus-error #${HYPERCODE_KERNEL_STATUS_ID} {
     background: #f87171;
   }
-  .hypercode-connecting #${HYPERCODE_KERNEL_STATUS_ID} {
+  .hypernexus-connecting #${HYPERCODE_KERNEL_STATUS_ID} {
     background: #fbbf24;
-    animation: hypercode-blink 1s ease-in-out infinite;
+    animation: hypernexus-blink 1s ease-in-out infinite;
   }
-  @keyframes hypercode-pulse {
+  @keyframes hypernexus-pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.6; }
   }
-  @keyframes hypercode-blink {
+  @keyframes hypernexus-blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.3; }
   }
@@ -160,17 +160,17 @@ const BUTTON_STYLES = `
   }
 `;
 
-// ─── Hypercode Kernel Button Service ─────────────────────────────────────────────
+// ─── HyperNexus Kernel Button Service ─────────────────────────────────────────────
 
-export class HypercodeKernelButtonService {
-  private config: HypercodeKernelConfig;
-  private state: HypercodeKernelButtonState;
+export class HyperNexusKernelButtonService {
+  private config: HyperNexusKernelConfig;
+  private state: HyperNexusKernelButtonState;
   private button: HTMLElement | null = null;
   private panel: HTMLElement | null = null;
   private pollTimer: ReturnType<typeof setInterval> | null = null;
   private siteConfig: (typeof SUPPORTED_SITES)[SupportedSite] | null = null;
 
-  constructor(config: Partial<HypercodeKernelConfig> = {}) {
+  constructor(config: Partial<HyperNexusKernelConfig> = {}) {
     this.config = { ...DEFAULT_CONFIG, ...config };
     this.state = {
       status: 'disconnected',
@@ -194,12 +194,12 @@ export class HypercodeKernelButtonService {
   async initialize(): Promise<boolean> {
     const site = this.detectSite();
     if (!site) {
-      logger.debug('HypercodeKernel: unsupported site, skipping injection');
+      logger.debug('HyperNexusKernel: unsupported site, skipping injection');
       return false;
     }
 
     this.siteConfig = SUPPORTED_SITES[site];
-    logger.info(`HypercodeKernel: detected ${SUPPORTED_SITES[site].name}, injecting button`);
+    logger.info(`HyperNexusKernel: detected ${SUPPORTED_SITES[site].name}, injecting button`);
 
     // Inject styles
     this.injectStyles();
@@ -207,7 +207,7 @@ export class HypercodeKernelButtonService {
     // Wait for the anchor element to appear
     const anchor = await this.waitForElement(this.siteConfig.buttonAnchor, 10000);
     if (!anchor) {
-      logger.warn('HypercodeKernel: could not find button anchor element');
+      logger.warn('HyperNexusKernel: could not find button anchor element');
       return false;
     }
 
@@ -227,26 +227,26 @@ export class HypercodeKernelButtonService {
 
   /** Inject the button styles into the page */
   private injectStyles(): void {
-    if (document.getElementById('hypercode-hypercode-kernel-styles')) return;
+    if (document.getElementById('hypernexus-hypernexus-kernel-styles')) return;
 
     const style = document.createElement('style');
-    style.id = 'hypercode-hypercode-kernel-styles';
+    style.id = 'hypernexus-hypernexus-kernel-styles';
     style.textContent = BUTTON_STYLES;
     document.head.appendChild(style);
   }
 
-  /** Create and inject the Hypercode Kernel button */
+  /** Create and inject the HyperNexus Kernel button */
   private createButton(anchor: Element): void {
     if (document.getElementById(HYPERCODE_KERNEL_BUTTON_ID)) return;
 
     const btn = document.createElement('button');
     btn.id = HYPERCODE_KERNEL_BUTTON_ID;
     btn.type = 'button';
-    btn.title = 'Attach to Hypercode Kernel';
+    btn.title = 'Attach to HyperNexus Kernel';
 
     btn.innerHTML = `
       <span id="${HYPERCODE_KERNEL_STATUS_ID}"></span>
-      <span>Hypercode Kernel</span>
+      <span>HyperNexus Kernel</span>
     `;
 
     btn.addEventListener('click', (e) => {
@@ -262,7 +262,7 @@ export class HypercodeKernelButtonService {
     container.appendChild(btn);
     this.button = btn;
 
-    logger.info('HypercodeKernel: button injected');
+    logger.info('HyperNexusKernel: button injected');
   }
 
   /** Handle button click — toggle attach/detach or show panel */
@@ -274,7 +274,7 @@ export class HypercodeKernelButtonService {
     }
   }
 
-  /** Attach to the local Hypercode Kernel */
+  /** Attach to the local HyperNexus Kernel */
   async attach(): Promise<void> {
     this.setState({ status: 'connecting', error: null });
 
@@ -297,7 +297,7 @@ export class HypercodeKernelButtonService {
         error: null,
       });
 
-      logger.info('HypercodeKernel: attached to kernel', data);
+      logger.info('HyperNexusKernel: attached to kernel', data);
 
       // Register this chat session with the kernel
       await this.registerSession();
@@ -306,7 +306,7 @@ export class HypercodeKernelButtonService {
         status: 'error',
         error: err.message || 'Connection failed',
       });
-      logger.warn('HypercodeKernel: attach failed', err.message);
+      logger.warn('HyperNexusKernel: attach failed', err.message);
     }
   }
 
@@ -318,10 +318,10 @@ export class HypercodeKernelButtonService {
       connectedAt: null,
       error: null,
     });
-    logger.info('HypercodeKernel: detached');
+    logger.info('HyperNexusKernel: detached');
   }
 
-  /** Register this session with the Hypercode Kernel */
+  /** Register this session with the HyperNexus Kernel */
   private async registerSession(): Promise<void> {
     if (!this.state.sessionId) return;
 
@@ -341,7 +341,7 @@ export class HypercodeKernelButtonService {
         signal: AbortSignal.timeout(3000),
       });
     } catch (err: any) {
-      logger.debug('HypercodeKernel: session registration failed (non-critical)', err.message);
+      logger.debug('HyperNexusKernel: session registration failed (non-critical)', err.message);
     }
   }
 
@@ -363,7 +363,7 @@ export class HypercodeKernelButtonService {
 
     panel.innerHTML = `
       <div style="margin-bottom: 8px; font-weight: 700; color: #38bdf8;">
-        Hypercode Kernel Connected
+        HyperNexus Kernel Connected
       </div>
       <div style="color: #94a3b8; line-height: 1.6;">
         <div>Session: <span style="color: #e2e8f0;">${this.state.sessionId?.slice(0, 12)}...</span></div>
@@ -371,13 +371,13 @@ export class HypercodeKernelButtonService {
         <div>Kernel: <span style="color: #e2e8f0;">${this.state.kernelUrl}</span></div>
       </div>
       <div style="margin-top: 10px; display: flex; gap: 6px;">
-        <button id="hypercode-detach-btn" style="
+        <button id="hypernexus-detach-btn" style="
           flex: 1; padding: 6px; border-radius: 6px;
           border: 1px solid rgba(248,113,113,0.3);
           background: rgba(248,113,113,0.08);
           color: #fca5a5; font-size: 11px; cursor: pointer;
         ">Detach</button>
-        <button id="hypercode-reconnect-btn" style="
+        <button id="hypernexus-reconnect-btn" style="
           flex: 1; padding: 6px; border-radius: 6px;
           border: 1px solid rgba(56,189,248,0.3);
           background: rgba(56,189,248,0.08);
@@ -390,12 +390,12 @@ export class HypercodeKernelButtonService {
     this.panel = panel;
 
     // Wire up panel buttons
-    document.getElementById('hypercode-detach-btn')?.addEventListener('click', () => {
+    document.getElementById('hypernexus-detach-btn')?.addEventListener('click', () => {
       this.detach();
       this.showPanel(); // Toggle panel off
     });
 
-    document.getElementById('hypercode-reconnect-btn')?.addEventListener('click', () => {
+    document.getElementById('hypernexus-reconnect-btn')?.addEventListener('click', () => {
       this.detach();
       this.attach();
       this.showPanel(); // Toggle panel off
@@ -451,26 +451,26 @@ export class HypercodeKernelButtonService {
   }
 
   /** Update state and re-render button */
-  private setState(partial: Partial<HypercodeKernelButtonState>): void {
+  private setState(partial: Partial<HyperNexusKernelButtonState>): void {
     this.state = { ...this.state, ...partial };
 
     if (this.button) {
       this.button.className = '';
       switch (this.state.status) {
         case 'connected':
-          this.button.classList.add('hypercode-connected');
-          this.button.title = 'Hypercode Kernel: Connected';
+          this.button.classList.add('hypernexus-connected');
+          this.button.title = 'HyperNexus Kernel: Connected';
           break;
         case 'connecting':
-          this.button.classList.add('hypercode-connecting');
-          this.button.title = 'Hypercode Kernel: Connecting...';
+          this.button.classList.add('hypernexus-connecting');
+          this.button.title = 'HyperNexus Kernel: Connecting...';
           break;
         case 'error':
-          this.button.classList.add('hypercode-error');
-          this.button.title = `Hypercode Kernel: Error - ${this.state.error}`;
+          this.button.classList.add('hypernexus-error');
+          this.button.title = `HyperNexus Kernel: Error - ${this.state.error}`;
           break;
         default:
-          this.button.title = 'Attach to Hypercode Kernel';
+          this.button.title = 'Attach to HyperNexus Kernel';
       }
     }
   }
@@ -514,25 +514,25 @@ export class HypercodeKernelButtonService {
     this.button = null;
     this.panel = null;
 
-    const styles = document.getElementById('hypercode-hypercode-kernel-styles');
+    const styles = document.getElementById('hypernexus-hypernexus-kernel-styles');
     styles?.remove();
   }
 }
 
 // ─── Singleton ───────────────────────────────────────────────────────────────
 
-let instance: HypercodeKernelButtonService | null = null;
+let instance: HyperNexusKernelButtonService | null = null;
 
-/** Get or create the Hypercode Kernel button service */
-export function getHypercodeKernelService(config?: Partial<HypercodeKernelConfig>): HypercodeKernelButtonService {
+/** Get or create the HyperNexus Kernel button service */
+export function getHyperNexusKernelService(config?: Partial<HyperNexusKernelConfig>): HyperNexusKernelButtonService {
   if (!instance) {
-    instance = new HypercodeKernelButtonService(config);
+    instance = new HyperNexusKernelButtonService(config);
   }
   return instance;
 }
 
-/** Auto-initialize the Hypercode Kernel button if on a supported site */
-export async function initHypercodeKernelButton(config?: Partial<HypercodeKernelConfig>): Promise<boolean> {
-  const service = getHypercodeKernelService(config);
+/** Auto-initialize the HyperNexus Kernel button if on a supported site */
+export async function initHyperNexusKernelButton(config?: Partial<HyperNexusKernelConfig>): Promise<boolean> {
+  const service = getHyperNexusKernelService(config);
   return service.initialize();
 }

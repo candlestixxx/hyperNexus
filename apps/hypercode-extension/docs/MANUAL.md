@@ -10,17 +10,17 @@ HyperNexus Extension is a Chrome extension that bridges the Model Context Protoc
 
 hypernexus Extension is a Chrome extension that bridges the Model Context Protocol (MCP) with web-based AI platforms like ChatGPT, Claude, Perplexity, and others. It allows you to use your local tools and data directly within these AI interfaces, enhancing their capabilities with file system access, command execution, and more.
 ========
-# Hypercode Extension User Manual
+# HyperNexus Extension User Manual
 
 ## Overview
 
-Hypercode Extension is a Chrome extension that bridges the Model Context Protocol (MCP) with web-based AI platforms like ChatGPT, Claude, Perplexity, and others. It allows you to use your local tools and data directly within these AI interfaces, enhancing their capabilities with file system access, command execution, and more.
-# hypercode Extension User Manual
+HyperNexus Extension is a Chrome extension that bridges the Model Context Protocol (MCP) with web-based AI platforms like ChatGPT, Claude, Perplexity, and others. It allows you to use your local tools and data directly within these AI interfaces, enhancing their capabilities with file system access, command execution, and more.
+# hypernexus Extension User Manual
 
 ## Overview
 
-hypercode Extension is a Chrome extension that bridges the Model Context Protocol (MCP) with web-based AI platforms like ChatGPT, Claude, Perplexity, and others. It allows you to use your local tools and data directly within these AI interfaces, enhancing their capabilities with file system access, command execution, and more.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/docs/MANUAL.md
+hypernexus Extension is a Chrome extension that bridges the Model Context Protocol (MCP) with web-based AI platforms like ChatGPT, Claude, Perplexity, and others. It allows you to use your local tools and data directly within these AI interfaces, enhancing their capabilities with file system access, command execution, and more.
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/docs/MANUAL.md
 
 ## Getting Started
 
@@ -31,9 +31,9 @@ hypercode Extension is a Chrome extension that bridges the Model Context Protoco
 2.  **Install the Proxy**: To connect to local MCP servers, you need to run the HyperNexus Extension Proxy.
 2.  **Install the Proxy**: To connect to local MCP servers, you need to run the hypernexus Extension Proxy.
 ========
-2.  **Install the Proxy**: To connect to local MCP servers, you need to run the Hypercode Extension Proxy.
-2.  **Install the Proxy**: To connect to local MCP servers, you need to run the hypercode Extension Proxy.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/docs/MANUAL.md
+2.  **Install the Proxy**: To connect to local MCP servers, you need to run the HyperNexus Extension Proxy.
+2.  **Install the Proxy**: To connect to local MCP servers, you need to run the hypernexus Extension Proxy.
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/docs/MANUAL.md
 
 ### Proxy Setup
 
@@ -62,9 +62,9 @@ The proxy bridges the browser (extension) to your local MCP servers.
     npx -y @srbhptl39/hypernexus-extension-proxy@latest --config ./config.json
     npx -y @srbhptl39/hypernexus-extension-proxy@latest --config ./config.json
 ========
-    npx -y @srbhptl39/hypercode-extension-proxy@latest --config ./config.json
-    npx -y @srbhptl39/hypercode-extension-proxy@latest --config ./config.json
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/docs/MANUAL.md
+    npx -y @srbhptl39/hypernexus-extension-proxy@latest --config ./config.json
+    npx -y @srbhptl39/hypernexus-extension-proxy@latest --config ./config.json
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/docs/MANUAL.md
     ```
 
     By default, this starts an SSE server on port 3006. You can change the port using environment variables: `PORT=3007 npx ...`

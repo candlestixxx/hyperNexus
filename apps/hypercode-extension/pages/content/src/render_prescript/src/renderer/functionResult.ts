@@ -232,9 +232,9 @@ const renderSystemMessageBox = (block: HTMLElement, content: string): void => {
       headerText: 'HyperNexus Extension',
       headerText: 'hypernexus Extension',
 ========
-      headerText: 'Hypercode Extension',
-      headerText: 'hypercode Extension',
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/pages/content/src/render_prescript/src/renderer/functionResult.ts
+      headerText: 'HyperNexus Extension',
+      headerText: 'hypernexus Extension',
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/render_prescript/src/renderer/functionResult.ts
       expandTitle: 'Expand system message',
       collapseTitle: 'Collapse system message',
     };
@@ -394,9 +394,9 @@ export const renderFunctionResult = (block: HTMLElement, isProcessingRef: { curr
     // Check if it contains HyperNexus Extension system message tags
     // Check if it contains hypernexus Extension system message tags
 ========
-    // Check if it contains Hypercode Extension system message tags
-    // Check if it contains hypercode Extension system message tags
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/pages/content/src/render_prescript/src/renderer/functionResult.ts
+    // Check if it contains HyperNexus Extension system message tags
+    // Check if it contains hypernexus Extension system message tags
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/render_prescript/src/renderer/functionResult.ts
     if (
       content.includes('<SYSTEM>') ||
       content.includes('</SYSTEM>') ||

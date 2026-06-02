@@ -10,7 +10,7 @@
  *
  * WHAT:
  * Barrel file exporting all Borg Zod types.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypercode/index.ts
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypernexus/index.ts
  *
  * WHY:
  * Simplifies imports across the application.

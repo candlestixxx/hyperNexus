@@ -1247,7 +1247,7 @@ hypernexus/
 
 │   └── prism-mcp/           # Prism MCP reference
 
-├── packages/hypercode/     # Claude memory bridge (submodule)
+├── packages/hypernexus/     # Claude memory bridge (submodule)
 
 ├── mcp.jsonc                # MCP server definitions (34K+ lines)
 
@@ -1271,7 +1271,7 @@ hypernexus/
 
 | `apps/cloud-orchestrator` | github.com/robertpelloni/jules-autopilot | Jules autopilot wrapper |
 
-| `packages/hypercode` | github.com/robertpelloni/hypercode | Claude memory bridge |
+| `packages/hypernexus` | github.com/robertpelloni/hypernexus | Claude memory bridge |
 
 | `submodules/hyperharness` | github.com/robertpelloni/hyperharness | LLM harness |
 
@@ -2199,7 +2199,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Changed
 
-- **Submodule Sync**: Updated all submodules to latest upstream (cloud-orchestrator, hyperharness, prism-mcp, litellm, OmniRoute, maestro, mcpproxy, hypercode). Resolved merge conflicts in cloud-orchestrator and hyperharness.
+- **Submodule Sync**: Updated all submodules to latest upstream (cloud-orchestrator, hyperharness, prism-mcp, litellm, OmniRoute, maestro, mcpproxy, hypernexus). Resolved merge conflicts in cloud-orchestrator and hyperharness.
 
 - **Version Sync**: All 57 package.json files now synchronized to VERSION file.
 
@@ -3229,9 +3229,9 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - **Phase O Initialization**: Officially entered Phase O (Dashboard Convergence & v1.0.0) with an updated ROADMAP.md and VISION.md reflecting the path toward a stable release.
 
-- **tRPC SSE for Extensions**: Implemented `TRPCProvider.tsx` in `packages/hypercode` dashboard with `unstable_httpSubscriptionLink` and `splitLink`. This allows extension webviews to handle tRPC subscriptions over HTTP SSE, resolving the "Subscriptions unsupported by httpLink" error in restricted browser contexts.
+- **tRPC SSE for Extensions**: Implemented `TRPCProvider.tsx` in `packages/hypernexus` dashboard with `unstable_httpSubscriptionLink` and `splitLink`. This allows extension webviews to handle tRPC subscriptions over HTTP SSE, resolving the "Subscriptions unsupported by httpLink" error in restricted browser contexts.
 
-- **Storage Access Fallback**: Created a `safeStorage` utility in `packages/hypercode` that automatically falls back to in-memory storage when `localStorage` is inaccessible, fixing access errors in sandboxed extension webviews.
+- **Storage Access Fallback**: Created a `safeStorage` utility in `packages/hypernexus` that automatically falls back to in-memory storage when `localStorage` is inaccessible, fixing access errors in sandboxed extension webviews.
 
 - **Ambitious Roadmap Expansion**: Seeded `IDEAS.md` files across all major repositories (`ai`, `core`, `mcp-client`, `ui`, `web`, `maestro`, `hypernexus-extension`) with high-intelligence proposals including a Rust micro-kernel, P2P Hive Mind, and Bobcoin integration.
 
@@ -4521,11 +4521,11 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 
 
-- fix(hypercode/logger): Resolved unresolved merge conflict in `packages/hypercode/src/utils/logger.ts`.
+- fix(hypernexus/logger): Resolved unresolved merge conflict in `packages/hypernexus/src/utils/logger.ts`.
 
   - Merged upstream/main `Component` type additions (`CHROMA_MCP`, `CHROMA_SYNC`, `FOLDER_INDEX`, `CLAUDE_MD`, `QUEUE`) with HEAD.
 
-  - `packages/hypercode` now builds cleanly without being excluded from the workspace build.
+  - `packages/hypernexus` now builds cleanly without being excluded from the workspace build.
 
 
 
@@ -5395,7 +5395,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - verified(session/detail): Session detail page distinguishes auto-restart vs manual-restart, shows worktree path, last error, shell executor.
 
-- verified(memory): Memory dashboard has search modes, structured observation schema, hypercode sub-page, vector memory sub-page.
+- verified(memory): Memory dashboard has search modes, structured observation schema, hypernexus sub-page, vector memory sub-page.
 
 - verified(billing): Billing page exposes fallback chain with per-entry reasons, cost history, provider quota windows, task-type routing rules.
 
@@ -8211,7 +8211,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 
 
-- changed(memory): `/dashboard/memory/hypercode` now treats degraded `startupStatus` compat-fallback snapshots as a first-class operator state, surfacing the live fallback summary instead of collapsing that payload into generic "Core warming up" copy.
+- changed(memory): `/dashboard/memory/hypernexus` now treats degraded `startupStatus` compat-fallback snapshots as a first-class operator state, surfacing the live fallback summary instead of collapsing that payload into generic "Core warming up" copy.
 
 
 
@@ -8435,7 +8435,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - Added one-click MCP server operator actions on `/dashboard/mcp`, including a combined `Load + cache` flow plus direct shortcuts into tool inspection, tool-behavior editing, and logs for each downstream server.
 
-- Added default-section coverage reporting to `memory.getHypercodeStatus` plus state-aware operator guidance on `/dashboard/memory/hypercode`, so the parity page now distinguishes between a missing adapter store, an empty seeded store, incomplete default bucket coverage, and an actively populated hypercode shell.
+- Added default-section coverage reporting to `memory.getHyperNexusStatus` plus state-aware operator guidance on `/dashboard/memory/hypernexus`, so the parity page now distinguishes between a missing adapter store, an empty seeded store, incomplete default bucket coverage, and an actively populated hypernexus shell.
 
 - Added active memory-pipeline reporting to `memory.getHyperNexusStatus`, so `/dashboard/memory/hypernexus` now shows whether hypernexus is actually wired into HyperNexus's current runtime memory fan-out instead of only inferring readiness from the presence of `.hypernexus/claude_mem.json` on disk.
 
@@ -8501,7 +8501,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - Added one-click MCP server operator actions on `/dashboard/mcp`, including a combined `Load + cache` flow plus direct shortcuts into tool inspection, tool-behavior editing, and logs for each downstream server.
 
-- Added default-section coverage reporting to `memory.getHypercodeStatus` plus state-aware operator guidance on `/dashboard/memory/hypercode`, so the parity page now distinguishes between a missing adapter store, an empty seeded store, incomplete default bucket coverage, and an actively populated hypercode shell.
+- Added default-section coverage reporting to `memory.getHyperNexusStatus` plus state-aware operator guidance on `/dashboard/memory/hypernexus`, so the parity page now distinguishes between a missing adapter store, an empty seeded store, incomplete default bucket coverage, and an actively populated hypernexus shell.
 
 - Added active memory-pipeline reporting to `memory.getHyperNexusStatus`, so `/dashboard/memory/hypernexus` now shows whether hypernexus is actually wired into hypernexus's current runtime memory fan-out instead of only inferring readiness from the presence of `.hypernexus/claude_mem.json` on disk.
 
@@ -8939,9 +8939,9 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - Verified `pnpm exec vitest run packages/core/src/routers/billingRouter.test.ts apps/web/src/app/dashboard/billing/page.test.tsx apps/web/src/app/dashboard/DashboardHomeClient.test.tsx apps/web/tests/integration/fallback-e2e.test.ts` passes after adding task-filtered fallback-chain inspection to the billing router and dashboard.
 
-- Verified `pnpm exec vitest run packages/core/src/routers/memoryRouter.hypercode.test.ts apps/web/src/app/dashboard/memory/hypercode/hypercode-status.test.ts` passes, `pnpm -C packages/core exec tsc --noEmit` passes, and `pnpm -C apps/web exec tsc --noEmit --pretty false` returns `WEB_TSC_OK` after wiring the live hypercode store status query.
+- Verified `pnpm exec vitest run packages/core/src/routers/memoryRouter.hypernexus.test.ts apps/web/src/app/dashboard/memory/hypernexus/hypernexus-status.test.ts` passes, `pnpm -C packages/core exec tsc --noEmit` passes, and `pnpm -C apps/web exec tsc --noEmit --pretty false` returns `WEB_TSC_OK` after wiring the live hypernexus store status query.
 
-- Verified `pnpm exec vitest run apps/web/src/app/dashboard/memory/hypercode/hypercode-status.test.ts` passes, and `pnpm -C apps/web exec tsc --noEmit --pretty false` passes after replacing the hypercode placeholder route with the dedicated parity surface.
+- Verified `pnpm exec vitest run apps/web/src/app/dashboard/memory/hypernexus/hypernexus-status.test.ts` passes, and `pnpm -C apps/web exec tsc --noEmit --pretty false` passes after replacing the hypernexus placeholder route with the dedicated parity surface.
 
 - Verified `pnpm exec vitest run apps/web/src/app/dashboard/dashboard-home-view.test.tsx` passes, `pnpm -C packages/core build` regenerates emitted declarations cleanly, and `pnpm -C apps/web exec tsc --noEmit --pretty false` passes after adding the dashboard operator alert strip.
 
@@ -10565,7 +10565,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - **MCP-SuperAssistant hypernexus Bridge**: Injected hypernexus Hub WebSocket bridge (`connectHyperNexusHub`) into SuperAssistant's background script and `window.hypernexus.callTool()` API + console interceptor into the content script.
 
-- **hypercode Redundant Memory Pipeline**: Created `HypercodeAdapter.ts` (section-based storage) and `RedundantMemoryManager.ts` (fan-out writes to all providers). Default `MemoryManager` provider changed from `json` to `redundant`.
+- **hypernexus Redundant Memory Pipeline**: Created `HyperNexusAdapter.ts` (section-based storage) and `RedundantMemoryManager.ts` (fan-out writes to all providers). Default `MemoryManager` provider changed from `json` to `redundant`.
 
 - **Cloud Dev Management Dashboard**: Created `cloudDevRouter.ts` tRPC router for multi-provider cloud dev session management (Jules, Codex, Copilot Workspace, Devin) and `/dashboard/cloud-dev/page.tsx` with full CRUD UI.
 
@@ -10695,7 +10695,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - **Memora Integration**: Registered the `memora` MCP server in `hypernexus.config.json` for semantic persistent storage.
 
-- **Native Memory Viewer**: Replaced the `hypercode` iframe with a high-fidelity, native React UI for searching and managing tiered agent memory (Session, Working, Long-Term).
+- **Native Memory Viewer**: Replaced the `hypernexus` iframe with a high-fidelity, native React UI for searching and managing tiered agent memory (Session, Working, Long-Term).
 
 
 
@@ -11377,7 +11377,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
   - Updated `packages/opencode-autopilot/packages/shared/package.json` `dev` script to `tsc --watch --preserveWatchOutput`.
 
-  - Updated `packages/hypercode/gemini-cli-extension/package.json` `dev` script to `tsc --watch --preserveWatchOutput`.
+  - Updated `packages/hypernexus/gemini-cli-extension/package.json` `dev` script to `tsc --watch --preserveWatchOutput`.
 
   - Prevented TypeScript watch sessions from clearing terminal history during `pnpm run dev`.
 

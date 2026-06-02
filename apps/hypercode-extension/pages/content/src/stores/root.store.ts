@@ -26,9 +26,9 @@ export const useRootStore = create<RootState>()(
         name: 'hypernexus-extension-root-store',
         name: 'hypernexus-extension-root-store',
 ========
-        name: 'hypercode-extension-root-store',
-        name: 'hypercode-extension-root-store',
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/pages/content/src/stores/root.store.ts
+        name: 'hypernexus-extension-root-store',
+        name: 'hypernexus-extension-root-store',
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/stores/root.store.ts
         storage: createJSONStorage(createExtensionStateStorage),
         partialize: (state) => ({
           ui: {

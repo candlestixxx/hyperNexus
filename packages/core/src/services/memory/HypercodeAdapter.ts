@@ -1,24 +1,24 @@
 /**
- * HypercodeAdapter – IMemoryProvider backed by a CLAUDE.md-style flat-file
+ * HyperNexusAdapter – IMemoryProvider backed by a CLAUDE.md-style flat-file
  *
- * hypercode stores per-project context as structured markdown sections inside
+ * hypernexus stores per-project context as structured markdown sections inside
  * a single `.claude/CLAUDE.md` file.  This adapter translates that format into
  * HyperNexus's Memory/IMemoryProvider interface so it can participate in the
  * redundant memory pipeline alongside JsonMemoryProvider (and future vector
  * stores).
  *
  * Design notes:
- * - Reads/writes a `claude_mem.json` file that mirrors the hypercode schema
+ * - Reads/writes a `claude_mem.json` file that mirrors the hypernexus schema
  *   (project context, user facts, style preferences, commands).
  * - Sections are stored as individual Memory entries with metadata.section
- *   tracking which hypercode section they belong to.
+ *   tracking which hypernexus section they belong to.
  * - Search is keyword-based (same as JsonMemoryProvider). Future: could be
  *   upgraded to cosine similarity if embeddings are available.
  *
- * Integration with the submodule `packages/hypercode`:
+ * Integration with the submodule `packages/hypernexus`:
  * When the submodule is fully checked out, this adapter can optionally read
  * the actual CLAUDE.md file. Until then, it acts as a standalone provider
- * using its own JSON store inspired by the hypercode schema.
+ * using its own JSON store inspired by the hypernexus schema.
  */
 
 import fs from 'fs/promises';
@@ -34,13 +34,13 @@ export const BORG_DEFAULT_SECTIONS = [
     'general',
 ] as const;
 
-// The hypercode schema sections
-interface HypercodeSection {
+// The hypernexus schema sections
+interface HyperNexusSection {
     section: string;          // e.g. "project_context", "user_facts", "style"
-    entries: HypercodeEntry[];
+    entries: HyperNexusEntry[];
 }
 
-interface HypercodeEntry {
+interface HyperNexusEntry {
     uuid: string;
     content: string;
     tags: string[];
@@ -48,14 +48,14 @@ interface HypercodeEntry {
     source: string;           // "user" | "agent" | "auto"
 }
 
-interface HypercodeStore {
+interface HyperNexusStore {
     version: string;
-    sections: HypercodeSection[];
+    sections: HyperNexusSection[];
 }
 
-export class HypercodeAdapter implements IMemoryProvider {
+export class HyperNexusAdapter implements IMemoryProvider {
     private storePath: string;
-    private store: HypercodeStore = { version: '1.0.0', sections: [] };
+    private store: HyperNexusStore = { version: '1.0.0', sections: [] };
     private initialized = false;
 
     constructor(workspaceRoot: string) {
@@ -73,14 +73,14 @@ export class HypercodeAdapter implements IMemoryProvider {
             this.store = JSON.parse(data);
         } catch (error: any) {
             if (error.code === 'ENOENT') {
-                // Initialize with default sections inspired by hypercode
+                // Initialize with default sections inspired by hypernexus
                 this.store = {
                     version: '1.0.0',
                     sections: [...BORG_DEFAULT_SECTIONS].map((section) => ({ section, entries: [] })),
                 };
                 await this.persist();
             } else {
-                console.error(`[HypercodeAdapter] Failed to load store from ${this.storePath}:`, error);
+                console.error(`[HyperNexusAdapter] Failed to load store from ${this.storePath}:`, error);
                 throw error;
             }
         }
@@ -96,7 +96,7 @@ export class HypercodeAdapter implements IMemoryProvider {
         await this.init();
 
         const section = metadata.section || 'general';
-        const entry: HypercodeEntry = {
+        const entry: HyperNexusEntry = {
             uuid: uuidv4(),
             content,
             tags: metadata.tags || [],
@@ -173,7 +173,7 @@ export class HypercodeAdapter implements IMemoryProvider {
     // ---- Helpers ----
 
     private toMemory(
-        entry: HypercodeEntry,
+        entry: HyperNexusEntry,
         section: string,
         userId: string,
         agentId?: string
@@ -185,7 +185,7 @@ export class HypercodeAdapter implements IMemoryProvider {
                 section,
                 tags: entry.tags,
                 source: entry.source,
-                provider: 'hypercode',
+                provider: 'hypernexus',
             },
             userId,
             agentId,

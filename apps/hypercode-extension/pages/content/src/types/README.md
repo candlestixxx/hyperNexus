@@ -4,9 +4,9 @@
 This directory contains comprehensive TypeScript type definitions and interfaces used throughout the HyperNexus Extension extension, organized by functional domain to ensure type safety and consistency.
 This directory contains comprehensive TypeScript type definitions and interfaces used throughout the hypernexus Extension extension, organized by functional domain to ensure type safety and consistency.
 ========
-This directory contains comprehensive TypeScript type definitions and interfaces used throughout the Hypercode Extension extension, organized by functional domain to ensure type safety and consistency.
-This directory contains comprehensive TypeScript type definitions and interfaces used throughout the hypercode Extension extension, organized by functional domain to ensure type safety and consistency.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/pages/content/src/types/README.md
+This directory contains comprehensive TypeScript type definitions and interfaces used throughout the HyperNexus Extension extension, organized by functional domain to ensure type safety and consistency.
+This directory contains comprehensive TypeScript type definitions and interfaces used throughout the hypernexus Extension extension, organized by functional domain to ensure type safety and consistency.
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/types/README.md
 
 ## Architecture Integration
 

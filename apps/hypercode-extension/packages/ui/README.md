@@ -4,9 +4,9 @@
 This package provides React components and styling utilities that make up the HyperNexus Extension user interface, integrated with the modern plugin architecture and state management system.
 This package provides React components and styling utilities that make up the hypernexus Extension user interface, integrated with the modern plugin architecture and state management system.
 ========
-This package provides React components and styling utilities that make up the Hypercode Extension user interface, integrated with the modern plugin architecture and state management system.
-This package provides React components and styling utilities that make up the hypercode Extension user interface, integrated with the modern plugin architecture and state management system.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/packages/ui/README.md
+This package provides React components and styling utilities that make up the HyperNexus Extension user interface, integrated with the modern plugin architecture and state management system.
+This package provides React components and styling utilities that make up the hypernexus Extension user interface, integrated with the modern plugin architecture and state management system.
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/packages/ui/README.md
 
 ## Overview
 

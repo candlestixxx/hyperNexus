@@ -4,9 +4,9 @@
 This directory contains all Zustand state management stores for the HyperNexus-Extension content script. The stores provide centralized, reactive, and type-safe state management with optimal performance characteristics.
 This directory contains all Zustand state management stores for the hypernexus-Extension content script. The stores provide centralized, reactive, and type-safe state management with optimal performance characteristics.
 ========
-This directory contains all Zustand state management stores for the Hypercode-Extension content script. The stores provide centralized, reactive, and type-safe state management with optimal performance characteristics.
-This directory contains all Zustand state management stores for the hypercode-Extension content script. The stores provide centralized, reactive, and type-safe state management with optimal performance characteristics.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/pages/content/src/stores/README.md
+This directory contains all Zustand state management stores for the HyperNexus-Extension content script. The stores provide centralized, reactive, and type-safe state management with optimal performance characteristics.
+This directory contains all Zustand state management stores for the hypernexus-Extension content script. The stores provide centralized, reactive, and type-safe state management with optimal performance characteristics.
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/stores/README.md
 
 ## Overview
 

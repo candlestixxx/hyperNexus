@@ -15,13 +15,13 @@ type HyperNexusStatus struct {
 	Assimilated       bool           `json:"assimilated"`
 	HyperNexusCoreURL       string         `json:"hypernexusCoreUrl,omitempty"`
 ========
-	"github.com/robertpelloni/hypercode/hypercode"
+	"github.com/robertpelloni/hypernexus/hypernexus"
 )
 
-type HypercodeStatus struct {
+type HyperNexusStatus struct {
 	Assimilated       bool           `json:"assimilated"`
-	HypercodeCoreURL       string         `json:"hypercodeCoreUrl,omitempty"`
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:foundation/adapters/hypercode.go
+	HyperNexusCoreURL       string         `json:"hypernexusCoreUrl,omitempty"`
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:foundation/adapters/hypernexus.go
 	MemoryContext     string         `json:"memoryContext,omitempty"`
 	Provider          ProviderStatus `json:"provider"`
 	MCPServerNames    []string       `json:"mcpServerNames,omitempty"`
@@ -34,13 +34,13 @@ type HypercodeStatus struct {
 type HyperNexusAdapter struct {
 	hypernexusAdapter *hypernexus.Adapter
 ========
-	HypercodeRepoPath string         `json:"hypercodeRepoPath,omitempty"`
+	HyperNexusRepoPath string         `json:"hypernexusRepoPath,omitempty"`
 	Warnings          []string       `json:"warnings,omitempty"`
 }
 
-type HypercodeAdapter struct {
-	hypercodeAdapter *hypercode.Adapter
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:foundation/adapters/hypercode.go
+type HyperNexusAdapter struct {
+	hypernexusAdapter *hypernexus.Adapter
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:foundation/adapters/hypernexus.go
 	workingDir  string
 	homeDir     string
 }
@@ -51,11 +51,11 @@ func NewHyperNexusAdapter(workingDir string) *HyperNexusAdapter {
 	return &HyperNexusAdapter{
 		hypernexusAdapter: hypernexus.NewAdapter(),
 ========
-func NewHypercodeAdapter(workingDir string) *HypercodeAdapter {
+func NewHyperNexusAdapter(workingDir string) *HyperNexusAdapter {
 	homeDir, _ := os.UserHomeDir()
-	return &HypercodeAdapter{
-		hypercodeAdapter: hypercode.NewAdapter(),
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:foundation/adapters/hypercode.go
+	return &HyperNexusAdapter{
+		hypernexusAdapter: hypernexus.NewAdapter(),
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:foundation/adapters/hypernexus.go
 		workingDir:  workingDir,
 		homeDir:     homeDir,
 	}
@@ -76,20 +76,20 @@ func (a *HyperNexusAdapter) Status() HyperNexusStatus {
 	} else {
 		status.Warnings = append(status.Warnings, "adjacent hypernexus repo not found")
 ========
-func (a *HypercodeAdapter) Status() HypercodeStatus {
-	status := HypercodeStatus{
-		Assimilated:   a.hypercodeAdapter != nil && a.hypercodeAdapter.Assimilated,
+func (a *HyperNexusAdapter) Status() HyperNexusStatus {
+	status := HyperNexusStatus{
+		Assimilated:   a.hypernexusAdapter != nil && a.hypernexusAdapter.Assimilated,
 		MemoryContext: a.MemoryContext(),
 		Provider:      BuildProviderStatus(),
 	}
-	if a.hypercodeAdapter != nil {
-		status.HypercodeCoreURL = a.hypercodeAdapter.HypercodeCoreURL
+	if a.hypernexusAdapter != nil {
+		status.HyperNexusCoreURL = a.hypernexusAdapter.HyperNexusCoreURL
 	}
-	if repoPath, ok := a.findHypercodeRepo(); ok {
-		status.HypercodeRepoPath = repoPath
+	if repoPath, ok := a.findHyperNexusRepo(); ok {
+		status.HyperNexusRepoPath = repoPath
 	} else {
-		status.Warnings = append(status.Warnings, "adjacent hypercode repo not found")
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:foundation/adapters/hypercode.go
+		status.Warnings = append(status.Warnings, "adjacent hypernexus repo not found")
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:foundation/adapters/hypernexus.go
 	}
 	if configPath, names, err := a.listMCPServers(); err == nil {
 		status.MCPConfigPath = configPath
@@ -124,29 +124,29 @@ func (a *HyperNexusAdapter) BuildSystemContext() string {
 	if status.HyperNexusCoreURL != "" {
 		parts = append(parts, fmt.Sprintf("HyperNexus Core URL: %s", status.HyperNexusCoreURL))
 ========
-func (a *HypercodeAdapter) MemoryContext() string {
-	if a.hypercodeAdapter == nil {
+func (a *HyperNexusAdapter) MemoryContext() string {
+	if a.hypernexusAdapter == nil {
 		return ""
 	}
-	return a.hypercodeAdapter.GetMemoryContext()
+	return a.hypernexusAdapter.GetMemoryContext()
 }
 
-func (a *HypercodeAdapter) RouteMCP(request string) string {
-	if a.hypercodeAdapter == nil {
+func (a *HyperNexusAdapter) RouteMCP(request string) string {
+	if a.hypernexusAdapter == nil {
 		return request
 	}
-	return a.hypercodeAdapter.RouteMCP(request)
+	return a.hypernexusAdapter.RouteMCP(request)
 }
 
-func (a *HypercodeAdapter) BuildSystemContext() string {
+func (a *HyperNexusAdapter) BuildSystemContext() string {
 	status := a.Status()
 	parts := []string{
-		"[Hypercode Adapter]",
+		"[HyperNexus Adapter]",
 		fmt.Sprintf("Assimilated: %t", status.Assimilated),
 	}
-	if status.HypercodeCoreURL != "" {
-		parts = append(parts, fmt.Sprintf("Hypercode Core URL: %s", status.HypercodeCoreURL))
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:foundation/adapters/hypercode.go
+	if status.HyperNexusCoreURL != "" {
+		parts = append(parts, fmt.Sprintf("HyperNexus Core URL: %s", status.HyperNexusCoreURL))
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:foundation/adapters/hypernexus.go
 	}
 	if status.MemoryContext != "" {
 		parts = append(parts, status.MemoryContext)
@@ -161,9 +161,9 @@ func (a *HypercodeAdapter) BuildSystemContext() string {
 	if status.HyperNexusRepoPath != "" {
 		parts = append(parts, fmt.Sprintf("HyperNexus repo: %s", status.HyperNexusRepoPath))
 ========
-	if status.HypercodeRepoPath != "" {
-		parts = append(parts, fmt.Sprintf("Hypercode repo: %s", status.HypercodeRepoPath))
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:foundation/adapters/hypercode.go
+	if status.HyperNexusRepoPath != "" {
+		parts = append(parts, fmt.Sprintf("HyperNexus repo: %s", status.HyperNexusRepoPath))
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:foundation/adapters/hypernexus.go
 	}
 	if len(status.Warnings) > 0 {
 		parts = append(parts, fmt.Sprintf("Warnings: %s", strings.Join(status.Warnings, "; ")))
@@ -174,8 +174,8 @@ func (a *HypercodeAdapter) BuildSystemContext() string {
 <<<<<<<< HEAD:foundation/adapters/hypernexus.go
 func (a *HyperNexusAdapter) listMCPServers() (string, []string, error) {
 ========
-func (a *HypercodeAdapter) listMCPServers() (string, []string, error) {
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:foundation/adapters/hypercode.go
+func (a *HyperNexusAdapter) listMCPServers() (string, []string, error) {
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:foundation/adapters/hypernexus.go
 	configPath, config, err := ParseMCPConfig(a.homeDir)
 	if err != nil {
 		return configPath, nil, fmt.Errorf("mcp config unavailable: %w", err)
@@ -200,17 +200,17 @@ func (a *HyperNexusAdapter) findHyperNexusRepo() (string, bool) {
 	if a.homeDir != "" {
 		candidates = append(candidates, filepath.Join(a.homeDir, "workspace", "hypernexus"))
 ========
-func (a *HypercodeAdapter) findHypercodeRepo() (string, bool) {
+func (a *HyperNexusAdapter) findHyperNexusRepo() (string, bool) {
 	candidates := []string{}
 	if a.workingDir != "" {
 		candidates = append(candidates,
-			filepath.Join(a.workingDir, "..", "hypercode"),
-			filepath.Join(a.workingDir, "../hypercode"),
+			filepath.Join(a.workingDir, "..", "hypernexus"),
+			filepath.Join(a.workingDir, "../hypernexus"),
 		)
 	}
 	if a.homeDir != "" {
-		candidates = append(candidates, filepath.Join(a.homeDir, "workspace", "hypercode"))
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:foundation/adapters/hypercode.go
+		candidates = append(candidates, filepath.Join(a.homeDir, "workspace", "hypernexus"))
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:foundation/adapters/hypernexus.go
 	}
 	for _, candidate := range candidates {
 		clean := filepath.Clean(candidate)

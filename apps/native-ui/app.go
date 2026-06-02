@@ -6,15 +6,15 @@ import (
 	"time"
 )
 
-// App is the main Wails application struct with Hypercode bindings.
+// App is the main Wails application struct with HyperNexus bindings.
 type App struct {
 	ctx      context.Context
 	started  time.Time
-	services *HypercodeServices
+	services *HyperNexusServices
 }
 
-// HypercodeServices holds references to the Hypercode Go-sidecar services.
-type HypercodeServices struct {
+// HyperNexusServices holds references to the HyperNexus Go-sidecar services.
+type HyperNexusServices struct {
 	Status     func() map[string]interface{}
 	MemoryInfo func() map[string]interface{}
 	HealerInfo func() map[string]interface{}
@@ -34,8 +34,8 @@ func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 }
 
-// BindServices connects the Wails app to Hypercode core services.
-func (a *App) BindServices(svc *HypercodeServices) {
+// BindServices connects the Wails app to HyperNexus core services.
+func (a *App) BindServices(svc *HyperNexusServices) {
 	a.services = svc
 }
 
@@ -50,7 +50,7 @@ func (a *App) GetSystemStatus() map[string]interface{} {
 		"status":   "running",
 		"uptime":   time.Since(a.started).String(),
 		"version":  "1.0.0-alpha.62",
-		"protocol": "hypercode://",
+		"protocol": "hypernexus://",
 	}
 
 	if a.services != nil && a.services.Status != nil {

@@ -126,12 +126,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hypercodehq/hypercode-go/internal/buildinfo"
-	"github.com/hypercodehq/hypercode-go/internal/config"
-	"github.com/hypercodehq/hypercode-go/internal/controlplane"
-	"github.com/hypercodehq/hypercode-go/internal/httpapi"
-	"github.com/hypercodehq/hypercode-go/internal/lockfile"
-	"github.com/hypercodehq/hypercode-go/internal/sessionimport"
+	"github.com/hypernexushq/hypernexus-go/internal/buildinfo"
+	"github.com/hypernexushq/hypernexus-go/internal/config"
+	"github.com/hypernexushq/hypernexus-go/internal/controlplane"
+	"github.com/hypernexushq/hypernexus-go/internal/httpapi"
+	"github.com/hypernexushq/hypernexus-go/internal/lockfile"
+	"github.com/hypernexushq/hypernexus-go/internal/sessionimport"
 )
 
 func main() {
@@ -141,7 +141,7 @@ func main() {
 func run(args []string) int {
 	command := "serve"
 	if len(args) > 0 {
-		if strings.HasPrefix(args[0], "hypercode://") {
+		if strings.HasPrefix(args[0], "hypernexus://") {
 			return runDeepLink(args[0])
 		}
 		switch args[0] {
@@ -167,11 +167,11 @@ func runDeepLink(deepLink string) int {
 	cfg := config.Default()
 	record, err := lockfile.Read(cfg.LockPath())
 	if err != nil {
-		log.Printf("Hypercode sidecar server is not currently running. Please start it using 'hypercode serve' first.")
+		log.Printf("HyperNexus sidecar server is not currently running. Please start it using 'hypernexus serve' first.")
 		return 1
 	}
 
-	targetURL := fmt.Sprintf("http://%s:%d/api/native/protocol/hypercode", record.Host, record.Port)
+	targetURL := fmt.Sprintf("http://%s:%d/api/native/protocol/hypernexus", record.Host, record.Port)
 
 	payload, err := json.Marshal(map[string]string{"url": deepLink})
 	if err != nil {
@@ -181,7 +181,7 @@ func runDeepLink(deepLink string) int {
 
 	resp, err := http.Post(targetURL, "application/json", bytes.NewBuffer(payload))
 	if err != nil {
-		log.Printf("Failed to dispatch deep link to running Hypercode server: %v", err)
+		log.Printf("Failed to dispatch deep link to running HyperNexus server: %v", err)
 		return 1
 	}
 	defer resp.Body.Close()
@@ -262,4 +262,4 @@ func runServe(args []string) int {
 
 	return 0
 }
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:go/cmd/hypercode/main.go
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:go/cmd/hypernexus/main.go

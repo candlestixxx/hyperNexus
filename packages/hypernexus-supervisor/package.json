@@ -8,14 +8,14 @@
   "bin": {
     "hypernexus-supervisor": "./dist/index.js"
 ========
-  "name": "@hypercode/supervisor",
+  "name": "@hypernexus/supervisor",
   "version": "1.0.0-alpha.64",
-  "description": "Hypercode Supervisor - Watchdog and Automation Agent",
+  "description": "HyperNexus Supervisor - Watchdog and Automation Agent",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
-    "hypercode-supervisor": "./dist/index.js"
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypercode-supervisor/package.json
+    "hypernexus-supervisor": "./dist/index.js"
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypernexus-supervisor/package.json
   },
   "scripts": {
     "build": "tsc",

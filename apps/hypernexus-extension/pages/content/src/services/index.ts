@@ -24,9 +24,9 @@ export async function initializeAllServices(): Promise<void> {
     const { memoryCaptureService } = await import('./memory-capture.service');
     memoryCaptureService.setEnabled(true);
 
-    // Initialize Hypercode Kernel button on supported AI chat sites
-    const { initHypercodeKernelButton } = await import('./hypercode-kernel-button');
-    await initHypercodeKernelButton();
+    // Initialize HyperNexus Kernel button on supported AI chat sites
+    const { initHyperNexusKernelButton } = await import('./hypernexus-kernel-button');
+    await initHyperNexusKernelButton();
 
     logger.debug('[Services] All services initialized successfully');
   } catch (error) {

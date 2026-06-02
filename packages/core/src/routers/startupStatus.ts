@@ -253,8 +253,8 @@ export async function buildStartupStatusSnapshot(input: StartupStatusInput) {
         blockingReasons.push({
             code: 'borg_not_ready',
             detail: !borgStoreExists
-                ? 'hypercode store has not been created yet.'
-                : 'hypercode default sections are still being seeded.',
+                ? 'hypernexus store has not been created yet.'
+                : 'hypernexus default sections are still being seeded.',
         });
     }
 

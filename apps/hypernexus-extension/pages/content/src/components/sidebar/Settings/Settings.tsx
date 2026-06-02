@@ -93,9 +93,9 @@ const Settings: React.FC = () => {
     a.download = `hypernexus-extension-backup-${new Date().toISOString().slice(0, 10)}.json`;
     a.download = `hypernexus-extension-backup-${new Date().toISOString().slice(0, 10)}.json`;
 ========
-    a.download = `hypercode-extension-backup-${new Date().toISOString().slice(0, 10)}.json`;
-    a.download = `hypercode-extension-backup-${new Date().toISOString().slice(0, 10)}.json`;
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/pages/content/src/components/sidebar/Settings/Settings.tsx
+    a.download = `hypernexus-extension-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `hypernexus-extension-backup-${new Date().toISOString().slice(0, 10)}.json`;
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/components/sidebar/Settings/Settings.tsx
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

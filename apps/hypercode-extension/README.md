@@ -6,11 +6,11 @@
    <!-- <img src="chrome-extension/public/icon-34.png" alt="hypernexus Extension Logo" width="100" height="100"> -->
    <h1>hypernexus Extension Chrome Extension</h1>
 ========
-   <!-- <img src="chrome-extension/public/icon-34.png" alt="Hypercode Extension Logo" width="100" height="100"> -->
-   <h1>Hypercode Extension Chrome Extension</h1>
-   <!-- <img src="chrome-extension/public/icon-34.png" alt="hypercode Extension Logo" width="100" height="100"> -->
-   <h1>hypercode Extension Chrome Extension</h1>
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/README.md
+   <!-- <img src="chrome-extension/public/icon-34.png" alt="HyperNexus Extension Logo" width="100" height="100"> -->
+   <h1>HyperNexus Extension Chrome Extension</h1>
+   <!-- <img src="chrome-extension/public/icon-34.png" alt="hypernexus Extension Logo" width="100" height="100"> -->
+   <h1>hypernexus Extension Chrome Extension</h1>
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/README.md
 </div>
 
 <p align="center">
@@ -29,13 +29,13 @@ Brings MCP to ChatGPT, Perplexity, Grok, Gemini, Google AI Studio, OpenRouter, K
 <div align="center">
  <img src="chrome-extension/public/Cover5.jpg" alt="hypernexus Extension Cover" width="800">
 ========
-<!-- ![Hypercode Extension](chrome-extension/public/Cover3.jpg) -->
+<!-- ![HyperNexus Extension](chrome-extension/public/Cover3.jpg) -->
 <div align="center">
- <img src="chrome-extension/public/Cover5.jpg" alt="Hypercode Extension Cover" width="800">
-<!-- ![hypercode Extension](chrome-extension/public/Cover3.jpg) -->
+ <img src="chrome-extension/public/Cover5.jpg" alt="HyperNexus Extension Cover" width="800">
+<!-- ![hypernexus Extension](chrome-extension/public/Cover3.jpg) -->
 <div align="center">
- <img src="chrome-extension/public/Cover5.jpg" alt="hypercode Extension Cover" width="800">
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/README.md
+ <img src="chrome-extension/public/Cover5.jpg" alt="hypernexus Extension Cover" width="800">
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/README.md
 </div>
 
 <div align="center">
@@ -52,17 +52,17 @@ Brings MCP to ChatGPT, Perplexity, Grok, Gemini, Google AI Studio, OpenRouter, K
    ![Chrome Users](https://img.shields.io/chrome-web-store/users/kngiafgkdnlkgmefdafaibkibegkcaef?style=flat-square&label=Chrome%20Users)
    ![Firefox Users](https://img.shields.io/amo/users/hypernexus-extension?style=flat-square&label=Firefox%20Users)
 ========
-   ![Latest Release](https://img.shields.io/github/v/release/srbhptl39/Hypercode-Extension?style=flat-square&label=Latest%20Release&color=brightgreen)
-   ![GitHub Stars](https://img.shields.io/github/stars/srbhptl39/Hypercode-Extension?style=flat-square&label=Stars)
+   ![Latest Release](https://img.shields.io/github/v/release/srbhptl39/HyperNexus-Extension?style=flat-square&label=Latest%20Release&color=brightgreen)
+   ![GitHub Stars](https://img.shields.io/github/stars/srbhptl39/HyperNexus-Extension?style=flat-square&label=Stars)
    ![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
    ![Chrome Users](https://img.shields.io/chrome-web-store/users/kngiafgkdnlkgmefdafaibkibegkcaef?style=flat-square&label=Chrome%20Users)
-   ![Firefox Users](https://img.shields.io/amo/users/hypercode-extension?style=flat-square&label=Firefox%20Users)
-   ![Latest Release](https://img.shields.io/github/v/release/srbhptl39/hypercode-Extension?style=flat-square&label=Latest%20Release&color=brightgreen)
-   ![GitHub Stars](https://img.shields.io/github/stars/srbhptl39/hypercode-Extension?style=flat-square&label=Stars)
+   ![Firefox Users](https://img.shields.io/amo/users/hypernexus-extension?style=flat-square&label=Firefox%20Users)
+   ![Latest Release](https://img.shields.io/github/v/release/srbhptl39/hypernexus-Extension?style=flat-square&label=Latest%20Release&color=brightgreen)
+   ![GitHub Stars](https://img.shields.io/github/stars/srbhptl39/hypernexus-Extension?style=flat-square&label=Stars)
    ![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
    ![Chrome Users](https://img.shields.io/chrome-web-store/users/kngiafgkdnlkgmefdafaibkibegkcaef?style=flat-square&label=Chrome%20Users)
-   ![Firefox Users](https://img.shields.io/amo/users/hypercode-extension?style=flat-square&label=Firefox%20Users)
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/README.md
+   ![Firefox Users](https://img.shields.io/amo/users/hypernexus-extension?style=flat-square&label=Firefox%20Users)
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/README.md
    ![Build Status](https://img.shields.io/badge/Status-Active-success?style=flat-square)
 
 </div>
@@ -76,11 +76,11 @@ Brings MCP to ChatGPT, Perplexity, Grok, Gemini, Google AI Studio, OpenRouter, K
    <a href="https://chromewebstore.google.com/detail/hypernexus-extension/kngiafgkdnlkgmefdafaibkibegkcaef?hl=en"><img src="https://developer.chrome.com/static/docs/webstore/branding/image/HRs9MPufa1J1h5glNhut.png" alt="Chrome Web Store" width="200" height="auto" style="vertical-align: middle;" /></a>
    <a href="https://addons.mozilla.org/en-US/firefox/addon/hypernexus-extension/"><img src="https://blog.mozilla.org/addons/files/2015/11/get-the-addon.png" alt="Firefox Add-ons" width="200" height="auto" style="vertical-align: middle;" /></a>
 ========
-   <a href="https://chromewebstore.google.com/detail/hypercode-extension/kngiafgkdnlkgmefdafaibkibegkcaef?hl=en"><img src="https://developer.chrome.com/static/docs/webstore/branding/image/HRs9MPufa1J1h5glNhut.png" alt="Chrome Web Store" width="200" height="auto" style="vertical-align: middle;" /></a>
-   <a href="https://addons.mozilla.org/en-US/firefox/addon/hypercode-extension/"><img src="https://blog.mozilla.org/addons/files/2015/11/get-the-addon.png" alt="Firefox Add-ons" width="200" height="auto" style="vertical-align: middle;" /></a>
-   <a href="https://chromewebstore.google.com/detail/hypercode-extension/kngiafgkdnlkgmefdafaibkibegkcaef?hl=en"><img src="https://developer.chrome.com/static/docs/webstore/branding/image/HRs9MPufa1J1h5glNhut.png" alt="Chrome Web Store" width="200" height="auto" style="vertical-align: middle;" /></a>
-   <a href="https://addons.mozilla.org/en-US/firefox/addon/hypercode-extension/"><img src="https://blog.mozilla.org/addons/files/2015/11/get-the-addon.png" alt="Firefox Add-ons" width="200" height="auto" style="vertical-align: middle;" /></a>
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/README.md
+   <a href="https://chromewebstore.google.com/detail/hypernexus-extension/kngiafgkdnlkgmefdafaibkibegkcaef?hl=en"><img src="https://developer.chrome.com/static/docs/webstore/branding/image/HRs9MPufa1J1h5glNhut.png" alt="Chrome Web Store" width="200" height="auto" style="vertical-align: middle;" /></a>
+   <a href="https://addons.mozilla.org/en-US/firefox/addon/hypernexus-extension/"><img src="https://blog.mozilla.org/addons/files/2015/11/get-the-addon.png" alt="Firefox Add-ons" width="200" height="auto" style="vertical-align: middle;" /></a>
+   <a href="https://chromewebstore.google.com/detail/hypernexus-extension/kngiafgkdnlkgmefdafaibkibegkcaef?hl=en"><img src="https://developer.chrome.com/static/docs/webstore/branding/image/HRs9MPufa1J1h5glNhut.png" alt="Chrome Web Store" width="200" height="auto" style="vertical-align: middle;" /></a>
+   <a href="https://addons.mozilla.org/en-US/firefox/addon/hypernexus-extension/"><img src="https://blog.mozilla.org/addons/files/2015/11/get-the-addon.png" alt="Firefox Add-ons" width="200" height="auto" style="vertical-align: middle;" /></a>
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/README.md
 </div>
 
 <br>
@@ -91,9 +91,9 @@ Brings MCP to ChatGPT, Perplexity, Grok, Gemini, Google AI Studio, OpenRouter, K
 HyperNexus Extension is a Chrome extension that integrates the Model Context Protocol (MCP) tools with AI platforms like Perplexity, ChatGPT, Google Gemini, Google AI Studio, Grokand more. It allows users to execute MCP tools directly from these platforms enhancing the capabilities of web-based AI assistants.
 hypernexus Extension is a Chrome extension that integrates the Model Context Protocol (MCP) tools with AI platforms like Perplexity, ChatGPT, Google Gemini, Google AI Studio, Grokand more. It allows users to execute MCP tools directly from these platforms enhancing the capabilities of web-based AI assistants.
 ========
-Hypercode Extension is a Chrome extension that integrates the Model Context Protocol (MCP) tools with AI platforms like Perplexity, ChatGPT, Google Gemini, Google AI Studio, Grokand more. It allows users to execute MCP tools directly from these platforms enhancing the capabilities of web-based AI assistants.
-hypercode Extension is a Chrome extension that integrates the Model Context Protocol (MCP) tools with AI platforms like Perplexity, ChatGPT, Google Gemini, Google AI Studio, Grokand more. It allows users to execute MCP tools directly from these platforms enhancing the capabilities of web-based AI assistants.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/README.md
+HyperNexus Extension is a Chrome extension that integrates the Model Context Protocol (MCP) tools with AI platforms like Perplexity, ChatGPT, Google Gemini, Google AI Studio, Grokand more. It allows users to execute MCP tools directly from these platforms enhancing the capabilities of web-based AI assistants.
+hypernexus Extension is a Chrome extension that integrates the Model Context Protocol (MCP) tools with AI platforms like Perplexity, ChatGPT, Google Gemini, Google AI Studio, Grokand more. It allows users to execute MCP tools directly from these platforms enhancing the capabilities of web-based AI assistants.
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/README.md
 
 ## Currently Supported Platforms
 
@@ -136,25 +136,25 @@ Watch the demo to see hypernexus Extension in action!
 
 [hypernexus Extension Demo Playlist](https://www.youtube.com/playlist?list=PLOK1DBnkeaJFzxC4M-z7TU7_j04SShX_w)
 ========
-[![Hypercode Extension Demo](https://img.youtube.com/vi/jnBPh2jzunM/0.jpg)](https://www.youtube.com/watch?v=jnBPh2jzunM)
+[![HyperNexus Extension Demo](https://img.youtube.com/vi/jnBPh2jzunM/0.jpg)](https://www.youtube.com/watch?v=jnBPh2jzunM)
 
 ChatGPT
 
-[![Hypercode Extension Demo](https://img.youtube.com/vi/PY0SKjtmy4E/0.jpg)](https://www.youtube.com/watch?v=PY0SKjtmy4E)
+[![HyperNexus Extension Demo](https://img.youtube.com/vi/PY0SKjtmy4E/0.jpg)](https://www.youtube.com/watch?v=PY0SKjtmy4E)
 
-Watch the demo to see Hypercode Extension in action!
+Watch the demo to see HyperNexus Extension in action!
 
-[Hypercode Extension Demo Playlist](https://www.youtube.com/playlist?list=PLOK1DBnkeaJFzxC4M-z7TU7_j04SShX_w)
-[![hypercode Extension Demo](https://img.youtube.com/vi/jnBPh2jzunM/0.jpg)](https://www.youtube.com/watch?v=jnBPh2jzunM)
+[HyperNexus Extension Demo Playlist](https://www.youtube.com/playlist?list=PLOK1DBnkeaJFzxC4M-z7TU7_j04SShX_w)
+[![hypernexus Extension Demo](https://img.youtube.com/vi/jnBPh2jzunM/0.jpg)](https://www.youtube.com/watch?v=jnBPh2jzunM)
 
 ChatGPT
 
-[![hypercode Extension Demo](https://img.youtube.com/vi/PY0SKjtmy4E/0.jpg)](https://www.youtube.com/watch?v=PY0SKjtmy4E)
+[![hypernexus Extension Demo](https://img.youtube.com/vi/PY0SKjtmy4E/0.jpg)](https://www.youtube.com/watch?v=PY0SKjtmy4E)
 
-Watch the demo to see hypercode Extension in action!
+Watch the demo to see hypernexus Extension in action!
 
-[hypercode Extension Demo Playlist](https://www.youtube.com/playlist?list=PLOK1DBnkeaJFzxC4M-z7TU7_j04SShX_w)
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/README.md
+[hypernexus Extension Demo Playlist](https://www.youtube.com/playlist?list=PLOK1DBnkeaJFzxC4M-z7TU7_j04SShX_w)
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/README.md
 
 ## Setup Tutorial
 
@@ -164,9 +164,9 @@ Watch the demo to see hypercode Extension in action!
 **New to HyperNexus Extension?** Watch this complete setup guide to get started in minutes!
 **New to hypernexus Extension?** Watch this complete setup guide to get started in minutes!
 ========
-**New to Hypercode Extension?** Watch this complete setup guide to get started in minutes!
-**New to hypercode Extension?** Watch this complete setup guide to get started in minutes!
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/README.md
+**New to HyperNexus Extension?** Watch this complete setup guide to get started in minutes!
+**New to hypernexus Extension?** Watch this complete setup guide to get started in minutes!
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/README.md
 
 [View Setup Tutorial](https://www.youtube.com/watch?v=h9f_GX1Ef20&pp=ygUTbWNwIHN1cGVyIGFzc2lzdGFudA%3D%3D)
 
@@ -206,9 +206,9 @@ To connect the Chrome extension to a local server for proxying connections:
 #### Run HyperNexus Extension Proxy via npx:
 #### Run hypernexus Extension Proxy via npx:
 ========
-#### Run Hypercode Extension Proxy via npx:
-#### Run hypercode Extension Proxy via npx:
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/README.md
+#### Run HyperNexus Extension Proxy via npx:
+#### Run hypernexus Extension Proxy via npx:
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/README.md
 
 1. Create a `config.json` file with your MCP server details. For example, to use the [Desktop Commander](https://github.com/wonderwhy-er/DesktopCommanderMCP):
 
@@ -262,31 +262,31 @@ To connect the Chrome extension to a local server for proxying connections:
    ```bash
    npx -y @srbhptl39/hypernexus-extension-proxy --config ./config.json --outputTransport ws
 ========
-2. Start the Hypercode Extension Proxy server using one of the following commands:
+2. Start the HyperNexus Extension Proxy server using one of the following commands:
 
    ```bash
-   npx -y @srbhptl39/hypercode-extension-proxy@latest --config ./config.json --outputTransport sse
+   npx -y @srbhptl39/hypernexus-extension-proxy@latest --config ./config.json --outputTransport sse
    ```
    or 
    ```bash
-   npx -y @srbhptl39/hypercode-extension-proxy --config ./config.json --outputTransport streamableHttp
+   npx -y @srbhptl39/hypernexus-extension-proxy --config ./config.json --outputTransport streamableHttp
    ```
    or
    ```bash
-   npx -y @srbhptl39/hypercode-extension-proxy --config ./config.json --outputTransport ws
-2. Start the hypercode Extension Proxy server using one of the following commands:
+   npx -y @srbhptl39/hypernexus-extension-proxy --config ./config.json --outputTransport ws
+2. Start the hypernexus Extension Proxy server using one of the following commands:
 
    ```bash
-   npx -y @srbhptl39/hypercode-extension-proxy@latest --config ./config.json --outputTransport sse
+   npx -y @srbhptl39/hypernexus-extension-proxy@latest --config ./config.json --outputTransport sse
    ```
    or 
    ```bash
-   npx -y @srbhptl39/hypercode-extension-proxy --config ./config.json --outputTransport streamableHttp
+   npx -y @srbhptl39/hypernexus-extension-proxy --config ./config.json --outputTransport streamableHttp
    ```
    or
    ```bash
-   npx -y @srbhptl39/hypercode-extension-proxy --config ./config.json --outputTransport ws
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/README.md
+   npx -y @srbhptl39/hypernexus-extension-proxy --config ./config.json --outputTransport ws
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/README.md
    ```
 
    **View all available options:**
@@ -295,9 +295,9 @@ To connect the Chrome extension to a local server for proxying connections:
    npx -y @srbhptl39/hypernexus-extension-proxy@latest --help
    npx -y @srbhptl39/hypernexus-extension-proxy@latest --help
 ========
-   npx -y @srbhptl39/hypercode-extension-proxy@latest --help
-   npx -y @srbhptl39/hypercode-extension-proxy@latest --help
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/README.md
+   npx -y @srbhptl39/hypernexus-extension-proxy@latest --help
+   npx -y @srbhptl39/hypernexus-extension-proxy@latest --help
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/README.md
    ```
    
    This is useful for:
@@ -312,9 +312,9 @@ To connect the Chrome extension to a local server for proxying connections:
 2. Open the HyperNexus Extension sidebar in one of the supported AI platforms, this should show the sidebar UI
 2. Open the hypernexus Extension sidebar in one of the supported AI platforms, this should show the sidebar UI
 ========
-2. Open the Hypercode Extension sidebar in one of the supported AI platforms, this should show the sidebar UI
-2. Open the hypercode Extension sidebar in one of the supported AI platforms, this should show the sidebar UI
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/README.md
+2. Open the HyperNexus Extension sidebar in one of the supported AI platforms, this should show the sidebar UI
+2. Open the hypernexus Extension sidebar in one of the supported AI platforms, this should show the sidebar UI
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/README.md
 3. Click on the server status indicator (usually showing as "Disconnected")
 4. Enter the local server URL (default: `http://localhost:3006/sse`)
    URL format depends on the --outputTransport method used:
@@ -342,15 +342,15 @@ Example Workflow:
 4. In the message prompt area, hover the 'MCP' button to see the available tools and their descriptions.
 5. hypernexus Extension requires to add an MCP working instructions prompt to the chat, to give details of its new capabilities and how to use the tools. Use the 'Insert' or attach button to add the instructions prompt.
 ========
-2. The Hypercode Extension sidebar will appear on the right side of the page
+2. The HyperNexus Extension sidebar will appear on the right side of the page
 3. Configure your MCP Tools to enable and disable the tools you want to use.
 4. In the message prompt area, hover the 'MCP' button to see the available tools and their descriptions.
-5. Hypercode Extension requires to add an MCP working instructions prompt to the chat, to give details of its new capabilities and how to use the tools. Use the 'Insert' or attach button to add the instructions prompt.
-2. The hypercode Extension sidebar will appear on the right side of the page
+5. HyperNexus Extension requires to add an MCP working instructions prompt to the chat, to give details of its new capabilities and how to use the tools. Use the 'Insert' or attach button to add the instructions prompt.
+2. The hypernexus Extension sidebar will appear on the right side of the page
 3. Configure your MCP Tools to enable and disable the tools you want to use.
 4. In the message prompt area, hover the 'MCP' button to see the available tools and their descriptions.
-5. hypercode Extension requires to add an MCP working instructions prompt to the chat, to give details of its new capabilities and how to use the tools. Use the 'Insert' or attach button to add the instructions prompt.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/README.md
+5. hypernexus Extension requires to add an MCP working instructions prompt to the chat, to give details of its new capabilities and how to use the tools. Use the 'Insert' or attach button to add the instructions prompt.
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/README.md
 6. Once the instructions prompt is added, Now you can ask it to read files or any related MCP tool operations.
 7. When AI wants to use any tool it will show a custom tool call card with the tool name and parameters.
 8. User can manually execute the tool call by clicking on the "RUN" button on the tool call card, or if Auto-Execute mode is enabled, it will execute automatically.
@@ -363,9 +363,9 @@ Example Workflow:
 1. **Turn off search mode** (chatgpt, perplexity) in AI chat interfaces for better tool call prompt experience and to prevent HyperNexus Extension from getting derail.
 1. **Turn off search mode** (chatgpt, perplexity) in AI chat interfaces for better tool call prompt experience and to prevent hypernexus Extension from getting derail.
 ========
-1. **Turn off search mode** (chatgpt, perplexity) in AI chat interfaces for better tool call prompt experience and to prevent Hypercode Extension from getting derail.
-1. **Turn off search mode** (chatgpt, perplexity) in AI chat interfaces for better tool call prompt experience and to prevent hypercode Extension from getting derail.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/README.md
+1. **Turn off search mode** (chatgpt, perplexity) in AI chat interfaces for better tool call prompt experience and to prevent HyperNexus Extension from getting derail.
+1. **Turn off search mode** (chatgpt, perplexity) in AI chat interfaces for better tool call prompt experience and to prevent hypernexus Extension from getting derail.
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/README.md
 2. **Turn on Reasoning mode** (chatgpt, perplexity, grok) in AI chat interfaces, which will help the AI to understand the context better and generate the correct tool calls.
 3. Use newer high-end models as they are better at understanding the context and generating the correct tool calls.
 4. Copy the MCP instructions prompt and paste it in the AI chat system prompt (Google AI Studio).
@@ -380,13 +380,13 @@ This page covers the most common issues users encounter with HyperNexus Extensio
 
 This page covers the most common issues users encounter with hypernexus Extension and provides solutions to resolve them.
 ========
-## Common Issues with Hypercode Extension
+## Common Issues with HyperNexus Extension
 
-This page covers the most common issues users encounter with Hypercode Extension and provides solutions to resolve them.
-## Common Issues with hypercode Extension
+This page covers the most common issues users encounter with HyperNexus Extension and provides solutions to resolve them.
+## Common Issues with hypernexus Extension
 
-This page covers the most common issues users encounter with hypercode Extension and provides solutions to resolve them.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/README.md
+This page covers the most common issues users encounter with hypernexus Extension and provides solutions to resolve them.
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/README.md
 
 ### 1. Extension Not Detecting Tool Calls
 
@@ -409,9 +409,9 @@ This page covers the most common issues users encounter with hypercode Extension
 - First start the npx mcp-HyperNexus-proxy server and then reload/restart the extension from chrome://extensions/ page.
 - First start the npx mcp-hypernexus-proxy server and then reload/restart the extension from chrome://extensions/ page.
 ========
-- First start the npx mcp-Hypercode-proxy server and then reload/restart the extension from chrome://extensions/ page.
-- First start the npx mcp-hypercode-proxy server and then reload/restart the extension from chrome://extensions/ page.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/README.md
+- First start the npx mcp-HyperNexus-proxy server and then reload/restart the extension from chrome://extensions/ page.
+- First start the npx mcp-hypernexus-proxy server and then reload/restart the extension from chrome://extensions/ page.
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/README.md
 - Check the proxy server logs for any errors or issues.
 - Ensure that your firewall or antivirus software is not blocking the connection.
 - Make sure the server shows the proper connected status and exposes the `/sse` endpoint.
@@ -428,13 +428,13 @@ In such cases, use better models which are meant for tool calling or have better
 - Ask explicitily to use the tools by mentioning them in the prompt.
 - This Below is an example of correct MCP function call format, which is rendered by hypernexus Extension extension:
 ========
-- Use the custom instructions prompt, which can be found in the Hypercode Extension sidebar.
+- Use the custom instructions prompt, which can be found in the HyperNexus Extension sidebar.
 - Ask explicitily to use the tools by mentioning them in the prompt.
-- This Below is an example of correct MCP function call format, which is rendered by Hypercode Extension extension:
-- Use the custom instructions prompt, which can be found in the hypercode Extension sidebar.
+- This Below is an example of correct MCP function call format, which is rendered by HyperNexus Extension extension:
+- Use the custom instructions prompt, which can be found in the hypernexus Extension sidebar.
 - Ask explicitily to use the tools by mentioning them in the prompt.
-- This Below is an example of correct MCP function call format, which is rendered by hypercode Extension extension:
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/README.md
+- This Below is an example of correct MCP function call format, which is rendered by hypernexus Extension extension:
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/README.md
 
 ```
 ```jsonl
@@ -453,9 +453,9 @@ In such cases, use better models which are meant for tool calling or have better
 1. Download the latest release from [Releases](https://github.com/srbhptl39/HyperNexus-Extension/releases)
 1. Download the latest release from [Releases](https://github.com/srbhptl39/hypernexus-Extension/releases)
 ========
-1. Download the latest release from [Releases](https://github.com/srbhptl39/Hypercode-Extension/releases)
-1. Download the latest release from [Releases](https://github.com/srbhptl39/hypercode-Extension/releases)
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/README.md
+1. Download the latest release from [Releases](https://github.com/srbhptl39/HyperNexus-Extension/releases)
+1. Download the latest release from [Releases](https://github.com/srbhptl39/hypernexus-Extension/releases)
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/README.md
 2. Unzip the downloaded file
 3. Navigate to `chrome://extensions/` in Chrome
 4. Enable "Developer mode"
@@ -548,6 +548,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 [![Star History Chart](https://api.star-history.com/svg?repos=srbhptl39/HyperNexus-Extension&type=Date)](https://www.star-history.com/#srbhptl39/HyperNexus-Extension&Date)
 [![Star History Chart](https://api.star-history.com/svg?repos=srbhptl39/hypernexus-Extension&type=Date)](https://www.star-history.com/#srbhptl39/hypernexus-Extension&Date)
 ========
-[![Star History Chart](https://api.star-history.com/svg?repos=srbhptl39/Hypercode-Extension&type=Date)](https://www.star-history.com/#srbhptl39/Hypercode-Extension&Date)
-[![Star History Chart](https://api.star-history.com/svg?repos=srbhptl39/hypercode-Extension&type=Date)](https://www.star-history.com/#srbhptl39/hypercode-Extension&Date)
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/README.md
+[![Star History Chart](https://api.star-history.com/svg?repos=srbhptl39/HyperNexus-Extension&type=Date)](https://www.star-history.com/#srbhptl39/HyperNexus-Extension&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=srbhptl39/hypernexus-Extension&type=Date)](https://www.star-history.com/#srbhptl39/hypernexus-Extension&Date)
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/README.md

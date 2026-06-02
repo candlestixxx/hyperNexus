@@ -4,7 +4,7 @@
  * @module packages/core/src/types/hypernexus/api-keys.zod
 ========
  * @module packages/core/src/types/borg/api-keys.zod
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypercode/api-keys.zod.ts
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypernexus/api-keys.zod.ts
  *
  * WHAT:
  * Zod definitions for API Key management.

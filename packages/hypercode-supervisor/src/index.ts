@@ -26,8 +26,8 @@ class SupervisorServer {
 <<<<<<<< HEAD:packages/hypernexus-supervisor/src/index.ts
                 name: "hypernexus-supervisor",
 ========
-                name: "hypercode-supervisor",
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypercode-supervisor/src/index.ts
+                name: "hypernexus-supervisor",
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypernexus-supervisor/src/index.ts
                 version: "0.1.0",
             },
             {
@@ -49,8 +49,8 @@ class SupervisorServer {
 <<<<<<<< HEAD:packages/hypernexus-supervisor/src/index.ts
                         description: "Install HyperNexus Supervisor into Antigravity MCP Config",
 ========
-                        description: "Install Hypercode Supervisor into Antigravity MCP Config",
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypercode-supervisor/src/index.ts
+                        description: "Install HyperNexus Supervisor into Antigravity MCP Config",
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypernexus-supervisor/src/index.ts
                         inputSchema: {
                             type: "object",
                             properties: {
@@ -490,11 +490,11 @@ class SupervisorServer {
         await this.server.connect(transport);
         logger.info("HyperNexus Supervisor Connected to Stdio");
 ========
-        logger.info("Hypercode Supervisor Starting...");
+        logger.info("HyperNexus Supervisor Starting...");
         const transport = new StdioServerTransport();
         await this.server.connect(transport);
-        logger.info("Hypercode Supervisor Connected to Stdio");
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypercode-supervisor/src/index.ts
+        logger.info("HyperNexus Supervisor Connected to Stdio");
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypernexus-supervisor/src/index.ts
     }
 }
 

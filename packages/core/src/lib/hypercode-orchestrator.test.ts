@@ -4,9 +4,9 @@ import path from 'node:path';
 
 import { describe, expect, it } from 'vitest';
 
-import { resolveHypercodeConfigDir, resolveHypercodeLockPath, resolveLockedHypercodeBase, resolveOrchestratorBase } from './hypercode-orchestrator.js';
+import { resolveHyperNexusConfigDir, resolveHyperNexusLockPath, resolveLockedHyperNexusBase, resolveOrchestratorBase } from './hypernexus-orchestrator.js';
 
-describe('hypercode orchestrator helpers', () => {
+describe('hypernexus orchestrator helpers', () => {
     it('uses explicit env bases before lock-derived values', () => {
         expect(resolveOrchestratorBase({
             HYPERCODE_ORCHESTRATOR_URL: 'http://127.0.0.1:4100/',
@@ -19,12 +19,12 @@ describe('hypercode orchestrator helpers', () => {
     });
 
     it('resolves the live lock-file base before public env fallbacks', () => {
-        const configDir = mkdtempSync(path.join(os.tmpdir(), 'hypercode-lock-'));
+        const configDir = mkdtempSync(path.join(os.tmpdir(), 'hypernexus-lock-'));
         writeFileSync(path.join(configDir, 'lock'), JSON.stringify({ host: '0.0.0.0', port: 4312 }));
 
-        expect(resolveHypercodeConfigDir({ HYPERCODE_CONFIG_DIR: configDir })).toBe(configDir);
-        expect(resolveHypercodeLockPath({ HYPERCODE_CONFIG_DIR: configDir })).toBe(path.join(configDir, 'lock'));
-        expect(resolveLockedHypercodeBase({ HYPERCODE_CONFIG_DIR: configDir })).toBe('http://127.0.0.1:4312');
+        expect(resolveHyperNexusConfigDir({ HYPERCODE_CONFIG_DIR: configDir })).toBe(configDir);
+        expect(resolveHyperNexusLockPath({ HYPERCODE_CONFIG_DIR: configDir })).toBe(path.join(configDir, 'lock'));
+        expect(resolveLockedHyperNexusBase({ HYPERCODE_CONFIG_DIR: configDir })).toBe('http://127.0.0.1:4312');
         expect(resolveOrchestratorBase({
             HYPERCODE_CONFIG_DIR: configDir,
             NEXT_PUBLIC_HYPERCODE_ORCHESTRATOR_URL: 'http://127.0.0.1:3847',
@@ -32,7 +32,7 @@ describe('hypercode orchestrator helpers', () => {
     });
 
     it('falls back to configured public envs when no live lock exists', () => {
-        const configDir = mkdtempSync(path.join(os.tmpdir(), 'hypercode-lock-empty-'));
+        const configDir = mkdtempSync(path.join(os.tmpdir(), 'hypernexus-lock-empty-'));
         mkdirSync(configDir, { recursive: true });
 
         expect(resolveOrchestratorBase({

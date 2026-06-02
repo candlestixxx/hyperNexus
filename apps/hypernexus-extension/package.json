@@ -4,10 +4,10 @@
   "version": "1.0.0-alpha.64",
   "description": "HyperNexus Extension",
 ========
-  "name": "hypercode-extension",
+  "name": "hypernexus-extension",
   "version": "1.0.0-alpha.64",
-  "description": "Hypercode Extension",
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/package.json
+  "description": "HyperNexus Extension",
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/package.json
   "license": "MIT",
   "private": true,
   "sideEffects": false,
@@ -16,8 +16,8 @@
 <<<<<<<< HEAD:apps/hypernexus-extension/package.json
     "url": "https://github.com/srbhptl39/HyperNexus-Extension.git"
 ========
-    "url": "https://github.com/srbhptl39/Hypercode-Extension.git"
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/package.json
+    "url": "https://github.com/srbhptl39/HyperNexus-Extension.git"
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/package.json
   },
   "type": "module",
   "scripts": {

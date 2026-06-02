@@ -5,9 +5,9 @@
  * This file exports all available adapter plugins for the HyperNexus-Extension.
  * This file exports all available adapter plugins for the hypernexus-Extension.
 ========
- * This file exports all available adapter plugins for the Hypercode-Extension.
- * This file exports all available adapter plugins for the hypercode-Extension.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/pages/content/src/plugins/adapters/index.ts
+ * This file exports all available adapter plugins for the HyperNexus-Extension.
+ * This file exports all available adapter plugins for the hypernexus-Extension.
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/plugins/adapters/index.ts
  */
 
 export { BaseAdapterPlugin } from './base.adapter';

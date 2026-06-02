@@ -38,23 +38,23 @@ const manifest = {
   version: packageJson.version,
   description: 'hypernexus Extension',
 ========
-  name: 'Hypercode Extension',
+  name: 'HyperNexus Extension',
   browser_specific_settings: {
     gecko: {
-      id: 'extension@hypercode.local',
+      id: 'extension@hypernexus.local',
     },
   },
   version: packageJson.version,
-  description: 'Hypercode Extension',
-  name: 'hypercode Extension',
+  description: 'HyperNexus Extension',
+  name: 'hypernexus Extension',
   browser_specific_settings: {
     gecko: {
-      id: 'extension@hypercode.local',
+      id: 'extension@hypernexus.local',
     },
   },
   version: packageJson.version,
-  description: 'hypercode Extension',
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/chrome-extension/manifest.ts
+  description: 'hypernexus Extension',
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/chrome-extension/manifest.ts
   host_permissions: [
     '*://*.perplexity.ai/*',
     '*://*.chat.openai.com/*',

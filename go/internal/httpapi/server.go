@@ -630,7 +630,7 @@ func (s *Server) registerRoutes() {
 	s.mux.HandleFunc("/api/memory/add-history", s.handleMemoryAddHistory)
 	s.mux.HandleFunc("/api/code/exec", s.handleCodeExec)
 
-	s.mux.HandleFunc("/api/protocol/hypercode", s.handleHypercodeProtocol)
+	s.mux.HandleFunc("/api/protocol/hypernexus", s.handleHyperNexusProtocol)
 
 	s.mux.HandleFunc("/health", s.handleHealth)
 	s.mux.HandleFunc("/version", s.handleVersion)
@@ -770,7 +770,7 @@ func (s *Server) registerRoutes() {
 	s.mux.HandleFunc("/api/native/healer/heal", s.handleNativeHealerHeal)
 	s.mux.HandleFunc("/api/native/healer/history", s.handleNativeHealerHistory)
 	s.mux.HandleFunc("/api/native/healer/vault", s.handleNativeHealerVault)
-	s.mux.HandleFunc("/api/native/protocol/hypercode", s.handleHypercodeProtocol)
+	s.mux.HandleFunc("/api/native/protocol/hypernexus", s.handleHyperNexusProtocol)
 	s.mux.HandleFunc("/api/native/harvester/add", s.handleHarvesterAdd)
 	s.mux.HandleFunc("/api/native/harvester/search", s.handleHarvesterSearch)
 	s.mux.HandleFunc("/api/native/harvester/report", s.handleHarvesterReport)

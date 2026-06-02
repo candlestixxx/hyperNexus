@@ -4,7 +4,7 @@
  * @module packages/core/src/types/hypernexus/policies.zod
 ========
  * @module packages/core/src/types/borg/policies.zod
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypercode/policies.zod.ts
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypernexus/policies.zod.ts
  *
  * WHAT:
  * Zod definitions for Access Control Policies.

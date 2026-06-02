@@ -758,9 +758,9 @@ onMessage('mcp:save-context', async ({ data }) => {
       project: 'hypernexus-browser-memory',
       project: 'hypernexus-browser-memory',
 ========
-      project: 'hypercode-browser-memory',
-      project: 'hypercode-browser-memory',
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/chrome-extension/src/background/index.ts
+      project: 'hypernexus-browser-memory',
+      project: 'hypernexus-browser-memory',
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/chrome-extension/src/background/index.ts
       metadata: {
         source,
         url: sourceUrl,
@@ -868,8 +868,8 @@ onMessage('mcp:ingest-history', async ({ data }) => {
 <<<<<<<< HEAD:apps/hypernexus-extension/chrome-extension/src/background/index.ts
     // Send to HyperNexus core
 ========
-    // Send to Hypercode core
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/chrome-extension/src/background/index.ts
+    // Send to HyperNexus core
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/chrome-extension/src/background/index.ts
     const response = await fetch(`${serverUrl}/api/memory/add-history`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

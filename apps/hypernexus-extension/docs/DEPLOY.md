@@ -4,9 +4,9 @@
 > How to build and deploy HyperNexus Extension for Chrome, Edge, and Firefox.
 > How to build and deploy hypernexus Extension for Chrome, Edge, and Firefox.
 ========
-> How to build and deploy Hypercode Extension for Chrome, Edge, and Firefox.
-> How to build and deploy hypercode Extension for Chrome, Edge, and Firefox.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/docs/DEPLOY.md
+> How to build and deploy HyperNexus Extension for Chrome, Edge, and Firefox.
+> How to build and deploy hypernexus Extension for Chrome, Edge, and Firefox.
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/docs/DEPLOY.md
 
 ## Prerequisites
 

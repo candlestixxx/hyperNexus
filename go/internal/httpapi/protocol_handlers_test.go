@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func TestHandleHypercodeProtocol(t *testing.T) {
+func TestHandleHyperNexusProtocol(t *testing.T) {
 	s := &Server{}
 
 	tests := []struct {
@@ -18,7 +18,7 @@ func TestHandleHypercodeProtocol(t *testing.T) {
 	}{
 		{
 			name:           "Valid attach URI",
-			uri:            "hypercode://attach?session=xyz123",
+			uri:            "hypernexus://attach?session=xyz123",
 			expectedStatus: http.StatusOK,
 			expectedAction: "attach",
 		},
@@ -38,10 +38,10 @@ func TestHandleHypercodeProtocol(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			req := httptest.NewRequest(http.MethodGet, "/api/protocol/hypercode?uri="+tt.uri, nil)
+			req := httptest.NewRequest(http.MethodGet, "/api/protocol/hypernexus?uri="+tt.uri, nil)
 			w := httptest.NewRecorder()
 
-			s.handleHypercodeProtocol(w, req)
+			s.handleHyperNexusProtocol(w, req)
 
 			if w.Code != tt.expectedStatus {
 				t.Errorf("expected status %d, got %d", tt.expectedStatus, w.Code)

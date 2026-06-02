@@ -3,9 +3,9 @@
 # hypernexus-dev.sh — Quick development launcher
 # Usage: ./scripts/hypernexus-dev.sh [--skip-go] [--skip-install]
 ========
-# hypercode-dev.sh — Quick development launcher
-# Usage: ./scripts/hypercode-dev.sh [--skip-go] [--skip-install]
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:scripts/hypercode-dev.sh
+# hypernexus-dev.sh — Quick development launcher
+# Usage: ./scripts/hypernexus-dev.sh [--skip-go] [--skip-install]
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:scripts/hypernexus-dev.sh
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
@@ -23,8 +23,8 @@ done
 <<<<<<<< HEAD:scripts/hypernexus-dev.sh
 echo "⬡ HyperNexus HYPERNEXUS v${VER} — Dev Launcher"
 ========
-echo "⬡ Hypercode HYPERCODE v${VER} — Dev Launcher"
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:scripts/hypercode-dev.sh
+echo "⬡ HyperNexus HYPERCODE v${VER} — Dev Launcher"
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:scripts/hypernexus-dev.sh
 echo ""
 
 # 1. Install if needed
@@ -43,9 +43,9 @@ if [ "$SKIP_GO" = false ] && command -v go &>/dev/null; then
   (cd go && go build -ldflags "-X github.com/hypernexushq/hypernexus-go/internal/buildinfo.Version=${VER}" -buildvcs=false -o ../bin/hypernexus ./cmd/hypernexus)
   echo "      ✓ bin/hypernexus built"
 ========
-  (cd go && go build -ldflags "-X github.com/hypercodehq/hypercode-go/internal/buildinfo.Version=${VER}" -buildvcs=false -o ../bin/hypercode ./cmd/hypercode)
-  echo "      ✓ bin/hypercode built"
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:scripts/hypercode-dev.sh
+  (cd go && go build -ldflags "-X github.com/hypernexushq/hypernexus-go/internal/buildinfo.Version=${VER}" -buildvcs=false -o ../bin/hypernexus ./cmd/hypernexus)
+  echo "      ✓ bin/hypernexus built"
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:scripts/hypernexus-dev.sh
 else
   echo "[2/4] Skipping Go build"
 fi
@@ -64,9 +64,9 @@ echo ""
 if [ -x bin/hypernexus ]; then
   bin/hypernexus -port 4300 &>/dev/null &
 ========
-if [ -x bin/hypercode ]; then
-  bin/hypercode -port 4300 &>/dev/null &
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:scripts/hypercode-dev.sh
+if [ -x bin/hypernexus ]; then
+  bin/hypernexus -port 4300 &>/dev/null &
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:scripts/hypernexus-dev.sh
   GO_PID=$!
   echo "  Go sidecar:  http://127.0.0.1:4300 (PID $GO_PID)"
 fi

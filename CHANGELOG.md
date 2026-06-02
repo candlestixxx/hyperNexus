@@ -51,7 +51,7 @@
   - L2 Vault persistence: All healing events and extracted facts are saved as long-term memory for fleet-wide intelligence sharing.
 
 ### Changed
-- Standardized documentation identity to Hypercode Kernel & HyperCode.
+- Standardized documentation identity to HyperNexus Kernel & HyperCode.
 - Updated `VERSION.md`, `ROADMAP.md`, and `TODO.md` to reflect Phase 5 active sprint goals.
 - Unified `docs/UNIVERSAL_LLM_INSTRUCTIONS.md` as the single source of truth for all AI agents.
 - Resolved merge conflict markers and aligned role guidelines across `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `GPT.md`, and `copilot-instructions.md`.
@@ -60,7 +60,7 @@
 
 ### Added
 - Fully integrated Go-native `MemoryManager` into the core TS control plane.
-- Wires up `sqlite-vec` storage backend, replacing the deprecated `@hypercode/hypercode` implementation.
+- Wires up `sqlite-vec` storage backend, replacing the deprecated `@hypernexus/hypernexus` implementation.
 - Dual-tier cache invalidation for the L1/L2 memory boundaries.
 
 ### Changed

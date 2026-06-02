@@ -63,17 +63,17 @@ const Help: React.FC = () => {
               <Typography variant="body" className="text-sm">
                 hypernexus Extension is a Chrome extension that bridges the Model Context Protocol (MCP) with web-based AI
 ========
-              <CardTitle>What is Hypercode Extension?</CardTitle>
+              <CardTitle>What is HyperNexus Extension?</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
               <Typography variant="body" className="text-sm">
-                Hypercode Extension is a Chrome extension that bridges the Model Context Protocol (MCP) with web-based AI
-              <CardTitle>What is hypercode Extension?</CardTitle>
+                HyperNexus Extension is a Chrome extension that bridges the Model Context Protocol (MCP) with web-based AI
+              <CardTitle>What is hypernexus Extension?</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
               <Typography variant="body" className="text-sm">
-                hypercode Extension is a Chrome extension that bridges the Model Context Protocol (MCP) with web-based AI
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/pages/content/src/components/sidebar/Help/Help.tsx
+                hypernexus Extension is a Chrome extension that bridges the Model Context Protocol (MCP) with web-based AI
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/components/sidebar/Help/Help.tsx
                 platforms like ChatGPT, Claude, Perplexity, and others.
               </Typography>
               <Typography variant="body" className="text-sm">
@@ -122,17 +122,17 @@ const Help: React.FC = () => {
               <div className="bg-slate-100 dark:bg-slate-900 p-2 rounded-md text-xs font-mono overflow-x-auto border border-slate-200 dark:border-slate-700">
                 npx -y @srbhptl39/hypernexus-extension-proxy@latest --config ./config.json
 ========
-                To connect to local MCP servers, you need to run the Hypercode Extension Proxy. This proxy bridges the
+                To connect to local MCP servers, you need to run the HyperNexus Extension Proxy. This proxy bridges the
                 browser (extension) to your local MCP servers.
               </Typography>
               <div className="bg-slate-100 dark:bg-slate-900 p-2 rounded-md text-xs font-mono overflow-x-auto border border-slate-200 dark:border-slate-700">
-                npx -y @srbhptl39/hypercode-extension-proxy@latest --config ./config.json
-                To connect to local MCP servers, you need to run the hypercode Extension Proxy. This proxy bridges the
+                npx -y @srbhptl39/hypernexus-extension-proxy@latest --config ./config.json
+                To connect to local MCP servers, you need to run the hypernexus Extension Proxy. This proxy bridges the
                 browser (extension) to your local MCP servers.
               </Typography>
               <div className="bg-slate-100 dark:bg-slate-900 p-2 rounded-md text-xs font-mono overflow-x-auto border border-slate-200 dark:border-slate-700">
-                npx -y @srbhptl39/hypercode-extension-proxy@latest --config ./config.json
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/pages/content/src/components/sidebar/Help/Help.tsx
+                npx -y @srbhptl39/hypernexus-extension-proxy@latest --config ./config.json
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/components/sidebar/Help/Help.tsx
               </div>
               <Typography variant="caption" className="block mt-2">
                 Create a <code>config.json</code> file defining your MCP servers (e.g., filesystem, postgres) and point
@@ -552,9 +552,9 @@ const Help: React.FC = () => {
                   href="https://github.com/srbhptl39/HyperNexus-Extension/issues"
                   href="https://github.com/srbhptl39/hypernexus-Extension/issues"
 ========
-                  href="https://github.com/srbhptl39/Hypercode-Extension/issues"
-                  href="https://github.com/srbhptl39/hypercode-Extension/issues"
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/pages/content/src/components/sidebar/Help/Help.tsx
+                  href="https://github.com/srbhptl39/HyperNexus-Extension/issues"
+                  href="https://github.com/srbhptl39/hypernexus-Extension/issues"
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/components/sidebar/Help/Help.tsx
                   target="_blank"
                   rel="noopener noreferrer"
                   className="no-underline">
@@ -571,9 +571,9 @@ const Help: React.FC = () => {
                   href="https://github.com/srbhptl39/HyperNexus-Extension"
                   href="https://github.com/srbhptl39/hypernexus-Extension"
 ========
-                  href="https://github.com/srbhptl39/Hypercode-Extension"
-                  href="https://github.com/srbhptl39/hypercode-Extension"
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/pages/content/src/components/sidebar/Help/Help.tsx
+                  href="https://github.com/srbhptl39/HyperNexus-Extension"
+                  href="https://github.com/srbhptl39/hypernexus-Extension"
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/components/sidebar/Help/Help.tsx
                   target="_blank"
                   rel="noopener noreferrer"
                   className="no-underline">

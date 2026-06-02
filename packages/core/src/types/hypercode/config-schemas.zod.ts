@@ -10,7 +10,7 @@
  *
  * WHAT:
  * Comprehensive validation schemas for Borg configuration files.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypercode/config-schemas.zod.ts
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypernexus/config-schemas.zod.ts
  * Covers `claude_desktop_config.json`, internal app config, and env var validation.
  *
  * WHY:
@@ -104,7 +104,7 @@ export type ClaudeSseServer = z.infer<typeof ClaudeSseServerSchema>;
 // HyperNexus Config Key Validation
 ========
 // Borg Config Key Validation
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypercode/config-schemas.zod.ts
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypernexus/config-schemas.zod.ts
 // ============================================================================
 
 /**

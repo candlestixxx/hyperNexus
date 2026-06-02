@@ -14,9 +14,9 @@
 | `hypernexus-extension` (root) | 0.7.3 | `package.json` |
 | `hypernexus-extension` (root) | 0.7.3 | `package.json` |
 ========
-| `hypercode-extension` (root) | 0.7.3 | `package.json` |
-| `hypercode-extension` (root) | 0.7.3 | `package.json` |
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/docs/DASHBOARD.md
+| `hypernexus-extension` (root) | 0.7.3 | `package.json` |
+| `hypernexus-extension` (root) | 0.7.3 | `package.json` |
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/docs/DASHBOARD.md
 | `chrome-extension` | 0.7.3 | `chrome-extension/package.json` |
 | `@extension/content` | 0.7.3 | `pages/content/package.json` |
 

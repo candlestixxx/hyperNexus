@@ -240,9 +240,9 @@ export async function runWithBackwardsCompatibility(
         // Detect non-standard JSON-RPC calls from HyperNexus Core (e.g. read_page, browser_*)
         // Detect non-standard JSON-RPC calls from hypernexus Core (e.g. read_page, browser_*)
 ========
-        // Detect non-standard JSON-RPC calls from Hypercode Core (e.g. read_page, browser_*)
-        // Detect non-standard JSON-RPC calls from hypercode Core (e.g. read_page, browser_*)
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/chrome-extension/src/mcpclient/index.ts
+        // Detect non-standard JSON-RPC calls from HyperNexus Core (e.g. read_page, browser_*)
+        // Detect non-standard JSON-RPC calls from hypernexus Core (e.g. read_page, browser_*)
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/chrome-extension/src/mcpclient/index.ts
         if (message.jsonrpc === '2.0' && message.method && message.id && !message.result && !message.error) {
           const { method, params, id } = message;
           

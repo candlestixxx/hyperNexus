@@ -54,8 +54,8 @@ export class SupervisorSettingsManager {
 <<<<<<<< HEAD:packages/hypernexus-supervisor/src/settings.ts
         this.settingsPath = settingsPath ?? path.join(os.homedir(), '.hypernexus', 'supervisor-settings.json');
 ========
-        this.settingsPath = settingsPath ?? path.join(os.homedir(), '.hypercode', 'supervisor-settings.json');
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypercode-supervisor/src/settings.ts
+        this.settingsPath = settingsPath ?? path.join(os.homedir(), '.hypernexus', 'supervisor-settings.json');
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypernexus-supervisor/src/settings.ts
     }
 
     getSettingsPath(): string {

@@ -9,9 +9,9 @@
     "message": "HyperNexus Extension"
     "message": "hypernexus Extension"
 ========
-    "message": "Hypercode Extension"
-    "message": "hypercode Extension"
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/packages/i18n/locales/en/messages.json
+    "message": "HyperNexus Extension"
+    "message": "hypernexus Extension"
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/packages/i18n/locales/en/messages.json
   },
   "navDashboard": {
     "message": "Dashboard"

@@ -18,9 +18,9 @@ const steps: OnboardingStep[] = [
     title: 'Welcome to HyperNexus Extension',
     title: 'Welcome to hypernexus Extension',
 ========
-    title: 'Welcome to Hypercode Extension',
-    title: 'Welcome to hypercode Extension',
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/pages/content/src/components/sidebar/Onboarding/Onboarding.tsx
+    title: 'Welcome to HyperNexus Extension',
+    title: 'Welcome to hypernexus Extension',
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/components/sidebar/Onboarding/Onboarding.tsx
     description:
       'Empower your AI with real-world tools. This sidebar is your control center for connecting local data, files, and APIs to ChatGPT, Claude, and more.',
     icon: 'lightning',

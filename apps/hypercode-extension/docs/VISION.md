@@ -4,9 +4,9 @@
 **HyperNexus Extension** is building toward a single, unified experience for interacting with *any* AI model, *any* tool, on *any* platform — directly from your browser.
 **hypernexus Extension** is building toward a single, unified experience for interacting with *any* AI model, *any* tool, on *any* platform — directly from your browser.
 ========
-**Hypercode Extension** is building toward a single, unified experience for interacting with *any* AI model, *any* tool, on *any* platform — directly from your browser.
-**hypercode Extension** is building toward a single, unified experience for interacting with *any* AI model, *any* tool, on *any* platform — directly from your browser.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/docs/VISION.md
+**HyperNexus Extension** is building toward a single, unified experience for interacting with *any* AI model, *any* tool, on *any* platform — directly from your browser.
+**hypernexus Extension** is building toward a single, unified experience for interacting with *any* AI model, *any* tool, on *any* platform — directly from your browser.
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/docs/VISION.md
 
 ---
 
@@ -17,9 +17,9 @@
 One extension to rule them all. Whether you're using ChatGPT, Gemini, Perplexity, Grok, DeepSeek, OpenRouter, T3 Chat, GitHub Copilot, Mistral, Kimi, Qwen, or Z Chat — HyperNexus Extension provides the same powerful sidebar experience. The adapter architecture means adding new platforms is just a plugin — the core stays unchanged.
 One extension to rule them all. Whether you're using ChatGPT, Gemini, Perplexity, Grok, DeepSeek, OpenRouter, T3 Chat, GitHub Copilot, Mistral, Kimi, Qwen, or Z Chat — hypernexus Extension provides the same powerful sidebar experience. The adapter architecture means adding new platforms is just a plugin — the core stays unchanged.
 ========
-One extension to rule them all. Whether you're using ChatGPT, Gemini, Perplexity, Grok, DeepSeek, OpenRouter, T3 Chat, GitHub Copilot, Mistral, Kimi, Qwen, or Z Chat — Hypercode Extension provides the same powerful sidebar experience. The adapter architecture means adding new platforms is just a plugin — the core stays unchanged.
-One extension to rule them all. Whether you're using ChatGPT, Gemini, Perplexity, Grok, DeepSeek, OpenRouter, T3 Chat, GitHub Copilot, Mistral, Kimi, Qwen, or Z Chat — hypercode Extension provides the same powerful sidebar experience. The adapter architecture means adding new platforms is just a plugin — the core stays unchanged.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/docs/VISION.md
+One extension to rule them all. Whether you're using ChatGPT, Gemini, Perplexity, Grok, DeepSeek, OpenRouter, T3 Chat, GitHub Copilot, Mistral, Kimi, Qwen, or Z Chat — HyperNexus Extension provides the same powerful sidebar experience. The adapter architecture means adding new platforms is just a plugin — the core stays unchanged.
+One extension to rule them all. Whether you're using ChatGPT, Gemini, Perplexity, Grok, DeepSeek, OpenRouter, T3 Chat, GitHub Copilot, Mistral, Kimi, Qwen, or Z Chat — hypernexus Extension provides the same powerful sidebar experience. The adapter architecture means adding new platforms is just a plugin — the core stays unchanged.
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/docs/VISION.md
 
 ### 2. Cross-Browser
 Chrome, Edge, and Firefox from a single codebase. The Manifest V3 build compiles to Chrome/Edge directly; the Firefox build applies an automatic manifest transform (service_worker → scripts) via the ManifestParser. One codebase, three browsers.

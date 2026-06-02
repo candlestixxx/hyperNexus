@@ -32,9 +32,9 @@ https://github.com/yasasbanukaofficial/claude-code | unknown |
 | external/HyperNexus | main | unknown | https://github.com/robertpelloni/HyperNexus | unknown |
 | archive/submodules/mcpproxy | main | unknown | https://github.com/Dumbris/mcpproxy | unknown |
 | archive/submodules/litellm | main | unknown | https://github.com/BerriAI/litellm | unknown |
-| archive/hypercode | main | unknown | https://github.com/robertpelloni/hypercode | unknown |
+| archive/hypernexus | main | unknown | https://github.com/robertpelloni/hypernexus | unknown |
 | archive/OmniRoute | main | unknown | https://github.com/diegosouzapw/OmniRoute | unknown |
-| packages/hypercode | main | unknown | https://github.com/robertpelloni/hypercode | unknown |
+| packages/hypernexus | main | unknown | https://github.com/robertpelloni/hypernexus | unknown |
 | apps/maestro | main | unknown | https://github.com/robertpelloni/Maestro | unknown |
 | submodules/prism-mcp | main | unknown | https://github.com/dcostenco/prism-mcp | unknown |
 | submodules/hypernexus | main | unknown | https://github.com/robertpelloni/hypernexus.git | unknown |

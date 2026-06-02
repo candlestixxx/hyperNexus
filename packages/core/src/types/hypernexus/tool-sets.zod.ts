@@ -4,7 +4,7 @@
  * @module packages/core/src/types/hypernexus/tool-sets.zod
 ========
  * @module packages/core/src/types/borg/tool-sets.zod
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypercode/tool-sets.zod.ts
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypernexus/tool-sets.zod.ts
  *
  * WHAT:
  * Zod definitions for Tool Sets.

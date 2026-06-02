@@ -264,8 +264,8 @@ export async function initializeEventBus(): Promise<void> {
 <<<<<<<< HEAD:apps/hypernexus-extension/pages/content/src/events/event-bus.ts
   logger.debug('[MCPHyperNexus] Event bus initialized.');
 ========
-  logger.debug('[MCPHypercode] Event bus initialized.');
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/pages/content/src/events/event-bus.ts
+  logger.debug('[MCPHyperNexus] Event bus initialized.');
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/events/event-bus.ts
   // Example: eventBus.setMaxListeners(100);
   // Add any other global setup for the event bus here if needed.
 }

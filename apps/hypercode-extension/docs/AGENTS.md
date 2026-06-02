@@ -2,9 +2,9 @@
 # AGENTS — `apps/hypernexus-extension/docs`
 # AGENTS — `apps/hypernexus-extension/docs`
 ========
-# AGENTS — `apps/hypercode-extension/docs`
-# AGENTS — `apps/hypercode-extension/docs`
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/docs/AGENTS.md
+# AGENTS — `apps/hypernexus-extension/docs`
+# AGENTS — `apps/hypernexus-extension/docs`
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/docs/AGENTS.md
 
 **Mandatory reading first:**
 - `docs/UNIVERSAL_LLM_INSTRUCTIONS.md`
@@ -14,9 +14,9 @@
 This file contains only guidance for documentation under `apps/hypernexus-extension/docs`.
 This file contains only guidance for documentation under `apps/hypernexus-extension/docs`.
 ========
-This file contains only guidance for documentation under `apps/hypercode-extension/docs`.
-This file contains only guidance for documentation under `apps/hypercode-extension/docs`.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/docs/AGENTS.md
+This file contains only guidance for documentation under `apps/hypernexus-extension/docs`.
+This file contains only guidance for documentation under `apps/hypernexus-extension/docs`.
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/docs/AGENTS.md
 
 ## Purpose
 
@@ -33,9 +33,9 @@ These docs should describe the browser extension honestly and specifically. They
   - and broader HyperNexus vision.
   - and broader hypernexus vision.
 ========
-  - and broader Hypercode vision.
-  - and broader hypercode vision.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/docs/AGENTS.md
+  - and broader HyperNexus vision.
+  - and broader hypernexus vision.
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/docs/AGENTS.md
 - Do not require version bumps or broad project-wide release rituals for routine doc edits.
 
 ## What to emphasize

@@ -99,8 +99,8 @@ using System.Runtime.InteropServices;
 <<<<<<<< HEAD:packages/hypernexus-supervisor/src/ui_automation.ts
 public static class HyperNexusNativeAutomation {
 ========
-public static class HypercodeNativeAutomation {
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypercode-supervisor/src/ui_automation.ts
+public static class HyperNexusNativeAutomation {
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypernexus-supervisor/src/ui_automation.ts
     [DllImport("user32.dll")]
     public static extern IntPtr GetForegroundWindow();
 
@@ -238,8 +238,8 @@ function Get-ForegroundAutomationWindow() {
 <<<<<<<< HEAD:packages/hypernexus-supervisor/src/ui_automation.ts
     $handle = [HyperNexusNativeAutomation]::GetForegroundWindow()
 ========
-    $handle = [HypercodeNativeAutomation]::GetForegroundWindow()
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypercode-supervisor/src/ui_automation.ts
+    $handle = [HyperNexusNativeAutomation]::GetForegroundWindow()
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypernexus-supervisor/src/ui_automation.ts
     if ($handle -eq [IntPtr]::Zero) {
         throw 'No foreground window available'
     }
@@ -412,11 +412,11 @@ function Invoke-Element([System.Windows.Automation.AutomationElement]$element) {
         [HyperNexusNativeAutomation]::mouse_event(0x0002, 0, 0, 0, [UIntPtr]::Zero)
         [HyperNexusNativeAutomation]::mouse_event(0x0004, 0, 0, 0, [UIntPtr]::Zero)
 ========
-        [HypercodeNativeAutomation]::SetCursorPos($x, $y) | Out-Null
+        [HyperNexusNativeAutomation]::SetCursorPos($x, $y) | Out-Null
         Start-Sleep -Milliseconds 50
-        [HypercodeNativeAutomation]::mouse_event(0x0002, 0, 0, 0, [UIntPtr]::Zero)
-        [HypercodeNativeAutomation]::mouse_event(0x0004, 0, 0, 0, [UIntPtr]::Zero)
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypercode-supervisor/src/ui_automation.ts
+        [HyperNexusNativeAutomation]::mouse_event(0x0002, 0, 0, 0, [UIntPtr]::Zero)
+        [HyperNexusNativeAutomation]::mouse_event(0x0004, 0, 0, 0, [UIntPtr]::Zero)
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypernexus-supervisor/src/ui_automation.ts
         return 'mouse-click'
     }
 

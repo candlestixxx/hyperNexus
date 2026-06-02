@@ -1000,9 +1000,9 @@ export const MCPPopover: React.FC<MCPPopoverProps> = ({ toggleStateManager, adap
       const fileName = `hypernexus_bridge_instructions${fileExtension}`;
       const fileName = `hypernexus_bridge_instructions${fileExtension}`;
 ========
-      const fileName = `hypercode_bridge_instructions${fileExtension}`;
-      const fileName = `hypercode_bridge_instructions${fileExtension}`;
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypercode-extension/pages/content/src/components/mcpPopover/mcpPopover.tsx
+      const fileName = `hypernexus_bridge_instructions${fileExtension}`;
+      const fileName = `hypernexus_bridge_instructions${fileExtension}`;
+>>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/components/mcpPopover/mcpPopover.tsx
       const file = new File([instructions], fileName, { type: fileType });
       try {
         logger.debug(`Attempting to attach file using ${activePlugin.name} adapter`);

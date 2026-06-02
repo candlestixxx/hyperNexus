@@ -159,12 +159,12 @@ There is also a nested cloud stack under `apps/cloud-orchestrator/`, which is it
 | `packages/supervisor-plugin` | Supervisor plugin integration |
 | `packages/browser` | Legacy browser support package |
 | `packages/browser-extension` | Shared browser-extension package |
-| `packages/claude-mem` | Claude/HyperNexus memory-related package surface |
+| `packages/hypernexus` | Claude/HyperNexus memory-related package surface |
 | `packages/hypernexus-supervisor` | Native Windows supervisor bridge for process/input/UI automation |
 | `packages/supervisor-plugin` | Supervisor plugin integration |
 | `packages/browser` | Legacy browser support package |
 | `packages/browser-extension` | Shared browser-extension package |
-| `packages/claude-mem` | Claude/hypernexus memory-related package surface |
+| `packages/hypernexus` | Claude/hypernexus memory-related package surface |
 | `packages/jetbrains` | JetBrains integration package surface |
 | `packages/vscode` | VS Code shared extension package |
 | `packages/zed-extension` | Zed extension package surface |

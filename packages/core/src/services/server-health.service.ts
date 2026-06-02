@@ -9,7 +9,7 @@ import { mcpServersRepository } from "../db/repositories/index.js";
 import { formatOptionalSqliteFailure, isSqliteUnavailableError } from "../db/sqliteAvailability.js";
 import { configService } from "./config.service.js";
 import { autoReconnectService } from "./auto-reconnect.service.js";
-import { connectHyperNexusClient } from "./mcp-client.service.js";
+import { connecthypernexusClient } from "./mcp-client.service.js";
 import { serverErrorTracker } from "./server-error-tracker.service.js";
 import { convertDbServerToParams } from "./utils.service.js";
 
@@ -174,13 +174,13 @@ export class ServerHealthService {
     }
 
     private async performHealthCheck(
-        serverParams: Parameters<typeof connectHyperNexusClient>[0],
+        serverParams: Parameters<typeof connecthypernexusClient>[0],
     ): Promise<
         | { success: true; toolCount: number }
         | { success: false; errorMessage: string }
     > {
         try {
-            const connectedClient = await connectHyperNexusClient(serverParams);
+            const connectedClient = await connecthypernexusClient(serverParams);
 
             if (!connectedClient) {
                 return { success: false, errorMessage: "Failed to connect to server" };

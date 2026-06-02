@@ -1,9 +1,9 @@
 [PROJECT_MEMORY]
 
-### 1. Core Identity: HyperNexus & HyperNexus
+### 1. Core Identity: HyperNexus & HyperCode
 The project has stabilized under a dual-brand **AI HyperNexus** architecture:
 - **HyperNexus (The Kernel):** The underlying coordination engine written in Go. It manages the "Operating System" layer for AI, including active memory, semantic tool routing, and multi-model orchestration.
-- **HyperNexus (The Product):** The flagship developer-facing autonomous coding runtime and observation dashboard powered by the HyperNexus kernel.
+- **HyperCode (The Product):** The flagship developer-facing autonomous coding runtime and observation dashboard powered by the HyperNexus kernel.
 - **The Philosophy:** Treats AI models as ephemeral **compute resources** and tools as **peripheral drivers**. HyperNexus serves as the deterministic management layer that optimizes context windows, minimizes cost, and ensures execution reliability.
 
 ### 2. Architectural Paradigm: The Modular Monolith
@@ -75,13 +75,13 @@ The kernel supports managing multiple concurrent HyperNexus sessions:
 ### 6. Roadmap: The Autonomy Path
 The next immediate milestones involve:
 1.  **Autonomous Healer:** Multi-turn fix-verify-retry loop (Implemented).
-2.  **Fleet Management:** Extending HyperNexus to manage multiple concurrent "HyperNexus" sessions with shared organizational memory.
+2.  **Fleet Management:** Extending HyperNexus to manage multiple concurrent "HyperCode" sessions with shared organizational memory.
 3.  **Assimilation:** Systematically migrating high-performance logic (ranking, sync, memory) from TypeScript into the native Go kernel.
 
 ### 1. Identity & Vision: The AI HyperNexus
 The project has evolved from its origin as "HyperNexus" into a dual-brand architectural vision:
 - **HyperNexus:** The underlying coordination kernel or "AI HyperNexus." It manages active memory, tool routing, and orchestration.
-- **HyperNexus:** The flagship, autonomous developer-facing coding product powered by the HyperNexus kernel.
+- **HyperCode:** The flagship, autonomous developer-facing coding product powered by the HyperNexus kernel.
 
 The "AI HyperNexus" model treats AI models as compute resources and tools as peripheral drivers, with HyperNexus acting as the management layer that optimizes model selection, context management, and execution loops.
 
@@ -117,7 +117,7 @@ The project is currently in the transition between **Phase 1 (Active Memory)** a
 ### 6. Roadmap: The Autonomy Path
 The next immediate milestones involve:
 1.  **The Healer Loop:** Implementing the full `execute-fix-verify-retry` autonomous cycle within the `HealerReactor`.
-2.  **Fleet Management:** Extending HyperNexus to manage multiple concurrent "HyperNexus" sessions with shared organizational memory.
+2.  **Fleet Management:** Extending HyperNexus to manage multiple concurrent "HyperCode" sessions with shared organizational memory.
 3.  **Assimilation:** Systematically migrating high-performance logic (ranking, sync, memory) from TypeScript into the native Go kernel.
 
 ### 7. Governance & Intelligence
@@ -130,10 +130,10 @@ The next immediate milestones involve:
 
 This document summarizes the foundational architecture, established patterns, and strategic decisions of the project as of version **1.0.0-alpha.56**.
 
-## 1. Strategic Identity: HyperNexus & HyperNexus
+## 1. Strategic Identity: HyperNexus & HyperCode
 The project has successfully pivoted from "HyperNexus" to a dual-brand infrastructure model:
 *   **HyperNexus (The Kernel/HyperNexus):** The underlying coordination runtime and "AI HyperNexus." It treats LLMs as "guest operating systems" and manages the low-level memory, routing, and execution buses.
-*   **HyperNexus (The Product):** The user-facing, local-first autonomous coding environment powered by the HyperNexus kernel.
+*   **HyperCode (The Product):** The user-facing, local-first autonomous coding environment powered by the HyperNexus kernel.
 
 ## 2. Active Tiered Memory Substrate (Implemented Phase 1)
 *   **Heat Scoring (0-100):** Every memory entry tracks utility. Heat increases on access and decays exponentially (24-hour half-life).

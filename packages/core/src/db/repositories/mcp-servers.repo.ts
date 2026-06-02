@@ -130,7 +130,7 @@ function handleDatabaseError(
 
 export class McpServersRepository {
     private readonly inFlightDiscoveries = new Map<string, Promise<DiscoveryResult>>();
-    private readonly binaryDiscoveryCooldownMs = parseBinaryDiscoveryCooldownMs(process.env.HYPERNEXUS_MCP_BINARY_DISCOVERY_COOLDOWN_MS);
+    private readonly binaryDiscoveryCooldownMs = parseBinaryDiscoveryCooldownMs(process.env.HYPERCODE_MCP_BINARY_DISCOVERY_COOLDOWN_MS);
 
     private async injectSecrets(servers: DatabaseMcpServer[]): Promise<DatabaseMcpServer[]> {
         try {

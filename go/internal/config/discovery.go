@@ -41,29 +41,29 @@ func DefaultServiceDiscovery() ServiceDiscovery {
 	}
 
 	// Override from environment variables
-	if v := os.Getenv("HYPERNEXUS_GO_PORT"); v != "" {
+	if v := os.Getenv("HYPERCODE_GO_PORT"); v != "" {
 		if p, err := strconv.Atoi(v); err == nil && p > 0 {
 			sd.GoSidecarPort = p
 		}
 	}
 
-	if v := strings.TrimSpace(os.Getenv("HYPERNEXUS_TRPC_UPSTREAM")); v != "" {
+	if v := strings.TrimSpace(os.Getenv("HYPERCODE_TRPC_UPSTREAM")); v != "" {
 		sd.TRPCUpstreamURLs = append([]string{v}, sd.TRPCUpstreamURLs...)
 	}
 
-	if v := os.Getenv("HYPERNEXUS_BRIDGE_PORT"); v != "" {
+	if v := os.Getenv("HYPERCODE_BRIDGE_PORT"); v != "" {
 		if p, err := strconv.Atoi(v); err == nil && p > 0 {
 			sd.BridgePort = p
 		}
 	}
 
-	if v := os.Getenv("HYPERNEXUS_DASHBOARD_PORT"); v != "" {
+	if v := os.Getenv("HYPERCODE_DASHBOARD_PORT"); v != "" {
 		if p, err := strconv.Atoi(v); err == nil && p > 0 {
 			sd.DashboardPort = p
 		}
 	}
 
-	if v := os.Getenv("HYPERNEXUS_DASHBOARD_HOST"); v != "" {
+	if v := os.Getenv("HYPERCODE_DASHBOARD_HOST"); v != "" {
 		sd.DashboardHost = v
 	}
 

@@ -1,5 +1,5 @@
 /**
- * HYPERNEXUS MCP Router - Status Cards Component
+ * HYPERCODE MCP Router - Status Cards Component
  *
  * Displays key statistics for registry, sessions, and system health.
  */

@@ -567,6 +567,35 @@ func (s *Server) Handler() http.Handler {
 	return s.mux
 }
 
+// PreWarmCaches triggers background cache population for frequently
+// accessed endpoints so that the first dashboard request is fast.
+func (s *Server) PreWarmCaches() {
+	go func() {
+		// Warm the startup status cache
+		ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+		defer cancel()
+		if status, err := s.buildStartupStatus(ctx); err == nil {
+			s.cacheService.SetTTL("startup:status", status, 30000)
+		}
+	}()
+	go func() {
+		// Warm the MCP status cache
+		ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+		defer cancel()
+		if status, err := s.buildMCPStatus(ctx); err == nil {
+			s.cacheService.SetTTL("mcp:status", status, 30000)
+		}
+	}()
+	go func() {
+		// Warm the MCP servers cache
+		ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+		defer cancel()
+		if servers, err := s.buildMCPServersList(ctx); err == nil {
+			s.cacheService.SetTTL("mcp:servers", servers, 60000)
+		}
+	}()
+}
+
 func (s *Server) ListenAndServe(ctx context.Context) error {
 	httpServer := &http.Server{
 		Addr:              s.cfg.Host + ":" + jsonNumber(s.cfg.Port),
@@ -600,6 +629,8 @@ func (s *Server) registerRoutes() {
 	s.mux.HandleFunc("/api/memory/add", s.handleMemoryAdd)
 	s.mux.HandleFunc("/api/memory/add-history", s.handleMemoryAddHistory)
 	s.mux.HandleFunc("/api/code/exec", s.handleCodeExec)
+
+	s.mux.HandleFunc("/api/protocol/hypercode", s.handleHypercodeProtocol)
 
 	s.mux.HandleFunc("/health", s.handleHealth)
 	s.mux.HandleFunc("/version", s.handleVersion)
@@ -736,7 +767,10 @@ func (s *Server) registerRoutes() {
 	s.mux.HandleFunc("/api/native/tools/list", s.handleNativeToolList)
 	s.mux.HandleFunc("/api/native/tools/register", s.handleNativeToolRegister)
 	s.mux.HandleFunc("/api/native/healer/diagnose", s.handleNativeHealerDiagnose)
+	s.mux.HandleFunc("/api/native/healer/heal", s.handleNativeHealerHeal)
 	s.mux.HandleFunc("/api/native/healer/history", s.handleNativeHealerHistory)
+	s.mux.HandleFunc("/api/native/healer/vault", s.handleNativeHealerVault)
+	s.mux.HandleFunc("/api/native/protocol/hypercode", s.handleHypercodeProtocol)
 	s.mux.HandleFunc("/api/native/harvester/add", s.handleHarvesterAdd)
 	s.mux.HandleFunc("/api/native/harvester/search", s.handleHarvesterSearch)
 	s.mux.HandleFunc("/api/native/harvester/report", s.handleHarvesterReport)
@@ -10397,7 +10431,7 @@ func (s *Server) handleRuntimeStatus(w http.ResponseWriter, r *http.Request) {
 	supervisorBridgeAvailable := false
 	supervisorBridgeBase := ""
 	bridgeCtx, cancelBridge := context.WithTimeout(ctx, 2*time.Second)
-	bridgeResult, bridgeErr := interop.CallTRPCProcedure(bridgeCtx, s.cfg.MainLockPath(), "session.catalog", nil)
+	bridgeResult, bridgeErr := interop.CallTRPCProcedure(bridgeCtx, s.cfg.MainLockPath(), "health", nil)
 	cancelBridge()
 	if bridgeErr == nil {
 		supervisorBridgeAvailable = true
@@ -13198,12 +13232,12 @@ func localProjectHandoffs(workspaceRoot string) []map[string]any {
 }
 
 func localInfrastructureStatus(workspaceRoot string) map[string]any {
-	infraBinary := strings.TrimSpace(os.Getenv("HYPERNEXUS_INFRA_BINARY"))
+	infraBinary := strings.TrimSpace(os.Getenv("HYPERCODE_INFRA_BINARY"))
 	if infraBinary == "" {
 		infraBinary = "mcpetes"
 	}
 
-	infraSubmoduleDir := strings.TrimSpace(os.Getenv("HYPERNEXUS_INFRA_SUBMODULE"))
+	infraSubmoduleDir := strings.TrimSpace(os.Getenv("HYPERCODE_INFRA_SUBMODULE"))
 	if infraSubmoduleDir == "" {
 		infraSubmoduleDir = infraBinary
 	}
@@ -13965,7 +13999,7 @@ func normalizeResearchURL(raw string) string {
 
 func (s *Server) localResearchQueue() (map[string]any, error) {
 	statusPath := filepath.Join(s.cfg.WorkspaceRoot, "scripts", "ingestion-status.json")
-	indexPath := filepath.Join(s.cfg.WorkspaceRoot, "HYPERNEXUS_MASTER_INDEX.jsonc")
+	indexPath := filepath.Join(s.cfg.WorkspaceRoot, "HYPERCODE_MASTER_INDEX.jsonc")
 
 	var statusDoc struct {
 		Processed []string `json:"processed"`
@@ -15066,7 +15100,7 @@ func localFallbackToolSchema(payload map[string]any) (map[string]any, error) {
 }
 
 func (s *Server) localMCPRegistrySnapshot() ([]map[string]any, error) {
-	indexPath := filepath.Join(s.cfg.WorkspaceRoot, "HYPERNEXUS_MASTER_INDEX.jsonc")
+	indexPath := filepath.Join(s.cfg.WorkspaceRoot, "HYPERCODE_MASTER_INDEX.jsonc")
 	content, err := os.ReadFile(indexPath)
 	if err != nil {
 		return nil, err
@@ -17552,18 +17586,26 @@ func (s *Server) handleImportedInstructions(w http.ResponseWriter, _ *http.Reque
 }
 
 func (s *Server) scanImportSources() ([]sessionimport.Candidate, error) {
+	if s.importCache != nil {
+		if cached, ok := s.importCache.getCandidates(); ok {
+			return cached, nil
+		}
+	}
 	homeDir, err := os.UserHomeDir()
 	if err != nil {
 		homeDir = s.cfg.MainConfigDir
 	}
-
 	scanner := sessionimport.NewScanner(s.cfg.WorkspaceRoot, homeDir, 50)
-	return scanner.Scan()
+	candidates, scanErr := scanner.Scan()
+	if scanErr == nil && s.importCache != nil {
+		s.importCache.set(candidates, nil)
+	}
+	return candidates, scanErr
 }
 
 func (s *Server) scanValidatedImportSources() ([]sessionimport.ValidationResult, error) {
 	if s.importCache != nil {
-		if cached, ok := s.importCache.get(); ok {
+		if cached, ok := s.importCache.getValidated(); ok {
 			return cached, nil
 		}
 	}
@@ -17574,7 +17616,9 @@ func (s *Server) scanValidatedImportSources() ([]sessionimport.ValidationResult,
 	scanner := sessionimport.NewScanner(s.cfg.WorkspaceRoot, homeDir, 50)
 	results, scanErr := scanner.ScanValidated()
 	if scanErr == nil && s.importCache != nil {
-		s.importCache.set(results)
+		// Cache both candidates and validated results
+		candidates, _ := scanner.Scan()
+		s.importCache.set(candidates, results)
 	}
 	return results, scanErr
 }
@@ -18159,38 +18203,49 @@ func (s *Server) handleFleetStatus(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-// importScanCache caches validated import scan results with a short TTL
+// importScanCache caches both raw candidates and validated results
 // to avoid redundant filesystem scanning within a request burst.
 type importScanCache struct {
-	mu          sync.Mutex
-	cached      []sessionimport.ValidationResult
-	cachedAt    time.Time
-	ttl         time.Duration
+	mu               sync.Mutex
+	cachedCandidates []sessionimport.Candidate
+	cachedValidated  []sessionimport.ValidationResult
+	cachedAt         time.Time
+	ttl              time.Duration
 }
 
 func newImportScanCache() *importScanCache {
 	return &importScanCache{ttl: 5 * time.Minute}
 }
 
-func (c *importScanCache) get() ([]sessionimport.ValidationResult, bool) {
+func (c *importScanCache) getCandidates() ([]sessionimport.Candidate, bool) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
-	if c.cached == nil || time.Since(c.cachedAt) > c.ttl {
+	if c.cachedCandidates == nil || time.Since(c.cachedAt) > c.ttl {
 		return nil, false
 	}
-	return c.cached, true
+	return c.cachedCandidates, true
 }
 
-func (c *importScanCache) set(results []sessionimport.ValidationResult) {
+func (c *importScanCache) getValidated() ([]sessionimport.ValidationResult, bool) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
-	c.cached = results
+	if c.cachedValidated == nil || time.Since(c.cachedAt) > c.ttl {
+		return nil, false
+	}
+	return c.cachedValidated, true
+}
+
+func (c *importScanCache) set(candidates []sessionimport.Candidate, validated []sessionimport.ValidationResult) {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	c.cachedCandidates = candidates
+	c.cachedValidated = validated
 	c.cachedAt = time.Now()
 }
 
 // PreWarmImportCache seeds the import scan cache with pre-computed results.
 func (s *Server) PreWarmImportCache(results []sessionimport.ValidationResult) {
 	if s.importCache != nil {
-		s.importCache.set(results)
+		s.importCache.set(nil, results)
 	}
 }

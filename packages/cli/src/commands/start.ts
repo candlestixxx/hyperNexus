@@ -1,5 +1,5 @@
 /**
- * `hypernexus start` - Start the HYPERNEXUS backend server
+ * `hypernexus start` - Start the HYPERCODE backend server
  *
  * Launches the HyperNexus core server with Express/tRPC/WebSocket/MCP endpoints.
  * The server provides the API backend for the WebUI dashboard, CLI commands,
@@ -204,7 +204,7 @@ export async function acquireSingleInstanceLock(
 				port: selectedPort,
 				host: options.host,
 				createdAt: now().toISOString(),
-		version: process.env.HYPERNEXUS_VERSION || "1.0.0-alpha.60",
+		version: process.env.HYPERCODE_VERSION || "1.0.0-alpha.60",
 		startedAt: now().toISOString(),
 			});
 
@@ -337,7 +337,7 @@ export function registerStartCommand(program: Command): void {
 	program
 		.command("start")
 		.description(
-			"Start the HyperNexus HYPERNEXUS backend server (Express/tRPC/WebSocket/MCP)",
+			"Start the HyperNexus HYPERCODE backend server (Express/tRPC/WebSocket/MCP)",
 		)
 		.option("-p, --port <number>", "tRPC control-plane port", "4100")
 		.option("-H, --host <address>", "Server host address", "0.0.0.0")
@@ -368,7 +368,7 @@ Examples:
 				process.argv.includes("--port") || process.argv.includes("-p");
 			let lockHandle: HyperNexusStartLockHandle | null = null;
 
-			console.log(chalk.bold.cyan(`\n  ⬡ HyperNexus HYPERNEXUS v${await getVersion()}`));
+			console.log(chalk.bold.cyan(`\n  ⬡ HyperNexus HYPERCODE v${await getVersion()}`));
 			console.log(chalk.dim("  The Neural Operating System\n"));
 
 			try {
@@ -470,7 +470,7 @@ Examples:
 						const goProc = spawn(goBin, ['serve', '--port', '4300'], {
 							stdio: 'ignore',
 							detached: true,
-							env: { ...process.env, HYPERNEXUS_WORKSPACE: process.cwd() },
+							env: { ...process.env, HYPERCODE_WORKSPACE: process.cwd() },
 						});
 						goProc.unref();
 						console.log(chalk.green('  ✓ Go sidecar launched on port 4300'));

@@ -1,7 +1,7 @@
 /**
  * `hypernexus status` - Show system status overview
  *
- * Queries the running HyperNexus HYPERNEXUS server for real status data.
+ * Queries the running HyperNexus server for real status data.
  * Falls back to a static overview if the server isn't reachable.
  */
 
@@ -77,7 +77,7 @@ function formatUptime(seconds: number): string {
 export function registerStatusCommand(program: Command): void {
   program
     .command('status')
-    .description('Show HyperNexus HYPERNEXUS system status (server, MCP, sessions, memory, providers)')
+    .description('Show HyperNexus system status (server, MCP, sessions, memory, providers)')
     .option('--json', 'Output as JSON')
     .option('-p, --port <number>', 'Server port', String(DEFAULT_PORT))
     .addHelpText('after', `
@@ -118,7 +118,7 @@ Examples:
         return;
       }
 
-      console.log(chalk.bold.cyan(`\n  ⬡ HyperNexus HYPERNEXUS v${version} — Status\n`));
+      console.log(chalk.bold.cyan(`\n  ⬡ HyperNexus v${version} — Status\n`));
 
       const table = new Table({
         chars: { mid: '', 'left-mid': '', 'mid-mid': '', 'right-mid': '' },

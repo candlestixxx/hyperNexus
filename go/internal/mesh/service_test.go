@@ -27,7 +27,7 @@ func TestCapabilitiesIncludesLocalAndUpstreamNodes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	service := New(config.Default())
 	capabilities, err := service.Capabilities(context.Background())
@@ -63,7 +63,7 @@ func TestQueryCapabilitiesReturnsRemoteDetails(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	service := New(config.Default())
 	details, err := service.QueryCapabilities(context.Background(), "node-ts", 1500)

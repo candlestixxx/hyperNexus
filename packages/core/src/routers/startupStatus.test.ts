@@ -78,7 +78,7 @@ describe('buildStartupStatusSnapshot', () => {
             platform: process.platform,
             version: expect.any(String),
         }));
-        expect(snapshot.checks.memory.claudeMem).toEqual(expect.objectContaining({
+        expect(snapshot.checks.memory.borg).toEqual(expect.objectContaining({
             ready: true,
             enabled: false,
         }));
@@ -687,7 +687,7 @@ describe('buildStartupStatusSnapshot', () => {
         expect(snapshot.checks.mcpAggregator.failedWarmupServerCount).toBe(1);
     });
 
-    it('keeps startup pending when claude-mem is enabled but its store has not been initialized yet', async () => {
+    it('keeps startup pending when hypercode is enabled but its store has not been initialized yet', async () => {
         const snapshot = await buildStartupStatusSnapshot({
             mcpServer: {
                 memoryManager: {},
@@ -747,7 +747,7 @@ describe('buildStartupStatusSnapshot', () => {
                 supportsPosixShell: false,
                 notes: ['Prefer PowerShell 7.'],
             },
-            claudeMem: {
+            borg: {
                 enabled: true,
                 storePath: '.hypernexus/claude_mem.json',
                 storeExists: false,
@@ -761,7 +761,7 @@ describe('buildStartupStatusSnapshot', () => {
         });
 
         expect(snapshot.ready).toBe(false);
-        expect(snapshot.checks.memory.claudeMem).toEqual(expect.objectContaining({
+        expect(snapshot.checks.memory.borg).toEqual(expect.objectContaining({
             enabled: true,
             storeExists: false,
             ready: false,

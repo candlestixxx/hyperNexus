@@ -15,7 +15,7 @@ const config = createConfig({
     walletConnect({
       projectId: WALLETCONNECT_PROJECT_ID,
       metadata: {
-        name: 'HYPERNEXUS Dashboard',
+        name: 'HYPERCODE Dashboard',
         description: 'AI Operating System - Bobcoin Wallet',
         url: 'https://hypernexus.local',
         icons: ['https://hypernexus.local/icon.png'],

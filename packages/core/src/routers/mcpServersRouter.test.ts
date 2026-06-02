@@ -94,7 +94,7 @@ describe('mcpServersRouter degraded SQLite handling', () => {
         const caller = createCaller();
 
         await expect(caller.registrySnapshot()).rejects.toMatchObject<Partial<TRPCError>>({
-            message: 'Registry snapshot is unavailable: HYPERNEXUS_MASTER_INDEX.jsonc contains invalid JSON.',
+            message: 'Registry snapshot is unavailable: HYPERCODE_MASTER_INDEX.jsonc contains invalid JSON.',
         });
     });
 });

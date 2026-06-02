@@ -13,8 +13,8 @@ This document tracks all external submodules merged into the TormentNexus worksp
 | **OmniRoute** | `external/OmniRoute` / `archive/OmniRoute` | `diegosouzapw/OmniRoute` | Reference for unified LLM provider routing. |
 | **litellm** | `submodules/litellm` | `BerriAI/litellm` | Proxy server for 100+ LLMs. Reference for Go-native provider abstraction. |
 | **mcpproxy** | `submodules/mcpproxy` | `Dumbris/mcpproxy` | Reference for Go-based MCP routing and middleware. |
-| **tormentnexus** | `packages/tormentnexus` | `candlestixxx/tormentnexus` | Memory ingestion system. Fully ported to Go `MemoryManager`. |
-| **hyperharness** | `submodules/hyperharness` | `candlestixxx/hyperharness` | Core CLI harness integration. |
+| **hypernexus** | `packages/hypernexus` | `robertpelloni/hypernexus` | Memory ingestion system. Fully ported to Go `MemoryManager`. |
+| **hyperharness** | `submodules/hyperharness` | `robertpelloni/hyperharness` | Core CLI harness integration. |
 | **multica** | `submodules/multica` | `multica-ai/multica` | Multi-agent conversation structures. |
 | **unifyroute** | `submodules/unifyroute` | `unifyroute/unifyroute` | Reference for fallback chains. |
 | **coding_agent_usage_tracker** | `submodules/coding_agent_usage_tracker` | `Dicklesworthstone/coding_agent_usage_tracker` | Billing, token tracing, and telemetry reference. |

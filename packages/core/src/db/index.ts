@@ -535,21 +535,53 @@ function initializeSchema(database: InstanceType<typeof Database>): void {
 
         CREATE UNIQUE INDEX IF NOT EXISTS saved_scripts_name_user_unique_idx ON saved_scripts(name, user_id);
 
+        CREATE TABLE IF NOT EXISTS imported_sessions (
+            uuid TEXT PRIMARY KEY,
+            source_tool TEXT NOT NULL,
+            source_path TEXT NOT NULL,
+            source_size INTEGER,
+            source_mtime INTEGER,
+            external_session_id TEXT,
+            title TEXT,
+            session_format TEXT NOT NULL,
+            transcript TEXT NOT NULL,
+            excerpt TEXT,
+            working_directory TEXT,
+            transcript_hash TEXT NOT NULL UNIQUE,
+            transcript_archive_path TEXT,
+            transcript_metadata_archive_path TEXT,
+            transcript_archive_format TEXT,
+            transcript_stored_bytes INTEGER,
+            normalized_session TEXT NOT NULL DEFAULT '{}',
+            metadata TEXT NOT NULL DEFAULT '{}',
+            discovered_at INTEGER NOT NULL,
+            imported_at INTEGER NOT NULL,
+            last_modified_at INTEGER,
+            created_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
+            updated_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now'))
+        );
+
+        CREATE TABLE IF NOT EXISTS imported_session_memories (
+            uuid TEXT PRIMARY KEY,
+            imported_session_uuid TEXT NOT NULL,
+            memory_index INTEGER NOT NULL,
+            kind TEXT NOT NULL DEFAULT 'memory',
+            content TEXT NOT NULL,
+            tags TEXT NOT NULL DEFAULT '[]',
+            source TEXT NOT NULL DEFAULT 'heuristic',
+            metadata TEXT NOT NULL DEFAULT '{}',
+            created_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
+            FOREIGN KEY (imported_session_uuid) REFERENCES imported_sessions(uuid) ON DELETE CASCADE,
+            UNIQUE(imported_session_uuid, memory_index)
+        );
+
         CREATE INDEX IF NOT EXISTS imported_sessions_transcript_hash_idx ON imported_sessions(transcript_hash);
+        CREATE INDEX IF NOT EXISTS imported_sessions_source_tool_idx ON imported_sessions(source_tool);
+        CREATE INDEX IF NOT EXISTS imported_sessions_source_path_idx ON imported_sessions(source_path);
         CREATE UNIQUE INDEX IF NOT EXISTS imported_sessions_transcript_hash_unique ON imported_sessions(transcript_hash);
+
         CREATE INDEX IF NOT EXISTS imported_session_memories_session_idx ON imported_session_memories(imported_session_uuid);
-        CREATE UNIQUE INDEX IF NOT EXISTS imported_session_memories_session_index_unique ON imported_session_memories(imported_session_uuid, memory_index);
-
-        CREATE INDEX IF NOT EXISTS pms_canonical_id_idx ON published_mcp_servers(canonical_id);
-        CREATE INDEX IF NOT EXISTS pms_status_idx ON published_mcp_servers(status);
-        CREATE INDEX IF NOT EXISTS pms_updated_at_idx ON published_mcp_servers(updated_at);
-        CREATE UNIQUE INDEX IF NOT EXISTS pmss_unique_server_source_idx ON published_mcp_server_sources(server_uuid, source_name);
-        CREATE INDEX IF NOT EXISTS pmcr_active_idx ON published_mcp_config_recipes(server_uuid, is_active);
-        CREATE INDEX IF NOT EXISTS pmvr_outcome_idx ON published_mcp_validation_runs(outcome);
-
-        CREATE INDEX IF NOT EXISTS links_backlog_normalized_url_idx ON links_backlog(normalized_url);
-        CREATE INDEX IF NOT EXISTS links_backlog_research_status_idx ON links_backlog(research_status);
-        CREATE INDEX IF NOT EXISTS links_backlog_synced_at_idx ON links_backlog(synced_at);
+        CREATE INDEX IF NOT EXISTS imported_session_memories_kind_idx ON imported_session_memories(kind);
     `);
 
     // Dynamic Migrations for existing databases

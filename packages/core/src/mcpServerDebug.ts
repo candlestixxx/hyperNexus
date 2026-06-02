@@ -1,4 +1,4 @@
-const MCP_SERVER_DEBUG_ENV = 'HYPERNEXUS_MCP_SERVER_DEBUG';
+const MCP_SERVER_DEBUG_ENV = 'HYPERCODE_MCP_SERVER_DEBUG';
 const MCP_SERVER_DEBUG_NAMESPACE = 'hypernexus:mcp-server';
 
 export function isMcpServerDebugEnabled(env: NodeJS.ProcessEnv = process.env): boolean {

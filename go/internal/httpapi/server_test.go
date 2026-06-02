@@ -52,8 +52,8 @@ func skipIfServerRunning(t *testing.T) {
 func TestMain(m *testing.M) {
 	// Default: point upstream to a dead address so tests dont hit real TS core.
 	// Individual tests that need a real or mock upstream override this.
-	os.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
-	os.Setenv("HYPERNEXUS_LOCK_PATH", os.TempDir() + "/hypernexus-test-nonexistent.lock")
+	os.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	os.Setenv("HYPERCODE_LOCK_PATH", os.TempDir() + "/hypernexus-test-nonexistent.lock")
 	os.Exit(m.Run())
 }
 
@@ -139,7 +139,7 @@ func TestMeshEndpoints(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	server := New(config.Default(), stubDetector{})
 
@@ -204,7 +204,7 @@ func TestMeshEndpoints(t *testing.T) {
 }
 
 func TestBridgeRouteReportsProcedureFailure(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -265,7 +265,7 @@ func TestBridgeRouteReportsProcedureFailure(t *testing.T) {
 }
 
 func TestToolChainsListFallsBackToLocalDB(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -329,7 +329,7 @@ func TestToolChainsListFallsBackToLocalDB(t *testing.T) {
 }
 
 func TestPlanReadRoutesFallBackToLocalSandboxState(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	sandboxDir := filepath.Join(workspace, ".hypernexus", "sandbox")
@@ -445,7 +445,7 @@ func TestStartupStatusEndpoint(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	workspaceRoot := t.TempDir()
 	cfg := config.Default()
@@ -565,7 +565,7 @@ func TestSessionContextEndpoint(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	workspaceRoot := t.TempDir()
 	cfg := config.Default()
@@ -631,7 +631,7 @@ var ListAllTools = struct{
 		t.Fatalf("failed to write hypernexus tool source: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
 	cfg.ConfigDir = t.TempDir()
@@ -735,7 +735,7 @@ func TestToolsContextEndpoint(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	workspaceRoot := t.TempDir()
 	cfg := config.Default()
@@ -801,7 +801,7 @@ var ListAllTools = struct{
 		t.Fatalf("failed to write hypernexus tool source: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
 	cfg.ConfigDir = t.TempDir()
@@ -824,7 +824,7 @@ var ListAllTools = struct{
 }
 
 func TestMCPToolAdvertisementsReportSnapshotFailure(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = string([]byte{0})
@@ -845,7 +845,7 @@ func TestMCPToolAdvertisementsReportSnapshotFailure(t *testing.T) {
 }
 
 func TestMemoryToolContextFallsBackToPersistedPrompt(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
 	cfg.ConfigDir = t.TempDir()
@@ -870,7 +870,7 @@ func TestMemoryToolContextFallsBackToPersistedPrompt(t *testing.T) {
 }
 
 func TestMemorySessionBootstrapFallsBackToPersistedPrompt(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
 	cfg.ConfigDir = t.TempDir()
@@ -896,7 +896,7 @@ func TestMemorySessionBootstrapFallsBackToPersistedPrompt(t *testing.T) {
 }
 
 func TestMemoryRecentRoutesFallBackToPersistedData(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
 	cfg.ConfigDir = t.TempDir()
@@ -934,7 +934,7 @@ func TestMemorySectionedStatusAndFormatsFallBackLocally(t *testing.T) {
 		t.Fatalf("failed to seed sectioned memory: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
 	cfg.ConfigDir = t.TempDir()
@@ -967,7 +967,7 @@ func TestMemoryContextsFallsBackToLocalRegistry(t *testing.T) {
 		t.Fatalf("failed to seed contexts registry: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
 	cfg.ConfigDir = t.TempDir()
@@ -990,7 +990,7 @@ func TestMemoryContextsFallsBackToLocalRegistry(t *testing.T) {
 }
 
 func TestMemoryAgentStatsFallsBackToPersistedState(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
 	cfg.ConfigDir = t.TempDir()
@@ -1109,7 +1109,7 @@ func TestMemoryAgentStatsFallsBackToPersistedState(t *testing.T) {
 
 func TestMCPEmptyStateRoutesFallBackLocally(t *testing.T) {
 	skipIfServerRunning(t)
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
 	cfg.ConfigDir = t.TempDir()
@@ -1162,7 +1162,7 @@ func TestMCPEmptyStateRoutesFallBackLocally(t *testing.T) {
 
 func TestReadOnlyMemoryRoutesFallBackLocally(t *testing.T) {
 	t.Skip("Skipping test for now")
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
 	cfg.ConfigDir = t.TempDir()
@@ -1344,7 +1344,7 @@ func seedPersistedAgentMemories(t *testing.T, workspaceRoot string) {
 
 func TestMemoryServiceBackedMutationsFallBackLocally(t *testing.T) {
 	skipIfServerRunning(t)
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
 	cfg.ConfigDir = t.TempDir()
@@ -1495,7 +1495,7 @@ func seedPersistedAgentMemoryRelations(t *testing.T, workspaceRoot string) {
 }
 
 func TestMemoryRelationshipRoutesFallBackToPersistedData(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
 	cfg.ConfigDir = t.TempDir()
@@ -1532,7 +1532,7 @@ func TestMCPAddAndRemoveServerFallBackToLocalConfiguredServers(t *testing.T) {
 		t.Fatalf("failed to seed mcp.jsonc: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
 	cfg.ConfigDir = t.TempDir()
@@ -1557,7 +1557,7 @@ func TestMCPAddAndRemoveServerFallBackToLocalConfiguredServers(t *testing.T) {
 }
 
 func TestMCPServerTestFallsBackToStructuredProbeFailures(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
 	cfg.ConfigDir = t.TempDir()
@@ -1598,7 +1598,7 @@ func TestMCPLifecycleModesFallBackToLocalState(t *testing.T) {
 		t.Fatalf("failed to seed tool dir: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
 	cfg.ConfigDir = t.TempDir()
@@ -1621,7 +1621,7 @@ func TestMCPLifecycleModesFallBackToLocalState(t *testing.T) {
 }
 
 func TestMCPLoadAndUnloadToolReturnExplicitUnavailableFallback(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
 	cfg.ConfigDir = t.TempDir()
@@ -1671,7 +1671,7 @@ func TestAutonomyBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -1859,7 +1859,7 @@ func TestDirectorBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -1952,7 +1952,7 @@ func TestAutoDevBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -2028,7 +2028,7 @@ func TestDarwinBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -2294,7 +2294,7 @@ func TestCouncilBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -2400,7 +2400,7 @@ func TestDeerFlowBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -2466,7 +2466,7 @@ func TestHealerBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -2511,7 +2511,7 @@ func TestHealerBridgeRoutes(t *testing.T) {
 }
 
 func TestHealerHistoryFallsBackToEmptyList(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
@@ -2568,7 +2568,7 @@ func TestCouncilVisualBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -2682,7 +2682,7 @@ func TestCloudDevBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -2849,7 +2849,7 @@ func TestConfigRouterBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -2965,7 +2965,7 @@ func TestCouncilHistoryBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -3053,7 +3053,7 @@ func TestCouncilBaseBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -3135,7 +3135,7 @@ func TestCouncilSmartPilotBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -3208,7 +3208,7 @@ func TestCouncilHooksBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -3271,7 +3271,7 @@ func TestCouncilIDEBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -3338,7 +3338,7 @@ func TestCouncilEvolutionBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -3448,7 +3448,7 @@ func TestCouncilFineTuneBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -3582,7 +3582,7 @@ func TestCouncilRotationBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -3714,7 +3714,7 @@ func TestSwarmBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -3820,7 +3820,7 @@ func TestBillingBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -3873,7 +3873,7 @@ func TestBillingBridgeRoutes(t *testing.T) {
 }
 
 func TestBillingRoutingReadEndpointsFallBackToLocalProviderRouting(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	t.Setenv("GOOGLE_API_KEY", "google")
 	t.Setenv("ANTHROPIC_API_KEY", "anthropic")
 
@@ -3909,7 +3909,7 @@ func TestBillingRoutingReadEndpointsFallBackToLocalProviderRouting(t *testing.T)
 }
 
 func TestBillingReadEndpointsFallBackToLocalProviderPreview(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	t.Setenv("OPENAI_API_KEY", "openai")
 	t.Setenv("ANTHROPIC_API_KEY", "anthropic")
 
@@ -3956,7 +3956,7 @@ func TestBillingReadEndpointsFallBackToLocalProviderPreview(t *testing.T) {
 }
 
 func TestBillingPreviewEndpointsFallBackToLocalProviderPreview(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	t.Setenv("OPENAI_API_KEY", "openai")
 
 	server := New(config.Default(), stubDetector{})
@@ -4011,7 +4011,7 @@ func TestBillingPreviewEndpointsFallBackToLocalProviderPreview(t *testing.T) {
 }
 
 func TestBillingClearFallbackHistoryFallsBackToLocalBufferClear(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	server := New(config.Default(), stubDetector{})
 	server.fallbackBuffer.append(providerFallbackEvent{
@@ -4038,7 +4038,7 @@ func TestBillingClearFallbackHistoryFallsBackToLocalBufferClear(t *testing.T) {
 }
 
 func TestProviderReadEndpointsFallBackToLocalProviderSnapshot(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	t.Setenv("OPENAI_API_KEY", "openai")
 	t.Setenv("ANTHROPIC_API_KEY", "anthropic")
 	t.Setenv("OLLAMA_API_KEY", "")
@@ -4075,7 +4075,7 @@ func TestProviderReadEndpointsFallBackToLocalProviderSnapshot(t *testing.T) {
 }
 
 func TestConfigAuthProvidersFallsBackToLocalOIDCAvailability(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	t.Setenv("OIDC_CLIENT_ID", "client")
 	t.Setenv("OIDC_CLIENT_SECRET", "secret")
 	t.Setenv("OIDC_DISCOVERY_URL", "https://issuer.example/.well-known/openid-configuration")
@@ -4098,7 +4098,7 @@ func TestConfigAuthProvidersFallsBackToLocalOIDCAvailability(t *testing.T) {
 
 func TestObservabilityReadEndpointsFallBackToLocalPreview(t *testing.T) {
 	skipIfServerRunning(t)
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspaceRoot := t.TempDir()
 	dbPath := filepath.Join(workspaceRoot, "hypernexus.db")
@@ -4192,7 +4192,7 @@ func TestObservabilityReadEndpointsFallBackToLocalPreview(t *testing.T) {
 }
 
 func TestMetricsReadEndpointsFallBackToLocalPreview(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	t.Setenv("OPENAI_API_KEY", "test-openai-key")
 
 	server := New(config.Default(), stubDetector{})
@@ -4255,7 +4255,7 @@ func TestConfigAlwaysVisibleToolsFallsBackToLocalJSONCPreferences(t *testing.T) 
 		t.Fatalf("failed to write local mcp jsonc: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
@@ -4281,7 +4281,7 @@ func TestConfigAlwaysVisibleToolsFallsBackToLocalJSONCPreferences(t *testing.T) 
 }
 
 func TestSessionExportReadEndpointsFallBackLocally(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	server := New(config.Default(), stubDetector{})
 
@@ -4359,7 +4359,7 @@ func TestBrowserBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -4409,7 +4409,7 @@ func TestBrowserBridgeRoutes(t *testing.T) {
 }
 
 func TestBrowserStatusFallsBackToExplicitUnavailableState(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
@@ -4480,7 +4480,7 @@ func TestSquadBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -4565,7 +4565,7 @@ func TestSupervisorBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -5109,7 +5109,7 @@ func TestSupervisorSessionBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -5640,7 +5640,7 @@ func TestMCPBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -5752,7 +5752,7 @@ func TestMCPAutoCallToolNormalizesAliasInputs(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -5795,7 +5795,7 @@ var AutoCallTool = struct{
 		t.Fatalf("failed to write hypernexus tool source: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	t.Setenv("HOME", workspaceRoot)
 	t.Setenv("USERPROFILE", workspaceRoot)
 	t.Setenv("APPDATA", workspaceRoot)
@@ -5895,7 +5895,7 @@ func TestToolsReadEndpointsFallBackToLocalDB(t *testing.T) {
 		t.Fatalf("failed to seed sqlite db: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
 	cfg.MainConfigDir = t.TempDir()
@@ -5946,7 +5946,7 @@ func TestFileBackedReadEndpointsFallBackLocally(t *testing.T) {
 		t.Fatalf("failed to write handoff file: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
@@ -6027,7 +6027,7 @@ func TestFileBackedReadEndpointsFallBackLocally(t *testing.T) {
 }
 
 func TestTestsReadEndpointsFallBackToLocalZeroState(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	server := New(config.Default(), stubDetector{})
 
@@ -6077,7 +6077,7 @@ func TestTestsReadEndpointsFallBackToLocalZeroState(t *testing.T) {
 }
 
 func TestZeroStateRegistryReadEndpointsFallBackLocally(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	server := New(config.Default(), stubDetector{})
 
@@ -6157,7 +6157,7 @@ func TestZeroStateRegistryReadEndpointsFallBackLocally(t *testing.T) {
 
 func TestOperatorListEndpointsFallBackToEmptyState(t *testing.T) {
 	t.Skip("Skipping test for now")
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspaceRoot := t.TempDir()
 	homeDir := t.TempDir()
@@ -6331,7 +6331,7 @@ func TestOperatorListEndpointsFallBackToEmptyState(t *testing.T) {
 }
 
 func TestAuditReadEndpointsFallBackToLocalFiles(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspaceRoot := t.TempDir()
 	auditDir := filepath.Join(workspaceRoot, ".hypernexus", "audit")
@@ -6401,7 +6401,7 @@ func TestAuditReadEndpointsFallBackToLocalFiles(t *testing.T) {
 
 func TestStatusReadEndpointsFallBackToLocalPreview(t *testing.T) {
 	t.Skip("Skipping test for now")
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	t.Setenv("OPEN_WEBUI_URL", "http://localhost:8080")
 
 	server := New(config.Default(), stubDetector{})
@@ -6474,7 +6474,7 @@ func TestStatusReadEndpointsFallBackToLocalPreview(t *testing.T) {
 }
 
 func TestMarketplaceListFallsBackToLocalRegistries(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspaceRoot := t.TempDir()
 	if err := os.MkdirAll(filepath.Join(workspaceRoot, "packages", "core", "data"), 0o755); err != nil {
@@ -6530,7 +6530,7 @@ func TestMarketplaceListFallsBackToLocalRegistries(t *testing.T) {
 }
 
 func TestPoliciesGetFallsBackToLocalDB(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -6584,7 +6584,7 @@ func TestPoliciesGetFallsBackToLocalDB(t *testing.T) {
 }
 
 func TestSecretsListFallsBackToLocalDB(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -6639,7 +6639,7 @@ func TestSecretsListFallsBackToLocalDB(t *testing.T) {
 }
 
 func TestAPIKeysGetFallsBackToLocalDB(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -6697,7 +6697,7 @@ func TestAPIKeysGetFallsBackToLocalDB(t *testing.T) {
 }
 
 func TestLinksBacklogGetFallsBackToLocalDB(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -6774,7 +6774,7 @@ func TestLinksBacklogGetFallsBackToLocalDB(t *testing.T) {
 }
 
 func TestLinksBacklogStatsFallsBackToLocalDB(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -6850,7 +6850,7 @@ func TestLinksBacklogStatsFallsBackToLocalDB(t *testing.T) {
 }
 
 func TestLinksBacklogListFallsBackToLocalDB(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -6928,7 +6928,7 @@ func TestLinksBacklogListFallsBackToLocalDB(t *testing.T) {
 }
 
 func TestOAuthClientGetFallsBackToLocalDB(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -7001,7 +7001,7 @@ func TestOAuthClientGetFallsBackToLocalDB(t *testing.T) {
 }
 
 func TestOAuthSessionGetByServerFallsBackToLocalDB(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -7061,7 +7061,7 @@ func TestOAuthSessionGetByServerFallsBackToLocalDB(t *testing.T) {
 }
 
 func TestCatalogGetFallsBackToLocalDB(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -7191,7 +7191,7 @@ func TestCatalogGetFallsBackToLocalDB(t *testing.T) {
 }
 
 func TestSpecificFallbackGetRoutesReturnUnavailableWhenRecordMissing(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -7378,7 +7378,7 @@ func TestSpecificFallbackGetRoutesReturnUnavailableWhenRecordMissing(t *testing.
 }
 
 func TestCatalogRunsFallsBackToLocalDB(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -7443,7 +7443,7 @@ func TestCatalogRunsFallsBackToLocalDB(t *testing.T) {
 }
 
 func TestCatalogStatsFallsBackToLocalDB(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -7524,7 +7524,7 @@ func TestCatalogStatsFallsBackToLocalDB(t *testing.T) {
 }
 
 func TestCatalogLinkedServersFallsBackToLocalDB(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -7592,7 +7592,7 @@ func TestCatalogLinkedServersFallsBackToLocalDB(t *testing.T) {
 }
 
 func TestCatalogListFallsBackToLocalDB(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -7667,7 +7667,7 @@ func TestCatalogListFallsBackToLocalDB(t *testing.T) {
 }
 
 func TestBrowserControlsReadRoutesFallBackToLocalDB(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -7761,7 +7761,7 @@ func TestBrowserControlsReadRoutesFallBackToLocalDB(t *testing.T) {
 }
 
 func TestConfigReadRoutesFallBackToLocalDB(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -7899,7 +7899,7 @@ func TestOperatorFallbackGetRoutesReturnUnavailableWhenRecordMissing(t *testing.
 		t.Fatalf("failed to seed sqlite fallback db: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	t.Setenv("USERPROFILE", homeDir)
 	t.Setenv("APPDATA", filepath.Join(homeDir, "AppData", "Roaming"))
 	t.Setenv("LOCALAPPDATA", filepath.Join(homeDir, "AppData", "Local"))
@@ -7942,7 +7942,7 @@ func TestOperatorFallbackGetRoutesReturnUnavailableWhenRecordMissing(t *testing.
 }
 
 func TestUnifiedDirectoryRoutesFallBackToLocalDB(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -8059,7 +8059,7 @@ func TestUnifiedDirectoryRoutesFallBackToLocalDB(t *testing.T) {
 }
 
 func TestWorkflowCanvasRoutesFallBackToLocalDB(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -8127,7 +8127,7 @@ func TestWorkflowCanvasRoutesFallBackToLocalDB(t *testing.T) {
 }
 
 func TestDirectorConfigGetFallsBackToLocalConfig(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspaceRoot := t.TempDir()
 	if err := os.MkdirAll(filepath.Join(workspaceRoot, ".hypernexus"), 0o755); err != nil {
@@ -8188,9 +8188,9 @@ func TestInfrastructureStatusFallsBackToLocalProbe(t *testing.T) {
 		t.Fatalf("failed to write infra config: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
-	t.Setenv("HYPERNEXUS_INFRA_BINARY", infraBinary)
-	t.Setenv("HYPERNEXUS_INFRA_SUBMODULE", infraSubmoduleDir)
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_INFRA_BINARY", infraBinary)
+	t.Setenv("HYPERCODE_INFRA_SUBMODULE", infraSubmoduleDir)
 	t.Setenv("USERPROFILE", userProfile)
 
 	cfg := config.Default()
@@ -8218,7 +8218,7 @@ func TestInfrastructureStatusFallsBackToLocalProbe(t *testing.T) {
 }
 
 func TestPoliciesListFallsBackToLocalDB(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -8272,7 +8272,7 @@ func TestPoliciesListFallsBackToLocalDB(t *testing.T) {
 }
 
 func TestPulseAndBrowserStatsFallBackToLocalPreview(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	server := New(config.Default(), stubDetector{})
 
@@ -8322,7 +8322,7 @@ func TestPulseAndBrowserStatsFallBackToLocalPreview(t *testing.T) {
 }
 
 func TestPulseEventsAndBrowserMemoriesFallBackToEmptyState(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspaceRoot := t.TempDir()
 	dbPath := filepath.Join(workspaceRoot, "hypernexus.db")
@@ -8415,7 +8415,7 @@ func TestPulseEventsAndBrowserMemoriesFallBackToEmptyState(t *testing.T) {
 }
 
 func TestResearchQueriesFallsBackToTopicQuery(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	server := New(config.Default(), stubDetector{})
 	recorder := httptest.NewRecorder()
@@ -8470,11 +8470,11 @@ func TestResearchQueueFallsBackToLocalFiles(t *testing.T) {
     ]
   }
 }`
-	if err := os.WriteFile(filepath.Join(workspaceRoot, "HYPERNEXUS_MASTER_INDEX.jsonc"), []byte(indexContent), 0o644); err != nil {
+	if err := os.WriteFile(filepath.Join(workspaceRoot, "HYPERCODE_MASTER_INDEX.jsonc"), []byte(indexContent), 0o644); err != nil {
 		t.Fatalf("failed to write master index: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
@@ -8527,7 +8527,7 @@ func TestSettingsReadEndpointsFallBackLocally(t *testing.T) {
 		t.Fatalf("failed to write mcp config: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	t.Setenv("NODE_ENV", "test")
 	t.Setenv("PORT", "4310")
 
@@ -8616,7 +8616,7 @@ func TestServerHealthFallsBackToCachedMCPMetadata(t *testing.T) {
 		t.Fatalf("failed to write mcp config: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
@@ -8644,7 +8644,7 @@ func TestServerHealthFallsBackToCachedMCPMetadata(t *testing.T) {
 }
 
 func TestSymbolsReadRoutesFallBackToEmptyResults(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
@@ -8687,7 +8687,7 @@ func TestSymbolsReadRoutesFallBackToEmptyResults(t *testing.T) {
 }
 
 func TestGraphSymbolsFallsBackToEmptyGraph(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
@@ -8716,7 +8716,7 @@ func TestGraphSymbolsFallsBackToEmptyGraph(t *testing.T) {
 }
 
 func TestGraphFileReadsFallBackToEmptyLists(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
@@ -8757,7 +8757,7 @@ func TestGraphFileReadsFallBackToEmptyLists(t *testing.T) {
 }
 
 func TestWorkflowReadRoutesFallBackToEngineZeroState(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
@@ -8802,7 +8802,7 @@ func TestWorkflowReadRoutesFallBackToEngineZeroState(t *testing.T) {
 }
 
 func TestToolAliasResolveFallsBackToUnresolvedState(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
@@ -8828,7 +8828,7 @@ func TestToolAliasResolveFallsBackToUnresolvedState(t *testing.T) {
 }
 
 func TestToolAliasesListFallsBackToLocalDB(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	workspace := t.TempDir()
 	dbPath := filepath.Join(workspace, "hypernexus.db")
@@ -8877,7 +8877,7 @@ func TestToolAliasesListFallsBackToLocalDB(t *testing.T) {
 }
 
 func TestMemoryExportFallsBackToLocalSnapshotAndRegistry(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	t.Run("json_provider_snapshot", func(t *testing.T) {
 		workspaceRoot := t.TempDir()
@@ -8985,7 +8985,7 @@ func TestMemoryExportFallsBackToLocalSnapshotAndRegistry(t *testing.T) {
 }
 
 func TestAgentMemoryStatsFallsBackToPersistedState(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
@@ -9016,7 +9016,7 @@ func TestAgentMemoryStatsFallsBackToPersistedState(t *testing.T) {
 }
 
 func TestAgentMemoryExportFallsBackToPersistedSnapshot(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
@@ -9045,7 +9045,7 @@ func TestAgentMemoryExportFallsBackToPersistedSnapshot(t *testing.T) {
 }
 
 func TestAgentMemoryReadRoutesFallBackToPersistedResults(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
@@ -9087,7 +9087,7 @@ func TestAgentMemoryReadRoutesFallBackToPersistedResults(t *testing.T) {
 }
 
 func TestAgentMemoryMutationRoutesFallBackToLocalPersistence(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
@@ -9130,7 +9130,7 @@ func TestAgentMemoryMutationRoutesFallBackToLocalPersistence(t *testing.T) {
 }
 
 func TestAgentMemoryHandoffAndPickupFallBackToLocalPersistence(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
@@ -9211,7 +9211,7 @@ func TestToolsRuntimeDetectionFallsBackLocally(t *testing.T) {
 		t.Fatalf("failed to write vscode package json: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	detector := stubDetector{tools: []controlplane.Tool{
 		{Type: "codex", Name: "Codex CLI", Command: "codex", Available: true, Version: "1.0.0", Path: "C:\\tools\\codex.exe", Capabilities: []string{"chat", "code"}},
@@ -9324,7 +9324,7 @@ func TestGitStatusFallsBackLocally(t *testing.T) {
 		t.Fatalf("failed to modify tracked file: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
@@ -9391,7 +9391,7 @@ func TestGitLogFallsBackLocally(t *testing.T) {
 		}
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
@@ -9456,7 +9456,7 @@ func TestSubmoduleReadEndpointsFallBackLocally(t *testing.T) {
 		t.Fatalf("failed to write main.py: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
@@ -9530,7 +9530,7 @@ func TestKnowledgeReadEndpointsFallBackLocally(t *testing.T) {
 		t.Fatalf("failed to write resources.json: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
@@ -9590,7 +9590,7 @@ var SearchTools = struct{
 		t.Fatalf("failed to write hypernexus tool source: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
@@ -9644,7 +9644,7 @@ var ListAllTools = struct{
 		t.Fatalf("failed to write hypernexus tool source: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
@@ -9678,7 +9678,7 @@ var ListAllTools = struct{
 }
 
 func TestMCPToolSchemaFallsBackToLocalMetaSchemas(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
@@ -9729,11 +9729,11 @@ func TestMCPRegistrySnapshotFallsBackToMasterIndex(t *testing.T) {
     ]
   }
 }`
-	if err := os.WriteFile(filepath.Join(workspaceRoot, "HYPERNEXUS_MASTER_INDEX.jsonc"), []byte(indexContent), 0o644); err != nil {
+	if err := os.WriteFile(filepath.Join(workspaceRoot, "HYPERCODE_MASTER_INDEX.jsonc"), []byte(indexContent), 0o644); err != nil {
 		t.Fatalf("failed to write master index fixture: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
@@ -9767,7 +9767,7 @@ func TestMCPJsoncEditorFallsBackToLocalFile(t *testing.T) {
 		t.Fatalf("failed to write local mcp jsonc: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
@@ -9795,7 +9795,7 @@ func TestMCPJsoncEditorFallsBackToLocalFile(t *testing.T) {
 
 func TestMCPJsoncEditorSaveFallsBackToLocalWrite(t *testing.T) {
 	mainConfigDir := t.TempDir()
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
@@ -9856,7 +9856,7 @@ func TestMCPConfiguredServersFallBackToLocalJsonc(t *testing.T) {
 		t.Fatalf("failed to write local mcp jsonc: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
@@ -9964,7 +9964,7 @@ func TestMCPSyncTargetsAndExportFallBackToLocalJsonc(t *testing.T) {
 
 	appData := t.TempDir()
 	t.Setenv("APPDATA", appData)
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
@@ -10028,7 +10028,7 @@ func TestMCPToolPreferencesFallBackToLocalJsonc(t *testing.T) {
 		t.Fatalf("failed to write local mcp jsonc: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
@@ -10094,7 +10094,7 @@ func TestMCPConfiguredServerMutationsFallBackToLocalJsonc(t *testing.T) {
 
 	appData := t.TempDir()
 	t.Setenv("APPDATA", appData)
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
@@ -10175,7 +10175,7 @@ func TestMCPConfiguredServerMetadataMutationsFallBackToLocalJsonc(t *testing.T) 
 		t.Fatalf("failed to seed local mcp jsonc: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
 	cfg.ConfigDir = t.TempDir()
@@ -10225,7 +10225,7 @@ func TestSkillsFallBackToLocalSkillRegistry(t *testing.T) {
 		t.Fatalf("failed to seed skill: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
 	cfg.ConfigDir = t.TempDir()
@@ -10364,7 +10364,7 @@ func TestImportedSessionBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -10418,7 +10418,7 @@ func TestImportedSessionScanFallsBackToGoScanner(t *testing.T) {
 		t.Fatalf("failed to seed claude session: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	t.Setenv("HOME", workspaceRoot)
 	t.Setenv("USERPROFILE", workspaceRoot)
 	t.Setenv("APPDATA", workspaceRoot)
@@ -10464,7 +10464,7 @@ func TestImportedSessionScanFallsBackToArchivedRecords(t *testing.T) {
 		t.Fatalf("failed to seed extra discovered session: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	t.Setenv("HOME", workspaceRoot)
 	t.Setenv("USERPROFILE", workspaceRoot)
 	t.Setenv("APPDATA", workspaceRoot)
@@ -10523,7 +10523,7 @@ func TestImportedSessionScanFallsBackToWorkspaceInstructionDoc(t *testing.T) {
 		t.Fatalf("failed to write imported instructions doc: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	t.Setenv("HOME", workspaceRoot)
 	t.Setenv("USERPROFILE", workspaceRoot)
 	t.Setenv("APPDATA", workspaceRoot)
@@ -10556,7 +10556,7 @@ func TestImportedSessionListFallsBackToGoScanner(t *testing.T) {
 		t.Fatalf("failed to seed claude session: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
@@ -10641,7 +10641,7 @@ func TestImportedSessionListFallsBackToArchivedRecords(t *testing.T) {
 	workspaceRoot := t.TempDir()
 	sessionID := seedArchivedImportedSession(t, workspaceRoot)
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
@@ -10675,7 +10675,7 @@ func TestImportedSessionGetFallsBackToGoScanner(t *testing.T) {
 		t.Fatalf("failed to seed claude session: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
@@ -10716,7 +10716,7 @@ func TestImportedSessionGetFallsBackToArchivedRecords(t *testing.T) {
 	workspaceRoot := t.TempDir()
 	sessionID := seedArchivedImportedSession(t, workspaceRoot)
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
@@ -10744,7 +10744,7 @@ func TestImportedSessionGetFallsBackToArchivedRecords(t *testing.T) {
 func TestImportedSessionGetReturnsUnavailableWhenFallbackRecordMissing(t *testing.T) {
 	workspaceRoot := t.TempDir()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
@@ -10770,7 +10770,7 @@ func TestImportedSessionGetReturnsUnavailableWhenFallbackRecordMissing(t *testin
 }
 
 func TestImportedInstructionDocsFallsBackToEmptyList(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
@@ -10809,7 +10809,7 @@ func TestImportedInstructionDocsFallsBackToWorkspaceDoc(t *testing.T) {
 		t.Fatalf("failed to write imported instructions doc: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	server := New(cfg, stubDetector{})
 
 	request := httptest.NewRequest(http.MethodGet, "/api/sessions/imported/instruction-docs", nil)
@@ -10836,7 +10836,7 @@ func TestImportedSessionMaintenanceStatsFallsBackToGoScanner(t *testing.T) {
 		t.Fatalf("failed to seed claude session: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	t.Setenv("HOME", workspaceRoot)
 	t.Setenv("USERPROFILE", workspaceRoot)
 	t.Setenv("APPDATA", workspaceRoot)
@@ -10877,7 +10877,7 @@ func TestStartupImportedSessionMaintenanceStatsUsesScanOnlySemantics(t *testing.
 		t.Fatalf("failed to seed claude session: %v", err)
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	t.Setenv("HOME", workspaceRoot)
 	t.Setenv("USERPROFILE", workspaceRoot)
 	t.Setenv("APPDATA", workspaceRoot)
@@ -10916,7 +10916,7 @@ func TestImportedSessionMaintenanceStatsFallsBackToArchivedRecords(t *testing.T)
 	workspaceRoot := t.TempDir()
 	seedArchivedImportedSession(t, workspaceRoot)
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspaceRoot
@@ -11077,7 +11077,7 @@ func TestMemoryBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -11189,7 +11189,7 @@ func TestAgentMemoryBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -11305,7 +11305,7 @@ func TestCodeBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -11429,7 +11429,7 @@ func TestAdminBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -11574,7 +11574,7 @@ func TestControlBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -11680,7 +11680,7 @@ func TestAgentBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -11795,7 +11795,7 @@ func TestWorkflowBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -11909,7 +11909,7 @@ func TestSymbolsAndLSPBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -12045,7 +12045,7 @@ func TestCompactBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -12184,7 +12184,7 @@ func TestGovernanceAndCatalogBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -12313,7 +12313,7 @@ func TestResearchOAuthPulseAndExportBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -12455,7 +12455,7 @@ func TestUIHelperBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -12613,7 +12613,7 @@ func TestKnowledgeAndChainingBridgeRoutes(t *testing.T) {
 	}))
 	defer upstream.Close()
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	cfg := config.Default()
 	cfg.MainConfigDir = t.TempDir()
@@ -12681,7 +12681,7 @@ func TestKnowledgeAndChainingBridgeRoutes(t *testing.T) {
 }
 
 func TestKnowledgeGraphFallsBackToEmptyGraph(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 
 	cfg := config.Default()
 	cfg.WorkspaceRoot = t.TempDir()
@@ -13497,7 +13497,7 @@ func demo() {
 	t.Setenv("GITHUB_TOKEN", "")
 	t.Setenv("OPENAI_API_KEY", "openai")
 	t.Setenv("ANTHROPIC_API_KEY", "anthropic")
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", upstream.URL+"/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", upstream.URL+"/trpc")
 
 	server := New(cfg, stubDetector{})
 	request := httptest.NewRequest(http.MethodGet, "/api/runtime/status", nil)
@@ -13647,7 +13647,7 @@ func demo() {
 }
 
 func TestSavedScriptsCreateUpdateDeleteAndExecuteFallBackToLocalConfig(t *testing.T) {
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	if _, err := exec.LookPath("node"); err != nil {
 		t.Skip("node runtime not available")
 	}

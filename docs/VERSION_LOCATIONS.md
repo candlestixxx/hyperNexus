@@ -40,9 +40,9 @@ All these currently reference `0.99.3`:
 - `packages/vscode/package.json`
 
 ## 3. Web UI Fallbacks & Branding
-- `apps/web/src/components/Navigation.tsx`: Fallback for `NEXT_PUBLIC_HYPERNEXUS_VERSION`.
+- `apps/web/src/components/Navigation.tsx`: Fallback for `NEXT_PUBLIC_HYPERCODE_VERSION`.
 - `apps/web/src/components/mcp/nav-config.ts`: Hardcoded branding string "HyperNexus 0.99.3 Core".
-- `apps/web/src/components/Navigation.tsx`: Fallback for `NEXT_PUBLIC_HYPERNEXUS_VERSION`.
+- `apps/web/src/components/Navigation.tsx`: Fallback for `NEXT_PUBLIC_HYPERCODE_VERSION`.
 - `apps/web/src/components/mcp/nav-config.ts`: Hardcoded branding string "hypernexus 0.99.3 Core".
 
 ## 4. CLI & Core Runtime Fallbacks
@@ -57,7 +57,7 @@ All these currently reference `0.99.3`:
 ## 5. Other Components (Fixed Versions)
 These versions are typically independent of the main HyperNexus version:
 These versions are typically independent of the main hypernexus version:
-- `packages/claude-mem/package.json`: (Currently `10.5.7`)
+- `packages/hypernexus/package.json`: (Currently `10.5.7`)
 - `archive/OmniRoute/package.json`: (Currently `2.3.1`)
 - Various submodules in `submodules/` or `archive/submodules/`.
 

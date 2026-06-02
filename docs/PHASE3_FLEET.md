@@ -1,7 +1,7 @@
 # Phase 3: Fleet Orchestration
 
 ## 1. HyperNexus Fleet Manager
-The Go sidecar will act as the "Ground Control" for multiple concurrent HyperNexus sessions.
+The Go sidecar will act as the "Ground Control" for multiple concurrent HyperCode sessions.
 
 ### Functional Requirements
 - **Session Registry**: Track all active CLI/TIU instances across the host.

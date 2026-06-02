@@ -419,7 +419,7 @@ export class MCPServer {
      * Reason: HyperNexus now captures session-start and stop-time memory, but still needs
      * post-tool lifecycle observations without wiring every caller individually.
      * What: best-effort bridge from centralized tool execution into structured memory observations.
-     * Why: keeps claude-mem-style lifecycle capture native to HyperNexus while never blocking tool execution.
+     * Why: keeps hypernexus-style lifecycle capture native to HyperNexus while never blocking tool execution.
      */
     private async captureToolObservation(event: {
         toolName: string;
@@ -2526,7 +2526,7 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
      * These are used to "warm up" the model's tool surface without a search turn.
      */
     public async getPredictedToolAds(chatHistory: string, activeGoal: string): Promise<string[]> {
-        const SIDECAR_URL = process.env.HYPERNEXUS_SIDECAR_URL || 'http://127.0.0.1:4300';
+        const SIDECAR_URL = process.env.HYPERCODE_SIDECAR_URL || 'http://localhost:4300';
         try {
             const response = await fetch(`${SIDECAR_URL}/api/mcp/tools/predict`, {
                 method: 'POST',
@@ -3736,12 +3736,6 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
             console.error("[MCPServer] Minimal mode active; skipping background ingestion and sidecar bridges.");
         }
 
-        // Build Graph in Background (unless skipped)
-        if (!this.options.skipRepoGraph && !this.options.minimal) {
-            this.autoTestService.repoGraph.buildGraph().catch(e => console.error("Graph build failed", e));
-        } else {
-            console.error("[MCPServer] Skipping RepoGraph build (minimal mode).");
-        }
         mcpServerDebugLog('[MCPServer] 🚀 HyperNexus Core ready.');
         mcpServerDebugLog('[MCPServer] Preparing request handlers...');
 
@@ -4106,14 +4100,14 @@ ${env.tools.filter((tool) => tool.installed).map((tool) => `- **${tool.name}**: 
                 ws.on('message', async (data: any) => {
                     try {
                         const msg = JSON.parse(data.toString());
-                        if (msg.type === 'HYPERNEXUS_CLIENT_HELLO') {
+                        if (msg.type === 'HYPERCODE_CLIENT_HELLO') {
                             const existing = this.bridgeClients.get(ws) ?? createDefaultBridgeClient(clientId);
                             const updated = applyBridgeClientHello(existing, msg, Date.now());
                             this.bridgeClients.set(ws, updated);
 
                             if (ws.readyState === 1) {
                                 ws.send(JSON.stringify({
-                                    type: 'HYPERNEXUS_CORE_MANIFEST',
+                                    type: 'HYPERCODE_CORE_MANIFEST',
                                     manifest: buildBridgeManifest(Array.from(this.bridgeClients.values())),
                                 }));
                             }

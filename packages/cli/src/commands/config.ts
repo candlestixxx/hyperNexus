@@ -1,7 +1,7 @@
 /**
  * `hypernexus config` - Configuration management
  *
- * View, set, and manage HyperNexus HYPERNEXUS configuration including
+ * View, set, and manage HyperNexus HYPERCODE configuration including
  * all subsystem settings, secrets, and environment variables.
  *
  * @example
@@ -146,7 +146,7 @@ Examples:
 			const { resolve, dirname } = await import("path");
 			const { homedir } = await import("os");
 
-			const configDir = process.env.HYPERNEXUS_CONFIG_DIR || resolve(homedir(), ".hypernexus");
+			const configDir = process.env.HYPERCODE_CONFIG_DIR || resolve(homedir(), ".hypernexus");
 			const configPath = resolve(configDir, "config.jsonc");
 
 			let config: Record<string, any> = {};
@@ -184,7 +184,7 @@ Examples:
 			const { homedir } = await import("os");
 			const chalk = (await import("chalk")).default;
 
-			const configDir = process.env.HYPERNEXUS_CONFIG_DIR || resolve(homedir(), ".hypernexus");
+			const configDir = process.env.HYPERCODE_CONFIG_DIR || resolve(homedir(), ".hypernexus");
 			const configPath = resolve(configDir, "config.jsonc");
 
 			let config: Record<string, any> = {};
@@ -255,7 +255,7 @@ Examples:
 				const { readFileSync, writeFileSync, mkdirSync } = await import("fs");
 				const { resolve, dirname } = await import("path");
 				const { homedir } = await import("os");
-				const configDir = process.env.HYPERNEXUS_CONFIG_DIR || resolve(homedir(), ".hypernexus");
+				const configDir = process.env.HYPERCODE_CONFIG_DIR || resolve(homedir(), ".hypernexus");
 				const configPath = resolve(configDir, "config.jsonc");
 				let config: Record<string, any> = {};
 				try {

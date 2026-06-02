@@ -1,6 +1,6 @@
-# TormentNexus Deployment Instructions
+# HyperNexus Deployment Instructions
 
-_This document contains the latest deployment instructions for the TormentNexus Universal AI Dashboard and Cognitive Control Plane (TormentNexus)._
+_This document contains the latest deployment instructions for the HyperNexus Universal AI Dashboard and Cognitive Control Plane (HyperCode)._
 
 ## Prerequisites
 
@@ -13,8 +13,8 @@ _This document contains the latest deployment instructions for the TormentNexus 
 
 1.  **Clone the Repository**:
     ```bash
-    git clone https://github.com/candlestixxx/tormentnexus.git
-    cd tormentnexus
+    git clone https://github.com/robertpelloni/hypernexus.git
+    cd hypernexus
     ```
 
 2.  **Initialize Submodules**:
@@ -39,7 +39,7 @@ _This document contains the latest deployment instructions for the TormentNexus 
 
 ## Running the Platform
 
-TormentNexus is designed as a long-running service that manages PC memory, CPU, disk, and bandwidth usage.
+HyperNexus is designed as a long-running service that manages PC memory, CPU, disk, and bandwidth usage.
 
 ### Standard Build & Run (Production/Development)
 
@@ -59,10 +59,10 @@ Use the provided startup batch file:
 `start.bat` defaults to `pnpm run build:workspace` (skipping extension-only build stages for a much faster boot). It also triggers a native-runtime preflight to verify SQLite and Electron bindings.
 
 **Startup Overrides**:
-- **Bypass Install**: `set TORMENTNEXUS_SKIP_INSTALL=1`
-- **Bypass Build**: `set TORMENTNEXUS_SKIP_BUILD=1`
-- **Force Full Monorepo Build**: `set TORMENTNEXUS_FULL_BUILD=1`
-- **Bypass Native Preflight**: `set TORMENTNEXUS_SKIP_NATIVE_PREFLIGHT=1`
+- **Bypass Install**: `set HYPERCODE_SKIP_INSTALL=1`
+- **Bypass Build**: `set HYPERCODE_SKIP_BUILD=1`
+- **Force Full Monorepo Build**: `set HYPERCODE_FULL_BUILD=1`
+- **Bypass Native Preflight**: `set HYPERCODE_SKIP_NATIVE_PREFLIGHT=1`
 
 ### Linux/macOS Startup Script
 
@@ -84,12 +84,12 @@ pnpm -C apps/maestro start
 To build and run the Go control plane sidecar alongside the main TS engine:
 ```bash
 cd go
-go run ./cmd/tormentnexus serve
+go run ./cmd/hypernexus serve
 ```
 Alternatively, build the binary:
 ```bash
 cd go
-go build -buildvcs=false ./cmd/tormentnexus
+go build -buildvcs=false ./cmd/hypernexus
 ```
 
 ---
@@ -105,8 +105,8 @@ pnpm run build:extensions
 
 Build the production bundle inside a container:
 ```bash
-docker build -f Dockerfile.prod -t tormentnexus:latest .
-docker run -p 3000:3000 -p 4000:4000 -v tormentnexus-data:/root/.tormentnexus tormentnexus:latest
+docker build -f Dockerfile.prod -t hypernexus:latest .
+docker run -p 3000:3000 -p 4000:4000 -v hypernexus-data:/root/.hypernexus hypernexus:latest
 ```
 
 ---
@@ -137,12 +137,12 @@ pnpm run check:release-gate:ci:strict-visuals
 
 | Service | Default Port | Override | Health Check Endpoint |
 |---------|-------------|----------|-----------------------|
-| Core API (TS Control Plane) | 4000 | `tormentnexus start --port <n>` | `http://localhost:4000/api/config/status` |
+| Core API (TS Control Plane) | 4000 | `hypernexus start --port <n>` | `http://localhost:4000/api/config/status` |
 | Web Dashboard (Next.js) | 3000 | `PORT` | `http://localhost:3000` |
 | Go Kernel sidecar | 4300 | — | `http://localhost:4300` |
 | Socket.io Swarm Server | 3001 | — | — |
 | tRPC Bridge Control | 4100 | — | — |
-| Orchestrator tRPC | 3847 | `TORMENTNEXUS_ORCHESTRATOR_PORT` | `http://localhost:3847` |
+| Orchestrator tRPC | 3847 | `HYPERCODE_ORCHESTRATOR_PORT` | `http://localhost:3847` |
 
 ## Health Checks
 - `http://localhost:4000/api/config/status` - Main control plane health

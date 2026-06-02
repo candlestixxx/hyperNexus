@@ -5,7 +5,7 @@
  * @version 2.5.0
  *
  * Main entry point for the `hypernexus` command. Provides comprehensive CLI access
- * to all HYPERNEXUS subsystems: MCP router, memory, agents, sessions, providers,
+ * to all HYPERCODE subsystems: MCP router, memory, agents, sessions, providers,
  * tools, skills, configuration, and the web dashboard.
  */
 
@@ -62,7 +62,7 @@ const program = new Command();
 
 program
   .name('hypernexus')
-  .description('HyperNexus — The Neural Operating System / HYPERNEXUS\n\nThe ultimate AI tool dashboard & development orchestrator.\nManage MCP servers, memory, agents, sessions, providers, and more.')
+  .description('HyperNexus — The Neural Operating System / HYPERCODE\n\nThe ultimate AI tool dashboard & development orchestrator.\nManage MCP servers, memory, agents, sessions, providers, and more.')
   .version(version, '-v, --version', 'Display the current HyperNexus version')
   .option('--json', 'Output results as JSON (applies to list/status commands)')
   .option('--config <path>', 'Path to hypernexus config file', '~/.hypernexus/config.jsonc')

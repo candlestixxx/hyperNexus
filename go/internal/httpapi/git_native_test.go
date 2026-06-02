@@ -31,7 +31,7 @@ func TestSubmoduleUpdateAllFallsBackToNativeGitReport(t *testing.T) {
 		t.Fatalf("git init failed: %v (%s)", err, string(output))
 	}
 
-	t.Setenv("HYPERNEXUS_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
+	t.Setenv("HYPERCODE_TRPC_UPSTREAM", "http://127.0.0.1:1/trpc")
 	cfg := config.Default()
 	cfg.WorkspaceRoot = workspace
 	cfg.ConfigDir = filepath.Join(workspace, ".hypernexus-go")

@@ -468,10 +468,10 @@ func (hs *HydrationStore) ingestEnvironment() int {
 
 	// Check for key env vars
 	keyEnvs := []string{
-		"HYPERNEXUS_TRPC_UPSTREAM",
-		"HYPERNEXUS_GO_PORT",
-		"HYPERNEXUS_WORKSPACE_ROOT",
-		"HYPERNEXUS_MAIN_CONFIG_DIR",
+		"HYPERCODE_TRPC_UPSTREAM",
+		"HYPERCODE_GO_PORT",
+		"HYPERCODE_WORKSPACE_ROOT",
+		"HYPERCODE_MAIN_CONFIG_DIR",
 	}
 	for _, key := range keyEnvs {
 		if val := os.Getenv(key); val != "" {

@@ -20,6 +20,8 @@ export interface ImportedSessionMemoryInput {
 export interface ImportedSessionRecordInput {
     sourceTool: string;
     sourcePath: string;
+    sourceSize?: number | null;
+    sourceMtime?: number | null;
     externalSessionId?: string | null;
     title?: string | null;
     sessionFormat: string;
@@ -45,6 +47,8 @@ export interface ImportedSessionRecord {
     id: string;
     sourceTool: string;
     sourcePath: string;
+    sourceSize: number | null;
+    sourceMtime: number | null;
     externalSessionId: string | null;
     title: string | null;
     sessionFormat: string;
@@ -202,6 +206,8 @@ export class ImportedSessionStore {
             id: String(row.uuid),
             sourceTool: String(row.source_tool ?? ''),
             sourcePath: String(row.source_path ?? ''),
+            sourceSize: row.source_size == null ? null : Number(row.source_size),
+            sourceMtime: row.source_mtime == null ? null : Number(row.source_mtime),
             externalSessionId: typeof row.external_session_id === 'string' ? row.external_session_id : null,
             title: typeof row.title === 'string' ? row.title : null,
             sessionFormat: String(row.session_format ?? 'generic'),
@@ -237,6 +243,18 @@ export class ImportedSessionStore {
             }
 
             throw error;
+        }
+    }
+
+    hasMatchingSource(sourcePath: string, size: number, mtime: number): boolean {
+        try {
+            const row = sqliteInstance
+                .prepare('SELECT uuid FROM imported_sessions WHERE source_path = ? AND source_size = ? AND source_mtime = ? LIMIT 1')
+                .get(sourcePath, size, mtime) as Record<string, unknown> | undefined;
+
+            return Boolean(row?.uuid);
+        } catch (error) {
+            return false;
         }
     }
 
@@ -374,6 +392,8 @@ export class ImportedSessionStore {
                 uuid,
                 source_tool,
                 source_path,
+                source_size,
+                source_mtime,
                 external_session_id,
                 title,
                 session_format,
@@ -392,10 +412,12 @@ export class ImportedSessionStore {
                 last_modified_at,
                 created_at,
                 updated_at
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT(uuid) DO UPDATE SET
                 source_tool = excluded.source_tool,
                 source_path = excluded.source_path,
+                source_size = excluded.source_size,
+                source_mtime = excluded.source_mtime,
                 external_session_id = excluded.external_session_id,
                 title = excluded.title,
                 session_format = excluded.session_format,
@@ -417,6 +439,8 @@ export class ImportedSessionStore {
             sessionId,
             input.sourceTool,
             input.sourcePath,
+            input.sourceSize ?? null,
+            input.sourceMtime ?? null,
             input.externalSessionId ?? null,
             input.title ?? null,
             input.sessionFormat,

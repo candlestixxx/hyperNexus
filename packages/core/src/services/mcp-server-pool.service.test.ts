@@ -20,7 +20,7 @@ vi.mock('./auto-reconnect.service.js', () => ({
 }));
 
 vi.mock('./mcp-client.service.js', () => ({
-    connectHyperNexusClient: vi.fn(),
+    connecthypernexusClient: vi.fn(),
 }));
 
 vi.mock('./server-error-tracker.service.js', () => ({

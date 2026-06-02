@@ -2,8 +2,8 @@
 
 A multi-model AI council for autonomous development guidance. Multiple AI supervisors debate and vote on code changes through a democratic process.
 
-This document describes the legacy standalone council architecture that has now been assimilated into the HyperNexus monorepo. The canonical product name is **cli-orchestrator**. Legacy `AUTOPILOT_*` environment variables remain supported for compatibility, but new deployments should prefer `HYPERNEXUS_ORCHESTRATOR_*`. This is no longer documented as a separate `hypernexus-orchestrator` repository.
-This document describes the legacy standalone council architecture that has now been assimilated into the hypernexus monorepo. The canonical product name is **cli-orchestrator**. Legacy `AUTOPILOT_*` environment variables remain supported for compatibility, but new deployments should prefer `HYPERNEXUS_ORCHESTRATOR_*`. This is no longer documented as a separate `hypernexus-orchestrator` repository.
+This document describes the legacy standalone council architecture that has now been assimilated into the HyperNexus monorepo. The canonical product name is **cli-orchestrator**. Legacy `AUTOPILOT_*` environment variables remain supported for compatibility, but new deployments should prefer `HYPERCODE_ORCHESTRATOR_*`. This is no longer documented as a separate `hypernexus-orchestrator` repository.
+This document describes the legacy standalone council architecture that has now been assimilated into the hypernexus monorepo. The canonical product name is **cli-orchestrator**. Legacy `AUTOPILOT_*` environment variables remain supported for compatibility, but new deployments should prefer `HYPERCODE_ORCHESTRATOR_*`. This is no longer documented as a separate `hypernexus-orchestrator` repository.
 
 ## Architecture
 
@@ -62,18 +62,18 @@ KIMI_API_KEY            # Kimi supervisor (or MOONSHOT_API_KEY)
 
 ### Server Configuration
 ```bash
-HYPERNEXUS_ORCHESTRATOR_PORT=3847           # API server port
-HYPERNEXUS_ORCHESTRATOR_HOST=0.0.0.0        # Bind address
-HYPERNEXUS_ORCHESTRATOR_BASE_PORT=4096      # Session base port
-HYPERNEXUS_ORCHESTRATOR_DEBATE_ROUNDS=2     # Number of debate rounds
-HYPERNEXUS_ORCHESTRATOR_CONSENSUS=0.7       # Consensus threshold (70%)
-HYPERNEXUS_ORCHESTRATOR_SMART_PILOT=false   # Enable auto-continue
-HYPERNEXUS_ORCHESTRATOR_PORT=3847           # API server port
-HYPERNEXUS_ORCHESTRATOR_HOST=0.0.0.0        # Bind address
-HYPERNEXUS_ORCHESTRATOR_BASE_PORT=4096      # Session base port
-HYPERNEXUS_ORCHESTRATOR_DEBATE_ROUNDS=2     # Number of debate rounds
-HYPERNEXUS_ORCHESTRATOR_CONSENSUS=0.7       # Consensus threshold (70%)
-HYPERNEXUS_ORCHESTRATOR_SMART_PILOT=false   # Enable auto-continue
+HYPERCODE_ORCHESTRATOR_PORT=3847           # API server port
+HYPERCODE_ORCHESTRATOR_HOST=0.0.0.0        # Bind address
+HYPERCODE_ORCHESTRATOR_BASE_PORT=4096      # Session base port
+HYPERCODE_ORCHESTRATOR_DEBATE_ROUNDS=2     # Number of debate rounds
+HYPERCODE_ORCHESTRATOR_CONSENSUS=0.7       # Consensus threshold (70%)
+HYPERCODE_ORCHESTRATOR_SMART_PILOT=false   # Enable auto-continue
+HYPERCODE_ORCHESTRATOR_PORT=3847           # API server port
+HYPERCODE_ORCHESTRATOR_HOST=0.0.0.0        # Bind address
+HYPERCODE_ORCHESTRATOR_BASE_PORT=4096      # Session base port
+HYPERCODE_ORCHESTRATOR_DEBATE_ROUNDS=2     # Number of debate rounds
+HYPERCODE_ORCHESTRATOR_CONSENSUS=0.7       # Consensus threshold (70%)
+HYPERCODE_ORCHESTRATOR_SMART_PILOT=false   # Enable auto-continue
 
 # Legacy compatibility aliases still accepted:
 AUTOPILOT_PORT=3847

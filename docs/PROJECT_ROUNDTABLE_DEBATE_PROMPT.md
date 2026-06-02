@@ -36,7 +36,7 @@ Assume the following are true unless you can justify a correction:
 Also assume the following adjacent systems contain useful ideas, but hypernexus does **not** need full parity with them before 1.0:
 
 - **HyperNexus / MCP routers** — search, progressive disclosure, middleware, lifecycle ideas
-- **claude-mem / memory systems** — capture, compression, context harvesting
+- **hypernexus / memory systems** — capture, compression, context harvesting
 - **MCP-SuperAssistant / browser integrations** — browser automation and web-chat bridging
 - **Jules / cloud-dev / autonomy systems** — session portability, replay, keeper loops, operator-safe autonomy
 

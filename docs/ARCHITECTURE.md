@@ -1,7 +1,7 @@
-# HyperNexus HYPERNEXUS Architecture
+# HyperNexus HYPERCODE Architecture
 
 ## Overview
-HyperNexus HYPERNEXUS is a "Go-Powered Modular Monolith" designed for high-performance AI orchestration. It separates high-level user interaction and visualization (TypeScript/React) from low-level control, tool execution, and state management (Go).
+HyperNexus HYPERCODE is a "Go-Powered Modular Monolith" designed for high-performance AI orchestration. It separates high-level user interaction and visualization (TypeScript/React) from low-level control, tool execution, and state management (Go).
 
 ## Core Components
 

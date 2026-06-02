@@ -93,7 +93,7 @@ Examples:
       const { spawn } = await import('child_process');
       const webDir = resolve(process.cwd(), 'apps/web');
       const url = `http://${opts.host}:${opts.port}`;
-      const upstreamTrpc = process.env.HYPERNEXUS_TRPC_UPSTREAM?.trim() || 'http://127.0.0.1:4100/trpc';
+      const upstreamTrpc = process.env.HYPERCODE_TRPC_UPSTREAM?.trim() || 'http://127.0.0.1:4100/trpc';
       const scriptPath = resolve(webDir, 'scripts', opts.dev ? 'dev.mjs' : 'start.mjs');
       const coreReachable = await isCoreReachable(upstreamTrpc);
 
@@ -115,7 +115,7 @@ Examples:
         cwd: webDir,
         env: {
           ...process.env,
-          HYPERNEXUS_TRPC_UPSTREAM: upstreamTrpc,
+          HYPERCODE_TRPC_UPSTREAM: upstreamTrpc,
         },
       });
 
@@ -139,7 +139,7 @@ Examples:
   // About command (bonus)
   program
     .command('about')
-    .description('Show HyperNexus HYPERNEXUS version, project info, and submodule status')
+    .description('Show HyperNexus HYPERCODE version, project info, and submodule status')
     .option('--json', 'Output as JSON')
     .action(async (opts) => {
       const chalk = (await import('chalk')).default;
@@ -149,7 +149,7 @@ Examples:
           name: 'HyperNexus',
           subtitle: 'The Neural Operating System',
           version: getVersion(),
-          codename: 'HYPERNEXUS',
+          codename: 'HYPERCODE',
           packages: ['@hypernexus/core', '@hypernexus/cli', '@hypernexus/types', '@hypernexus/ai', '@hypernexus/agents', '@hypernexus/tools', '@hypernexus/search', '@hypernexus/memory', '@hypernexus/adk'],
           repository: 'https://github.com/robertpelloni/hypernexus',
         }, null, 2));
@@ -157,7 +157,7 @@ Examples:
       }
 
       console.log(chalk.bold.cyan('\n  ⬡ HyperNexus — The Neural Operating System'));
-      console.log(chalk.dim(`  Version: ${getVersion()} | Codename: HYPERNEXUS\n`));
+      console.log(chalk.dim(`  Version: ${getVersion()} | Codename: HYPERCODE\n`));
       console.log(chalk.dim('  "The Ultimate AI Tool Dashboard & Development Orchestrator"\n'));
 
       console.log(chalk.bold('  Packages:'));

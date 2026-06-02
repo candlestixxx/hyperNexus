@@ -9,7 +9,7 @@ export class NativeSidecarDaemon {
 
     constructor(
         private readonly eventBus: EventBus,
-        private readonly sidecarUrl: string = process.env.HYPERNEXUS_SIDECAR_URL || 'http://127.0.0.1:4300'
+        private readonly sidecarUrl: string = process.env.HYPERCODE_SIDECAR_URL || 'http://localhost:4300'
     ) {}
 
     async start() {
@@ -54,8 +54,9 @@ export class NativeSidecarDaemon {
         if (event.type === 'a2a:signal') {
             const payload = event.payload;
             if (payload && payload.message) {
-                if (payload.message.type?.toLowerCase() !== 'heartbeat') {
-                    console.log(`[NativeSidecarDaemon] Replaying A2A signal: ${payload.message.type}`);
+                // Skip heartbeat logging to reduce noise (frequent and expected)
+                if (payload.message.type !== 'HEARTBEAT') {
+                console.log(`[NativeSidecarDaemon] Replaying A2A signal: ${payload.message.type}`);
                 }
                 a2aBroker.routeMessage(payload.message).catch(e =>
                     console.error('[NativeSidecarDaemon] Failed to route replayed message:', e)

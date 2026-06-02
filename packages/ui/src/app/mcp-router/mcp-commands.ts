@@ -1,5 +1,5 @@
 /**
- * HYPERNEXUS MCP Router - CLI Integration
+ * HYPERCODE MCP Router - CLI Integration
  *
  * Integrates MCP Router CLI commands into the main hypernexus CLI
  */

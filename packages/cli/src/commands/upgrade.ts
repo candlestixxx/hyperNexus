@@ -1,12 +1,12 @@
 /**
- * `hypernexus upgrade` — Check for updates and upgrade HyperNexus HYPERNEXUS
+ * `hypernexus upgrade` — Check for updates and upgrade HyperNexus HYPERCODE
  */
 import type { Command } from 'commander';
 
 export function registerUpgradeCommand(program: Command): void {
   program
     .command('upgrade')
-    .description('Check for updates and upgrade HyperNexus HYPERNEXUS')
+    .description('Check for updates and upgrade HyperNexus HYPERCODE')
     .option('--check', 'Only check for updates without upgrading')
     .option('--force', 'Force upgrade even if up to date')
     .action(async (opts) => {
@@ -27,7 +27,7 @@ export function registerUpgradeCommand(program: Command): void {
         }
       } catch {}
 
-      console.log(chalk.bold.cyan('\n  HyperNexus HYPERNEXUS Upgrade\n'));
+      console.log(chalk.bold.cyan('\n  HyperNexus HYPERCODE Upgrade\n'));
       console.log(chalk.dim('  Current version: ') + currentVersion);
 
       // Check latest version from GitHub

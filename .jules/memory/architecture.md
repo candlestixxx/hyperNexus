@@ -2,11 +2,11 @@
 
 This document serves as the authoritative summary of the project's architecture, established patterns, and strategic decisions as of version **1.0.0-alpha.56**.
 
-## 1. Core Brand Strategy: HyperNexus & HyperNexus
+## 1. Core Brand Strategy: HyperNexus & HyperCode
 The project has transitioned from "HyperNexus" to a sophisticated dual-brand strategy:
 *   **HyperNexus (The Kernel/Substrate):** The underlying "AI HyperNexus" and coordination runtime. It treats Large Language Models as "guest operating systems" and manages the low-level memory, routing, and execution buses.
-*   **HyperNexus (The Flagship Product):** The user-facing, local-first autonomous coding environment powered by the HyperNexus kernel.
-*   **Rationale:** This separation prevents "identity collapse" by allowing the infrastructure (HyperNexus) to remain a general-purpose agent coordination layer while the product (HyperNexus) focuses on delivering a world-class developer experience.
+*   **HyperCode (The Flagship Product):** The user-facing, local-first autonomous coding environment powered by the HyperNexus kernel.
+*   **Rationale:** This separation prevents "identity collapse" by allowing the infrastructure (HyperNexus) to remain a general-purpose agent coordination layer while the product (HyperCode) focuses on delivering a world-class developer experience.
 
 ## 2. Active Tiered Memory Substrate (Implemented Phase 1)
 Memory has been transitioned from a passive storage model into an active, biological-inspired system:
@@ -52,4 +52,4 @@ The system is being architected to support "AI HyperNexus Enterprise" features:
 *   **Version Synchronization:** Every major functional increment must sync `VERSION`, `CHANGELOG.md`, `VISION.md`, and all monorepo `package.json` manifests.
 
 ---
-*This memory is the definitive record of the HyperNexus/HyperNexus architecture and directs all subsequent implementation turns.*
+*This memory is the definitive record of the HyperNexus/HyperCode architecture and directs all subsequent implementation turns.*

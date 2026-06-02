@@ -1,9 +1,9 @@
-# Vision: AI HyperNexus (HyperNexus & HyperNexus)
+# Vision: AI HyperNexus (HyperNexus & HyperCode)
 
 ## North Star: The AI HyperNexus
 **HyperNexus** is the underlying coordination kernel and "AI HyperNexus." It acts as the Operating System for AI models, abstracting provider complexity, managing context windows via biological tiered memory, and providing a deterministic execution sandbox.
 
-**HyperNexus** is the flagship developer-facing product (CLI and Dashboard) providing an autonomous coding runtime powered by the HyperNexus Kernel.
+**HyperCode** is the flagship developer-facing product (CLI and Dashboard) providing an autonomous coding runtime powered by the HyperNexus Kernel.
 
 ## Core Philosophical Pillars
 1. **Models as Compute**: Models are ephemeral resources. HyperNexus manages their allocation, fallback routing, and token budgets.
@@ -15,7 +15,7 @@
 - **HyperNexus Runtime (Go Kernel)**: The authoritative execution kernel (State, Memory, LLM routing, MCP sync). Standardized on Port 4300.
 - **HyperNexus Memory (L1/L2/L3)**: Active memory substrate with SQLite-vec for semantic search and heat-score lifecycle management.
 - **HyperNexus Router**: Progressive tool disclosure and budget-aware provider waterfall.
-- **HyperNexus Control Plane (TS)**: Next.js dashboard (Port 3000) and tRPC middleware (Port 4100) for observation and high-level agent mission coordination.
+- **HyperCode Control Plane (TS)**: Next.js dashboard (Port 3000) and tRPC middleware (Port 4100) for observation and high-level agent mission coordination.
 
 ## Implementation Milestones
 

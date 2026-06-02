@@ -1,6 +1,6 @@
-# Roadmap: AI TormentNexus (TormentNexus Kernel & TormentNexus Dashboard)
+# Roadmap: AI HyperNexus (HyperNexus & HyperCode)
 
-_Last updated: 2026-05-30, version 1.0.0-alpha.80_
+_Last updated: 2026-05-17, version 1.0.0-alpha.62_
 
 ## Status Legend
 
@@ -9,12 +9,12 @@ _Last updated: 2026-05-30, version 1.0.0-alpha.80_
 - **Experimental** — Active R&D, not dependable
 - **Vision** — Directional only
 
-## Completed (v1.0.0-alpha.80)
+## Completed (v1.0.0-alpha.62)
 
-### 1. Rebranding & Database Conversion (STABLE)
-- **TormentNexus Universal Rebrand**: Complete case-insensitive, case-specific refactoring across source modules, config files, package dependencies, and directories.
-- **Unified Catalog SQLite Storage**: Ingested and deduplicated standard technical assets, creating a robust local dataset of **11,024 populated MCP servers** stored directly in `tormentnexus.db`.
-- **Legacy Submodule Cleanup**: Performed a global dependency audit and fully pruned 22 uninitialized, redundant submodules from `.gitmodules` to optimize build performance and eliminate security drift.
+### 1. HyperNexus Kernel: Active Memory Substrate (STABLE)
+- **Biological Tiered Memory**: L1 (Scratchpad), L2 (Vault), L3 (Archive) implementation in Go.
+- **Heat Mechanics**: Implemented utility-based scoring and temporal decay for all memories.
+- **Semantic Search**: Integrated `sqlite-vec` for hyper-fast, local-first context matching.
 
 ### 2. Default Harness & GUI Integrations (BETA)
 - **Included Default Harnesses**: Integrated candlestixxx's **Pi-Mono** (`pi-cli`) and **Hermes Agent** as default included agent harnesses.
@@ -30,10 +30,10 @@ _Last updated: 2026-05-30, version 1.0.0-alpha.80_
 
 ## Active Sprint: Phase 6 - Enterprise Readiness & MCP Client Testing
 
-### A. Local MCP Server Verification (BETA)
-- [ ] Establish automated testing scripts to verify TormentNexus functioning as an MCP server.
-- [ ] Validate tool aggregation by executing custom internal and downstream MCP tools programmatically.
-- [ ] Connect down-stream clients (Cursor/VS Code) to TormentNexus stdio interfaces and monitor diagnostic logs.
+### A. Universal Protocol & Attachment (BETA)
+- [x] Implement `hypernexus://` protocol handlers for deep-linking.
+- [ ] Browser Extension: Implement `hypernexus-attach` to link web-based AI chats directly to the local HyperNexus Kernel.
+- [ ] Implement Global Command Hub (Cmd+K) for system-wide HyperCode access.
 
 ### B. Enterprise Wrapper Integration (EXPERIMENTAL)
 - [ ] Separate the proprietary compliance module (SSO/OIDC, Role-Based Access Control, audit trail logger) from the open-source core.

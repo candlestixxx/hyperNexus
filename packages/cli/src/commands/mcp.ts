@@ -822,7 +822,7 @@ Supported clients:
       const chalk = (await import('chalk')).default;
       console.log(chalk.bold.cyan('\n  MCP Config Sync (Go Native)\n'));
 
-      const SIDECAR_URL = process.env.HYPERNEXUS_SIDECAR_URL || 'http://127.0.0.1:4300';
+      const SIDECAR_URL = process.env.HYPERCODE_SIDECAR_URL || 'http://127.0.0.1:4300';
 
       if (opts.dryRun) {
         console.log(chalk.yellow('  [DRY RUN] No changes will be written\n'));

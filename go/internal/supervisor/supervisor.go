@@ -1128,15 +1128,15 @@ func buildExecutionPolicyEnv(policy *ExecutionPolicy) map[string]string {
 		return map[string]string{}
 	}
 	env := map[string]string{
-		"HYPERNEXUS_EXECUTION_PROFILE_REQUESTED": policy.RequestedProfile,
-		"HYPERNEXUS_EXECUTION_PROFILE_EFFECTIVE": policy.EffectiveProfile,
-		"HYPERNEXUS_EXECUTION_SHELL_ID":          derefPolicyString(policy.ShellID),
-		"HYPERNEXUS_EXECUTION_SHELL_LABEL":       derefPolicyString(policy.ShellLabel),
-		"HYPERNEXUS_EXECUTION_SHELL_FAMILY":      derefPolicyString(policy.ShellFamily),
-		"HYPERNEXUS_EXECUTION_SHELL_PATH":        derefPolicyString(policy.ShellPath),
-		"HYPERNEXUS_EXECUTION_POLICY_REASON":     policy.Reason,
-		"HYPERNEXUS_SUPPORTS_POWERSHELL":         boolEnvValue(policy.SupportsPowerShell),
-		"HYPERNEXUS_SUPPORTS_POSIX_SHELL":        boolEnvValue(policy.SupportsPosixShell),
+		"HYPERCODE_EXECUTION_PROFILE_REQUESTED": policy.RequestedProfile,
+		"HYPERCODE_EXECUTION_PROFILE_EFFECTIVE": policy.EffectiveProfile,
+		"HYPERCODE_EXECUTION_SHELL_ID":          derefPolicyString(policy.ShellID),
+		"HYPERCODE_EXECUTION_SHELL_LABEL":       derefPolicyString(policy.ShellLabel),
+		"HYPERCODE_EXECUTION_SHELL_FAMILY":      derefPolicyString(policy.ShellFamily),
+		"HYPERCODE_EXECUTION_SHELL_PATH":        derefPolicyString(policy.ShellPath),
+		"HYPERCODE_EXECUTION_POLICY_REASON":     policy.Reason,
+		"HYPERCODE_SUPPORTS_POWERSHELL":         boolEnvValue(policy.SupportsPowerShell),
+		"HYPERCODE_SUPPORTS_POSIX_SHELL":        boolEnvValue(policy.SupportsPosixShell),
 	}
 	if policy.ShellPath != nil && strings.TrimSpace(*policy.ShellPath) != "" {
 		env["SHELL"] = strings.TrimSpace(*policy.ShellPath)

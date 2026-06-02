@@ -86,6 +86,6 @@ function readStartLockRecord(dataDir: string): HyperNexusStartLockRecord | null 
     }
 }
 
-export function readLocalStartupProvenance(dataDir: string = process.env.HYPERNEXUS_DATA_DIR ?? '~/.hypernexus'): HyperNexusStartupProvenance | null {
+export function readLocalStartupProvenance(dataDir: string = process.env.HYPERCODE_DATA_DIR ?? '~/.hypernexus'): HyperNexusStartupProvenance | null {
     return normalizeStartupProvenance(readStartLockRecord(dataDir));
 }

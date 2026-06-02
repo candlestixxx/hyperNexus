@@ -167,7 +167,7 @@ deny contains decision if {
     input.tool_name == tool
 
     decision := {
-        "rule_id": "HYPERNEXUS-SECURITY-001",
+        "rule_id": "HYPERCODE-SECURITY-001",
         "reason": "Restricted tool access",
         "severity": "CRITICAL"
     }

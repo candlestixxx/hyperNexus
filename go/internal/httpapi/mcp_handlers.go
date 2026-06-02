@@ -9,48 +9,57 @@ import (
 	"time"
 
 	"github.com/hypernexushq/hypernexus-go/internal/mcp"
+	"github.com/hypernexushq/hypernexus-go/internal/cache"
 )
 
 func (s *Server) handleMCPStatus(w http.ResponseWriter, r *http.Request) {
+	// Cache MCP status for 10s to reduce upstream calls
+	val, err := cache.Cached(s.cacheService, "mcp:status", func() (interface{}, error) {
+		return s.buildMCPStatus(r.Context())
+	}, 30000)
+	if err != nil {
+		writeJSON(w, http.StatusServiceUnavailable, map[string]any{"success": false, "error": err.Error()})
+		return
+	}
+	writeJSON(w, http.StatusOK, val)
+}
+
+func (s *Server) buildMCPStatus(ctx context.Context) (map[string]any, error) {
 	var result any
-	upstreamBase, err := s.callUpstreamJSON(r.Context(), "mcp.getStatus", nil, &result)
+	upstreamBase, err := s.callUpstreamJSON(ctx, "mcp.getStatus", nil, &result)
 	if err == nil {
-		writeJSON(w, http.StatusOK, map[string]any{
+		return map[string]any{
 			"success": true,
-			"data":    result,
+			"data": result,
 			"bridge": map[string]any{
 				"upstreamBase": upstreamBase,
-				"procedure":    "mcp.getStatus",
+				"procedure": "mcp.getStatus",
 			},
-		})
-		return
+		}, nil
 	}
-
-	_, summary, localErr := s.localMCPSummary(r.Context())
+	_, summary, localErr := s.localMCPSummary(ctx)
 	if localErr != nil {
-		writeJSON(w, http.StatusServiceUnavailable, map[string]any{"success": false, "error": localErr.Error()})
-		return
+		return nil, localErr
 	}
-
-	writeJSON(w, http.StatusOK, map[string]any{
+	return map[string]any{
 		"success": true,
 		"data": map[string]any{
-			"initialized":              true,
-			"connected":                summary.SourceBackedHarnessCount > 0,
-			"toolCount":                summary.SourceBackedToolCount,
-			"serverCount":              summary.InstalledHarnessCount,
-			"connectedCount":           summary.SourceBackedHarnessCount,
+			"initialized": true,
+			"connected": summary.SourceBackedHarnessCount > 0,
+			"toolCount": summary.SourceBackedToolCount,
+			"serverCount": summary.InstalledHarnessCount,
+			"connectedCount": summary.SourceBackedHarnessCount,
 			"sourceBackedHarnessCount": summary.SourceBackedHarnessCount,
-			"source":                   "source-backed-local-summary",
-			"lazySessionMode":          false,
-			"singleActiveServerMode":   false,
+			"source": "source-backed-local-summary",
+			"lazySessionMode": false,
+			"singleActiveServerMode": false,
 		},
 		"bridge": map[string]any{
-			"fallback":  "go-local-mcp",
+			"fallback": "go-local-mcp",
 			"procedure": "mcp.getStatus",
-			"reason":    "upstream unavailable; using local MCP harness summary",
+			"reason": "upstream unavailable; using local MCP harness summary",
 		},
-	})
+	}, nil
 }
 
 func (s *Server) handleMCPTools(w http.ResponseWriter, r *http.Request) {
@@ -320,29 +329,40 @@ func (s *Server) handleMCPSync(w http.ResponseWriter, r *http.Request) {
 
 // handleMCPServersList returns a combined view of runtime + configured servers.
 func (s *Server) handleMCPServersList(w http.ResponseWriter, r *http.Request) {
+	// Cache MCP server list for 10s to reduce upstream calls
+	val, err := cache.Cached(s.cacheService, "mcp:servers", func() (interface{}, error) {
+		return s.buildMCPServersList(r.Context())
+	}, 30000)
+	if err != nil {
+		writeJSON(w, http.StatusServiceUnavailable, map[string]any{"success": false, "error": err.Error()})
+		return
+	}
+	writeJSON(w, http.StatusOK, val)
+}
+
+func (s *Server) buildMCPServersList(ctx context.Context) (map[string]any, error) {
 	var result any
-	ctx, cancel := context.WithTimeout(r.Context(), 3*time.Second)
+	upstreamCtx, cancel := context.WithTimeout(ctx, 3*time.Second)
 	defer cancel()
-	upstreamBase, err := s.callUpstreamJSON(ctx, "mcp.listServers", nil, &result)
+	upstreamBase, err := s.callUpstreamJSON(upstreamCtx, "mcp.listServers", nil, &result)
 	if err == nil {
-		writeJSON(w, http.StatusOK, map[string]any{
+		return map[string]any{
 			"success": true,
-			"data":    result,
+			"data": result,
 			"bridge": map[string]any{
 				"upstreamBase": upstreamBase,
-				"procedure":    "mcp.listServers",
+				"procedure": "mcp.listServers",
 			},
-		})
-		return
+		}, nil
 	}
 
 	view, _ := s.localMCPInventoryView()
-	_, cliSummary, _ := s.localMCPSummary(r.Context())
+	_, cliSummary, _ := s.localMCPSummary(ctx)
 
 	type serverEntry struct {
-		Name      string `json:"name"`
-		Status    string `json:"status"`
-		ToolCount int    `json:"toolCount"`
+		Name string `json:"name"`
+		Status string `json:"status"`
+		ToolCount int `json:"toolCount"`
 	}
 
 	var servers []serverEntry
@@ -359,8 +379,8 @@ func (s *Server) handleMCPServersList(w http.ResponseWriter, r *http.Request) {
 				status = "connected"
 			}
 			servers = append(servers, serverEntry{
-				Name:      srv.Name,
-				Status:    status,
+				Name: srv.Name,
+				Status: status,
 				ToolCount: srv.ToolCount,
 			})
 		}
@@ -374,8 +394,8 @@ func (s *Server) handleMCPServersList(w http.ResponseWriter, r *http.Request) {
 				status = "connected"
 			}
 			servers = append(servers, serverEntry{
-				Name:      srv.Name,
-				Status:    status,
+				Name: srv.Name,
+				Status: status,
 				ToolCount: srv.ToolCount,
 			})
 		}
@@ -387,18 +407,18 @@ func (s *Server) handleMCPServersList(w http.ResponseWriter, r *http.Request) {
 		}
 		seen[h.ID] = true
 		servers = append(servers, serverEntry{
-			Name:   h.ID,
+			Name: h.ID,
 			Status: "available",
 		})
 	}
 
-	writeJSON(w, http.StatusOK, map[string]any{
+	return map[string]any{
 		"success": true,
-		"data":    servers,
+		"data": servers,
 		"bridge": map[string]any{
-			"fallback":  "go-local-mcp",
+			"fallback": "go-local-mcp",
 			"procedure": "mcp.listServers",
-			"reason":    "upstream unavailable; using local MCP inventory",
+			"reason": "upstream unavailable; using local MCP inventory",
 		},
-	})
+	}, nil
 }

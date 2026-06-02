@@ -20,7 +20,7 @@ import { MemoryManager } from '../services/MemoryManager.js';
 import { SearchService } from '@hypernexus/search';
 
 async function run() {
-    const indexPath = path.join(root, 'HYPERNEXUS_MASTER_INDEX.jsonc');
+    const indexPath = path.join(root, 'HYPERCODE_MASTER_INDEX.jsonc');
     const skillsRoot = path.join(root, '.hypernexus', 'skills');
 
     console.log(`[Assimilator] Root: ${root}`);

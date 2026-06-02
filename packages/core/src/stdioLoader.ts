@@ -22,7 +22,7 @@ const CORE_TOOL_EXECUTE_URL = getBridgeToolExecuteUrl();
 const DEFAULT_TOOL_CALL_READY_TIMEOUT_MS = 1_500;
 const DEFAULT_TOOL_CALL_POLL_INTERVAL_MS = 250;
 
-export const HYPERNEXUS_CORE_LOADER_STATUS_TOOL = 'hypernexus_core_loader_status';
+export const HYPERCODE_CORE_LOADER_STATUS_TOOL = 'hypernexus_core_loader_status';
 
 export type LoaderBootstrapState = {
     lastBootstrapStatus: BackgroundCoreBootstrapResult['status'] | 'idle';
@@ -107,7 +107,7 @@ function toToolDefinition(serverName: string, tool: HyperNexusMcpToolMetadata): 
 
 export function buildLoaderStatusToolDefinition(): Tool {
     return {
-        name: HYPERNEXUS_CORE_LOADER_STATUS_TOOL,
+        name: HYPERCODE_CORE_LOADER_STATUS_TOOL,
         description: 'Report whether the lightweight stdio loader is serving cached tools or proxying to a live HyperNexus Core control plane.',
         inputSchema: { type: 'object', properties: {} },
     } as Tool;
@@ -290,7 +290,7 @@ export async function callLoaderTool(
     const proxyToolCallImpl = deps.proxyToolCall ?? proxyToolCallToCore;
 
     const coreHealthy = await isCoreHealthyImpl(CORE_HEALTH_URL);
-    if (name === HYPERNEXUS_CORE_LOADER_STATUS_TOOL) {
+    if (name === HYPERCODE_CORE_LOADER_STATUS_TOOL) {
         return buildLoaderStatusResult(state, coreHealthy);
     }
 

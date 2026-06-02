@@ -61,7 +61,7 @@ export const transformDockerUrl = (url: string): string => {
     return url;
 };
 
-export const createHyperNexusClient = (
+export const createhypernexusClient = (
     serverParams: ServerParameters,
 ): { client: Client | undefined; transport: Transport | undefined } => {
     let transport: Transport | undefined;
@@ -199,7 +199,7 @@ export const createHyperNexusClient = (
     return { client, transport };
 };
 
-export const connectHyperNexusClient = async (
+export const connecthypernexusClient = async (
     serverParams: ServerParameters,
     onProcessCrash?: (exitCode: number | null, signal: string | null) => void,
 ): Promise<ConnectedClient | undefined> => {
@@ -230,7 +230,7 @@ export const connectHyperNexusClient = async (
             }
 
             // Create fresh client and transport for each attempt
-            const { client, transport } = createHyperNexusClient(serverParams);
+            const { client, transport } = createhypernexusClient(serverParams);
             if (!client || !transport) {
                 return undefined;
             }

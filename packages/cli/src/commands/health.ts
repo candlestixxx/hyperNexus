@@ -52,7 +52,7 @@ export function registerHealthCommand(program: Command): void {
         const m = Math.floor((data.uptime % 3600) / 60);
         const s = Math.floor(data.uptime % 60);
 
-        console.log(chalk.bold.cyan(`\n  ⬡ HyperNexus HYPERNEXUS — Health Check\n`));
+        console.log(chalk.bold.cyan(`\n  ⬡ HyperNexus HYPERCODE — Health Check\n`));
         console.log(`  Overall: ${data.ready ? chalk.green('● Ready') : chalk.yellow('◐ Partial')}`);
         console.log(`  Uptime:  ${h}h ${m}m ${s}s`);
 

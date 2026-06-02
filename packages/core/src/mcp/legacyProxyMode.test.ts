@@ -9,20 +9,20 @@ describe('legacyProxyMode', () => {
 
   it('enables the legacy proxy only when explicitly opted in', () => {
     expect(
-      shouldUseLegacyProxy({ MCP_ENABLE_LEGACY_HYPERNEXUS_PROXY: 'true' } as NodeJS.ProcessEnv),
+      shouldUseLegacyProxy({ MCP_ENABLE_LEGACY_HYPERCODE_PROXY: 'true' } as NodeJS.ProcessEnv),
     ).toBe(true);
     expect(
-      shouldUseLegacyProxy({ MCP_ENABLE_HYPERNEXUS_PROXY: '1' } as NodeJS.ProcessEnv),
+      shouldUseLegacyProxy({ MCP_ENABLE_HYPERCODE_PROXY: '1' } as NodeJS.ProcessEnv),
     ).toBe(true);
   });
 
   it('honors the explicit disable flag over any opt-in flags', () => {
     expect(
       shouldUseLegacyProxy({
-        MCP_ENABLE_LEGACY_HYPERNEXUS_PROXY: 'true',
-        MCP_DISABLE_HYPERNEXUS: 'true',
+        MCP_ENABLE_LEGACY_HYPERCODE_PROXY: 'true',
+        MCP_DISABLE_HYPERCODE: 'true',
       } as NodeJS.ProcessEnv),
     ).toBe(false);
-    expect(isLegacyProxyDisabled({ MCP_DISABLE_HYPERNEXUS: 'yes' } as NodeJS.ProcessEnv)).toBe(true);
+    expect(isLegacyProxyDisabled({ MCP_DISABLE_HYPERCODE: 'yes' } as NodeJS.ProcessEnv)).toBe(true);
   });
 });

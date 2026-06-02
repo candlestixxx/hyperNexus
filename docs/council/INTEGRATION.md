@@ -26,10 +26,10 @@ Supported binaries include:
 - `crush`, `factory`, `gemini`, `goose`, `grok`, `kilo-code`, `kimi`
 - `mistral`, `opencode`, `pi`, `qwen`, `rowboatx`, `rovo`, `trae`, `warp`
 
-### 3. Dynamic Environment Injection (`HYPERNEXUS_CTRL`)
-HyperNexus Core can inject dynamic secrets and variables directly into running terminal sessions without restarting them. By passing `HYPERNEXUS_CTRL` JSON packets over the sidecar socket, variables are exported directly into the PTY shell, allowing for live API key rotation.
-### 3. Dynamic Environment Injection (`HYPERNEXUS_CTRL`)
-hypernexus Core can inject dynamic secrets and variables directly into running terminal sessions without restarting them. By passing `HYPERNEXUS_CTRL` JSON packets over the sidecar socket, variables are exported directly into the PTY shell, allowing for live API key rotation.
+### 3. Dynamic Environment Injection (`HYPERCODE_CTRL`)
+HyperNexus Core can inject dynamic secrets and variables directly into running terminal sessions without restarting them. By passing `HYPERCODE_CTRL` JSON packets over the sidecar socket, variables are exported directly into the PTY shell, allowing for live API key rotation.
+### 3. Dynamic Environment Injection (`HYPERCODE_CTRL`)
+hypernexus Core can inject dynamic secrets and variables directly into running terminal sessions without restarting them. By passing `HYPERCODE_CTRL` JSON packets over the sidecar socket, variables are exported directly into the PTY shell, allowing for live API key rotation.
 
 ### 4. Binary State Checkpointing
 The `CheckpointService` maintains the "last known context" of all running sessions, capturing the active task and the terminal output buffer. When re-attaching, it injects a "Recovery Hint" so the LLM resumes with full situational awareness.

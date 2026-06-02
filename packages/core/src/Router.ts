@@ -70,6 +70,19 @@ export class Router {
             hypernexusLogStore.addLog(name, 'error', 'stderr error', error);
         });
 
+        transport.stdout?.on('data', (chunk: Buffer) => {
+            const message = chunk.toString().trim();
+            if (!message) {
+                return;
+            }
+
+            hypernexusLogStore.addLog(name, 'info', message);
+        });
+
+        transport.stdout?.on('error', (error: Error) => {
+            hypernexusLogStore.addLog(name, 'error', 'stdout error', error);
+        });
+
         const client = new Client(
             {
                 name: "hypernexus-router",

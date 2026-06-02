@@ -168,15 +168,15 @@ export function buildExecutionPolicyEnv(policy: SessionExecutionPolicy | null): 
     }
 
     const env: Record<string, string> = {
-        HYPERNEXUS_EXECUTION_PROFILE_REQUESTED: policy.requestedProfile,
-        HYPERNEXUS_EXECUTION_PROFILE_EFFECTIVE: policy.effectiveProfile,
-        HYPERNEXUS_EXECUTION_SHELL_ID: policy.shellId ?? '',
-        HYPERNEXUS_EXECUTION_SHELL_LABEL: policy.shellLabel ?? '',
-        HYPERNEXUS_EXECUTION_SHELL_FAMILY: policy.shellFamily ?? '',
-        HYPERNEXUS_EXECUTION_SHELL_PATH: policy.shellPath ?? '',
-        HYPERNEXUS_EXECUTION_POLICY_REASON: policy.reason,
-        HYPERNEXUS_SUPPORTS_POWERSHELL: policy.supportsPowerShell ? '1' : '0',
-        HYPERNEXUS_SUPPORTS_POSIX_SHELL: policy.supportsPosixShell ? '1' : '0',
+        HYPERCODE_EXECUTION_PROFILE_REQUESTED: policy.requestedProfile,
+        HYPERCODE_EXECUTION_PROFILE_EFFECTIVE: policy.effectiveProfile,
+        HYPERCODE_EXECUTION_SHELL_ID: policy.shellId ?? '',
+        HYPERCODE_EXECUTION_SHELL_LABEL: policy.shellLabel ?? '',
+        HYPERCODE_EXECUTION_SHELL_FAMILY: policy.shellFamily ?? '',
+        HYPERCODE_EXECUTION_SHELL_PATH: policy.shellPath ?? '',
+        HYPERCODE_EXECUTION_POLICY_REASON: policy.reason,
+        HYPERCODE_SUPPORTS_POWERSHELL: policy.supportsPowerShell ? '1' : '0',
+        HYPERCODE_SUPPORTS_POSIX_SHELL: policy.supportsPosixShell ? '1' : '0',
     };
 
     if (policy.shellPath) {

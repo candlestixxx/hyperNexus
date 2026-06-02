@@ -1,7 +1,7 @@
-# HyperNexus HYPERNEXUS Architecture
+# HyperNexus HYPERCODE Architecture
 
 ## Overview
-HyperNexus HYPERNEXUS is a "Go-Powered Modular Monolith" designed for high-performance AI orchestration. It separates high-level user interaction and visualization (TypeScript/React) from low-level control, tool execution, and state management (Go).
+HyperNexus HYPERCODE is a "Go-Powered Modular Monolith" designed for high-performance AI orchestration. It separates high-level user interaction and visualization (TypeScript/React) from low-level control, tool execution, and state management (Go).
 
 ## Core Components
 
@@ -801,70 +801,6 @@ You are acting as an **inline assistant** and localized pair programmer for the 
 
 
 
-<<<<<<< HEAD
-
-# Claude-Specific Instructions
-
-
-
-> **CRITICAL MANDATE: READ `docs/UNIVERSAL_LLM_INSTRUCTIONS.md` FIRST.**
-
-> This file contains only Claude-specific overrides.
-
-
-
-## Role
-
-
-
-Claude is the **senior engineer and code reviewer**.
-
-
-
-Best suited for:
-
-- nuanced TypeScript refactoring
-
-- type-safety hardening
-
-- subtle logic debugging
-
-- polished technical documentation
-
-
-
-## Strengths
-
-
-
-- **Methodical planning** — break work into clear, verifiable steps.
-
-- **Nuance and syntax** — catch edge cases and type issues others may miss.
-
-- **Documentation quality** — produce clean, precise markdown and UX copy.
-
-
-
-## Working style
-
-
-
-- Prefer careful refactors over broad rewrites.
-
-- Verify assumptions before changing architecture.
-
-- Add tests when fixing regressions or logic edge cases.
-
-- Keep markdown clear, calm, and truthful.
-
-
-
-## Notes
-
-
-
-- Build verification in `apps/web` is often more trustworthy than dev mode.
-
 - `apps/web` imports shared UI from `@hypernexus/ui`, never `@/components/ui/*`.
 
 
@@ -1311,7 +1247,7 @@ hypernexus/
 
 │   └── prism-mcp/           # Prism MCP reference
 
-├── packages/claude-mem/     # Claude memory bridge (submodule)
+├── packages/hypercode/     # Claude memory bridge (submodule)
 
 ├── mcp.jsonc                # MCP server definitions (34K+ lines)
 
@@ -1335,7 +1271,7 @@ hypernexus/
 
 | `apps/cloud-orchestrator` | github.com/robertpelloni/jules-autopilot | Jules autopilot wrapper |
 
-| `packages/claude-mem` | github.com/robertpelloni/claude-mem | Claude memory bridge |
+| `packages/hypercode` | github.com/robertpelloni/hypercode | Claude memory bridge |
 
 | `submodules/hyperharness` | github.com/robertpelloni/hyperharness | LLM harness |
 
@@ -1681,7 +1617,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - Completed hypernexus→hypernexus rename: zero references remain in all active TS/Go/JSON source.
 
-- Renamed 4 tracked files (HyperNexusConfig→HyperNexusConfig, hypernexus-orchestrator→hypernexus-orchestrator, etc.).
+- Renamed 4 tracked files (HyperCodeConfig→HyperNexusConfig, hypernexus-orchestrator→hypernexus-orchestrator, etc.).
 
 - Updated go.mod module path, Dockerfiles, .dockerignore.
 
@@ -2249,7 +2185,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - **Go Sidecar Version Sync**: `go/internal/buildinfo/buildinfo.go` now injects version from VERSION file at build time via `-ldflags`. Created `scripts/build-go.sh` for consistent builds.
 
-- **Submodule Pushes**: Pushed cloud-orchestrator, hyperharness, and claude-mem to their remotes. Merged hyperharness stash (hypernexus→hypernexus renames, foundation adapters).
+- **Submodule Pushes**: Pushed cloud-orchestrator, hyperharness, and hypernexus to their remotes. Merged hyperharness stash (hypernexus→hypernexus renames, foundation adapters).
 
 - **Documentation**: Updated HANDOFF.md, MEMORY.md (4 new observations), TODO.md. Verified meta-tool decision system is fully implemented (not just scaffolded).
 
@@ -2263,7 +2199,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Changed
 
-- **Submodule Sync**: Updated all submodules to latest upstream (cloud-orchestrator, hyperharness, prism-mcp, litellm, OmniRoute, maestro, mcpproxy, claude-mem). Resolved merge conflicts in cloud-orchestrator and hyperharness.
+- **Submodule Sync**: Updated all submodules to latest upstream (cloud-orchestrator, hyperharness, prism-mcp, litellm, OmniRoute, maestro, mcpproxy, hypercode). Resolved merge conflicts in cloud-orchestrator and hyperharness.
 
 - **Version Sync**: All 57 package.json files now synchronized to VERSION file.
 
@@ -2401,7 +2337,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - changed(mcp/config): local compatibility-mode reads now prioritize HyperNexus config home and retain repo-root `mcp.jsonc`/`mcp.json` as legacy fallback read sources only.
 
-- test(mcp/config): updated tRPC route compatibility tests to run against an isolated temporary `HYPERNEXUS_CONFIG_DIR`, validating local managed-server actions without mutating workspace-root config files.
+- test(mcp/config): updated tRPC route compatibility tests to run against an isolated temporary `HYPERCODE_CONFIG_DIR`, validating local managed-server actions without mutating workspace-root config files.
 
 - changed(mcp/search-ui): MCP JSONC editor tooltip now reflects HyperNexus config-home save location rather than claiming root-repo writes.
 
@@ -2701,7 +2637,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - **Context Router Rename Drift**: Standardized the shared tRPC context router naming on `hypernexusContext` across core and UI/dashboard consumers, removing a real typed-client mismatch that was breaking the `apps/web` production build.
 
-- **Web Runtime HyperNexus Env Aliases**: Updated the shared web compat runtime to prefer `HYPERNEXUS_TRPC_UPSTREAM` and `HYPERNEXUS_CONFIG_DIR` while still honoring legacy `HYPERNEXUS_*` environment names for compatibility.
+- **Web Runtime HyperNexus Env Aliases**: Updated the shared web compat runtime to prefer `HYPERCODE_TRPC_UPSTREAM` and `HYPERCODE_CONFIG_DIR` while still honoring legacy `HYPERCODE_*` environment names for compatibility.
 
 
 
@@ -2945,7 +2881,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - **Swarm Council Base Resolution**: Core swarm orchestration helpers (`SwarmOrchestrator`, `DebateProtocol`, and `ConsensusEngine`) now reuse the shared orchestrator base resolver instead of hardcoding `localhost:3847`, so already-ported swarm/council Go surfaces follow live lock/env routing while preserving existing local fallbacks when no orchestrator base is available.
 
-- **Go Session Bridge Default Cleanup**: The Go sidecar's upstream tRPC session bridge no longer blind-probes `127.0.0.1:3847/trpc` as a default fallback; it now relies on the live main lock file, explicit `HYPERNEXUS_TRPC_UPSTREAM`, and the remaining active default ports instead of stale legacy probing.
+- **Go Session Bridge Default Cleanup**: The Go sidecar's upstream tRPC session bridge no longer blind-probes `127.0.0.1:3847/trpc` as a default fallback; it now relies on the live main lock file, explicit `HYPERCODE_TRPC_UPSTREAM`, and the remaining active default ports instead of stale legacy probing.
 
 - **Go Config Router Bridge Surface**: The experimental Go workspace now exposes the compact TypeScript `config` router under `/api/config/*`, including key/value CRUD, MCP timeout controls, session lifetime, signup/auth flags, auth providers, and always-visible tools, while keeping the native `/api/config/status` snapshot as the Go-owned path/config health surface.
 
@@ -2955,7 +2891,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - **HyperNexus Tool Inventory Visibility**: HyperNexus CLI and the Go sidecar harness registry now surface HyperNexus's source-backed tool calls by reading `submodules/hypernexus/tools/*.go`, while keeping other external harnesses labeled as install/runtime metadata only until deeper bridge contracts exist.
 
-- **CLI Mesh Operator Surface**: Added a real `hypernexus mesh` command group with `status`, `peers`, `capabilities`, and `find` subcommands backed by the live tRPC control plane via `HYPERNEXUS_TRPC_UPSTREAM` or the HyperNexus startup lock instead of placeholder output.
+- **CLI Mesh Operator Surface**: Added a real `hypernexus mesh` command group with `status`, `peers`, `capabilities`, and `find` subcommands backed by the live tRPC control plane via `HYPERCODE_TRPC_UPSTREAM` or the HyperNexus startup lock instead of placeholder output.
 
 - **Antigravity Harness Visibility**: HyperNexus's CLI and Go harness inventories now include Antigravity as a docs-backed metadata-only editor harness, while explicitly withholding source-backed tool/session parity claims until a real shell contract exists.
 
@@ -2969,7 +2905,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - **Swarm Council Base Resolution**: Core swarm orchestration helpers (`SwarmOrchestrator`, `DebateProtocol`, and `ConsensusEngine`) now reuse the shared orchestrator base resolver instead of hardcoding `localhost:3847`, so already-ported swarm/council Go surfaces follow live lock/env routing while preserving existing local fallbacks when no orchestrator base is available.
 
-- **Go Session Bridge Default Cleanup**: The Go sidecar's upstream tRPC session bridge no longer blind-probes `127.0.0.1:3847/trpc` as a default fallback; it now relies on the live main lock file, explicit `HYPERNEXUS_TRPC_UPSTREAM`, and the remaining active default ports instead of stale legacy probing.
+- **Go Session Bridge Default Cleanup**: The Go sidecar's upstream tRPC session bridge no longer blind-probes `127.0.0.1:3847/trpc` as a default fallback; it now relies on the live main lock file, explicit `HYPERCODE_TRPC_UPSTREAM`, and the remaining active default ports instead of stale legacy probing.
 
 - **Go Config Router Bridge Surface**: The experimental Go workspace now exposes the compact TypeScript `config` router under `/api/config/*`, including key/value CRUD, MCP timeout controls, session lifetime, signup/auth flags, auth providers, and always-visible tools, while keeping the native `/api/config/status` snapshot as the Go-owned path/config health surface.
 
@@ -2979,7 +2915,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - **hypernexus Tool Inventory Visibility**: hypernexus CLI and the Go sidecar harness registry now surface hypernexus's source-backed tool calls by reading `submodules/hypernexus/tools/*.go`, while keeping other external harnesses labeled as install/runtime metadata only until deeper bridge contracts exist.
 
-- **CLI Mesh Operator Surface**: Added a real `hypernexus mesh` command group with `status`, `peers`, `capabilities`, and `find` subcommands backed by the live tRPC control plane via `HYPERNEXUS_TRPC_UPSTREAM` or the hypernexus startup lock instead of placeholder output.
+- **CLI Mesh Operator Surface**: Added a real `hypernexus mesh` command group with `status`, `peers`, `capabilities`, and `find` subcommands backed by the live tRPC control plane via `HYPERCODE_TRPC_UPSTREAM` or the hypernexus startup lock instead of placeholder output.
 
 - **Antigravity Harness Visibility**: hypernexus's CLI and Go harness inventories now include Antigravity as a docs-backed metadata-only editor harness, while explicitly withholding source-backed tool/session parity claims until a real shell contract exists.
 
@@ -3293,17 +3229,9 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - **Phase O Initialization**: Officially entered Phase O (Dashboard Convergence & v1.0.0) with an updated ROADMAP.md and VISION.md reflecting the path toward a stable release.
 
-- **tRPC SSE for Extensions**: Implemented `TRPCProvider.tsx` in `packages/claude-mem` dashboard with `unstable_httpSubscriptionLink` and `splitLink`. This allows extension webviews to handle tRPC subscriptions over HTTP SSE, resolving the "Subscriptions unsupported by httpLink" error in restricted browser contexts.
+- **tRPC SSE for Extensions**: Implemented `TRPCProvider.tsx` in `packages/hypercode` dashboard with `unstable_httpSubscriptionLink` and `splitLink`. This allows extension webviews to handle tRPC subscriptions over HTTP SSE, resolving the "Subscriptions unsupported by httpLink" error in restricted browser contexts.
 
-- **Storage Access Fallback**: Created a `safeStorage` utility in `packages/claude-mem` that automatically falls back to in-memory storage when `localStorage` is inaccessible, fixing access errors in sandboxed extension webviews.
-
-- **Ambitious Roadmap Expansion**: Seeded `IDEAS.md` files across all major repositories (`ai`, `core`, `mcp-client`, `ui`, `web`, `maestro`, `hypernexus-extension`) with high-intelligence proposals including a Rust micro-kernel, P2P Hive Mind, and Bobcoin integration.
-
-
-
-### Fixed
-
-- **Port 3847 Harmonization**: Standardized the `HYPERNEXUS_ORCHESTRATOR_PORT` to `3847` across all packages (`packages/ui`, `apps/web`, `apps/maestro`), resolving persistent `ERR_CONNECTION_REFUSED` errors from legacy port 3001 references.
+- **Storage Access Fallback**: Created a `safeStorage` utility in `packages/hypercode` that automatically falls back to in-memory storage when `localStorage` is inaccessible, fixing access errors in sandboxed extension webviews.
 
 - **Ambitious Roadmap Expansion**: Seeded `IDEAS.md` files across all major repositories (`ai`, `core`, `mcp-client`, `ui`, `web`, `maestro`, `hypernexus-extension`) with high-intelligence proposals including a Rust micro-kernel, P2P Hive Mind, and Bobcoin integration.
 
@@ -3311,7 +3239,15 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Fixed
 
-- **Port 3847 Harmonization**: Standardized the `HYPERNEXUS_ORCHESTRATOR_PORT` to `3847` across all packages (`packages/ui`, `apps/web`, `apps/maestro`), resolving persistent `ERR_CONNECTION_REFUSED` errors from legacy port 3001 references.
+- **Port 3847 Harmonization**: Standardized the `HYPERCODE_ORCHESTRATOR_PORT` to `3847` across all packages (`packages/ui`, `apps/web`, `apps/maestro`), resolving persistent `ERR_CONNECTION_REFUSED` errors from legacy port 3001 references.
+
+- **Ambitious Roadmap Expansion**: Seeded `IDEAS.md` files across all major repositories (`ai`, `core`, `mcp-client`, `ui`, `web`, `maestro`, `hypernexus-extension`) with high-intelligence proposals including a Rust micro-kernel, P2P Hive Mind, and Bobcoin integration.
+
+
+
+### Fixed
+
+- **Port 3847 Harmonization**: Standardized the `HYPERCODE_ORCHESTRATOR_PORT` to `3847` across all packages (`packages/ui`, `apps/web`, `apps/maestro`), resolving persistent `ERR_CONNECTION_REFUSED` errors from legacy port 3001 references.
 
 - **CI/CD Stabilization**: Restored GitHub frontpage "Green" status by resolving linting and type errors in `apps/maestro`:
 
@@ -4585,11 +4521,11 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 
 
-- fix(claude-mem/logger): Resolved unresolved merge conflict in `packages/claude-mem/src/utils/logger.ts`.
+- fix(hypercode/logger): Resolved unresolved merge conflict in `packages/hypercode/src/utils/logger.ts`.
 
   - Merged upstream/main `Component` type additions (`CHROMA_MCP`, `CHROMA_SYNC`, `FOLDER_INDEX`, `CLAUDE_MD`, `QUEUE`) with HEAD.
 
-  - `packages/claude-mem` now builds cleanly without being excluded from the workspace build.
+  - `packages/hypercode` now builds cleanly without being excluded from the workspace build.
 
 
 
@@ -4993,9 +4929,9 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 
 
-- chore(branding): Renamed all remaining `HYPERNEXUS`/`hypernexus` legacy references to `hypernexus`/`HyperNexus` across `archive/` SDKs (Python, Rust, Go), nvim plugin, archive docs and handoff files, `AGENTS.md`, and `UNIVERSAL_LLM_INSTRUCTIONS.md`
+- chore(branding): Renamed all remaining `HYPERCODE`/`hypernexus` legacy references to `hypernexus`/`HyperNexus` across `archive/` SDKs (Python, Rust, Go), nvim plugin, archive docs and handoff files, `AGENTS.md`, and `UNIVERSAL_LLM_INSTRUCTIONS.md`
 
-- chore(branding): Renamed all remaining `HYPERNEXUS`/`hypernexus` legacy references to `hypernexus`/`hypernexus` across `archive/` SDKs (Python, Rust, Go), nvim plugin, archive docs and handoff files, `AGENTS.md`, and `UNIVERSAL_LLM_INSTRUCTIONS.md`
+- chore(branding): Renamed all remaining `HYPERCODE`/`hypernexus` legacy references to `hypernexus`/`hypernexus` across `archive/` SDKs (Python, Rust, Go), nvim plugin, archive docs and handoff files, `AGENTS.md`, and `UNIVERSAL_LLM_INSTRUCTIONS.md`
 
 
 
@@ -5273,9 +5209,9 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - docs(roundtable): The new brief inventories the repo’s major apps/packages/submodules, distinguishes implemented vs partial vs planned feature families, captures the actual active task queue from `archive/tasks/active/`, and explicitly calls out current documentation drift (missing root canonical files, archive-vs-live path mismatch, and index references to non-existent docs).
 
-- docs(index): Added the new roundtable documentation set to `HYPERNEXUS_MASTER_INDEX.jsonc` so future sessions and reviewers can discover the current debate materials without relying on stale archived copies.
+- docs(index): Added the new roundtable documentation set to `HYPERCODE_MASTER_INDEX.jsonc` so future sessions and reviewers can discover the current debate materials without relying on stale archived copies.
 
-- docs(index): Added the new roundtable documentation set to `HYPERNEXUS_MASTER_INDEX.jsonc` so future sessions and reviewers can discover the current debate materials without relying on stale archived copies.
+- docs(index): Added the new roundtable documentation set to `HYPERCODE_MASTER_INDEX.jsonc` so future sessions and reviewers can discover the current debate materials without relying on stale archived copies.
 
 - chore(version): Synchronized active version references to `0.9.1` across `VERSION`, `VERSION.md`, active `package.json` manifests, visible UI/runtime literals, and the README heading.
 
@@ -5459,7 +5395,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - verified(session/detail): Session detail page distinguishes auto-restart vs manual-restart, shows worktree path, last error, shell executor.
 
-- verified(memory): Memory dashboard has search modes, structured observation schema, claude-mem sub-page, vector memory sub-page.
+- verified(memory): Memory dashboard has search modes, structured observation schema, hypercode sub-page, vector memory sub-page.
 
 - verified(billing): Billing page exposes fallback chain with per-entry reasons, cost history, provider quota windows, task-type routing rules.
 
@@ -5533,11 +5469,11 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - chore(version): Updated `.vibe-config.json` version from "1.0.0" to canonical "2.7.318" for consistency across all version sources.
 
-- chore(branding): Replaced "Codename: HYPERNEXUS (AI Operating System)" with "Codename: HyperNexus" in AGENTS.md version headers. Removed all HYPERNEXUS references from planning/discussion sections.
+- chore(branding): Replaced "Codename: HYPERCODE (AI Operating System)" with "Codename: HyperNexus" in AGENTS.md version headers. Removed all HYPERCODE references from planning/discussion sections.
 
 - chore(compatibility): Verified backward compatibility maintained — legacy `.legacy_config.json` and `legacy` format exports continue to work as aliases to `hypernexus` via ConfigurationService normalization.
 
-- chore(branding): Replaced "Codename: HYPERNEXUS (AI Operating System)" with "Codename: hypernexus" in AGENTS.md version headers. Removed all HYPERNEXUS references from planning/discussion sections.
+- chore(branding): Replaced "Codename: HYPERCODE (AI Operating System)" with "Codename: hypernexus" in AGENTS.md version headers. Removed all HYPERCODE references from planning/discussion sections.
 
 - chore(compatibility): Verified backward compatibility maintained — legacy `.legacy_config.json` and `legacy` format exports continue to work as aliases to `hypernexus` via ConfigurationService normalization.
 
@@ -7703,13 +7639,13 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 
 
-- feat(core/mcp): downstream MCP processes now default to lazy session mode (`HYPERNEXUS_MCP_LAZY_SESSIONS`), preventing idle prewarm spawns until a tool is actually executed.
+- feat(core/mcp): downstream MCP processes now default to lazy session mode (`HYPERCODE_MCP_LAZY_SESSIONS`), preventing idle prewarm spawns until a tool is actually executed.
 
-- feat(core/mcp): global single-active downstream lifecycle added (`HYPERNEXUS_MCP_SINGLE_ACTIVE_SERVER`) so one downstream server process remains active at a time; stale active/idle sessions are cleaned before switching.
+- feat(core/mcp): global single-active downstream lifecycle added (`HYPERCODE_MCP_SINGLE_ACTIVE_SERVER`) so one downstream server process remains active at a time; stale active/idle sessions are cleaned before switching.
 
-- feat(core/mcp): downstream MCP processes now default to lazy session mode (`HYPERNEXUS_MCP_LAZY_SESSIONS`), preventing idle prewarm spawns until a tool is actually executed.
+- feat(core/mcp): downstream MCP processes now default to lazy session mode (`HYPERCODE_MCP_LAZY_SESSIONS`), preventing idle prewarm spawns until a tool is actually executed.
 
-- feat(core/mcp): global single-active downstream lifecycle added (`HYPERNEXUS_MCP_SINGLE_ACTIVE_SERVER`) so one downstream server process remains active at a time; stale active/idle sessions are cleaned before switching.
+- feat(core/mcp): global single-active downstream lifecycle added (`HYPERCODE_MCP_SINGLE_ACTIVE_SERVER`) so one downstream server process remains active at a time; stale active/idle sessions are cleaned before switching.
 
 - changed(core/mcp): `tools/list` in HyperNexus proxy now prefers cached tool inventory (`getCachedToolInventory`) to avoid spawning all downstream servers during initial MCP host load.
 
@@ -7987,7 +7923,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - changed(mcp/config): local compatibility-mode reads now prioritize HyperNexus config home and retain repo-root `mcp.jsonc`/`mcp.json` as legacy fallback read sources only.
 
-- test(mcp/config): updated tRPC route compatibility tests to run against an isolated temporary `HYPERNEXUS_CONFIG_DIR`, validating local managed-server actions without mutating workspace-root config files.
+- test(mcp/config): updated tRPC route compatibility tests to run against an isolated temporary `HYPERCODE_CONFIG_DIR`, validating local managed-server actions without mutating workspace-root config files.
 
 - changed(mcp/search-ui): MCP JSONC editor tooltip now reflects HyperNexus config-home save location rather than claiming root-repo writes.
 
@@ -7995,7 +7931,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - changed(mcp/config): local compatibility-mode reads now prioritize hypernexus config home and retain repo-root `mcp.jsonc`/`mcp.json` as legacy fallback read sources only.
 
-- test(mcp/config): updated tRPC route compatibility tests to run against an isolated temporary `HYPERNEXUS_CONFIG_DIR`, validating local managed-server actions without mutating workspace-root config files.
+- test(mcp/config): updated tRPC route compatibility tests to run against an isolated temporary `HYPERCODE_CONFIG_DIR`, validating local managed-server actions without mutating workspace-root config files.
 
 - changed(mcp/search-ui): MCP JSONC editor tooltip now reflects hypernexus config-home save location rather than claiming root-repo writes.
 
@@ -8275,7 +8211,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 
 
-- changed(memory): `/dashboard/memory/claude-mem` now treats degraded `startupStatus` compat-fallback snapshots as a first-class operator state, surfacing the live fallback summary instead of collapsing that payload into generic "Core warming up" copy.
+- changed(memory): `/dashboard/memory/hypercode` now treats degraded `startupStatus` compat-fallback snapshots as a first-class operator state, surfacing the live fallback summary instead of collapsing that payload into generic "Core warming up" copy.
 
 
 
@@ -8307,7 +8243,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 
 
-- fix(startup): gate verbose `packages/core/src/MCPServer.ts` import/boot progress logs behind `HYPERNEXUS_MCP_SERVER_DEBUG=1` or `DEBUG=hypernexus:mcp-server`, keeping normal `pnpm run dev` output quiet while preserving real errors and fallback warnings.
+- fix(startup): gate verbose `packages/core/src/MCPServer.ts` import/boot progress logs behind `HYPERCODE_MCP_SERVER_DEBUG=1` or `DEBUG=hypernexus:mcp-server`, keeping normal `pnpm run dev` output quiet while preserving real errors and fallback warnings.
 
 
 
@@ -8321,7 +8257,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 
 
-- fix(startup): gate verbose `packages/core/src/MCPServer.ts` import/boot progress logs behind `HYPERNEXUS_MCP_SERVER_DEBUG=1` or `DEBUG=hypernexus:mcp-server`, keeping normal `pnpm run dev` output quiet while preserving real errors and fallback warnings.
+- fix(startup): gate verbose `packages/core/src/MCPServer.ts` import/boot progress logs behind `HYPERCODE_MCP_SERVER_DEBUG=1` or `DEBUG=hypernexus:mcp-server`, keeping normal `pnpm run dev` output quiet while preserving real errors and fallback warnings.
 
 
 
@@ -8371,7 +8307,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - changed(memory): upgraded `/dashboard/memory` from a generic full-text list into a HyperNexus-native record explorer with explicit search modes for facts, observations, prompts, and session summaries, added a visible memory-model explainer, and extracted tested helper logic for coherent record titles, previews, timestamps, and provenance tokens.
 
-- changed(memory): aligned the primary memory dashboard and claude-mem parity surface around HyperNexus's actual native memory model, including typed observations, captured prompts, session summaries, clearer provenance, and corrected tier/stat reporting instead of framing claude-mem as the whole runtime story.
+- changed(memory): aligned the primary memory dashboard and hypernexus parity surface around HyperNexus's actual native memory model, including typed observations, captured prompts, session summaries, clearer provenance, and corrected tier/stat reporting instead of framing hypernexus as the whole runtime story.
 
 - docs(tasking): completed the ecosystem assimilation consolidation brief, promoted the memory-story follow-up into `tasks/active/`, and anchored the HyperNexus-native Track A-F capability map in the roadmap, TODO, and handoff docs so future work references scoped HyperNexus tracks instead of repo-wide parity demands.
 
@@ -8415,7 +8351,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - changed(memory): upgraded `/dashboard/memory` from a generic full-text list into a hypernexus-native record explorer with explicit search modes for facts, observations, prompts, and session summaries, added a visible memory-model explainer, and extracted tested helper logic for coherent record titles, previews, timestamps, and provenance tokens.
 
-- changed(memory): aligned the primary memory dashboard and claude-mem parity surface around hypernexus's actual native memory model, including typed observations, captured prompts, session summaries, clearer provenance, and corrected tier/stat reporting instead of framing claude-mem as the whole runtime story.
+- changed(memory): aligned the primary memory dashboard and hypernexus parity surface around hypernexus's actual native memory model, including typed observations, captured prompts, session summaries, clearer provenance, and corrected tier/stat reporting instead of framing hypernexus as the whole runtime story.
 
 - docs(tasking): completed the ecosystem assimilation consolidation brief, promoted the memory-story follow-up into `tasks/active/`, and anchored the hypernexus-native Track A-F capability map in the roadmap, TODO, and handoff docs so future work references scoped hypernexus tracks instead of repo-wide parity demands.
 
@@ -8495,25 +8431,25 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - Added a HyperNexus-native structured observation ingest path in `AgentMemoryService`, including typed observation records, heuristic fact/concept/file extraction, short-window content-hash deduplication, richer memory stats, and new memory-router procedures for recording plus querying recent/searchable observations.
 
-- Added provider-native memory interchange support for HyperNexus JSON and claude-mem stores, including import/export and format conversion through the memory dashboard and tRPC API.
+- Added provider-native memory interchange support for HyperNexus JSON and hypernexus stores, including import/export and format conversion through the memory dashboard and tRPC API.
 
 - Added one-click MCP server operator actions on `/dashboard/mcp`, including a combined `Load + cache` flow plus direct shortcuts into tool inspection, tool-behavior editing, and logs for each downstream server.
 
-- Added default-section coverage reporting to `memory.getClaudeMemStatus` plus state-aware operator guidance on `/dashboard/memory/claude-mem`, so the parity page now distinguishes between a missing adapter store, an empty seeded store, incomplete default bucket coverage, and an actively populated claude-mem shell.
+- Added default-section coverage reporting to `memory.getHypercodeStatus` plus state-aware operator guidance on `/dashboard/memory/hypercode`, so the parity page now distinguishes between a missing adapter store, an empty seeded store, incomplete default bucket coverage, and an actively populated hypercode shell.
 
-- Added active memory-pipeline reporting to `memory.getClaudeMemStatus`, so `/dashboard/memory/claude-mem` now shows whether claude-mem is actually wired into HyperNexus's current runtime memory fan-out instead of only inferring readiness from the presence of `.hypernexus/claude_mem.json` on disk.
+- Added active memory-pipeline reporting to `memory.getHyperNexusStatus`, so `/dashboard/memory/hypernexus` now shows whether hypernexus is actually wired into HyperNexus's current runtime memory fan-out instead of only inferring readiness from the presence of `.hypernexus/claude_mem.json` on disk.
 
 - Added a core-backed install-artifact detector for the Integration Hub so `/dashboard/integrations` now reports whether browser-extension bundles, Firefox-ready assets, VS Code `.vsix` packages, and HyperNexus MCP config sources actually exist on disk instead of only showing static build hints.
 
-- Added a formal extension-bridge client registration contract in `packages/core/src/bridge/bridge-manifest.ts`, including `HYPERNEXUS_CLIENT_HELLO` metadata normalization plus supported non-MCP capability and hook-phase manifests for live bridge clients.
+- Added a formal extension-bridge client registration contract in `packages/core/src/bridge/bridge-manifest.ts`, including `HYPERCODE_CLIENT_HELLO` metadata normalization plus supported non-MCP capability and hook-phase manifests for live bridge clients.
 
 - Added focused bridge-manifest regression coverage in `packages/core/src/bridge/bridge-manifest.test.ts` for default client registration, hello metadata merge behavior, and stable manifest generation.
 
 - Added task-filtered fallback-chain inspection to `billing.getFallbackChain`, plus a selector on `/dashboard/billing` so operators can inspect the ranked provider chain for general, coding, planning, research, worker, and supervisor work instead of only a single generic fallback list.
 
-- Added a core-backed `memory.getClaudeMemStatus` query plus live adapter-store details on `/dashboard/memory/claude-mem`, so the parity page now reports actual `.hypernexus/claude_mem.json` existence, section counts, and last-update state instead of only static audit copy.
+- Added a core-backed `memory.getHyperNexusStatus` query plus live adapter-store details on `/dashboard/memory/hypernexus`, so the parity page now reports actual `.hypernexus/claude_mem.json` existence, section counts, and last-update state instead of only static audit copy.
 
-- Added a dedicated `/dashboard/memory/claude-mem` parity/status surface that replaces the old vector-dashboard passthrough with an honest view of HyperNexus's current claude-mem assimilation: shipped adapter pieces, partial adjacent memory foundations, and the still-missing upstream hook/search/injection/runtime gaps.
+- Added a dedicated `/dashboard/memory/hypernexus` parity/status surface that replaces the old vector-dashboard passthrough with an honest view of HyperNexus's current hypernexus assimilation: shipped adapter pieces, partial adjacent memory foundations, and the still-missing upstream hook/search/injection/runtime gaps.
 
 - Added a cross-panel operator alert strip to `/dashboard` that summarizes router disconnects, startup readiness drift, degraded providers, and failed supervised sessions in one place so first-time operators can spot trouble without scanning every panel.
 
@@ -8561,25 +8497,25 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - Added a hypernexus-native structured observation ingest path in `AgentMemoryService`, including typed observation records, heuristic fact/concept/file extraction, short-window content-hash deduplication, richer memory stats, and new memory-router procedures for recording plus querying recent/searchable observations.
 
-- Added provider-native memory interchange support for hypernexus JSON and claude-mem stores, including import/export and format conversion through the memory dashboard and tRPC API.
+- Added provider-native memory interchange support for hypernexus JSON and hypernexus stores, including import/export and format conversion through the memory dashboard and tRPC API.
 
 - Added one-click MCP server operator actions on `/dashboard/mcp`, including a combined `Load + cache` flow plus direct shortcuts into tool inspection, tool-behavior editing, and logs for each downstream server.
 
-- Added default-section coverage reporting to `memory.getClaudeMemStatus` plus state-aware operator guidance on `/dashboard/memory/claude-mem`, so the parity page now distinguishes between a missing adapter store, an empty seeded store, incomplete default bucket coverage, and an actively populated claude-mem shell.
+- Added default-section coverage reporting to `memory.getHypercodeStatus` plus state-aware operator guidance on `/dashboard/memory/hypercode`, so the parity page now distinguishes between a missing adapter store, an empty seeded store, incomplete default bucket coverage, and an actively populated hypercode shell.
 
-- Added active memory-pipeline reporting to `memory.getClaudeMemStatus`, so `/dashboard/memory/claude-mem` now shows whether claude-mem is actually wired into hypernexus's current runtime memory fan-out instead of only inferring readiness from the presence of `.hypernexus/claude_mem.json` on disk.
+- Added active memory-pipeline reporting to `memory.getHyperNexusStatus`, so `/dashboard/memory/hypernexus` now shows whether hypernexus is actually wired into hypernexus's current runtime memory fan-out instead of only inferring readiness from the presence of `.hypernexus/claude_mem.json` on disk.
 
 - Added a core-backed install-artifact detector for the Integration Hub so `/dashboard/integrations` now reports whether browser-extension bundles, Firefox-ready assets, VS Code `.vsix` packages, and hypernexus MCP config sources actually exist on disk instead of only showing static build hints.
 
-- Added a formal extension-bridge client registration contract in `packages/core/src/bridge/bridge-manifest.ts`, including `HYPERNEXUS_CLIENT_HELLO` metadata normalization plus supported non-MCP capability and hook-phase manifests for live bridge clients.
+- Added a formal extension-bridge client registration contract in `packages/core/src/bridge/bridge-manifest.ts`, including `HYPERCODE_CLIENT_HELLO` metadata normalization plus supported non-MCP capability and hook-phase manifests for live bridge clients.
 
 - Added focused bridge-manifest regression coverage in `packages/core/src/bridge/bridge-manifest.test.ts` for default client registration, hello metadata merge behavior, and stable manifest generation.
 
 - Added task-filtered fallback-chain inspection to `billing.getFallbackChain`, plus a selector on `/dashboard/billing` so operators can inspect the ranked provider chain for general, coding, planning, research, worker, and supervisor work instead of only a single generic fallback list.
 
-- Added a core-backed `memory.getClaudeMemStatus` query plus live adapter-store details on `/dashboard/memory/claude-mem`, so the parity page now reports actual `.hypernexus/claude_mem.json` existence, section counts, and last-update state instead of only static audit copy.
+- Added a core-backed `memory.getHyperNexusStatus` query plus live adapter-store details on `/dashboard/memory/hypernexus`, so the parity page now reports actual `.hypernexus/claude_mem.json` existence, section counts, and last-update state instead of only static audit copy.
 
-- Added a dedicated `/dashboard/memory/claude-mem` parity/status surface that replaces the old vector-dashboard passthrough with an honest view of hypernexus's current claude-mem assimilation: shipped adapter pieces, partial adjacent memory foundations, and the still-missing upstream hook/search/injection/runtime gaps.
+- Added a dedicated `/dashboard/memory/hypernexus` parity/status surface that replaces the old vector-dashboard passthrough with an honest view of hypernexus's current hypernexus assimilation: shipped adapter pieces, partial adjacent memory foundations, and the still-missing upstream hook/search/injection/runtime gaps.
 
 - Added a cross-panel operator alert strip to `/dashboard` that summarizes router disconnects, startup readiness drift, degraded providers, and failed supervised sessions in one place so first-time operators can spot trouble without scanning every panel.
 
@@ -8665,7 +8601,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - Refined the `startupStatus` readiness contract so HyperNexus now treats an initialized-but-empty MCP inventory as valid, reports the extension bridge as ready when the listener is accepting connections even before any clients attach, and keeps the dashboard startup checklist aligned with that fresher boot semantics instead of waiting forever on zero-client/zero-server fresh installs.
 
-- Replaced the root `build` entrypoint with a cross-platform `scripts/build_all.mjs` orchestrator that now builds HyperNexus's first-party Turbo workspace graph, refreshes and builds the excluded `apps/hypernexus-extension` workspace for both Chromium and Firefox while preserving separate `dist-chromium` / `dist-firefox` outputs, and skips the JetBrains plugin only when Gradle is unavailable unless `HYPERNEXUS_REQUIRE_JETBRAINS_BUILD=true` is set.
+- Replaced the root `build` entrypoint with a cross-platform `scripts/build_all.mjs` orchestrator that now builds HyperNexus's first-party Turbo workspace graph, refreshes and builds the excluded `apps/hypernexus-extension` workspace for both Chromium and Firefox while preserving separate `dist-chromium` / `dist-firefox` outputs, and skips the JetBrains plugin only when Gradle is unavailable unless `HYPERCODE_REQUIRE_JETBRAINS_BUILD=true` is set.
 
 - Extended HyperNexus Core's live extension bridge in `packages/core/src/MCPServer.ts` and `packages/core/src/routers/systemProcedures.ts` so connected browser and VS Code clients now self-identify, advertise non-MCP capabilities and supported hook phases, and surface that richer runtime state through `startupStatus` instead of only reporting a raw websocket client count.
 
@@ -8681,7 +8617,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - Refined the `startupStatus` readiness contract so hypernexus now treats an initialized-but-empty MCP inventory as valid, reports the extension bridge as ready when the listener is accepting connections even before any clients attach, and keeps the dashboard startup checklist aligned with that fresher boot semantics instead of waiting forever on zero-client/zero-server fresh installs.
 
-- Replaced the root `build` entrypoint with a cross-platform `scripts/build_all.mjs` orchestrator that now builds hypernexus's first-party Turbo workspace graph, refreshes and builds the excluded `apps/hypernexus-extension` workspace for both Chromium and Firefox while preserving separate `dist-chromium` / `dist-firefox` outputs, and skips the JetBrains plugin only when Gradle is unavailable unless `HYPERNEXUS_REQUIRE_JETBRAINS_BUILD=true` is set.
+- Replaced the root `build` entrypoint with a cross-platform `scripts/build_all.mjs` orchestrator that now builds hypernexus's first-party Turbo workspace graph, refreshes and builds the excluded `apps/hypernexus-extension` workspace for both Chromium and Firefox while preserving separate `dist-chromium` / `dist-firefox` outputs, and skips the JetBrains plugin only when Gradle is unavailable unless `HYPERCODE_REQUIRE_JETBRAINS_BUILD=true` is set.
 
 - Extended hypernexus Core's live extension bridge in `packages/core/src/MCPServer.ts` and `packages/core/src/routers/systemProcedures.ts` so connected browser and VS Code clients now self-identify, advertise non-MCP capabilities and supported hook phases, and surface that richer runtime state through `startupStatus` instead of only reporting a raw websocket client count.
 
@@ -8801,7 +8737,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - Renamed the sidebar command-palette MCP action to match the HyperNexus router naming and refreshed the live MCP API/bridge docs so HyperNexus stays primary while HyperNexus is documented as the upstream bridge layer.
 
-- Started the runtime HyperNexus extraction by adding a real `MCP_DISABLE_HYPERNEXUS` source-level path in `packages/core/src/MCPServer.ts`, wiring HyperNexus-native direct MCP handlers when the proxy is disabled, and adding focused tests for the new mode-selection helpers.
+- Started the runtime HyperNexus extraction by adding a real `MCP_DISABLE_HYPERCODE` source-level path in `packages/core/src/MCPServer.ts`, wiring HyperNexus-native direct MCP handlers when the proxy is disabled, and adding focused tests for the new mode-selection helpers.
 
 - Added a HyperNexus-native session working-set manager and direct-handler meta tools (`search_tools`, `load_tool`, `get_tool_schema`, `unload_tool`, `list_loaded_tools`) so the HyperNexus-disabled runtime keeps progressive disclosure behavior without relying on the old proxy layer.
 
@@ -8875,7 +8811,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - Renamed the sidebar command-palette MCP action to match the hypernexus router naming and refreshed the live MCP API/bridge docs so hypernexus stays primary while HyperNexus is documented as the upstream bridge layer.
 
-- Started the runtime HyperNexus extraction by adding a real `MCP_DISABLE_HYPERNEXUS` source-level path in `packages/core/src/MCPServer.ts`, wiring hypernexus-native direct MCP handlers when the proxy is disabled, and adding focused tests for the new mode-selection helpers.
+- Started the runtime HyperNexus extraction by adding a real `MCP_DISABLE_HYPERCODE` source-level path in `packages/core/src/MCPServer.ts`, wiring hypernexus-native direct MCP handlers when the proxy is disabled, and adding focused tests for the new mode-selection helpers.
 
 - Added a hypernexus-native session working-set manager and direct-handler meta tools (`search_tools`, `load_tool`, `get_tool_schema`, `unload_tool`, `list_loaded_tools`) so the HyperNexus-disabled runtime keeps progressive disclosure behavior without relying on the old proxy layer.
 
@@ -9003,9 +8939,9 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - Verified `pnpm exec vitest run packages/core/src/routers/billingRouter.test.ts apps/web/src/app/dashboard/billing/page.test.tsx apps/web/src/app/dashboard/DashboardHomeClient.test.tsx apps/web/tests/integration/fallback-e2e.test.ts` passes after adding task-filtered fallback-chain inspection to the billing router and dashboard.
 
-- Verified `pnpm exec vitest run packages/core/src/routers/memoryRouter.claude-mem.test.ts apps/web/src/app/dashboard/memory/claude-mem/claude-mem-status.test.ts` passes, `pnpm -C packages/core exec tsc --noEmit` passes, and `pnpm -C apps/web exec tsc --noEmit --pretty false` returns `WEB_TSC_OK` after wiring the live claude-mem store status query.
+- Verified `pnpm exec vitest run packages/core/src/routers/memoryRouter.hypercode.test.ts apps/web/src/app/dashboard/memory/hypercode/hypercode-status.test.ts` passes, `pnpm -C packages/core exec tsc --noEmit` passes, and `pnpm -C apps/web exec tsc --noEmit --pretty false` returns `WEB_TSC_OK` after wiring the live hypercode store status query.
 
-- Verified `pnpm exec vitest run apps/web/src/app/dashboard/memory/claude-mem/claude-mem-status.test.ts` passes, and `pnpm -C apps/web exec tsc --noEmit --pretty false` passes after replacing the claude-mem placeholder route with the dedicated parity surface.
+- Verified `pnpm exec vitest run apps/web/src/app/dashboard/memory/hypercode/hypercode-status.test.ts` passes, and `pnpm -C apps/web exec tsc --noEmit --pretty false` passes after replacing the hypercode placeholder route with the dedicated parity surface.
 
 - Verified `pnpm exec vitest run apps/web/src/app/dashboard/dashboard-home-view.test.tsx` passes, `pnpm -C packages/core build` regenerates emitted declarations cleanly, and `pnpm -C apps/web exec tsc --noEmit --pretty false` passes after adding the dashboard operator alert strip.
 
@@ -9815,9 +9751,9 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
   - Built `scripts/record-fetch-outcome.mjs` to incrementally log fetch failures, successes, and pending queue targets.
 
-  - Deployed `Ingestion Dashboard` (`/dashboard/ingestion`) displaying real-time metrics for total, processed, pending, and failed ingestion queue items along with their respective stack traces from `HYPERNEXUS_MASTER_INDEX.jsonc`.
+  - Deployed `Ingestion Dashboard` (`/dashboard/ingestion`) displaying real-time metrics for total, processed, pending, and failed ingestion queue items along with their respective stack traces from `HYPERCODE_MASTER_INDEX.jsonc`.
 
-  - Deployed `Ingestion Dashboard` (`/dashboard/ingestion`) displaying real-time metrics for total, processed, pending, and failed ingestion queue items along with their respective stack traces from `HYPERNEXUS_MASTER_INDEX.jsonc`.
+  - Deployed `Ingestion Dashboard` (`/dashboard/ingestion`) displaying real-time metrics for total, processed, pending, and failed ingestion queue items along with their respective stack traces from `HYPERCODE_MASTER_INDEX.jsonc`.
 
   - Check-marked Phase 97 implementation points in `ROADMAP.md` and `DETAILED_BACKLOG.md` (Item 6.2).
 
@@ -10629,7 +10565,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - **MCP-SuperAssistant hypernexus Bridge**: Injected hypernexus Hub WebSocket bridge (`connectHyperNexusHub`) into SuperAssistant's background script and `window.hypernexus.callTool()` API + console interceptor into the content script.
 
-- **claude-mem Redundant Memory Pipeline**: Created `ClaudeMemAdapter.ts` (section-based storage) and `RedundantMemoryManager.ts` (fan-out writes to all providers). Default `MemoryManager` provider changed from `json` to `redundant`.
+- **hypercode Redundant Memory Pipeline**: Created `HypercodeAdapter.ts` (section-based storage) and `RedundantMemoryManager.ts` (fan-out writes to all providers). Default `MemoryManager` provider changed from `json` to `redundant`.
 
 - **Cloud Dev Management Dashboard**: Created `cloudDevRouter.ts` tRPC router for multi-provider cloud dev session management (Jules, Codex, Copilot Workspace, Devin) and `/dashboard/cloud-dev/page.tsx` with full CRUD UI.
 
@@ -10653,7 +10589,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 ### Changed
 
-- **Submodule Assimilation Sprint**: Formally initialized the four core foundational submodules (`HyperNexus`, `MCP-SuperAssistant`, `jules-autopilot`, and `claude-mem`) into the project infrastructure. Updated `VISION.md`, `MEMORY.md`, and `DEPLOY.md` to reflect the newly integrated Deep Submodule assimilation plan.
+- **Submodule Assimilation Sprint**: Formally initialized the four core foundational submodules (`HyperNexus`, `MCP-SuperAssistant`, `jules-autopilot`, and `hypernexus`) into the project infrastructure. Updated `VISION.md`, `MEMORY.md`, and `DEPLOY.md` to reflect the newly integrated Deep Submodule assimilation plan.
 
 - **Version Bump**: Incremented version to 2.7.27.
 
@@ -10759,7 +10695,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - **Memora Integration**: Registered the `memora` MCP server in `hypernexus.config.json` for semantic persistent storage.
 
-- **Native Memory Viewer**: Replaced the `claude-mem` iframe with a high-fidelity, native React UI for searching and managing tiered agent memory (Session, Working, Long-Term).
+- **Native Memory Viewer**: Replaced the `hypercode` iframe with a high-fidelity, native React UI for searching and managing tiered agent memory (Session, Working, Long-Term).
 
 
 
@@ -11311,9 +11247,9 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - **Scalable Link Ingestion Sync**:
 
-  - Added `scripts/sync_master_index.mjs` to normalize and synchronize `HYPERNEXUS_MASTER_INDEX.jsonc` from `scripts/resources-list.json` and `scripts/ingestion-status.json`.
+  - Added `scripts/sync_master_index.mjs` to normalize and synchronize `HYPERCODE_MASTER_INDEX.jsonc` from `scripts/resources-list.json` and `scripts/ingestion-status.json`.
 
-  - Added `scripts/sync_master_index.mjs` to normalize and synchronize `HYPERNEXUS_MASTER_INDEX.jsonc` from `scripts/resources-list.json` and `scripts/ingestion-status.json`.
+  - Added `scripts/sync_master_index.mjs` to normalize and synchronize `HYPERCODE_MASTER_INDEX.jsonc` from `scripts/resources-list.json` and `scripts/ingestion-status.json`.
 
   - Added `scripts/ingestion-status.json` for explicit processed/pending/failed outcome tracking and failure retry seeds.
 
@@ -11343,9 +11279,9 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - **Master Index Schema Upgrade**:
 
-  - Upgraded `HYPERNEXUS_MASTER_INDEX.jsonc` to schema `hypernexus-master-index/v2`.
+  - Upgraded `HYPERCODE_MASTER_INDEX.jsonc` to schema `hypernexus-master-index/v2`.
 
-  - Upgraded `HYPERNEXUS_MASTER_INDEX.jsonc` to schema `hypernexus-master-index/v2`.
+  - Upgraded `HYPERCODE_MASTER_INDEX.jsonc` to schema `hypernexus-master-index/v2`.
 
   - Added ingestion telemetry (`ingestion.sources`, `ingestion.queue`) and expanded per-entry metadata (`fetch_status`, `fetch_error`, `fetch_attempts`, `last_checked_at`, `processed_at`, `normalized_url`, `discovered_from`).
 
@@ -11441,7 +11377,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
   - Updated `packages/opencode-autopilot/packages/shared/package.json` `dev` script to `tsc --watch --preserveWatchOutput`.
 
-  - Updated `packages/claude-mem/gemini-cli-extension/package.json` `dev` script to `tsc --watch --preserveWatchOutput`.
+  - Updated `packages/hypercode/gemini-cli-extension/package.json` `dev` script to `tsc --watch --preserveWatchOutput`.
 
   - Prevented TypeScript watch sessions from clearing terminal history during `pnpm run dev`.
 
@@ -11937,7 +11873,7 @@ and this project adheres to [Semantic Versioning](https://sumver.org/spec/v2.0.0
 
 - All `@hypernexus/*` runtime stubs now have real constructors (InputTools, SystemStatusTool, Director, Council, LLMService, etc.).
 
-- `HyperNexusStartLockRecord` → `HyperNexusStartLockRecord`, `HYPERNEXUS_CLIENT_HELLO` → `HYPERNEXUS_CLIENT_HELLO`.
+- `HyperNexusStartLockRecord` → `HyperNexusStartLockRecord`, `HYPERCODE_CLIENT_HELLO` → `HYPERCODE_CLIENT_HELLO`.
 
 - Zero `hypernexus` references remain in any active TypeScript source file.
 
@@ -12294,16 +12230,6 @@ According to `TODO.md` and `ROADMAP.md`:
 
 
 The foundation is rock solid and completely self-contained. The collective grows.
-
-
-
-<<<<<<< HEAD
-
-# Vision
-
-
-
-## North star
 
 
 
@@ -12835,11 +12761,11 @@ However, looking at `TODO.md` and `ROADMAP.md` along with user instructions, the
 
 **Observation**: `getHyperNexusConfigDir()` historically hardcoded `os.homedir() + '/.hypernexus'`.
 
-**Resolution**: It now dynamically respects `process.env.HYPERNEXUS_CONFIG_DIR`, and falls back to checking `process.cwd()/mcp.jsonc` before defaulting to the user's home directory. This allows local repository configurations to be authoritative during development.
+**Resolution**: It now dynamically respects `process.env.HYPERCODE_CONFIG_DIR`, and falls back to checking `process.cwd()/mcp.jsonc` before defaulting to the user's home directory. This allows local repository configurations to be authoritative during development.
 
 **Observation**: `getHyperNexusConfigDir()` historically hardcoded `os.homedir() + '/.hypernexus'`.
 
-**Resolution**: It now dynamically respects `process.env.HYPERNEXUS_CONFIG_DIR`, and falls back to checking `process.cwd()/mcp.jsonc` before defaulting to the user's home directory. This allows local repository configurations to be authoritative during development.
+**Resolution**: It now dynamically respects `process.env.HYPERCODE_CONFIG_DIR`, and falls back to checking `process.cwd()/mcp.jsonc` before defaulting to the user's home directory. This allows local repository configurations to be authoritative during development.
 
 
 
@@ -13361,7 +13287,7 @@ However, looking at `TODO.md` and `ROADMAP.md` along with user instructions, the
 
 **Observation**: The Next.js dashboard's tRPC API route (`apps/web/src/app/api/trpc/[trpc]/route.ts`) defaulted to `http://127.0.0.1:3001/trpc` (MCP WebSocket port) instead of `http://127.0.0.1:4100/trpc` (tRPC server). All dashboard data queries returned 502 errors.
 
-**Resolution**: Changed `DEFAULT_UPSTREAM_TRPC_URL` from port 3001 to 4000. Can also be overridden via `HYPERNEXUS_TRPC_UPSTREAM` env var.
+**Resolution**: Changed `DEFAULT_UPSTREAM_TRPC_URL` from port 3001 to 4000. Can also be overridden via `HYPERCODE_TRPC_UPSTREAM` env var.
 
 **Implication**: This was the root cause of empty dashboard data. The proxy is the only way the dashboard reaches the TS server.
 
@@ -13531,7 +13457,7 @@ All four compilation targets type-check with zero errors:
 
 - [x] Fixed stdio loader blindspot (added .hypernexus/mcp-cache.json)
 
-- [x] Workspace config resolution (respect HYPERNEXUS_CONFIG_DIR env var)
+- [x] Workspace config resolution (respect HYPERCODE_CONFIG_DIR env var)
 
 - [x] Tool inventory merging (DB + JSON combined)
 
@@ -13773,7 +13699,7 @@ System Prompt / Architectural Directive for HyperNexus
 
 # Project Overview
 
-Name: HyperNexus (Multi-Agent HYPERNEXUS)
+Name: HyperNexus (Multi-Agent HYPERCODE)
 
 Core Language: Go (Golang)
 
@@ -15127,7 +15053,7 @@ Here is the complete rewrite of the two most critical documents that need it mos
 
 File: VISION.md
 Markdown
-# HyperNexus: The Cognitive Control Plane & Universal HYPERNEXUS
+# HyperNexus: The Cognitive Control Plane & Universal HYPERCODE
 
 *Last Updated: 2026-05-02*
 
@@ -15296,7 +15222,7 @@ We will tighten the PairOrchestrator state machine in Go to strictly enforce the
 Here is the updated README.md reflecting our absolute rock-solid v1.0.0-alpha.45 baseline, the Go-native architecture, and the multi-agent swarm capabilities.
 
 Markdown
-# HyperNexus: The Cognitive Control Plane & Universal HYPERNEXUS
+# HyperNexus: The Cognitive Control Plane & Universal HYPERCODE
 
 ![Version](https://img.shields.io/badge/version-1.0.0--alpha.45-blue)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
@@ -15556,7 +15482,7 @@ All four compilation targets type-check with zero errors:
 
 - [x] Fixed config deletion loop (McpConfigService was wiping DB tools)
 - [x] Fixed stdio loader blindspot (added .hypernexus/mcp-cache.json)
-- [x] Workspace config resolution (respect HYPERNEXUS_CONFIG_DIR env var)
+- [x] Workspace config resolution (respect HYPERCODE_CONFIG_DIR env var)
 - [x] Tool inventory merging (DB + JSON combined)
 - [x] Universal instructions refactor (all model files → UNIVERSAL_LLM_INSTRUCTIONS.md)
 - [x] Go-native handlers for council sub-systems (rotation, evolution, finetune, hooks, IDE, smartpilot)

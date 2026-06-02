@@ -74,8 +74,8 @@ const JSONC_HEADER = `// HyperNexus MCP configuration\n// This file is HyperNexu
 export function getHyperNexusConfigDir(): string {
     // If there is an mcp.jsonc in the current working directory, use it
     // This allows project-level config to be the source of truth if intended.
-    if (process.env.HYPERNEXUS_CONFIG_DIR) {
-        return process.env.HYPERNEXUS_CONFIG_DIR;
+    if (process.env.HYPERCODE_CONFIG_DIR) {
+        return process.env.HYPERCODE_CONFIG_DIR;
     }
     const cwdPath = process.cwd();
     try {

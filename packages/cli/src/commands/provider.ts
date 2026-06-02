@@ -160,7 +160,7 @@ OAuth-capable subscription services:
       const { readFileSync, writeFileSync, mkdirSync } = await import('fs');
       const { resolve, dirname } = await import('path');
       const { homedir } = await import('os');
-      const configDir = process.env.HYPERNEXUS_CONFIG_DIR || resolve(homedir(), '.hypernexus');
+      const configDir = process.env.HYPERCODE_CONFIG_DIR || resolve(homedir(), '.hypernexus');
       const configPath = resolve(configDir, 'config.jsonc');
 
       let config: Record<string, any> = {};
@@ -194,7 +194,7 @@ OAuth-capable subscription services:
       const { resolve, dirname } = await import('path');
       const { homedir } = await import('os');
 
-      const configDir = process.env.HYPERNEXUS_CONFIG_DIR || resolve(homedir(), '.hypernexus');
+      const configDir = process.env.HYPERCODE_CONFIG_DIR || resolve(homedir(), '.hypernexus');
       const configPath = resolve(configDir, 'config.jsonc');
 
       let config: Record<string, any> = {};
@@ -356,7 +356,7 @@ Examples:
         const { readFileSync, writeFileSync, mkdirSync } = await import('fs');
         const { resolve, dirname } = await import('path');
         const { homedir } = await import('os');
-        const configDir = process.env.HYPERNEXUS_CONFIG_DIR || resolve(homedir(), '.hypernexus');
+        const configDir = process.env.HYPERCODE_CONFIG_DIR || resolve(homedir(), '.hypernexus');
         const configPath = resolve(configDir, 'config.jsonc');
 
         let config: Record<string, any> = {};
@@ -386,7 +386,7 @@ Examples:
         const { readFileSync } = await import('fs');
         const { resolve } = await import('path');
         const { homedir } = await import('os');
-        const configPath = resolve(process.env.HYPERNEXUS_CONFIG_DIR || resolve(homedir(), '.hypernexus'), 'config.jsonc');
+        const configPath = resolve(process.env.HYPERCODE_CONFIG_DIR || resolve(homedir(), '.hypernexus'), 'config.jsonc');
         const raw = readFileSync(configPath, 'utf8');
         const config = JSON.parse(raw.replace(/\/\/.*$/gm, '').replace(/\/\*[\s\S]*?\*\//g, ''));
         const chain = config.fallback?.chain ?? [];

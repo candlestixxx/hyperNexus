@@ -709,7 +709,7 @@ export class AgentMemoryService {
     }
 
     /**
-     * Record a structured observation inspired by the claude-mem observation pipeline.
+     * Record a structured observation inspired by the hypercode observation pipeline.
      * This is intentionally heuristic for now: it normalizes raw tool output into a typed,
      * deduplicated working-memory record that HyperNexus can search immediately.
      */

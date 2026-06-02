@@ -37,7 +37,7 @@ export function registerTopCommand(program: Command): void {
         // Clear screen
         process.stdout.write('\x1B[2J\x1B[H');
 
-        console.log(chalk.bold.cyan(`  ⬡ HyperNexus HYPERNEXUS v${version} — System Monitor`));
+        console.log(chalk.bold.cyan(`  ⬡ HyperNexus HYPERCODE v${version} — System Monitor`));
         console.log(chalk.dim(`  Refresh: ${interval}ms | Iteration: ${iteration + 1}/${maxIterations} | Ctrl+C to stop\n`));
 
         // Fetch all data in parallel

@@ -124,6 +124,18 @@ func (s *VectorStore) SemanticSearch(ctx context.Context, query string, limit in
 	return results, nil
 }
 
+func (s *VectorStore) GetVaultRecordCount(ctx context.Context) (int, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
+	var count int
+	err := s.db.QueryRowContext(ctx, "SELECT COUNT(*) FROM l2_vault").Scan(&count)
+	if err != nil {
+		return 0, fmt.Errorf("GetVaultRecordCount: %w", err)
+	}
+	return count, nil
+}
+
 func (s *VectorStore) incrementHeatLocked(ctx context.Context, id string) {
 	_, _ = s.db.ExecContext(ctx, `
 		UPDATE l2_vault
@@ -165,4 +177,38 @@ func (s *VectorStore) ApplyDecay(ctx context.Context) error {
 	`)
 
 	return err
+}
+
+func (s *VectorStore) GetAllVaultRecords(ctx context.Context, limit int) ([]controlplane.L2VaultRecord, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
+	rows, err := s.db.QueryContext(ctx, `
+		SELECT id, session_id, memory_type, content, importance, heat_score, last_accessed_at, created_at
+		FROM l2_vault
+		ORDER BY created_at DESC
+		LIMIT ?
+	`, limit)
+	if err != nil {
+		return nil, fmt.Errorf("GetAllVaultRecords: %w", err)
+	}
+	defer rows.Close()
+
+	var results []controlplane.L2VaultRecord
+	for rows.Next() {
+		var r controlplane.L2VaultRecord
+		var mType string
+		if err := rows.Scan(&r.ID, &r.SessionID, &mType, &r.Content, &r.Importance, &r.HeatScore, &r.LastAccessedAt, &r.CreatedAt); err != nil {
+			return nil, err
+		}
+		r.Type = controlplane.MemoryType(mType)
+		results = append(results, r)
+	}
+
+	// Update heat and last_accessed_at for hits
+	for _, r := range results {
+		s.incrementHeatLocked(ctx, r.ID)
+	}
+
+	return results, nil
 }

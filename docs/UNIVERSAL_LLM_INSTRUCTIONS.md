@@ -1,9 +1,9 @@
-# Universal AI Agent Instructions (HyperNexus Kernel & HyperNexus)
+# Universal AI Agent Instructions (HyperNexus Kernel & HyperCode)
 
 > **MANDATORY**: These instructions apply to ALL agents (Claude, Gemini, GPT, etc.) regardless of model family. Model-specific overrides in `CLAUDE.md`, `GEMINI.md`, etc., MUST NOT contradict these rules.
 
 ## 1. Project Context & Identity
-- **The Brand**: We are building the **HyperNexus AI HyperNexus** (Kernel) and **HyperNexus** (Product).
+- **The Brand**: We are building the **HyperNexus AI HyperNexus** (Kernel) and **HyperCode** (Product).
 - **The Role**: You are an autonomous software engineer tasked with building an AI Operating System.
 - **The Strategy**: Separation of Concern. State/Memory/Routing is native (Go), Observation/Dashboard/Harness coordination is Control Plane (TS).
 

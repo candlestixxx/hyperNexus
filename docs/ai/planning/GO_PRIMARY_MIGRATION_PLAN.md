@@ -121,7 +121,7 @@ Make Go the default runtime started by operator entrypoints.
 - the web tRPC compat layer now also prefers Go-native `/api/sessions` for `session.list` when the TypeScript session-list procedure is unavailable, replacing empty degraded-mode session inventories with native Go-discovered session rows in both legacy bridge batches and local dashboard fallback mode
 - the web tRPC compat layer now also derives `session.catalog` from Go-native `/api/cli/harnesses` when the TypeScript session-catalog procedure is unavailable, preserving session-creation harness metadata instead of collapsing the catalog to empty in degraded mode
 - `start.bat` now captures startup probe exit codes with runtime `!ERRORLEVEL!` instead of parse-time `%ERRORLEVEL%`, eliminating contradictory Go-primary build messaging during startup and making the install/build phase summaries truthful again
-- Go-primary startup installs now default to `pnpm install --ignore-scripts` unless `HYPERNEXUS_STARTUP_INSTALL_SCRIPTS=1` is set, reducing startup dependence on unrelated workspace postinstall hooks when only the Go control plane + built CLI lane is needed
+- Go-primary startup installs now default to `pnpm install --ignore-scripts` unless `HYPERCODE_STARTUP_INSTALL_SCRIPTS=1` is set, reducing startup dependence on unrelated workspace postinstall hooks when only the Go control plane + built CLI lane is needed
 - the web tRPC compat layer now also prefers Go-native `/api/tools/detect-execution-environment` when the TypeScript execution-environment procedure is unavailable, normalizing native shell/tool/harness posture into the existing dashboard contract instead of returning an all-zero synthetic placeholder
 - degraded `startupStatus.checks.executionEnvironment` now reuses that same normalized Go-native execution summary, keeping dashboard-home/system readiness summaries aligned with the AI Tools page during TypeScript outage/degraded mode
 - the web tRPC compat layer now also prefers Go-native `/api/tools/detect-install-surfaces` when the TypeScript install-surface procedure is unavailable, preserving browser-extension / VS Code / MCP-sync artifact summaries instead of collapsing install-surface pages to `[]` in degraded mode
@@ -148,7 +148,7 @@ Make Go the default runtime started by operator entrypoints.
 - Go now also owns native fallback behavior for policy CRUD through the HTTP layer, and the shared Next.js compat route exposes `policies.list` plus policy mutations during `/trpc` outage, making the Policies governance dashboard cluster more usable in Go-primary degraded mode
 - Go now also owns native fallback behavior for tool-set create/delete through the HTTP layer, and the shared Next.js compat route exposes `toolSets.list` plus tool-set mutations during `/trpc` outage, making the Tool Sets dashboard cluster more usable in Go-primary degraded mode
 - explicit Node compatibility mode still uses the full workspace build path and still defaults to a full install/build posture
-- full builds remain available via `HYPERNEXUS_FULL_BUILD=1`
+- full builds remain available via `HYPERCODE_FULL_BUILD=1`
 
 ---
 

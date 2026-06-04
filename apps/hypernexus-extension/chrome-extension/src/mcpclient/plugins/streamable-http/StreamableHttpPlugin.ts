@@ -12,13 +12,8 @@ export class StreamableHttpPlugin implements ITransportPlugin {
     version: '1.0.0',
     transportType: 'streamable-http',
     description: 'Streamable HTTP transport for MCP protocol',
-<<<<<<<< HEAD:apps/hypernexus-extension/chrome-extension/src/mcpclient/plugins/streamable-http/StreamableHttpPlugin.ts
     author: 'HyperNexus Extension',
     author: 'hypernexus Extension',
-========
-    author: 'HyperNexus Extension',
-    author: 'hypernexus Extension',
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/chrome-extension/src/mcpclient/plugins/streamable-http/StreamableHttpPlugin.ts
   };
 
   private transport: Transport | null = null;

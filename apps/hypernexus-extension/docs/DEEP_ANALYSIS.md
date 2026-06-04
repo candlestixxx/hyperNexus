@@ -3,13 +3,8 @@
 **Version**: 0.7.1
 **Date**: 2026-02-12
 
-<<<<<<<< HEAD:apps/hypernexus-extension/docs/DEEP_ANALYSIS.md
 This document provides a comprehensive technical analysis of the `hypernexus-extension` codebase, intended for advanced AI models and senior developers. It covers architectural patterns, state management, data flow, and specific feature implementations.
 This document provides a comprehensive technical analysis of the `hypernexus-extension` codebase, intended for advanced AI models and senior developers. It covers architectural patterns, state management, data flow, and specific feature implementations.
-========
-This document provides a comprehensive technical analysis of the `hypernexus-extension` codebase, intended for advanced AI models and senior developers. It covers architectural patterns, state management, data flow, and specific feature implementations.
-This document provides a comprehensive technical analysis of the `hypernexus-extension` codebase, intended for advanced AI models and senior developers. It covers architectural patterns, state management, data flow, and specific feature implementations.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/docs/DEEP_ANALYSIS.md
 
 ## 1. Architecture Overview
 

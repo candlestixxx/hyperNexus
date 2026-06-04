@@ -1,10 +1,6 @@
 /**
  * @file namespaces.zod.ts
-<<<<<<<< HEAD:packages/core/src/types/hypernexus/namespaces.zod.ts
  * @module packages/core/src/types/hypernexus/namespaces.zod
-========
- * @module packages/core/src/types/borg/namespaces.zod
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypernexus/namespaces.zod.ts
  *
  * WHAT:
  * Zod definitions for Namespaces, which are logical groupings of MCP Servers.
@@ -179,11 +175,7 @@ export const UpdateNamespaceToolOverridesResponseSchema = z.object({
     message: z.string(),
 });
 
-<<<<<<<< HEAD:packages/core/src/types/hypernexus/namespaces.zod.ts
 // Refresh tools from HyperNexus connection
-========
-// Refresh tools from Borg connection
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypernexus/namespaces.zod.ts
 export const RefreshNamespaceToolsRequestSchema = z.object({
     namespaceUuid: z.string().uuid(),
     tools: z.array(

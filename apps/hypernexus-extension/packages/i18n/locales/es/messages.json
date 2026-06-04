@@ -5,13 +5,8 @@
     },
     "extensionName": {
         "description": "Extension name",
-<<<<<<<< HEAD:apps/hypernexus-extension/packages/i18n/locales/es/messages.json
         "message": "HyperNexus Extension"
         "message": "hypernexus Extension"
-========
-        "message": "HyperNexus Extension"
-        "message": "hypernexus Extension"
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/packages/i18n/locales/es/messages.json
     },
     "navDashboard": {
         "message": "Panel"

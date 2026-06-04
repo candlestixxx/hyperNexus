@@ -14,11 +14,7 @@ export class Installer {
     }
 
     async install(): Promise<string> {
-<<<<<<<< HEAD:packages/hypernexus-supervisor/src/installer.ts
         console.error(`Attempting to install HyperNexus Supervisor to: ${this.configPath}`);
-========
-        console.error(`Attempting to install HyperNexus Supervisor to: ${this.configPath}`);
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypernexus-supervisor/src/installer.ts
 
         try {
             await fs.access(this.configPath);
@@ -33,11 +29,7 @@ export class Installer {
         const scriptPath = path.resolve(__dirname, 'index.js');
 
         config.servers = config.servers || {};
-<<<<<<<< HEAD:packages/hypernexus-supervisor/src/installer.ts
         config.servers['hypernexus-supervisor'] = {
-========
-        config.servers['hypernexus-supervisor'] = {
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypernexus-supervisor/src/installer.ts
             command: 'node',
             args: [scriptPath],
             env: {
@@ -48,10 +40,6 @@ export class Installer {
         };
 
         await fs.writeFile(this.configPath, JSON.stringify(config, null, 4), 'utf-8');
-<<<<<<<< HEAD:packages/hypernexus-supervisor/src/installer.ts
         return `Successfully installed 'hypernexus-supervisor' to ${this.configPath}`;
-========
-        return `Successfully installed 'hypernexus-supervisor' to ${this.configPath}`;
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypernexus-supervisor/src/installer.ts
     }
 }

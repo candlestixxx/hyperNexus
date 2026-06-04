@@ -1,13 +1,8 @@
 /**
  * Core Architecture Components
  *
-<<<<<<<< HEAD:apps/hypernexus-extension/pages/content/src/core/index.ts
  * Exports all core architectural components for the HyperNexus Extension.
  * Exports all core architectural components for the hypernexus Extension.
-========
- * Exports all core architectural components for the HyperNexus Extension.
- * Exports all core architectural components for the hypernexus Extension.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/core/index.ts
  */
 
 export { circuitBreaker, CircuitBreaker } from './circuit-breaker';

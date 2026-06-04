@@ -23,11 +23,7 @@ class SupervisorServer {
         this.uiAutomationManager = new UiAutomationManager();
         this.server = new Server(
             {
-<<<<<<<< HEAD:packages/hypernexus-supervisor/src/index.ts
                 name: "hypernexus-supervisor",
-========
-                name: "hypernexus-supervisor",
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypernexus-supervisor/src/index.ts
                 version: "0.1.0",
             },
             {
@@ -46,11 +42,7 @@ class SupervisorServer {
                 tools: [
                     {
                         name: "install_supervisor",
-<<<<<<<< HEAD:packages/hypernexus-supervisor/src/index.ts
                         description: "Install HyperNexus Supervisor into Antigravity MCP Config",
-========
-                        description: "Install HyperNexus Supervisor into Antigravity MCP Config",
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypernexus-supervisor/src/index.ts
                         inputSchema: {
                             type: "object",
                             properties: {
@@ -484,17 +476,10 @@ class SupervisorServer {
     }
 
     async start() {
-<<<<<<<< HEAD:packages/hypernexus-supervisor/src/index.ts
         logger.info("HyperNexus Supervisor Starting...");
         const transport = new StdioServerTransport();
         await this.server.connect(transport);
         logger.info("HyperNexus Supervisor Connected to Stdio");
-========
-        logger.info("HyperNexus Supervisor Starting...");
-        const transport = new StdioServerTransport();
-        await this.server.connect(transport);
-        logger.info("HyperNexus Supervisor Connected to Stdio");
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypernexus-supervisor/src/index.ts
     }
 }
 

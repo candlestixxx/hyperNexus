@@ -1,10 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-<<<<<<<< HEAD:packages/core/src/services/hypernexus-session-working-set.service.test.ts
 import { SessionToolWorkingSet } from './hypernexus-session-working-set.service.js';
-========
-import { SessionToolWorkingSet } from './hypernexus-session-working-set.service.js';
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypernexus-session-working-set.service.test.ts
 
 describe('SessionToolWorkingSet', () => {
     it('uses tighter default limits for the session working set', () => {

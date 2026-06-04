@@ -43,13 +43,8 @@ const SystemInfo: React.FC = () => {
         </CardHeader>
         <CardContent className="p-4">
           <div className="text-xs font-mono bg-slate-50 dark:bg-slate-950 p-2 rounded border border-slate-100 dark:border-slate-800 overflow-x-auto whitespace-pre">
-<<<<<<<< HEAD:apps/hypernexus-extension/pages/content/src/components/sidebar/System/SystemInfo.tsx
 {`hypernexus-extension/
 {`hypernexus-extension/
-========
-{`hypernexus-extension/
-{`hypernexus-extension/
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/components/sidebar/System/SystemInfo.tsx
 ├── chrome-extension/       (v1.1.0)
 │   ├── background/         (Service Worker)
 │   └── mcpclient/          (Protocol Layer)

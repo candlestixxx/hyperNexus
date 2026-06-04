@@ -1,23 +1,13 @@
-<<<<<<<< HEAD:apps/hypernexus-extension/IDEAS.md
 # Ideas for Improvement: HyperNexus Extension
 
 Creative improvement ideas to evolve the HyperNexus browser extension from a bridge into a universal agent interface.
 # Ideas for Improvement: hypernexus Extension
 
 Creative improvement ideas to evolve the hypernexus browser extension from a bridge into a universal agent interface.
-========
-# Ideas for Improvement: HyperNexus Extension
-
-Creative improvement ideas to evolve the HyperNexus browser extension from a bridge into a universal agent interface.
-# Ideas for Improvement: hypernexus Extension
-
-Creative improvement ideas to evolve the hypernexus browser extension from a bridge into a universal agent interface.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/IDEAS.md
 
 ## 1. Universal Intelligence Integration
 - **WASM-Based MCP Server Runner:** Allow the extension to download and run MCP servers directly within the browser using WASM, bypassing the need for a local Node.js process for simple tools.
 - **Deep DOM Injection & "Agent Lens":** An overlay that identifies and "labels" elements on any webpage that an agent can interact with, providing a visual map of the page's "API."
-<<<<<<<< HEAD:apps/hypernexus-extension/IDEAS.md
 - **Contextual "Magic Bar":** A floating command bar that appears only when relevant context is detected (e.g., show "HyperNexus Refactor" when on a GitHub PR page).
 
 ## 2. Advanced Browsing & Memory
@@ -26,29 +16,14 @@ Creative improvement ideas to evolve the hypernexus browser extension from a bri
 
 ## 2. Advanced Browsing & Memory
 - **Automatic Knowledge Harvesting:** Silently capture and summarize relevant information as the operator browses (e.g., documentation pages, technical blogs) and sync it to the hypernexus memory swarm.
-========
-- **Contextual "Magic Bar":** A floating command bar that appears only when relevant context is detected (e.g., show "HyperNexus Refactor" when on a GitHub PR page).
-
-## 2. Advanced Browsing & Memory
-- **Automatic Knowledge Harvesting:** Silently capture and summarize relevant information as the operator browses (e.g., documentation pages, technical blogs) and sync it to the HyperNexus memory swarm.
-- **Contextual "Magic Bar":** A floating command bar that appears only when relevant context is detected (e.g., show "hypernexus Refactor" when on a GitHub PR page).
-
-## 2. Advanced Browsing & Memory
-- **Automatic Knowledge Harvesting:** Silently capture and summarize relevant information as the operator browses (e.g., documentation pages, technical blogs) and sync it to the hypernexus memory swarm.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/IDEAS.md
 - **"Ghost Browser" Sessions:** Spawn headless browser instances from the extension to perform research tasks or verify UI changes without interrupting the operator's active tab.
 - **Browser-Native RAG:** A local vector search index running within the extension (via IndexedDB and a small WASM embedding model) for near-instant retrieval of browsed content.
 
 ## 3. Decentralized Economy & Mesh
 - **Bobcoin-Powered Micro-Payments:** Integrate with the Bobcoin ledger to allow agents to pay for premium MCP tool usage or specific browsing data.
 - **Extension-to-Extension P2P:** Allow multiple browser extensions on the same local network to share active tabs and browsed context directly, without going through the orchestrator.
-<<<<<<<< HEAD:apps/hypernexus-extension/IDEAS.md
 - **Verified Fact Gossip:** When an agent learns a new fact on a webpage, the extension should "gossip" a cryptographically signed proof of that fact to the wider HyperNexus mesh.
 - **Verified Fact Gossip:** When an agent learns a new fact on a webpage, the extension should "gossip" a cryptographically signed proof of that fact to the wider hypernexus mesh.
-========
-- **Verified Fact Gossip:** When an agent learns a new fact on a webpage, the extension should "gossip" a cryptographically signed proof of that fact to the wider HyperNexus mesh.
-- **Verified Fact Gossip:** When an agent learns a new fact on a webpage, the extension should "gossip" a cryptographically signed proof of that fact to the wider hypernexus mesh.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/IDEAS.md
 
 ## 4. Architectural Enhancements
 - **WebExt-Bridge Event Bus:** Refactor the Background Worker into a robust, type-safe event bus using `webext-bridge` for more reliable messaging between components.

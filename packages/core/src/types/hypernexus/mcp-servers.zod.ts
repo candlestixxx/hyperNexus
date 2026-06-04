@@ -1,10 +1,6 @@
 /**
  * @file mcp-servers.zod.ts
-<<<<<<<< HEAD:packages/core/src/types/hypernexus/mcp-servers.zod.ts
  * @module packages/core/src/types/hypernexus/mcp-servers.zod
-========
- * @module packages/core/src/types/borg/mcp-servers.zod
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypernexus/mcp-servers.zod.ts
  *
  * WHAT:
  * Zod definitions for MCP Server objects, including database records, API requests, and standard Enums.

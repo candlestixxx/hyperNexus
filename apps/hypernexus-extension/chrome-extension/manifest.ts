@@ -20,7 +20,6 @@ const packageJson = JSON.parse(readFileSync('./package.json', 'utf8'));
 const manifest = {
   manifest_version: 3,
   default_locale: 'en',
-<<<<<<<< HEAD:apps/hypernexus-extension/chrome-extension/manifest.ts
   name: 'HyperNexus Extension',
   browser_specific_settings: {
     gecko: {
@@ -37,24 +36,6 @@ const manifest = {
   },
   version: packageJson.version,
   description: 'hypernexus Extension',
-========
-  name: 'HyperNexus Extension',
-  browser_specific_settings: {
-    gecko: {
-      id: 'extension@hypernexus.local',
-    },
-  },
-  version: packageJson.version,
-  description: 'HyperNexus Extension',
-  name: 'hypernexus Extension',
-  browser_specific_settings: {
-    gecko: {
-      id: 'extension@hypernexus.local',
-    },
-  },
-  version: packageJson.version,
-  description: 'hypernexus Extension',
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/chrome-extension/manifest.ts
   host_permissions: [
     '*://*.perplexity.ai/*',
     '*://*.chat.openai.com/*',

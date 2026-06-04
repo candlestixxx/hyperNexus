@@ -48,7 +48,6 @@ describe('extension-storage fallback', () => {
   });
 
   it('does not fall back to page localStorage when extension storage access is denied', async () => {
-<<<<<<<< HEAD:apps/hypernexus-extension/pages/content/src/stores/extension-storage.test.ts
     localStorage.setItem('hypernexus-key', 'legacy-value');
 
     await expect(getExtensionStorageValue('hypernexus-key')).resolves.toBeNull();
@@ -67,33 +66,12 @@ describe('extension-storage fallback', () => {
 
     await removeExtensionStorageValue('hypernexus-key');
     expect(localStorage.getItem('hypernexus-key')).toBe('legacy-value');
-========
-    localStorage.setItem('hypernexus-key', 'legacy-value');
-
-    await expect(getExtensionStorageValue('hypernexus-key')).resolves.toBeNull();
-
-    await setExtensionStorageValue('hypernexus-key', 'next-value');
-    expect(localStorage.getItem('hypernexus-key')).toBe('legacy-value');
-
-    await removeExtensionStorageValue('hypernexus-key');
-    expect(localStorage.getItem('hypernexus-key')).toBe('legacy-value');
-    localStorage.setItem('hypernexus-key', 'legacy-value');
-
-    await expect(getExtensionStorageValue('hypernexus-key')).resolves.toBeNull();
-
-    await setExtensionStorageValue('hypernexus-key', 'next-value');
-    expect(localStorage.getItem('hypernexus-key')).toBe('legacy-value');
-
-    await removeExtensionStorageValue('hypernexus-key');
-    expect(localStorage.getItem('hypernexus-key')).toBe('legacy-value');
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/stores/extension-storage.test.ts
 
     expect(console.warn).toHaveBeenCalledTimes(1);
   });
 
   it('falls back to localStorage when extension storage is unavailable entirely', async () => {
     delete (globalThis as typeof globalThis & { chrome?: unknown }).chrome;
-<<<<<<<< HEAD:apps/hypernexus-extension/pages/content/src/stores/extension-storage.test.ts
     localStorage.setItem('hypernexus-key', 'legacy-value');
 
     await expect(getExtensionStorageValue('hypernexus-key')).resolves.toBe('legacy-value');
@@ -112,26 +90,6 @@ describe('extension-storage fallback', () => {
 
     await removeExtensionStorageValue('hypernexus-key');
     expect(localStorage.getItem('hypernexus-key')).toBeNull();
-========
-    localStorage.setItem('hypernexus-key', 'legacy-value');
-
-    await expect(getExtensionStorageValue('hypernexus-key')).resolves.toBe('legacy-value');
-
-    await setExtensionStorageValue('hypernexus-key', 'next-value');
-    expect(localStorage.getItem('hypernexus-key')).toBe('next-value');
-
-    await removeExtensionStorageValue('hypernexus-key');
-    expect(localStorage.getItem('hypernexus-key')).toBeNull();
-    localStorage.setItem('hypernexus-key', 'legacy-value');
-
-    await expect(getExtensionStorageValue('hypernexus-key')).resolves.toBe('legacy-value');
-
-    await setExtensionStorageValue('hypernexus-key', 'next-value');
-    expect(localStorage.getItem('hypernexus-key')).toBe('next-value');
-
-    await removeExtensionStorageValue('hypernexus-key');
-    expect(localStorage.getItem('hypernexus-key')).toBeNull();
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/stores/extension-storage.test.ts
 
     expect(console.warn).not.toHaveBeenCalled();
   });

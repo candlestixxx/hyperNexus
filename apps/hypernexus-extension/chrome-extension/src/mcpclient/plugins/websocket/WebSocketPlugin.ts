@@ -15,13 +15,8 @@ export class WebSocketPlugin implements ITransportPlugin {
     version: '1.0.0',
     transportType: 'websocket',
     description: 'WebSocket transport for MCP protocol with real-time bidirectional communication',
-<<<<<<<< HEAD:apps/hypernexus-extension/chrome-extension/src/mcpclient/plugins/websocket/WebSocketPlugin.ts
     author: 'HyperNexus Extension',
     author: 'hypernexus Extension',
-========
-    author: 'HyperNexus Extension',
-    author: 'hypernexus Extension',
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/chrome-extension/src/mcpclient/plugins/websocket/WebSocketPlugin.ts
   };
 
   private config: WebSocketPluginConfig = {};

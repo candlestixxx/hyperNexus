@@ -29,17 +29,6 @@
     "test": "vitest run"
   },
   "dependencies": {
-<<<<<<< HEAD
-=======
-    "@hypernexus/adk": "workspace:*",
-    "@hypernexus/agents": "workspace:*",
-    "@hypernexus/ai": "workspace:*",
-    "@hypernexus/mcp-registry": "workspace:*",
-    "@hypernexus/memory": "workspace:*",
-    "@hypernexus/search": "workspace:*",
-    "@hypernexus/tools": "workspace:*",
-    "@hypernexus/types": "workspace:*",
->>>>>>> origin/jules-11468118918326359250-8f2d9620
     "@hono/node-server": "^1.19.11",
     "@hono/zod-validator": "^0.7.2",
     "@hypernexus/adk": "workspace:*",

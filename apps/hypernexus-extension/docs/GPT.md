@@ -14,13 +14,8 @@
 - Always describe what you're about to do before doing it.
 
 ## Tool Usage
-<<<<<<<< HEAD:apps/hypernexus-extension/docs/GPT.md
 - ChatGPT / GPT models are often used via the HyperNexus Extension extension itself.
 - ChatGPT / GPT models are often used via the hypernexus Extension extension itself.
-========
-- ChatGPT / GPT models are often used via the HyperNexus Extension extension itself.
-- ChatGPT / GPT models are often used via the hypernexus Extension extension itself.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/docs/GPT.md
 - When writing adapter code for OpenAI/ChatGPT, reference `pages/content/src/plugins/adapters/` for patterns.
 
 ## Commit Style

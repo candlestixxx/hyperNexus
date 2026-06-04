@@ -1,5 +1,4 @@
 {
-<<<<<<<< HEAD:packages/hypernexus-supervisor/package.json
   "name": "@hypernexus/supervisor",
   "version": "1.0.0-alpha.64",
   "description": "HyperNexus Supervisor - Watchdog and Automation Agent",
@@ -7,15 +6,6 @@
   "main": "dist/index.js",
   "bin": {
     "hypernexus-supervisor": "./dist/index.js"
-========
-  "name": "@hypernexus/supervisor",
-  "version": "1.0.0-alpha.64",
-  "description": "HyperNexus Supervisor - Watchdog and Automation Agent",
-  "type": "module",
-  "main": "dist/index.js",
-  "bin": {
-    "hypernexus-supervisor": "./dist/index.js"
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypernexus-supervisor/package.json
   },
   "scripts": {
     "build": "tsc",

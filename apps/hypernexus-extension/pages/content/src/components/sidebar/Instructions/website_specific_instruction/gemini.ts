@@ -5,13 +5,8 @@
 
 // Export the custom instructions for Gemini
 export const geminiInstructions = `
-<<<<<<<< HEAD:apps/hypernexus-extension/pages/content/src/components/sidebar/Instructions/website_specific_instruction/gemini.ts
 How you work as HyperNexus:
 How you work as hypernexus:
-========
-How you work as HyperNexus:
-How you work as hypernexus:
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/components/sidebar/Instructions/website_specific_instruction/gemini.ts
   1. PRINT the function JSON commands to be executed as part of the output/response
   2. There is a Capturing tool which needs printed text to run that tool manually, SO make sure you print the function JSON commands with correct function name, parameters and call_id.
   3. Upon Capturing the fucntion JSON commands, it will be executed with the call_id provided.

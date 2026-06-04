@@ -1,25 +1,15 @@
 # Project Structure & Dependencies
 
-<<<<<<<< HEAD:apps/hypernexus-extension/docs/PROJECT_STRUCTURE.md
 This document provides a detailed overview of the `hypernexus-extension` monorepo structure, its submodules (packages), and their relationships.
 This document provides a detailed overview of the `hypernexus-extension` monorepo structure, its submodules (packages), and their relationships.
-========
-This document provides a detailed overview of the `hypernexus-extension` monorepo structure, its submodules (packages), and their relationships.
-This document provides a detailed overview of the `hypernexus-extension` monorepo structure, its submodules (packages), and their relationships.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/docs/PROJECT_STRUCTURE.md
 
 ## Directory Layout
 
 The project is structured as a monorepo managed by `turbo` and `pnpm`.
 
 ```
-<<<<<<<< HEAD:apps/hypernexus-extension/docs/PROJECT_STRUCTURE.md
 hypernexus-extension/
 hypernexus-extension/
-========
-hypernexus-extension/
-hypernexus-extension/
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/docs/PROJECT_STRUCTURE.md
 ├── chrome-extension/       # The core Chrome Extension logic (manifest, background, build config)
 │   ├── src/
 │   │   ├── background/     # Service worker logic (connection management, context menus, analytics)

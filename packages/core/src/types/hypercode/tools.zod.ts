@@ -1,10 +1,6 @@
 /**
  * @file tools.zod.ts
-<<<<<<<< HEAD:packages/core/src/types/hypernexus/tools.zod.ts
  * @module packages/core/src/types/hypernexus/tools.zod
-========
- * @module packages/core/src/types/borg/tools.zod
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypernexus/tools.zod.ts
  *
  * WHAT:
  * Zod definitions for Tools discovered from MCP servers.

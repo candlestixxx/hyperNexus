@@ -1,12 +1,7 @@
 # Content Scripts
 
-<<<<<<<< HEAD:apps/hypernexus-extension/pages/content/README.md
 This directory contains the content scripts and core functionality for the HyperNexus Extension Chrome extension.
 This directory contains the content scripts and core functionality for the hypernexus Extension Chrome extension.
-========
-This directory contains the content scripts and core functionality for the HyperNexus Extension Chrome extension.
-This directory contains the content scripts and core functionality for the hypernexus Extension Chrome extension.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/README.md
 
 ## Overview
 

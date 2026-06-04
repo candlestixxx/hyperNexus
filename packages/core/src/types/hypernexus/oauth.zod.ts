@@ -1,21 +1,13 @@
 /**
  * @file oauth.zod.ts
-<<<<<<<< HEAD:packages/core/src/types/hypernexus/oauth.zod.ts
  * @module packages/core/src/types/hypernexus/oauth.zod
-========
- * @module packages/core/src/types/borg/oauth.zod
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypernexus/oauth.zod.ts
  *
  * WHAT:
  * Zod definitions for the internal OAuth 2.0 Provider.
  *
  * WHY:
  * Validates all OAuth flows: Client Registration, Auth Codes, Access Tokens, and Session management.
-<<<<<<<< HEAD:packages/core/src/types/hypernexus/oauth.zod.ts
  * Used when HyperNexus acts as an OAuth provider or consumer.
-========
- * Used when Borg acts as an OAuth provider or consumer.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypernexus/oauth.zod.ts
  */
 
 import { z } from "zod";

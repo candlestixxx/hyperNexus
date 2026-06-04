@@ -10,30 +10,17 @@ import (
 	"time"
 )
 
-<<<<<<<< HEAD:agents/provider_hypernexus.go
 type HyperNexusControlPlaneProvider struct {
 	BaseURL string
 }
 
 func NewHyperNexusProvider() *HyperNexusControlPlaneProvider {
 	return &HyperNexusControlPlaneProvider{
-========
-type HyperNexusControlPlaneProvider struct {
-	BaseURL string
-}
-
-func NewHyperNexusProvider() *HyperNexusControlPlaneProvider {
-	return &HyperNexusControlPlaneProvider{
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:agents/provider_hypernexus.go
 		BaseURL: "http://127.0.0.1:4000",
 	}
 }
 
-<<<<<<<< HEAD:agents/provider_hypernexus.go
 func (p *HyperNexusControlPlaneProvider) Chat(ctx context.Context, messages []Message, tools []Tool) (Message, error) {
-========
-func (p *HyperNexusControlPlaneProvider) Chat(ctx context.Context, messages []Message, tools []Tool) (Message, error) {
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:agents/provider_hypernexus.go
 	// Re-map messages to the format expected by the /api/agent/chat endpoint
 	type payloadMsg struct {
 		Role    string `json:"role"`
@@ -66,21 +53,13 @@ func (p *HyperNexusControlPlaneProvider) Chat(ctx context.Context, messages []Me
 	client := &http.Client{Timeout: 120 * time.Second}
 	resp, err := client.Do(req)
 	if err != nil {
-<<<<<<<< HEAD:agents/provider_hypernexus.go
 		return Message{}, fmt.Errorf("failed to contact HyperNexus Control Plane: %w", err)
-========
-		return Message{}, fmt.Errorf("failed to contact HyperNexus Control Plane: %w", err)
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:agents/provider_hypernexus.go
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
 		body, _ := io.ReadAll(resp.Body)
-<<<<<<<< HEAD:agents/provider_hypernexus.go
 		return Message{}, fmt.Errorf("HyperNexus API error: %s - %s", resp.Status, string(body))
-========
-		return Message{}, fmt.Errorf("HyperNexus API error: %s - %s", resp.Status, string(body))
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:agents/provider_hypernexus.go
 	}
 
 	var result struct {
@@ -94,19 +73,11 @@ func (p *HyperNexusControlPlaneProvider) Chat(ctx context.Context, messages []Me
 	}
 
 	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
-<<<<<<<< HEAD:agents/provider_hypernexus.go
 		return Message{}, fmt.Errorf("failed to parse HyperNexus response: %w", err)
 	}
 
 	if !result.Success {
 		return Message{}, fmt.Errorf("HyperNexus rejected chat: %s", result.Error)
-========
-		return Message{}, fmt.Errorf("failed to parse HyperNexus response: %w", err)
-	}
-
-	if !result.Success {
-		return Message{}, fmt.Errorf("HyperNexus rejected chat: %s", result.Error)
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:agents/provider_hypernexus.go
 	}
 
 	return Message{
@@ -115,11 +86,7 @@ func (p *HyperNexusControlPlaneProvider) Chat(ctx context.Context, messages []Me
 	}, nil
 }
 
-<<<<<<<< HEAD:agents/provider_hypernexus.go
 func (p *HyperNexusControlPlaneProvider) Stream(ctx context.Context, messages []Message, tools []Tool, chunkChan chan<- string) error {
-========
-func (p *HyperNexusControlPlaneProvider) Stream(ctx context.Context, messages []Message, tools []Tool, chunkChan chan<- string) error {
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:agents/provider_hypernexus.go
 	// Fallback to synchronous chat if streaming isn't perfectly supported on the sidecar yet
 	msg, err := p.Chat(ctx, messages, tools)
 	if err != nil {
@@ -130,11 +97,6 @@ func (p *HyperNexusControlPlaneProvider) Stream(ctx context.Context, messages []
 	return nil
 }
 
-<<<<<<<< HEAD:agents/provider_hypernexus.go
 func (p *HyperNexusControlPlaneProvider) GetModelName() string {
 	return "hypernexus-router-active"
-========
-func (p *HyperNexusControlPlaneProvider) GetModelName() string {
-	return "hypernexus-router-active"
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:agents/provider_hypernexus.go
 }

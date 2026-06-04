@@ -1,12 +1,7 @@
 # Adapter Plugins
 
-<<<<<<<< HEAD:apps/hypernexus-extension/pages/content/src/plugins/adapters/README.md
 This directory contains concrete implementations of Adapter Plugins for the HyperNexus-Extension. Adapters are specialized plugins designed to tailor the assistant's behavior and capabilities to specific websites or types of websites.
 This directory contains concrete implementations of Adapter Plugins for the hypernexus-Extension. Adapters are specialized plugins designed to tailor the assistant's behavior and capabilities to specific websites or types of websites.
-========
-This directory contains concrete implementations of Adapter Plugins for the HyperNexus-Extension. Adapters are specialized plugins designed to tailor the assistant's behavior and capabilities to specific websites or types of websites.
-This directory contains concrete implementations of Adapter Plugins for the hypernexus-Extension. Adapters are specialized plugins designed to tailor the assistant's behavior and capabilities to specific websites or types of websites.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/plugins/adapters/README.md
 
 ## Overview
 

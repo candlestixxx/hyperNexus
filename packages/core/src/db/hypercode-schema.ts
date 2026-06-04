@@ -1,5 +1,4 @@
 /**
-<<<<<<<< HEAD:packages/core/src/db/hypernexus-schema.ts
  * @file hypernexus-schema.ts
  * @description SQLite schema definition for HyperNexus integration into HyperNexus.
  * @module packages/core/src/db/hypernexus-schema
@@ -12,20 +11,6 @@
  * WHY:
  * HyperNexus runs primarily as a local application where SQLite (`better-sqlite3`) is the standard embedded database.
  * The original HyperNexus uses PostgreSQL (`pg`). To support full feature parity locally without requiring a running
-========
- * @file borg-schema.ts
- * @description SQLite schema definition for Borg integration into HyperNexus.
- * @module packages/core/src/db/borg-schema
- *
- * WHAT:
- * This file defines the database schema for all Borg functionality (Servers, Tools, Namespaces, etc.)
- * adapted for SQLite 3. It mirrors the structure of the original PostgreSQL schema (`borg-schema.pg.ts`)
- * but uses SQLite-compatible column types.
- *
- * WHY:
- * HyperNexus runs primarily as a local application where SQLite (`better-sqlite3`) is the standard embedded database.
- * The original Borg uses PostgreSQL (`pg`). To support full feature parity locally without requiring a running
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/db/hypernexus-schema.ts
  * Postgres instance, we verify and adapt the schema to SQLite.
  *
  * HOW:
@@ -59,11 +44,7 @@ export const DockerSessionStatusEnum = ["PENDING", "RUNNING", "STOPPED", "ERROR"
 
 /**
  * Table: mcp_servers
-<<<<<<<< HEAD:packages/core/src/db/hypernexus-schema.ts
  * Stores configuration for upstream MCP servers (the ones HyperNexus connects TO).
-========
- * Stores configuration for upstream MCP servers (the ones HyperNexus connects TO).
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/db/hypernexus-schema.ts
  */
 export const mcpServersTable = sqliteTable(
     "mcp_servers",
@@ -244,11 +225,7 @@ export const verificationsTable = sqliteTable("verifications", {
         .default(sql`(strftime('%s', 'now'))`),
 });
 
-<<<<<<<< HEAD:packages/core/src/db/hypernexus-schema.ts
 // -- CORE HYPERNEXUS TABLES --
-========
-// -- CORE BORG TABLES --
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/db/hypernexus-schema.ts
 
 /**
  * Table: namespaces
@@ -1045,11 +1022,7 @@ export const publishedMcpValidationRunsTable = sqliteTable(
 
 /**
  * Table: links_backlog
-<<<<<<<< HEAD:packages/core/src/db/hypernexus-schema.ts
  * Canonical HyperNexus link backlog, initially fed by BobbyBookmarks and designed to
-========
- * Canonical HyperNexus link backlog, initially fed by BobbyBookmarks and designed to
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/db/hypernexus-schema.ts
  * become one of the data sources for the universal integrated MCP directory.
  */
 export const linksBacklogTable = sqliteTable(

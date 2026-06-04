@@ -1,12 +1,7 @@
 # Plugin System Core
 
-<<<<<<<< HEAD:apps/hypernexus-extension/pages/content/src/plugins/README.md
 This directory contains the core components for the HyperNexus-Extension's plugin architecture, implementing a modern Zustand-based system for extensible website adapters.
 This directory contains the core components for the hypernexus-Extension's plugin architecture, implementing a modern Zustand-based system for extensible website adapters.
-========
-This directory contains the core components for the HyperNexus-Extension's plugin architecture, implementing a modern Zustand-based system for extensible website adapters.
-This directory contains the core components for the hypernexus-Extension's plugin architecture, implementing a modern Zustand-based system for extensible website adapters.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/plugins/README.md
 
 ## Overview
 

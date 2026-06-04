@@ -412,13 +412,8 @@ export class RemoteConfigPlugin implements AdapterPlugin {
             id: `version-update-${data.newVersion}`,
             type: 'info',
             title: `Updated to v${data.newVersion}`,
-<<<<<<<< HEAD:apps/hypernexus-extension/pages/content/src/plugins/remote-config.plugin.ts
             message: `HyperNexus Extension has been updated. Check out what's new!`,
             message: `hypernexus Extension has been updated. Check out what's new!`,
-========
-            message: `HyperNexus Extension has been updated. Check out what's new!`,
-            message: `hypernexus Extension has been updated. Check out what's new!`,
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/plugins/remote-config.plugin.ts
             actions: [
               { text: 'View Changelog', action: 'view-changelog', style: 'primary' },
               { text: 'Dismiss', action: 'dismiss', style: 'secondary' },

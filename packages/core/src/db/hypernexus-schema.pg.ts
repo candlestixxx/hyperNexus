@@ -1,5 +1,4 @@
 /**
-<<<<<<<< HEAD:packages/core/src/db/hypernexus-schema.pg.ts
  * @file hypernexus-schema.pg.ts
  * @description PostgreSQL schema definition for HyperNexus integration into HyperNexus.
  * @module packages/core/src/db/hypernexus-schema.pg
@@ -7,35 +6,17 @@
  * WHAT:
  * This file defines the EXACT PostgreSQL schema used by the original HyperNexus project.
  * It is the "source of truth" for the data model when running HyperNexus with a Postgres backend
-========
- * @file borg-schema.pg.ts
- * @description PostgreSQL schema definition for Borg integration into HyperNexus.
- * @module packages/core/src/db/borg-schema.pg
- *
- * WHAT:
- * This file defines the EXACT PostgreSQL schema used by the original Borg project.
- * It is the "source of truth" for the data model when running HyperNexus with a Postgres backend
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/db/hypernexus-schema.pg.ts
  * (e.g. in production or docker-compose environments).
  *
  * WHY:
  * The user requested support for BOTH SQLite (for local development) and PostgreSQL.
  * This file allows the application to be configured to use Postgres by swapping the schema import
-<<<<<<<< HEAD:packages/core/src/db/hypernexus-schema.pg.ts
  * in the database connection setup. It maintains 1:1 compatibility with HyperNexus's data structures.
  *
  * HOW:
  * - Uses `drizzle-orm/pg-core`.
  * - Definitions are identical to `hypernexus/apps/backend/src/db/schema.ts`.
  * - Relies on `packages/core/src/types/hypernexus-types.ts` for Enums (once ported).
-========
- * in the database connection setup. It maintains 1:1 compatibility with Borg's data structures.
- *
- * HOW:
- * - Uses `drizzle-orm/pg-core`.
- * - Definitions are identical to `borg/apps/backend/src/db/schema.ts`.
- * - Relies on `packages/core/src/types/borg-types.ts` for Enums (once ported).
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/db/hypernexus-schema.pg.ts
  */
 
 import { sql } from "drizzle-orm";
@@ -54,11 +35,7 @@ import {
 import { type OAuthClientInformation, type OAuthTokens } from "@modelcontextprotocol/sdk/shared/auth.js";
 
 // -- ENUMS (Standardized for Postgres) --
-<<<<<<<< HEAD:packages/core/src/db/hypernexus-schema.pg.ts
 // These match the Zod Enums defined in `src/types/hypernexus-types.ts`
-========
-// These match the Zod Enums defined in `src/types/borg-types.ts`
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/db/hypernexus-schema.pg.ts
 
 export const mcpServerTypeEnum = pgEnum("mcp_server_type", ["STDIO", "SSE", "STREAMABLE_HTTP"]);
 export const mcpServerStatusEnum = pgEnum("mcp_server_status", ["ACTIVE", "INACTIVE", "ERROR", "CONNECTING"]);

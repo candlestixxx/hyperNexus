@@ -961,7 +961,6 @@ const ServerStatus: React.FC<ServerStatusProps> = ({ status: initialStatus }) =>
                 />
                 <div className="mt-2 text-xs text-slate-500 dark:text-slate-400">
                   <div className="mb-2">
-<<<<<<<< HEAD:apps/hypernexus-extension/pages/content/src/components/sidebar/ServerStatus/ServerStatus.tsx
                     <strong>To start HyperNexus Extension Proxy:</strong>
                   </div>
                   <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded font-mono text-xs border border-slate-200 dark:border-slate-700">
@@ -970,16 +969,6 @@ const ServerStatus: React.FC<ServerStatusProps> = ({ status: initialStatus }) =>
                   </div>
                   <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded font-mono text-xs border border-slate-200 dark:border-slate-700">
                     npx @srbhptl39/hypernexus-extension-proxy@latest --config ./config.json --outputTransport{' '}
-========
-                    <strong>To start HyperNexus Extension Proxy:</strong>
-                  </div>
-                  <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded font-mono text-xs border border-slate-200 dark:border-slate-700">
-                    npx @srbhptl39/hypernexus-extension-proxy@latest --config ./config.json --outputTransport{' '}
-                    <strong>To start hypernexus Extension Proxy:</strong>
-                  </div>
-                  <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded font-mono text-xs border border-slate-200 dark:border-slate-700">
-                    npx @srbhptl39/hypernexus-extension-proxy@latest --config ./config.json --outputTransport{' '}
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/components/sidebar/ServerStatus/ServerStatus.tsx
                     {connectionType === 'sse' ? 'sse' : connectionType === 'websocket' ? 'ws' : 'streamableHttp'}
                   </div>
                   <div className="mt-2 text-xs">

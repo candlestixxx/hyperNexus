@@ -35,11 +35,7 @@ import { toolsSyncCache } from "./tools-sync-cache.service.js";
 import { parseToolName } from "./tool-name-parser.service.js";
 import { sanitizeName } from "./common-utils.js";
 import { getAgentMemoryService, getMcpServer } from "../lib/trpc-core.js";
-<<<<<<<< HEAD:packages/core/src/services/hypernexus-proxy.service.ts
 import { SessionToolWorkingSet } from "./hypernexus-session-working-set.service.js";
-========
-import { SessionToolWorkingSet } from "./hypernexus-session-working-set.service.js";
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypernexus-proxy.service.ts
 import { getCompatibilityToolDefinitions } from "../mcp/compatibilityToolDefinitions.js";
 import { getToolLoadingDefinitions } from "../mcp/toolLoadingDefinitions.js";
 import {
@@ -87,11 +83,7 @@ import {
     CallToolHandler,
     compose,
     ListToolsHandler,
-<<<<<<<< HEAD:packages/core/src/services/hypernexus-proxy.service.ts
     HyperNexusHandlerContext,
-========
-    BorgHandlerContext,
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypernexus-proxy.service.ts
 } from "./legacy-proxy-middleware/functional-middleware.js";
 import { createLoggingMiddleware } from "./legacy-proxy-middleware/logging.functional.js";
 import {
@@ -226,11 +218,7 @@ async function filterOutOverrideTools(
 }
 
 /**
-<<<<<<<< HEAD:packages/core/src/services/hypernexus-proxy.service.ts
  * Allows executing a tool programmatically through the full HyperNexus proxy stack.
-========
- * Allows executing a tool programmatically through the full Borg proxy stack.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypernexus-proxy.service.ts
  * Set during attachTo initialization.
  */
 export let executeProxiedTool: ((name: string, args: any) => Promise<CallToolResult>) | null = null;
@@ -408,11 +396,7 @@ export const attachTo = async (
     ): boolean => {
         // Check if server name is exactly the same as our current server instance
         // This prevents exact recursive calls to the same server
-<<<<<<<< HEAD:packages/core/src/services/hypernexus-proxy.service.ts
         if (params.name === `hypernexus-unified-${namespaceUuid}`) {
-========
-        if (params.name === `borg-unified-${namespaceUuid}`) {
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypernexus-proxy.service.ts
             return true;
         }
 
@@ -455,11 +439,7 @@ export const attachTo = async (
     // The caller (MCPServer) handles Server creation and capability definition.
 
     // Create the handler context
-<<<<<<<< HEAD:packages/core/src/services/hypernexus-proxy.service.ts
     const handlerContext: HyperNexusHandlerContext = {
-========
-    const handlerContext: BorgHandlerContext = {
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypernexus-proxy.service.ts
         namespaceUuid,
         sessionId,
     };
@@ -479,19 +459,11 @@ export const attachTo = async (
                     search_tools: "Semantically search for available tools across all connected MCP servers. Use this to find tools for a specific task.",
                     load_tool: "Load a specific tool by name into your context so you can use it. In progressive mode this loads lightweight metadata first; use get_tool_schema to hydrate the full parameter schema when needed.",
                      get_tool_schema: "Explicitly fetch and hydrate the full JSON schema for a deferred tool after search/load, reducing default token overhead for sub-agents.",
-<<<<<<<< HEAD:packages/core/src/services/hypernexus-proxy.service.ts
                      get_tool_context: "Fetch compact HyperNexus memory context before calling a downstream tool so the model can reuse recent observations, summaries, and file-specific learnings.",
                      unload_tool: "Remove a previously loaded tool from the current session working set so it no longer appears in the exposed tool list.",
                      list_loaded_tools: "List tools currently loaded into the session working set, including whether their full schemas are hydrated.",
                      // @ts-expect-error -- type mismatch from inferred schema types
                      list_all_tools: "List all currently advertisable tools across meta helpers, compatibility tools, native built-ins, saved scripts, and HyperNexus-managed downstream MCP tools.",
-========
-                     get_tool_context: "Fetch compact HyperNexus memory context before calling a downstream tool so the model can reuse recent observations, summaries, and file-specific learnings.",
-                     unload_tool: "Remove a previously loaded tool from the current session working set so it no longer appears in the exposed tool list.",
-                     list_loaded_tools: "List tools currently loaded into the session working set, including whether their full schemas are hydrated.",
-                     // @ts-expect-error -- type mismatch from inferred schema types
-                     list_all_tools: "List all currently advertisable tools across meta helpers, compatibility tools, native built-ins, saved scripts, and HyperNexus-managed downstream MCP tools.",
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypernexus-proxy.service.ts
                      clear_eviction_history: "Clear the bounded recent eviction-history buffer for the current session working set.",
                  },
              }),
@@ -501,11 +473,7 @@ export const attachTo = async (
         // 2. Native Tools (Pre-loaded / Standard Lib)
         // Add native tools to metaTools list so they are always available
         // We prefix them if needed, or assume they are global.
-<<<<<<<< HEAD:packages/core/src/services/hypernexus-proxy.service.ts
         // For HyperNexus, standard tools are global.
-========
-        // For HyperNexus, standard tools are global.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypernexus-proxy.service.ts
         if (nativeToolDefinitions && nativeToolDefinitions.length > 0) {
             metaTools.push(...nativeToolDefinitions);
         }
@@ -594,11 +562,7 @@ export const attachTo = async (
 
                     const serverVersion = session.client.getServerVersion();
                     const actualServerName = serverVersion?.name || params.name || "";
-<<<<<<<< HEAD:packages/core/src/services/hypernexus-proxy.service.ts
                     const ourServerName = `hypernexus-unified-${namespaceUuid}`;
-========
-                    const ourServerName = `borg-unified-${namespaceUuid}`;
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypernexus-proxy.service.ts
                     if (actualServerName === ourServerName) return;
                     if (isSameServerInstance(params, mcpServerUuid)) return;
 
@@ -946,11 +910,7 @@ export const attachTo = async (
         }
 
         if (name === "import_mcp_config") {
-<<<<<<<< HEAD:packages/core/src/services/hypernexus-proxy.service.ts
             return await executeCompatibleImportConfig(args, configImportService, 'Config import service not available in HyperNexus proxy mode.');
-========
-            return await executeCompatibleImportConfig(args, configImportService, 'Config import service not available in Borg proxy mode.');
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypernexus-proxy.service.ts
         }
 
         if (name === "run_code") {
@@ -1003,11 +963,7 @@ export const attachTo = async (
                         _meta: meta,
                     }
                 }, handlerContext),
-<<<<<<<< HEAD:packages/core/src/services/hypernexus-proxy.service.ts
                 'Agent runner not available in HyperNexus proxy mode.',
-========
-                'Agent runner not available in Borg proxy mode.',
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/services/hypernexus-proxy.service.ts
             ));
         }
 

@@ -1,16 +1,9 @@
 /**
  * @file config-schemas.zod.ts
-<<<<<<<< HEAD:packages/core/src/types/hypernexus/config-schemas.zod.ts
  * @module packages/core/src/types/hypernexus/config-schemas.zod
  *
  * WHAT:
  * Comprehensive validation schemas for HyperNexus configuration files.
-========
- * @module packages/core/src/types/borg/config-schemas.zod
- *
- * WHAT:
- * Comprehensive validation schemas for Borg configuration files.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypernexus/config-schemas.zod.ts
  * Covers `claude_desktop_config.json`, internal app config, and env var validation.
  *
  * WHY:
@@ -100,11 +93,7 @@ export type ClaudeStdioServer = z.infer<typeof ClaudeStdioServerSchema>;
 export type ClaudeSseServer = z.infer<typeof ClaudeSseServerSchema>;
 
 // ============================================================================
-<<<<<<<< HEAD:packages/core/src/types/hypernexus/config-schemas.zod.ts
 // HyperNexus Config Key Validation
-========
-// Borg Config Key Validation
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypernexus/config-schemas.zod.ts
 // ============================================================================
 
 /**

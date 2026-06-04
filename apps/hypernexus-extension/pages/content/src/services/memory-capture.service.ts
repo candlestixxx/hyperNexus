@@ -129,13 +129,8 @@ export class MemoryCaptureService {
         sourceTitle: title,
       });
 
-<<<<<<<< HEAD:apps/hypernexus-extension/pages/content/src/services/memory-capture.service.ts
       // 2. Send to background to save to HyperNexus Core memory
       // 2. Send to background to save to hypernexus Core memory
-========
-      // 2. Send to background to save to HyperNexus Core memory
-      // 2. Send to background to save to hypernexus Core memory
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/services/memory-capture.service.ts
       try {
         await sendMessage('mcp:save-context', {
           content,

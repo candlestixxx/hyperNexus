@@ -2,11 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 
-<<<<<<<< HEAD:apps/web/src/app/dashboard/mcp/hypernexus/page.tsx
 interface HyperNexusServer {
-========
-interface BorgServer {
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/web/src/app/dashboard/mcp/borg/page.tsx
     uuid: string;
     name: string;
     description: string | null;
@@ -18,24 +14,14 @@ interface BorgServer {
     enabled: boolean;
 }
 
-<<<<<<<< HEAD:apps/web/src/app/dashboard/mcp/hypernexus/page.tsx
 interface HyperNexusStatus {
-========
-interface BorgStatus {
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/web/src/app/dashboard/mcp/borg/page.tsx
     available: boolean;
     url: string;
 }
 
-<<<<<<<< HEAD:apps/web/src/app/dashboard/mcp/hypernexus/page.tsx
 export default function HyperNexusPage() {
     const [status, setStatus] = useState<HyperNexusStatus | null>(null);
     const [servers, setServers] = useState<HyperNexusServer[]>([]);
-========
-export default function BorgPage() {
-    const [status, setStatus] = useState<BorgStatus | null>(null);
-    const [servers, setServers] = useState<BorgServer[]>([]);
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/web/src/app/dashboard/mcp/borg/page.tsx
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -54,13 +40,8 @@ export default function BorgPage() {
         try {
             setLoading(true);
             const [statusRes, serversRes] = await Promise.all([
-<<<<<<<< HEAD:apps/web/src/app/dashboard/mcp/hypernexus/page.tsx
                 fetch("/api/trpc/mcpServers.hypernexusStatus").then((r) => r.json()),
                 fetch("/api/trpc/mcpServers.listFromHyperNexus").then((r) => r.json()),
-========
-                fetch("/api/trpc/mcpServers.borgStatus").then((r) => r.json()),
-                fetch("/api/trpc/mcpServers.listFromBorg").then((r) => r.json()),
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/web/src/app/dashboard/mcp/borg/page.tsx
             ]);
             setStatus(statusRes?.result?.data ?? null);
             setServers(serversRes?.result?.data ?? []);
@@ -88,11 +69,7 @@ export default function BorgPage() {
                 payload.args = newServer.args.split(",").map((s) => s.trim());
             if (newServer.url) payload.url = newServer.url;
 
-<<<<<<<< HEAD:apps/web/src/app/dashboard/mcp/hypernexus/page.tsx
             const res = await fetch("/api/trpc/mcpServers.createInHyperNexus", {
-========
-            const res = await fetch("/api/trpc/mcpServers.createInBorg", {
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/web/src/app/dashboard/mcp/borg/page.tsx
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
@@ -117,11 +94,7 @@ export default function BorgPage() {
 
     const handleDeleteServer = async (uuid: string) => {
         try {
-<<<<<<<< HEAD:apps/web/src/app/dashboard/mcp/hypernexus/page.tsx
             await fetch("/api/trpc/mcpServers.deleteFromHyperNexus", {
-========
-            await fetch("/api/trpc/mcpServers.deleteFromBorg", {
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/web/src/app/dashboard/mcp/borg/page.tsx
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ uuid }),
@@ -138,17 +111,10 @@ export default function BorgPage() {
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="text-2xl font-bold text-white">
-<<<<<<<< HEAD:apps/web/src/app/dashboard/mcp/hypernexus/page.tsx
                         HyperNexus Remote Server Pool
                     </h1>
                     <p className="mt-1 text-sm text-gray-400">
                         Manage MCP servers via the HyperNexus backend at port 12009
-========
-                        Borg Management
-                    </h1>
-                    <p className="mt-1 text-sm text-gray-400">
-                        Manage MCP servers via the Borg backend at port 12009
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/web/src/app/dashboard/mcp/borg/page.tsx
                     </p>
                 </div>
                 <div className="flex items-center gap-3">
@@ -303,24 +269,15 @@ export default function BorgPage() {
                 <div className="flex items-center justify-center py-12">
                     <div className="h-6 w-6 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent" />
                     <span className="ml-3 text-sm text-gray-400">
-<<<<<<<< HEAD:apps/web/src/app/dashboard/mcp/hypernexus/page.tsx
                         Loading HyperNexus servers...
-========
-                        Loading Borg servers...
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/web/src/app/dashboard/mcp/borg/page.tsx
                     </span>
                 </div>
             ) : servers.length === 0 ? (
                 <div className="rounded-xl border border-gray-700 bg-gray-800/30 p-8 text-center">
                     <p className="text-gray-400">
                         {status?.available
-<<<<<<<< HEAD:apps/web/src/app/dashboard/mcp/hypernexus/page.tsx
                             ? "No MCP servers registered in HyperNexus yet. Click \"+ Add Server\" to register one."
                             : "HyperNexus backend is offline. Start it at http://localhost:12009 to manage servers."}
-========
-                            ? "No MCP servers registered in Borg yet. Click \"+ Add Server\" to register one."
-                            : "Borg backend is offline. Start it at http://localhost:12009 to manage servers."}
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/web/src/app/dashboard/mcp/borg/page.tsx
                     </p>
                 </div>
             ) : (
@@ -365,11 +322,7 @@ export default function BorgPage() {
                                     <button
                                         onClick={() => handleDeleteServer(server.uuid)}
                                         className="rounded-lg bg-red-600/20 px-2 py-1 text-[10px] font-medium text-red-300 hover:bg-red-600/40 transition-colors"
-<<<<<<<< HEAD:apps/web/src/app/dashboard/mcp/hypernexus/page.tsx
                                         title="Remove this server from HyperNexus"
-========
-                                        title="Remove this server from Borg"
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/web/src/app/dashboard/mcp/borg/page.tsx
                                     >
                                         Remove
                                     </button>
@@ -399,7 +352,6 @@ export default function BorgPage() {
                 </div>
             )}
 
-<<<<<<<< HEAD:apps/web/src/app/dashboard/mcp/hypernexus/page.tsx
             {/* HyperNexus Info Footer */}
             <div className="rounded-xl border border-gray-700/50 bg-gray-800/30 p-4 text-xs text-gray-500">
                 <p>
@@ -407,15 +359,6 @@ export default function BorgPage() {
                     {status?.url ?? "http://localhost:12009"} •{" "}
                     <strong className="text-gray-400">Integration:</strong> HTTP Bridge
                     via HyperNexusBridgeService •{" "}
-========
-            {/* Borg Info Footer */}
-            <div className="rounded-xl border border-gray-700/50 bg-gray-800/30 p-4 text-xs text-gray-500">
-                <p>
-                    <strong className="text-gray-400">Borg Backend:</strong>{" "}
-                    {status?.url ?? "http://localhost:12009"} •{" "}
-                    <strong className="text-gray-400">Integration:</strong> HTTP Bridge
-                    via BorgBridgeService •{" "}
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/web/src/app/dashboard/mcp/borg/page.tsx
                     <strong className="text-gray-400">Protocol:</strong> tRPC over HTTP
                 </p>
             </div>

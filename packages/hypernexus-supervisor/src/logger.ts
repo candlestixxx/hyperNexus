@@ -8,11 +8,7 @@ export class Logger {
 
     constructor() {
         const homeDir = os.homedir();
-<<<<<<<< HEAD:packages/hypernexus-supervisor/src/logger.ts
         const logDir = path.join(homeDir, '.hypernexus', 'logs');
-========
-        const logDir = path.join(homeDir, '.hypernexus', 'logs');
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/hypernexus-supervisor/src/logger.ts
         this.logPath = path.join(logDir, 'supervisor.log');
 
         // Ensure log directory exists

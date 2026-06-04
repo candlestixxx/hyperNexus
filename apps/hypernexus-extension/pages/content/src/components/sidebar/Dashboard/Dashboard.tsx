@@ -42,11 +42,7 @@ const Dashboard: React.FC = () => {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-<<<<<<<< HEAD:apps/hypernexus-extension/pages/content/src/components/sidebar/Dashboard/Dashboard.tsx
       a.download = `hypernexus-session-${new Date().toISOString().split('T')[0]}.md`;
-========
-      a.download = `hypernexus-session-${new Date().toISOString().split('T')[0]}.md`;
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/components/sidebar/Dashboard/Dashboard.tsx
       a.click();
       URL.revokeObjectURL(url);
     } catch (e) {

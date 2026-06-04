@@ -1,12 +1,7 @@
 # Events Module
 
-<<<<<<<< HEAD:apps/hypernexus-extension/pages/content/src/events/README.md
 This directory contains the core event management system for the HyperNexus-Extension content script.
 This directory contains the core event management system for the hypernexus-Extension content script.
-========
-This directory contains the core event management system for the HyperNexus-Extension content script.
-This directory contains the core event management system for the hypernexus-Extension content script.
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/pages/content/src/events/README.md
 
 ## Overview
 

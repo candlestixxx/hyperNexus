@@ -1,10 +1,5 @@
-<<<<<<<< HEAD:apps/hypernexus-extension/docs/HANDOFF.md
 # Handoff: HyperNexus Extension v0.7.2
 # Handoff: hypernexus Extension v0.7.2
-========
-# Handoff: HyperNexus Extension v0.7.2
-# Handoff: hypernexus Extension v0.7.2
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:apps/hypernexus-extension/docs/HANDOFF.md
 
 > **Read [AGENTS.md](./AGENTS.md) first.** It contains all universal instructions.
 > This file documents the latest session state for incoming agents.

@@ -1,10 +1,6 @@
 /**
  * @file logs.zod.ts
-<<<<<<<< HEAD:packages/core/src/types/hypernexus/logs.zod.ts
  * @module packages/core/src/types/hypernexus/logs.zod
-========
- * @module packages/core/src/types/borg/logs.zod
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypernexus/logs.zod.ts
  *
  * WHAT:
  * Zod definitions for Observability Logs (Tool Calls & Docker events).
@@ -16,11 +12,7 @@
 
 import { z } from "zod";
 
-<<<<<<<< HEAD:packages/core/src/types/hypernexus/logs.zod.ts
 export const HyperNexusLogEntrySchema = z.object({
-========
-export const BorgLogEntrySchema = z.object({
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypernexus/logs.zod.ts
     id: z.string(),
     timestamp: z.date(),
     serverName: z.string().optional(), // Now derived from tool_name prefix or similar
@@ -45,11 +37,7 @@ export const GetLogsRequestSchema = z.object({
 
 export const GetLogsResponseSchema = z.object({
     success: z.literal(true),
-<<<<<<<< HEAD:packages/core/src/types/hypernexus/logs.zod.ts
     data: z.array(HyperNexusLogEntrySchema),
-========
-    data: z.array(BorgLogEntrySchema),
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypernexus/logs.zod.ts
     totalCount: z.number(),
 });
 
@@ -82,11 +70,7 @@ export const GetDockerLogsResponseSchema = z.object({
     lines: z.array(z.string()),
 });
 
-<<<<<<<< HEAD:packages/core/src/types/hypernexus/logs.zod.ts
 export type HyperNexusLogEntry = z.infer<typeof HyperNexusLogEntrySchema>;
-========
-export type BorgLogEntry = z.infer<typeof BorgLogEntrySchema>;
->>>>>>>> origin/jules-11468118918326359250-8f2d9620:packages/core/src/types/hypernexus/logs.zod.ts
 export type GetLogsRequest = z.infer<typeof GetLogsRequestSchema>;
 export type GetLogsResponse = z.infer<typeof GetLogsResponseSchema>;
 export type ClearLogsResponse = z.infer<typeof ClearLogsResponseSchema>;

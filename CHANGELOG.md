@@ -3,6 +3,10 @@
 ## [1.0.0-alpha.64] - 2026-05-25
 
 ### Added
+- **L2 Vault Visualization**:
+  - Wired `trpc.healer.vaultRecords.useQuery` to the Next.js frontend to visualize persistent heal history.
+- **Mobile Style Audit**:
+  - Addressed overlapping elements and fixed hidden layout bugs in the Sidebar and System Pulse cards for mobile viewports.
 - **TypeScript Compile Security & Alignment**:
   - Fully resolved all TypeScript compilation errors across `packages/core` by introducing the missing `ProviderAuthTruth` definitions and aligning `ProviderAuthState` and `ProviderQuotaSnapshot` with the new environment-telemetry models.
   - Eliminated unused `@ts-expect-error` directives, achieving a 100% clean type check.

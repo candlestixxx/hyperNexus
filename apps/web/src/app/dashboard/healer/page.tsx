@@ -2,9 +2,11 @@
 'use client';
 
 import { useHealerStream } from '@hypernexus/ui';
+import { trpc } from '@/utils/trpc';
 
 export default function HealerDashboard() {
     const { events, isLoading } = useHealerStream();
+    const vaultQuery = trpc.healer.vaultRecords.useQuery({ limit: 50 });
 
     // Derive active infections from failed heal attempts
     const history = events;
@@ -110,6 +112,55 @@ export default function HealerDashboard() {
                             ))
                         )}
                     </div>
+                </section>
+            </div>
+
+            {/* L2 Vault Persistence */}
+            <div className="mt-8">
+                <section className="bg-gray-800 rounded-lg border border-gray-700 p-6">
+                    <h2 className="text-xl font-bold mb-4 text-purple-400">L2 VAULT PERSISTENCE (Heal History)</h2>
+                    {vaultQuery.isLoading ? (
+                        <div className="text-gray-500 italic text-center py-10">Loading L2 Vault records...</div>
+                    ) : vaultQuery.data && vaultQuery.data.length > 0 ? (
+                        <div className="space-y-4 max-h-[600px] overflow-y-auto">
+                            {vaultQuery.data.map((record: {
+                                id?: string | number;
+                                SessionID?: string;
+                                session_id?: string;
+                                Type?: string;
+                                memory_type?: string;
+                                HeatScore?: number;
+                                heat_score?: number;
+                                Importance?: number;
+                                importance?: number;
+                                CreatedAt?: string | number;
+                                created_at?: string | number;
+                                Content?: string;
+                                content?: string;
+                            }, i: number) => (
+                                <div key={i} className="bg-gray-700/50 border border-gray-600 p-4 rounded">
+                                    <div className="flex justify-between items-center text-xs text-gray-400 mb-2">
+                                        <span>{new Date(record.CreatedAt || record.created_at).toLocaleString()}</span>
+                                        <div className="flex space-x-2">
+                                            <span className="px-2 py-1 bg-purple-900/50 text-purple-300 rounded">Type: {record.Type || record.memory_type}</span>
+                                            <span className="px-2 py-1 bg-blue-900/50 text-blue-300 rounded">Heat: {record.HeatScore || record.heat_score || 0}</span>
+                                            <span className="px-2 py-1 bg-yellow-900/50 text-yellow-300 rounded">Imp: {record.Importance || record.importance || 0}</span>
+                                        </div>
+                                    </div>
+                                    <div className="text-sm text-gray-300 whitespace-pre-wrap bg-black/30 p-3 rounded">
+                                        {record.Content || record.content}
+                                    </div>
+                                    <div className="text-[10px] text-gray-500 mt-2 text-right">
+                                        ID: {record.id} | Session: {record.SessionID || record.session_id}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="text-gray-500 italic text-center py-10">
+                            No records found in L2 Vault.
+                        </div>
+                    )}
                 </section>
             </div>
         </div>

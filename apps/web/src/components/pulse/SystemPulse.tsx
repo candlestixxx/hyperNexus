@@ -26,7 +26,7 @@ export function SystemPulse() {
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                         <div className="bg-zinc-900 p-4 rounded-lg">
                             <div className="text-zinc-400 text-sm">Active Agents</div>
                             <div className="text-2xl font-mono text-cyan-400">

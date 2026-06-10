@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-alpha.65] - 2026-06-10
+
+### Changed
+- **CI Modernization**:
+  - Upgraded GitHub Actions workflow execution to Node.js 24 across all 17 workflow steps to resolve deprecation warnings and test failures related to Node 20 end-of-life.
+  - Adjusted Node.js engine compatibility ranges to `>=20.0.0` within isolated extensions.
+
 ## [1.0.0-alpha.64] - 2026-05-25
 
 ### Added

@@ -1,4 +1,4 @@
-# Handoff - v1.0.0-alpha.64
+# Handoff - v1.0.0-alpha.65
 
 ## Summary
 Fixed a critical protocol corruption bug in the TS control plane MCP stdio server (`packages/core/src/server-stdio.ts`) where console logs were printed to stdout during early ESM import resolution, disrupting the JSON-RPC initialization handshake.
@@ -13,8 +13,10 @@ Fixed a critical protocol corruption bug in the TS control plane MCP stdio serve
   - Styled the resulting records to seamlessly blend with the dashboard's design, preventing component overflow and ensuring a responsive grid.
 - **Mobile Styling Fixes**:
   - Addressed overlapping elements in the Sidebar and System Pulse cards by adjusting Tailwind flex and grid attributes for small viewports.
+- **CI Modernization**:
+  - Resolved GitHub Actions deprecation warnings and test errors by bumping workflows to Node.js 24 and adjusting the `hypernexus-extension` engine boundary to `>=20.0.0`.
 - **Ecosystem Build & Sync**:
-  - Synced and bumped the monorepo version to `1.0.0-alpha.64` using `sync-versions.mjs` across all 34 packages/applications.
+  - Synced and bumped the monorepo version to `1.0.0-alpha.65` using `sync-versions.mjs` across all 34 packages/applications.
   - Rebuilt the Go sidecar and verified the build succeeds.
   - Verified `@hypernexus/core` and `@hypernexus/cli` typecheck compile successfully with no errors.
 

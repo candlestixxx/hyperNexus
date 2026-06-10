@@ -1,6 +1,6 @@
 {
   "name": "hypernexus-extension",
-  "version": "1.0.0-alpha.64",
+  "version": "1.0.0-alpha.65",
   "description": "HyperNexus Extension",
   "license": "MIT",
   "private": true,
@@ -103,6 +103,6 @@
   },
   "packageManager": "pnpm@9.15.1",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=20.0.0"
   }
 }
